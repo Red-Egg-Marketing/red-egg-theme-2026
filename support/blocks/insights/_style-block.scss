@@ -1,0 +1,180 @@
+// ========================================
+//  Insights Block Styles
+//  Block: red-egg-block/insights
+// ========================================
+
+.insights-block {
+    position: relative;
+    padding-top: $default-section-padding-top;
+    padding-bottom: $default-section-padding-bottom;
+
+    @media screen and (min-width: $small-width) {
+        padding-top: 5rem;
+        padding-bottom: 5rem;
+    }
+
+    .block-wrapper {
+        @include block-wrapper;
+    }
+
+    // ---- Header ----
+    .insights-block__header {
+        margin-bottom: 2rem;
+
+        @media screen and (min-width: $small-width) {
+            margin-bottom: 2.5rem;
+        }
+    }
+
+    .insights-block__label {
+        @include h4-sup;
+        margin: 0 0 0.5rem 0;
+    }
+
+    .insights-block__heading {
+        @include primary-h1;
+        margin: 0;
+    }
+
+    // ---- Cards container ----
+    .insights-block__cards {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+
+        @media screen and (min-width: $small-width) {
+            flex-direction: row;
+            gap: 2rem;
+        }
+    }
+
+    // ---- Individual insight card ----
+    .insight-card {
+        display: block;
+        width: 100%;
+        text-decoration: none;
+        color: $gray;
+        border-radius: $default-border-radius;
+        overflow: hidden;
+        transition: transform 0.2s ease, box-shadow 0.3s ease;
+
+        @media screen and (min-width: $small-width) {
+            width: 50%;
+        }
+
+        &:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+
+            .btn-gray {
+                background-color: $gray;
+
+                span {
+                    color: $white;
+                }
+
+                .btn-arrow {
+                    border-color: $white;
+                }
+            }
+        }
+    }
+
+    .insight-card__inner {
+        background-color: $peach;
+        border-radius: $default-border-radius;
+        padding: 2rem 2.25rem 2.5rem;
+
+        @media screen and (min-width: $small-width) {
+            padding: 2.5rem 3.25rem 3rem;
+            min-height: 397px;
+            display: flex;
+            flex-direction: column;
+        }
+    }
+
+    .insight-card__date {
+        @include primary-h4;
+        margin: 0 0 0.75rem 0;
+
+        @media screen and (min-width: $small-width) {
+            margin-bottom: 1rem;
+        }
+    }
+
+    .insight-card__title {
+        @include primary-h3;
+        margin: 0 0 1rem 0;
+
+        @media screen and (min-width: $small-width) {
+            margin-bottom: 1.25rem;
+        }
+    }
+
+    .insight-card__excerpt {
+        @include body-text;
+        margin: 0 0 1.5rem 0;
+        flex-grow: 1;
+
+        @media screen and (min-width: $small-width) {
+            margin-bottom: 2rem;
+        }
+    }
+
+    .insight-card .btn-gray {
+        @include gray-button;
+    }
+
+    // ---- Divider beneath insights ----
+    // From the Figma there's a small "scratch" divider graphic
+    // below the insights section
+    .insights-block__divider {
+        margin-top: 3rem;
+        width: 160px;
+        height: 24px;
+        background-image: url('../img/divider.png');
+        background-size: contain;
+        background-repeat: no-repeat;
+
+        @media screen and (min-width: $small-width) {
+            width: 196px;
+            height: 29px;
+        }
+    }
+
+    // ---- Loading / empty states ----
+    .insights-block__loading {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 200px;
+        gap: 0.5rem;
+
+        p {
+            @include primary-h4;
+            margin: 0;
+        }
+    }
+
+    .insights-block__empty {
+        @include primary-h4;
+        text-align: center;
+        padding: 3rem;
+        color: $gray;
+        opacity: 0.6;
+    }
+
+    // ---- Padding/Margin toggles ----
+    &.no-padding-top {
+        padding-top: 0;
+    }
+    &.no-padding-bottom {
+        padding-bottom: 0;
+    }
+    &.no-margin-top {
+        margin-top: 0;
+    }
+    &.no-margin-bottom {
+        margin-bottom: 0;
+    }
+}

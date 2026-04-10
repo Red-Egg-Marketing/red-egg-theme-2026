@@ -1,0 +1,259 @@
+// ========================================
+//  _variables.scss
+//  Red Egg Marketing Theme – 2026 Rebuild
+//  Design tokens extracted from Figma
+// ========================================
+
+// ----------------------------------------
+//  FONTS
+// ----------------------------------------
+$font-head: 'Poppins', sans-serif;
+$font-body: 'Figtree', sans-serif;
+
+// ----------------------------------------
+//  COLORS – Brand Palette
+// ----------------------------------------
+$gray:       #424042;
+$red:        #DC2035;
+$peach:      #F79E83;
+$navy:       #024D69;
+$eggshell:   #F2ECE5;
+$purple:     #A89AAE;
+$magenta:    #E32E6D;
+$orange:     #F68633;
+$gold:       #F6B319;
+$dark-purple:#91288D;
+$white:      #FFFFFF;
+
+// Functional aliases
+$head-color:    $gray;
+$body-color:    $gray;
+$button-color:  $gray;
+$accent-color:  $red;
+$link-color:    $red;
+
+// ----------------------------------------
+//  BREAKPOINTS
+// ----------------------------------------
+$large-width:      1400px;
+$med-width:        1200px;
+$med-small-width:  1080px;
+$small-med-width:  875px;
+$small-width:      768px;
+$form-width:       641px;
+$xs-width:         414px;
+
+// ----------------------------------------
+//  LAYOUT
+// ----------------------------------------
+$max-cont-w: 1428px; // 1728 - (150*2) = 1428 content area from Figma
+$site-padding: 150px;
+$site-padding-mobile: 30px;
+
+// ----------------------------------------
+//  SPACING
+// ----------------------------------------
+$default-section-padding-top:    4.5rem;
+$default-section-padding-bottom: 4.5rem;
+$default-border-radius:          8px;
+$button-border-radius:           50px;
+
+// ----------------------------------------
+//  TYPOGRAPHY MIXINS
+// ----------------------------------------
+
+// H1 + Class (Hero heading)
+@mixin hero-h1 {
+    font-family: $font-head;
+    font-weight: 600;
+    font-size: 2.75rem; // 44px mobile
+    line-height: 3.375rem; // 54px
+    letter-spacing: 0;
+    color: $head-color;
+    @media screen and (min-width: $small-width) {
+        font-size: 5.5rem; // 88px desktop
+        line-height: 6.75rem; // 108px
+    }
+}
+
+// H1
+@mixin primary-h1 {
+    font-family: $font-head;
+    font-weight: 700;
+    font-size: 2.125rem; // 34px mobile
+    line-height: 2.75rem; // 44px
+    letter-spacing: 0.02125rem;
+    color: $head-color;
+    @media screen and (min-width: $small-width) {
+        font-size: 3.125rem; // 50px desktop
+        line-height: 3.75rem; // 60px
+        letter-spacing: 0.03125rem;
+    }
+}
+
+// H2
+@mixin primary-h2 {
+    font-family: $font-head;
+    font-weight: 700;
+    font-size: 1.5625rem; // 25px mobile
+    line-height: 2.1875rem; // 35px
+    letter-spacing: 0.0625rem;
+    color: $head-color;
+    @media screen and (min-width: $small-width) {
+        font-size: 2.3125rem; // 37px desktop
+        line-height: 2.9375rem; // 47px
+    }
+}
+
+// H3
+@mixin primary-h3 {
+    font-family: $font-head;
+    font-weight: 700;
+    font-size: 1.125rem; // 18px mobile
+    line-height: 1.75rem; // 28px
+    letter-spacing: 0.0625rem;
+    color: $head-color;
+    @media screen and (min-width: $small-width) {
+        font-size: 1.5625rem; // 25px desktop
+        line-height: 2.1875rem; // 35px
+    }
+}
+
+// H3 CAPS (section sub-labels like "CASE STUDIES")
+@mixin h3-caps {
+    font-family: $font-head;
+    font-weight: 700;
+    font-size: 1.125rem; // 18px mobile
+    line-height: 1.75rem; // 28px
+    letter-spacing: 0.3125rem; // 5px
+    text-transform: uppercase;
+    color: $head-color;
+    @media screen and (min-width: $small-width) {
+        font-size: 1.5625rem; // 25px desktop
+        line-height: 2.1875rem; // 35px
+    }
+}
+
+// H4
+@mixin primary-h4 {
+    font-family: $font-head;
+    font-weight: 500;
+    font-size: 1.0625rem; // 17px mobile
+    line-height: 1.625rem; // 26px
+    color: $head-color;
+    @media screen and (min-width: $small-width) {
+        font-size: 1.375rem; // 22px desktop
+        line-height: 2.125rem; // 34px
+    }
+}
+
+// H4 SUP (Section labels like "YOUR PARTNER & RESOURCE")
+@mixin h4-sup {
+    font-family: $font-head;
+    font-weight: 500;
+    font-size: 1.0625rem; // 17px mobile
+    line-height: 1.625rem; // 26px
+    letter-spacing: 0.125rem; // 2px mobile
+    text-transform: uppercase;
+    color: $head-color;
+    @media screen and (min-width: $small-width) {
+        font-size: 1.375rem; // 22px desktop
+        line-height: 2.125rem; // 34px
+        letter-spacing: 0.3125rem; // 5px desktop → note: figma shows ~1.1px but extracting 5px from token
+    }
+}
+
+// Body
+@mixin body-text {
+    font-family: $font-body;
+    font-weight: 300;
+    font-size: 1.125rem; // 18px mobile
+    line-height: 1.75rem; // 28px
+    color: $body-color;
+    @media screen and (min-width: $small-width) {
+        font-size: 1.25rem; // 20px desktop
+        line-height: 1.875rem; // 30px
+    }
+}
+
+// Button text
+@mixin button-text {
+    font-family: $font-head;
+    font-weight: 500;
+    font-size: 1rem; // 16px mobile
+    line-height: 1.4375rem; // 23px
+    letter-spacing: 0.02rem;
+    text-transform: uppercase;
+    @media screen and (min-width: $small-width) {
+        font-size: 1.0625rem; // 17px desktop
+        line-height: 1.5625rem; // 25px
+        letter-spacing: 0.02125rem;
+    }
+}
+
+// ----------------------------------------
+//  UTILITY MIXINS
+// ----------------------------------------
+
+@mixin v-align($position: absolute) {
+    position: $position;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+@mixin block-wrapper {
+    max-width: $max-cont-w;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: $site-padding-mobile;
+    padding-right: $site-padding-mobile;
+    @media screen and (min-width: $small-width) {
+        padding-left: $site-padding;
+        padding-right: $site-padding;
+    }
+}
+
+// Gray outlined button with arrow
+@mixin gray-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 15px 30px 15px 35px;
+    border: 1px solid $gray;
+    border-radius: $button-border-radius;
+    background: transparent;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    @media screen and (min-width: $small-width) {
+        padding: 15px 30px 15px 35px;
+    }
+    span {
+        @include button-text;
+        color: $gray;
+        white-space: nowrap;
+    }
+    .btn-arrow {
+        display: inline-block;
+        width: 12px;
+        height: 12px;
+        border-right: 2px solid $gray;
+        border-top: 2px solid $gray;
+        transform: rotate(45deg);
+        transition: border-color 0.3s ease;
+        @media screen and (min-width: $small-width) {
+            width: 14px;
+            height: 14px;
+        }
+    }
+    &:hover {
+        background-color: $gray;
+        span {
+            color: $white;
+        }
+        .btn-arrow {
+            border-color: $white;
+        }
+    }
+}

@@ -1,0 +1,185 @@
+// ========================================
+//  Text Cards Grid Block Styles
+//  Block: red-egg-block/text-cards-grid
+// ========================================
+
+.text-cards-grid {
+    position: relative;
+    padding-top: $default-section-padding-top;
+    padding-bottom: $default-section-padding-bottom;
+
+    @media screen and (min-width: $small-width) {
+        padding-top: 5rem;
+        padding-bottom: 5rem;
+    }
+
+    .block-wrapper {
+        @include block-wrapper;
+    }
+
+    // ---- Header area ----
+    .text-cards-grid__header {
+        margin-bottom: 2.5rem;
+
+        @media screen and (min-width: $small-width) {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: flex-start;
+            margin-bottom: 3.5rem;
+        }
+    }
+
+    .text-cards-grid__label {
+        @include h4-sup;
+        margin: 0 0 0.5rem 0;
+        width: 100%;
+
+        @media screen and (min-width: $small-width) {
+            // Label sits on its own line above heading row
+            // In Figma it's centered above heading text
+            text-align: center;
+            margin-bottom: 0.75rem;
+        }
+    }
+
+    .text-cards-grid__heading {
+        @include primary-h1;
+        margin: 0 0 1.25rem 0;
+
+        @media screen and (min-width: $small-width) {
+            width: 33%;
+            flex-shrink: 0;
+            margin-bottom: 0;
+        }
+    }
+
+    .text-cards-grid__description {
+        @include primary-h4;
+        margin: 0;
+
+        @media screen and (min-width: $small-width) {
+            width: 65%;
+            margin-left: auto;
+        }
+    }
+
+    // ---- Card grid ----
+    .text-cards-grid__cards {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+
+        @media screen and (min-width: $small-width) {
+            flex-direction: row;
+            gap: 2rem;
+        }
+    }
+
+    // ---- Individual card ----
+    .text-card {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        background: $white;
+        border: 1px solid $gray;
+        border-radius: $default-border-radius;
+        padding: 3rem 3rem 3.5rem;
+        width: 100%;
+        text-decoration: none;
+        color: $gray;
+        transition: box-shadow 0.3s ease, transform 0.2s ease;
+
+        @media screen and (min-width: $small-width) {
+            width: calc(33.333% - 1.334rem);
+            padding: 3.125rem;
+            min-height: 426px;
+        }
+
+        &:hover {
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            transform: translateY(-2px);
+
+            .arrow-circle {
+                background-color: $gray;
+
+                .arrow-icon {
+                    border-color: $white;
+                }
+            }
+        }
+    }
+
+    .text-card__icon {
+        margin-bottom: 1.5rem;
+
+        img {
+            display: block;
+            width: auto;
+            height: 80px;
+            max-width: 107px;
+
+            @media screen and (min-width: $small-width) {
+                height: 100px;
+            }
+        }
+    }
+
+    .text-card__title {
+        @include primary-h2;
+        margin: 0 0 1rem 0;
+    }
+
+    .text-card__body {
+        @include body-text;
+        margin: 0;
+        flex-grow: 1;
+    }
+
+    // ---- Arrow link (bottom-right circle with arrow) ----
+    .text-card__arrow {
+        position: absolute;
+        bottom: 1.75rem;
+        right: 1.75rem;
+
+        @media screen and (min-width: $small-width) {
+            bottom: 2rem;
+            right: 2rem;
+        }
+    }
+
+    .arrow-circle {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 35px;
+        height: 35px;
+        border: 1px solid $gray;
+        border-radius: 50%;
+        transition: background-color 0.3s ease;
+    }
+
+    .arrow-icon {
+        display: inline-block;
+        width: 10px;
+        height: 10px;
+        border-right: 2px solid $gray;
+        border-top: 2px solid $gray;
+        transform: rotate(45deg);
+        margin-left: -3px;
+        transition: border-color 0.3s ease;
+    }
+
+    // ---- Padding/Margin toggles ----
+    &.no-padding-top {
+        padding-top: 0;
+    }
+    &.no-padding-bottom {
+        padding-bottom: 0;
+    }
+    &.no-margin-top {
+        margin-top: 0;
+    }
+    &.no-margin-bottom {
+        margin-bottom: 0;
+    }
+}

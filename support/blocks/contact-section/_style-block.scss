@@ -1,0 +1,290 @@
+// ========================================
+//  Contact Section Block Styles
+//  Block: red-egg-block/contact-section
+// ========================================
+
+.contact-section {
+    position: relative;
+    padding-top: $default-section-padding-top;
+    padding-bottom: $default-section-padding-bottom;
+    overflow: hidden;
+
+    @media screen and (min-width: $small-width) {
+        padding-top: 6rem;
+        padding-bottom: 6rem;
+    }
+
+    // ---- Eggshell background ----
+    .contact-section__bg {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: $eggshell;
+        z-index: 0;
+    }
+
+    .block-wrapper {
+        @include block-wrapper;
+        position: relative;
+        z-index: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 2.5rem;
+
+        @media screen and (min-width: $small-width) {
+            flex-direction: row;
+            align-items: flex-start;
+            gap: 4rem;
+        }
+    }
+
+    // ---- Left column: heading + contact info ----
+    .contact-section__left {
+        width: 100%;
+
+        @media screen and (min-width: $small-width) {
+            width: 40%;
+            flex-shrink: 0;
+        }
+    }
+
+    .contact-section__label {
+        @include h4-sup;
+        margin: 0 0 0.5rem 0;
+    }
+
+    .contact-section__heading {
+        @include primary-h1;
+        color: $red;
+        margin: 0 0 2rem 0;
+
+        @media screen and (min-width: $small-width) {
+            margin-bottom: 2.5rem;
+        }
+    }
+
+    // ---- Contact info items ----
+    .contact-section__info {
+        display: flex;
+        flex-direction: column;
+        gap: 1.25rem;
+
+        @media screen and (min-width: $small-width) {
+            gap: 1.5rem;
+        }
+    }
+
+    .contact-section__info-item {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        text-decoration: none;
+        color: $gray;
+        transition: color 0.2s ease;
+
+        &:hover {
+            color: $red;
+        }
+    }
+
+    // Icon circles – gray circle with icon inside
+    .contact-section__icon {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 50px;
+        height: 50px;
+        flex-shrink: 0;
+        border-radius: 50%;
+        background-color: $gray;
+        background-size: 24px auto;
+        background-repeat: no-repeat;
+        background-position: center;
+
+        @media screen and (min-width: $small-width) {
+            width: 65px;
+            height: 65px;
+            background-size: 30px auto;
+        }
+
+        // Icon images – reference SVGs/PNGs from theme img/
+        &--email {
+            background-image: url('../img/icon-email-white.svg');
+        }
+
+        &--phone {
+            background-image: url('../img/icon-phone-white.svg');
+        }
+
+        &--location {
+            background-image: url('../img/icon-location-white.svg');
+        }
+    }
+
+    .contact-section__info-text {
+        @include primary-h4;
+    }
+
+    // ---- Right column: form ----
+    .contact-section__right {
+        width: 100%;
+
+        @media screen and (min-width: $small-width) {
+            width: 55%;
+        }
+    }
+
+    // Form layout
+    .contact-section__form,
+    .contact-section__form-preview {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+
+        @media screen and (min-width: $small-width) {
+            gap: 1.25rem;
+        }
+    }
+
+    .contact-section__form-row {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+
+        @media screen and (min-width: $small-width) {
+            flex-direction: row;
+            gap: 1.25rem;
+        }
+    }
+
+    // ---- Input styles ----
+    .contact-section__input,
+    .contact-section__textarea {
+        width: 100%;
+        background: $white;
+        border: 1px solid $gray;
+        border-radius: 5px;
+        padding: 0.875rem 1rem;
+        font-family: $font-body;
+        font-weight: 300;
+        font-size: 1.125rem;
+        line-height: 1.75rem;
+        color: $gray;
+        outline: none;
+        transition: border-color 0.2s ease;
+
+        &::placeholder {
+            color: $gray;
+            opacity: 0.7;
+        }
+
+        &:focus {
+            border-color: $red;
+        }
+
+        @media screen and (min-width: $small-width) {
+            padding: 1rem 1.125rem;
+            font-size: 1.25rem;
+        }
+    }
+
+    .contact-section__input {
+        height: 50px;
+
+        @media screen and (min-width: $small-width) {
+            height: 60px;
+        }
+    }
+
+    .contact-section__textarea {
+        min-height: 120px;
+        resize: vertical;
+
+        @media screen and (min-width: $small-width) {
+            min-height: 164px;
+        }
+    }
+
+    // ---- Editor preview field placeholders ----
+    .contact-section__field {
+        background: $white;
+        border: 1px solid $gray;
+        border-radius: 5px;
+        padding: 1rem;
+        width: 100%;
+        min-height: 50px;
+        display: flex;
+        align-items: center;
+
+        @media screen and (min-width: $small-width) {
+            min-height: 60px;
+            width: 50%;
+        }
+
+        &--full {
+            min-height: 120px;
+            align-items: flex-start;
+
+            @media screen and (min-width: $small-width) {
+                width: 100%;
+                min-height: 164px;
+            }
+        }
+    }
+
+    .contact-section__field-placeholder {
+        @include body-text;
+        opacity: 0.5;
+    }
+
+    // ---- Submit button ----
+    .contact-section__form-submit {
+        margin-top: 0.5rem;
+
+        .btn-gray {
+            @include gray-button;
+        }
+
+        button.btn-gray {
+            font-family: $font-head;
+            cursor: pointer;
+        }
+    }
+
+    // ---- Shortcode preview in editor ----
+    .contact-section__shortcode-preview {
+        background: $white;
+        border: 1px dashed $gray;
+        border-radius: $default-border-radius;
+        padding: 2rem;
+        text-align: center;
+
+        p {
+            @include primary-h4;
+            margin: 0 0 0.5rem 0;
+        }
+
+        code {
+            font-size: 0.875rem;
+            background: $eggshell;
+            padding: 0.25rem 0.5rem;
+            border-radius: 3px;
+        }
+    }
+
+    // ---- Padding/Margin toggles ----
+    &.no-padding-top {
+        padding-top: 0;
+    }
+    &.no-padding-bottom {
+        padding-bottom: 0;
+    }
+    &.no-margin-top {
+        margin-top: 0;
+    }
+    &.no-margin-bottom {
+        margin-bottom: 0;
+    }
+}

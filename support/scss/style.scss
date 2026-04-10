@@ -1,0 +1,25 @@
+/**
+ * Theme Name: Red Egg Marketing
+ * Theme URI: https://redeggmarketing.com
+ * Author: Red Egg Marketing
+ * Description: Custom WordPress theme for Red Egg Marketing – 2026 rebuild.
+ * Version: 1.0.0
+ * Text Domain: red-egg
+ */
+
+// ---- Foundation ----
+@import 'variables';
+@import 'spacing';
+
+// ---- Base Styles ----
+@import 'base';
+
+// ---- Block Styles ----
+@import '../blocks/hero/style-block';
+@import '../blocks/columns-group/style-block';
+@import '../blocks/text-cards-grid/style-block';
+@import '../blocks/numbered-list/style-block';
+@import '../blocks/case-studies-slider/style-block';
+@import '../blocks/testimonials/style-block';
+@import '../blocks/insights/style-block';
+@import '../blocks/contact-section/style-block';

@@ -1,0 +1,183 @@
+// ========================================
+//  Columns Group Block Styles
+//  Block: red-egg-block/columns-group
+// ========================================
+
+.columns-group {
+    position: relative;
+    padding-top: $default-section-padding-top;
+    padding-bottom: $default-section-padding-bottom;
+
+    @media screen and (min-width: $small-width) {
+        padding-top: 6rem;
+        padding-bottom: 6rem;
+    }
+
+    // ---- Block wrapper – two-column layout ----
+    .block-wrapper {
+        @include block-wrapper;
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+
+        @media screen and (min-width: $small-width) {
+            flex-direction: row;
+            align-items: flex-start;
+            gap: 4rem;
+        }
+    }
+
+    // ---- Image column ----
+    .columns-group__image-col {
+        width: 100%;
+
+        @media screen and (min-width: $small-width) {
+            width: 50%;
+            flex-shrink: 0;
+        }
+    }
+
+    .columns-group__image-wrap {
+        position: relative;
+        border-radius: $default-border-radius;
+        overflow: hidden;
+
+        img {
+            display: block;
+            width: 100%;
+            height: auto;
+            border-radius: $default-border-radius;
+        }
+    }
+
+    .columns-group__image-placeholder {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: $eggshell;
+        border: 2px dashed $gray;
+        border-radius: $default-border-radius;
+        min-height: 300px;
+        cursor: pointer;
+        transition: background-color 0.2s ease;
+
+        span {
+            @include primary-h4;
+            color: $gray;
+            opacity: 0.6;
+        }
+
+        &:hover {
+            background: darken($eggshell, 3%);
+        }
+
+        @media screen and (min-width: $small-width) {
+            min-height: 525px;
+        }
+    }
+
+    // ---- Content column ----
+    .columns-group__content-col {
+        width: 100%;
+
+        @media screen and (min-width: $small-width) {
+            width: 50%;
+        }
+    }
+
+    .columns-group__label {
+        @include h4-sup;
+        margin: 0 0 0.75rem 0;
+    }
+
+    .columns-group__heading {
+        @include primary-h1;
+        margin: 0 0 1.25rem 0;
+
+        &--red {
+            color: $red;
+        }
+
+        &--gray {
+            color: $gray;
+        }
+    }
+
+    .columns-group__intro {
+        @include primary-h4;
+        margin: 0 0 1.25rem 0;
+    }
+
+    .columns-group__body {
+        @include body-text;
+        margin: 0 0 2rem 0;
+    }
+
+    .columns-group__cta {
+        margin-bottom: 2.5rem;
+
+        .btn-gray {
+            @include gray-button;
+        }
+    }
+
+    // ---- Divider ----
+    .columns-group__divider {
+        width: 196px;
+        height: 29px;
+        background-image: url('../img/divider.png');
+        background-size: contain;
+        background-repeat: no-repeat;
+
+        @media screen and (max-width: $small-width - 1) {
+            width: 160px;
+            height: 24px;
+        }
+    }
+
+    // ---- Image-right modifier ----
+    &.columns-group--img-right {
+        .block-wrapper {
+            @media screen and (min-width: $small-width) {
+                flex-direction: row-reverse;
+            }
+        }
+    }
+
+    // ---- Mobile ordering ----
+    // On mobile, Figma shows: label → heading → image → intro → body → CTA → divider
+    @media screen and (max-width: $small-width - 1) {
+        .block-wrapper {
+            flex-direction: column;
+        }
+
+        .columns-group__content-col {
+            order: 1;
+        }
+
+        .columns-group__image-col {
+            order: 2;
+        }
+
+        // Override: label and heading come before image on mobile
+        // Using a nested flex approach within content-col
+        // The label + heading will be visible at the top,
+        // then image-col, then rest of content
+        // We achieve this by pulling label/heading out of normal flow
+        // Actually let's use a cleaner approach with CSS order
+    }
+
+    // ---- Padding/Margin toggle classes ----
+    &.no-padding-top {
+        padding-top: 0;
+    }
+    &.no-padding-bottom {
+        padding-bottom: 0;
+    }
+    &.no-margin-top {
+        margin-top: 0;
+    }
+    &.no-margin-bottom {
+        margin-bottom: 0;
+    }
+}

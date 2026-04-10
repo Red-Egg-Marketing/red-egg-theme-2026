@@ -1,0 +1,155 @@
+// ========================================
+//  Numbered List Items Block Styles
+//  Block: red-egg-block/numbered-list
+// ========================================
+
+.numbered-list {
+    position: relative;
+    padding-top: $default-section-padding-top;
+    padding-bottom: $default-section-padding-bottom;
+    overflow: hidden;
+
+    @media screen and (min-width: $small-width) {
+        padding-top: 6rem;
+        padding-bottom: 6rem;
+    }
+
+    // ---- Navy background ----
+    .numbered-list__bg {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: $navy;
+        z-index: 0;
+    }
+
+    // ---- Block wrapper – two-column layout ----
+    .block-wrapper {
+        @include block-wrapper;
+        position: relative;
+        z-index: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 2.5rem;
+
+        @media screen and (min-width: $small-width) {
+            flex-direction: row;
+            align-items: flex-start;
+            gap: 4rem;
+        }
+    }
+
+    // ---- Left column: heading, intro, logo mark ----
+    .numbered-list__left {
+        width: 100%;
+
+        @media screen and (min-width: $small-width) {
+            width: 35%;
+            flex-shrink: 0;
+            position: sticky;
+            top: 6rem;
+        }
+    }
+
+    .numbered-list__heading {
+        @include primary-h1;
+        color: $white;
+        margin: 0 0 1.25rem 0;
+    }
+
+    .numbered-list__intro {
+        @include primary-h4;
+        color: $white;
+        margin: 0 0 2rem 0;
+    }
+
+    // Logo mark – references the egg logo SVG/PNG from theme img/
+    .numbered-list__logo-mark {
+        display: none;
+
+        @media screen and (min-width: $small-width) {
+            display: block;
+            width: 197px;
+            height: 199px;
+            background-image: url('../img/egg-logo-mark-white.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            opacity: 0.6;
+            margin-top: 3rem;
+        }
+    }
+
+    // ---- Right column: numbered items ----
+    .numbered-list__right {
+        width: 100%;
+
+        @media screen and (min-width: $small-width) {
+            width: 60%;
+        }
+    }
+
+    // ---- Individual numbered item ----
+    .numbered-list__item {
+        position: relative;
+        padding-left: 0;
+        margin-bottom: 2.5rem;
+
+        @media screen and (min-width: $small-width) {
+            margin-bottom: 3rem;
+        }
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+
+    // Large faded number
+    .numbered-list__number {
+        display: block;
+        font-family: $font-head;
+        font-weight: 600;
+        font-size: 2.75rem; // 44px mobile
+        line-height: 3.375rem;
+        color: $white;
+        opacity: 0.3;
+        margin-bottom: 0.25rem;
+
+        @media screen and (min-width: $small-width) {
+            font-size: 5.5rem; // 88px desktop
+            line-height: 6.75rem;
+            margin-bottom: 0.5rem;
+        }
+    }
+
+    .numbered-list__item-content {
+        position: relative;
+    }
+
+    .numbered-list__item-title {
+        @include h3-caps;
+        color: $white;
+        margin: 0 0 0.75rem 0;
+    }
+
+    .numbered-list__item-body {
+        @include body-text;
+        color: $white;
+        margin: 0;
+    }
+
+    // ---- Padding/Margin toggles ----
+    &.no-padding-top {
+        padding-top: 0;
+    }
+    &.no-padding-bottom {
+        padding-bottom: 0;
+    }
+    &.no-margin-top {
+        margin-top: 0;
+    }
+    &.no-margin-bottom {
+        margin-bottom: 0;
+    }
+}

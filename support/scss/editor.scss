@@ -1,0 +1,35 @@
+/**
+ * Editor Styles
+ * 
+ * Loaded in the Gutenberg editor via blocks.editor.css.
+ * Imports the same variables and block styles so the
+ * editor preview matches the frontend.
+ */
+
+// ---- Foundation ----
+@import 'variables';
+@import 'spacing';
+
+// ---- Editor-specific overrides ----
+.editor-styles-wrapper {
+
+    // Apply theme fonts to the editor
+    font-family: $font-body;
+    font-weight: 300;
+    color: $gray;
+
+    // Ensure block previews are full width in editor
+    .wp-block {
+        max-width: none;
+    }
+}
+
+// ---- Block Styles (same as frontend) ----
+@import '../blocks/hero/style-block';
+@import '../blocks/columns-group/style-block';
+@import '../blocks/text-cards-grid/style-block';
+@import '../blocks/numbered-list/style-block';
+@import '../blocks/case-studies-slider/style-block';
+@import '../blocks/testimonials/style-block';
+@import '../blocks/insights/style-block';
+@import '../blocks/contact-section/style-block';
