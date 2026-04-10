@@ -1,0 +1,221 @@
+// ========================================
+//  _header.scss
+//  Site header styles
+// ========================================
+
+.site-header {
+    position: sticky;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 80px;
+    background: $white;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+
+    @media screen and (max-width: $small-width - 1) {
+        height: auto;
+        padding: 1rem 0;
+    }
+}
+
+.site-header__inner {
+    @include block-wrapper;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 100%;
+}
+
+// ---- Logo ----
+.site-header__logo {
+    flex-shrink: 0;
+
+    a {
+        display: block;
+        line-height: 0;
+    }
+}
+
+.site-header__logo-img {
+    width: auto;
+    height: 50px;
+
+    @media screen and (min-width: $small-width) {
+        height: 66px;
+    }
+}
+
+// ---- Desktop Navigation ----
+.main-navigation {
+    display: none;
+
+    @media screen and (min-width: $small-width) {
+        display: block;
+    }
+}
+
+.primary-menu {
+    display: flex;
+    align-items: center;
+    gap: 2.5rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+    li {
+        position: relative;
+
+        a {
+            font-family: $font-head;
+            font-weight: 500;
+            font-size: 1.0625rem; // 17px
+            line-height: 1;
+            letter-spacing: 0.01rem;
+            color: $gray;
+            text-decoration: none;
+            text-transform: capitalize;
+            transition: color 0.2s ease;
+            padding: 0.5rem 0;
+
+            &:hover {
+                color: $red;
+            }
+        }
+
+        // Dropdown styles
+        .sub-menu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: -1rem;
+            background: $white;
+            border: 1px solid rgba($gray, 0.15);
+            border-radius: $default-border-radius;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+            padding: 0.75rem 0;
+            min-width: 200px;
+            list-style: none;
+            margin: 0.5rem 0 0;
+            z-index: 100;
+
+            li {
+                a {
+                    display: block;
+                    padding: 0.5rem 1.25rem;
+                    font-size: 0.9375rem;
+                    white-space: nowrap;
+
+                    &:hover {
+                        background: $eggshell;
+                    }
+                }
+            }
+        }
+
+        &:hover > .sub-menu {
+            display: block;
+        }
+    }
+}
+
+// ---- Mobile hamburger ----
+.mobile-menu-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+
+    @media screen and (min-width: $small-width) {
+        display: none;
+    }
+}
+
+.hamburger {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 22px;
+}
+
+.hamburger__line {
+    display: block;
+    width: 100%;
+    height: 3px;
+    background-color: $gray;
+    border-radius: 2px;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+// Active state (toggled via JS)
+.mobile-menu-toggle[aria-expanded="true"] {
+    .hamburger__line:nth-child(1) {
+        transform: translateY(9.5px) rotate(45deg);
+    }
+
+    .hamburger__line:nth-child(2) {
+        opacity: 0;
+    }
+
+    .hamburger__line:nth-child(3) {
+        transform: translateY(-9.5px) rotate(-45deg);
+    }
+}
+
+// ---- Mobile menu overlay ----
+.main-navigation.is-open {
+    display: block;
+    position: fixed;
+    top: 80px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: $white;
+    z-index: 999;
+    padding: 2rem $site-padding-mobile;
+    overflow-y: auto;
+
+    .primary-menu {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0;
+
+        li {
+            width: 100%;
+            border-bottom: 1px solid rgba($gray, 0.1);
+
+            a {
+                display: block;
+                padding: 1rem 0;
+                font-size: 1.25rem;
+            }
+
+            .sub-menu {
+                display: none;
+                position: static;
+                box-shadow: none;
+                border: none;
+                padding: 0 0 0 1rem;
+                min-width: 0;
+                margin: 0;
+
+                li {
+                    border-bottom: none;
+
+                    a {
+                        font-size: 1.0625rem;
+                        padding: 0.625rem 0;
+                    }
+                }
+            }
+
+            &.menu-item-has-children.is-open > .sub-menu {
+                display: block;
+            }
+        }
+    }
+}

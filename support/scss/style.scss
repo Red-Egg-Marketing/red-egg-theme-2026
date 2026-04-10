@@ -14,6 +14,13 @@
 // ---- Base Styles ----
 @import 'base';
 
+// ---- Layout (Header / Footer) ----
+@import 'header';
+@import 'footer';
+
+// ---- Template Styles ----
+@import 'templates';
+
 // ---- Block Styles ----
 @import '../blocks/hero/style-block';
 @import '../blocks/columns-group/style-block';

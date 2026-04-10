@@ -182,6 +182,24 @@ add_action( 'enqueue_block_editor_assets', 'red_egg_editor_fonts' );
 
 
 // ============================================
+//  Widget Areas
+// ============================================
+
+function red_egg_widgets_init() {
+    register_sidebar( [
+        'name'          => esc_html__( 'Sidebar', 'red-egg' ),
+        'id'            => 'sidebar-1',
+        'description'   => esc_html__( 'Add widgets here.', 'red-egg' ),
+        'before_widget' => '<section id="%1$s" class="widget %2$s">',
+        'after_widget'  => '</section>',
+        'before_title'  => '<h3 class="widget-title">',
+        'after_title'   => '</h3>',
+    ] );
+}
+add_action( 'widgets_init', 'red_egg_widgets_init' );
+
+
+// ============================================
 //  Includes
 // ============================================
 
@@ -194,3 +212,8 @@ require get_template_directory() . '/support/blocks.php';
  * Custom End Points
  */
 require get_template_directory() . '/inc/custom-endpoints.php';
+
+/**
+ * Template Functions (helpers for templates)
+ */
+require get_template_directory() . '/inc/template-functions.php';
