@@ -12,8 +12,8 @@
  *                            |___/ |___/   
  */
 
-// Block 1: Hero
-import './hero/index';
+// Block 1: Hero Background
+import './hero-background/index';
 
 // Block 2: Columns Group
 import './columns-group/index';

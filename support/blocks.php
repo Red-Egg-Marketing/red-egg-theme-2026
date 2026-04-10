@@ -74,8 +74,8 @@ add_action( 'wp_enqueue_scripts', 'red_egg_enqueue_block_frontend_assets' );
 
 function red_egg_register_blocks() {
 
-    // ---- 1. Hero ----
-    register_block_type( 'red-egg-block/hero', [
+    // ---- 1. Hero Background ----
+    register_block_type( 'red-egg-block/hero-background', [
         'editor_script' => 'red-egg-editor-blocks',
     ] );
 
