@@ -76,15 +76,15 @@ registerBlockType( 'red-egg-block/columns-group', {
         padding: {
             type: 'object',
             default: {
-                paddingtop: true,
-                paddingbottom: true,
+                paddingtop: '', paddingright: '',
+                paddingbottom: '', paddingleft: '', unit: 'rem',
             },
         },
         margin: {
             type: 'object',
             default: {
-                margintop: true,
-                marginbottom: true,
+                margintop: '', marginright: '',
+                marginbottom: '', marginleft: '', unit: 'rem',
             },
         },
     },

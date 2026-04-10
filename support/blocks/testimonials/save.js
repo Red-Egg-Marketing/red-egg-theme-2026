@@ -5,10 +5,11 @@
  * frontend.js to hydrate with review data.
  */
 
+const { Fragment } = wp.element;
 const { RichText, useBlockProps } = wp.blockEditor;
 
-import { getPaddingClasses } from '../../components/Padding';
-import { getMarginClasses } from '../../components/Margin';
+import PaddingSelector from '../../components/Padding.js';
+import MarginSelector from '../../components/Margin.js';
 
 const SaveTestimonials = ( { attributes } ) => {
     const {
@@ -20,14 +21,16 @@ const SaveTestimonials = ( { attributes } ) => {
         margin,
     } = attributes;
 
-    const paddingClasses = getPaddingClasses( padding );
-    const marginClasses = getMarginClasses( margin );
-
     const blockProps = useBlockProps.save( {
-        className: `testimonials-block ${ paddingClasses } ${ marginClasses }`.trim(),
+        className: 'testimonials-block',
     } );
 
+    const blockId = blockProps.id;
+
     return (
+        <Fragment>
+            <PaddingSelector.View padding={ padding } id={ blockId } />
+            <MarginSelector.View margin={ margin } id={ blockId } />
         <section { ...blockProps }>
             <div className="testimonials-block__bg"></div>
             <div className="testimonials-block__pattern"></div>
@@ -52,6 +55,7 @@ const SaveTestimonials = ( { attributes } ) => {
                 ></div>
             </div>
         </section>
+        </Fragment>
     );
 };
 

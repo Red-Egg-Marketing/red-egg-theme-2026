@@ -2,10 +2,11 @@
  * Text Cards Grid Block – Save Component
  */
 
+const { Fragment } = wp.element;
 const { RichText, useBlockProps } = wp.blockEditor;
 
-import { getPaddingClasses } from '../../components/Padding';
-import { getMarginClasses } from '../../components/Margin';
+import PaddingSelector from '../../components/Padding.js';
+import MarginSelector from '../../components/Margin.js';
 
 const SaveTextCardsGrid = ( { attributes } ) => {
     const {
@@ -17,14 +18,16 @@ const SaveTextCardsGrid = ( { attributes } ) => {
         margin,
     } = attributes;
 
-    const paddingClasses = getPaddingClasses( padding );
-    const marginClasses = getMarginClasses( margin );
-
     const blockProps = useBlockProps.save( {
-        className: `text-cards-grid ${ paddingClasses } ${ marginClasses }`.trim(),
+        className: 'text-cards-grid',
     } );
 
+    const blockId = blockProps.id;
+
     return (
+        <Fragment>
+            <PaddingSelector.View padding={ padding } id={ blockId } />
+            <MarginSelector.View margin={ margin } id={ blockId } />
         <section { ...blockProps }>
             <div className="block-wrapper">
                 <div className="text-cards-grid__header">
@@ -65,6 +68,7 @@ const SaveTextCardsGrid = ( { attributes } ) => {
                 </div>
             </div>
         </section>
+        </Fragment>
     );
 };
 

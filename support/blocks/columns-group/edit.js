@@ -7,10 +7,10 @@ const { RichText, MediaUpload, InspectorControls, useBlockProps } = wp.blockEdit
 const { Button, PanelBody, TextControl, SelectControl, ToggleControl } = wp.components;
 const { __ } = wp.i18n;
 
-import Padding, { getPaddingClasses } from '../../components/Padding';
-import Margin, { getMarginClasses } from '../../components/Margin';
+import PaddingSelector from '../../components/Padding.js';
+import MarginSelector from '../../components/Margin.js';
 
-const EditColumnsGroup = ( { attributes, setAttributes } ) => {
+const EditColumnsGroup = ( { attributes, setAttributes, clientId } ) => {
     const {
         sectionLabel,
         heading,
@@ -28,12 +28,13 @@ const EditColumnsGroup = ( { attributes, setAttributes } ) => {
         margin,
     } = attributes;
 
-    const paddingClasses = getPaddingClasses( padding );
-    const marginClasses = getMarginClasses( margin );
+    const blockId = `block-${ clientId }`;
+
     const positionClass = imagePosition === 'right' ? 'columns-group--img-right' : '';
 
     const blockProps = useBlockProps( {
-        className: `columns-group ${ positionClass } ${ paddingClasses } ${ marginClasses }`.trim(),
+        id: blockId,
+        className: 'columns-group ${ positionClass }',
     } );
 
     return (
@@ -119,9 +120,20 @@ const EditColumnsGroup = ( { attributes, setAttributes } ) => {
                         />
                     </div>
                 </PanelBody>
-                <Padding padding={ padding } setAttributes={ setAttributes } />
-                <Margin margin={ margin } setAttributes={ setAttributes } />
+                
+                
             </InspectorControls>
+
+            <PaddingSelector
+                padding={ padding }
+                id={ blockId }
+                setAttributes={ setAttributes }
+            />
+            <MarginSelector
+                margin={ margin }
+                id={ blockId }
+                setAttributes={ setAttributes }
+            />
 
             <section { ...blockProps }>
                 <div className="block-wrapper">

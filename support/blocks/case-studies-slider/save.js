@@ -5,10 +5,11 @@
  * to hydrate with dynamic case study data from the API.
  */
 
+const { Fragment } = wp.element;
 const { RichText, useBlockProps } = wp.blockEditor;
 
-import { getPaddingClasses } from '../../components/Padding';
-import { getMarginClasses } from '../../components/Margin';
+import PaddingSelector from '../../components/Padding.js';
+import MarginSelector from '../../components/Margin.js';
 
 const SaveCaseStudiesSlider = ( { attributes } ) => {
     const {
@@ -22,14 +23,16 @@ const SaveCaseStudiesSlider = ( { attributes } ) => {
         margin,
     } = attributes;
 
-    const paddingClasses = getPaddingClasses( padding );
-    const marginClasses = getMarginClasses( margin );
-
     const blockProps = useBlockProps.save( {
-        className: `case-studies-slider ${ paddingClasses } ${ marginClasses }`.trim(),
+        className: 'case-studies-slider',
     } );
 
+    const blockId = blockProps.id;
+
     return (
+        <Fragment>
+            <PaddingSelector.View padding={ padding } id={ blockId } />
+            <MarginSelector.View margin={ margin } id={ blockId } />
         <section { ...blockProps }>
             <div className="block-wrapper">
                 <div className="case-studies-slider__header">
@@ -66,6 +69,7 @@ const SaveCaseStudiesSlider = ( { attributes } ) => {
                 </div>
             </div>
         </section>
+        </Fragment>
     );
 };
 

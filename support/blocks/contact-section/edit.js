@@ -7,10 +7,10 @@ const { RichText, InspectorControls, useBlockProps } = wp.blockEditor;
 const { PanelBody, TextControl, TextareaControl } = wp.components;
 const { __ } = wp.i18n;
 
-import Padding, { getPaddingClasses } from '../../components/Padding';
-import Margin, { getMarginClasses } from '../../components/Margin';
+import PaddingSelector from '../../components/Padding.js';
+import MarginSelector from '../../components/Margin.js';
 
-const EditContactSection = ( { attributes, setAttributes } ) => {
+const EditContactSection = ( { attributes, setAttributes, clientId } ) => {
     const {
         sectionLabel,
         heading,
@@ -23,11 +23,11 @@ const EditContactSection = ( { attributes, setAttributes } ) => {
         margin,
     } = attributes;
 
-    const paddingClasses = getPaddingClasses( padding );
-    const marginClasses = getMarginClasses( margin );
+    const blockId = `block-${ clientId }`;
 
     const blockProps = useBlockProps( {
-        className: `contact-section ${ paddingClasses } ${ marginClasses }`.trim(),
+        id: blockId,
+        className: 'contact-section',
     } );
 
     return (
@@ -63,9 +63,20 @@ const EditContactSection = ( { attributes, setAttributes } ) => {
                         onChange={ ( val ) => setAttributes( { formShortcode: val } ) }
                     />
                 </PanelBody>
-                <Padding padding={ padding } setAttributes={ setAttributes } />
-                <Margin margin={ margin } setAttributes={ setAttributes } />
+                
+                
             </InspectorControls>
+
+            <PaddingSelector
+                padding={ padding }
+                id={ blockId }
+                setAttributes={ setAttributes }
+            />
+            <MarginSelector
+                margin={ margin }
+                id={ blockId }
+                setAttributes={ setAttributes }
+            />
 
             <section { ...blockProps }>
                 <div className="contact-section__bg"></div>

@@ -2,10 +2,11 @@
  * Numbered List Items Block – Save Component
  */
 
+const { Fragment } = wp.element;
 const { RichText, useBlockProps } = wp.blockEditor;
 
-import { getPaddingClasses } from '../../components/Padding';
-import { getMarginClasses } from '../../components/Margin';
+import PaddingSelector from '../../components/Padding.js';
+import MarginSelector from '../../components/Margin.js';
 
 const SaveNumberedList = ( { attributes } ) => {
     const {
@@ -16,18 +17,20 @@ const SaveNumberedList = ( { attributes } ) => {
         margin,
     } = attributes;
 
-    const paddingClasses = getPaddingClasses( padding );
-    const marginClasses = getMarginClasses( margin );
-
     const blockProps = useBlockProps.save( {
-        className: `numbered-list ${ paddingClasses } ${ marginClasses }`.trim(),
+        className: 'numbered-list',
     } );
 
     const padNumber = ( num ) => {
         return String( num ).padStart( 2, '0' );
     };
 
+    const blockId = blockProps.id;
+
     return (
+        <Fragment>
+            <PaddingSelector.View padding={ padding } id={ blockId } />
+            <MarginSelector.View margin={ margin } id={ blockId } />
         <section { ...blockProps }>
             <div className="numbered-list__bg"></div>
             <div className="block-wrapper">
@@ -68,6 +71,7 @@ const SaveNumberedList = ( { attributes } ) => {
                 </div>
             </div>
         </section>
+        </Fragment>
     );
 };
 

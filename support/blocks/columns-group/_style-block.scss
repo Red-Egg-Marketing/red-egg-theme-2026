@@ -166,18 +166,4 @@
         // We achieve this by pulling label/heading out of normal flow
         // Actually let's use a cleaner approach with CSS order
     }
-
-    // ---- Padding/Margin toggle classes ----
-    &.no-padding-top {
-        padding-top: 0;
-    }
-    &.no-padding-bottom {
-        padding-bottom: 0;
-    }
-    &.no-margin-top {
-        margin-top: 0;
-    }
-    &.no-margin-bottom {
-        margin-bottom: 0;
-    }
 }

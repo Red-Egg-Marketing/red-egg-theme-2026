@@ -1,15 +1,11 @@
-/**
- * Hero Background Block – Edit Component
- */
-
 const { Fragment } = wp.element;
 const { InnerBlocks, useBlockProps, InspectorControls } = wp.blockEditor;
 const { __ } = wp.i18n;
 
 import BackgroundSelector from '../../components/BackgroundSelector.js';
 import MobileBackgroundSelector from '../../components/MobileBackgroundSelector.js';
-import Padding, { getPaddingClasses } from '../../components/Padding';
-import Margin, { getMarginClasses } from '../../components/Margin';
+import PaddingSelector from '../../components/Padding.js';
+import MarginSelector from '../../components/Margin.js';
 
 const template = [
     [ 'core/heading', { level: 1, placeholder: "Let's rock n' roll together." } ],
@@ -31,14 +27,14 @@ const allowedBlocks = [
     'core/spacer',
 ];
 
-const EditHeroBackground = ( { attributes, setAttributes } ) => {
+const EditHeroBackground = ( { attributes, setAttributes, clientId } ) => {
     const { image, mobileimage, padding, margin } = attributes;
 
-    const paddingClasses = getPaddingClasses( padding );
-    const marginClasses = getMarginClasses( margin );
+    const blockId = `block-${ clientId }`;
 
     const blockProps = useBlockProps( {
-        className: `hero-background ${ paddingClasses } ${ marginClasses }`.trim(),
+        id: blockId,
+        className: 'hero-background',
     } );
 
     // Build inline background styles for editor preview
@@ -73,9 +69,18 @@ const EditHeroBackground = ( { attributes, setAttributes } ) => {
                     updateProp="mobileimage"
                     setAttributes={ setAttributes }
                 />
-                <Padding padding={ padding } setAttributes={ setAttributes } />
-                <Margin margin={ margin } setAttributes={ setAttributes } />
             </InspectorControls>
+
+            <PaddingSelector
+                padding={ padding }
+                id={ blockId }
+                setAttributes={ setAttributes }
+            />
+            <MarginSelector
+                margin={ margin }
+                id={ blockId }
+                setAttributes={ setAttributes }
+            />
 
             <section { ...blockProps } style={ bgStyle }>
                 <div className="block-wrapper">
@@ -84,8 +89,8 @@ const EditHeroBackground = ( { attributes, setAttributes } ) => {
                             template={ template }
                             allowedBlocks={ allowedBlocks }
                         />
-                    </div><!-- .hero-background__content -->
-                </div><!-- .block-wrapper -->
+                    </div>
+                </div>
             </section>
         </Fragment>
     );

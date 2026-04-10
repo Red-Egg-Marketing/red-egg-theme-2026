@@ -7,10 +7,10 @@ const { RichText, InspectorControls, useBlockProps } = wp.blockEditor;
 const { PanelBody, RangeControl, Spinner } = wp.components;
 const { __ } = wp.i18n;
 
-import Padding, { getPaddingClasses } from '../../components/Padding';
-import Margin, { getMarginClasses } from '../../components/Margin';
+import PaddingSelector from '../../components/Padding.js';
+import MarginSelector from '../../components/Margin.js';
 
-const EditTestimonials = ( { attributes, setAttributes } ) => {
+const EditTestimonials = ( { attributes, setAttributes, clientId } ) => {
     const {
         sectionLabel,
         heading,
@@ -19,6 +19,8 @@ const EditTestimonials = ( { attributes, setAttributes } ) => {
         padding,
         margin,
     } = attributes;
+
+    const blockId = `block-${ clientId }`;
 
     const [ reviews, setReviews ] = useState( [] );
     const [ loading, setLoading ] = useState( true );
@@ -36,11 +38,10 @@ const EditTestimonials = ( { attributes, setAttributes } ) => {
         } );
     }, [ postsToShow ] );
 
-    const paddingClasses = getPaddingClasses( padding );
-    const marginClasses = getMarginClasses( margin );
 
     const blockProps = useBlockProps( {
-        className: `testimonials-block ${ paddingClasses } ${ marginClasses }`.trim(),
+        id: blockId,
+        className: 'testimonials-block',
     } );
 
     /**
@@ -76,9 +77,20 @@ const EditTestimonials = ( { attributes, setAttributes } ) => {
                         step={ 50 }
                     />
                 </PanelBody>
-                <Padding padding={ padding } setAttributes={ setAttributes } />
-                <Margin margin={ margin } setAttributes={ setAttributes } />
+                
+                
             </InspectorControls>
+
+            <PaddingSelector
+                padding={ padding }
+                id={ blockId }
+                setAttributes={ setAttributes }
+            />
+            <MarginSelector
+                margin={ margin }
+                id={ blockId }
+                setAttributes={ setAttributes }
+            />
 
             <section { ...blockProps }>
                 <div className="testimonials-block__bg"></div>

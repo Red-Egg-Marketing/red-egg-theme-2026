@@ -2,10 +2,11 @@
  * Columns Group Block – Save Component
  */
 
+const { Fragment } = wp.element;
 const { RichText, useBlockProps } = wp.blockEditor;
 
-import { getPaddingClasses } from '../../components/Padding';
-import { getMarginClasses } from '../../components/Margin';
+import PaddingSelector from '../../components/Padding.js';
+import MarginSelector from '../../components/Margin.js';
 
 const SaveColumnsGroup = ( { attributes } ) => {
     const {
@@ -23,16 +24,18 @@ const SaveColumnsGroup = ( { attributes } ) => {
         padding,
         margin,
     } = attributes;
-
-    const paddingClasses = getPaddingClasses( padding );
-    const marginClasses = getMarginClasses( margin );
     const positionClass = imagePosition === 'right' ? 'columns-group--img-right' : '';
 
     const blockProps = useBlockProps.save( {
-        className: `columns-group ${ positionClass } ${ paddingClasses } ${ marginClasses }`.trim(),
+        className: 'columns-group',
     } );
 
+    const blockId = blockProps.id;
+
     return (
+        <Fragment>
+            <PaddingSelector.View padding={ padding } id={ blockId } />
+            <MarginSelector.View margin={ margin } id={ blockId } />
         <section { ...blockProps }>
             <div className="block-wrapper">
                 <div className="columns-group__image-col">
@@ -76,6 +79,7 @@ const SaveColumnsGroup = ( { attributes } ) => {
                 </div><!-- .columns-group__content-col -->
             </div><!-- .block-wrapper -->
         </section>
+        </Fragment>
     );
 };
 

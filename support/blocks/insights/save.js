@@ -5,10 +5,11 @@
  * frontend.js to hydrate with resource post data.
  */
 
+const { Fragment } = wp.element;
 const { RichText, useBlockProps } = wp.blockEditor;
 
-import { getPaddingClasses } from '../../components/Padding';
-import { getMarginClasses } from '../../components/Margin';
+import PaddingSelector from '../../components/Padding.js';
+import MarginSelector from '../../components/Margin.js';
 
 const SaveInsights = ( { attributes } ) => {
     const {
@@ -19,14 +20,16 @@ const SaveInsights = ( { attributes } ) => {
         margin,
     } = attributes;
 
-    const paddingClasses = getPaddingClasses( padding );
-    const marginClasses = getMarginClasses( margin );
-
     const blockProps = useBlockProps.save( {
-        className: `insights-block ${ paddingClasses } ${ marginClasses }`.trim(),
+        className: 'insights-block',
     } );
 
+    const blockId = blockProps.id;
+
     return (
+        <Fragment>
+            <PaddingSelector.View padding={ padding } id={ blockId } />
+            <MarginSelector.View margin={ margin } id={ blockId } />
         <section { ...blockProps }>
             <div className="block-wrapper">
                 <div className="insights-block__header">
@@ -48,6 +51,7 @@ const SaveInsights = ( { attributes } ) => {
                 ></div>
             </div>
         </section>
+        </Fragment>
     );
 };
 

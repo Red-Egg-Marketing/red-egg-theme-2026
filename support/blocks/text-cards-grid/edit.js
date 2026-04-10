@@ -7,10 +7,10 @@ const { RichText, MediaUpload, InspectorControls, useBlockProps } = wp.blockEdit
 const { Button, PanelBody, TextControl } = wp.components;
 const { __ } = wp.i18n;
 
-import Padding, { getPaddingClasses } from '../../components/Padding';
-import Margin, { getMarginClasses } from '../../components/Margin';
+import PaddingSelector from '../../components/Padding.js';
+import MarginSelector from '../../components/Margin.js';
 
-const EditTextCardsGrid = ( { attributes, setAttributes } ) => {
+const EditTextCardsGrid = ( { attributes, setAttributes, clientId } ) => {
     const {
         sectionLabel,
         heading,
@@ -20,11 +20,12 @@ const EditTextCardsGrid = ( { attributes, setAttributes } ) => {
         margin,
     } = attributes;
 
-    const paddingClasses = getPaddingClasses( padding );
-    const marginClasses = getMarginClasses( margin );
+    const blockId = `block-${ clientId }`;
+
 
     const blockProps = useBlockProps( {
-        className: `text-cards-grid ${ paddingClasses } ${ marginClasses }`.trim(),
+        id: blockId,
+        className: 'text-cards-grid',
     } );
 
     const updateCard = ( index, key, value ) => {
@@ -107,9 +108,20 @@ const EditTextCardsGrid = ( { attributes, setAttributes } ) => {
                         { __( '+ Add Card', 'red-egg' ) }
                     </Button>
                 </PanelBody>
-                <Padding padding={ padding } setAttributes={ setAttributes } />
-                <Margin margin={ margin } setAttributes={ setAttributes } />
+                
+                
             </InspectorControls>
+
+            <PaddingSelector
+                padding={ padding }
+                id={ blockId }
+                setAttributes={ setAttributes }
+            />
+            <MarginSelector
+                margin={ margin }
+                id={ blockId }
+                setAttributes={ setAttributes }
+            />
 
             <section { ...blockProps }>
                 <div className="block-wrapper">

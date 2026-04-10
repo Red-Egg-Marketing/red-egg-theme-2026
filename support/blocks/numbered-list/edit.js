@@ -7,10 +7,10 @@ const { RichText, InspectorControls, useBlockProps } = wp.blockEditor;
 const { Button, PanelBody } = wp.components;
 const { __ } = wp.i18n;
 
-import Padding, { getPaddingClasses } from '../../components/Padding';
-import Margin, { getMarginClasses } from '../../components/Margin';
+import PaddingSelector from '../../components/Padding.js';
+import MarginSelector from '../../components/Margin.js';
 
-const EditNumberedList = ( { attributes, setAttributes } ) => {
+const EditNumberedList = ( { attributes, setAttributes, clientId } ) => {
     const {
         heading,
         introText,
@@ -19,11 +19,12 @@ const EditNumberedList = ( { attributes, setAttributes } ) => {
         margin,
     } = attributes;
 
-    const paddingClasses = getPaddingClasses( padding );
-    const marginClasses = getMarginClasses( margin );
+    const blockId = `block-${ clientId }`;
+
 
     const blockProps = useBlockProps( {
-        className: `numbered-list ${ paddingClasses } ${ marginClasses }`.trim(),
+        id: blockId,
+        className: 'numbered-list',
     } );
 
     const updateItem = ( index, key, value ) => {
@@ -78,9 +79,20 @@ const EditNumberedList = ( { attributes, setAttributes } ) => {
                         { __( '+ Add Item', 'red-egg' ) }
                     </Button>
                 </PanelBody>
-                <Padding padding={ padding } setAttributes={ setAttributes } />
-                <Margin margin={ margin } setAttributes={ setAttributes } />
+                
+                
             </InspectorControls>
+
+            <PaddingSelector
+                padding={ padding }
+                id={ blockId }
+                setAttributes={ setAttributes }
+            />
+            <MarginSelector
+                margin={ margin }
+                id={ blockId }
+                setAttributes={ setAttributes }
+            />
 
             <section { ...blockProps }>
                 <div className="numbered-list__bg"></div>

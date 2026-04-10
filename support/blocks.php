@@ -146,15 +146,21 @@ function red_egg_register_blocks() {
             'padding' => [
                 'type'    => 'object',
                 'default' => [
-                    'paddingtop'    => true,
-                    'paddingbottom' => true,
+                    'paddingtop'    => '',
+                    'paddingright'  => '',
+                    'paddingbottom' => '',
+                    'paddingleft'   => '',
+                    'unit'          => 'rem',
                 ],
             ],
             'margin' => [
                 'type'    => 'object',
                 'default' => [
-                    'margintop'    => false,
-                    'marginbottom' => false,
+                    'margintop'    => '',
+                    'marginright'  => '',
+                    'marginbottom' => '',
+                    'marginleft'   => '',
+                    'unit'         => 'rem',
                 ],
             ],
         ],
@@ -183,17 +189,38 @@ function red_egg_render_contact_section( $attributes ) {
 
     // Build CSS classes
     $classes = 'contact-section wp-block-red-egg-block-contact-section';
-    if ( ! $padding['paddingtop'] ) {
-        $classes .= ' no-padding-top';
+
+    // Build unique ID for inline styles
+    $block_id = 'contact-section-' . wp_unique_id();
+
+    // Build inline padding/margin styles
+    $inline_style = '';
+    $p_unit = ! empty( $padding['unit'] ) ? $padding['unit'] : 'rem';
+    if ( ! empty( $padding['paddingtop'] ) ) {
+        $inline_style .= 'padding-top:' . esc_attr( $padding['paddingtop'] ) . $p_unit . ';';
     }
-    if ( ! $padding['paddingbottom'] ) {
-        $classes .= ' no-padding-bottom';
+    if ( ! empty( $padding['paddingright'] ) ) {
+        $inline_style .= 'padding-right:' . esc_attr( $padding['paddingright'] ) . $p_unit . ';';
     }
-    if ( ! $margin['margintop'] ) {
-        $classes .= ' no-margin-top';
+    if ( ! empty( $padding['paddingbottom'] ) ) {
+        $inline_style .= 'padding-bottom:' . esc_attr( $padding['paddingbottom'] ) . $p_unit . ';';
     }
-    if ( ! $margin['marginbottom'] ) {
-        $classes .= ' no-margin-bottom';
+    if ( ! empty( $padding['paddingleft'] ) ) {
+        $inline_style .= 'padding-left:' . esc_attr( $padding['paddingleft'] ) . $p_unit . ';';
+    }
+
+    $m_unit = ! empty( $margin['unit'] ) ? $margin['unit'] : 'rem';
+    if ( ! empty( $margin['margintop'] ) ) {
+        $inline_style .= 'margin-top:' . esc_attr( $margin['margintop'] ) . $m_unit . ';';
+    }
+    if ( ! empty( $margin['marginright'] ) ) {
+        $inline_style .= 'margin-right:' . esc_attr( $margin['marginright'] ) . $m_unit . ';';
+    }
+    if ( ! empty( $margin['marginbottom'] ) ) {
+        $inline_style .= 'margin-bottom:' . esc_attr( $margin['marginbottom'] ) . $m_unit . ';';
+    }
+    if ( ! empty( $margin['marginleft'] ) ) {
+        $inline_style .= 'margin-left:' . esc_attr( $margin['marginleft'] ) . $m_unit . ';';
     }
 
     // Phone href: strip dots
@@ -227,7 +254,8 @@ function red_egg_render_contact_section( $attributes ) {
     }
 
     $block_content = '';
-    $block_content .= '<section class="' . esc_attr( $classes ) . '">';
+    $style_attr = ! empty( $inline_style ) ? ' style="' . esc_attr( $inline_style ) . '"' : '';
+    $block_content .= '<section id="' . esc_attr( $block_id ) . '" class="' . esc_attr( $classes ) . '"' . $style_attr . '>';
     $block_content .= '<div class="contact-section__bg"></div>';
     $block_content .= '<div class="block-wrapper">';
 

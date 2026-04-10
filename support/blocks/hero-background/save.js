@@ -1,22 +1,18 @@
-/**
- * Hero Background Block – Save Component
- */
-
 const { InnerBlocks, useBlockProps } = wp.blockEditor;
 const { Fragment } = wp.element;
 
-import { getPaddingClasses } from '../../components/Padding';
-import { getMarginClasses } from '../../components/Margin';
+import PaddingSelector from '../../components/Padding.js';
+import MarginSelector from '../../components/Margin.js';
 
 const SaveHeroBackground = ( { attributes } ) => {
     const { image, mobileimage, padding, margin } = attributes;
 
-    const paddingClasses = getPaddingClasses( padding );
-    const marginClasses = getMarginClasses( margin );
-
     const blockProps = useBlockProps.save( {
-        className: `hero-background ${ paddingClasses } ${ marginClasses }`.trim(),
+        className: 'hero-background',
     } );
+
+    // Use the generated block id from useBlockProps
+    const blockId = blockProps.id;
 
     // Build inline background styles
     const bgStyle = {};
@@ -38,30 +34,25 @@ const SaveHeroBackground = ( { attributes } ) => {
         }
     }
 
-    // Mobile background style (applied via data attribute, handled in CSS/JS)
-    const mobileBgStyle = {};
-    if ( mobileimage.url !== '' ) {
-        mobileBgStyle.backgroundImage = `url(${ mobileimage.url })`;
-        mobileBgStyle.backgroundRepeat = mobileimage.repeat || 'no-repeat';
-        mobileBgStyle.backgroundAttachment = mobileimage.attachment || 'scroll';
-        mobileBgStyle.backgroundPosition = mobileimage.position || 'center center';
-        mobileBgStyle.backgroundSize = mobileimage.sizekey || 'cover';
-
-        if ( mobileimage.sizekey === '' && mobileimage.size ) {
-            mobileBgStyle.backgroundSize = `${ mobileimage.size }%`;
-        }
-    }
-
     return (
         <Fragment>
+            <PaddingSelector.View padding={ padding } id={ blockId } />
+            <MarginSelector.View margin={ margin } id={ blockId } />
+
             <section { ...blockProps } style={ bgStyle }
-                data-mobile-bg={ mobileimage.url !== '' ? JSON.stringify( mobileBgStyle ) : '' }
+                data-mobile-bg={ mobileimage.url !== '' ? JSON.stringify( {
+                    backgroundImage: `url(${ mobileimage.url })`,
+                    backgroundRepeat: mobileimage.repeat || 'no-repeat',
+                    backgroundAttachment: mobileimage.attachment || 'scroll',
+                    backgroundPosition: mobileimage.position || 'center center',
+                    backgroundSize: mobileimage.sizekey || 'cover',
+                } ) : '' }
             >
                 <div className="block-wrapper">
                     <div className="hero-background__content">
                         <InnerBlocks.Content />
-                    </div><!-- .hero-background__content -->
-                </div><!-- .block-wrapper -->
+                    </div>
+                </div>
             </section>
         </Fragment>
     );

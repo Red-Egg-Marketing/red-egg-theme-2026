@@ -66,15 +66,15 @@ registerBlockType( 'red-egg-block/text-cards-grid', {
         padding: {
             type: 'object',
             default: {
-                paddingtop: true,
-                paddingbottom: true,
+                paddingtop: '', paddingright: '',
+                paddingbottom: '', paddingleft: '', unit: 'rem',
             },
         },
         margin: {
             type: 'object',
             default: {
-                margintop: true,
-                marginbottom: true,
+                margintop: '', marginright: '',
+                marginbottom: '', marginleft: '', unit: 'rem',
             },
         },
     },

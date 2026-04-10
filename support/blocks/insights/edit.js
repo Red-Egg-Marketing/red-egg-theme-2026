@@ -7,10 +7,10 @@ const { RichText, InspectorControls, useBlockProps } = wp.blockEditor;
 const { PanelBody, RangeControl, Spinner } = wp.components;
 const { __ } = wp.i18n;
 
-import Padding, { getPaddingClasses } from '../../components/Padding';
-import Margin, { getMarginClasses } from '../../components/Margin';
+import PaddingSelector from '../../components/Padding.js';
+import MarginSelector from '../../components/Margin.js';
 
-const EditInsights = ( { attributes, setAttributes } ) => {
+const EditInsights = ( { attributes, setAttributes, clientId } ) => {
     const {
         sectionLabel,
         heading,
@@ -18,6 +18,8 @@ const EditInsights = ( { attributes, setAttributes } ) => {
         padding,
         margin,
     } = attributes;
+
+    const blockId = `block-${ clientId }`;
 
     const [ posts, setPosts ] = useState( [] );
     const [ loading, setLoading ] = useState( true );
@@ -35,11 +37,10 @@ const EditInsights = ( { attributes, setAttributes } ) => {
         } );
     }, [ postsToShow ] );
 
-    const paddingClasses = getPaddingClasses( padding );
-    const marginClasses = getMarginClasses( margin );
 
     const blockProps = useBlockProps( {
-        className: `insights-block ${ paddingClasses } ${ marginClasses }`.trim(),
+        id: blockId,
+        className: 'insights-block',
     } );
 
     return (
@@ -54,9 +55,20 @@ const EditInsights = ( { attributes, setAttributes } ) => {
                         max={ 4 }
                     />
                 </PanelBody>
-                <Padding padding={ padding } setAttributes={ setAttributes } />
-                <Margin margin={ margin } setAttributes={ setAttributes } />
+                
+                
             </InspectorControls>
+
+            <PaddingSelector
+                padding={ padding }
+                id={ blockId }
+                setAttributes={ setAttributes }
+            />
+            <MarginSelector
+                margin={ margin }
+                id={ blockId }
+                setAttributes={ setAttributes }
+            />
 
             <section { ...blockProps }>
                 <div className="block-wrapper">

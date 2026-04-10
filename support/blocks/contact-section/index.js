@@ -56,15 +56,15 @@ registerBlockType( 'red-egg-block/contact-section', {
         padding: {
             type: 'object',
             default: {
-                paddingtop: true,
-                paddingbottom: true,
+                paddingtop: '', paddingright: '',
+                paddingbottom: '', paddingleft: '', unit: 'rem',
             },
         },
         margin: {
             type: 'object',
             default: {
-                margintop: false,
-                marginbottom: false,
+                margintop: '', marginright: '',
+                marginbottom: '', marginleft: '', unit: 'rem',
             },
         },
     },
