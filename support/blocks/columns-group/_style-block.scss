@@ -3,6 +3,11 @@
 //  Block: red-egg-block/columns-group
 // ========================================
 
+.wp-block.columns-group {
+    width: 100%;
+    max-width: 100%;
+}
+
 .columns-group {
     position: relative;
     padding-top: $default-section-padding-top;
@@ -13,157 +18,124 @@
         padding-bottom: 6rem;
     }
 
-    // ---- Block wrapper – two-column layout ----
     .block-wrapper {
         @include block-wrapper;
-        display: flex;
-        flex-direction: column;
+    }
+
+    .block-content {
+        position: relative;
+    }
+
+    // ---- Background color slug classes ----
+    &.white {
+        background-color: $white;
+    }
+    &.eggshell {
+        background-color: $eggshell;
+    }
+    &.gray {
+        background-color: $gray;
+
+        h1, h2, h3, h4, h5, h6, p, li {
+            color: $white;
+        }
+
+        a {
+            color: $peach;
+        }
+    }
+    &.red {
+        background-color: $red;
+
+        h1, h2, h3, h4, h5, h6, p, li {
+            color: $white;
+        }
+    }
+    &.peach {
+        background-color: $peach;
+    }
+    &.navy {
+        background-color: $navy;
+
+        h1, h2, h3, h4, h5, h6, p, li {
+            color: $white;
+        }
+
+        a {
+            color: $peach;
+        }
+    }
+    &.purple {
+        background-color: $purple;
+
+        h1, h2, h3, h4, h5, h6, p, li {
+            color: $white;
+        }
+    }
+    &.magenta {
+        background-color: $magenta;
+
+        h1, h2, h3, h4, h5, h6, p, li {
+            color: $white;
+        }
+    }
+    &.orange {
+        background-color: $orange;
+    }
+    &.gold {
+        background-color: $gold;
+    }
+    &.dark-purple {
+        background-color: $dark-purple;
+
+        h1, h2, h3, h4, h5, h6, p, li {
+            color: $white;
+        }
+    }
+
+    // ---- Inner block typography defaults ----
+    h1 {
+        @include primary-h1;
+    }
+
+    h2 {
+        @include primary-h2;
+    }
+
+    h3 {
+        @include primary-h3;
+    }
+
+    h4 {
+        @include primary-h4;
+    }
+
+    p {
+        @include body-text;
+    }
+
+    // ---- Core columns overrides ----
+    .wp-block-columns {
         gap: 2rem;
 
         @media screen and (min-width: $small-width) {
-            flex-direction: row;
-            align-items: flex-start;
-            gap: 4rem;
+            gap: 3rem;
         }
     }
 
-    // ---- Image column ----
-    .columns-group__image-col {
-        width: 100%;
-
-        @media screen and (min-width: $small-width) {
-            width: 50%;
-            flex-shrink: 0;
-        }
-    }
-
-    .columns-group__image-wrap {
-        position: relative;
-        border-radius: $default-border-radius;
-        overflow: hidden;
-
+    .wp-block-column {
         img {
-            display: block;
-            width: 100%;
-            height: auto;
             border-radius: $default-border-radius;
         }
     }
 
-    .columns-group__image-placeholder {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        background: $eggshell;
-        border: 2px dashed $gray;
-        border-radius: $default-border-radius;
-        min-height: 300px;
-        cursor: pointer;
-        transition: background-color 0.2s ease;
+    // ---- Core button overrides ----
+    .wp-block-buttons {
+        margin-top: 1.5rem;
 
-        span {
-            @include primary-h4;
-            color: $gray;
-            opacity: 0.6;
-        }
-
-        &:hover {
-            background: darken($eggshell, 3%);
-        }
-
-        @media screen and (min-width: $small-width) {
-            min-height: 525px;
-        }
-    }
-
-    // ---- Content column ----
-    .columns-group__content-col {
-        width: 100%;
-
-        @media screen and (min-width: $small-width) {
-            width: 50%;
-        }
-    }
-
-    .columns-group__label {
-        @include h4-sup;
-        margin: 0 0 0.75rem 0;
-    }
-
-    .columns-group__heading {
-        @include primary-h1;
-        margin: 0 0 1.25rem 0;
-
-        &--red {
-            color: $red;
-        }
-
-        &--gray {
-            color: $gray;
-        }
-    }
-
-    .columns-group__intro {
-        @include primary-h4;
-        margin: 0 0 1.25rem 0;
-    }
-
-    .columns-group__body {
-        @include body-text;
-        margin: 0 0 2rem 0;
-    }
-
-    .columns-group__cta {
-        margin-bottom: 2.5rem;
-
-        .btn-gray {
+        .wp-block-button__link {
             @include gray-button;
+            text-decoration: none;
         }
-    }
-
-    // ---- Divider ----
-    .columns-group__divider {
-        width: 196px;
-        height: 29px;
-        background-image: url('../img/divider.png');
-        background-size: contain;
-        background-repeat: no-repeat;
-
-        @media screen and (max-width: $small-width - 1) {
-            width: 160px;
-            height: 24px;
-        }
-    }
-
-    // ---- Image-right modifier ----
-    &.columns-group--img-right {
-        .block-wrapper {
-            @media screen and (min-width: $small-width) {
-                flex-direction: row-reverse;
-            }
-        }
-    }
-
-    // ---- Mobile ordering ----
-    // On mobile, Figma shows: label → heading → image → intro → body → CTA → divider
-    @media screen and (max-width: $small-width - 1) {
-        .block-wrapper {
-            flex-direction: column;
-        }
-
-        .columns-group__content-col {
-            order: 1;
-        }
-
-        .columns-group__image-col {
-            order: 2;
-        }
-
-        // Override: label and heading come before image on mobile
-        // Using a nested flex approach within content-col
-        // The label + heading will be visible at the top,
-        // then image-col, then rest of content
-        // We achieve this by pulling label/heading out of normal flow
-        // Actually let's use a cleaner approach with CSS order
     }
 }
