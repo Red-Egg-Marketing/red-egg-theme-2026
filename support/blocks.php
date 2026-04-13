@@ -89,6 +89,11 @@ function red_egg_register_blocks() {
         'editor_script' => 'red-egg-editor-blocks',
     ] );
 
+    // ---- 3b. Text Card (child of Text Cards Grid) ----
+    register_block_type( 'red-egg-block/text-card', [
+        'editor_script' => 'red-egg-editor-blocks',
+    ] );
+
     // ---- 4. Numbered List Items ----
     register_block_type( 'red-egg-block/numbered-list', [
         'editor_script' => 'red-egg-editor-blocks',

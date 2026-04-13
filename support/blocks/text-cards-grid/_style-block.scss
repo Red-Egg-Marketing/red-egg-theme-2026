@@ -1,6 +1,15 @@
 // ========================================
 //  Text Cards Grid Block Styles
 //  Block: red-egg-block/text-cards-grid
+//
+//  With InnerBlocks, the block-wrapper contains:
+//    - .text-cards-grid__label   (core/paragraph)
+//    - .text-cards-grid__heading (core/heading)
+//    - .text-cards-grid__description (core/paragraph)
+//    - .text-card (child blocks, siblings in flow)
+//
+//  We use CSS to lay out the header area and
+//  flex-wrap the card siblings into a row.
 // ========================================
 
 .text-cards-grid {
@@ -15,19 +24,22 @@
 
     .block-wrapper {
         @include block-wrapper;
-    }
 
-    // ---- Header area ----
-    .text-cards-grid__header {
-        margin-bottom: 2.5rem;
+        // The InnerBlocks output is a flat list of siblings.
+        // Use flex-wrap so the header paragraphs take full width
+        // and the text-card blocks flow into a row.
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1.5rem;
 
         @media screen and (min-width: $small-width) {
-            display: flex;
-            flex-wrap: wrap;
-            align-items: flex-start;
-            margin-bottom: 3.5rem;
+            gap: 2rem;
         }
     }
+
+    // ---- Header area (label, heading, description) ----
+    // These come from core blocks with custom classNames.
+    // All take full width so they stack above the cards.
 
     .text-cards-grid__label {
         @include h4-sup;
@@ -35,43 +47,31 @@
         width: 100%;
 
         @media screen and (min-width: $small-width) {
-            // Label sits on its own line above heading row
-            // In Figma it's centered above heading text
             text-align: center;
-            margin-bottom: 0.75rem;
+            margin-bottom: 0;
         }
     }
 
     .text-cards-grid__heading {
         @include primary-h1;
-        margin: 0 0 1.25rem 0;
+        margin: 0;
+        width: 100%;
 
         @media screen and (min-width: $small-width) {
             width: 33%;
             flex-shrink: 0;
-            margin-bottom: 0;
         }
     }
 
     .text-cards-grid__description {
         @include primary-h4;
-        margin: 0;
+        margin: 0 0 1rem 0;
+        width: 100%;
 
         @media screen and (min-width: $small-width) {
             width: 65%;
             margin-left: auto;
-        }
-    }
-
-    // ---- Card grid ----
-    .text-cards-grid__cards {
-        display: flex;
-        flex-direction: column;
-        gap: 1.5rem;
-
-        @media screen and (min-width: $small-width) {
-            flex-direction: row;
-            gap: 2rem;
+            margin-bottom: 1.5rem;
         }
     }
 
@@ -124,15 +124,18 @@
         }
     }
 
-    .text-card__title {
-        @include primary-h2;
-        margin: 0 0 1rem 0;
-    }
-
-    .text-card__body {
-        @include body-text;
-        margin: 0;
+    .text-card__content {
         flex-grow: 1;
+
+        h3 {
+            @include primary-h2;
+            margin: 0 0 1rem 0;
+        }
+
+        p {
+            @include body-text;
+            margin: 0;
+        }
     }
 
     // ---- Arrow link (bottom-right circle with arrow) ----
@@ -168,6 +171,10 @@
         margin-left: -3px;
         transition: border-color 0.3s ease;
     }
+}
 
-    // ---- Padding/Margin toggles ----
+// ---- Full-width in editor ----
+.wp-block.text-cards-grid {
+    width: 100%;
+    max-width: 100%;
 }

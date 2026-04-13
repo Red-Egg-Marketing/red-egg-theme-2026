@@ -21,6 +21,9 @@ import './columns-group/index';
 // Block 3: Text Cards Grid
 import './text-cards-grid/index';
 
+// Block 3b: Text Card (child of Text Cards Grid)
+import './text-card/index';
+
 // Block 4: Numbered List Items
 import './numbered-list/index';
 

@@ -1,8 +1,8 @@
 /**
  * Text Cards Grid Block
  * 
- * Section with heading + description, then a row of 
- * service cards with icon, title, body, and arrow link.
+ * Container section: header content (label, heading, description)
+ * via InnerBlocks, plus a row of text-card child blocks.
  * 
  *    ____          _   _____              
  *   |  _ \ ___  __| | | ____|__ _  __ _   
@@ -24,45 +24,8 @@ registerBlockType( 'red-egg-block/text-cards-grid', {
     icon: 'grid-view',
     category: 'layout',
     keywords: [ __( 'cards', 'red-egg' ), __( 'services', 'red-egg' ), __( 'grid', 'red-egg' ) ],
+    supports: { anchor: true },
     attributes: {
-        sectionLabel: {
-            type: 'string',
-            default: 'HOW WE HELP',
-        },
-        heading: {
-            type: 'string',
-            default: 'Your Boutique One-Stop Shop',
-        },
-        description: {
-            type: 'string',
-            default: 'Rather than coordinating with multiple contractors or trying to find one employee to do it all, leverage the power of Red Egg Marketing to create more cohesive, creative, and effective digital marketing campaigns.',
-        },
-        cards: {
-            type: 'array',
-            default: [
-                {
-                    icon: '',
-                    iconId: 0,
-                    title: 'Branding',
-                    body: 'Thoughtful brand design that leaves a lasting impression.',
-                    url: '/services/branding/',
-                },
-                {
-                    icon: '',
-                    iconId: 0,
-                    title: 'Websites',
-                    body: 'Web design and development that drives growth and real results.',
-                    url: '/services/websites/',
-                },
-                {
-                    icon: '',
-                    iconId: 0,
-                    title: 'Marketing',
-                    body: 'Honest, solutions-driven marketing that helps organizations grow.',
-                    url: '/services/marketing/',
-                },
-            ],
-        },
         padding: {
             type: 'object',
             default: {
