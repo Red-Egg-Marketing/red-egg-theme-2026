@@ -14,7 +14,7 @@
  */
 
 // Vendor CSS
-import 'swiper/swiper-bundle.min.css';
+import 'swiper/css';
 
 // Block 5: Case Studies Slider – frontend interactivity
 import './blocks/case-studies-slider/frontend';
