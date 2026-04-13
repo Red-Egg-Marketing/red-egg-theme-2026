@@ -112,8 +112,8 @@ const EditContactSection = ( { attributes, setAttributes, clientId } ) => {
                                     { addressLine1 }<br />{ addressLine2 }
                                 </span>
                             </div>
-                        </div><!-- .contact-section__info -->
-                    </div><!-- .contact-section__left -->
+                        </div>
+                    </div>
 
                     <div className="contact-section__right">
                         { formShortcode ? (
@@ -152,8 +152,8 @@ const EditContactSection = ( { attributes, setAttributes, clientId } ) => {
                                 </div>
                             </div>
                         ) }
-                    </div><!-- .contact-section__right -->
-                </div><!-- .block-wrapper -->
+                    </div>
+                </div>
             </section>
         </Fragment>
     );

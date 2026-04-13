@@ -32,6 +32,8 @@ module.exports = ( env, argv ) => {
 
         externals: {
             lodash: 'lodash',
+            react: 'React',
+            'react-dom': 'ReactDOM',
         },
 
         module: {

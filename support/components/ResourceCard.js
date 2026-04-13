@@ -8,7 +8,7 @@
  * Save version (.View): static output with anchor wrapper.
  */
 
-import React from 'react';
+
 const { Fragment } = wp.element;
 const { RichText, MediaUpload } = wp.blockEditor;
 const { Button } = wp.components;

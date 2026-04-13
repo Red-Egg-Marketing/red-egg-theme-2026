@@ -155,7 +155,7 @@ const EditInsights = ( { attributes, setAttributes, isSelected, clientId } ) => 
                             <p>{ __( 'Loading posts…', 'red-egg' ) }</p>
                         ) }
                     </div>
-                </div><!-- .block-wrapper -->
+                </div>
             </section>
         </Fragment>
     );

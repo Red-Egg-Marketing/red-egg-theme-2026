@@ -202,7 +202,7 @@ const EditCaseStudiesSlider = ( { attributes, setAttributes, isSelected, clientI
                             ) }
                         </div>
                     </div>
-                </div><!-- .block-wrapper -->
+                </div>
             </section>
         </Fragment>
     );

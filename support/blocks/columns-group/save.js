@@ -26,7 +26,7 @@ const SaveColumnsGroup = ( { attributes } ) => {
                     <div className="block-content">
                         <InnerBlocks.Content />
                     </div>
-                </div><!-- .block-wrapper -->
+                </div>
             </div>
         </Fragment>
     );

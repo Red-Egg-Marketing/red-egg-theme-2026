@@ -85,7 +85,7 @@ const EditTestimonials = ( { attributes, setAttributes, clientId } ) => {
                             </p>
                         ) }
                     </div>
-                </div><!-- .block-wrapper -->
+                </div>
             </section>
         </Fragment>
     );

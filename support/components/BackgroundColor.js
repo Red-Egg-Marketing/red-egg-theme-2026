@@ -1,4 +1,4 @@
-import React from 'react';
+
 const { Fragment } = wp.element;
 const { RichText, InnerBlocks, useBlockProps, InspectorControls } = wp.blockEditor;
 const { Button, PanelBody, ColorPalette } = wp.components;

@@ -133,8 +133,8 @@ const EditNumberedList = ( { attributes, setAttributes, clientId } ) => {
                                 </div>
                             </div>
                         ) ) }
-                    </div><!-- .numbered-list__right -->
-                </div><!-- .block-wrapper -->
+                    </div>
+                </div>
             </section>
         </Fragment>
     );

@@ -1,4 +1,4 @@
-import React from 'react';
+
 const { Fragment } = wp.element;
 const { InspectorControls } = wp.blockEditor;
 const { Button, PanelBody, TextControl, ButtonGroup, Flex, FlexItem } = wp.components;

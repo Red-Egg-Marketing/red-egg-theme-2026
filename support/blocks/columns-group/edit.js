@@ -69,7 +69,7 @@ const EditColumnsGroup = ( { attributes, setAttributes, clientId } ) => {
                             allowedBlocks={ allowedBlocks }
                         />
                     </div>
-                </div><!-- .block-wrapper -->
+                </div>
             </div>
         </Fragment>
     );
