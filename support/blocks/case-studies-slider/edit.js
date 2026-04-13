@@ -1,157 +1,197 @@
 /**
  * Case Studies Slider Block – Edit Component
- * 
- * Fetches case studies from the REST API for preview
- * in the editor. Frontend rendering handled by frontend.js.
+ *
+ * Fetches case studies from REST API with optional industry filter.
+ * Renders a Swiper-powered preview in the editor.
+ * Uses InnerBlocks for header intro + CTA buttons.
  */
 
 const { Fragment, useState, useEffect } = wp.element;
-const { RichText, InspectorControls, useBlockProps } = wp.blockEditor;
-const { PanelBody, TextControl, RangeControl, Spinner } = wp.components;
+const { InnerBlocks, InspectorControls, useBlockProps } = wp.blockEditor;
+const { PanelBody, SelectControl, RangeControl } = wp.components;
 const { __ } = wp.i18n;
 
+import ResourceCard from '../../components/ResourceCard.js';
 import PaddingSelector from '../../components/Padding.js';
 import MarginSelector from '../../components/Margin.js';
+import Swiper from 'swiper/bundle';
 
-const EditCaseStudiesSlider = ( { attributes, setAttributes, clientId } ) => {
-    const {
-        sectionLabel,
-        heading,
-        description,
-        buttonText,
-        buttonUrl,
-        postsToShow,
-        padding,
-        margin,
-    } = attributes;
+const apiUrl = '/wp-json/red-egg/v2/case-studies';
+const industriesUrl = '/wp-json/red-egg/v2/industries';
 
-    const blockId = `block-${ clientId }`;
+const template = [
+    [ 'red-egg-block/header-intro', {} ],
+    [ 'core/buttons', {}, [
+        [ 'core/button', { text: 'VIEW OUR WORK', url: '/work/?post-type=case-study' } ],
+    ] ],
+];
 
-    const [ caseStudies, setCaseStudies ] = useState( [] );
-    const [ loading, setLoading ] = useState( true );
+const allowedBlocks = [
+    'red-egg-block/header-intro',
+    'core/buttons',
+    'core/heading',
+    'core/paragraph',
+];
 
-    useEffect( () => {
-        setLoading( true );
-        wp.apiRequest( {
-            path: '/red-egg/v2/case-studies',
-        } ).then( ( data ) => {
-            setCaseStudies( data.slice( 0, postsToShow ) );
-            setLoading( false );
-        } ).catch( () => {
-            setCaseStudies( [] );
-            setLoading( false );
-        } );
-    }, [ postsToShow ] );
+const EditCaseStudiesSlider = ( { attributes, setAttributes, isSelected, clientId } ) => {
+    const { industry, postsToShow, padding, margin, blockId } = attributes;
 
+    const [ resources, setResources ] = useState( false );
+    const [ industries, setIndustries ] = useState( false );
+    const [ swiperReady, setSwiperReady ] = useState( false );
 
     const blockProps = useBlockProps( {
         id: blockId,
         className: 'case-studies-slider',
     } );
 
+    // Set blockId on mount
+    useEffect( () => {
+        if ( ! blockId ) {
+            setAttributes( { blockId: 'block-' + clientId } );
+        }
+    }, [] );
+
+    // Fetch industries for the filter dropdown
+    useEffect( () => {
+        if ( industries === false ) {
+            wp.apiFetch( { url: industriesUrl } ).then( ( terms ) => {
+                let opts = [ { label: '--', value: '' } ];
+                terms.forEach( ( term ) => {
+                    opts.push( {
+                        label: term.name,
+                        value: term.slug,
+                    } );
+                } );
+                setIndustries( opts );
+            } );
+        }
+    }, [] );
+
+    // Fetch case studies (initial + when industry or postsToShow changes)
+    useEffect( () => {
+        setSwiperReady( false );
+        let url = apiUrl + '?ppp=' + postsToShow;
+        if ( industry ) {
+            url += '&industry=' + industry;
+        }
+        wp.apiFetch( { url } ).then( ( data ) => {
+            setResources( data );
+            setSwiperReady( true );
+        } ).catch( () => {
+            setResources( [] );
+            setSwiperReady( true );
+        } );
+    }, [ industry, postsToShow ] );
+
+    // Initialize Swiper when resources are ready and block is selected
+    useEffect( () => {
+        if ( swiperReady && resources && resources.length > 0 && isSelected ) {
+            const swiperEl = document.querySelector( `#${ blockId || 'block-' + clientId } .case-studies-swiper` );
+            if ( swiperEl ) {
+                new Swiper( swiperEl, {
+                    loop: false,
+                    slidesPerView: 1.25,
+                    autoplay: false,
+                    effect: 'slide',
+                    spaceBetween: 15,
+                    speed: 500,
+                    breakpoints: {
+                        768: {
+                            slidesPerView: 3.25,
+                            spaceBetween: 20,
+                        },
+                    },
+                    navigation: {
+                        nextEl: `#${ blockId || 'block-' + clientId } .swiper-button-next`,
+                        prevEl: `#${ blockId || 'block-' + clientId } .swiper-button-prev`,
+                    },
+                } );
+            }
+        }
+    }, [ swiperReady, isSelected ] );
+
+    const setIndustryFilter = ( value ) => {
+        setAttributes( { industry: value } );
+    };
+
     return (
         <Fragment>
             <InspectorControls>
-                <PanelBody title={ __( 'Slider Settings', 'red-egg' ) }>
+                <PanelBody
+                    title={ __( 'Filter by Industry', 'red-egg' ) }
+                    initialOpen={ true }
+                >
+                    { industries && (
+                        <SelectControl
+                            label={ __( 'Industry', 'red-egg' ) }
+                            value={ industry }
+                            options={ industries }
+                            onChange={ setIndustryFilter }
+                        />
+                    ) }
                     <RangeControl
-                        label={ __( 'Number of Case Studies', 'red-egg' ) }
+                        label={ __( 'Posts to Show', 'red-egg' ) }
                         value={ postsToShow }
                         onChange={ ( val ) => setAttributes( { postsToShow: val } ) }
-                        min={ 2 }
-                        max={ 12 }
-                    />
-                    <TextControl
-                        label={ __( 'Button Text', 'red-egg' ) }
-                        value={ buttonText }
-                        onChange={ ( val ) => setAttributes( { buttonText: val } ) }
-                    />
-                    <TextControl
-                        label={ __( 'Button URL', 'red-egg' ) }
-                        value={ buttonUrl }
-                        onChange={ ( val ) => setAttributes( { buttonUrl: val } ) }
+                        min={ 3 }
+                        max={ 30 }
                     />
                 </PanelBody>
-                
-                
             </InspectorControls>
 
             <PaddingSelector
                 padding={ padding }
-                id={ blockId }
+                id={ 'block-' + clientId }
                 setAttributes={ setAttributes }
             />
             <MarginSelector
                 margin={ margin }
-                id={ blockId }
+                id={ 'block-' + clientId }
                 setAttributes={ setAttributes }
             />
 
             <section { ...blockProps }>
                 <div className="block-wrapper">
                     <div className="case-studies-slider__header">
-                        <div className="case-studies-slider__header-left">
-                            <RichText
-                                tagName="p"
-                                className="case-studies-slider__label"
-                                value={ sectionLabel }
-                                onChange={ ( val ) => setAttributes( { sectionLabel: val } ) }
-                                placeholder={ __( 'Section label…', 'red-egg' ) }
-                            />
-                            <RichText
-                                tagName="h2"
-                                className="case-studies-slider__heading"
-                                value={ heading }
-                                onChange={ ( val ) => setAttributes( { heading: val } ) }
-                                placeholder={ __( 'Heading…', 'red-egg' ) }
-                            />
-                        </div>
-                        <RichText
-                            tagName="p"
-                            className="case-studies-slider__description"
-                            value={ description }
-                            onChange={ ( val ) => setAttributes( { description: val } ) }
-                            placeholder={ __( 'Description…', 'red-egg' ) }
+                        <InnerBlocks
+                            template={ template }
+                            allowedBlocks={ allowedBlocks }
                         />
-                    </div><!-- .case-studies-slider__header -->
+                    </div>
 
-                    <div className="case-studies-slider__preview">
-                        { loading && (
-                            <div className="case-studies-slider__loading">
-                                <Spinner />
-                                <p>{ __( 'Loading case studies…', 'red-egg' ) }</p>
-                            </div>
-                        ) }
-                        { ! loading && caseStudies.length === 0 && (
-                            <p className="case-studies-slider__empty">
-                                { __( 'No case studies found. Add case studies to see a preview.', 'red-egg' ) }
-                            </p>
-                        ) }
-                        { ! loading && caseStudies.length > 0 && (
-                            <div className="case-studies-slider__slides-preview">
-                                { caseStudies.slice( 0, 3 ).map( ( study, i ) => (
-                                    <div className="case-study-card" key={ i }>
-                                        { study.image && (
-                                            <div className="case-study-card__image">
-                                                <img src={ study.image } alt={ study.title || '' } />
-                                            </div>
-                                        ) }
-                                        <div className="case-study-card__content">
-                                            <h3 className="case-study-card__title">{ study.title }</h3>
-                                            { study.excerpt && (
-                                                <p className="case-study-card__excerpt">{ study.excerpt }</p>
-                                            ) }
-                                        </div>
+                    <div className="resources-wrap">
+                        <div className="case-studies-swiper swiper">
+                            { swiperReady && resources && resources.length > 0 && (
+                                <Fragment>
+                                    <div className="swiper-wrapper">
+                                        { resources.map( ( resource, i ) => (
+                                            <ResourceCard
+                                                key={ resource.ID || i }
+                                                resourceIndex={ i }
+                                                resourceURL={ resource.link }
+                                                resourceID={ resource.ID || resource.id }
+                                                resourceImg={ resource.featured_image || resource.image }
+                                                resourceTitle={ resource.title }
+                                                resourceClass="swiper-slide"
+                                                displayButton={ false }
+                                                displayExcerpt={ false }
+                                            />
+                                        ) ) }
                                     </div>
-                                ) ) }
-                            </div>
-                        ) }
-                    </div><!-- .case-studies-slider__preview -->
-
-                    <div className="case-studies-slider__footer">
-                        <span className="btn-gray">
-                            <span>{ buttonText }</span>
-                            <span className="btn-arrow"></span>
-                        </span>
+                                    <div className="swiper-button-prev"></div>
+                                    <div className="swiper-button-next"></div>
+                                </Fragment>
+                            ) }
+                            { swiperReady && ( ! resources || resources.length === 0 ) && (
+                                <div className="error">
+                                    <h3>{ __( 'No case studies found. Try a different filter.', 'red-egg' ) }</h3>
+                                </div>
+                            ) }
+                            { ! swiperReady && (
+                                <p>{ __( 'Loading case studies…', 'red-egg' ) }</p>
+                            ) }
+                        </div>
                     </div>
                 </div><!-- .block-wrapper -->
             </section>

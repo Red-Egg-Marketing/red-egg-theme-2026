@@ -1,11 +1,10 @@
 /**
  * Case Studies Slider Block
- * 
+ *
  * Pulls case studies from the custom REST endpoint
- * (red_egg_return_case_studies) and displays them
- * in a slider with featured images, titles, descriptions.
- * Left/right navigation arrows, flanked by preview images.
- * 
+ * and displays them in a Swiper slider with ResourceCard.
+ * Supports industry taxonomy filtering.
+ *
  *    ____          _   _____              
  *   |  _ \ ___  __| | | ____|__ _  __ _   
  *   | |_) / _ \/ _` | |  _| / _` |/ _` |  
@@ -22,34 +21,19 @@ import save from './save';
 registerBlockType( 'red-egg-block/case-studies-slider', {
     apiVersion: 2,
     title: __( 'Case Studies Slider', 'red-egg' ),
-    description: __( 'Dynamic slider of case studies pulled from the REST API.', 'red-egg' ),
+    description: __( 'Dynamic Swiper slider of case studies with industry filter.', 'red-egg' ),
     icon: 'slides',
     category: 'layout',
-    keywords: [ __( 'case study', 'red-egg' ), __( 'slider', 'red-egg' ), __( 'work', 'red-egg' ) ],
+    keywords: [ __( 'case study', 'red-egg' ), __( 'slider', 'red-egg' ), __( 'work', 'red-egg' ), __( 'swiper', 'red-egg' ) ],
+    supports: { anchor: true },
     attributes: {
-        sectionLabel: {
+        industry: {
             type: 'string',
-            default: 'CASE STUDIES',
-        },
-        heading: {
-            type: 'string',
-            default: 'Our Work',
-        },
-        description: {
-            type: 'string',
-            default: 'We work with clients of all different shapes and sizes in a wide variety of industries. Check out some of our recent work to see how we help businesses just like yours.',
-        },
-        buttonText: {
-            type: 'string',
-            default: 'VIEW OUR WORK',
-        },
-        buttonUrl: {
-            type: 'string',
-            default: '/work/?post-type=case-study',
+            default: '',
         },
         postsToShow: {
             type: 'number',
-            default: 6,
+            default: 15,
         },
         padding: {
             type: 'object',
@@ -64,6 +48,9 @@ registerBlockType( 'red-egg-block/case-studies-slider', {
                 margintop: '', marginright: '',
                 marginbottom: '', marginleft: '', unit: 'rem',
             },
+        },
+        blockId: {
+            type: 'string',
         },
     },
     edit,

@@ -1,74 +1,44 @@
 /**
  * Case Studies Slider Block – Save Component
- * 
- * Outputs the static shell + a root element for frontend.js
- * to hydrate with dynamic case study data from the API.
+ *
+ * Outputs the static shell with data attributes.
+ * Frontend.js hydrates the Swiper slider with API data.
  */
 
 const { Fragment } = wp.element;
-const { RichText, useBlockProps } = wp.blockEditor;
+const { InnerBlocks, useBlockProps } = wp.blockEditor;
 
 import PaddingSelector from '../../components/Padding.js';
 import MarginSelector from '../../components/Margin.js';
 
 const SaveCaseStudiesSlider = ( { attributes } ) => {
-    const {
-        sectionLabel,
-        heading,
-        description,
-        buttonText,
-        buttonUrl,
-        postsToShow,
-        padding,
-        margin,
-    } = attributes;
+    const { industry, postsToShow, padding, margin, blockId } = attributes;
 
     const blockProps = useBlockProps.save( {
+        id: blockId,
         className: 'case-studies-slider',
     } );
-
-    const blockId = blockProps.id;
 
     return (
         <Fragment>
             <PaddingSelector.View padding={ padding } id={ blockId } />
             <MarginSelector.View margin={ margin } id={ blockId } />
-        <section { ...blockProps }>
-            <div className="block-wrapper">
-                <div className="case-studies-slider__header">
-                    <div className="case-studies-slider__header-left">
-                        <RichText.Content
-                            tagName="p"
-                            className="case-studies-slider__label"
-                            value={ sectionLabel }
-                        />
-                        <RichText.Content
-                            tagName="h2"
-                            className="case-studies-slider__heading"
-                            value={ heading }
-                        />
+            <section { ...blockProps }>
+                <div className="block-wrapper">
+                    <div className="case-studies-slider__header">
+                        <InnerBlocks.Content />
                     </div>
-                    <RichText.Content
-                        tagName="p"
-                        className="case-studies-slider__description"
-                        value={ description }
-                    />
-                </div>
 
-                {/* Frontend.js will render the slider inside this root */}
-                <div
-                    id="CaseStudiesSliderRoot"
-                    data-posts-to-show={ postsToShow }
-                ></div>
-
-                <div className="case-studies-slider__footer">
-                    <a href={ buttonUrl } className="btn-gray">
-                        <span>{ buttonText }</span>
-                        <span className="btn-arrow"></span>
-                    </a>
+                    <div className="resources-wrap">
+                        <div
+                            id="CaseStudiesSliderRoot"
+                            className="case-studies-swiper swiper"
+                            data-posts-to-show={ postsToShow }
+                            data-industry={ industry || '' }
+                        ></div>
+                    </div>
                 </div>
-            </div>
-        </section>
+            </section>
         </Fragment>
     );
 };
