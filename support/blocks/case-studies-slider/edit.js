@@ -71,12 +71,21 @@ const EditCaseStudiesSlider = ( { attributes, setAttributes, isSelected, clientI
     // Fetch case studies (initial + when industry or postsToShow changes)
     useEffect( () => {
         setSwiperReady( false );
-        let url = apiUrl + '?ppp=' + postsToShow;
+        let url = apiUrl;
         if ( industry ) {
-            url += '&industry=' + industry;
+            url += '?industry=' + industry;
         }
         wp.apiFetch( { url } ).then( ( data ) => {
-            setResources( data );
+            // Response shape: [ post_array, tax_array, post_types ]
+            // Posts are in data[0].resources
+            let posts = [];
+            if ( data && data[0] && data[0].resources ) {
+                posts = data[0].resources;
+            }
+            if ( postsToShow > 0 ) {
+                posts = posts.slice( 0, postsToShow );
+            }
+            setResources( posts );
             setSwiperReady( true );
         } ).catch( () => {
             setResources( [] );
@@ -171,8 +180,8 @@ const EditCaseStudiesSlider = ( { attributes, setAttributes, isSelected, clientI
                                                 resourceIndex={ i }
                                                 resourceURL={ resource.link }
                                                 resourceID={ resource.ID || resource.id }
-                                                resourceImg={ resource.featured_image || resource.image }
-                                                resourceTitle={ resource.title }
+                                                resourceImg={ resource.media_url || resource.featured_image || false }
+                                                resourceTitle={ resource.post_title || resource.title }
                                                 resourceClass="swiper-slide"
                                                 displayButton={ false }
                                                 displayExcerpt={ false }

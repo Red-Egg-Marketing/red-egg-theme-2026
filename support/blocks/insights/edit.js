@@ -16,7 +16,7 @@ import BackgroundColor from '../../components/BackgroundColor.js';
 import PaddingSelector from '../../components/Padding.js';
 import MarginSelector from '../../components/Margin.js';
 
-const apiUrl = '/wp-json/red-egg/v2/resources';
+const apiUrl = '/wp-json/red-egg/v2/posts';
 const catUrl = '/wp-json/wp/v2/categories?per_page=100';
 
 const template = [

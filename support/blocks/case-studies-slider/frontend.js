@@ -16,12 +16,20 @@ const CaseStudiesFrontend = ( { postsToShow, industry } ) => {
     const [ loading, setLoading ] = useState( true );
 
     useEffect( () => {
-        let url = '/red-egg/v2/case-studies?ppp=' + postsToShow;
+        let url = '/red-egg/v2/case-studies';
         if ( industry ) {
-            url += '&industry=' + industry;
+            url += '?industry=' + industry;
         }
         wp.apiRequest( { path: url } ).then( ( data ) => {
-            setStudies( data );
+            // Response shape: [ post_array, tax_array, post_types ]
+            let posts = [];
+            if ( data && data[0] && data[0].resources ) {
+                posts = data[0].resources;
+            }
+            if ( postsToShow > 0 ) {
+                posts = posts.slice( 0, postsToShow );
+            }
+            setStudies( posts );
             setLoading( false );
         } ).catch( () => {
             setStudies( [] );
@@ -69,22 +77,22 @@ const CaseStudiesFrontend = ( { postsToShow, industry } ) => {
         <Fragment>
             <div className="swiper-wrapper">
                 { studies.map( ( study, i ) => (
-                    <div className="resource-card swiper-slide" key={ study.id || i }>
+                    <div className="resource-card swiper-slide" key={ study.ID || i }>
                         <div className="resource-extra">
                             <a className="resource-wrap" href={ study.link || '#' }>
                                 <div className="cont-wrap">
-                                    { ( study.featured_image || study.image ) && (
+                                    { study.media_url && (
                                         <div className="image-cont">
                                             <img
                                                 className="resource-img"
-                                                src={ study.featured_image || study.image }
-                                                alt={ study.title || '' }
+                                                src={ study.media_url }
+                                                alt={ study.post_title || '' }
                                                 loading="lazy"
                                             />
                                         </div>
                                     ) }
                                     <div className="content">
-                                        <h3 className="resource-title">{ study.title }</h3>
+                                        <h3 className="resource-title">{ study.post_title || study.title }</h3>
                                     </div>
                                 </div>
                             </a>

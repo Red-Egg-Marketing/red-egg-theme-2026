@@ -15,7 +15,7 @@ const InsightsFrontend = ( { postsToShow, category } ) => {
     const [ loading, setLoading ] = useState( true );
 
     useEffect( () => {
-        let url = '/red-egg/v2/resources?ppp=' + postsToShow;
+        let url = '/red-egg/v2/posts?ppp=' + postsToShow;
         if ( category && category !== 'all' ) {
             url += '&category=' + category;
         }
@@ -43,7 +43,7 @@ const InsightsFrontend = ( { postsToShow, category } ) => {
     return (
         <Fragment>
             { posts.map( ( post, i ) => (
-                <div className="resource-card" key={ post.id || i }>
+                <div className="resource-card" key={ post.ID || i }>
                     <div className="resource-extra">
                         <a className="resource-wrap" href={ post.link || '#' }>
                             <div className="cont-wrap">
