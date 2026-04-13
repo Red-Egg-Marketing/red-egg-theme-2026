@@ -110,8 +110,36 @@ function red_egg_register_blocks() {
     ] );
 
     // ---- 6. Testimonials ----
+    // Uses a render callback to process the reviews shortcode
     register_block_type( 'red-egg-block/testimonials', [
-        'editor_script' => 'red-egg-editor-blocks',
+        'editor_script'   => 'red-egg-editor-blocks',
+        'render_callback' => 'red_egg_render_testimonials',
+        'attributes'      => [
+            'reviewsShortcode' => [
+                'type'    => 'string',
+                'default' => '',
+            ],
+            'padding' => [
+                'type'    => 'object',
+                'default' => [
+                    'paddingtop'    => '',
+                    'paddingright'  => '',
+                    'paddingbottom' => '',
+                    'paddingleft'   => '',
+                    'unit'          => 'rem',
+                ],
+            ],
+            'margin' => [
+                'type'    => 'object',
+                'default' => [
+                    'margintop'    => '',
+                    'marginright'  => '',
+                    'marginbottom' => '',
+                    'marginleft'   => '',
+                    'unit'         => 'rem',
+                ],
+            ],
+        ],
     ] );
 
     // ---- 7. Insights ----
@@ -293,6 +321,83 @@ function red_egg_render_contact_section( $attributes ) {
     $block_content .= '<div class="contact-section__right">';
     $block_content .= $form_html;
     $block_content .= '</div>';
+
+    $block_content .= '</div><!-- .block-wrapper -->';
+    $block_content .= '</section>';
+
+    return $block_content;
+}
+
+
+// ============================================
+//  Testimonials Render Callback
+//
+//  Outputs header InnerBlocks content + processes
+//  the reviews plugin shortcode via do_shortcode().
+// ============================================
+
+function red_egg_render_testimonials( $attributes, $content ) {
+    $shortcode = $attributes['reviewsShortcode'];
+    $padding   = $attributes['padding'];
+    $margin    = $attributes['margin'];
+
+    // Build CSS classes
+    $classes = 'testimonials-block wp-block-red-egg-block-testimonials';
+
+    // Build unique ID for inline styles
+    $block_id = 'testimonials-' . wp_unique_id();
+
+    // Build inline padding/margin styles
+    $inline_style = '';
+    $p_unit = ! empty( $padding['unit'] ) ? $padding['unit'] : 'rem';
+    if ( ! empty( $padding['paddingtop'] ) ) {
+        $inline_style .= 'padding-top:' . esc_attr( $padding['paddingtop'] ) . $p_unit . ';';
+    }
+    if ( ! empty( $padding['paddingright'] ) ) {
+        $inline_style .= 'padding-right:' . esc_attr( $padding['paddingright'] ) . $p_unit . ';';
+    }
+    if ( ! empty( $padding['paddingbottom'] ) ) {
+        $inline_style .= 'padding-bottom:' . esc_attr( $padding['paddingbottom'] ) . $p_unit . ';';
+    }
+    if ( ! empty( $padding['paddingleft'] ) ) {
+        $inline_style .= 'padding-left:' . esc_attr( $padding['paddingleft'] ) . $p_unit . ';';
+    }
+
+    $m_unit = ! empty( $margin['unit'] ) ? $margin['unit'] : 'rem';
+    if ( ! empty( $margin['margintop'] ) ) {
+        $inline_style .= 'margin-top:' . esc_attr( $margin['margintop'] ) . $m_unit . ';';
+    }
+    if ( ! empty( $margin['marginright'] ) ) {
+        $inline_style .= 'margin-right:' . esc_attr( $margin['marginright'] ) . $m_unit . ';';
+    }
+    if ( ! empty( $margin['marginbottom'] ) ) {
+        $inline_style .= 'margin-bottom:' . esc_attr( $margin['marginbottom'] ) . $m_unit . ';';
+    }
+    if ( ! empty( $margin['marginleft'] ) ) {
+        $inline_style .= 'margin-left:' . esc_attr( $margin['marginleft'] ) . $m_unit . ';';
+    }
+
+    // Shortcode output
+    $shortcode_html = '';
+    if ( ! empty( $shortcode ) ) {
+        $shortcode_html = '<div class="testimonials-block__reviews">' . do_shortcode( $shortcode ) . '</div>';
+    }
+
+    $style_attr = ! empty( $inline_style ) ? ' style="' . esc_attr( $inline_style ) . '"' : '';
+
+    $block_content = '';
+    $block_content .= '<section id="' . esc_attr( $block_id ) . '" class="' . esc_attr( $classes ) . '"' . $style_attr . '>';
+    $block_content .= '<div class="testimonials-block__bg"></div>';
+    $block_content .= '<div class="testimonials-block__pattern"></div>';
+    $block_content .= '<div class="block-wrapper">';
+
+    // InnerBlocks content (header-intro)
+    $block_content .= '<div class="testimonials-block__header">';
+    $block_content .= $content;
+    $block_content .= '</div>';
+
+    // Reviews shortcode output
+    $block_content .= $shortcode_html;
 
     $block_content .= '</div><!-- .block-wrapper -->';
     $block_content .= '</section>';

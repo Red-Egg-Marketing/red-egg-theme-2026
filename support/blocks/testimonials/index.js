@@ -1,11 +1,10 @@
 /**
  * Testimonials Block
- * 
- * Purple/mauve background with egg pattern overlay.
- * Pulls reviews from red_egg_return_reviews endpoint.
- * Displays star ratings, quote, reviewer name/title.
- * Slider with navigation arrows.
- * 
+ *
+ * Header intro via InnerBlocks + a shortcode field
+ * for the reviews plugin output. PHP render callback
+ * runs do_shortcode() on the frontend.
+ *
  *    ____          _   _____              
  *   |  _ \ ___  __| | | ____|__ _  __ _   
  *   | |_) / _ \/ _` | |  _| / _` |/ _` |  
@@ -22,26 +21,15 @@ import save from './save';
 registerBlockType( 'red-egg-block/testimonials', {
     apiVersion: 2,
     title: __( 'Testimonials', 'red-egg' ),
-    description: __( 'Testimonial slider with star ratings, pulled from the reviews API endpoint.', 'red-egg' ),
+    description: __( 'Section header with reviews plugin shortcode output.', 'red-egg' ),
     icon: 'format-quote',
     category: 'layout',
     keywords: [ __( 'testimonials', 'red-egg' ), __( 'reviews', 'red-egg' ), __( 'quotes', 'red-egg' ) ],
+    supports: { anchor: true },
     attributes: {
-        sectionLabel: {
+        reviewsShortcode: {
             type: 'string',
-            default: 'TESTIMONIALS',
-        },
-        heading: {
-            type: 'string',
-            default: 'Our Clients',
-        },
-        postsToShow: {
-            type: 'number',
-            default: 6,
-        },
-        truncateLength: {
-            type: 'number',
-            default: 300,
+            default: '',
         },
         padding: {
             type: 'object',

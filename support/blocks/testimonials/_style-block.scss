@@ -1,6 +1,10 @@
 // ========================================
 //  Testimonials Block Styles
 //  Block: red-egg-block/testimonials
+//
+//  Header via InnerBlocks (header-intro).
+//  Reviews output comes from plugin shortcode —
+//  the plugin handles its own card/slider styles.
 // ========================================
 
 .testimonials-block {
@@ -10,11 +14,11 @@
     overflow: hidden;
 
     @media screen and (min-width: $small-width) {
-        padding-top: 6rem;
-        padding-bottom: 6rem;
+        padding-top: 5rem;
+        padding-bottom: 5rem;
     }
 
-    // ---- Purple background ----
+    // ---- Purple/mauve background ----
     .testimonials-block__bg {
         position: absolute;
         top: 0;
@@ -32,212 +36,65 @@
         left: 0;
         width: 100%;
         height: 100%;
-        background-image: url('../img/egg_pattern.png');
-        background-size: cover;
-        background-repeat: no-repeat;
-        background-position: center;
-        opacity: 0.15;
+        background-image: url('../img/egg-pattern.png');
+        background-size: 300px;
+        background-repeat: repeat;
+        opacity: 0.08;
+        z-index: 0;
+    }
+
+    > .block-wrapper {
+        @include block-wrapper;
+        position: relative;
         z-index: 1;
     }
 
-    .block-wrapper {
-        @include block-wrapper;
-        position: relative;
-        z-index: 2;
-    }
-
-    // ---- Header ----
+    // ---- Header area (InnerBlocks: header-intro) ----
     .testimonials-block__header {
-        margin-bottom: 2rem;
+        margin-bottom: 2.5rem;
 
         @media screen and (min-width: $small-width) {
-            margin-bottom: 2.5rem;
+            margin-bottom: 3rem;
+        }
+
+        // White text on purple background
+        .header-intro-block {
+            h1, h2, h3, h4, h5, h6, p, li { color: $white; }
         }
     }
 
-    .testimonials-block__label {
-        @include h4-sup;
-        color: $white;
-        margin: 0 0 0.5rem 0;
+    // ---- Reviews shortcode output ----
+    .testimonials-block__reviews {
+        // Plugin handles its own styling.
+        // Add overrides here if needed to match the theme.
     }
 
-    .testimonials-block__heading {
-        @include primary-h1;
-        color: $white;
-        margin: 0;
+    // ---- Editor: shortcode preview placeholder ----
+    .testimonials-block__shortcode-preview {
+        text-align: center;
+        padding: 2rem;
     }
 
-    // ---- Navigation arrows ----
-    .testimonials-block__nav {
-        display: flex;
-        justify-content: flex-end;
-        gap: 0.75rem;
-        margin-bottom: 1rem;
-
-        @media screen and (min-width: $small-width) {
-            position: absolute;
-            top: 6rem;
-            right: $site-padding;
-            margin-bottom: 0;
-        }
-    }
-
-    .testimonials-block__arrow {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: 44px;
-        height: 44px;
-        border: 1px solid $white;
-        border-radius: 50%;
-        background: transparent;
-        cursor: pointer;
-        transition: background-color 0.3s ease;
-
-        .arrow-icon {
-            border-color: $white;
-        }
-
-        &:hover:not(.is-disabled) {
-            background-color: $white;
-
-            .arrow-icon {
-                border-color: $gray;
-            }
-        }
-
-        &.is-disabled {
-            opacity: 0.35;
-            cursor: default;
-        }
-    }
-
-    .arrow-icon {
-        display: inline-block;
-        width: 12px;
-        height: 12px;
-        border-right: 2px solid $white;
-        border-top: 2px solid $white;
-        transition: border-color 0.3s ease;
-
-        &--right {
-            transform: rotate(45deg);
-            margin-left: -3px;
-        }
-
-        &--left {
-            transform: rotate(-135deg);
-            margin-right: -3px;
-        }
-    }
-
-    // ---- Cards grid ----
-    .testimonials-block__cards {
-        display: flex;
-        flex-direction: column;
-        gap: 1.5rem;
-
-        @media screen and (min-width: $small-width) {
-            flex-direction: row;
-            gap: 2rem;
-        }
-    }
-
-    // ---- Individual testimonial card ----
-    .testimonial-card {
-        background: $white;
-        border-radius: $default-border-radius;
-        padding: 2rem 2.5rem 2.5rem;
-        width: 100%;
-
-        @media screen and (min-width: $small-width) {
-            width: 50%;
-            padding: 3rem 3.25rem 3.5rem;
-        }
-    }
-
-    // ---- Star ratings ----
-    .testimonials-block__stars {
-        display: flex;
-        gap: 0.25rem;
-        margin-bottom: 1rem;
-
-        @media screen and (min-width: $small-width) {
-            gap: 0.375rem;
-            margin-bottom: 1.25rem;
-        }
-    }
-
-    .testimonials-block__star {
-        color: $gold;
-        font-size: 1.5rem;
-        line-height: 1;
-
-        @media screen and (min-width: $small-width) {
-            font-size: 1.875rem; // 30px to match the star egg icons
-        }
-    }
-
-    // ---- Quote text ----
-    .testimonial-card__quote {
-        font-family: $font-head;
-        font-weight: 400;
-        font-size: 1.0625rem; // 17px mobile
-        line-height: 1.625rem; // 26px
-        color: $gray;
-        margin: 0 0 1.5rem 0;
-
-        @media screen and (min-width: $small-width) {
-            font-size: 1.375rem; // 22px desktop
-            line-height: 2.125rem; // 34px
-        }
-    }
-
-    .testimonial-card__read-more {
-        display: inline-block;
-        font-family: $font-head;
-        font-weight: 400;
-        font-size: 1.0625rem;
-        line-height: 2.125rem;
-        color: $red;
-        text-decoration: none;
-        margin-bottom: 1.5rem;
-
-        &:hover {
-            text-decoration: underline;
-        }
-    }
-
-    // ---- Reviewer info ----
-    .testimonial-card__reviewer {
-        border-top: 0;
-    }
-
-    .testimonial-card__name {
+    .testimonials-block__shortcode-tag {
         @include primary-h4;
-        font-weight: 500;
-        margin: 0 0 0.125rem 0;
+        color: $white;
+        opacity: 0.8;
+        margin: 0;
+        padding: 1.5rem;
+        border: 1px dashed rgba($white, 0.4);
+        border-radius: $default-border-radius;
     }
 
-    .testimonial-card__title {
-        @include body-text;
+    .testimonials-block__shortcode-empty {
+        @include primary-h4;
+        color: $white;
+        opacity: 0.5;
         margin: 0;
     }
+}
 
-    // ---- Loading state ----
-    .testimonials-block__loading {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        min-height: 200px;
-        gap: 0.5rem;
-
-        p {
-            @include primary-h4;
-            color: $white;
-            margin: 0;
-        }
-    }
-
-    // ---- Padding/Margin toggles ----
+// ---- Full-width in editor ----
+.wp-block.testimonials-block {
+    width: 100%;
+    max-width: 100%;
 }

@@ -1,84 +1,55 @@
 /**
  * Testimonials Block – Edit Component
+ *
+ * InnerBlocks for header-intro at the top.
+ * TextControl for the reviews plugin shortcode.
+ * Shortcode is processed by PHP render callback on frontend.
  */
 
-const { Fragment, useState, useEffect } = wp.element;
-const { RichText, InspectorControls, useBlockProps } = wp.blockEditor;
-const { PanelBody, RangeControl, Spinner } = wp.components;
+const { Fragment } = wp.element;
+const { InnerBlocks, InspectorControls, useBlockProps } = wp.blockEditor;
+const { PanelBody, TextControl } = wp.components;
 const { __ } = wp.i18n;
 
 import PaddingSelector from '../../components/Padding.js';
 import MarginSelector from '../../components/Margin.js';
 
+const template = [
+    [ 'red-egg-block/header-intro', {} ],
+];
+
+const allowedBlocks = [
+    'red-egg-block/header-intro',
+    'core/heading',
+    'core/paragraph',
+    'core/buttons',
+];
+
 const EditTestimonials = ( { attributes, setAttributes, clientId } ) => {
-    const {
-        sectionLabel,
-        heading,
-        postsToShow,
-        truncateLength,
-        padding,
-        margin,
-    } = attributes;
+    const { reviewsShortcode, padding, margin } = attributes;
 
     const blockId = `block-${ clientId }`;
-
-    const [ reviews, setReviews ] = useState( [] );
-    const [ loading, setLoading ] = useState( true );
-
-    useEffect( () => {
-        setLoading( true );
-        wp.apiRequest( {
-            path: '/red-egg/v2/reviews',
-        } ).then( ( data ) => {
-            setReviews( data.slice( 0, postsToShow ) );
-            setLoading( false );
-        } ).catch( () => {
-            setReviews( [] );
-            setLoading( false );
-        } );
-    }, [ postsToShow ] );
-
 
     const blockProps = useBlockProps( {
         id: blockId,
         className: 'testimonials-block',
     } );
 
-    /**
-     * Render star icons (5 stars)
-     */
-    const renderStars = () => {
-        return (
-            <div className="testimonials-block__stars">
-                { [ 1, 2, 3, 4, 5 ].map( ( star ) => (
-                    <span className="testimonials-block__star" key={ star }>★</span>
-                ) ) }
-            </div>
-        );
-    };
-
     return (
         <Fragment>
             <InspectorControls>
-                <PanelBody title={ __( 'Testimonials Settings', 'red-egg' ) }>
-                    <RangeControl
-                        label={ __( 'Number of Reviews', 'red-egg' ) }
-                        value={ postsToShow }
-                        onChange={ ( val ) => setAttributes( { postsToShow: val } ) }
-                        min={ 2 }
-                        max={ 12 }
-                    />
-                    <RangeControl
-                        label={ __( 'Truncate Length (characters)', 'red-egg' ) }
-                        value={ truncateLength }
-                        onChange={ ( val ) => setAttributes( { truncateLength: val } ) }
-                        min={ 100 }
-                        max={ 600 }
-                        step={ 50 }
+                <PanelBody
+                    title={ __( 'Reviews Shortcode', 'red-egg' ) }
+                    initialOpen={ true }
+                >
+                    <TextControl
+                        label={ __( 'Shortcode', 'red-egg' ) }
+                        value={ reviewsShortcode }
+                        onChange={ ( val ) => setAttributes( { reviewsShortcode: val } ) }
+                        placeholder='[reviews-shortcode]'
+                        help={ __( 'Paste the shortcode from your reviews plugin.', 'red-egg' ) }
                     />
                 </PanelBody>
-                
-                
             </InspectorControls>
 
             <PaddingSelector
@@ -97,46 +68,21 @@ const EditTestimonials = ( { attributes, setAttributes, clientId } ) => {
                 <div className="testimonials-block__pattern"></div>
                 <div className="block-wrapper">
                     <div className="testimonials-block__header">
-                        <RichText
-                            tagName="p"
-                            className="testimonials-block__label"
-                            value={ sectionLabel }
-                            onChange={ ( val ) => setAttributes( { sectionLabel: val } ) }
-                            placeholder={ __( 'Section label…', 'red-egg' ) }
-                        />
-                        <RichText
-                            tagName="h2"
-                            className="testimonials-block__heading"
-                            value={ heading }
-                            onChange={ ( val ) => setAttributes( { heading: val } ) }
-                            placeholder={ __( 'Heading…', 'red-egg' ) }
+                        <InnerBlocks
+                            template={ template }
+                            allowedBlocks={ allowedBlocks }
                         />
                     </div>
 
-                    <div className="testimonials-block__preview">
-                        { loading && (
-                            <div className="testimonials-block__loading">
-                                <Spinner />
-                                <p>{ __( 'Loading reviews…', 'red-egg' ) }</p>
-                            </div>
-                        ) }
-                        { ! loading && reviews.length > 0 && (
-                            <div className="testimonials-block__cards">
-                                { reviews.slice( 0, 2 ).map( ( review, i ) => (
-                                    <div className="testimonial-card" key={ i }>
-                                        { renderStars() }
-                                        <p className="testimonial-card__quote">
-                                            { review.content
-                                                ? review.content.substring( 0, truncateLength ) + ( review.content.length > truncateLength ? '...' : '' )
-                                                : '' }
-                                        </p>
-                                        <div className="testimonial-card__reviewer">
-                                            <p className="testimonial-card__name">{ review.reviewer_name || '' }</p>
-                                            <p className="testimonial-card__title">{ review.reviewer_title || '' }</p>
-                                        </div>
-                                    </div>
-                                ) ) }
-                            </div>
+                    <div className="testimonials-block__shortcode-preview">
+                        { reviewsShortcode ? (
+                            <p className="testimonials-block__shortcode-tag">
+                                { reviewsShortcode }
+                            </p>
+                        ) : (
+                            <p className="testimonials-block__shortcode-empty">
+                                { __( 'Add a reviews shortcode in the block settings panel →', 'red-egg' ) }
+                            </p>
                         ) }
                     </div>
                 </div><!-- .block-wrapper -->

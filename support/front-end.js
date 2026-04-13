@@ -19,8 +19,7 @@ import 'swiper/css/bundle';
 // Block 5: Case Studies Slider – frontend interactivity
 import './blocks/case-studies-slider/frontend';
 
-// Block 6: Testimonials – frontend interactivity
-import './blocks/testimonials/frontend';
+// Block 6: Testimonials – handled by PHP render callback (shortcode)
 
 // Block 7: Insights – frontend interactivity
 import './blocks/insights/frontend';
