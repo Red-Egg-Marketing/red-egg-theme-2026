@@ -1,6 +1,11 @@
 // ========================================
 //  Insights Block Styles
 //  Block: red-egg-block/insights
+//
+//  Uses ResourceCard component — card styles
+//  are shared with case-studies-slider.
+//  This file handles the grid layout and
+//  block-specific overrides.
 // ========================================
 
 .insights-block {
@@ -13,132 +18,104 @@
         padding-bottom: 5rem;
     }
 
-    .block-wrapper {
+    > .block-wrapper {
         @include block-wrapper;
     }
 
-    // ---- Header ----
+    // ---- Header area (InnerBlocks: header-intro) ----
     .insights-block__header {
-        margin-bottom: 2rem;
+        margin-bottom: 2.5rem;
 
         @media screen and (min-width: $small-width) {
-            margin-bottom: 2.5rem;
+            margin-bottom: 3rem;
         }
     }
 
-    .insights-block__label {
-        @include h4-sup;
-        margin: 0 0 0.5rem 0;
-    }
-
-    .insights-block__heading {
-        @include primary-h1;
-        margin: 0;
-    }
-
-    // ---- Cards container ----
-    .insights-block__cards {
+    // ---- Resource card grid ----
+    .resources.grid {
         display: flex;
-        flex-direction: column;
+        flex-wrap: wrap;
         gap: 1.5rem;
 
         @media screen and (min-width: $small-width) {
-            flex-direction: row;
             gap: 2rem;
         }
-    }
 
-    // ---- Individual insight card ----
-    .insight-card {
-        display: block;
-        width: 100%;
-        text-decoration: none;
-        color: $gray;
-        border-radius: $default-border-radius;
-        overflow: hidden;
-        transition: transform 0.2s ease, box-shadow 0.3s ease;
+        .resource-card {
+            width: 100%;
 
-        @media screen and (min-width: $small-width) {
-            width: 50%;
-        }
-
-        &:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-
-            .btn-gray {
-                background-color: $gray;
-
-                span {
-                    color: $white;
-                }
-
-                .btn-arrow {
-                    border-color: $white;
-                }
+            @media screen and (min-width: $small-width) {
+                width: calc(50% - 1rem);
             }
         }
     }
 
-    .insight-card__inner {
-        background-color: $peach;
-        border-radius: $default-border-radius;
-        padding: 2rem 2.25rem 2.5rem;
+    // ---- Resource card styling ----
+    // Shared structure from ResourceCard component
+    .resource-card {
+        .resource-extra {
+            height: 100%;
+        }
 
-        @media screen and (min-width: $small-width) {
-            padding: 2.5rem 3.25rem 3rem;
-            min-height: 397px;
+        .resource-wrap {
+            display: block;
+            text-decoration: none;
+            color: inherit;
+            height: 100%;
+        }
+
+        .cont-wrap {
             display: flex;
             flex-direction: column;
+            height: 100%;
+            border: 1px solid $gray;
+            border-radius: $default-border-radius;
+            overflow: hidden;
+            transition: box-shadow 0.3s ease, transform 0.2s ease;
+
+            &:hover {
+                box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+                transform: translateY(-2px);
+            }
         }
-    }
 
-    .insight-card__date {
-        @include primary-h4;
-        margin: 0 0 0.75rem 0;
+        .image-cont {
+            aspect-ratio: 16 / 9;
+            overflow: hidden;
 
-        @media screen and (min-width: $small-width) {
-            margin-bottom: 1rem;
+            img {
+                display: block;
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
         }
-    }
 
-    .insight-card__title {
-        @include primary-h3;
-        margin: 0 0 1rem 0;
+        .content {
+            padding: 1.5rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
 
-        @media screen and (min-width: $small-width) {
-            margin-bottom: 1.25rem;
+            @media screen and (min-width: $small-width) {
+                padding: 2rem;
+            }
         }
-    }
 
-    .insight-card__excerpt {
-        @include body-text;
-        margin: 0 0 1.5rem 0;
-        flex-grow: 1;
-
-        @media screen and (min-width: $small-width) {
-            margin-bottom: 2rem;
+        .resource-title {
+            @include primary-h3;
+            margin: 0 0 0.75rem 0;
         }
-    }
 
-    .insight-card .btn-gray {
-        @include gray-button;
-    }
+        .resource-excerpt {
+            @include body-text;
+            margin: 0 0 1.5rem 0;
+            flex-grow: 1;
+        }
 
-    // ---- Divider beneath insights ----
-    // From the Figma there's a small "scratch" divider graphic
-    // below the insights section
-    .insights-block__divider {
-        margin-top: 3rem;
-        width: 160px;
-        height: 24px;
-        background-image: url('../img/divider.png');
-        background-size: contain;
-        background-repeat: no-repeat;
-
-        @media screen and (min-width: $small-width) {
-            width: 196px;
-            height: 29px;
+        .wp-button {
+            @include gray-button;
+            align-self: flex-start;
         }
     }
 
@@ -148,7 +125,6 @@
         align-items: center;
         justify-content: center;
         min-height: 200px;
-        gap: 0.5rem;
 
         p {
             @include primary-h4;
@@ -159,10 +135,15 @@
     .insights-block__empty {
         @include primary-h4;
         text-align: center;
+        width: 100%;
         padding: 3rem;
         color: $gray;
         opacity: 0.6;
     }
+}
 
-    // ---- Padding/Margin toggles ----
+// ---- Full-width in editor ----
+.wp-block.insights-block {
+    width: 100%;
+    max-width: 100%;
 }

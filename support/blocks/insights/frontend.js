@@ -1,24 +1,26 @@
 /**
  * Insights Block – Frontend Component
- * 
+ *
  * Hydrates #InsightsBlockRoot with data from
- * the red_egg_return_resources REST endpoint.
- * Renders peach-colored blog post cards.
+ * the red-egg/v2/resources REST endpoint.
+ * Renders resource cards in a grid layout.
  */
 
 const { render, Fragment, useState, useEffect } = wp.element;
 
 const RootElement = document.getElementById( 'InsightsBlockRoot' );
 
-const InsightsBlock = ( { postsToShow } ) => {
+const InsightsFrontend = ( { postsToShow, category } ) => {
     const [ posts, setPosts ] = useState( [] );
     const [ loading, setLoading ] = useState( true );
 
     useEffect( () => {
-        wp.apiRequest( {
-            path: '/red-egg/v2/resources',
-        } ).then( ( data ) => {
-            setPosts( data.slice( 0, postsToShow ) );
+        let url = '/red-egg/v2/resources?ppp=' + postsToShow;
+        if ( category && category !== 'all' ) {
+            url += '&category=' + category;
+        }
+        wp.apiRequest( { path: url } ).then( ( data ) => {
+            setPosts( data );
             setLoading( false );
         } ).catch( () => {
             setPosts( [] );
@@ -29,7 +31,7 @@ const InsightsBlock = ( { postsToShow } ) => {
     if ( loading ) {
         return (
             <div className="insights-block__loading">
-                <p>Loading insights…</p>
+                <p>Loading posts…</p>
             </div>
         );
     }
@@ -39,28 +41,43 @@ const InsightsBlock = ( { postsToShow } ) => {
     }
 
     return (
-        <div className="insights-block__cards">
+        <Fragment>
             { posts.map( ( post, i ) => (
-                <a href={ post.link || '#' } className="insight-card" key={ post.id || i }>
-                    <div className="insight-card__inner">
-                        <p className="insight-card__date">{ post.date || '' }</p>
-                        <h3 className="insight-card__title">{ post.title || '' }</h3>
-                        <p className="insight-card__excerpt">{ post.excerpt || '' }</p>
-                        <span className="btn-gray">
-                            <span>READ MORE</span>
-                            <span className="btn-arrow"></span>
-                        </span>
+                <div className="resource-card" key={ post.id || i }>
+                    <div className="resource-extra">
+                        <a className="resource-wrap" href={ post.link || '#' }>
+                            <div className="cont-wrap">
+                                { ( post.featured_image || post.image ) && (
+                                    <div className="image-cont">
+                                        <img
+                                            className="resource-img"
+                                            src={ post.featured_image || post.image }
+                                            alt={ post.title || '' }
+                                            loading="lazy"
+                                        />
+                                    </div>
+                                ) }
+                                <div className="content">
+                                    <h3 className="resource-title">{ post.title }</h3>
+                                    { post.excerpt && (
+                                        <p className="resource-excerpt">{ post.excerpt }</p>
+                                    ) }
+                                    <button className="wp-button">Read More</button>
+                                </div>
+                            </div>
+                        </a>
                     </div>
-                </a>
+                </div>
             ) ) }
-        </div>
+        </Fragment>
     );
 };
 
 if ( RootElement ) {
     const postsToShow = parseInt( RootElement.getAttribute( 'data-posts-to-show' ) ) || 2;
+    const category = RootElement.getAttribute( 'data-category' ) || '';
     render(
-        <InsightsBlock postsToShow={ postsToShow } />,
+        <InsightsFrontend postsToShow={ postsToShow } category={ category } />,
         RootElement
     );
 }

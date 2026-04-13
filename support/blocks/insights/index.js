@@ -1,10 +1,11 @@
 /**
  * Insights Block
- * 
+ *
  * "The Coop Scoop" – displays blog/resource posts
- * from the red_egg_return_resources endpoint.
- * Peach cards with date, title, excerpt, CTA.
- * 
+ * from the red-egg/v2/resources endpoint.
+ * Uses ResourceCard component, category filter,
+ * InnerBlocks for header-intro.
+ *
  *    ____          _   _____              
  *   |  _ \ ___  __| | | ____|__ _  __ _   
  *   | |_) / _ \/ _` | |  _| / _` |/ _` |  
@@ -21,22 +22,27 @@ import save from './save';
 registerBlockType( 'red-egg-block/insights', {
     apiVersion: 2,
     title: __( 'Insights', 'red-egg' ),
-    description: __( 'Blog/resource posts displayed as peach cards with date, title, excerpt, and read more link.', 'red-egg' ),
+    description: __( 'Blog/resource posts displayed as cards with category filter and header intro.', 'red-egg' ),
     icon: 'admin-post',
     category: 'layout',
-    keywords: [ __( 'insights', 'red-egg' ), __( 'blog', 'red-egg' ), __( 'resources', 'red-egg' ) ],
+    keywords: [ __( 'insights', 'red-egg' ), __( 'blog', 'red-egg' ), __( 'resources', 'red-egg' ), __( 'posts', 'red-egg' ) ],
+    supports: { anchor: true },
     attributes: {
-        sectionLabel: {
+        category: {
             type: 'string',
-            default: 'INSIGHTS',
-        },
-        heading: {
-            type: 'string',
-            default: 'The Coop Scoop',
+            default: '',
         },
         postsToShow: {
             type: 'number',
             default: 2,
+        },
+        bgColor: {
+            type: 'string',
+            default: '',
+        },
+        bgSlug: {
+            type: 'string',
+            default: '',
         },
         padding: {
             type: 'object',
@@ -51,6 +57,9 @@ registerBlockType( 'red-egg-block/insights', {
                 margintop: '', marginright: '',
                 marginbottom: '', marginleft: '', unit: 'rem',
             },
+        },
+        blockId: {
+            type: 'string',
         },
     },
     edit,

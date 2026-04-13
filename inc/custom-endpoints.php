@@ -50,11 +50,23 @@ function red_egg_register_rest_routes() {
         'permission_callback' => '__return_true',
     ] );
 
-    // Resources / Blog Posts
+    // Resources / Blog Posts (supports ?category=id&ppp=N)
     register_rest_route( 'red-egg/v2', '/resources', [
         'methods'  => 'GET',
         'callback' => 'red_egg_return_resources',
         'permission_callback' => '__return_true',
+        'args' => [
+            'category' => [
+                'required' => false,
+                'type'     => 'string',
+                'sanitize_callback' => 'sanitize_text_field',
+            ],
+            'ppp' => [
+                'required' => false,
+                'type'     => 'integer',
+                'default'  => 6,
+            ],
+        ],
     ] );
 }
 add_action( 'rest_api_init', 'red_egg_register_rest_routes' );
@@ -185,13 +197,26 @@ function red_egg_return_reviews( $request ) {
 // ============================================
 
 function red_egg_return_resources( $request ) {
+    $ppp = $request->get_param( 'ppp' ) ?: 6;
+
     $args = [
         'post_type'      => 'post',
-        'posts_per_page' => 6,
+        'posts_per_page' => $ppp,
         'post_status'    => 'publish',
         'orderby'        => 'date',
         'order'          => 'DESC',
     ];
+
+    // Filter by category if provided
+    $category = $request->get_param( 'category' );
+    if ( ! empty( $category ) && $category !== 'all' ) {
+        // Accept both numeric ID and slug
+        if ( is_numeric( $category ) ) {
+            $args['cat'] = intval( $category );
+        } else {
+            $args['category_name'] = sanitize_text_field( $category );
+        }
+    }
 
     $query = new WP_Query( $args );
     $resources = [];
@@ -200,12 +225,14 @@ function red_egg_return_resources( $request ) {
         while ( $query->have_posts() ) {
             $query->the_post();
             $resources[] = [
-                'id'      => get_the_ID(),
-                'title'   => get_the_title(),
-                'link'    => get_the_permalink(),
-                'excerpt' => get_the_excerpt(),
-                'date'    => get_the_date( 'n.j.y' ),
-                'image'   => get_the_post_thumbnail_url( get_the_ID(), 'medium_large' ),
+                'id'              => get_the_ID(),
+                'ID'              => get_the_ID(),
+                'title'           => get_the_title(),
+                'link'            => get_the_permalink(),
+                'excerpt'         => get_the_excerpt(),
+                'date'            => get_the_date( 'n.j.y' ),
+                'image'           => get_the_post_thumbnail_url( get_the_ID(), 'medium_large' ),
+                'featured_image'  => get_the_post_thumbnail_url( get_the_ID(), 'medium_large' ),
             ];
         }
     }
