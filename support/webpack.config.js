@@ -105,11 +105,13 @@ module.exports = ( env, argv ) => {
             new MiniCssExtractPlugin( {
                 filename: ( { chunk } ) => {
                     // Output CSS files to theme root
+                    // Path is relative to output.path (support/assets/js/)
+                    // ../../../ = theme root
                     if ( chunk.name === 'style' ) {
-                        return '../../style.css';
+                        return '../../../style.css';
                     }
                     if ( chunk.name === 'blocks.editor' ) {
-                        return '../../blocks.editor.css';
+                        return '../../../blocks.editor.css';
                     }
                     return '[name].css';
                 },
