@@ -1,0 +1,164 @@
+// ========================================
+//  Flip Card Block Styles
+//  Block: red-egg-block/flip-card
+//
+//  CSS 3D flip on hover. Front shows icon + title,
+//  back shows description + button link.
+// ========================================
+
+.flip-card {
+    position: relative;
+    width: 100%;
+    perspective: 1000px;
+
+    @media screen and (min-width: $small-width) {
+        width: calc(33.333% - 1.334rem);
+    }
+
+    // The exterior-wrap is the flip container
+    .exterior-wrap {
+        position: relative;
+        width: 100%;
+        min-height: 380px;
+        transition: transform 0.6s ease;
+        transform-style: preserve-3d;
+
+        @media screen and (min-width: $small-width) {
+            min-height: 426px;
+        }
+    }
+
+    // Only flip if there's back content
+    &:not(.no-flip):hover {
+        .exterior-wrap {
+            transform: rotateY(180deg);
+        }
+    }
+
+    // ---- Shared face styles ----
+    .block-wrapper,
+    .flip-card-wrap {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        backface-visibility: hidden;
+        border: 1px solid $gray;
+        border-radius: $default-border-radius;
+        background: $white;
+        display: flex;
+        flex-direction: column;
+    }
+
+    // ---- Front face ----
+    .block-wrapper {
+        z-index: 2;
+
+        .block-content {
+            padding: 3rem;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+
+            @media screen and (min-width: $small-width) {
+                padding: 3.125rem;
+            }
+        }
+    }
+
+    // ---- Back face ----
+    .flip-card-wrap {
+        transform: rotateY(180deg);
+        z-index: 1;
+        justify-content: center;
+
+        .wrapper {
+            padding: 3rem;
+
+            @media screen and (min-width: $small-width) {
+                padding: 3.125rem;
+            }
+        }
+
+        .content {
+            @include body-text;
+            margin: 0;
+        }
+    }
+
+    // ---- Icon ----
+    .flip-card__icon {
+        margin-bottom: 1.5rem;
+
+        img {
+            display: block;
+            width: auto;
+            height: 80px;
+            max-width: 107px;
+
+            @media screen and (min-width: $small-width) {
+                height: 100px;
+            }
+        }
+    }
+
+    // Icon background color slug classes
+    &.red .flip-card__icon img,
+    &.navy .flip-card__icon img,
+    &.gray .flip-card__icon img {
+        // Icon images don't need color overrides,
+        // but the bgSlug class can be used for
+        // custom icon background treatment if needed
+    }
+
+    // ---- Card heading (from InnerBlocks) ----
+    h3 {
+        @include primary-h2;
+        margin: 0 0 1rem 0;
+    }
+
+    // ---- Button link ----
+    .wp-buttons {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        padding: 0 3rem 2rem;
+        backface-visibility: hidden;
+        transform: rotateY(180deg);
+
+        @media screen and (min-width: $small-width) {
+            padding: 0 3.125rem 2.5rem;
+        }
+    }
+
+    .flip-link {
+        @include gray-button;
+        width: 100%;
+        justify-content: center;
+    }
+
+    // ---- No-flip cards: static display ----
+    &.no-flip {
+        .exterior-wrap {
+            position: relative;
+        }
+
+        .block-wrapper {
+            position: relative;
+        }
+
+        .flip-card-wrap,
+        .wp-buttons {
+            display: none;
+        }
+
+        &:hover {
+            .block-wrapper {
+                box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+                transform: translateY(-2px);
+            }
+        }
+    }
+}

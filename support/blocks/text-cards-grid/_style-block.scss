@@ -2,14 +2,9 @@
 //  Text Cards Grid Block Styles
 //  Block: red-egg-block/text-cards-grid
 //
-//  With InnerBlocks, the block-wrapper contains:
-//    - .text-cards-grid__label   (core/paragraph)
-//    - .text-cards-grid__heading (core/heading)
-//    - .text-cards-grid__description (core/paragraph)
-//    - .text-card (child blocks, siblings in flow)
-//
-//  We use CSS to lay out the header area and
-//  flex-wrap the card siblings into a row.
+//  Container for header-intro + flip-card children.
+//  Supports column count classes and decorative
+//  background style options.
 // ========================================
 
 .text-cards-grid {
@@ -22,12 +17,24 @@
         padding-bottom: 5rem;
     }
 
-    .block-wrapper {
+    > .block-wrapper {
         @include block-wrapper;
+    }
 
-        // The InnerBlocks output is a flat list of siblings.
-        // Use flex-wrap so the header paragraphs take full width
-        // and the text-card blocks flow into a row.
+    // ---- Card grid layout ----
+    // The block-content contains header-intro + flip-cards as siblings.
+    // Flip cards flow into a row via flex-wrap.
+    .block-content {
+        > .flip-card,
+        > .wp-block[data-type="red-egg-block/flip-card"] {
+            // Handled by columns classes below
+        }
+    }
+
+    // ---- Columns layout ----
+    // Flex container that wraps flip-cards into rows.
+    // The header-intro takes full width above.
+    .block-content {
         display: flex;
         flex-wrap: wrap;
         gap: 1.5rem;
@@ -35,141 +42,116 @@
         @media screen and (min-width: $small-width) {
             gap: 2rem;
         }
-    }
 
-    // ---- Header area (label, heading, description) ----
-    // These come from core blocks with custom classNames.
-    // All take full width so they stack above the cards.
-
-    .text-cards-grid__label {
-        @include h4-sup;
-        margin: 0 0 0.5rem 0;
-        width: 100%;
-
-        @media screen and (min-width: $small-width) {
-            text-align: center;
-            margin-bottom: 0;
-        }
-    }
-
-    .text-cards-grid__heading {
-        @include primary-h1;
-        margin: 0;
-        width: 100%;
-
-        @media screen and (min-width: $small-width) {
-            width: 33%;
+        // header-intro always full width
+        > .header-intro-block,
+        > .wp-block[data-type="red-egg-block/header-intro"] {
+            width: 100%;
             flex-shrink: 0;
         }
     }
 
-    .text-cards-grid__description {
-        @include primary-h4;
-        margin: 0 0 1rem 0;
-        width: 100%;
-
-        @media screen and (min-width: $small-width) {
-            width: 65%;
-            margin-left: auto;
-            margin-bottom: 1.5rem;
-        }
-    }
-
-    // ---- Individual card ----
-    .text-card {
-        position: relative;
-        display: flex;
-        flex-direction: column;
-        background: $white;
-        border: 1px solid $gray;
-        border-radius: $default-border-radius;
-        padding: 3rem 3rem 3.5rem;
-        width: 100%;
-        text-decoration: none;
-        color: $gray;
-        transition: box-shadow 0.3s ease, transform 0.2s ease;
-
-        @media screen and (min-width: $small-width) {
-            width: calc(33.333% - 1.334rem);
-            padding: 3.125rem;
-            min-height: 426px;
-        }
-
-        &:hover {
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-            transform: translateY(-2px);
-
-            .arrow-circle {
-                background-color: $gray;
-
-                .arrow-icon {
-                    border-color: $white;
-                }
-            }
-        }
-    }
-
-    .text-card__icon {
-        margin-bottom: 1.5rem;
-
-        img {
-            display: block;
-            width: auto;
-            height: 80px;
-            max-width: 107px;
-
+    &.columns-2 {
+        .flip-card {
             @media screen and (min-width: $small-width) {
-                height: 100px;
+                width: calc(50% - 1rem);
             }
         }
     }
 
-    .text-card__content {
-        flex-grow: 1;
-
-        h3 {
-            @include primary-h2;
-            margin: 0 0 1rem 0;
-        }
-
-        p {
-            @include body-text;
-            margin: 0;
+    &.columns-3 {
+        .flip-card {
+            @media screen and (min-width: $small-width) {
+                width: calc(33.333% - 1.334rem);
+            }
         }
     }
 
-    // ---- Arrow link (bottom-right circle with arrow) ----
-    .text-card__arrow {
-        position: absolute;
-        bottom: 1.75rem;
-        right: 1.75rem;
-
-        @media screen and (min-width: $small-width) {
-            bottom: 2rem;
-            right: 2rem;
+    &.columns-4 {
+        .flip-card {
+            @media screen and (min-width: $small-width) {
+                width: calc(25% - 1.5rem);
+            }
         }
     }
 
-    .arrow-circle {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: 35px;
-        height: 35px;
-        border: 1px solid $gray;
-        border-radius: 50%;
-        transition: background-color 0.3s ease;
+    // ---- Background color slug classes ----
+    &.gray.with-bg {
+        background-color: $gray;
+
+        .header-intro-block {
+            h1, h2, h3, h4, h5, h6, p, li { color: $white; }
+        }
     }
 
-    .arrow-icon {
-        display: inline-block;
-        width: 10px;
-        height: 10px;
-        border-right: 2px solid $gray;
-        border-top: 2px solid $gray;
-        transform: rotate(45deg);
-        margin-left: -3px;
-        transition: border-color 0.3s ease;
+    &.navy.with-bg {
+        background-color: $navy;
+
+        .header-intro-block {
+            h1, h2, h3, h4, h5, h6, p, li { color: $white; }
+        }
+    }
+
+    &.eggshell.with-bg {
+        background-color: $eggshell;
+    }
+
+    &.red.with-bg {
+        background-color: $red;
+
+        .header-intro-block {
+            h1, h2, h3, h4, h5, h6, p, li { color: $white; }
+        }
+    }
+
+    // ---- Decorative background styles ----
+    &.left-partial-box {
+        &::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 45%;
+            height: 100%;
+            background-color: $eggshell;
+            border-radius: 0 $default-border-radius $default-border-radius 0;
+            z-index: 0;
+        }
+
+        > .block-wrapper {
+            position: relative;
+            z-index: 1;
+        }
+    }
+
+    &.left-partial-box-plane {
+        @extend .left-partial-box;
+
+        &::after {
+            content: '';
+            position: absolute;
+            // Airplane decorative element — placeholder
+            // Replace with actual airplane SVG/image asset
+        }
+    }
+
+    &.right-partial-box {
+        &::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 45%;
+            height: 100%;
+            background-color: $eggshell;
+            border-radius: $default-border-radius 0 0 $default-border-radius;
+            z-index: 0;
+        }
+
+        > .block-wrapper {
+            position: relative;
+            z-index: 1;
+        }
     }
 }
 

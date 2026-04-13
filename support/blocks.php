@@ -89,8 +89,13 @@ function red_egg_register_blocks() {
         'editor_script' => 'red-egg-editor-blocks',
     ] );
 
-    // ---- 3b. Text Card (child of Text Cards Grid) ----
-    register_block_type( 'red-egg-block/text-card', [
+    // ---- 3b. Header Intro (reusable section header) ----
+    register_block_type( 'red-egg-block/header-intro', [
+        'editor_script' => 'red-egg-editor-blocks',
+    ] );
+
+    // ---- 3c. Flip Card (child of Text Cards Grid) ----
+    register_block_type( 'red-egg-block/flip-card', [
         'editor_script' => 'red-egg-editor-blocks',
     ] );
 
