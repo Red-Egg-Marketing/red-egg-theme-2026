@@ -81,7 +81,9 @@ module.exports = ( env, argv ) => {
                             loader: 'sass-loader',
                             options: {
                                 sassOptions: {
-                                    outputStyle: isProduction ? 'compressed' : 'expanded',
+                                    // Always expanded to preserve the WordPress
+                                    // theme header comment in style.css
+                                    outputStyle: 'expanded',
                                 },
                             },
                         },
