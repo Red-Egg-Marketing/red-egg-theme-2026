@@ -2,8 +2,8 @@
  * Numbered List Items Block
  * 
  * Navy background section with large faded numbers,
- * item titles, and descriptions. Left column has
- * heading + intro text + logo mark.
+ * item titles, and descriptions. Left column uses
+ * InnerBlocks for heading + intro text + logo mark.
  * 
  *    ____          _   _____              
  *   |  _ \ ___  __| | | ____|__ _  __ _   
@@ -25,15 +25,8 @@ registerBlockType( 'red-egg-block/numbered-list', {
     icon: 'editor-ol',
     category: 'layout',
     keywords: [ __( 'numbered', 'red-egg' ), __( 'list', 'red-egg' ), __( 'why', 'red-egg' ) ],
+    supports: { anchor: true },
     attributes: {
-        heading: {
-            type: 'string',
-            default: 'Why Choose Red Egg?',
-        },
-        introText: {
-            type: 'string',
-            default: 'Red Egg Marketing is your one stop shop for marketing and branding services custom tailored to the needs of your organization.',
-        },
         items: {
             type: 'array',
             default: [
