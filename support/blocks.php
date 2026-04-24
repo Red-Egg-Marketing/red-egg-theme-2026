@@ -18,6 +18,9 @@
 // ============================================
 
 function red_egg_enqueue_block_editor_assets() {
+    $editor_js = get_template_directory() . '/support/assets/js/editor.blocks.js';
+    $editor_css = get_template_directory() . '/blocks.editor.css';
+
     wp_enqueue_script(
         'red-egg-editor-blocks',
         get_template_directory_uri() . '/support/assets/js/editor.blocks.js',
@@ -32,7 +35,7 @@ function red_egg_enqueue_block_editor_assets() {
             'wp-api-request',
             'lodash',
         ],
-        'v1.0.1',
+        file_exists( $editor_js ) ? filemtime( $editor_js ) : false,
         true
     );
 
@@ -40,7 +43,7 @@ function red_egg_enqueue_block_editor_assets() {
         'red-egg-editor-blocks-css',
         get_template_directory_uri() . '/blocks.editor.css',
         [],
-        'v1.0.1'
+        file_exists( $editor_css ) ? filemtime( $editor_css ) : false
     );
 }
 add_action( 'enqueue_block_editor_assets', 'red_egg_enqueue_block_editor_assets' );
@@ -53,6 +56,8 @@ add_action( 'enqueue_block_editor_assets', 'red_egg_enqueue_block_editor_assets'
 function red_egg_enqueue_block_frontend_assets() {
     // Only load frontend scripts if the blocks are present on the page
     if ( ! is_admin() ) {
+        $main_js = get_template_directory() . '/support/assets/js/main.js';
+
         wp_enqueue_script(
             'red-egg-frontend-blocks',
             get_template_directory_uri() . '/support/assets/js/main.js',
@@ -60,7 +65,7 @@ function red_egg_enqueue_block_frontend_assets() {
                 'wp-element',
                 'wp-api-request',
             ],
-            'v1.0.1',
+            file_exists( $main_js ) ? filemtime( $main_js ) : false,
             true
         );
     }
