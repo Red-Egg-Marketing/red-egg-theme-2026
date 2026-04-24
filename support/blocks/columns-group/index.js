@@ -1,3 +1,10 @@
+/**
+ * Columns Group Block
+ *
+ * Container for header-intro + image-text children.
+ * Supports background color and padding/margin.
+ */
+
 const { registerBlockType } = wp.blocks;
 const { __ } = wp.i18n;
 import edit from './edit';
@@ -6,13 +13,11 @@ import save from './save';
 registerBlockType( 'red-egg-block/columns-group', {
     apiVersion: 2,
     title: __( 'Columns Group', 'red-egg' ),
-    description: __( 'Group of columns with optional header intro and background color.', 'red-egg' ),
+    description: __( 'Group of image/text columns with optional header intro.', 'red-egg' ),
     icon: 'grid-view',
     category: 'layout',
-    supports: {
-        anchor: true,
-    },
-    keywords: [ __( 'columns', 'red-egg' ), __( 'group', 'red-egg' ), __( 'section', 'red-egg' ) ],
+    keywords: [ __( 'columns', 'red-egg' ), __( 'group', 'red-egg' ), __( 'layout', 'red-egg' ) ],
+    supports: { anchor: true },
     attributes: {
         bgColor: {
             type: 'string',
@@ -25,22 +30,19 @@ registerBlockType( 'red-egg-block/columns-group', {
         padding: {
             type: 'object',
             default: {
-                paddingtop: '',
-                paddingright: '',
-                paddingbottom: '',
-                paddingleft: '',
-                unit: 'rem',
+                paddingtop: '', paddingright: '',
+                paddingbottom: '', paddingleft: '', unit: 'rem',
             },
         },
         margin: {
             type: 'object',
             default: {
-                margintop: '',
-                marginright: '',
-                marginbottom: '',
-                marginleft: '',
-                unit: 'rem',
+                margintop: '', marginright: '',
+                marginbottom: '', marginleft: '', unit: 'rem',
             },
+        },
+        blockId: {
+            type: 'string',
         },
     },
     edit,

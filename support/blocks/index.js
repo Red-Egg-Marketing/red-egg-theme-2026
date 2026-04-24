@@ -47,6 +47,9 @@ import './contact-section/index';
 // Hero (inner pages)
 import './hero/index';
 
+// Image & Text Columns (child of Columns Group)
+import './image-text/index';
+
 // ---- Block Style Variations ----
 // Register custom button styles with arrow
 

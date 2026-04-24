@@ -1,0 +1,233 @@
+// ========================================
+//  Image & Text Columns Block Styles
+//  Block: red-egg-block/image-text
+//
+//  Two-column layout: image + text content.
+//  Supports left/right alignment and column
+//  width ratios via classes.
+// ========================================
+
+.wp-block.image-columns {
+    max-width: 100%;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.image-columns {
+    width: 100%;
+    padding-top: $default-section-padding-top;
+    padding-bottom: $default-section-padding-bottom;
+
+    @media screen and (min-width: $small-width) {
+        padding-top: 3.75rem;
+        padding-bottom: 3.75rem;
+    }
+}
+
+// Consecutive image-columns collapse top padding
+.image-columns + .image-columns {
+    padding-top: 0;
+
+    @media screen and (min-width: $small-width) {
+        padding-top: 0;
+    }
+}
+
+.image-columns .block-wrapper {
+    position: relative;
+    max-width: $max-cont-w;
+    width: 100%;
+    margin: 0 auto;
+    padding-left: $site-padding-mobile;
+    padding-right: $site-padding-mobile;
+
+    @media screen and (min-width: $small-width) {
+        padding-left: $site-padding;
+        padding-right: $site-padding;
+    }
+}
+
+.image-columns > .block-wrapper > .block-content {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+// ---- Image column ----
+.image-columns .image-col {
+    position: relative;
+    width: 100%;
+    box-sizing: border-box;
+
+    @media screen and (min-width: $small-width) {
+        width: 50%;
+        max-width: 50%;
+    }
+}
+
+.image-columns .img-container {
+    border-radius: $default-border-radius;
+    overflow: hidden;
+
+    img {
+        display: block;
+        width: 100%;
+        margin: 0 auto;
+    }
+}
+
+.image-columns .image-comp {
+    margin-bottom: 1.25rem;
+
+    @media screen and (min-width: $small-width) {
+        margin-bottom: 0;
+    }
+}
+
+// ---- Content column ----
+.image-columns .content-columns {
+    width: 100%;
+    box-sizing: border-box;
+    margin-top: 35px;
+
+    @media screen and (min-width: $small-width) {
+        width: 50%;
+        padding-left: 2.5rem;
+        margin-top: 0;
+    }
+}
+
+.image-columns .wrap > *:first-child {
+    margin-top: 0;
+    margin-bottom: 15px;
+
+    @media screen and (min-width: $small-width) {
+        margin-bottom: 20px;
+    }
+}
+
+// ---- Column width classes ----
+.image-columns.col-50 {
+    .image-col {
+        @media screen and (min-width: $small-width) { width: 50%; max-width: 50%; }
+    }
+    .content-columns {
+        @media screen and (min-width: $small-width) { width: 50%; }
+    }
+}
+
+.image-columns.col-66 {
+    .image-col {
+        @media screen and (min-width: $small-width) { width: 33.333%; max-width: 33.333%; }
+    }
+    .content-columns {
+        @media screen and (min-width: $small-width) { width: 66.666%; }
+    }
+}
+
+.image-columns.col-33 {
+    .image-col {
+        @media screen and (min-width: $small-width) { width: 66.666%; max-width: 66.666%; }
+    }
+    .content-columns {
+        @media screen and (min-width: $small-width) { width: 33.333%; }
+    }
+}
+
+.image-columns.col-60 {
+    .image-col {
+        @media screen and (min-width: $small-width) { width: 40%; max-width: 40%; }
+    }
+    .content-columns {
+        @media screen and (min-width: $small-width) { width: 60%; }
+    }
+}
+
+.image-columns.col-40 {
+    .image-col {
+        @media screen and (min-width: $small-width) { width: 60%; max-width: 60%; }
+    }
+    .content-columns {
+        @media screen and (min-width: $small-width) { width: 40%; }
+    }
+}
+
+// ---- Image right alignment ----
+.image-columns.img-right .image-col {
+    order: 1;
+
+    @media screen and (min-width: $small-width) {
+        order: 2;
+    }
+}
+
+.image-columns.img-right .content-columns {
+    order: 2;
+    margin-top: 25px;
+
+    @media screen and (min-width: $small-width) {
+        order: 1;
+        padding-left: 0;
+        padding-right: 2.5rem;
+        margin-top: 0;
+    }
+}
+
+// ---- Drop shadow ----
+.image-columns.no-ds .image-col {
+    box-shadow: none;
+}
+
+.image-columns.img-right.no-ds .content-columns {
+    @media screen and (min-width: $small-width) {
+        padding-left: 1.25rem;
+    }
+}
+
+// ---- Video ----
+.image-columns video {
+    max-width: 100%;
+    display: block;
+    height: auto;
+    width: 100%;
+    border-radius: $default-border-radius;
+}
+
+.custom-video-button {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 50px;
+    height: 50px;
+    text-indent: -10000px;
+    border-radius: 0;
+    border: none;
+    z-index: 2;
+    transform: translate(-50%, -50%);
+    cursor: pointer;
+
+    @media screen and (min-width: $small-width) {
+        width: 100px;
+        height: 100px;
+    }
+}
+
+.playing .custom-video-button {
+    display: none;
+}
+
+// ---- Buttons spacing ----
+.image-columns .wp-block-buttons {
+    margin-top: 25px;
+
+    @media screen and (min-width: $small-width) {
+        margin-top: 40px;
+    }
+}
+
+// ---- Background color slug classes ----
+.image-columns.eggshell.with-bg { background-color: $eggshell; }
+.image-columns.gray.with-bg { background-color: $gray; }
+.image-columns.navy.with-bg { background-color: $navy; }
+.image-columns.red.with-bg { background-color: $red; }
+.image-columns.white.with-bg { background-color: $white; }

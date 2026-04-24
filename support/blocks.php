@@ -214,6 +214,11 @@ function red_egg_register_blocks() {
     register_block_type( 'red-egg-block/hero', [
         'editor_script' => 'red-egg-editor-blocks',
     ] );
+
+    // Image & Text Columns (child of Columns Group)
+    register_block_type( 'red-egg-block/image-text', [
+        'editor_script' => 'red-egg-editor-blocks',
+    ] );
 }
 add_action( 'init', 'red_egg_register_blocks' );
 
