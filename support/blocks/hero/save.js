@@ -3,14 +3,14 @@
  */
 
 const { Fragment } = wp.element;
-const { RichText, InnerBlocks, useBlockProps } = wp.blockEditor;
+const { InnerBlocks, useBlockProps } = wp.blockEditor;
 
 import PaddingSelector from '../../components/Padding.js';
 import MarginSelector from '../../components/Margin.js';
 
 const SaveHero = ( { attributes } ) => {
     const {
-        image, title, vidOrImg, videoID, videoURL,
+        image, vidOrImg, videoID, videoURL,
         overlay, padding, margin, blockId,
     } = attributes;
 
@@ -44,31 +44,19 @@ const SaveHero = ( { attributes } ) => {
             <PaddingSelector.View padding={ padding } id={ blockId } />
             <MarginSelector.View margin={ margin } id={ blockId } />
             <div { ...blockProps }>
+                <div className="hero-block-image">
+                    { image.url && vidOrImg === 'image' && (
+                        <div className="hero-block-image-wrap" style={ bgStyle }></div>
+                    ) }
+                    { videoID && vidOrImg === 'video' && (
+                        <video className="hero-asset" autoPlay playsInline muted loop>
+                            <source src={ videoURL } className="hero-source" type="video/mp4" />
+                        </video>
+                    ) }
+                </div>
+
                 <div className="block-wrapper">
-                    <div className="hero__inner">
-                        <div className="content-wrap">
-                            <div className="hero-block-content">
-                                <div className="hero-block-wrap">
-                                    <RichText.Content
-                                        tagName="h1"
-                                        className="header-title"
-                                        value={ title }
-                                    />
-                                </div>
-                            </div>
-                        </div>
-                        <div className="hero-block-image">
-                            { image.url && vidOrImg === 'image' && (
-                                <div className="hero-block-image-wrap" style={ bgStyle }></div>
-                            ) }
-                            { videoID && vidOrImg === 'video' && (
-                                <video className="hero-asset" autoPlay playsInline muted loop>
-                                    <source src={ videoURL } className="hero-source" type="video/mp4" />
-                                </video>
-                            ) }
-                        </div>
-                    </div>
-                    <div className="hero-block-innerblocks">
+                    <div className="hero__content">
                         <InnerBlocks.Content />
                     </div>
                 </div>

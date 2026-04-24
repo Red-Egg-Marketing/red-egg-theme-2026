@@ -2,13 +2,12 @@
  * Hero Block – Edit Component
  *
  * Full-bleed background image or video.
- * RichText h1 for the hero title.
- * InnerBlocks for the header-intro block that overlaps
- * the bottom edge of the hero.
+ * All content via InnerBlocks — heading, paragraph,
+ * buttons, whatever the page needs.
  */
 
 const { Fragment, useEffect } = wp.element;
-const { RichText, InnerBlocks, InspectorControls, MediaUpload, useBlockProps } = wp.blockEditor;
+const { InnerBlocks, InspectorControls, MediaUpload, useBlockProps } = wp.blockEditor;
 const { PanelBody, SelectControl, ToggleControl, Button } = wp.components;
 const { __ } = wp.i18n;
 
@@ -16,8 +15,20 @@ import BackgroundSelector from '../../components/BackgroundSelector.js';
 import PaddingSelector from '../../components/Padding.js';
 import MarginSelector from '../../components/Margin.js';
 
-const innerTemplate = [
-    [ 'red-egg-block/header-intro', {} ],
+const defaultTemplate = [
+    [ 'core/heading', { level: 1, placeholder: 'Page Title...', className: 'hero__title' } ],
+    [ 'core/buttons', {}, [
+        [ 'core/button', { text: 'LEARN MORE', className: 'is-style-outline-white' } ],
+    ] ],
+];
+
+const allowedBlocks = [
+    'core/heading',
+    'core/paragraph',
+    'core/buttons',
+    'core/image',
+    'core/spacer',
+    'core/list',
 ];
 
 const VidImg = [
@@ -27,7 +38,7 @@ const VidImg = [
 
 const EditHero = ( { attributes, setAttributes, clientId } ) => {
     const {
-        image, title, vidOrImg, videoID, videoURL,
+        image, vidOrImg, videoID, videoURL,
         overlay, padding, margin, blockId,
     } = attributes;
 
@@ -126,37 +137,23 @@ const EditHero = ( { attributes, setAttributes, clientId } ) => {
                         ) }
                     />
                 ) }
+
+                <div className="hero-block-image">
+                    { vidOrImg === 'image' && (
+                        <div className="hero-block-image-wrap" style={ bgStyle }></div>
+                    ) }
+                    { videoID && vidOrImg === 'video' && (
+                        <video className="hero-asset" autoPlay playsInline muted loop>
+                            <source src={ videoURL } className="hero-source" type="video/mp4" />
+                        </video>
+                    ) }
+                </div>
+
                 <div className="block-wrapper">
-                    <div className="hero__inner">
-                        <div className="content-wrap">
-                            <div className="hero-block-content">
-                                <div className="hero-block-wrap">
-                                    <RichText
-                                        tagName="h1"
-                                        className="header-title"
-                                        value={ title }
-                                        onChange={ ( val ) => setAttributes( { title: val } ) }
-                                        placeholder={ __( 'Page Title...', 'red-egg' ) }
-                                        allowedFormats={ [ 'core/italic' ] }
-                                    />
-                                </div>
-                            </div>
-                        </div>
-                        <div className="hero-block-image">
-                            { vidOrImg === 'image' && (
-                                <div className="hero-block-image-wrap" style={ bgStyle }></div>
-                            ) }
-                            { videoID && vidOrImg === 'video' && (
-                                <video className="hero-asset" autoPlay playsInline muted loop>
-                                    <source src={ videoURL } className="hero-source" type="video/mp4" />
-                                </video>
-                            ) }
-                        </div>
-                    </div>
-                    <div className="hero-block-innerblocks">
+                    <div className="hero__content">
                         <InnerBlocks
-                            template={ innerTemplate }
-                            allowedBlocks={ [ 'red-egg-block/header-intro' ] }
+                            template={ defaultTemplate }
+                            allowedBlocks={ allowedBlocks }
                         />
                     </div>
                 </div>

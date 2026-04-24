@@ -1,9 +1,9 @@
 /**
  * Hero Block (Inner Pages)
  *
- * Full-bleed background image or video with overlay,
- * InnerBlocks for heading content, and a header-intro
- * block overlapping the bottom edge.
+ * Full-bleed background image or video with overlay.
+ * All content via InnerBlocks (heading, paragraph, buttons).
+ * Left-aligned text by default.
  *
  *    ____          _   _____              
  *   |  _ \ ___  __| | | ____|__ _  __ _   
@@ -21,7 +21,7 @@ import save from './save';
 registerBlockType( 'red-egg-block/hero', {
     apiVersion: 2,
     title: __( 'Hero', 'red-egg' ),
-    description: __( 'Inner page hero with background image or video, heading, and overlapping header-intro section.', 'red-egg' ),
+    description: __( 'Inner page hero with background image or video and flexible content via InnerBlocks.', 'red-egg' ),
     icon: 'id',
     category: 'layout',
     keywords: [ __( 'hero', 'red-egg' ), __( 'banner', 'red-egg' ), __( 'page', 'red-egg' ) ],
@@ -51,10 +51,6 @@ registerBlockType( 'red-egg-block/hero', {
         overlay: {
             type: 'boolean',
             default: false,
-        },
-        title: {
-            type: 'string',
-            default: '',
         },
         padding: {
             type: 'object',
