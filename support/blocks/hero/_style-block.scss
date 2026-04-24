@@ -102,28 +102,6 @@
     margin-top: 1rem;
 }
 
-.hero .wp-block-button__link {
-    // White outline button style for hero
-    &.is-style-outline-white,
-    .is-style-outline-white & {
-        background: transparent;
-        border: 1px solid $white;
-        color: $white;
-        border-radius: $button-border-radius;
-        font-family: $font-head;
-        font-weight: 500;
-        font-size: 17px;
-        letter-spacing: 0.34px;
-        padding: 15px 30px 15px 35px;
-        transition: background-color 0.3s ease, color 0.3s ease;
-
-        &:hover {
-            background-color: $white;
-            color: $gray;
-        }
-    }
-}
-
 // ---- Video upload button in editor ----
 .hero__video-upload {
     position: absolute;

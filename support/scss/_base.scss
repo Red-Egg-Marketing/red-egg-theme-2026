@@ -79,3 +79,83 @@ ul, ol {
     white-space: nowrap;
     border: 0;
 }
+
+// ---- Core Button Block Styles ----
+// Outline buttons with CSS arrow (::after pseudo-element)
+// Registered as block styles via JS
+
+// Shared arrow mixin for button styles
+@mixin button-arrow( $color ) {
+    &::after {
+        content: '';
+        display: inline-block;
+        width: 12px;
+        height: 12px;
+        border-right: 2px solid $color;
+        border-top: 2px solid $color;
+        transform: rotate(45deg);
+        margin-left: 8px;
+        transition: border-color 0.3s ease;
+
+        @media screen and (min-width: $small-width) {
+            width: 14px;
+            height: 14px;
+        }
+    }
+}
+
+// Gray outline button with arrow
+.wp-block-button.is-style-outline-gray .wp-block-button__link,
+.editor-styles-wrapper .wp-block-button.is-style-outline-gray .wp-block-button__link {
+    display: inline-flex;
+    align-items: center;
+    background: transparent;
+    border: 1px solid $gray;
+    border-radius: $button-border-radius;
+    color: $gray;
+    font-family: $font-head;
+    font-weight: 500;
+    font-size: 17px;
+    letter-spacing: 0.34px;
+    padding: 15px 30px 15px 35px;
+    text-decoration: none;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    @include button-arrow( $gray );
+
+    &:hover {
+        background-color: $gray;
+        color: $white;
+
+        &::after {
+            border-color: $white;
+        }
+    }
+}
+
+// White outline button with arrow (for dark backgrounds / hero)
+.wp-block-button.is-style-outline-white .wp-block-button__link,
+.editor-styles-wrapper .wp-block-button.is-style-outline-white .wp-block-button__link {
+    display: inline-flex;
+    align-items: center;
+    background: transparent;
+    border: 1px solid $white;
+    border-radius: $button-border-radius;
+    color: $white;
+    font-family: $font-head;
+    font-weight: 500;
+    font-size: 17px;
+    letter-spacing: 0.34px;
+    padding: 15px 30px 15px 35px;
+    text-decoration: none;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    @include button-arrow( $white );
+
+    &:hover {
+        background-color: $white;
+        color: $gray;
+
+        &::after {
+            border-color: $gray;
+        }
+    }
+}

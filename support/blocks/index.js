@@ -46,3 +46,18 @@ import './contact-section/index';
 
 // Hero (inner pages)
 import './hero/index';
+
+// ---- Block Style Variations ----
+// Register custom button styles with arrow
+
+wp.domReady( () => {
+    wp.blocks.registerBlockStyle( 'core/button', {
+        name: 'outline-gray',
+        label: 'Outline Gray (Arrow)',
+    } );
+
+    wp.blocks.registerBlockStyle( 'core/button', {
+        name: 'outline-white',
+        label: 'Outline White (Arrow)',
+    } );
+} );
