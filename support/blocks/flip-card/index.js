@@ -17,7 +17,7 @@ registerBlockType( 'red-egg-block/flip-card', {
     description: __( 'Card with front/back flip. Front: icon + title. Back: description + link.', 'red-egg' ),
     icon: 'button',
     category: 'layout',
-    parent: [ 'red-egg-block/text-cards-grid' ],
+    parent: [ 'red-egg-block/text-cards-grid', 'red-egg-block/values-section' ],
     keywords: [ __( 'card', 'red-egg' ), __( 'flip', 'red-egg' ), __( 'service', 'red-egg' ) ],
     attributes: {
         icon: {

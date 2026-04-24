@@ -50,6 +50,9 @@ import './hero/index';
 // Image & Text Columns (child of Columns Group)
 import './image-text/index';
 
+// Values Section (navy bg, marquee, value cards)
+import './values-section/index';
+
 // ---- Block Style Variations ----
 // Register custom button styles with arrow
 
