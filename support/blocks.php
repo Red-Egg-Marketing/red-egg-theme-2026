@@ -32,7 +32,7 @@ function red_egg_enqueue_block_editor_assets() {
             'wp-api-request',
             'lodash',
         ],
-        'v1.0.0',
+        'v1.0.1',
         true
     );
 
@@ -40,7 +40,7 @@ function red_egg_enqueue_block_editor_assets() {
         'red-egg-editor-blocks-css',
         get_template_directory_uri() . '/blocks.editor.css',
         [],
-        'v1.0.0'
+        'v1.0.1'
     );
 }
 add_action( 'enqueue_block_editor_assets', 'red_egg_enqueue_block_editor_assets' );
@@ -60,7 +60,7 @@ function red_egg_enqueue_block_frontend_assets() {
                 'wp-element',
                 'wp-api-request',
             ],
-            'v1.0.0',
+            'v1.0.1',
             true
         );
     }
