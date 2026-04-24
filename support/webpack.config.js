@@ -34,6 +34,8 @@ module.exports = ( env, argv ) => {
             lodash: 'lodash',
             react: 'React',
             'react-dom': 'ReactDOM',
+            'swiper/bundle': 'Swiper',
+            'swiper': 'Swiper',
         },
 
         module: {

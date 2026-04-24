@@ -24,8 +24,5 @@
     "sass-loader": "^13.3.2",
     "webpack": "^5.90.0",
     "webpack-cli": "^5.1.4"
-  },
-  "dependencies": {
-    "swiper": "^11.1.0"
   }
 }

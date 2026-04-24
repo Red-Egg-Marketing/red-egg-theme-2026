@@ -13,9 +13,6 @@
  *                            |___/ |___/   
  */
 
-// Vendor CSS
-import 'swiper/css';
-
 // Block 5: Case Studies Slider – frontend interactivity
 import './blocks/case-studies-slider/frontend';
 

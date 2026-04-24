@@ -114,19 +114,36 @@ function red_egg_theme_scripts() {
         null
     );
 
+    // Swiper CSS (CDN)
+    wp_enqueue_style(
+        'swiper-css',
+        'https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css',
+        [],
+        '11.0.0'
+    );
+
     // Main theme stylesheet (compiled from SCSS)
     wp_enqueue_style(
         'red-egg-style',
         get_stylesheet_uri(),
-        [ 'red-egg-google-fonts' ],
+        [ 'red-egg-google-fonts', 'swiper-css' ],
         'v1.0.0'
+    );
+
+    // Swiper JS (CDN) – exposes global Swiper object
+    wp_enqueue_script(
+        'swiper-js',
+        'https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js',
+        [],
+        '11.0.0',
+        true
     );
 
     // Frontend JS (compiled from support/front-end.js)
     wp_enqueue_script(
         'red-egg-main-js',
-        get_template_directory_uri() . '/js/main.js',
-        [],
+        get_template_directory_uri() . '/support/assets/js/main.js',
+        [ 'swiper-js' ],
         'v1.0.0',
         true
     );
@@ -144,6 +161,21 @@ function red_egg_editor_fonts() {
         'https://fonts.googleapis.com/css2?family=Figtree:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap',
         [],
         null
+    );
+
+    // Swiper for editor preview (case studies slider)
+    wp_enqueue_style(
+        'swiper-css-editor',
+        'https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css',
+        [],
+        '11.0.0'
+    );
+    wp_enqueue_script(
+        'swiper-js-editor',
+        'https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js',
+        [],
+        '11.0.0',
+        true
     );
 }
 add_action( 'enqueue_block_editor_assets', 'red_egg_editor_fonts' );
