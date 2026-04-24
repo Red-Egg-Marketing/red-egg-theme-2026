@@ -1,0 +1,61 @@
+// ========================================
+//  Community Section Block Styles
+//  Block: red-egg-block/community-section
+//
+//  Eggshell background section with header-intro
+//  and image slider.
+// ========================================
+
+.community-section {
+    position: relative;
+    padding-top: $default-section-padding-top;
+    padding-bottom: $default-section-padding-bottom;
+
+    @media screen and (min-width: $small-width) {
+        padding-top: 5rem;
+        padding-bottom: 5rem;
+    }
+
+    > .block-wrapper {
+        @include block-wrapper;
+    }
+
+    // ---- Header intro layout ----
+    // Figma shows label + heading on left, description on right
+    .header-intro-block {
+        margin-bottom: 0;
+    }
+
+    // ---- Image slider overrides ----
+    // Slider can bleed outside the block-wrapper for the edge effect
+    .image-slider {
+        margin-left: -$site-padding-mobile;
+        margin-right: -$site-padding-mobile;
+
+        @media screen and (min-width: $small-width) {
+            margin-left: -$site-padding;
+            margin-right: -$site-padding;
+        }
+
+        // Nav stays within content area
+        .image-slider__nav {
+            margin-right: $site-padding-mobile;
+
+            @media screen and (min-width: $small-width) {
+                margin-right: $site-padding;
+            }
+        }
+    }
+}
+
+// Background color classes
+.community-section.eggshell { background-color: $eggshell; }
+.community-section.gray { background-color: $gray; }
+.community-section.navy { background-color: $navy; }
+.community-section.white { background-color: $white; }
+
+// ---- Full-width in editor ----
+.wp-block.community-section {
+    width: 100%;
+    max-width: 100%;
+}

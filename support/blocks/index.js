@@ -56,6 +56,12 @@ import './values-section/index';
 // Shortcode Section (header-intro + shortcode embed)
 import './shortcode-section/index';
 
+// Community Section (eggshell bg, header-intro + image slider)
+import './community-section/index';
+
+// Image Slider (child of community-section, Swiper-powered)
+import './image-slider/index';
+
 // ---- Block Style Variations ----
 // Register custom button styles with arrow
 

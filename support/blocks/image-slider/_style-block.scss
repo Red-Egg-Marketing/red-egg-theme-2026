@@ -1,0 +1,134 @@
+// ========================================
+//  Image Slider Block Styles
+//  Block: red-egg-block/image-slider
+//
+//  Swiper image slider with rounded corners
+//  and small circular nav buttons.
+// ========================================
+
+.image-slider {
+    position: relative;
+    width: 100%;
+    margin-top: 2rem;
+
+    @media screen and (min-width: $small-width) {
+        margin-top: 3rem;
+    }
+}
+
+// ---- Swiper container ----
+.image-slider__swiper {
+    overflow: hidden;
+}
+
+// ---- Slide images ----
+.image-slider__slide {
+    border-radius: $default-border-radius;
+    overflow: hidden;
+    border: 1px solid $gray;
+
+    img {
+        display: block;
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+        aspect-ratio: 4 / 3;
+    }
+}
+
+// ---- Navigation ----
+.image-slider__nav {
+    display: flex;
+    justify-content: flex-end;
+    gap: 8px;
+    margin-top: 1.25rem;
+    padding-right: 0.5rem;
+}
+
+.image-slider__nav .swiper-button-prev,
+.image-slider__nav .swiper-button-next {
+    position: static;
+    width: 36px;
+    height: 36px;
+    margin: 0;
+    border: 1px solid $gray;
+    border-radius: 50%;
+    background: $white;
+    transition: background-color 0.3s ease;
+
+    &::after {
+        font-size: 12px;
+        color: $gray;
+        transition: color 0.3s ease;
+    }
+
+    &:hover {
+        background-color: $gray;
+
+        &::after {
+            color: $white;
+        }
+    }
+
+    &.swiper-button-disabled {
+        opacity: 0.35;
+    }
+}
+
+// ---- Editor preview ----
+.image-slider__placeholder {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 150px;
+    border: 2px dashed $gray;
+    border-radius: $default-border-radius;
+    opacity: 0.5;
+}
+
+.image-slider__preview {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.image-slider__preview-item {
+    position: relative;
+    width: calc(33.333% - 7px);
+
+    img {
+        display: block;
+        width: 100%;
+        height: auto;
+        border-radius: $default-border-radius;
+        object-fit: cover;
+        aspect-ratio: 4 / 3;
+    }
+}
+
+.image-slider__remove {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    width: 24px;
+    height: 24px;
+    padding: 0;
+    line-height: 24px;
+    text-align: center;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.6);
+    color: $white;
+    font-size: 16px;
+    cursor: pointer;
+    border: none;
+
+    &:hover {
+        background: rgba(0, 0, 0, 0.8);
+    }
+}
+
+// ---- Full-width in editor ----
+.wp-block.image-slider {
+    width: 100%;
+    max-width: 100%;
+}

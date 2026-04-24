@@ -25,3 +25,6 @@ import './blocks/insights/frontend';
 
 // Custom video play/pause controls
 import './js/video';
+
+// Image Slider – Swiper initialization
+import './blocks/image-slider/frontend';

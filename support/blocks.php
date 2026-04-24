@@ -229,6 +229,16 @@ function red_egg_register_blocks() {
     register_block_type( 'red-egg-block/shortcode-section', [
         'editor_script' => 'red-egg-editor-blocks',
     ] );
+
+    // Community Section (eggshell bg, header-intro + image slider)
+    register_block_type( 'red-egg-block/community-section', [
+        'editor_script' => 'red-egg-editor-blocks',
+    ] );
+
+    // Image Slider (child of community-section)
+    register_block_type( 'red-egg-block/image-slider', [
+        'editor_script' => 'red-egg-editor-blocks',
+    ] );
 }
 add_action( 'init', 'red_egg_register_blocks' );
 
