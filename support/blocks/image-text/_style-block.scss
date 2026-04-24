@@ -219,18 +219,24 @@
     position: absolute;
     top: 50%;
     left: 50%;
-    width: 50px;
-    height: 50px;
+    width: 60px;
+    height: 60px;
+    background: url('../../img/video-button.svg') no-repeat center center / 100%;
     text-indent: -10000px;
     border-radius: 0;
     border: none;
     z-index: 2;
     transform: translate(-50%, -50%);
     cursor: pointer;
+    transition: opacity 0.3s ease;
 
     @media screen and (min-width: $small-width) {
-        width: 100px;
-        height: 100px;
+        width: 82px;
+        height: 82px;
+    }
+
+    &:hover {
+        opacity: 0.9;
     }
 }
 

@@ -20,3 +20,8 @@ import './blocks/case-studies-slider/frontend';
 
 // Block 7: Insights – frontend interactivity
 import './blocks/insights/frontend';
+
+// ---- Global Scripts ----
+
+// Custom video play/pause controls
+import './js/video';
