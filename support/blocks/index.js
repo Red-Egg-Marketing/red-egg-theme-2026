@@ -53,6 +53,9 @@ import './image-text/index';
 // Values Section (navy bg, marquee, value cards)
 import './values-section/index';
 
+// Shortcode Section (header-intro + shortcode embed)
+import './shortcode-section/index';
+
 // ---- Block Style Variations ----
 // Register custom button styles with arrow
 

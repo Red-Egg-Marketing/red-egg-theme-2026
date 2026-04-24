@@ -1,0 +1,48 @@
+// ========================================
+//  Shortcode Section Block Styles
+//  Block: red-egg-block/shortcode-section
+//
+//  Header intro + shortcode embed area.
+//  Used for team grids, review widgets, etc.
+// ========================================
+
+.wp-block.shortcode-section {
+    width: 100%;
+    max-width: 100%;
+}
+
+.shortcode-section {
+    width: 100%;
+    padding-top: $default-section-padding-top;
+    padding-bottom: $default-section-padding-bottom;
+
+    @media screen and (min-width: $small-width) {
+        padding-top: 5rem;
+        padding-bottom: 5rem;
+    }
+}
+
+.shortcode-section > .block-wrapper {
+    @include block-wrapper;
+}
+
+.shortcode-section .header-intro-block {
+    padding-bottom: 0.75rem;
+    margin-bottom: 1.5rem;
+
+    @media screen and (min-width: $small-width) {
+        padding-bottom: 1rem;
+        margin-bottom: 2rem;
+    }
+
+    h3 {
+        margin-top: 0;
+    }
+}
+
+// Background color slug classes
+.shortcode-section.eggshell.with-bg { background-color: $eggshell; }
+.shortcode-section.gray.with-bg { background-color: $gray; }
+.shortcode-section.navy.with-bg { background-color: $navy; }
+.shortcode-section.red.with-bg { background-color: $red; }
+.shortcode-section.white.with-bg { background-color: $white; }

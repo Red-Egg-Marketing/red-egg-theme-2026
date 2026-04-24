@@ -224,6 +224,11 @@ function red_egg_register_blocks() {
     register_block_type( 'red-egg-block/values-section', [
         'editor_script' => 'red-egg-editor-blocks',
     ] );
+
+    // Shortcode Section (header-intro + shortcode embed)
+    register_block_type( 'red-egg-block/shortcode-section', [
+        'editor_script' => 'red-egg-editor-blocks',
+    ] );
 }
 add_action( 'init', 'red_egg_register_blocks' );
 
