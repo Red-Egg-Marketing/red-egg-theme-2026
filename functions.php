@@ -114,6 +114,14 @@ function red_egg_theme_scripts() {
         null
     );
 
+    // Font Awesome Pro Kit
+    wp_enqueue_script(
+        'red-egg-font-awesome',
+        'https://kit.fontawesome.com/9524d9c097.js',
+        [],
+        false
+    );
+
     // Swiper CSS (CDN)
     wp_enqueue_style(
         'swiper-css',
@@ -174,6 +182,14 @@ function red_egg_editor_fonts() {
         get_template_directory_uri() . '/blocks.editor.css',
         [ 'red-egg-google-fonts-editor' ],
         file_exists( $editor_css ) ? filemtime( $editor_css ) : false
+    );
+
+    // Font Awesome Pro Kit (editor)
+    wp_enqueue_script(
+        'red-egg-font-awesome-editor',
+        'https://kit.fontawesome.com/9524d9c097.js',
+        [],
+        false
     );
 
     // Swiper for editor preview (case studies slider)

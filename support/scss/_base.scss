@@ -85,7 +85,7 @@ ul, ol {
 // Hover: arrow rotates 45deg downward, no color/bg change
 // Registered as block styles via JS
 
-// Shared outline button base (no arrow — added per-variant)
+// Shared outline button base
 @mixin outline-button-base( $color ) {
     display: inline-flex;
     align-items: center;
@@ -104,13 +104,12 @@ ul, ol {
     transition: none;
 
     &::after {
-        content: '';
+        // FA Pro Light: arrow-right (Unicode f061)
+        content: '\f061';
+        font-family: 'Font Awesome 6 Pro';
+        font-weight: 300;
+        font-size: 16px;
         display: inline-block;
-        width: 16px;
-        height: 16px;
-        background-size: contain;
-        background-repeat: no-repeat;
-        background-position: center;
         transition: transform 0.3s ease;
     }
 
@@ -124,26 +123,14 @@ ul, ol {
     }
 }
 
-// FA arrow-right light-style SVG data URIs (thin stroke, not solid fill)
-$arrow-gray: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 448 512'%3E%3Cpath fill='none' stroke='%23424042' stroke-width='28' stroke-linecap='round' stroke-linejoin='round' d='M32 256h384m-160-160l160 160-160 160'/%3E%3C/svg%3E");
-$arrow-white: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 448 512'%3E%3Cpath fill='none' stroke='%23FFFFFF' stroke-width='28' stroke-linecap='round' stroke-linejoin='round' d='M32 256h384m-160-160l160 160-160 160'/%3E%3C/svg%3E");
-
 // Gray outline button with arrow
 .wp-block-button.is-style-outline-gray .wp-block-button__link,
 .editor-styles-wrapper .wp-block-button.is-style-outline-gray .wp-block-button__link {
     @include outline-button-base( $gray );
-
-    &::after {
-        background-image: $arrow-gray;
-    }
 }
 
 // White outline button with arrow (for dark backgrounds / hero)
 .wp-block-button.is-style-outline-white .wp-block-button__link,
 .editor-styles-wrapper .wp-block-button.is-style-outline-white .wp-block-button__link {
     @include outline-button-base( $white );
-
-    &::after {
-        background-image: $arrow-white;
-    }
 }
