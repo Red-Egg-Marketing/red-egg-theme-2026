@@ -163,6 +163,14 @@ function red_egg_editor_fonts() {
         null
     );
 
+    // Block editor styles (compiled from editor.scss)
+    wp_enqueue_style(
+        'red-egg-blocks-editor-css',
+        get_template_directory_uri() . '/blocks.editor.css',
+        [ 'red-egg-google-fonts-editor' ],
+        'v1.0.0'
+    );
+
     // Swiper for editor preview (case studies slider)
     wp_enqueue_style(
         'swiper-css-editor',
