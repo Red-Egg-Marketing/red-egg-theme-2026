@@ -41,3 +41,8 @@ import './insights/index';
 
 // Block 8: Contact Section
 import './contact-section/index';
+
+// ---- Inner Page Blocks ----
+
+// Hero (inner pages)
+import './hero/index';

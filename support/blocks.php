@@ -203,6 +203,12 @@ function red_egg_register_blocks() {
             ],
         ],
     ] );
+    // ---- Inner Page Blocks ----
+
+    // Hero (inner pages)
+    register_block_type( 'red-egg-block/hero', [
+        'editor_script' => 'red-egg-editor-blocks',
+    ] );
 }
 add_action( 'init', 'red_egg_register_blocks' );
 
