@@ -274,6 +274,11 @@ function red_egg_register_blocks() {
     register_block_type( 'red-egg-block/service-list-item', [
         'editor_script' => 'red-egg-editor-blocks',
     ] );
+
+    // Filter Case Studies (dynamic grid with taxonomy filters)
+    register_block_type( 'red-egg-block/filter-case-studies', [
+        'editor_script' => 'red-egg-editor-blocks',
+    ] );
 }
 add_action( 'init', 'red_egg_register_blocks' );
 

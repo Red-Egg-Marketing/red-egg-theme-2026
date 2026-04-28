@@ -1,0 +1,342 @@
+// ========================================
+//  Filter Case Studies Block Styles
+//  Block: red-egg-block/filter-case-studies
+//
+//  Taxonomy filter dropdowns + card grid.
+//  Cards have hover effect: title slides up,
+//  excerpt reveals below.
+// ========================================
+
+.filter-case-studies {
+    position: relative;
+    padding-top: $default-section-padding-top;
+    padding-bottom: $default-section-padding-bottom;
+
+    @media screen and (min-width: $small-width) {
+        padding-top: 5rem;
+        padding-bottom: 5rem;
+    }
+
+    > .block-wrapper {
+        @include block-wrapper;
+    }
+}
+
+// ---- Filter bar ----
+.filter-case-studies__filters {
+    margin-bottom: 2rem;
+
+    @media screen and (min-width: $small-width) {
+        margin-bottom: 2.5rem;
+    }
+}
+
+.filter-case-studies .form-filters {
+    display: flex;
+    flex-wrap: wrap;
+    background: none;
+    padding: 0;
+    margin: 0;
+}
+
+.filter-case-studies .form-filters .wrapper.filter-items {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    width: 100%;
+    justify-content: flex-start;
+}
+
+.filter-case-studies .filter-block {
+    position: relative;
+}
+
+.filter-case-studies .tax-filter-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    border: 1px solid $gray;
+    border-radius: $button-border-radius;
+    background: transparent;
+    color: $gray;
+    font-family: $font-head;
+    font-weight: 600;
+    font-size: 0.8125rem;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    padding: 0.5rem 1.25rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+
+    &:hover {
+        background-color: $gray;
+        color: $white;
+    }
+
+    .filt-plus {
+        font-weight: 400;
+        font-size: 1rem;
+    }
+}
+
+.filter-case-studies .tax-cont {
+    display: none;
+}
+
+.filter-case-studies .filter-block.active {
+    position: relative;
+}
+
+.filter-case-studies .filter-block.active .tax-cont {
+    display: block;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 998;
+    min-width: 280px;
+    max-width: 400px;
+    background: $white;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.1);
+    border-radius: $default-border-radius;
+    margin-top: 8px;
+
+    &::before {
+        content: '';
+        position: absolute;
+        top: -6px;
+        left: 20px;
+        border-bottom: solid 7px $white;
+        border-left: solid 6px transparent;
+        border-right: solid 6px transparent;
+    }
+}
+
+.filter-case-studies .tax-wrapper {
+    position: relative;
+}
+
+.filter-case-studies .tax-close {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+    background: none;
+    border: none;
+    font-size: 18px;
+    color: $gray;
+    opacity: 0.5;
+    cursor: pointer;
+    padding: 0;
+    line-height: 1;
+
+    @media screen and (min-width: $small-width) {
+        display: none;
+    }
+}
+
+.filter-case-studies ul.tax-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    list-style: none;
+    margin: 0;
+    padding: 1.25rem 1.5rem;
+}
+
+.filter-case-studies ul.tax-list li.tax-item {
+    margin: 0;
+    padding: 0;
+
+    &::before {
+        display: none;
+    }
+}
+
+.filter-case-studies ul.tax-list .tax-wrap {
+    position: relative;
+    padding-left: 1.75rem;
+}
+
+.filter-case-studies ul.tax-list .tax-wrap::before {
+    content: '';
+    position: absolute;
+    top: 2px;
+    left: 0;
+    width: 18px;
+    height: 18px;
+    background: $white;
+    border: 1px solid $gray;
+    border-radius: 3px;
+}
+
+.filter-case-studies ul.tax-list .checkbox-component {
+    width: 18px;
+    height: 18px;
+    opacity: 0;
+    position: absolute;
+    top: 2px;
+    left: 0;
+    z-index: 3;
+    cursor: pointer;
+}
+
+.filter-case-studies ul.tax-list .checkbox-component:checked + label::after {
+    content: '';
+    position: absolute;
+    top: 5px;
+    left: 3px;
+    width: 12px;
+    height: 12px;
+    background: $red;
+    border-radius: 2px;
+}
+
+.filter-case-studies ul.tax-list label {
+    font-family: $font-body;
+    font-size: 0.875rem;
+    color: $gray;
+    cursor: pointer;
+    position: relative;
+}
+
+// ---- Card grid ----
+.filter-case-studies__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+
+    @media screen and (min-width: $small-width) {
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 2rem;
+    }
+}
+
+// ---- Case Study Card ----
+.cs-card {
+    border-radius: $default-border-radius;
+    overflow: hidden;
+    background: $white;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+    transition: box-shadow 0.3s ease, transform 0.2s ease;
+
+    &:hover {
+        box-shadow: 0 6px 24px rgba(0, 0, 0, 0.1);
+        transform: translateY(-2px);
+    }
+}
+
+.cs-card__link {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+}
+
+.cs-card__image {
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+
+    img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.4s ease;
+    }
+}
+
+.cs-card:hover .cs-card__image img {
+    transform: scale(1.03);
+}
+
+.cs-card__content {
+    padding: 1.25rem 1.5rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.cs-card__title {
+    font-family: $font-head;
+    font-weight: 600;
+    font-size: 1rem;
+    line-height: 1.4;
+    color: $gray;
+    margin: 0;
+    transition: transform 0.3s ease;
+
+    @media screen and (min-width: $small-width) {
+        font-size: 1.125rem;
+    }
+}
+
+.cs-card__excerpt {
+    font-family: $font-body;
+    font-size: 0.875rem;
+    line-height: 1.5;
+    color: $gray;
+    margin: 0.5rem 0 0 0;
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease, opacity 0.3s ease;
+}
+
+// Hover reveal: title slides up, excerpt fades in
+.cs-card:hover .cs-card__title {
+    transform: translateY(-2px);
+}
+
+.cs-card:hover .cs-card__excerpt {
+    max-height: 100px;
+    opacity: 1;
+}
+
+// ---- Empty / Loading states ----
+.filter-case-studies__empty,
+.filter-case-studies__loading {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 3rem;
+
+    h3, p {
+        font-family: $font-head;
+        color: $gray;
+        opacity: 0.6;
+    }
+}
+
+// ---- Editor: grid preview ----
+.wp-block.filter-case-studies {
+    width: 100%;
+    max-width: 100%;
+}
+
+// Editor grid uses ResourceCard from edit.js
+.wp-block.filter-case-studies .filter-case-studies__grid {
+    .resource-card {
+        .cont-wrap {
+            border: 1px solid rgba(0, 0, 0, 0.08);
+            border-radius: $default-border-radius;
+            overflow: hidden;
+        }
+
+        .image-cont {
+            aspect-ratio: 4 / 3;
+            overflow: hidden;
+
+            img {
+                display: block;
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+        }
+
+        .content {
+            padding: 1.25rem 1.5rem;
+        }
+
+        .resource-title {
+            font-size: 1rem;
+            margin: 0;
+        }
+    }
+}

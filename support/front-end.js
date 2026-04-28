@@ -31,3 +31,6 @@ import './blocks/image-slider/frontend';
 
 // Awards Section – Swiper initialization
 import './blocks/awards-section/frontend';
+
+// Filter Case Studies – frontend interactivity
+import './blocks/filter-case-studies/frontend';

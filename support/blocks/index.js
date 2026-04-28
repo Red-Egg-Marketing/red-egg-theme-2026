@@ -83,6 +83,9 @@ import './service-list/index';
 // Service List Item (child: dark bar with title, arrow, description)
 import './service-list-item/index';
 
+// Filter Case Studies (dynamic grid with taxonomy filters)
+import './filter-case-studies/index';
+
 // ---- Block Style Variations ----
 // Register custom button styles with arrow
 
