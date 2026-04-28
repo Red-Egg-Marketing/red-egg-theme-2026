@@ -24,6 +24,12 @@ import './text-cards-grid/index';
 // Block 3b: Header Intro (reusable section header)
 import './header-intro/index';
 
+// Block 3b-i: Header Intro Left (child: label + heading)
+import './header-intro-left/index';
+
+// Block 3b-ii: Header Intro Right (child: description + buttons)
+import './header-intro-right/index';
+
 // Block 3c: Flip Card (child of Text Cards Grid)
 import './flip-card/index';
 

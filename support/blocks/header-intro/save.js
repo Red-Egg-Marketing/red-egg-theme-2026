@@ -1,5 +1,7 @@
 /**
  * Header Intro Block – Save Component
+ *
+ * Two-column layout with left/right child blocks.
  */
 
 const { Fragment } = wp.element;
@@ -52,7 +54,9 @@ const SaveHeaderIntro = ( { attributes } ) => {
             <MarginSelector.View margin={ margin } id={ blockId } />
             <div { ...blockProps }>
                 <div className="block-wrapper">
-                    <InnerBlocks.Content />
+                    <div className="header-intro__columns">
+                        <InnerBlocks.Content />
+                    </div>
                 </div>
             </div>
         </Fragment>

@@ -1,11 +1,12 @@
 /**
  * Header Intro Block – Edit Component
  *
- * InnerBlocks for heading + paragraph content.
+ * Two-column layout: left (label + heading) and right (description).
+ * Uses locked child blocks to prevent client reordering.
  * InspectorControls for background image, color, overlay, padding, margin.
  */
 
-const { Fragment } = wp.element;
+const { Fragment, useEffect } = wp.element;
 const { InnerBlocks, InspectorControls, useBlockProps } = wp.blockEditor;
 const { PanelBody, ToggleControl } = wp.components;
 const { __ } = wp.i18n;
@@ -16,15 +17,13 @@ import PaddingSelector from '../../components/Padding.js';
 import MarginSelector from '../../components/Margin.js';
 
 const template = [
-    [ 'core/heading', { level: 2, className: 'header-title' } ],
-    [ 'core/paragraph', { placeholder: 'Intro paragraph...' } ],
+    [ 'red-egg-block/header-intro-left', {} ],
+    [ 'red-egg-block/header-intro-right', {} ],
 ];
 
 const allowedBlocks = [
-    'core/heading',
-    'core/paragraph',
-    'core/list',
-    'core/buttons',
+    'red-egg-block/header-intro-left',
+    'red-egg-block/header-intro-right',
 ];
 
 const EditHeaderIntro = ( { attributes, setAttributes, clientId } ) => {
@@ -103,10 +102,13 @@ const EditHeaderIntro = ( { attributes, setAttributes, clientId } ) => {
 
             <div { ...blockProps }>
                 <div className="block-wrapper">
-                    <InnerBlocks
-                        template={ template }
-                        allowedBlocks={ allowedBlocks }
-                    />
+                    <div className="header-intro__columns">
+                        <InnerBlocks
+                            template={ template }
+                            allowedBlocks={ allowedBlocks }
+                            templateLock="all"
+                        />
+                    </div>
                 </div>
             </div>
         </Fragment>
