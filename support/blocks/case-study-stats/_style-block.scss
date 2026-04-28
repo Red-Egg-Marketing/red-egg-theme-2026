@@ -1,0 +1,121 @@
+// ========================================
+//  Case Study Stats Block Styles
+//  Block: red-egg-block/case-study-stats
+//
+//  Key metrics section: label + 3-column grid
+//  of stat cards with number + description.
+//
+//  Mobile: Figma 402px – stacked or 3-col tight
+//  Desktop: 3-column grid with border-left dividers
+// ========================================
+
+.case-study-stats {
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: $default-border-radius;
+    padding: 2rem 1.5rem;
+    margin-top: 2.5rem;
+
+    @media screen and (min-width: $small-width) {
+        padding: 2.5rem 3rem;
+        margin-top: 3.5rem;
+    }
+}
+
+// ---- Label ----
+.case-study-stats__label {
+    margin-bottom: 1.5rem;
+
+    @media screen and (min-width: $small-width) {
+        margin-bottom: 2rem;
+    }
+
+    span {
+        font-family: $font-head;
+        font-weight: 600;
+        font-size: 0.8125rem;
+        line-height: 1.3;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: $gray;
+    }
+}
+
+// ---- Stats grid ----
+.case-study-stats__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 1.5rem;
+
+    @media screen and (min-width: $small-width) {
+        gap: 0;
+    }
+}
+
+// Editor grid layout
+.case-study-stats__grid > .block-editor-inner-blocks > .block-editor-block-list__layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 1.5rem;
+
+    @media screen and (min-width: $small-width) {
+        gap: 0;
+    }
+}
+
+// ---- Stat Card ----
+.stat-card {
+    @media screen and (min-width: $small-width) {
+        padding-left: 2rem;
+        padding-right: 2rem;
+        border-left: 1px solid rgba(0, 0, 0, 0.1);
+
+        &:first-child {
+            padding-left: 0;
+            border-left: none;
+        }
+
+        &:last-child {
+            padding-right: 0;
+        }
+    }
+
+    h3, .stat-card__number {
+        font-family: $font-head;
+        font-weight: 700;
+        font-size: 1.75rem; // 28px mobile
+        line-height: 1.2;
+        color: $gray;
+        margin: 0 0 0.25rem 0;
+
+        @media screen and (min-width: $small-width) {
+            font-size: 2.5rem; // 40px desktop
+            line-height: 1.15;
+            margin: 0 0 0.5rem 0;
+        }
+    }
+
+    p, .stat-card__desc {
+        font-family: $font-body;
+        font-weight: 300;
+        font-size: 0.9375rem; // 15px mobile
+        line-height: 1.5;
+        color: $gray;
+        margin: 0;
+
+        @media screen and (min-width: $small-width) {
+            font-size: 1rem; // 16px desktop
+        }
+    }
+}
+
+// ---- Editor: full-width ----
+.wp-block.case-study-stats {
+    width: 100%;
+    max-width: 100%;
+}
+
+// Editor child blocks fill grid
+.wp-block[data-type="red-egg-block/stat-card"] {
+    width: 100%;
+    max-width: 100%;
+}

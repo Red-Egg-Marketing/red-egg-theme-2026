@@ -284,6 +284,16 @@ function red_egg_register_blocks() {
     register_block_type( 'red-egg-block/hero-case-study', [
         'editor_script' => 'red-egg-editor-blocks',
     ] );
+
+    // Case Study Stats (key metrics grid)
+    register_block_type( 'red-egg-block/case-study-stats', [
+        'editor_script' => 'red-egg-editor-blocks',
+    ] );
+
+    // Stat Card (child of case-study-stats)
+    register_block_type( 'red-egg-block/stat-card', [
+        'editor_script' => 'red-egg-editor-blocks',
+    ] );
 }
 add_action( 'init', 'red_egg_register_blocks' );
 
