@@ -47,6 +47,10 @@ registerBlockType( 'red-egg-block/awards-section', {
             type: 'number',
             default: 30,
         },
+        withCards: {
+            type: 'boolean',
+            default: false,
+        },
         padding: {
             type: 'object',
             default: {

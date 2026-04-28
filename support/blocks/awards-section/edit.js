@@ -8,7 +8,7 @@
 
 const { Fragment, useEffect } = wp.element;
 const { InnerBlocks, InspectorControls, MediaUpload, useBlockProps } = wp.blockEditor;
-const { PanelBody, Button, RangeControl, TextControl } = wp.components;
+const { PanelBody, Button, RangeControl, TextControl, ToggleControl } = wp.components;
 const { __ } = wp.i18n;
 
 import BackgroundColor from '../../components/BackgroundColor.js';
@@ -26,7 +26,7 @@ const allowedBlocks = [
 ];
 
 const EditAwardsSection = ( { attributes, setAttributes, clientId } ) => {
-    const { bgColor, bgSlug, awards, slidesPerView, spaceBetween, padding, margin, blockId } = attributes;
+    const { bgColor, bgSlug, awards, slidesPerView, spaceBetween, withCards, padding, margin, blockId } = attributes;
 
     useEffect( () => {
         if ( ! blockId ) {
@@ -36,7 +36,7 @@ const EditAwardsSection = ( { attributes, setAttributes, clientId } ) => {
 
     const blockProps = useBlockProps( {
         id: blockId,
-        className: 'awards-section' + ( bgSlug ? ' ' + bgSlug : '' ),
+        className: 'awards-section' + ( bgSlug ? ' ' + bgSlug : '' ) + ( withCards ? ' with-cards' : '' ),
     } );
 
     /**
@@ -101,6 +101,11 @@ const EditAwardsSection = ( { attributes, setAttributes, clientId } ) => {
                         onChange={ ( val ) => setAttributes( { spaceBetween: val } ) }
                         min={ 0 }
                         max={ 60 }
+                    />
+                    <ToggleControl
+                        label={ __( 'Card Style (border around images)', 'red-egg' ) }
+                        checked={ !! withCards }
+                        onChange={ () => setAttributes( { withCards: ! withCards } ) }
                     />
                 </PanelBody>
                 <PanelBody

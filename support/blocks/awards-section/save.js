@@ -13,11 +13,11 @@ import PaddingSelector from '../../components/Padding.js';
 import MarginSelector from '../../components/Margin.js';
 
 const SaveAwardsSection = ( { attributes } ) => {
-    const { bgSlug, awards, slidesPerView, spaceBetween, padding, margin, blockId } = attributes;
+    const { bgSlug, awards, slidesPerView, spaceBetween, withCards, padding, margin, blockId } = attributes;
 
     const blockProps = useBlockProps.save( {
         id: blockId,
-        className: 'awards-section' + ( bgSlug ? ' ' + bgSlug : '' ),
+        className: 'awards-section' + ( bgSlug ? ' ' + bgSlug : '' ) + ( withCards ? ' with-cards' : '' ),
     } );
 
     return (

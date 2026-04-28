@@ -123,6 +123,49 @@
 .awards-section.navy { background-color: $navy; }
 .awards-section.white { background-color: $white; }
 
+// ---- Card style variant ----
+// Wraps each award image in a white rounded card with border
+.awards-section.with-cards {
+
+    .awards-section__award {
+        background: $white;
+        border: 1px solid rgba(0, 0, 0, 0.08);
+        border-radius: 12px;
+        padding: 1.25rem;
+        transition: box-shadow 0.3s ease;
+
+        &:hover {
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+        }
+    }
+
+    .awards-section__award-img {
+        margin-bottom: 0;
+
+        img {
+            max-width: 100%;
+            max-height: 100px;
+
+            @media screen and (min-width: $small-width) {
+                max-height: 120px;
+            }
+        }
+    }
+
+    // Hide captions in card mode (logos only)
+    .awards-section__award-caption {
+        margin-top: 0.5rem;
+    }
+}
+
+// Editor preview card style
+.awards-section.with-cards .awards-section__preview-img {
+    background: $white;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    border-radius: 12px;
+    padding: 1rem;
+}
+
 // Dark background text override
 .awards-section.navy,
 .awards-section.gray {
