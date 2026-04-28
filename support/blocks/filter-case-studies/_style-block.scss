@@ -213,7 +213,7 @@
     border-radius: $default-border-radius;
     overflow: hidden;
     background: $white;
-    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+    border: 1px solid $gray;
     transition: box-shadow 0.3s ease, transform 0.2s ease;
 
     &:hover {
@@ -253,22 +253,20 @@
 
 .cs-card__title {
     font-family: $font-head;
-    font-weight: 600;
-    font-size: 1rem;
-    line-height: 1.4;
+    font-weight: 700;
+    font-size: 1.125rem; // 18px – Figma H3
+    line-height: 1.75rem; // 28px
+    letter-spacing: 0.18px;
     color: $gray;
     margin: 0;
     transition: transform 0.3s ease;
-
-    @media screen and (min-width: $small-width) {
-        font-size: 1.125rem;
-    }
 }
 
 .cs-card__excerpt {
     font-family: $font-body;
-    font-size: 0.875rem;
-    line-height: 1.5;
+    font-weight: 300;
+    font-size: 1.125rem; // 18px – Figma body
+    line-height: 1.75rem; // 28px
     color: $gray;
     margin: 0.5rem 0 0 0;
     max-height: 0;

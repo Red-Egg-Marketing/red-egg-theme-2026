@@ -129,8 +129,8 @@
 
     .awards-section__award {
         background: $white;
-        border: 1px solid rgba(0, 0, 0, 0.08);
-        border-radius: 12px;
+        border: 1px solid $gray;
+        border-radius: $default-border-radius;
         padding: 1.25rem;
         transition: box-shadow 0.3s ease;
 
