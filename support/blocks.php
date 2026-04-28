@@ -279,6 +279,11 @@ function red_egg_register_blocks() {
     register_block_type( 'red-egg-block/filter-case-studies', [
         'editor_script' => 'red-egg-editor-blocks',
     ] );
+
+    // Hero – Case Study (full-width hero with overlay + accent bar)
+    register_block_type( 'red-egg-block/hero-case-study', [
+        'editor_script' => 'red-egg-editor-blocks',
+    ] );
 }
 add_action( 'init', 'red_egg_register_blocks' );
 

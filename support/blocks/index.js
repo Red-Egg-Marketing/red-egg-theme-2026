@@ -86,6 +86,9 @@ import './service-list-item/index';
 // Filter Case Studies (dynamic grid with taxonomy filters)
 import './filter-case-studies/index';
 
+// Hero – Case Study (full-width hero with overlay + accent bar)
+import './hero-case-study/index';
+
 // ---- Block Style Variations ----
 // Register custom button styles with arrow
 
