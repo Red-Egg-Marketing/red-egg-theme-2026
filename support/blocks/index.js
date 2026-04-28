@@ -95,6 +95,9 @@ import './case-study-stats/index';
 // Stat Card (child of case-study-stats)
 import './stat-card/index';
 
+// Case Study Gallery (label + heading + core/gallery)
+import './case-study-gallery/index';
+
 // ---- Block Style Variations ----
 // Register custom button styles with arrow
 

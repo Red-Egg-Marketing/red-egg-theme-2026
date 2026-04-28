@@ -294,6 +294,11 @@ function red_egg_register_blocks() {
     register_block_type( 'red-egg-block/stat-card', [
         'editor_script' => 'red-egg-editor-blocks',
     ] );
+
+    // Case Study Gallery (label + heading + core/gallery)
+    register_block_type( 'red-egg-block/case-study-gallery', [
+        'editor_script' => 'red-egg-editor-blocks',
+    ] );
 }
 add_action( 'init', 'red_egg_register_blocks' );
 
