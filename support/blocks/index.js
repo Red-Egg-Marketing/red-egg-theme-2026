@@ -71,6 +71,12 @@ import './vibe-cta/index';
 // Image & Text Columns (standalone two-column section)
 import './image-text-columns/index';
 
+// Service List (parent: heading + service rows)
+import './service-list/index';
+
+// Service List Item (child: dark bar with title, arrow, description)
+import './service-list-item/index';
+
 // ---- Block Style Variations ----
 // Register custom button styles with arrow
 

@@ -1,0 +1,47 @@
+// ========================================
+//  Service List Block Styles
+//  Block: red-egg-block/service-list
+//
+//  Parent container with heading and repeatable
+//  service-list-item children (dark bars).
+// ========================================
+
+.service-list {
+    position: relative;
+    padding-top: $default-section-padding-top;
+    padding-bottom: $default-section-padding-bottom;
+
+    @media screen and (min-width: $small-width) {
+        padding-top: 5rem;
+        padding-bottom: 5rem;
+    }
+
+    > .block-wrapper {
+        @include block-wrapper;
+    }
+
+    // Heading
+    > .block-wrapper > h2,
+    > .block-wrapper > .wp-block[data-type="core/heading"] h2 {
+        @include primary-h2;
+        margin-bottom: 2rem;
+
+        @media screen and (min-width: $small-width) {
+            margin-bottom: 2.5rem;
+        }
+    }
+}
+
+// Background color classes
+.service-list.eggshell { background-color: $eggshell; }
+.service-list.white { background-color: $white; }
+.service-list.navy {
+    background-color: $navy;
+    > .block-wrapper > h2 { color: $white; }
+}
+
+// ---- Full-width in editor ----
+.wp-block.service-list {
+    width: 100%;
+    max-width: 100%;
+}

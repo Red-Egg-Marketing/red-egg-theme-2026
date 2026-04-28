@@ -254,6 +254,16 @@ function red_egg_register_blocks() {
     register_block_type( 'red-egg-block/image-text-columns', [
         'editor_script' => 'red-egg-editor-blocks',
     ] );
+
+    // Service List (parent: heading + service rows)
+    register_block_type( 'red-egg-block/service-list', [
+        'editor_script' => 'red-egg-editor-blocks',
+    ] );
+
+    // Service List Item (child of service-list)
+    register_block_type( 'red-egg-block/service-list-item', [
+        'editor_script' => 'red-egg-editor-blocks',
+    ] );
 }
 add_action( 'init', 'red_egg_register_blocks' );
 
