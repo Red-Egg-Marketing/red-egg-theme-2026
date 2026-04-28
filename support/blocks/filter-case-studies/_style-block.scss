@@ -55,7 +55,7 @@
     display: inline-flex;
     align-items: center;
     gap: 6px;
-    border: 1px solid $gray;
+    border: 2px solid $gray;
     border-radius: $button-border-radius;
     background: transparent;
     color: $gray;
@@ -64,19 +64,25 @@
     font-size: 0.8125rem;
     letter-spacing: 0.5px;
     text-transform: uppercase;
-    padding: 0.5rem 1.25rem;
+    padding: 0.625rem 1.5rem;
     cursor: pointer;
-    transition: background-color 0.3s ease, color 0.3s ease;
+    transition: border-color 0.3s ease, color 0.3s ease;
 
     &:hover {
-        background-color: $gray;
-        color: $white;
+        border-color: $red;
+        color: $red;
     }
 
     .filt-plus {
         font-weight: 400;
         font-size: 1rem;
     }
+}
+
+// Active filter button: red border + red text
+.filter-case-studies .filter-block.active .tax-filter-button {
+    border-color: $red;
+    color: $red;
 }
 
 .filter-case-studies .tax-cont {
@@ -93,22 +99,13 @@
     top: 100%;
     left: 0;
     z-index: 998;
-    min-width: 280px;
-    max-width: 400px;
+    min-width: 320px;
+    max-width: 450px;
     background: $white;
     box-shadow: 0 4px 24px rgba(0, 0, 0, 0.1);
     border-radius: $default-border-radius;
+    border: 1px solid rgba(0, 0, 0, 0.08);
     margin-top: 8px;
-
-    &::before {
-        content: '';
-        position: absolute;
-        top: -6px;
-        left: 20px;
-        border-bottom: solid 7px $white;
-        border-left: solid 6px transparent;
-        border-right: solid 6px transparent;
-    }
 }
 
 .filter-case-studies .tax-wrapper {
@@ -159,21 +156,21 @@
 .filter-case-studies ul.tax-list .tax-wrap::before {
     content: '';
     position: absolute;
-    top: 2px;
+    top: 1px;
     left: 0;
-    width: 18px;
-    height: 18px;
+    width: 20px;
+    height: 20px;
     background: $white;
-    border: 1px solid $gray;
+    border: 2px solid $gray;
     border-radius: 3px;
 }
 
 .filter-case-studies ul.tax-list .checkbox-component {
-    width: 18px;
-    height: 18px;
+    width: 20px;
+    height: 20px;
     opacity: 0;
     position: absolute;
-    top: 2px;
+    top: 1px;
     left: 0;
     z-index: 3;
     cursor: pointer;
@@ -183,7 +180,7 @@
     content: '';
     position: absolute;
     top: 5px;
-    left: 3px;
+    left: 4px;
     width: 12px;
     height: 12px;
     background: $red;
@@ -192,7 +189,8 @@
 
 .filter-case-studies ul.tax-list label {
     font-family: $font-body;
-    font-size: 0.875rem;
+    font-size: 0.9375rem;
+    line-height: 1.4;
     color: $gray;
     cursor: pointer;
     position: relative;
