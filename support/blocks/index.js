@@ -68,6 +68,9 @@ import './awards-section/index';
 // Vibe CTA (scrolling marquee + CTA buttons)
 import './vibe-cta/index';
 
+// Image & Text Columns (standalone two-column section)
+import './image-text-columns/index';
+
 // ---- Block Style Variations ----
 // Register custom button styles with arrow
 

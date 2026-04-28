@@ -249,6 +249,11 @@ function red_egg_register_blocks() {
     register_block_type( 'red-egg-block/vibe-cta', [
         'editor_script' => 'red-egg-editor-blocks',
     ] );
+
+    // Image & Text Columns (standalone two-column section)
+    register_block_type( 'red-egg-block/image-text-columns', [
+        'editor_script' => 'red-egg-editor-blocks',
+    ] );
 }
 add_action( 'init', 'red_egg_register_blocks' );
 
