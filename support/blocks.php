@@ -244,6 +244,11 @@ function red_egg_register_blocks() {
     register_block_type( 'red-egg-block/awards-section', [
         'editor_script' => 'red-egg-editor-blocks',
     ] );
+
+    // Vibe CTA (scrolling marquee + CTA buttons)
+    register_block_type( 'red-egg-block/vibe-cta', [
+        'editor_script' => 'red-egg-editor-blocks',
+    ] );
 }
 add_action( 'init', 'red_egg_register_blocks' );
 

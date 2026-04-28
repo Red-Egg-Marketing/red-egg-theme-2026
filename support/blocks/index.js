@@ -65,6 +65,9 @@ import './image-slider/index';
 // Awards Section (eggshell bg, header-intro + award badges slider)
 import './awards-section/index';
 
+// Vibe CTA (scrolling marquee + CTA buttons)
+import './vibe-cta/index';
+
 // ---- Block Style Variations ----
 // Register custom button styles with arrow
 

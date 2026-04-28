@@ -1,0 +1,90 @@
+// ========================================
+//  Vibe CTA Block Styles
+//  Block: red-egg-block/vibe-cta
+//
+//  Scrolling marquee "DIG OUR VIBE?" with
+//  centered CTA buttons below.
+//  Reuses marquee-scroll-left keyframes from
+//  values-section.
+// ========================================
+
+.vibe-cta {
+    position: relative;
+    overflow: hidden;
+    padding-top: $default-section-padding-top;
+    padding-bottom: $default-section-padding-bottom;
+
+    @media screen and (min-width: $small-width) {
+        padding-top: 5rem;
+        padding-bottom: 5rem;
+    }
+
+    > .block-wrapper {
+        @include block-wrapper;
+    }
+}
+
+// ---- Scrolling Marquee ----
+.vibe-cta__marquee {
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 1.5rem;
+
+    @media screen and (min-width: $small-width) {
+        margin-bottom: 2rem;
+    }
+}
+
+.vibe-cta__marquee-line {
+    display: flex;
+    white-space: nowrap;
+    animation: marquee-scroll-left 25s linear infinite;
+
+    span {
+        display: inline-block;
+        font-family: $font-head;
+        font-weight: 700;
+        font-size: 2.75rem;
+        line-height: 1.2;
+        color: $purple;
+        padding-right: 0.35em;
+
+        @media screen and (min-width: $small-width) {
+            font-size: 5.5rem;
+        }
+    }
+}
+
+// ---- Buttons area ----
+.vibe-cta__buttons {
+    display: flex;
+    justify-content: center;
+
+    .wp-block-buttons {
+        justify-content: center;
+    }
+}
+
+// ---- Background color classes ----
+.vibe-cta.eggshell { background-color: $eggshell; }
+.vibe-cta.white { background-color: $white; }
+.vibe-cta.navy {
+    background-color: $navy;
+
+    .vibe-cta__marquee-line span {
+        color: rgba($white, 0.3);
+    }
+}
+.vibe-cta.gray {
+    background-color: $gray;
+
+    .vibe-cta__marquee-line span {
+        color: rgba($white, 0.3);
+    }
+}
+
+// ---- Full-width in editor ----
+.wp-block.vibe-cta {
+    width: 100%;
+    max-width: 100%;
+}
