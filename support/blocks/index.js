@@ -98,6 +98,12 @@ import './stat-card/index';
 // Case Study Gallery (label + heading + core/gallery)
 import './case-study-gallery/index';
 
+// Color Palette (label + heading + color swatch grid)
+import './color-palette/index';
+
+// Color Swatch (child of color-palette)
+import './color-swatch/index';
+
 // ---- Block Style Variations ----
 // Register custom button styles with arrow
 

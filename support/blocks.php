@@ -299,6 +299,16 @@ function red_egg_register_blocks() {
     register_block_type( 'red-egg-block/case-study-gallery', [
         'editor_script' => 'red-egg-editor-blocks',
     ] );
+
+    // Color Palette (label + heading + color swatch grid)
+    register_block_type( 'red-egg-block/color-palette', [
+        'editor_script' => 'red-egg-editor-blocks',
+    ] );
+
+    // Color Swatch (child of color-palette)
+    register_block_type( 'red-egg-block/color-swatch', [
+        'editor_script' => 'red-egg-editor-blocks',
+    ] );
 }
 add_action( 'init', 'red_egg_register_blocks' );
 

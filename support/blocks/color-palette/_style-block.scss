@@ -1,0 +1,186 @@
+// ========================================
+//  Color Palette Block Styles
+//  Block: red-egg-block/color-palette
+//
+//  Label + heading + grid of color swatches.
+//  Layout: 2 large on top row, 3 on bottom.
+//  Flexible — more swatches wrap into 3-col grid.
+// ========================================
+
+.color-palette-block {
+    position: relative;
+    padding-top: $default-section-padding-top;
+    padding-bottom: $default-section-padding-bottom;
+
+    @media screen and (min-width: $small-width) {
+        padding-top: 5rem;
+        padding-bottom: 5rem;
+    }
+
+    > .block-wrapper {
+        @include block-wrapper;
+    }
+}
+
+// ---- Label ----
+.color-palette__label,
+p.color-palette__label {
+    font-family: $font-head;
+    font-weight: 500;
+    font-size: 1.0625rem; // 17px – Figma H4 SUP
+    line-height: 1.625rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: $gray;
+    margin: 0 0 0.25rem 0;
+
+    @media screen and (min-width: $small-width) {
+        font-size: 0.875rem;
+        line-height: 1.3;
+        letter-spacing: 1px;
+    }
+}
+
+// ---- Heading ----
+.color-palette-block h2 {
+    @include primary-h2;
+    margin: 0 0 2rem 0;
+
+    @media screen and (min-width: $small-width) {
+        margin: 0 0 2.5rem 0;
+        max-width: 70%;
+    }
+}
+
+// ---- Swatch grid (frontend) ----
+// First 2 swatches: 50/50, rest: 3-col
+.color-palette-block > .block-wrapper {
+
+    // Target the swatches directly after the heading
+    // Uses flex-wrap with specific widths
+    display: block;
+
+    .color-swatch {
+        display: inline-block;
+        vertical-align: top;
+        box-sizing: border-box;
+    }
+
+    // First two swatches: half width (large)
+    .color-swatch:nth-of-type(1),
+    .color-swatch:nth-of-type(2) {
+        width: calc(50% - 0.5rem);
+        margin-right: 1rem;
+        margin-bottom: 1rem;
+
+        .color-swatch__color {
+            height: 160px;
+
+            @media screen and (min-width: $small-width) {
+                height: 220px;
+            }
+        }
+    }
+
+    .color-swatch:nth-of-type(2) {
+        margin-right: 0;
+    }
+
+    // Remaining swatches: third width
+    .color-swatch:nth-of-type(n+3) {
+        width: calc(33.333% - 0.667rem);
+        margin-right: 1rem;
+        margin-bottom: 1rem;
+
+        .color-swatch__color {
+            height: 120px;
+
+            @media screen and (min-width: $small-width) {
+                height: 160px;
+            }
+        }
+    }
+
+    // Remove right margin on last in each row
+    .color-swatch:nth-of-type(2),
+    .color-swatch:nth-of-type(3n+5) {
+        margin-right: 0;
+    }
+}
+
+// ---- Editor: swatch grid ----
+.color-palette-block > .block-wrapper > .block-editor-inner-blocks > .block-editor-block-list__layout {
+
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+
+    // Label + heading take full width
+    > .wp-block[data-type="core/paragraph"],
+    > .wp-block[data-type="core/heading"] {
+        width: 100%;
+        flex-shrink: 0;
+    }
+
+    // First two swatches: half width
+    > .wp-block[data-type="red-egg-block/color-swatch"]:nth-of-type(1),
+    > .wp-block[data-type="red-egg-block/color-swatch"]:nth-of-type(2) {
+        width: calc(50% - 0.5rem);
+
+        .color-swatch__color {
+            height: 200px;
+        }
+    }
+
+    // Remaining swatches: third width
+    > .wp-block[data-type="red-egg-block/color-swatch"]:nth-of-type(n+3) {
+        width: calc(33.333% - 0.667rem);
+
+        .color-swatch__color {
+            height: 140px;
+        }
+    }
+}
+
+// ---- Color Swatch ----
+.color-swatch__color {
+    width: 100%;
+    border-radius: $default-border-radius;
+    transition: box-shadow 0.3s ease;
+}
+
+.color-swatch__label,
+.color-swatch__label-input {
+    font-family: $font-head;
+    font-weight: 500;
+    font-size: 0.8125rem;
+    line-height: 1.3;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: $gray;
+    margin: 0.5rem 0 0 0;
+    display: block;
+}
+
+// Editor input styling
+.color-swatch__label-input {
+    border: none;
+    background: transparent;
+    padding: 0;
+    width: 100%;
+    outline: none;
+
+    &::placeholder {
+        color: rgba($gray, 0.4);
+    }
+}
+
+// ---- Full-width in editor ----
+.wp-block.color-palette-block {
+    width: 100%;
+    max-width: 100%;
+}
+
+.wp-block[data-type="red-egg-block/color-swatch"] {
+    max-width: 100%;
+}
