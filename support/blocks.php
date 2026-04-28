@@ -239,6 +239,11 @@ function red_egg_register_blocks() {
     register_block_type( 'red-egg-block/image-slider', [
         'editor_script' => 'red-egg-editor-blocks',
     ] );
+
+    // Awards Section (eggshell bg, header-intro + award badges slider)
+    register_block_type( 'red-egg-block/awards-section', [
+        'editor_script' => 'red-egg-editor-blocks',
+    ] );
 }
 add_action( 'init', 'red_egg_register_blocks' );
 

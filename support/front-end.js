@@ -28,3 +28,6 @@ import './js/video';
 
 // Image Slider – Swiper initialization
 import './blocks/image-slider/frontend';
+
+// Awards Section – Swiper initialization
+import './blocks/awards-section/frontend';

@@ -1,0 +1,208 @@
+// ========================================
+//  Awards Section Block Styles
+//  Block: red-egg-block/awards-section
+//
+//  Eggshell background section with header-intro
+//  and Swiper slider of award badges with captions.
+// ========================================
+
+.awards-section {
+    position: relative;
+    padding-top: $default-section-padding-top;
+    padding-bottom: $default-section-padding-bottom;
+
+    @media screen and (min-width: $small-width) {
+        padding-top: 5rem;
+        padding-bottom: 5rem;
+    }
+
+    > .block-wrapper {
+        @include block-wrapper;
+    }
+
+    // ---- Header area (InnerBlocks: header-intro) ----
+    .awards-section__header {
+        margin-bottom: 2.5rem;
+
+        @media screen and (min-width: $small-width) {
+            margin-bottom: 3rem;
+        }
+
+        .header-intro-block {
+            margin-bottom: 0;
+        }
+    }
+
+    // ---- Swiper container ----
+    .awards-section__slider-wrap {
+        position: relative;
+    }
+
+    .awards-section__swiper {
+        overflow: hidden;
+    }
+
+    // ---- Individual award slide ----
+    .awards-section__award {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .awards-section__award-img {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 0.75rem;
+
+        img {
+            display: block;
+            width: auto;
+            height: auto;
+            max-width: 150px;
+            max-height: 150px;
+            object-fit: contain;
+        }
+    }
+
+    .awards-section__award-caption {
+        font-family: $font-body;
+        font-size: 0.875rem;
+        line-height: 1.3;
+        color: $gray;
+        margin: 0;
+
+        @media screen and (min-width: $small-width) {
+            font-size: 0.9375rem;
+        }
+    }
+
+    // ---- Navigation ----
+    .awards-section__nav {
+        display: flex;
+        justify-content: flex-end;
+        gap: 8px;
+        margin-top: 1.5rem;
+    }
+
+    .awards-section__nav .swiper-button-prev,
+    .awards-section__nav .swiper-button-next {
+        position: static;
+        width: 36px;
+        height: 36px;
+        margin: 0;
+        border: 1px solid $gray;
+        border-radius: 50%;
+        background: $white;
+        transition: background-color 0.3s ease;
+
+        &::after {
+            font-size: 12px;
+            color: $gray;
+            transition: color 0.3s ease;
+        }
+
+        &:hover {
+            background-color: $gray;
+
+            &::after {
+                color: $white;
+            }
+        }
+
+        &.swiper-button-disabled {
+            opacity: 0.35;
+        }
+    }
+}
+
+// Background color classes
+.awards-section.eggshell { background-color: $eggshell; }
+.awards-section.gray { background-color: $gray; }
+.awards-section.navy { background-color: $navy; }
+.awards-section.white { background-color: $white; }
+
+// Dark background text override
+.awards-section.navy,
+.awards-section.gray {
+    .awards-section__award-caption {
+        color: $white;
+    }
+}
+
+// ---- Editor styles ----
+
+// Placeholder
+.awards-section__placeholder {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 150px;
+    border: 2px dashed $gray;
+    border-radius: $default-border-radius;
+    opacity: 0.5;
+}
+
+// Editor preview grid
+.awards-section__preview {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.awards-section__preview-item {
+    position: relative;
+    width: calc(16.666% - 13px);
+    min-width: 120px;
+    text-align: center;
+
+    .components-text-control__input {
+        text-align: center;
+        font-size: 13px;
+    }
+}
+
+.awards-section__preview-img {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 0.5rem;
+
+    img {
+        display: block;
+        width: auto;
+        height: auto;
+        max-width: 150px;
+        max-height: 150px;
+        object-fit: contain;
+    }
+}
+
+.awards-section__remove {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 24px;
+    height: 24px;
+    padding: 0;
+    line-height: 24px;
+    text-align: center;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.6);
+    color: $white;
+    font-size: 16px;
+    cursor: pointer;
+    border: none;
+
+    &:hover {
+        background: rgba(0, 0, 0, 0.8);
+    }
+}
+
+// ---- Full-width in editor ----
+.wp-block.awards-section {
+    width: 100%;
+    max-width: 100%;
+}

@@ -62,6 +62,9 @@ import './community-section/index';
 // Image Slider (child of community-section, Swiper-powered)
 import './image-slider/index';
 
+// Awards Section (eggshell bg, header-intro + award badges slider)
+import './awards-section/index';
+
 // ---- Block Style Variations ----
 // Register custom button styles with arrow
 
