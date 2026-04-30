@@ -1,6 +1,11 @@
 // ========================================
 //  Numbered List Items Block Styles
 //  Block: red-egg-block/numbered-list
+//         red-egg-block/numbered-list-item
+//
+//  Navy background section with header-intro
+//  at top, then repeatable numbered items below.
+//  Uses NumberBadge component.
 // ========================================
 
 .numbered-list {
@@ -25,119 +30,105 @@
         z-index: 0;
     }
 
-    // ---- Block wrapper – two-column layout ----
     .block-wrapper {
         @include block-wrapper;
         position: relative;
         z-index: 1;
-        display: flex;
-        flex-direction: column;
-        gap: 2.5rem;
+    }
+
+    // ---- Header intro overrides for navy bg ----
+    .header-intro-block {
+        margin-bottom: 3rem;
 
         @media screen and (min-width: $small-width) {
-            flex-direction: row;
-            align-items: flex-start;
-            gap: 4rem;
+            margin-bottom: 4rem;
         }
     }
 
-    // ---- Left column: heading, intro, logo mark ----
-    .numbered-list__left {
-        width: 100%;
+    .header-intro__left {
+        h2 { color: $white; }
 
-        @media screen and (min-width: $small-width) {
-            width: 35%;
-            flex-shrink: 0;
-            position: sticky;
-            top: 6rem;
+        .header-intro__label,
+        p.header-intro__label {
+            color: rgba($white, 0.6);
         }
     }
 
-    .numbered-list__heading {
-        @include primary-h1;
-        color: $white;
-        margin: 0 0 1.25rem 0;
+    .header-intro__right {
+        p { color: $white; }
+    }
+}
+
+// ---- Numbered List Item ----
+.numbered-list__item {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    margin-bottom: 2.5rem;
+
+    @media screen and (min-width: $small-width) {
+        gap: 1.5rem;
+        margin-bottom: 3rem;
     }
 
-    .numbered-list__intro {
-        @include primary-h4;
-        color: $white;
-        margin: 0 0 2rem 0;
+    &:last-child {
+        margin-bottom: 0;
     }
+}
 
-    // Logo mark – references the egg logo SVG/PNG from theme img/
-    .numbered-list__logo-mark {
-        display: none;
+.numbered-list__badge {
+    flex: 0 0 auto;
 
-        @media screen and (min-width: $small-width) {
-            display: block;
-            width: 197px;
-            height: 199px;
-            background-image: url('../img/egg-logo-mark-white.png');
-            background-size: contain;
-            background-repeat: no-repeat;
-            opacity: 0.6;
-            margin-top: 3rem;
-        }
-    }
-
-    // ---- Right column: numbered items ----
-    .numbered-list__right {
-        width: 100%;
-
-        @media screen and (min-width: $small-width) {
-            width: 60%;
-        }
-    }
-
-    // ---- Individual numbered item ----
-    .numbered-list__item {
-        position: relative;
-        padding-left: 0;
-        margin-bottom: 2.5rem;
-
-        @media screen and (min-width: $small-width) {
-            margin-bottom: 3rem;
-        }
-
-        &:last-child {
-            margin-bottom: 0;
-        }
-    }
-
-    // Large faded number
-    .numbered-list__number {
-        display: block;
-        font-family: $font-head;
-        font-weight: 600;
-        font-size: 2.75rem; // 44px mobile
-        line-height: 3.375rem;
+    .number-badge__value,
+    .number-badge__input {
         color: $white;
         opacity: 0.3;
-        margin-bottom: 0.25rem;
+        font-size: 2.75rem; // 44px mobile
+        line-height: 1;
 
         @media screen and (min-width: $small-width) {
             font-size: 5.5rem; // 88px desktop
-            line-height: 6.75rem;
-            margin-bottom: 0.5rem;
         }
     }
 
-    .numbered-list__item-content {
-        position: relative;
+    .number-badge__input {
+        width: 60px;
+
+        @media screen and (min-width: $small-width) {
+            width: 100px;
+        }
+    }
+}
+
+.numbered-list__item-content {
+    flex: 1;
+    min-width: 0;
+    padding-top: 0.5rem;
+
+    @media screen and (min-width: $small-width) {
+        padding-top: 1.5rem;
     }
 
-    .numbered-list__item-title {
+    h3 {
         @include h3-caps;
         color: $white;
         margin: 0 0 0.75rem 0;
     }
 
-    .numbered-list__item-body {
+    p {
         @include body-text;
         color: $white;
         margin: 0;
     }
+}
 
-    // ---- Padding/Margin toggles ----
+// ---- Full-width in editor ----
+.wp-block.numbered-list {
+    width: 100%;
+    max-width: 100%;
+}
+
+.wp-block[data-type="red-egg-block/numbered-list-item"] {
+    width: 100%;
+    max-width: 100%;
 }

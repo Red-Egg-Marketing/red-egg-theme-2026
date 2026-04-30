@@ -42,6 +42,9 @@ import './flip-card/index';
 // Block 4: Numbered List Items
 import './numbered-list/index';
 
+// Numbered List Item (child: badge + title + description)
+import './numbered-list-item/index';
+
 // Block 5: Case Studies Slider
 import './case-studies-slider/index';
 
