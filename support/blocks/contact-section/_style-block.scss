@@ -81,7 +81,8 @@
     }
 
     h2 {
-        @include primary-h2;
+        @include primary-h1;
+        color: $red;
         margin: 0 0 1.5rem 0;
 
         @media screen and (min-width: $small-width) {

@@ -31,9 +31,9 @@
 
     span {
         font-family: $font-head;
-        font-weight: 600;
-        font-size: 0.8125rem;
-        line-height: 1.3;
+        font-weight: 500;
+        font-size: 1.0625rem; // 17px mobile – Figma H4 SUP
+        line-height: 1.625rem;
         letter-spacing: 2px;
         text-transform: uppercase;
         color: $gray;
@@ -97,13 +97,13 @@
     p, .stat-card__desc {
         font-family: $font-body;
         font-weight: 300;
-        font-size: 0.9375rem; // 15px mobile
-        line-height: 1.5;
+        font-size: 1.125rem; // 18px mobile – Figma body
+        line-height: 1.75rem; // 28px
         color: $gray;
         margin: 0;
 
         @media screen and (min-width: $small-width) {
-            font-size: 1rem; // 16px desktop
+            font-size: 1rem; // 16px desktop (tighter in grid)
         }
     }
 }
