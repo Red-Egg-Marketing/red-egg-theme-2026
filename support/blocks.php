@@ -173,60 +173,18 @@ function red_egg_register_blocks() {
     ] );
 
     // ---- 8. Contact Section ----
-    // Uses a render callback to process form shortcodes
     register_block_type( 'red-egg-block/contact-section', [
-        'editor_script'   => 'red-egg-editor-blocks',
-        'render_callback' => 'red_egg_render_contact_section',
-        'attributes'      => [
-            'sectionLabel' => [
-                'type'    => 'string',
-                'default' => 'READY?',
-            ],
-            'heading' => [
-                'type'    => 'string',
-                'default' => "Let's Hatch Some Ideas",
-            ],
-            'email' => [
-                'type'    => 'string',
-                'default' => 'hello@redeggmarketing.com',
-            ],
-            'phone' => [
-                'type'    => 'string',
-                'default' => '720.513.5035',
-            ],
-            'addressLine1' => [
-                'type'    => 'string',
-                'default' => '4045 Pecos Street, Suite 180',
-            ],
-            'addressLine2' => [
-                'type'    => 'string',
-                'default' => 'Denver, CO 80211',
-            ],
-            'formShortcode' => [
-                'type'    => 'string',
-                'default' => '',
-            ],
-            'padding' => [
-                'type'    => 'object',
-                'default' => [
-                    'paddingtop'    => '',
-                    'paddingright'  => '',
-                    'paddingbottom' => '',
-                    'paddingleft'   => '',
-                    'unit'          => 'rem',
-                ],
-            ],
-            'margin' => [
-                'type'    => 'object',
-                'default' => [
-                    'margintop'    => '',
-                    'marginright'  => '',
-                    'marginbottom' => '',
-                    'marginleft'   => '',
-                    'unit'         => 'rem',
-                ],
-            ],
-        ],
+        'editor_script' => 'red-egg-editor-blocks',
+    ] );
+
+    // ---- 8a. Contact Content (child: info, icons, CTAs) ----
+    register_block_type( 'red-egg-block/contact-content', [
+        'editor_script' => 'red-egg-editor-blocks',
+    ] );
+
+    // ---- 8b. Contact Form (child: Gravity Form container) ----
+    register_block_type( 'red-egg-block/contact-form', [
+        'editor_script' => 'red-egg-editor-blocks',
     ] );
     // ---- Inner Page Blocks ----
 

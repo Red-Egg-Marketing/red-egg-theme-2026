@@ -1,15 +1,9 @@
 /**
  * Contact Section Block
- * 
- * Eggshell background section with heading, contact 
- * info (email, phone, address), and a contact form.
- * 
- *    ____          _   _____              
- *   |  _ \ ___  __| | | ____|__ _  __ _   
- *   | |_) / _ \/ _` | |  _| / _` |/ _` |  
- *   |  _ <  __/ (_| | | |__| (_| | (_| |  
- *   |_| \_\___|\__,_| |_____\__, |\__, |  
- *                            |___/ |___/   
+ *
+ * Two-column contact section: left (content, icons, CTAs)
+ * and right (Gravity Form). Background color support.
+ * Uses child blocks for client-proof structure.
  */
 
 const { registerBlockType } = wp.blocks;
@@ -20,38 +14,19 @@ import save from './save';
 registerBlockType( 'red-egg-block/contact-section', {
     apiVersion: 2,
     title: __( 'Contact Section', 'red-egg' ),
-    description: __( 'Contact section with heading, contact info, and form fields on eggshell background.', 'red-egg' ),
+    description: __( 'Two-column contact section with info, icons, and form.', 'red-egg' ),
     icon: 'email',
     category: 'layout',
     keywords: [ __( 'contact', 'red-egg' ), __( 'form', 'red-egg' ), __( 'hatch', 'red-egg' ) ],
+    supports: { anchor: true },
     attributes: {
-        sectionLabel: {
-            type: 'string',
-            default: 'READY?',
-        },
-        heading: {
-            type: 'string',
-            default: "Let's Hatch Some Ideas",
-        },
-        email: {
-            type: 'string',
-            default: 'hello@redeggmarketing.com',
-        },
-        phone: {
-            type: 'string',
-            default: '720.513.5035',
-        },
-        addressLine1: {
-            type: 'string',
-            default: '4045 Pecos Street, Suite 180',
-        },
-        addressLine2: {
-            type: 'string',
-            default: 'Denver, CO 80211',
-        },
-        formShortcode: {
+        bgColor: {
             type: 'string',
             default: '',
+        },
+        bgSlug: {
+            type: 'string',
+            default: 'red',
         },
         padding: {
             type: 'object',
@@ -66,6 +41,9 @@ registerBlockType( 'red-egg-block/contact-section', {
                 margintop: '', marginright: '',
                 marginbottom: '', marginleft: '', unit: 'rem',
             },
+        },
+        blockId: {
+            type: 'string',
         },
     },
     edit,

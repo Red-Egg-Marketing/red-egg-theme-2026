@@ -54,6 +54,12 @@ import './insights/index';
 // Block 8: Contact Section
 import './contact-section/index';
 
+// Contact Content (child: info, icons, CTAs)
+import './contact-content/index';
+
+// Contact Form (child: Gravity Form container)
+import './contact-form/index';
+
 // ---- Inner Page Blocks ----
 
 // Hero (inner pages)
