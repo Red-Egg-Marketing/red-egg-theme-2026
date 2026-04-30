@@ -12,9 +12,15 @@ import MarginSelector from '../../components/Margin.js';
 
 const template = [
     [ 'red-egg-block/header-intro', {} ],
-    [ 'red-egg-block/process-step', { badge: '01', tags: [ 'BRAND POSITIONING', 'COMPETITIVE ANALYSIS', 'BRAND RESEARCH', 'BRAND NAMING' ] } ],
-    [ 'red-egg-block/process-step', { badge: '02', tags: [ 'AUDIENCE INSIGHTS', 'BUYER PERSONAS', 'MESSAGING', 'BRAND ATTRIBUTES', 'BRAND PROMISE', 'VALUE PROPOSITION' ] } ],
-    [ 'red-egg-block/process-step', { badge: '03', tags: [ 'REVIEW CONCEPTS', 'STRATEGIC RATIONALE', 'CLIENT FEEDBACK', 'REFINEMENTS', 'FINAL APPROVAL', 'BRAND DELIVERY' ] } ],
+    [ 'red-egg-block/process-step', { tags: [ 'BRAND POSITIONING', 'COMPETITIVE ANALYSIS', 'BRAND RESEARCH', 'BRAND NAMING' ] }, [
+        [ 'red-egg-block/numbered-list-item', { badge: '01' } ],
+    ] ],
+    [ 'red-egg-block/process-step', { tags: [ 'AUDIENCE INSIGHTS', 'BUYER PERSONAS', 'MESSAGING', 'BRAND ATTRIBUTES', 'BRAND PROMISE', 'VALUE PROPOSITION' ] }, [
+        [ 'red-egg-block/numbered-list-item', { badge: '02' } ],
+    ] ],
+    [ 'red-egg-block/process-step', { tags: [ 'REVIEW CONCEPTS', 'STRATEGIC RATIONALE', 'CLIENT FEEDBACK', 'REFINEMENTS', 'FINAL APPROVAL', 'BRAND DELIVERY' ] }, [
+        [ 'red-egg-block/numbered-list-item', { badge: '03' } ],
+    ] ],
 ];
 
 const allowedBlocks = [

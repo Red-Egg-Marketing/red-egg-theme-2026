@@ -16,7 +16,7 @@ registerBlockType( 'red-egg-block/numbered-list-item', {
     description: __( 'Single numbered item with badge, title, and description.', 'red-egg' ),
     icon: 'editor-ol',
     category: 'layout',
-    parent: [ 'red-egg-block/numbered-list' ],
+    parent: [ 'red-egg-block/numbered-list', 'red-egg-block/process-step' ],
     supports: { anchor: false },
     attributes: {
         badge: {

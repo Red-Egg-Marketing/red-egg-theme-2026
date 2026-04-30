@@ -1,27 +1,25 @@
 /**
  * Process Step – Edit Component
+ *
+ * Uses numbered-list-item for badge + content,
+ * TagCloud for keyword pills on the right.
  */
 
-const { Fragment } = wp.element;
 const { InnerBlocks, useBlockProps } = wp.blockEditor;
 const { __ } = wp.i18n;
 
-import NumberBadge from '../../components/NumberBadge.js';
 import TagCloud from '../../components/TagCloud.js';
 
 const template = [
-    [ 'core/heading', { level: 3, placeholder: 'BRAND DISCOVERY' } ],
-    [ 'core/paragraph', { placeholder: 'Step description...' } ],
+    [ 'red-egg-block/numbered-list-item', {} ],
 ];
 
 const allowedBlocks = [
-    'core/heading',
-    'core/paragraph',
-    'core/list',
+    'red-egg-block/numbered-list-item',
 ];
 
 const EditProcessStep = ( { attributes, setAttributes } ) => {
-    const { badge, tags } = attributes;
+    const { tags } = attributes;
 
     const blockProps = useBlockProps( {
         className: 'process-step',
@@ -30,16 +28,11 @@ const EditProcessStep = ( { attributes, setAttributes } ) => {
     return (
         <div { ...blockProps }>
             <div className="process-step__row">
-                <div className="process-step__badge">
-                    <NumberBadge
-                        value={ badge }
-                        onChange={ ( val ) => setAttributes( { badge: val } ) }
-                    />
-                </div>
                 <div className="process-step__content">
                     <InnerBlocks
                         template={ template }
                         allowedBlocks={ allowedBlocks }
+                        templateLock="all"
                     />
                 </div>
                 <div className="process-step__tags">

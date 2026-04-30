@@ -71,35 +71,26 @@
     }
 }
 
-// ---- Badge column ----
-.process-step__badge {
-    flex: 0 0 auto;
-}
-
-// ---- Content column ----
+// ---- Content column (holds numbered-list-item) ----
 .process-step__content {
     flex: 1;
     min-width: 0;
 
-    h3 {
-        font-family: $font-head;
-        font-weight: 700;
-        font-size: 1.125rem; // 18px mobile
-        line-height: 1.75rem;
-        letter-spacing: 0.5px;
-        text-transform: uppercase;
-        color: $gray;
-        margin: 0 0 0.5rem 0;
+    // Override numbered-list-item spacing within process-step
+    .numbered-list__item {
+        margin-bottom: 0;
+    }
 
-        @media screen and (min-width: $small-width) {
-            font-size: 1.125rem;
-            margin: 0 0 0.75rem 0;
+    .numbered-list__badge {
+        .number-badge__value,
+        .number-badge__input {
+            color: $gray;
         }
     }
 
-    p {
-        @include body-text;
-        margin: 0;
+    .numbered-list__item-content {
+        h3 { color: $gray; }
+        p { color: $gray; }
     }
 }
 
