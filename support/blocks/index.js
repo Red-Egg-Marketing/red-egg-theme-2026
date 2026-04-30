@@ -104,6 +104,12 @@ import './color-palette/index';
 // Color Swatch (child of color-palette)
 import './color-swatch/index';
 
+// Device Showcase (dark bg section with device mockups)
+import './device-showcase/index';
+
+// Device Frame (child: desktop or mobile device with screenshot)
+import './device-frame/index';
+
 // ---- Block Style Variations ----
 // Register custom button styles with arrow
 

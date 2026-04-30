@@ -309,6 +309,16 @@ function red_egg_register_blocks() {
     register_block_type( 'red-egg-block/color-swatch', [
         'editor_script' => 'red-egg-editor-blocks',
     ] );
+
+    // Device Showcase (dark bg section with device mockups)
+    register_block_type( 'red-egg-block/device-showcase', [
+        'editor_script' => 'red-egg-editor-blocks',
+    ] );
+
+    // Device Frame (child: desktop or mobile device with screenshot)
+    register_block_type( 'red-egg-block/device-frame', [
+        'editor_script' => 'red-egg-editor-blocks',
+    ] );
 }
 add_action( 'init', 'red_egg_register_blocks' );
 
