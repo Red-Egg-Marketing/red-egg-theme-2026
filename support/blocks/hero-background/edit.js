@@ -1,41 +1,35 @@
+/**
+ * Hero Background Block – Edit Component
+ *
+ * Two-column hero with hero-content (left) and hero-media (right).
+ * Background image/color, mobile bg override, min-height control.
+ */
+
 const { Fragment } = wp.element;
 const { InnerBlocks, useBlockProps, InspectorControls } = wp.blockEditor;
+const { PanelBody, RangeControl } = wp.components;
 const { __ } = wp.i18n;
 
 import BackgroundSelector from '../../components/BackgroundSelector.js';
 import MobileBackgroundSelector from '../../components/MobileBackgroundSelector.js';
+import BackgroundColor from '../../components/BackgroundColor.js';
 import PaddingSelector from '../../components/Padding.js';
 import MarginSelector from '../../components/Margin.js';
 
 const template = [
-    [ 'core/heading', { level: 1, placeholder: "Let's rock n' roll together." } ],
-    [ 'core/paragraph', { placeholder: 'Hero intro paragraph...' } ],
-    [ 'core/buttons', {},
-        [
-            [ 'core/button', { placeholder: 'Hero button...' } ],
-        ],
-    ],
+    [ 'red-egg-block/hero-content', {} ],
+    [ 'red-egg-block/hero-media', {} ],
 ];
 
 const allowedBlocks = [
-    'core/heading',
-    'core/paragraph',
-    'core/buttons',
-    'core/image',
-    'core/columns',
-    'core/group',
-    'core/spacer',
+    'red-egg-block/hero-content',
+    'red-egg-block/hero-media',
 ];
 
 const EditHeroBackground = ( { attributes, setAttributes, clientId } ) => {
-    const { image, mobileimage, padding, margin } = attributes;
+    const { image, mobileimage, bgColor, bgSlug, minHeight, padding, margin } = attributes;
 
     const blockId = `block-${ clientId }`;
-
-    const blockProps = useBlockProps( {
-        id: blockId,
-        className: 'hero-background',
-    } );
 
     // Build inline background styles for editor preview
     const bgStyle = {};
@@ -57,9 +51,27 @@ const EditHeroBackground = ( { attributes, setAttributes, clientId } ) => {
         }
     }
 
+    if ( bgColor ) {
+        bgStyle.backgroundColor = bgColor;
+    }
+
+    if ( minHeight > 0 ) {
+        bgStyle.minHeight = minHeight + 'px';
+    }
+
+    const blockProps = useBlockProps( {
+        id: blockId,
+        className: 'hero-background' + ( bgSlug ? ' ' + bgSlug : '' ),
+    } );
+
     return (
         <Fragment>
             <InspectorControls>
+                <BackgroundColor
+                    bgColor={ bgColor }
+                    bgSlug={ bgSlug }
+                    setAttributes={ setAttributes }
+                />
                 <BackgroundSelector
                     image={ image }
                     setAttributes={ setAttributes }
@@ -69,6 +81,20 @@ const EditHeroBackground = ( { attributes, setAttributes, clientId } ) => {
                     updateProp="mobileimage"
                     setAttributes={ setAttributes }
                 />
+                <PanelBody
+                    title={ __( 'Hero Height', 'red-egg' ) }
+                    initialOpen={ false }
+                >
+                    <RangeControl
+                        label={ __( 'Minimum Height (px)', 'red-egg' ) }
+                        value={ minHeight }
+                        onChange={ ( val ) => setAttributes( { minHeight: val } ) }
+                        min={ 0 }
+                        max={ 900 }
+                        step={ 10 }
+                        help={ __( '0 = auto height based on content', 'red-egg' ) }
+                    />
+                </PanelBody>
             </InspectorControls>
 
             <PaddingSelector
@@ -84,10 +110,11 @@ const EditHeroBackground = ( { attributes, setAttributes, clientId } ) => {
 
             <section { ...blockProps } style={ bgStyle }>
                 <div className="block-wrapper">
-                    <div className="hero-background__content">
+                    <div className="hero-background__columns">
                         <InnerBlocks
                             template={ template }
                             allowedBlocks={ allowedBlocks }
+                            templateLock="all"
                         />
                     </div>
                 </div>

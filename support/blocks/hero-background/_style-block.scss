@@ -1,6 +1,10 @@
 // ========================================
 //  Hero Background Block Styles
 //  Block: red-egg-block/hero-background
+//
+//  Flexible hero: bg image/color with two-column
+//  child blocks (hero-content left + hero-media right).
+//  Stacks on mobile.
 // ========================================
 
 .wp-block.hero-background {
@@ -23,19 +27,48 @@
     .block-wrapper {
         @include block-wrapper;
     }
+}
 
-    // ---- Content area ----
-    .hero-background__content {
-        position: relative;
-        z-index: 2;
-        max-width: 700px;
+// Background color classes
+.hero-background.peach { background-color: $peach; }
+.hero-background.eggshell { background-color: $eggshell; }
+.hero-background.navy {
+    background-color: $navy;
+    h1, h2, h3, p, li { color: $white; }
+}
+.hero-background.gray {
+    background-color: $gray;
+    h1, h2, h3, p, li { color: $white; }
+}
+.hero-background.red {
+    background-color: $red;
+    h1, h2, h3, p, li { color: $white; }
+}
+.hero-background.white { background-color: $white; }
 
-        @media screen and (min-width: $small-width) {
-            max-width: 50%;
-        }
+// ---- Two-column layout ----
+.hero-background__columns {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+
+    @media screen and (min-width: $small-width) {
+        flex-direction: row;
+        align-items: center;
+        gap: 3rem;
+    }
+}
+
+// ---- Content column (left) ----
+.hero-background__content {
+    position: relative;
+    z-index: 2;
+
+    @media screen and (min-width: $small-width) {
+        flex: 0 0 50%;
+        max-width: 50%;
     }
 
-    // ---- Inner block typography overrides ----
     h1, h2, h3, h4, h5, h6 {
         color: $head-color;
     }
@@ -59,7 +92,6 @@
         }
     }
 
-    // ---- Core button overrides ----
     .wp-block-buttons {
         margin-top: 1rem;
 
@@ -68,6 +100,64 @@
             text-decoration: none;
         }
     }
+}
 
-    // ---- Padding/Margin toggles ----
+// ---- Media column (right) ----
+.hero-background__media {
+    position: relative;
+    z-index: 1;
+
+    @media screen and (min-width: $small-width) {
+        flex: 0 0 50%;
+        max-width: 50%;
+    }
+}
+
+.hero-background__media-img {
+    display: block;
+    width: 100%;
+    height: auto;
+    max-width: 100%;
+}
+
+.hero-background__media-video {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: $default-border-radius;
+}
+
+// ---- Editor: placeholder ----
+.hero-background__media-placeholder {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 200px;
+    border: 2px dashed rgba(0, 0, 0, 0.2);
+    border-radius: $default-border-radius;
+    background: rgba(0, 0, 0, 0.05);
+}
+
+.hero-background__media-remove {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+}
+
+// ---- Editor: two-column preview ----
+.hero-background__columns > .block-editor-inner-blocks > .block-editor-block-list__layout {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    align-items: center;
+
+    > .wp-block[data-type="red-egg-block/hero-content"] {
+        flex: 0 0 48%;
+        max-width: 48%;
+    }
+
+    > .wp-block[data-type="red-egg-block/hero-media"] {
+        flex: 0 0 48%;
+        max-width: 48%;
+    }
 }

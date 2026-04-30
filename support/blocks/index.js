@@ -15,6 +15,12 @@
 // Block 1: Hero Background
 import './hero-background/index';
 
+// Block 1a: Hero Content (child: text/CTAs column)
+import './hero-content/index';
+
+// Block 1b: Hero Media (child: image/video column)
+import './hero-media/index';
+
 // Block 2: Columns Group
 import './columns-group/index';
 

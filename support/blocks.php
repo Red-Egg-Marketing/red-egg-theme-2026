@@ -84,6 +84,16 @@ function red_egg_register_blocks() {
         'editor_script' => 'red-egg-editor-blocks',
     ] );
 
+    // ---- 1a. Hero Content (child: text/CTAs) ----
+    register_block_type( 'red-egg-block/hero-content', [
+        'editor_script' => 'red-egg-editor-blocks',
+    ] );
+
+    // ---- 1b. Hero Media (child: image/video) ----
+    register_block_type( 'red-egg-block/hero-media', [
+        'editor_script' => 'red-egg-editor-blocks',
+    ] );
+
     // ---- 2. Columns Group ----
     register_block_type( 'red-egg-block/columns-group', [
         'editor_script' => 'red-egg-editor-blocks',

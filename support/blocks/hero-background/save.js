@@ -1,3 +1,7 @@
+/**
+ * Hero Background Block – Save Component
+ */
+
 const { InnerBlocks, useBlockProps } = wp.blockEditor;
 const { Fragment } = wp.element;
 
@@ -5,13 +9,12 @@ import PaddingSelector from '../../components/Padding.js';
 import MarginSelector from '../../components/Margin.js';
 
 const SaveHeroBackground = ( { attributes } ) => {
-    const { image, mobileimage, padding, margin } = attributes;
+    const { image, mobileimage, bgSlug, minHeight, padding, margin } = attributes;
 
     const blockProps = useBlockProps.save( {
-        className: 'hero-background',
+        className: 'hero-background' + ( bgSlug ? ' ' + bgSlug : '' ),
     } );
 
-    // Use the generated block id from useBlockProps
     const blockId = blockProps.id;
 
     // Build inline background styles
@@ -34,6 +37,10 @@ const SaveHeroBackground = ( { attributes } ) => {
         }
     }
 
+    if ( minHeight > 0 ) {
+        bgStyle.minHeight = minHeight + 'px';
+    }
+
     return (
         <Fragment>
             <PaddingSelector.View padding={ padding } id={ blockId } />
@@ -49,7 +56,7 @@ const SaveHeroBackground = ( { attributes } ) => {
                 } ) : '' }
             >
                 <div className="block-wrapper">
-                    <div className="hero-background__content">
+                    <div className="hero-background__columns">
                         <InnerBlocks.Content />
                     </div>
                 </div>
