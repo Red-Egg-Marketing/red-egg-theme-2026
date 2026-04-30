@@ -287,6 +287,16 @@ function red_egg_register_blocks() {
     register_block_type( 'red-egg-block/device-frame', [
         'editor_script' => 'red-egg-editor-blocks',
     ] );
+
+    // Process Steps (parent: header-intro + numbered steps)
+    register_block_type( 'red-egg-block/process-steps', [
+        'editor_script' => 'red-egg-editor-blocks',
+    ] );
+
+    // Process Step (child of process-steps)
+    register_block_type( 'red-egg-block/process-step', [
+        'editor_script' => 'red-egg-editor-blocks',
+    ] );
 }
 add_action( 'init', 'red_egg_register_blocks' );
 

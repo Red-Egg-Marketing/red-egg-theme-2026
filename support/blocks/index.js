@@ -122,6 +122,12 @@ import './device-showcase/index';
 // Device Frame (child: desktop or mobile device with screenshot)
 import './device-frame/index';
 
+// Process Steps (parent: header-intro + numbered steps)
+import './process-steps/index';
+
+// Process Step (child: badge + content + tag cloud)
+import './process-step/index';
+
 // ---- Block Style Variations ----
 // Register custom button styles with arrow
 
