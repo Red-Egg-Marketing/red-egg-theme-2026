@@ -1,22 +1,23 @@
 /**
  * Hero Media – Edit Component
  *
- * Image or video for the hero section.
+ * Image (including SVG), or video for the hero section.
  * MediaUpload in block area + type toggle in sidebar.
+ * Video mode includes thumbnail upload.
  */
 
 const { Fragment } = wp.element;
 const { InspectorControls, MediaUpload, useBlockProps } = wp.blockEditor;
-const { PanelBody, Button, SelectControl } = wp.components;
+const { PanelBody, Button, SelectControl, ResponsiveWrapper } = wp.components;
 const { __ } = wp.i18n;
 
 const mediaOptions = [
-    { label: __( 'Image', 'red-egg' ), value: 'image' },
+    { label: __( 'Image / SVG', 'red-egg' ), value: 'image' },
     { label: __( 'Video', 'red-egg' ), value: 'video' },
 ];
 
 const EditHeroMedia = ( { attributes, setAttributes } ) => {
-    const { mediaType, media, videoID, videoURL } = attributes;
+    const { mediaType, media, videoID, videoURL, videothumb } = attributes;
 
     const blockProps = useBlockProps( {
         className: 'hero-background__media',
@@ -34,8 +35,22 @@ const EditHeroMedia = ( { attributes, setAttributes } ) => {
 
     const onSelectVideo = ( vid ) => {
         setAttributes( {
-            videoURL: vid.url,
+            videoURL: vid.url + '#t=0.5',
             videoID: vid.id,
+        } );
+    };
+
+    const setVideoThumb = ( img ) => {
+        let newThumb = JSON.parse( JSON.stringify( videothumb ) );
+        newThumb.url = img.url;
+        newThumb.width = img.width;
+        newThumb.height = img.height;
+        setAttributes( { videothumb: newThumb } );
+    };
+
+    const removeVideoThumb = () => {
+        setAttributes( {
+            videothumb: { url: '', width: '', height: '' },
         } );
     };
 
@@ -61,6 +76,47 @@ const EditHeroMedia = ( { attributes, setAttributes } ) => {
                         onChange={ ( val ) => setAttributes( { mediaType: val } ) }
                     />
                 </PanelBody>
+
+                { mediaType === 'video' && (
+                    <PanelBody
+                        title={ __( 'Video Thumbnail', 'red-egg' ) }
+                        initialOpen={ false }
+                    >
+                        <MediaUpload
+                            allowedTypes={ [ 'image' ] }
+                            onSelect={ setVideoThumb }
+                            value={ videothumb.url }
+                            render={ ( { open } ) => (
+                                <Fragment>
+                                    <Button
+                                        variant="secondary"
+                                        onClick={ open }
+                                        style={ { marginBottom: '10px', display: 'block', width: '100%', height: 'auto' } }
+                                    >
+                                        { videothumb.url === '' && __( 'Add Video Thumbnail', 'red-egg' ) }
+                                        { videothumb.url !== '' && (
+                                            <ResponsiveWrapper
+                                                naturalWidth={ videothumb.width }
+                                                naturalHeight={ videothumb.height }
+                                            >
+                                                <img src={ videothumb.url } style={ { maxHeight: 'auto', width: 'auto' } } />
+                                            </ResponsiveWrapper>
+                                        ) }
+                                    </Button>
+                                    { videothumb.url !== '' && (
+                                        <Button
+                                            isDestructive
+                                            isSmall
+                                            onClick={ removeVideoThumb }
+                                        >
+                                            { __( 'Remove Thumbnail', 'red-egg' ) }
+                                        </Button>
+                                    ) }
+                                </Fragment>
+                            ) }
+                        />
+                    </PanelBody>
+                ) }
             </InspectorControls>
 
             <div { ...blockProps }>
@@ -70,10 +126,10 @@ const EditHeroMedia = ( { attributes, setAttributes } ) => {
                             <div className="hero-background__media-placeholder">
                                 <MediaUpload
                                     onSelect={ onSelectImage }
-                                    allowedTypes={ [ 'image' ] }
+                                    allowedTypes={ [ 'image', 'image/svg+xml' ] }
                                     render={ ( { open } ) => (
                                         <Button onClick={ open } variant="secondary">
-                                            { __( 'Upload Hero Image', 'red-egg' ) }
+                                            { __( 'Upload Image / SVG', 'red-egg' ) }
                                         </Button>
                                     ) }
                                 />
@@ -120,6 +176,7 @@ const EditHeroMedia = ( { attributes, setAttributes } ) => {
                                 playsInline
                                 muted
                                 loop
+                                poster={ videothumb.url || '' }
                             >
                                 <source src={ videoURL } type="video/mp4" />
                             </video>

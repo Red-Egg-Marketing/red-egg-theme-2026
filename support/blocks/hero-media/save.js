@@ -6,7 +6,7 @@ const { Fragment } = wp.element;
 const { useBlockProps } = wp.blockEditor;
 
 const SaveHeroMedia = ( { attributes } ) => {
-    const { mediaType, media, videoID, videoURL } = attributes;
+    const { mediaType, media, videoID, videoURL, videothumb } = attributes;
 
     const blockProps = useBlockProps.save( {
         className: 'hero-background__media',
@@ -29,6 +29,7 @@ const SaveHeroMedia = ( { attributes } ) => {
                     playsInline
                     muted
                     loop
+                    poster={ videothumb && videothumb.url ? videothumb.url : '' }
                 >
                     <source src={ videoURL } type="video/mp4" />
                 </video>

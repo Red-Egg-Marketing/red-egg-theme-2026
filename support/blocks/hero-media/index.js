@@ -39,6 +39,14 @@ registerBlockType( 'red-egg-block/hero-media', {
             type: 'string',
             default: '',
         },
+        videothumb: {
+            type: 'object',
+            default: {
+                url: '',
+                width: '',
+                height: '',
+            },
+        },
     },
     edit,
     save,
