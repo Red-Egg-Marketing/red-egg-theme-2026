@@ -1,0 +1,54 @@
+// ========================================
+//  Global Animations
+//  Keyframes and animation utility styles.
+// ========================================
+
+// ---- Cursor blink (used by .rotate-words) ----
+@keyframes cursorAnimation {
+    0% {
+        background: linear-gradient(to bottom, transparent, transparent);
+        background-size: 1px 100%;
+        background-repeat: repeat-y;
+        background-position: top right;
+    }
+    25% {
+        background: linear-gradient(to bottom, currentColor, currentColor);
+        background-size: 1px 100%;
+        background-repeat: repeat-y;
+        background-position: top right;
+    }
+    50% {
+        background: linear-gradient(to bottom, transparent, transparent);
+        background-size: 1px 100%;
+        background-repeat: repeat-y;
+        background-position: top right;
+    }
+    75% {
+        background: linear-gradient(to bottom, currentColor, currentColor);
+        background-size: 1px 100%;
+        background-repeat: repeat-y;
+        background-position: top right;
+    }
+    100% {
+        background: linear-gradient(to bottom, transparent, transparent);
+        background-size: 1px 100%;
+        background-repeat: repeat-y;
+        background-position: top right;
+    }
+}
+
+// ---- Rotate Words ----
+.rotate-words {
+    display: inline;
+    padding-right: 3px;
+    animation: cursorAnimation 0.8s infinite;
+}
+
+.rotate-words.waiting {
+    animation: none;
+    background: none;
+}
+
+.rotate-words.highlight {
+    animation: cursorAnimation 0.8s infinite;
+}
