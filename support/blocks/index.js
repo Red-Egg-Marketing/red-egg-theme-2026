@@ -131,6 +131,10 @@ import './process-steps/index';
 // Process Step (child: badge + content + tag cloud)
 import './process-step/index';
 
+// ---- Format Types ----
+// Rotate Words (Word Swap) – core/heading only
+import '../format-types/rotate-words/index';
+
 // ---- Block Style Variations ----
 // Register custom button styles with arrow
 

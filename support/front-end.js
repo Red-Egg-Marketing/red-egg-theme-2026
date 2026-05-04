@@ -34,3 +34,8 @@ import './blocks/awards-section/frontend';
 
 // Filter Case Studies – frontend interactivity
 import './blocks/filter-case-studies/frontend';
+
+// ---- Format Types ----
+
+// Rotate Words – word swap animation
+import './format-types/rotate-words/frontend';
