@@ -62,10 +62,10 @@
 
 // ---- Ensure parent has relative positioning ----
 // Applied to blocks that use BlobAnimation
+// No overflow: hidden — blob drifts freely, bounded by JS
 .image-text-columns,
 .service-list {
     position: relative;
-    overflow: hidden;
 
     > .block-wrapper {
         position: relative;

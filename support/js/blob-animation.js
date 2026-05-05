@@ -3,8 +3,9 @@
  *
  * GSAP MorphSVG morphing between blob shapes with:
  * - Rotational type interpolation (no pinching)
- * - Free-floating drift on x/y axis
- * - Subtle scale breathing
+ * - Edge-to-edge x drift across viewport
+ * - Y drift constrained to parent bounds (including padding)
+ * - Subtle rotation and scale breathing
  */
 
 ( function() {
@@ -26,7 +27,7 @@
             shape3: 'M623.4,76.9c-208.5-49.5-122.1,158.6-397,106.3-72.5-11.9-135.3,28.9-147.9,102.6-34.3,152.5,93.9,306.7,250.2,229.7,39.1-19.1,78.8-45.5,123.9-44.3,49.5,1.3,95,25.4,143.9,30.4,97.1,5.9,219.1-58.2,214.5-167.7-5.8-109.4-76.3-232.8-187.6-257.1h0Z',
         };
 
-        var shapeKeys = [ 'shape1', 'shape2', 'shape3' ];   
+        var shapeKeys = [ 'shape1', 'shape2', 'shape3' ];
 
         blobs.forEach( function( blob ) {
             var path = blob.querySelector( '.blob-decoration__path' );
@@ -34,8 +35,39 @@
 
             var startShape = blob.getAttribute( 'data-blob-shape' ) || 'shape1';
             var speed = parseFloat( blob.getAttribute( 'data-blob-speed' ) ) || 8;
+            var parent = blob.parentElement;
 
-            // ---- Morph timeline with rotational type ----
+            // ---- Calculate drift bounds ----
+            function getDriftBounds() {
+                var parentRect = parent.getBoundingClientRect();
+                var blobRect = blob.getBoundingClientRect();
+                var parentStyles = window.getComputedStyle( parent );
+
+                var paddingTop = parseFloat( parentStyles.paddingTop ) || 0;
+                var paddingBottom = parseFloat( parentStyles.paddingBottom ) || 0;
+
+                // X: full viewport width relative to blob's current position
+                var blobOffsetX = blobRect.left - parentRect.left;
+                var xMin = -blobOffsetX - blobRect.width * 0.3;
+                var xMax = window.innerWidth - blobOffsetX - blobRect.width * 0.7;
+
+                // Y: constrained to parent height minus padding
+                var availableHeight = parentRect.height - paddingTop - paddingBottom;
+                var blobOffsetY = blobRect.top - parentRect.top - paddingTop;
+                var yMin = -blobOffsetY;
+                var yMax = availableHeight - blobOffsetY - blobRect.height;
+
+                return {
+                    xMin: Math.round( xMin ),
+                    xMax: Math.round( xMax ),
+                    yMin: Math.round( yMin ),
+                    yMax: Math.round( yMax ),
+                };
+            }
+
+            var bounds = getDriftBounds();
+
+            // ---- Morph timeline ----
             var sequence = shapeKeys.filter( function( key ) {
                 return key !== startShape;
             } );
@@ -65,25 +97,31 @@
                 } );
             } );
 
-            // ---- Free-floating drift (staggered x, y, rotation, scale) ----
-            gsap.to( blob, {
-                x: 'random(0, 1000)',
-                duration: 'random(' + ( speed * 1.2 ) + ', ' + ( speed * 2 ) + ')',
-                ease: 'sine.inOut',
-                repeat: -1,
-                yoyo: true,
-                repeatRefresh: true,
-            } );
+            // ---- X drift: edge to edge across viewport ----
+            function driftX() {
+                var b = getDriftBounds();
+                gsap.to( blob, {
+                    x: 'random(' + b.xMin + ', ' + b.xMax + ')',
+                    duration: 'random(' + ( speed * 2 ) + ', ' + ( speed * 3.5 ) + ')',
+                    ease: 'sine.inOut',
+                    onComplete: driftX,
+                } );
+            }
+            driftX();
 
-            gsap.to( blob, {
-                y: 'random(-60, 60)',
-                duration: 'random(' + ( speed * 1.4 ) + ', ' + ( speed * 2.2 ) + ')',
-                ease: 'sine.inOut',
-                repeat: -1,
-                yoyo: true,
-                repeatRefresh: true,
-            } );
+            // ---- Y drift: within parent bounds ----
+            function driftY() {
+                var b = getDriftBounds();
+                gsap.to( blob, {
+                    y: 'random(' + b.yMin + ', ' + b.yMax + ')',
+                    duration: 'random(' + ( speed * 1.5 ) + ', ' + ( speed * 2.5 ) + ')',
+                    ease: 'sine.inOut',
+                    onComplete: driftY,
+                } );
+            }
+            driftY();
 
+            // ---- Rotation + scale breathing ----
             gsap.to( blob, {
                 rotation: 'random(-8, 8)',
                 duration: 'random(' + ( speed * 1.6 ) + ', ' + ( speed * 2.5 ) + ')',
@@ -100,6 +138,11 @@
                 repeat: -1,
                 yoyo: true,
                 repeatRefresh: true,
+            } );
+
+            // ---- Recalculate bounds on resize ----
+            window.addEventListener( 'resize', function() {
+                bounds = getDriftBounds();
             } );
 
         } );
