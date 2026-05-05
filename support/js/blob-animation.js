@@ -47,11 +47,13 @@
                 var paddingBottom = parseFloat( parentStyles.paddingBottom ) || 0;
 
                 var blobOffsetX = blobRect.left - parentRect.left;
-                var xMin = -blobOffsetX - blobRect.width * 0.3;
-                var xMax = window.innerWidth - blobOffsetX - blobRect.width * 0.7;
+                // X: blob's left edge starts at 0, right edge stops at viewport width
+                var xMin = -blobOffsetX;
+                var xMax = window.innerWidth - blobOffsetX - blobRect.width;
 
                 var availableHeight = parentRect.height - paddingTop - paddingBottom;
                 var blobOffsetY = blobRect.top - parentRect.top - paddingTop;
+                // Y: blob's top edge starts at padding top, bottom edge stops at padding bottom
                 var yMin = -blobOffsetY;
                 var yMax = availableHeight - blobOffsetY - blobRect.height;
 
