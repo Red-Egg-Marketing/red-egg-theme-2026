@@ -150,11 +150,29 @@ function red_egg_theme_scripts() {
         true
     );
 
+    // GSAP Core (CDN)
+    wp_enqueue_script(
+        'gsap-core',
+        'https://cdn.jsdelivr.net/npm/gsap@3.12/dist/gsap.min.js',
+        [],
+        '3.12.0',
+        true
+    );
+
+    // GSAP MorphSVG Plugin (CDN – now free)
+    wp_enqueue_script(
+        'gsap-morphsvg',
+        'https://cdn.jsdelivr.net/npm/gsap@3.12/dist/MorphSVGPlugin.min.js',
+        [ 'gsap-core' ],
+        '3.12.0',
+        true
+    );
+
     // Frontend JS (compiled from support/front-end.js)
     wp_enqueue_script(
         'red-egg-main-js',
         get_template_directory_uri() . '/support/assets/js/main.js',
-        [ 'swiper-js' ],
+        [ 'swiper-js', 'gsap-core', 'gsap-morphsvg' ],
         file_exists( $main_js ) ? filemtime( $main_js ) : false,
         true
     );

@@ -39,3 +39,6 @@ import './blocks/filter-case-studies/frontend';
 
 // Rotate Words – word swap animation
 import './format-types/rotate-words/frontend';
+
+// Blob Animation – GSAP MorphSVG blob morphing
+import './js/blob-animation';

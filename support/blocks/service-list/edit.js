@@ -2,6 +2,7 @@
  * Service List Block – Edit Component
  *
  * InnerBlocks: core/heading + service-list-item children.
+ * BlobAnimation support for decorative morphing blob.
  */
 
 const { Fragment, useEffect } = wp.element;
@@ -12,6 +13,7 @@ import BackgroundColor from '../../components/BackgroundColor.js';
 import BackgroundSelector from '../../components/BackgroundSelector.js';
 import PaddingSelector from '../../components/Padding.js';
 import MarginSelector from '../../components/Margin.js';
+import BlobAnimation from '../../components/BlobAnimation.js';
 
 const template = [
     [ 'core/heading', { level: 2, placeholder: 'Branding Services' } ],
@@ -27,7 +29,10 @@ const allowedBlocks = [
 ];
 
 const EditServiceList = ( { attributes, setAttributes, clientId } ) => {
-    const { image, bgColor, bgSlug, padding, margin, blockId } = attributes;
+    const {
+        image, bgColor, bgSlug, padding, margin, blockId,
+        blobEnabled, blobShape, blobSpeed, blobPosition,
+    } = attributes;
 
     useEffect( () => {
         if ( ! blockId ) {
@@ -77,6 +82,13 @@ const EditServiceList = ( { attributes, setAttributes, clientId } ) => {
                     image={ image }
                     setAttributes={ setAttributes }
                 />
+                <BlobAnimation.Controls
+                    blobEnabled={ blobEnabled }
+                    blobShape={ blobShape }
+                    blobSpeed={ blobSpeed }
+                    blobPosition={ blobPosition }
+                    setAttributes={ setAttributes }
+                />
             </InspectorControls>
 
             <PaddingSelector
@@ -91,6 +103,11 @@ const EditServiceList = ( { attributes, setAttributes, clientId } ) => {
             />
 
             <section { ...blockProps }>
+                <BlobAnimation.Preview
+                    blobEnabled={ blobEnabled }
+                    blobShape={ blobShape }
+                    blobPosition={ blobPosition }
+                />
                 <div className="block-wrapper">
                     <InnerBlocks
                         template={ template }

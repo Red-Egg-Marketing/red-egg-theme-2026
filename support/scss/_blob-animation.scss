@@ -1,0 +1,74 @@
+// ========================================
+//  Blob Decoration Styles
+//  Component: BlobAnimation
+//
+//  Positioned SVG blob that morphs via GSAP.
+//  Position variants controlled by class modifier.
+// ========================================
+
+.blob-decoration {
+    position: absolute;
+    z-index: 0;
+    pointer-events: none;
+    overflow: visible;
+    width: 45%;
+    max-width: 500px;
+
+    @media screen and (min-width: $small-width) {
+        width: 40%;
+        max-width: 600px;
+    }
+}
+
+.blob-decoration__svg {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+// ---- Position variants ----
+
+.blob-decoration--top-right {
+    top: -10%;
+    right: -5%;
+}
+
+.blob-decoration--top-left {
+    top: -10%;
+    left: -5%;
+}
+
+.blob-decoration--bottom-right {
+    bottom: -10%;
+    right: -5%;
+}
+
+.blob-decoration--bottom-left {
+    bottom: -10%;
+    left: -5%;
+}
+
+.blob-decoration--center-right {
+    top: 50%;
+    right: -5%;
+    transform: translateY(-50%);
+}
+
+.blob-decoration--center-left {
+    top: 50%;
+    left: -5%;
+    transform: translateY(-50%);
+}
+
+// ---- Ensure parent has relative positioning ----
+// Applied to blocks that use BlobAnimation
+.image-text-columns,
+.service-list {
+    position: relative;
+    overflow: hidden;
+
+    > .block-wrapper {
+        position: relative;
+        z-index: 1;
+    }
+}

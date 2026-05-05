@@ -8,12 +8,14 @@ const { InnerBlocks, useBlockProps } = wp.blockEditor;
 import ImageComp from '../../components/ImageComp.js';
 import PaddingSelector from '../../components/Padding.js';
 import MarginSelector from '../../components/Margin.js';
+import BlobAnimation from '../../components/BlobAnimation.js';
 
 const SaveImageTextColumns = ( { attributes } ) => {
     const {
         contentAlign, media, image, bgSlug,
         vidOrImg, videoID, videoURL, videothumb, withDrop,
         padding, margin, blockId,
+        blobEnabled, blobShape, blobSpeed, blobPosition,
     } = attributes;
 
     // Build background image inline styles
@@ -53,6 +55,12 @@ const SaveImageTextColumns = ( { attributes } ) => {
             <PaddingSelector.View padding={ padding } id={ blockId } />
             <MarginSelector.View margin={ margin } id={ blockId } />
             <div { ...blockProps }>
+                <BlobAnimation.View
+                    blobEnabled={ blobEnabled }
+                    blobShape={ blobShape }
+                    blobSpeed={ blobSpeed }
+                    blobPosition={ blobPosition }
+                />
                 <div className="block-wrapper">
                     <div className={ 'block-content ' + contentAlign }>
                         <div className="image-col column">
