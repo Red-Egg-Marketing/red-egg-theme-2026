@@ -6,6 +6,8 @@
  * Renders resource cards in a grid layout.
  */
 
+if ( typeof wp !== 'undefined' && wp.element && document.getElementById( 'InsightsBlockRoot' ) ) {
+
 const { render, Fragment, useState, useEffect } = wp.element;
 
 const RootElement = document.getElementById( 'InsightsBlockRoot' );
@@ -81,3 +83,5 @@ if ( RootElement ) {
         RootElement
     );
 }
+
+} // end wp check

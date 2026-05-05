@@ -6,8 +6,9 @@
  * Renders a Swiper slider with resource cards.
  */
 
+if ( typeof wp !== 'undefined' && wp.element && document.getElementById( 'CaseStudiesSliderRoot' ) ) {
+
 const { render, Fragment, useState, useEffect } = wp.element;
-import Swiper from 'swiper/bundle';
 
 const RootElement = document.getElementById( 'CaseStudiesSliderRoot' );
 
@@ -114,3 +115,5 @@ if ( RootElement ) {
         RootElement
     );
 }
+
+} // end wp check

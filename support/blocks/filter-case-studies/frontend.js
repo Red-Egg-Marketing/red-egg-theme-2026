@@ -7,6 +7,8 @@
  * Cards show image + title, with hover revealing excerpt.
  */
 
+if ( typeof wp !== 'undefined' && wp.element && document.getElementById( 'FilterCaseStudiesRoot' ) ) {
+
 const { render, Fragment, useState, useEffect } = wp.element;
 
 const RootElement = document.getElementById( 'FilterCaseStudiesRoot' );
@@ -247,3 +249,5 @@ const FilterCaseStudiesFrontend = () => {
 if ( RootElement ) {
     render( <FilterCaseStudiesFrontend />, RootElement );
 }
+
+} // end wp check
