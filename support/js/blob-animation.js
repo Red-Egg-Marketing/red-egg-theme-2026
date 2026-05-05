@@ -3,8 +3,8 @@
  *
  * GSAP MorphSVG morphing between blob shapes with:
  * - Rotational type interpolation (no pinching)
- * - Edge-to-edge x drift across viewport
- * - Y drift constrained to parent bounds (including padding)
+ * - Smooth pendulum x drift (left edge ↔ right edge)
+ * - Smooth pendulum y drift (top ↔ bottom of parent)
  * - Subtle rotation and scale breathing
  */
 
@@ -46,12 +46,10 @@
                 var paddingTop = parseFloat( parentStyles.paddingTop ) || 0;
                 var paddingBottom = parseFloat( parentStyles.paddingBottom ) || 0;
 
-                // X: full viewport width relative to blob's current position
                 var blobOffsetX = blobRect.left - parentRect.left;
                 var xMin = -blobOffsetX - blobRect.width * 0.3;
                 var xMax = window.innerWidth - blobOffsetX - blobRect.width * 0.7;
 
-                // Y: constrained to parent height minus padding
                 var availableHeight = parentRect.height - paddingTop - paddingBottom;
                 var blobOffsetY = blobRect.top - parentRect.top - paddingTop;
                 var yMin = -blobOffsetY;
@@ -97,29 +95,27 @@
                 } );
             } );
 
-            // ---- X drift: edge to edge across viewport ----
-            function driftX() {
-                var b = getDriftBounds();
-                gsap.to( blob, {
-                    x: 'random(' + b.xMin + ', ' + b.xMax + ')',
-                    duration: 'random(' + ( speed * 2 ) + ', ' + ( speed * 3.5 ) + ')',
+            // ---- X drift: smooth pendulum left ↔ right ----
+            var xTl = gsap.timeline( { repeat: -1, yoyo: true } );
+            xTl.fromTo( blob,
+                { x: bounds.xMin },
+                {
+                    x: bounds.xMax,
+                    duration: speed * 3,
                     ease: 'sine.inOut',
-                    onComplete: driftX,
-                } );
-            }
-            driftX();
+                }
+            );
 
-            // ---- Y drift: within parent bounds ----
-            function driftY() {
-                var b = getDriftBounds();
-                gsap.to( blob, {
-                    y: 'random(' + b.yMin + ', ' + b.yMax + ')',
-                    duration: 'random(' + ( speed * 1.5 ) + ', ' + ( speed * 2.5 ) + ')',
+            // ---- Y drift: smooth pendulum top ↔ bottom of parent ----
+            var yTl = gsap.timeline( { repeat: -1, yoyo: true } );
+            yTl.fromTo( blob,
+                { y: bounds.yMin },
+                {
+                    y: bounds.yMax,
+                    duration: speed * 2.2,
                     ease: 'sine.inOut',
-                    onComplete: driftY,
-                } );
-            }
-            driftY();
+                }
+            );
 
             // ---- Rotation + scale breathing ----
             gsap.to( blob, {
@@ -143,6 +139,24 @@
             // ---- Recalculate bounds on resize ----
             window.addEventListener( 'resize', function() {
                 bounds = getDriftBounds();
+
+                // Update the x pendulum endpoints
+                gsap.killTweensOf( blob, 'x' );
+                xTl.kill();
+                xTl = gsap.timeline( { repeat: -1, yoyo: true } );
+                xTl.fromTo( blob,
+                    { x: bounds.xMin },
+                    { x: bounds.xMax, duration: speed * 3, ease: 'sine.inOut' }
+                );
+
+                // Update the y pendulum endpoints
+                gsap.killTweensOf( blob, 'y' );
+                yTl.kill();
+                yTl = gsap.timeline( { repeat: -1, yoyo: true } );
+                yTl.fromTo( blob,
+                    { y: bounds.yMin },
+                    { y: bounds.yMax, duration: speed * 2.2, ease: 'sine.inOut' }
+                );
             } );
 
         } );
