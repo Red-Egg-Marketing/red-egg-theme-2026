@@ -136,6 +136,14 @@ ul, ol {
 .wp-block-button.is-style-outline-gray .wp-block-button__link,
 .editor-styles-wrapper .wp-block-button.is-style-outline-gray .wp-block-button__link {
     @include outline-button-base( $gray );
+    &:hover {
+        color: $gray;
+        background-color: transparent;
+
+        &::after {
+            transform: rotate(45deg);
+        }
+    }
 }
 
 // White outline button with arrow (for dark backgrounds / hero)

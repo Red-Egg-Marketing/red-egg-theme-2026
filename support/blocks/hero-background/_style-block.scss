@@ -63,12 +63,12 @@
 .hero-background__content {
     position: relative;
     z-index: 2;
-
+    order: 2;
     @media screen and (min-width: $small-width) {
         flex: 0 0 50%;
         max-width: 50%;
+        order: 1;
     }
-
     h1, h2, h3, h4, h5, h6 {
         color: $head-color;
     }
@@ -94,11 +94,6 @@
 
     .wp-block-buttons {
         margin-top: 1rem;
-
-        .wp-block-button__link {
-            @include gray-button;
-            text-decoration: none;
-        }
     }
 }
 
@@ -106,8 +101,9 @@
 .hero-background__media {
     position: relative;
     z-index: 1;
-
+    order: 1;
     @media screen and (min-width: $small-width) {
+        order: 2;
         flex: 0 0 50%;
         max-width: 50%;
     }
