@@ -94,6 +94,7 @@
                             redraw: false
                         }
                     },
+                    yoyo: true
                 } );
             } );
 
