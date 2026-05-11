@@ -118,7 +118,7 @@ const EditMediaContent = ( { attributes, setAttributes, clientId } ) => {
                         <InnerBlocks
                             template={ template }
                             allowedBlocks={ allowedBlocks }
-                            templateLock="insert"
+                            templateLock="all"
                         />
                     </div>
                 </div>
