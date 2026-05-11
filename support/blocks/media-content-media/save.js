@@ -1,0 +1,57 @@
+/**
+ * Media Content – Media Block – Save Component
+ */
+
+const { Fragment } = wp.element;
+const { useBlockProps } = wp.blockEditor;
+
+import ImageComp from '../../components/ImageComp.js';
+import BlobAnimation from '../../components/BlobAnimation.js';
+
+const SaveMediaContentMedia = ( { attributes } ) => {
+    const {
+        media, vidOrImg, videoID, videoURL, videothumb, withDrop,
+        blobEnabled, blobShape, blobSpeed, blobPosition,
+    } = attributes;
+
+    const blockProps = useBlockProps.save( {
+        className: 'media-content__media image-col column'
+            + ( withDrop ? ' with-ds' : ' no-ds' ),
+    } );
+
+    const srcSet = '';
+    const sizes = '(min-width: 880px) 100vw, 400px';
+
+    return (
+        <div { ...blockProps }>
+            <BlobAnimation.View
+                blobEnabled={ blobEnabled }
+                blobShape={ blobShape }
+                blobSpeed={ blobSpeed }
+                blobPosition={ blobPosition }
+            />
+            { vidOrImg === 'image' && (
+                <ImageComp.View
+                    source={ media.srcSet.large }
+                    alt={ media.alt || '' }
+                    srcSet={ srcSet }
+                    sizes={ sizes }
+                />
+            ) }
+            { vidOrImg === 'video' && videoID && (
+                <Fragment>
+                    <button className="custom-video-button">Play</button>
+                    <video
+                        className="hero-asset"
+                        poster={ videothumb.url }
+                        playsInline
+                    >
+                        <source src={ videoURL } className="source" type="video/mp4" />
+                    </video>
+                </Fragment>
+            ) }
+        </div>
+    );
+};
+
+export default SaveMediaContentMedia;

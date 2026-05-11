@@ -233,8 +233,18 @@ function red_egg_register_blocks() {
         'editor_script' => 'red-egg-editor-blocks',
     ] );
 
-    // Image & Text Columns (standalone two-column section)
+    // Media Content (standalone two-column section)
     register_block_type( 'red-egg-block/media-content', [
+        'editor_script' => 'red-egg-editor-blocks',
+    ] );
+
+    // Media Content – Media (child: image/video + blob)
+    register_block_type( 'red-egg-block/media-content-media', [
+        'editor_script' => 'red-egg-editor-blocks',
+    ] );
+
+    // Media Content – Text (child: header-intro + content)
+    register_block_type( 'red-egg-block/media-content-text', [
         'editor_script' => 'red-egg-editor-blocks',
     ] );
 

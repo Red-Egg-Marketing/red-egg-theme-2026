@@ -1,21 +1,17 @@
 /**
- * Image & Text Columns Block – Save Component
+ * Media Content Block – Save Component (Parent)
  */
 
 const { Fragment } = wp.element;
 const { InnerBlocks, useBlockProps } = wp.blockEditor;
 
-import ImageComp from '../../components/ImageComp.js';
 import PaddingSelector from '../../components/Padding.js';
 import MarginSelector from '../../components/Margin.js';
-import BlobAnimation from '../../components/BlobAnimation.js';
 
-const SaveImageTextColumns = ( { attributes } ) => {
+const SaveMediaContent = ( { attributes } ) => {
     const {
-        contentAlign, media, image, bgSlug,
-        vidOrImg, videoID, videoURL, videothumb, withDrop,
+        contentAlign, image, bgSlug,
         padding, margin, blockId,
-        blobEnabled, blobShape, blobSpeed, blobPosition,
     } = attributes;
 
     // Build background image inline styles
@@ -42,54 +38,18 @@ const SaveImageTextColumns = ( { attributes } ) => {
         id: blockId,
         className: 'media-content'
             + ' ' + contentAlign
-            + ( bgSlug ? ' ' + bgSlug + ' with-bg' : '' )
-            + ( withDrop ? ' with-ds' : ' no-ds' ),
+            + ( bgSlug ? ' ' + bgSlug + ' with-bg' : '' ),
         style: bgStyle,
     } );
-
-    const srcSet = '';
-    const sizes = '(min-width: 880px) 100vw, 400px';
 
     return (
         <Fragment>
             <PaddingSelector.View padding={ padding } id={ blockId } />
             <MarginSelector.View margin={ margin } id={ blockId } />
             <div { ...blockProps }>
-                <BlobAnimation.View
-                    blobEnabled={ blobEnabled }
-                    blobShape={ blobShape }
-                    blobSpeed={ blobSpeed }
-                    blobPosition={ blobPosition }
-                />
                 <div className="block-wrapper">
                     <div className={ 'block-content ' + contentAlign }>
-                        <div className="image-col column">
-                            { vidOrImg === 'image' && (
-                                <ImageComp.View
-                                    source={ media.srcSet.large }
-                                    alt={ media.alt || '' }
-                                    srcSet={ srcSet }
-                                    sizes={ sizes }
-                                />
-                            ) }
-                            { vidOrImg === 'video' && videoID && (
-                                <Fragment>
-                                    <button className="custom-video-button">Play</button>
-                                    <video
-                                        className="hero-asset"
-                                        poster={ videothumb.url }
-                                        playsInline
-                                    >
-                                        <source src={ videoURL } className="source" type="video/mp4" />
-                                    </video>
-                                </Fragment>
-                            ) }
-                        </div>
-                        <div className="content-columns column">
-                            <div className="wrap">
-                                <InnerBlocks.Content />
-                            </div>
-                        </div>
+                        <InnerBlocks.Content />
                     </div>
                 </div>
             </div>
@@ -97,4 +57,4 @@ const SaveImageTextColumns = ( { attributes } ) => {
     );
 };
 
-export default SaveImageTextColumns;
+export default SaveMediaContent;

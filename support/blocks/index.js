@@ -89,8 +89,14 @@ import './awards-section/index';
 // Vibe CTA (scrolling marquee + CTA buttons)
 import './vibe-cta/index';
 
-// Image & Text Columns (standalone two-column section)
+// Media Content (standalone two-column section)
 import './media-content/index';
+
+// Media Content – Media (child: image/video + blob)
+import './media-content-media/index';
+
+// Media Content – Text (child: header-intro + content)
+import './media-content-text/index';
 
 // Service List (parent: heading + service rows)
 import './service-list/index';

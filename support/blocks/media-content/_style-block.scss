@@ -1,11 +1,10 @@
 // ========================================
-//  Image & Text Columns Block Styles
+//  Media Content Block Styles
 //  Block: red-egg-block/media-content
 //
-//  Standalone two-column section: image/video
-//  on one side, text content on the other.
-//  Based on the 2022 media-content block,
-//  rebuilt with 2026 design tokens.
+//  Parent container with two locked children:
+//    - media-content-media (image/video + blob)
+//    - media-content-text (header-intro + content)
 // ========================================
 
 .media-content {
@@ -41,7 +40,7 @@
     align-items: center;
 }
 
-// ---- Image column ----
+// ---- Image / Media column ----
 .media-content .image-col {
     position: relative;
     width: 100%;
@@ -69,15 +68,16 @@
     }
 }
 
-.media-content.with-ds .img-container {
+// Drop shadow on the media child block
+.media-content .image-col.with-ds .img-container {
     box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
 }
 
-.media-content.no-ds .img-container {
+.media-content .image-col.no-ds .img-container {
     box-shadow: none;
 }
 
-// ---- Content column ----
+// ---- Content / Text column ----
 .media-content .content-columns {
     width: 100%;
     box-sizing: border-box;
