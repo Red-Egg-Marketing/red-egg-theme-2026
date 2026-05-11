@@ -1,14 +1,14 @@
 // ========================================
 //  Image & Text Columns Block Styles
-//  Block: red-egg-block/image-text-columns
+//  Block: red-egg-block/media-content
 //
 //  Standalone two-column section: image/video
 //  on one side, text content on the other.
-//  Based on the 2022 image-text-columns block,
+//  Based on the 2022 media-content block,
 //  rebuilt with 2026 design tokens.
 // ========================================
 
-.image-text-columns {
+.media-content {
     position: relative;
     width: 100%;
     padding-top: $default-section-padding-top;
@@ -26,7 +26,7 @@
 }
 
 // ---- Consecutive sections: collapse top padding ----
-.image-text-columns + .image-text-columns {
+.media-content + .media-content {
     padding-top: 0;
 
     @media screen and (min-width: $small-width) {
@@ -35,14 +35,14 @@
 }
 
 // ---- Block content: flex layout ----
-.image-text-columns .block-content {
+.media-content .block-content {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
 }
 
 // ---- Image column ----
-.image-text-columns .image-col {
+.media-content .image-col {
     position: relative;
     width: 100%;
     box-sizing: border-box;
@@ -58,7 +58,7 @@
     }
 }
 
-.image-text-columns .img-container {
+.media-content .img-container {
     border-radius: $default-border-radius;
     overflow: hidden;
 
@@ -69,16 +69,16 @@
     }
 }
 
-.image-text-columns.with-ds .img-container {
+.media-content.with-ds .img-container {
     box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
 }
 
-.image-text-columns.no-ds .img-container {
+.media-content.no-ds .img-container {
     box-shadow: none;
 }
 
 // ---- Content column ----
-.image-text-columns .content-columns {
+.media-content .content-columns {
     width: 100%;
     box-sizing: border-box;
     margin-top: 1.5rem;
@@ -95,30 +95,30 @@
     }
 }
 
-.image-text-columns .wrap > *:first-child {
+.media-content .wrap > *:first-child {
     margin-top: 0;
 }
 
-.image-text-columns .wrap h1 {
+.media-content .wrap h1 {
     @include primary-h1;
     margin-bottom: 1rem;
 }
 
-.image-text-columns .wrap h2 {
+.media-content .wrap h2 {
     @include primary-h2;
     margin-bottom: 1rem;
 }
 
-.image-text-columns .wrap h3 {
+.media-content .wrap h3 {
     @include primary-h3;
     margin-bottom: 0.5rem;
 }
 
-.image-text-columns .wrap p {
+.media-content .wrap p {
     @include body-text;
 }
 
-.image-text-columns .wp-block-buttons {
+.media-content .wp-block-buttons {
     margin-top: 1.5rem;
 
     @media screen and (min-width: $small-width) {
@@ -127,7 +127,7 @@
 }
 
 // ---- Image Right (default): content left, image right ----
-.image-text-columns.img-right .image-col {
+.media-content.img-right .image-col {
     order: 1;
 
     @media screen and (min-width: $small-width) {
@@ -135,7 +135,7 @@
     }
 }
 
-.image-text-columns.img-right .content-columns {
+.media-content.img-right .content-columns {
     order: 2;
 
     @media screen and (min-width: $small-width) {
@@ -150,7 +150,7 @@
 }
 
 // ---- Image Left: image left, content right ----
-.image-text-columns.img-left .content-columns {
+.media-content.img-left .content-columns {
     @media screen and (min-width: $small-width) {
         padding-left: 3rem;
     }
@@ -161,7 +161,7 @@
 }
 
 // ---- Video ----
-.image-text-columns video {
+.media-content video {
     max-width: 100%;
     display: block;
     height: auto;
@@ -169,7 +169,7 @@
     border-radius: $default-border-radius;
 }
 
-.image-text-columns .custom-video-button {
+.media-content .custom-video-button {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -189,24 +189,24 @@
     }
 }
 
-.image-text-columns.playing .custom-video-button {
+.media-content.playing .custom-video-button {
     display: none;
 }
 
 // ---- Background color classes ----
-.image-text-columns.eggshell { background-color: $eggshell; }
-.image-text-columns.white { background-color: $white; }
-.image-text-columns.navy {
+.media-content.eggshell { background-color: $eggshell; }
+.media-content.white { background-color: $white; }
+.media-content.navy {
     background-color: $navy;
     h1, h2, h3, h4, h5, h6, p, li { color: $white; }
 }
-.image-text-columns.gray {
+.media-content.gray {
     background-color: $gray;
     h1, h2, h3, h4, h5, h6, p, li { color: $white; }
 }
 
 // ---- Full-width in editor ----
-.wp-block.image-text-columns {
+.wp-block.media-content {
     width: 100%;
     max-width: 100%;
 }

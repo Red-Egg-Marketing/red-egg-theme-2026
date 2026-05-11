@@ -83,7 +83,7 @@ const EditImageTextColumns = ( { attributes, setAttributes, clientId } ) => {
 
     const blockProps = useBlockProps( {
         id: blockId,
-        className: 'image-text-columns'
+        className: 'media-content'
             + ' ' + contentAlign
             + ( bgSlug ? ' ' + bgSlug + ' with-bg' : '' )
             + ( withDrop ? ' with-ds' : ' no-ds' ),

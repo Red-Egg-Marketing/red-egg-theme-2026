@@ -90,7 +90,7 @@ import './awards-section/index';
 import './vibe-cta/index';
 
 // Image & Text Columns (standalone two-column section)
-import './image-text-columns/index';
+import './media-content/index';
 
 // Service List (parent: heading + service rows)
 import './service-list/index';

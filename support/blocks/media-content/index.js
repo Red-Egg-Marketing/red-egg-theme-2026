@@ -1,13 +1,10 @@
 /**
- * Image & Text Columns Block (Standalone)
+ * Media Content Block (Standalone)
  *
  * Two-column section: image/video on one side,
  * InnerBlocks content on the other.
  * Supports image/video toggle, alignment flip,
  * background image/color, drop shadow, padding/margin.
- *
- * Based on the 2022 image-text-columns block,
- * rebuilt for the 2026 theme conventions.
  *
  *    ____          _   _____              
  *   |  _ \ ___  __| | | ____|__ _  __ _   
@@ -22,9 +19,9 @@ const { __ } = wp.i18n;
 import edit from './edit';
 import save from './save';
 
-registerBlockType( 'red-egg-block/image-text-columns', {
+registerBlockType( 'red-egg-block/media-content', {
     apiVersion: 2,
-    title: __( 'Image & Text Columns', 'red-egg' ),
+    title: __( 'Media Content', 'red-egg' ),
     description: __( 'Two-column layout with image/video and text content. Standalone section block.', 'red-egg' ),
     icon: 'columns',
     category: 'layout',

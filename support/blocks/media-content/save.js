@@ -40,7 +40,7 @@ const SaveImageTextColumns = ( { attributes } ) => {
 
     const blockProps = useBlockProps.save( {
         id: blockId,
-        className: 'image-text-columns'
+        className: 'media-content'
             + ' ' + contentAlign
             + ( bgSlug ? ' ' + bgSlug + ' with-bg' : '' )
             + ( withDrop ? ' with-ds' : ' no-ds' ),

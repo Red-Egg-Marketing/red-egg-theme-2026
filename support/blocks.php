@@ -234,7 +234,7 @@ function red_egg_register_blocks() {
     ] );
 
     // Image & Text Columns (standalone two-column section)
-    register_block_type( 'red-egg-block/image-text-columns', [
+    register_block_type( 'red-egg-block/media-content', [
         'editor_script' => 'red-egg-editor-blocks',
     ] );
 
