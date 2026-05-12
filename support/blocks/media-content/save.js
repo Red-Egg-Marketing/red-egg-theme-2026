@@ -7,11 +7,12 @@ const { InnerBlocks, useBlockProps } = wp.blockEditor;
 
 import PaddingSelector from '../../components/Padding.js';
 import MarginSelector from '../../components/Margin.js';
+import BlobAnimation from '../../components/BlobAnimation.js';
 
 const SaveMediaContent = ( { attributes } ) => {
     const {
         contentAlign, image, bgSlug,
-        padding, margin, blockId,
+        padding, margin, blockId, blobEnabled, blobShape, blobSpeed, blobPosition
     } = attributes;
 
     // Build background image inline styles
@@ -44,9 +45,19 @@ const SaveMediaContent = ( { attributes } ) => {
 
     return (
         <Fragment>
+            <InnerBlocks>
+
+            </InnerBlocks>
             <PaddingSelector.View padding={ padding } id={ blockId } />
             <MarginSelector.View margin={ margin } id={ blockId } />
+            
             <div { ...blockProps }>
+                <BlobAnimation.View
+                    blobSpeedblobEnabled={ blobEnabled }
+                    blobShape={ blobShape }
+                    blobSpeed={ blobSpeed }
+                    blobPosition={ blobPosition }
+                />
                 <div className="block-wrapper">
                     <div className={ 'block-content ' + contentAlign }>
                         <InnerBlocks.Content />

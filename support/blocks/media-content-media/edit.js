@@ -5,12 +5,11 @@
  */
 
 const { Fragment } = wp.element;
-const { InspectorControls, MediaUpload, useBlockProps } = wp.blockEditor;
+const { InnerBlocks, InspectorControls, MediaUpload, useBlockProps } = wp.blockEditor;
 const { PanelBody, Button, SelectControl, ToggleControl, ResponsiveWrapper } = wp.components;
 const { __ } = wp.i18n;
 
 import ImageComp from '../../components/ImageComp.js';
-import BlobAnimation from '../../components/BlobAnimation.js';
 
 const vidImgOptions = [
     { label: __( 'Image', 'red-egg' ), value: 'image' },
@@ -19,8 +18,7 @@ const vidImgOptions = [
 
 const EditMediaContentMedia = ( { attributes, setAttributes } ) => {
     const {
-        media, vidOrImg, videoID, videoURL, videothumb, withDrop,
-        blobEnabled, blobShape, blobSpeed, blobPosition,
+        media, vidOrImg, videoID, videoURL, videothumb, withDrop
     } = attributes;
 
     const blockProps = useBlockProps( {
@@ -64,6 +62,14 @@ const EditMediaContentMedia = ( { attributes, setAttributes } ) => {
             videothumb: { url: '', width: '', height: '' },
         } );
     };
+
+    const template = [
+        [ 'red-egg-block/header-intro', {} ],
+    ];
+
+    const allowedBlocks = [
+        'red-egg-block/header-intro'
+    ];
 
     return (
         <Fragment>
@@ -126,20 +132,14 @@ const EditMediaContentMedia = ( { attributes, setAttributes } ) => {
                     </PanelBody>
                 ) }
 
-                <BlobAnimation.Controls
-                    blobEnabled={ blobEnabled }
-                    blobShape={ blobShape }
-                    blobSpeed={ blobSpeed }
-                    blobPosition={ blobPosition }
-                    setAttributes={ setAttributes }
-                />
+        
             </InspectorControls>
 
             <div { ...blockProps }>
-                <BlobAnimation.Preview
-                    blobEnabled={ blobEnabled }
-                    blobShape={ blobShape }
-                    blobPosition={ blobPosition }
+
+                <InnerBlocks
+                    template={ template }
+                    allowedBlocks={ allowedBlocks }
                 />
                 { vidOrImg === 'image' && (
                     <ImageComp

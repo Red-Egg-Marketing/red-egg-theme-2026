@@ -67,6 +67,22 @@ registerBlockType( 'red-egg-block/media-content', {
         blockId: {
             type: 'string',
         },
+        blobEnabled: {
+            type: 'boolean',
+            default: false,
+        },
+        blobShape: {
+            type: 'string',
+            default: 'shape1',
+        },
+        blobSpeed: {
+            type: 'number',
+            default: 8,
+        },
+        blobPosition: {
+            type: 'string',
+            default: 'top-right',
+        },
     },
     edit,
     save,

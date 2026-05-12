@@ -6,12 +6,11 @@ const { Fragment } = wp.element;
 const { useBlockProps } = wp.blockEditor;
 
 import ImageComp from '../../components/ImageComp.js';
-import BlobAnimation from '../../components/BlobAnimation.js';
+
 
 const SaveMediaContentMedia = ( { attributes } ) => {
     const {
-        media, vidOrImg, videoID, videoURL, videothumb, withDrop,
-        blobEnabled, blobShape, blobSpeed, blobPosition,
+        media, vidOrImg, videoID, videoURL, videothumb, withDrop
     } = attributes;
 
     const blockProps = useBlockProps.save( {
@@ -24,12 +23,7 @@ const SaveMediaContentMedia = ( { attributes } ) => {
 
     return (
         <div { ...blockProps }>
-            <BlobAnimation.View
-                blobEnabled={ blobEnabled }
-                blobShape={ blobShape }
-                blobSpeed={ blobSpeed }
-                blobPosition={ blobPosition }
-            />
+            
             { vidOrImg === 'image' && (
                 <ImageComp.View
                     source={ media.srcSet.large }

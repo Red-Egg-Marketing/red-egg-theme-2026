@@ -4,10 +4,11 @@
  * InnerBlocks for header-intro, paragraphs, buttons.
  */
 
-const { InnerBlocks, useBlockProps } = wp.blockEditor;
+const { Fragment, useEffect } = wp.element;
+const { InnerBlocks, useBlockProps, InspectorControls } = wp.blockEditor;
+
 
 const template = [
-    [ 'red-egg-block/header-intro', {} ],
     [ 'core/paragraph', { placeholder: 'Section description...' } ],
     [ 'core/buttons', {}, [
         [ 'core/button', { placeholder: 'CTA...' } ],
@@ -15,7 +16,6 @@ const template = [
 ];
 
 const allowedBlocks = [
-    'red-egg-block/header-intro',
     'core/heading',
     'core/paragraph',
     'core/list',
@@ -23,20 +23,24 @@ const allowedBlocks = [
     'core/image',
 ];
 
-const EditMediaContentText = () => {
+const EditMediaContentText = ({ attributes, setAttributes }) => {
+
+
     const blockProps = useBlockProps( {
         className: 'media-content__text content-columns column',
     } );
 
     return (
-        <div { ...blockProps }>
-            <div className="wrap">
-                <InnerBlocks
-                    template={ template }
-                    allowedBlocks={ allowedBlocks }
-                />
+        <Fragment>
+            <div { ...blockProps }>
+                <div className="wrap">
+                    <InnerBlocks
+                        template={ template }
+                        allowedBlocks={ allowedBlocks }
+                    />
+                </div>
             </div>
-        </div>
+        </Fragment>
     );
 };
 

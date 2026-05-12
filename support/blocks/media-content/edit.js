@@ -14,6 +14,8 @@ import BackgroundColor from '../../components/BackgroundColor.js';
 import BackgroundSelector from '../../components/BackgroundSelector.js';
 import PaddingSelector from '../../components/Padding.js';
 import MarginSelector from '../../components/Margin.js';
+import BlobAnimation from '../../components/BlobAnimation.js';
+
 
 const alignOptions = [
     { label: __( 'Image Right', 'red-egg' ), value: 'img-right' },
@@ -33,7 +35,7 @@ const allowedBlocks = [
 const EditMediaContent = ( { attributes, setAttributes, clientId } ) => {
     const {
         contentAlign, image, bgColor, bgSlug,
-        padding, margin, blockId,
+        padding, margin, blockId, blobEnabled, blobShape, blobSpeed, blobPosition
     } = attributes;
 
     useEffect( () => {
@@ -99,6 +101,14 @@ const EditMediaContent = ( { attributes, setAttributes, clientId } ) => {
                     image={ image }
                     setAttributes={ setAttributes }
                 />
+
+                <BlobAnimation.Controls
+                    blobEnabled={ blobEnabled }
+                    blobShape={ blobShape }
+                    blobSpeed={ blobSpeed }
+                    blobPosition={ blobPosition }
+                    setAttributes={ setAttributes }
+                />
             </InspectorControls>
 
             <PaddingSelector
@@ -113,12 +123,16 @@ const EditMediaContent = ( { attributes, setAttributes, clientId } ) => {
             />
 
             <div { ...blockProps }>
+                 <BlobAnimation.Preview
+                    blobEnabled={ blobEnabled }
+                    blobShape={ blobShape }
+                    blobPosition={ blobPosition }
+                />
                 <div className="block-wrapper">
                     <div className={ 'block-content ' + contentAlign }>
                         <InnerBlocks
                             template={ template }
                             allowedBlocks={ allowedBlocks }
-                            templateLock="all"
                         />
                     </div>
                 </div>
