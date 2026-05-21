@@ -26,7 +26,6 @@ const EditHeaderIntroLeft = () => {
             <InnerBlocks
                 template={ template }
                 allowedBlocks={ allowedBlocks }
-                templateLock="insert"
             />
         </div>
     );

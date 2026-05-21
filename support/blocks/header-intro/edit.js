@@ -105,7 +105,6 @@ const EditHeaderIntro = ( { attributes, setAttributes, clientId } ) => {
                     <InnerBlocks
                         template={ template }
                         allowedBlocks={ allowedBlocks }
-                        templateLock="all"
                     />
                 </div>
             </div>

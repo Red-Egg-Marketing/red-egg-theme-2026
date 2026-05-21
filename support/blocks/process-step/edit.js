@@ -32,7 +32,6 @@ const EditProcessStep = ( { attributes, setAttributes } ) => {
                     <InnerBlocks
                         template={ template }
                         allowedBlocks={ allowedBlocks }
-                        templateLock="all"
                     />
                 </div>
                 <div className="process-step__tags">
