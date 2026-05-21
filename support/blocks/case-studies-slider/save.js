@@ -3,6 +3,7 @@
  *
  * Outputs the static shell with data attributes.
  * Frontend.js hydrates the Swiper slider with API data.
+ * Button + nav arrows sit in a bottom row below the slider.
  */
 
 const { Fragment } = wp.element;
@@ -12,7 +13,7 @@ import PaddingSelector from '../../components/Padding.js';
 import MarginSelector from '../../components/Margin.js';
 
 const SaveCaseStudiesSlider = ( { attributes } ) => {
-    const { industry, postsToShow, padding, margin, blockId } = attributes;
+    const { industry, postsToShow, padding, margin, blockId, buttonText, buttonUrl } = attributes;
 
     const blockProps = useBlockProps.save( {
         id: blockId,
@@ -29,14 +30,14 @@ const SaveCaseStudiesSlider = ( { attributes } ) => {
                         <InnerBlocks.Content />
                     </div>
 
-                    <div className="resources-wrap">
-                        <div
-                            id="CaseStudiesSliderRoot"
-                            className="case-studies-swiper swiper"
-                            data-posts-to-show={ postsToShow }
-                            data-industry={ industry || '' }
-                        ></div>
-                    </div>
+                    <div
+                        id="CaseStudiesSliderRoot"
+                        className="case-studies-slider__body"
+                        data-posts-to-show={ postsToShow }
+                        data-industry={ industry || '' }
+                        data-button-text={ buttonText || 'VIEW OUR WORK' }
+                        data-button-url={ buttonUrl || '/work/?post-type=case-study' }
+                    ></div>
                 </div>
             </section>
         </Fragment>

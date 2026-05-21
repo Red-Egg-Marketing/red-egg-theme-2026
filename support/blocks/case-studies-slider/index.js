@@ -52,6 +52,14 @@ registerBlockType( 'red-egg-block/case-studies-slider', {
         blockId: {
             type: 'string',
         },
+        buttonText: {
+            type: 'string',
+            default: 'VIEW OUR WORK',
+        },
+        buttonUrl: {
+            type: 'string',
+            default: '/work/?post-type=case-study',
+        },
     },
     edit,
     save,

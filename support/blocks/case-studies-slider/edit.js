@@ -3,42 +3,43 @@
  *
  * Fetches case studies from REST API with optional industry filter.
  * Renders a Swiper-powered preview in the editor.
- * Uses InnerBlocks for header intro + CTA buttons.
+ * Uses InnerBlocks for header intro above, CTA buttons below slider.
+ *
+ *    ____          _   _____              
+ *   |  _ \ ___  __| | | ____|__ _  __ _   
+ *   | |_) / _ \/ _` | |  _| / _` |/ _` |  
+ *   |  _ <  __/ (_| | | |__| (_| | (_| |  
+ *   |_| \_\___|\\__,_| |_____\__, |\__, |  
+ *                            |___/ |___/   
  */
 
 const { Fragment, useState, useEffect } = wp.element;
 const { InnerBlocks, InspectorControls, useBlockProps } = wp.blockEditor;
-const { PanelBody, SelectControl, RangeControl } = wp.components;
+const { PanelBody, SelectControl, RangeControl, TextControl } = wp.components;
 const { __ } = wp.i18n;
 
 import ResourceCard from '../../components/ResourceCard.js';
 import PaddingSelector from '../../components/Padding.js';
 import MarginSelector from '../../components/Margin.js';
-import Swiper from 'swiper/bundle';
 
 const apiUrl = '/wp-json/red-egg/v2/case-studies';
 const industriesUrl = '/wp-json/red-egg/v2/industries';
 
 const template = [
     [ 'red-egg-block/header-intro', {} ],
-    [ 'core/buttons', {}, [
-        [ 'core/button', { text: 'VIEW OUR WORK', url: '/work/?post-type=case-study' } ],
-    ] ],
 ];
 
 const allowedBlocks = [
     'red-egg-block/header-intro',
-    'core/buttons',
     'core/heading',
     'core/paragraph',
 ];
 
 const EditCaseStudiesSlider = ( { attributes, setAttributes, isSelected, clientId } ) => {
-    const { industry, postsToShow, padding, margin, blockId } = attributes;
+    const { industry, postsToShow, padding, margin, blockId, buttonText, buttonUrl } = attributes;
 
     const [ resources, setResources ] = useState( false );
     const [ industries, setIndustries ] = useState( false );
-    const [ swiperReady, setSwiperReady ] = useState( false );
 
     const blockProps = useBlockProps( {
         id: blockId,
@@ -70,14 +71,11 @@ const EditCaseStudiesSlider = ( { attributes, setAttributes, isSelected, clientI
 
     // Fetch case studies (initial + when industry or postsToShow changes)
     useEffect( () => {
-        setSwiperReady( false );
         let url = apiUrl;
         if ( industry ) {
             url += '?industry=' + industry;
         }
         wp.apiFetch( { url } ).then( ( data ) => {
-            // Response shape: [ post_array, tax_array, post_types ]
-            // Posts are in data[0].resources
             let posts = [];
             if ( data && data[0] && data[0].resources ) {
                 posts = data[0].resources;
@@ -86,39 +84,10 @@ const EditCaseStudiesSlider = ( { attributes, setAttributes, isSelected, clientI
                 posts = posts.slice( 0, postsToShow );
             }
             setResources( posts );
-            setSwiperReady( true );
         } ).catch( () => {
             setResources( [] );
-            setSwiperReady( true );
         } );
     }, [ industry, postsToShow ] );
-
-    // Initialize Swiper when resources are ready and block is selected
-    useEffect( () => {
-        if ( swiperReady && resources && resources.length > 0 && isSelected ) {
-            const swiperEl = document.querySelector( `#${ blockId || 'block-' + clientId } .case-studies-swiper` );
-            if ( swiperEl ) {
-                new Swiper( swiperEl, {
-                    loop: false,
-                    slidesPerView: 1.25,
-                    autoplay: false,
-                    effect: 'slide',
-                    spaceBetween: 15,
-                    speed: 500,
-                    breakpoints: {
-                        768: {
-                            slidesPerView: 3.25,
-                            spaceBetween: 20,
-                        },
-                    },
-                    navigation: {
-                        nextEl: `#${ blockId || 'block-' + clientId } .swiper-button-next`,
-                        prevEl: `#${ blockId || 'block-' + clientId } .swiper-button-prev`,
-                    },
-                } );
-            }
-        }
-    }, [ swiperReady, isSelected ] );
 
     const setIndustryFilter = ( value ) => {
         setAttributes( { industry: value } );
@@ -147,6 +116,21 @@ const EditCaseStudiesSlider = ( { attributes, setAttributes, isSelected, clientI
                         max={ 30 }
                     />
                 </PanelBody>
+                <PanelBody
+                    title={ __( 'CTA Button', 'red-egg' ) }
+                    initialOpen={ false }
+                >
+                    <TextControl
+                        label={ __( 'Button Text', 'red-egg' ) }
+                        value={ buttonText }
+                        onChange={ ( val ) => setAttributes( { buttonText: val } ) }
+                    />
+                    <TextControl
+                        label={ __( 'Button URL', 'red-egg' ) }
+                        value={ buttonUrl }
+                        onChange={ ( val ) => setAttributes( { buttonUrl: val } ) }
+                    />
+                </PanelBody>
             </InspectorControls>
 
             <PaddingSelector
@@ -169,38 +153,35 @@ const EditCaseStudiesSlider = ( { attributes, setAttributes, isSelected, clientI
                         />
                     </div>
 
-                    <div className="resources-wrap">
-                        <div className="case-studies-swiper swiper">
-                            { swiperReady && resources && resources.length > 0 && (
-                                <Fragment>
-                                    <div className="swiper-wrapper">
-                                        { resources.map( ( resource, i ) => (
-                                            <ResourceCard
-                                                key={ resource.ID || i }
-                                                resourceIndex={ i }
-                                                resourceURL={ resource.link }
-                                                resourceID={ resource.ID || resource.id }
-                                                resourceImg={ resource.media_url || resource.featured_image || false }
-                                                resourceTitle={ resource.post_title || resource.title }
-                                                resourceClass="swiper-slide"
-                                                displayButton={ false }
-                                                displayExcerpt={ false }
-                                            />
-                                        ) ) }
-                                    </div>
-                                    <div className="swiper-button-prev"></div>
-                                    <div className="swiper-button-next"></div>
-                                </Fragment>
-                            ) }
-                            { swiperReady && ( ! resources || resources.length === 0 ) && (
-                                <div className="error">
-                                    <h3>{ __( 'No case studies found. Try a different filter.', 'red-egg' ) }</h3>
-                                </div>
-                            ) }
-                            { ! swiperReady && (
+                    <div className="case-studies-slider__body">
+                        { resources && resources.length > 0 && (
+                            <div className="case-studies-slider__grid">
+                                { resources.map( ( resource, i ) => (
+                                    <ResourceCard
+                                        key={ resource.ID || i }
+                                        resourceIndex={ i }
+                                        resourceURL={ resource.link }
+                                        resourceID={ resource.ID || resource.id }
+                                        resourceImg={ resource.media_url || resource.featured_image || false }
+                                        resourceTitle={ resource.post_title || resource.title }
+                                        resourceExcerpt={ resource.post_excerpt || '' }
+                                        resourceClass=""
+                                        displayButton={ false }
+                                        displayExcerpt={ true }
+                                    />
+                                ) ) }
+                            </div>
+                        ) }
+                        { resources && resources.length === 0 && (
+                            <div className="error">
+                                <h3>{ __( 'No case studies found. Try a different filter.', 'red-egg' ) }</h3>
+                            </div>
+                        ) }
+                        { resources === false && (
+                            <div className="case-studies-slider__loading">
                                 <p>{ __( 'Loading case studies…', 'red-egg' ) }</p>
-                            ) }
-                        </div>
+                            </div>
+                        ) }
                     </div>
                 </div>
             </section>
