@@ -15,6 +15,9 @@
 
 .image-columns {
     width: 100%;
+    position: relative;
+    max-width: $max-cont-w;
+    margin: 0 auto;
     padding-top: $default-section-padding-top;
     padding-bottom: $default-section-padding-bottom;
 
@@ -33,21 +36,7 @@
     }
 }
 
-.image-columns .block-wrapper {
-    position: relative;
-    max-width: $max-cont-w;
-    width: 100%;
-    margin: 0 auto;
-    padding-left: $site-padding-mobile;
-    padding-right: $site-padding-mobile;
-
-    @media screen and (min-width: $small-width) {
-        padding-left: $site-padding;
-        padding-right: $site-padding;
-    }
-}
-
-.image-columns > .block-wrapper > .block-content {
+.image-columns > .block-content {
     display: flex;
     flex-wrap: wrap;
     align-items: center;

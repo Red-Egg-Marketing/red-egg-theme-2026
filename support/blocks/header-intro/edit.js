@@ -101,14 +101,12 @@ const EditHeaderIntro = ( { attributes, setAttributes, clientId } ) => {
             />
 
             <div { ...blockProps }>
-                <div className="block-wrapper">
-                    <div className="header-intro__columns">
-                        <InnerBlocks
-                            template={ template }
-                            allowedBlocks={ allowedBlocks }
-                            templateLock="all"
-                        />
-                    </div>
+                <div className="header-intro__columns">
+                    <InnerBlocks
+                        template={ template }
+                        allowedBlocks={ allowedBlocks }
+                        templateLock="all"
+                    />
                 </div>
             </div>
         </Fragment>

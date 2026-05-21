@@ -52,30 +52,28 @@ const SaveImageText = ( { attributes } ) => {
             <PaddingSelector.View padding={ padding } id={ blockId } />
             <MarginSelector.View margin={ margin } id={ blockId } />
             <div { ...blockProps }>
-                <div className="block-wrapper">
-                    <div className={ `block-content ${ contentAlign }` }>
-                        <div className="image-col column">
-                            { vidOrImg === 'image' && (
-                                <ImageComp.View
-                                    source={ media.srcSet.large }
-                                    alt={ media.alt }
-                                    srcSet={ srcSet }
-                                    sizes={ sizes }
-                                />
-                            ) }
-                            { videoID && vidOrImg === 'video' && (
-                                <Fragment>
-                                    <button className="custom-video-button">Play</button>
-                                    <video className="hero-asset" poster={ videothumb.url } playsInline>
-                                        <source src={ videoURL } className="source" type="video/mp4" />
-                                    </video>
-                                </Fragment>
-                            ) }
-                        </div>
-                        <div className="content-columns column">
-                            <div className="wrap">
-                                <InnerBlocks.Content />
-                            </div>
+                <div className={ `block-content ${ contentAlign }` }>
+                    <div className="image-col column">
+                        { vidOrImg === 'image' && (
+                            <ImageComp.View
+                                source={ media.srcSet.large }
+                                alt={ media.alt }
+                                srcSet={ srcSet }
+                                sizes={ sizes }
+                            />
+                        ) }
+                        { videoID && vidOrImg === 'video' && (
+                            <Fragment>
+                                <button className="custom-video-button">Play</button>
+                                <video className="hero-asset" poster={ videothumb.url } playsInline>
+                                    <source src={ videoURL } className="source" type="video/mp4" />
+                                </video>
+                            </Fragment>
+                        ) }
+                    </div>
+                    <div className="content-columns column">
+                        <div className="wrap">
+                            <InnerBlocks.Content />
                         </div>
                     </div>
                 </div>

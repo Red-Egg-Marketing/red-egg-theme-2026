@@ -221,44 +221,42 @@ const EditImageText = ( { attributes, setAttributes, clientId } ) => {
             />
 
             <div { ...blockProps }>
-                <div className="block-wrapper">
-                    <div className={ `block-content ${ contentAlign }` }>
-                        <div className="image-col column">
-                            { vidOrImg === 'image' && (
-                                <ImageComp
-                                    id={ media.id }
-                                    source={ media.srcSet.large }
-                                    updateImageAttr={ updateImageAttr }
-                                    alt={ media.alt }
-                                />
-                            ) }
-                            { vidOrImg === 'video' && (
-                                <Fragment>
-                                    <MediaUpload
-                                        onSelect={ updateVideoAttr }
-                                        allowedTypes={ [ 'video' ] }
-                                        value={ videoID }
-                                        render={ ( { open } ) => (
-                                            <Button className="button" onClick={ open }>
-                                                { __( 'Upload/Change Video', 'red-egg' ) }
-                                            </Button>
-                                        ) }
-                                    />
-                                    { videoID && (
-                                        <video className="hero-asset" playsInline poster={ videothumb.url }>
-                                            <source src={ videoURL } className="source" type="video/mp4" />
-                                        </video>
+                <div className={ `block-content ${ contentAlign }` }>
+                    <div className="image-col column">
+                        { vidOrImg === 'image' && (
+                            <ImageComp
+                                id={ media.id }
+                                source={ media.srcSet.large }
+                                updateImageAttr={ updateImageAttr }
+                                alt={ media.alt }
+                            />
+                        ) }
+                        { vidOrImg === 'video' && (
+                            <Fragment>
+                                <MediaUpload
+                                    onSelect={ updateVideoAttr }
+                                    allowedTypes={ [ 'video' ] }
+                                    value={ videoID }
+                                    render={ ( { open } ) => (
+                                        <Button className="button" onClick={ open }>
+                                            { __( 'Upload/Change Video', 'red-egg' ) }
+                                        </Button>
                                     ) }
-                                </Fragment>
-                            ) }
-                        </div>
-                        <div className="content-columns column">
-                            <div className="wrap">
-                                <InnerBlocks
-                                    template={ template }
-                                    allowedBlocks={ allowBlocks }
                                 />
-                            </div>
+                                { videoID && (
+                                    <video className="hero-asset" playsInline poster={ videothumb.url }>
+                                        <source src={ videoURL } className="source" type="video/mp4" />
+                                    </video>
+                                ) }
+                            </Fragment>
+                        ) }
+                    </div>
+                    <div className="content-columns column">
+                        <div className="wrap">
+                            <InnerBlocks
+                                template={ template }
+                                allowedBlocks={ allowBlocks }
+                            />
                         </div>
                     </div>
                 </div>
