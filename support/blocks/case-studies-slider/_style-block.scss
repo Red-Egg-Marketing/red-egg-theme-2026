@@ -1,16 +1,22 @@
 // ========================================
 //  Case Studies Slider Block Styles
 //  Block: red-egg-block/case-studies-slider
+//         red-egg-block/case-studies-slider-body
 //
-//  Uses Swiper.js with centeredSlides.
-//  Active slide is wider. Excerpt reveals on hover.
-//  Bottom row: CTA button left, nav arrows right.
+//  Parent/child architecture:
+//    Parent: header-intro + slider-body
+//    Child:  Swiper slider + bottom row (button + nav)
+//
+//  Swiper uses centeredSlides with active slide emphasis.
+//  Slides bleed outside the block-wrapper (overflow visible).
+//  Excerpt reveals on card hover.
 // ========================================
 
 .case-studies-slider {
     position: relative;
     padding-top: $default-section-padding-top;
     padding-bottom: $default-section-padding-bottom;
+    overflow: hidden;
 
     @media screen and (min-width: $small-width) {
         padding-top: 5rem;
@@ -22,23 +28,18 @@
     @include block-wrapper;
 }
 
-// ---- Header area (InnerBlocks: header-intro) ----
-.case-studies-slider .case-studies-slider__header {
-    margin-bottom: 2.5rem;
-
-    @media screen and (min-width: $small-width) {
-        margin-bottom: 3rem;
-    }
-}
-
-// ---- Slider body ----
+// ---- Slider body (child block) ----
 .case-studies-slider__body {
     position: relative;
 }
 
-// ---- Swiper container ----
+// ---- Swiper wrap: allows slides to bleed ----
+.cs-slider__swiper-wrap {
+    overflow: visible;
+}
+
 .cs-slider__swiper {
-    overflow: hidden;
+    overflow: visible;
 }
 
 // ---- Slide card ----
@@ -47,7 +48,7 @@
     border-radius: $default-border-radius;
     overflow: hidden;
     background: $white;
-    transition: box-shadow 0.3s ease, transform 0.3s ease;
+    transition: box-shadow 0.3s ease, opacity 0.3s ease;
 }
 
 .cs-slide__link {
@@ -105,17 +106,14 @@
     opacity: 1;
 }
 
-// ---- Active slide: wider via Swiper ----
-// Swiper centeredSlides makes the active slide centered.
-// We use a custom activeClass and scale it slightly.
+// ---- Active slide emphasis ----
 .cs-slide--active {
     box-shadow: 0 4px 24px rgba(0, 0, 0, 0.1);
 }
 
-// Non-active slides: slightly dimmed
+// Non-active slides dimmed
 .cs-slide:not(.cs-slide--active) {
-    opacity: 0.7;
-    transition: opacity 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+    opacity: 0.65;
 }
 
 .cs-slide:not(.cs-slide--active):hover {
@@ -137,6 +135,11 @@
 // CTA button
 .cs-slider__cta .outline-gray {
     @include gray-button;
+}
+
+// WP buttons block inside CTA area
+.cs-slider__cta .wp-block-buttons {
+    margin: 0;
 }
 
 // Nav arrows
@@ -174,6 +177,16 @@
             color: $gray;
         }
     }
+}
+
+// Editor nav preview (non-functional circles)
+.cs-slider__nav-btn--preview {
+    display: block;
+    width: 44px;
+    height: 44px;
+    border: 1px solid $gray;
+    border-radius: 50%;
+    background: $white;
 }
 
 // ---- Loading / empty states ----
@@ -253,6 +266,11 @@
 
 // ---- Full-width in editor ----
 .wp-block.case-studies-slider {
+    width: 100%;
+    max-width: 100%;
+}
+
+.wp-block[data-type="red-egg-block/case-studies-slider-body"] {
     width: 100%;
     max-width: 100%;
 }

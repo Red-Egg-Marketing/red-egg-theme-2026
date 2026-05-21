@@ -1,15 +1,13 @@
 /**
- * Case Studies Slider Block
+ * Case Studies Slider Block (Parent)
  *
- * Pulls case studies from the custom REST endpoint
- * and displays them in a Swiper slider with ResourceCard.
- * Supports industry taxonomy filtering.
+ * Header-intro + case-studies-slider-body child.
  *
  *    ____          _   _____              
  *   |  _ \ ___  __| | | ____|__ _  __ _   
  *   | |_) / _ \/ _` | |  _| / _` |/ _` |  
  *   |  _ <  __/ (_| | | |__| (_| | (_| |  
- *   |_| \_\___|\__,_| |_____\__, |\__, |  
+ *   |_| \_\___|\\__,_| |_____\__, |\__, |  
  *                            |___/ |___/   
  */
 
@@ -21,20 +19,12 @@ import save from './save';
 registerBlockType( 'red-egg-block/case-studies-slider', {
     apiVersion: 2,
     title: __( 'Case Studies Slider', 'red-egg' ),
-    description: __( 'Dynamic Swiper slider of case studies with industry filter.', 'red-egg' ),
+    description: __( 'Header intro + dynamic Swiper slider of case studies with industry filter.', 'red-egg' ),
     icon: 'slides',
     category: 'layout',
     keywords: [ __( 'case study', 'red-egg' ), __( 'slider', 'red-egg' ), __( 'work', 'red-egg' ), __( 'swiper', 'red-egg' ) ],
     supports: { anchor: true },
     attributes: {
-        industry: {
-            type: 'string',
-            default: '',
-        },
-        postsToShow: {
-            type: 'number',
-            default: 15,
-        },
         padding: {
             type: 'object',
             default: {
@@ -51,14 +41,6 @@ registerBlockType( 'red-egg-block/case-studies-slider', {
         },
         blockId: {
             type: 'string',
-        },
-        buttonText: {
-            type: 'string',
-            default: 'VIEW OUR WORK',
-        },
-        buttonUrl: {
-            type: 'string',
-            default: '/work/?post-type=case-study',
         },
     },
     edit,

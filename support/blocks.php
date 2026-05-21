@@ -144,6 +144,11 @@ function red_egg_register_blocks() {
         'editor_script' => 'red-egg-editor-blocks',
     ] );
 
+    // ---- 5a. Case Studies Slider Body (child: slider + CTA row) ----
+    register_block_type( 'red-egg-block/case-studies-slider-body', [
+        'editor_script' => 'red-egg-editor-blocks',
+    ] );
+
     // ---- 6. Testimonials ----
     // Uses a render callback to process the reviews shortcode
     register_block_type( 'red-egg-block/testimonials', [

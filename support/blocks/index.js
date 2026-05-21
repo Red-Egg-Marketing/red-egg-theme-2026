@@ -48,6 +48,7 @@ import './numbered-list-item/index';
 
 // Block 5: Case Studies Slider
 import './case-studies-slider/index';
+import './case-studies-slider-body/index';
 
 // Block 6: Testimonials
 import './testimonials/index';
