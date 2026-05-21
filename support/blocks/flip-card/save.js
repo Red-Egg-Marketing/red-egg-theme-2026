@@ -23,7 +23,7 @@ const SaveFlipCard = ( { attributes } ) => {
     return (
         <div { ...blockProps }>
             <div className="exterior-wrap">
-                <div className="block-wrapper">
+                <div className="wrapper">
                     <div className="block-content">
                         { icon && (
                             <div className="flip-card__icon">

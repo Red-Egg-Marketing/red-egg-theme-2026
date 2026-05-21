@@ -101,7 +101,7 @@ const EditFlipCard = ( { attributes, setAttributes, clientId } ) => {
 
             <div { ...blockProps }>
                 { ! flipCard && (
-                    <div className="block-wrapper">
+                    <div className="wrapper">
                         <div className="block-content">
                             { icon && (
                                 <div className="flip-card__icon">

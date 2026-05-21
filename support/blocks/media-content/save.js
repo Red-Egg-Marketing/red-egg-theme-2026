@@ -45,9 +45,6 @@ const SaveMediaContent = ( { attributes } ) => {
 
     return (
         <Fragment>
-            <InnerBlocks>
-
-            </InnerBlocks>
             <PaddingSelector.View padding={ padding } id={ blockId } />
             <MarginSelector.View margin={ margin } id={ blockId } />
             

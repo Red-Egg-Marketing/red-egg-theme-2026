@@ -3,7 +3,7 @@
  */
 
 const { Fragment } = wp.element;
-const { useBlockProps } = wp.blockEditor;
+const { InnerBlocks, useBlockProps } = wp.blockEditor;
 
 import ImageComp from '../../components/ImageComp.js';
 
@@ -23,7 +23,7 @@ const SaveMediaContentMedia = ( { attributes } ) => {
 
     return (
         <div { ...blockProps }>
-            
+            <InnerBlocks.Content />
             { vidOrImg === 'image' && (
                 <ImageComp.View
                     source={ media.srcSet.large }
