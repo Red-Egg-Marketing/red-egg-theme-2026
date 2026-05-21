@@ -132,3 +132,16 @@
     width: 100%;
     max-width: 100%;
 }
+
+.wp-block[data-type="red-egg-block/numbered-list-items"] {
+    width: 100%;
+    max-width: 100%;
+}
+
+// ---- Items wrapper ----
+.numbered-list__items {
+    @media screen and (min-width: $small-width) {
+        flex: 1;
+        min-width: 0;
+    }
+}

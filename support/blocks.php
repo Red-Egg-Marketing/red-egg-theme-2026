@@ -134,6 +134,11 @@ function red_egg_register_blocks() {
         'editor_script' => 'red-egg-editor-blocks',
     ] );
 
+    // Numbered List Items Wrapper (child of numbered-list)
+    register_block_type( 'red-egg-block/numbered-list-items', [
+        'editor_script' => 'red-egg-editor-blocks',
+    ] );
+
     // ---- 5. Case Studies Slider ----
     register_block_type( 'red-egg-block/case-studies-slider', [
         'editor_script' => 'red-egg-editor-blocks',

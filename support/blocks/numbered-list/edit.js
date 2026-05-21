@@ -13,14 +13,12 @@ import MarginSelector from '../../components/Margin.js';
 
 const template = [
     [ 'red-egg-block/header-intro', {} ],
-    [ 'red-egg-block/numbered-list-item', { badge: '01' } ],
-    [ 'red-egg-block/numbered-list-item', { badge: '02' } ],
-    [ 'red-egg-block/numbered-list-item', { badge: '03' } ],
+    [ 'red-egg-block/numbered-list-items', {} ],
 ];
 
 const allowedBlocks = [
     'red-egg-block/header-intro',
-    'red-egg-block/numbered-list-item',
+    'red-egg-block/numbered-list-items',
 ];
 
 const EditNumberedList = ( { attributes, setAttributes, clientId } ) => {

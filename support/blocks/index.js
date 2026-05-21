@@ -41,6 +41,7 @@ import './flip-card/index';
 
 // Block 4: Numbered List Items
 import './numbered-list/index';
+import './numbered-list-items/index';
 
 // Numbered List Item (child: badge + title + description)
 import './numbered-list-item/index';
