@@ -16,143 +16,156 @@
         padding-top: 5rem;
         padding-bottom: 5rem;
     }
+}
 
-    > .block-wrapper {
-        @include block-wrapper;
+.text-cards-grid > .block-wrapper {
+    @include block-wrapper;
+}
+
+// ---- Card grid layout ----
+.text-cards-grid .block-content {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+
+    @media screen and (min-width: $small-width) {
+        gap: 2rem;
     }
+}
 
-    // ---- Card grid layout ----
-    // The block-content contains header-intro + flip-cards as siblings.
-    // Flip cards flow into a row via flex-wrap.
-    .block-content {
-        > .flip-card,
-        > .wp-block[data-type="red-egg-block/flip-card"] {
-            // Handled by columns classes below
-        }
+// header-intro always full width
+.text-cards-grid .block-content > .header-intro-block,
+.text-cards-grid .block-content > .wp-block[data-type="red-egg-block/header-intro"] {
+    width: 100%;
+    flex-shrink: 0;
+}
+
+// ---- Columns layout ----
+.text-cards-grid.columns-2 .flip-card {
+    @media screen and (min-width: $small-width) {
+        width: calc(50% - 1rem);
     }
+}
 
-    // ---- Columns layout ----
-    // Flex container that wraps flip-cards into rows.
-    // The header-intro takes full width above.
-    .block-content {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 1.5rem;
-
-        @media screen and (min-width: $small-width) {
-            gap: 2rem;
-        }
-
-        // header-intro always full width
-        > .header-intro-block,
-        > .wp-block[data-type="red-egg-block/header-intro"] {
-            width: 100%;
-            flex-shrink: 0;
-        }
+.text-cards-grid.columns-3 .flip-card {
+    @media screen and (min-width: $small-width) {
+        width: calc(33.333% - 1.334rem);
     }
+}
 
-    &.columns-2 {
-        .flip-card {
-            @media screen and (min-width: $small-width) {
-                width: calc(50% - 1rem);
-            }
-        }
+.text-cards-grid.columns-4 .flip-card {
+    @media screen and (min-width: $small-width) {
+        width: calc(25% - 1.5rem);
     }
+}
 
-    &.columns-3 {
-        .flip-card {
-            @media screen and (min-width: $small-width) {
-                width: calc(33.333% - 1.334rem);
-            }
-        }
-    }
+// ---- Background color slug classes ----
+.text-cards-grid.gray.with-bg {
+    background-color: $gray;
+}
 
-    &.columns-4 {
-        .flip-card {
-            @media screen and (min-width: $small-width) {
-                width: calc(25% - 1.5rem);
-            }
-        }
-    }
+.text-cards-grid.gray.with-bg .header-intro-block h1,
+.text-cards-grid.gray.with-bg .header-intro-block h2,
+.text-cards-grid.gray.with-bg .header-intro-block h3,
+.text-cards-grid.gray.with-bg .header-intro-block h4,
+.text-cards-grid.gray.with-bg .header-intro-block h5,
+.text-cards-grid.gray.with-bg .header-intro-block h6,
+.text-cards-grid.gray.with-bg .header-intro-block p,
+.text-cards-grid.gray.with-bg .header-intro-block li {
+    color: $white;
+}
 
-    // ---- Background color slug classes ----
-    &.gray.with-bg {
-        background-color: $gray;
+.text-cards-grid.navy.with-bg {
+    background-color: $navy;
+}
 
-        .header-intro-block {
-            h1, h2, h3, h4, h5, h6, p, li { color: $white; }
-        }
-    }
+.text-cards-grid.navy.with-bg .header-intro-block h1,
+.text-cards-grid.navy.with-bg .header-intro-block h2,
+.text-cards-grid.navy.with-bg .header-intro-block h3,
+.text-cards-grid.navy.with-bg .header-intro-block h4,
+.text-cards-grid.navy.with-bg .header-intro-block h5,
+.text-cards-grid.navy.with-bg .header-intro-block h6,
+.text-cards-grid.navy.with-bg .header-intro-block p,
+.text-cards-grid.navy.with-bg .header-intro-block li {
+    color: $white;
+}
 
-    &.navy.with-bg {
-        background-color: $navy;
+.text-cards-grid.eggshell.with-bg {
+    background-color: $eggshell;
+}
 
-        .header-intro-block {
-            h1, h2, h3, h4, h5, h6, p, li { color: $white; }
-        }
-    }
+.text-cards-grid.red.with-bg {
+    background-color: $red;
+}
 
-    &.eggshell.with-bg {
-        background-color: $eggshell;
-    }
+.text-cards-grid.red.with-bg .header-intro-block h1,
+.text-cards-grid.red.with-bg .header-intro-block h2,
+.text-cards-grid.red.with-bg .header-intro-block h3,
+.text-cards-grid.red.with-bg .header-intro-block h4,
+.text-cards-grid.red.with-bg .header-intro-block h5,
+.text-cards-grid.red.with-bg .header-intro-block h6,
+.text-cards-grid.red.with-bg .header-intro-block p,
+.text-cards-grid.red.with-bg .header-intro-block li {
+    color: $white;
+}
 
-    &.red.with-bg {
-        background-color: $red;
+// ---- Decorative background styles ----
+.text-cards-grid.left-partial-box::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 45%;
+    height: 100%;
+    background-color: $eggshell;
+    border-radius: 0 $default-border-radius $default-border-radius 0;
+    z-index: 0;
+}
 
-        .header-intro-block {
-            h1, h2, h3, h4, h5, h6, p, li { color: $white; }
-        }
-    }
+.text-cards-grid.left-partial-box > .block-wrapper {
+    position: relative;
+    z-index: 1;
+}
 
-    // ---- Decorative background styles ----
-    &.left-partial-box {
-        &::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 45%;
-            height: 100%;
-            background-color: $eggshell;
-            border-radius: 0 $default-border-radius $default-border-radius 0;
-            z-index: 0;
-        }
+.text-cards-grid.left-partial-box-plane::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 45%;
+    height: 100%;
+    background-color: $eggshell;
+    border-radius: 0 $default-border-radius $default-border-radius 0;
+    z-index: 0;
+}
 
-        > .block-wrapper {
-            position: relative;
-            z-index: 1;
-        }
-    }
+.text-cards-grid.left-partial-box-plane > .block-wrapper {
+    position: relative;
+    z-index: 1;
+}
 
-    &.left-partial-box-plane {
-        @extend .left-partial-box;
+.text-cards-grid.left-partial-box-plane::after {
+    content: '';
+    position: absolute;
+    // Airplane decorative element — placeholder
+    // Replace with actual airplane SVG/image asset
+}
 
-        &::after {
-            content: '';
-            position: absolute;
-            // Airplane decorative element — placeholder
-            // Replace with actual airplane SVG/image asset
-        }
-    }
+.text-cards-grid.right-partial-box::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 45%;
+    height: 100%;
+    background-color: $eggshell;
+    border-radius: $default-border-radius 0 0 $default-border-radius;
+    z-index: 0;
+}
 
-    &.right-partial-box {
-        &::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            right: 0;
-            width: 45%;
-            height: 100%;
-            background-color: $eggshell;
-            border-radius: $default-border-radius 0 0 $default-border-radius;
-            z-index: 0;
-        }
-
-        > .block-wrapper {
-            position: relative;
-            z-index: 1;
-        }
-    }
+.text-cards-grid.right-partial-box > .block-wrapper {
+    position: relative;
+    z-index: 1;
 }
 
 // ---- Full-width in editor ----

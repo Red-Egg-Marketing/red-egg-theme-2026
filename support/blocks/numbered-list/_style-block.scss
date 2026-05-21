@@ -18,45 +18,45 @@
         padding-top: 6rem;
         padding-bottom: 6rem;
     }
+}
 
-    // ---- Navy background ----
-    .numbered-list__bg {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-color: $navy;
-        z-index: 0;
+// ---- Navy background ----
+.numbered-list .numbered-list__bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: $navy;
+    z-index: 0;
+}
+
+.numbered-list .block-wrapper {
+    @include block-wrapper;
+    position: relative;
+    z-index: 1;
+}
+
+// ---- Header intro overrides for navy bg ----
+.numbered-list .header-intro-block {
+    margin-bottom: 3rem;
+
+    @media screen and (min-width: $small-width) {
+        margin-bottom: 4rem;
     }
+}
 
-    .block-wrapper {
-        @include block-wrapper;
-        position: relative;
-        z-index: 1;
-    }
+.numbered-list .header-intro__left h2 {
+    color: $white;
+}
 
-    // ---- Header intro overrides for navy bg ----
-    .header-intro-block {
-        margin-bottom: 3rem;
+.numbered-list .header-intro__left .header-intro__label,
+.numbered-list .header-intro__left p.header-intro__label {
+    color: rgba($white, 0.6);
+}
 
-        @media screen and (min-width: $small-width) {
-            margin-bottom: 4rem;
-        }
-    }
-
-    .header-intro__left {
-        h2 { color: $white; }
-
-        .header-intro__label,
-        p.header-intro__label {
-            color: rgba($white, 0.6);
-        }
-    }
-
-    .header-intro__right {
-        p { color: $white; }
-    }
+.numbered-list .header-intro__right p {
+    color: $white;
 }
 
 // ---- Numbered List Item ----
@@ -78,25 +78,25 @@
 
 .numbered-list__badge {
     flex: 0 0 auto;
+}
 
-    .number-badge__value,
-    .number-badge__input {
-        color: $white;
-        opacity: 0.3;
-        font-size: 2.75rem; // 44px mobile
-        line-height: 1;
+.numbered-list__badge .number-badge__value,
+.numbered-list__badge .number-badge__input {
+    color: $white;
+    opacity: 0.3;
+    font-size: 2.75rem;
+    line-height: 1;
 
-        @media screen and (min-width: $small-width) {
-            font-size: 5.5rem; // 88px desktop
-        }
+    @media screen and (min-width: $small-width) {
+        font-size: 5.5rem;
     }
+}
 
-    .number-badge__input {
-        width: 60px;
+.numbered-list__badge .number-badge__input {
+    width: 60px;
 
-        @media screen and (min-width: $small-width) {
-            width: 100px;
-        }
+    @media screen and (min-width: $small-width) {
+        width: 100px;
     }
 }
 
@@ -108,18 +108,18 @@
     @media screen and (min-width: $small-width) {
         padding-top: 1.5rem;
     }
+}
 
-    h3 {
-        @include h3-caps;
-        color: $white;
-        margin: 0 0 0.75rem 0;
-    }
+.numbered-list__item-content h3 {
+    @include h3-caps;
+    color: $white;
+    margin: 0 0 0.75rem 0;
+}
 
-    p {
-        @include body-text;
-        color: $white;
-        margin: 0;
-    }
+.numbered-list__item-content p {
+    @include body-text;
+    color: $white;
+    margin: 0;
 }
 
 // ---- Full-width in editor ----

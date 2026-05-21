@@ -58,13 +58,13 @@
     border-radius: $default-border-radius;
     overflow: hidden;
     width: 100%;
+}
 
-    img {
-        display: block;
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-    }
+.image-columns .img-container img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 .image-columns .image-comp {
@@ -94,73 +94,42 @@
 }
 
 // Content column typography
-.image-columns .wrap {
+.image-columns .wrap h1 {
+    @include primary-h1;
+    margin-bottom: 1rem;
+}
 
-    h1 {
-        @include primary-h1;
-        margin-bottom: 1rem;
-    }
+.image-columns .wrap h2 {
+    @include primary-h1;
+    margin-bottom: 1rem;
+}
 
-    h2 {
-        @include primary-h1;
-        margin-bottom: 1rem;
-    }
+.image-columns .wrap h3 {
+    @include primary-h2;
+    margin-bottom: 0.5rem;
+}
 
-    h3 {
-        @include primary-h2;
-        margin-bottom: 0.5rem;
-    }
-
-    p {
-        @include primary-h4;
-        margin-bottom: 0;
-    }
+.image-columns .wrap p {
+    @include primary-h4;
+    margin-bottom: 0;
 }
 
 // ---- Column width classes ----
-.image-columns.col-50 {
-    .image-col {
-        @media screen and (min-width: $small-width) { width: 50%; max-width: 50%; }
-    }
-    .content-columns {
-        @media screen and (min-width: $small-width) { width: 50%; }
-    }
-}
+@media screen and (min-width: $small-width) {
+    .image-columns.col-50 .image-col { width: 50%; max-width: 50%; }
+    .image-columns.col-50 .content-columns { width: 50%; }
 
-.image-columns.col-66 {
-    .image-col {
-        @media screen and (min-width: $small-width) { width: 33.333%; max-width: 33.333%; }
-    }
-    .content-columns {
-        @media screen and (min-width: $small-width) { width: 66.666%; }
-    }
-}
+    .image-columns.col-66 .image-col { width: 33.333%; max-width: 33.333%; }
+    .image-columns.col-66 .content-columns { width: 66.666%; }
 
-.image-columns.col-33 {
-    .image-col {
-        @media screen and (min-width: $small-width) { width: 66.666%; max-width: 66.666%; }
-    }
-    .content-columns {
-        @media screen and (min-width: $small-width) { width: 33.333%; }
-    }
-}
+    .image-columns.col-33 .image-col { width: 66.666%; max-width: 66.666%; }
+    .image-columns.col-33 .content-columns { width: 33.333%; }
 
-.image-columns.col-60 {
-    .image-col {
-        @media screen and (min-width: $small-width) { width: 40%; max-width: 40%; }
-    }
-    .content-columns {
-        @media screen and (min-width: $small-width) { width: 60%; }
-    }
-}
+    .image-columns.col-60 .image-col { width: 40%; max-width: 40%; }
+    .image-columns.col-60 .content-columns { width: 60%; }
 
-.image-columns.col-40 {
-    .image-col {
-        @media screen and (min-width: $small-width) { width: 60%; max-width: 60%; }
-    }
-    .content-columns {
-        @media screen and (min-width: $small-width) { width: 40%; }
-    }
+    .image-columns.col-40 .image-col { width: 60%; max-width: 60%; }
+    .image-columns.col-40 .content-columns { width: 40%; }
 }
 
 // ---- Image right alignment ----
@@ -189,8 +158,8 @@
     box-shadow: none;
 }
 
-.image-columns.img-right.no-ds .content-columns {
-    @media screen and (min-width: $small-width) {
+@media screen and (min-width: $small-width) {
+    .image-columns.img-right.no-ds .content-columns {
         padding-left: 1.25rem;
     }
 }

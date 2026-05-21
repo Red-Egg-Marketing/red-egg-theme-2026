@@ -16,10 +16,10 @@
         padding-top: 5rem;
         padding-bottom: 5rem;
     }
+}
 
-    > .block-wrapper {
-        @include block-wrapper;
-    }
+.filter-case-studies > .block-wrapper {
+    @include block-wrapper;
 }
 
 // ---- Filter bar ----
@@ -72,14 +72,14 @@
         border-color: $red;
         color: $red;
     }
-
-    .filt-plus {
-        font-weight: 400;
-        font-size: 1rem;
-    }
 }
 
-// Active filter button: red border + red text
+.filter-case-studies .tax-filter-button .filt-plus {
+    font-weight: 400;
+    font-size: 1rem;
+}
+
+// Active filter button
 .filter-case-studies .filter-block.active .tax-filter-button {
     border-color: $red;
     color: $red;
@@ -231,14 +231,14 @@
 .cs-card__image {
     aspect-ratio: 4 / 3;
     overflow: hidden;
+}
 
-    img {
-        display: block;
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        transition: transform 0.4s ease;
-    }
+.cs-card__image img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
 }
 
 .cs-card:hover .cs-card__image img {
@@ -254,8 +254,8 @@
 .cs-card__title {
     font-family: $font-head;
     font-weight: 700;
-    font-size: 1.125rem; // 18px – Figma H3
-    line-height: 1.75rem; // 28px
+    font-size: 1.125rem;
+    line-height: 1.75rem;
     letter-spacing: 0.18px;
     color: $gray;
     margin: 0;
@@ -265,8 +265,8 @@
 .cs-card__excerpt {
     font-family: $font-body;
     font-weight: 300;
-    font-size: 1.125rem; // 18px – Figma body
-    line-height: 1.75rem; // 28px
+    font-size: 1.125rem;
+    line-height: 1.75rem;
     color: $gray;
     margin: 0.5rem 0 0 0;
     max-height: 0;
@@ -275,7 +275,7 @@
     transition: max-height 0.4s ease, opacity 0.3s ease;
 }
 
-// Hover reveal: title slides up, excerpt fades in
+// Hover reveal
 .cs-card:hover .cs-card__title {
     transform: translateY(-2px);
 }
@@ -291,48 +291,46 @@
     grid-column: 1 / -1;
     text-align: center;
     padding: 3rem;
-
-    h3, p {
-        font-family: $font-head;
-        color: $gray;
-        opacity: 0.6;
-    }
 }
 
-// ---- Editor: grid preview ----
+.filter-case-studies__empty h3,
+.filter-case-studies__empty p,
+.filter-case-studies__loading h3,
+.filter-case-studies__loading p {
+    font-family: $font-head;
+    color: $gray;
+    opacity: 0.6;
+}
+
+// ---- Editor ----
 .wp-block.filter-case-studies {
     width: 100%;
     max-width: 100%;
 }
 
-// Editor grid uses ResourceCard from edit.js
-.wp-block.filter-case-studies .filter-case-studies__grid {
-    .resource-card {
-        .cont-wrap {
-            border: 1px solid rgba(0, 0, 0, 0.08);
-            border-radius: $default-border-radius;
-            overflow: hidden;
-        }
+.filter-case-studies__grid .resource-card .cont-wrap {
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    border-radius: $default-border-radius;
+    overflow: hidden;
+}
 
-        .image-cont {
-            aspect-ratio: 4 / 3;
-            overflow: hidden;
+.filter-case-studies__grid .resource-card .image-cont {
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+}
 
-            img {
-                display: block;
-                width: 100%;
-                height: 100%;
-                object-fit: cover;
-            }
-        }
+.filter-case-studies__grid .resource-card .image-cont img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
 
-        .content {
-            padding: 1.25rem 1.5rem;
-        }
+.filter-case-studies__grid .resource-card .content {
+    padding: 1.25rem 1.5rem;
+}
 
-        .resource-title {
-            font-size: 1rem;
-            margin: 0;
-        }
-    }
+.filter-case-studies__grid .resource-card .resource-title {
+    font-size: 1rem;
+    margin: 0;
 }

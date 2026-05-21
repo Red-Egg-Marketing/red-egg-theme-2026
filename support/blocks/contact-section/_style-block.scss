@@ -16,13 +16,13 @@
         padding-top: 5rem;
         padding-bottom: 5rem;
     }
-
-    > .block-wrapper {
-        @include block-wrapper;
-    }
 }
 
-// Background color classes
+.contact-section > .block-wrapper {
+    @include block-wrapper;
+}
+
+// ---- Background color classes ----
 .contact-section.red { background-color: $red; }
 .contact-section.eggshell { background-color: $eggshell; }
 .contact-section.navy { background-color: $navy; }
@@ -39,10 +39,12 @@
     .contact-section__label {
         color: $white;
     }
+}
 
-    .contact-icons__icon svg {
-        stroke: $white;
-    }
+.contact-section.red .contact-icons__icon svg,
+.contact-section.navy .contact-icons__icon svg,
+.contact-section.gray .contact-icons__icon svg {
+    stroke: $white;
 }
 
 // ---- Two-column layout ----
@@ -68,34 +70,34 @@
         max-width: 50%;
         padding-right: 2.5rem;
     }
+}
 
-    .contact-section__label,
-    p.contact-section__label {
-        font-family: $font-head;
-        font-weight: 500;
-        font-size: 1.0625rem;
-        line-height: 1.625rem;
-        letter-spacing: 2px;
-        text-transform: uppercase;
-        margin: 0 0 0.5rem 0;
+.contact-section__label,
+p.contact-section__label {
+    font-family: $font-head;
+    font-weight: 500;
+    font-size: 1.0625rem;
+    line-height: 1.625rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin: 0 0 0.5rem 0;
+}
+
+.contact-section__left h2 {
+    @include primary-h1;
+    color: $red;
+    margin: 0 0 1.5rem 0;
+
+    @media screen and (min-width: $small-width) {
+        margin: 0 0 2rem 0;
     }
+}
 
-    h2 {
-        @include primary-h1;
-        color: $red;
-        margin: 0 0 1.5rem 0;
+.contact-section__left .wp-block-buttons {
+    margin-top: 2rem;
 
-        @media screen and (min-width: $small-width) {
-            margin: 0 0 2rem 0;
-        }
-    }
-
-    .wp-block-buttons {
-        margin-top: 2rem;
-
-        @media screen and (min-width: $small-width) {
-            margin-top: 3rem;
-        }
+    @media screen and (min-width: $small-width) {
+        margin-top: 3rem;
     }
 }
 
@@ -140,35 +142,35 @@
         margin-right: 16px;
         margin-top: 4px;
     }
+}
 
-    svg {
-        display: block;
-        width: 100%;
-        height: auto;
-        stroke: $gray;
-    }
+.contact-icons__icon svg {
+    display: block;
+    width: 100%;
+    height: auto;
+    stroke: $gray;
 }
 
 .contact-icons__text {
     font-family: $font-head;
     font-weight: 600;
-    font-size: 1.125rem; // 18px – Figma
+    font-size: 1.125rem;
     line-height: 1.75rem;
     color: $gray;
     margin: 0;
 
-    a {
-        color: inherit;
-        text-decoration: none;
-
-        &:hover {
-            text-decoration: underline;
-        }
-    }
-
     @media screen and (min-width: $small-width) {
         font-size: 1.25rem;
         line-height: 1.875rem;
+    }
+}
+
+.contact-icons__text a {
+    color: inherit;
+    text-decoration: none;
+
+    &:hover {
+        text-decoration: underline;
     }
 }
 
@@ -182,11 +184,11 @@
     align-items: center;
     gap: 8px;
     margin-left: 8px;
+}
 
-    .components-select-control__input {
-        min-height: 30px;
-        font-size: 12px;
-    }
+.contact-icons__controls .components-select-control__input {
+    min-height: 30px;
+    font-size: 12px;
 }
 
 // ---- Editor: two-column preview ----
@@ -194,16 +196,16 @@
     display: flex;
     flex-wrap: wrap;
     gap: 2rem;
+}
 
-    > .wp-block[data-type="red-egg-block/contact-content"] {
-        flex: 0 0 48%;
-        max-width: 48%;
-    }
+.contact-section__columns > .block-editor-inner-blocks > .block-editor-block-list__layout > .wp-block[data-type="red-egg-block/contact-content"] {
+    flex: 0 0 48%;
+    max-width: 48%;
+}
 
-    > .wp-block[data-type="red-egg-block/contact-form"] {
-        flex: 0 0 48%;
-        max-width: 48%;
-    }
+.contact-section__columns > .block-editor-inner-blocks > .block-editor-block-list__layout > .wp-block[data-type="red-egg-block/contact-form"] {
+    flex: 0 0 48%;
+    max-width: 48%;
 }
 
 // ---- Full-width in editor ----

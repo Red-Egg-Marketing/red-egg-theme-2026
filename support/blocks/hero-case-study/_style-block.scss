@@ -20,12 +20,12 @@
     @media screen and (min-width: $small-width) {
         min-height: 500px;
     }
+}
 
-    > .block-wrapper {
-        @include block-wrapper;
-        position: relative;
-        z-index: 2;
-    }
+.hero-case-study > .block-wrapper {
+    @include block-wrapper;
+    position: relative;
+    z-index: 2;
 }
 
 // ---- Accent color bar at top ----
@@ -36,17 +36,17 @@
     right: 0;
     height: 6px;
     z-index: 3;
-
-    &.red { background-color: $red; }
-    &.peach { background-color: $peach; }
-    &.navy { background-color: $navy; }
-    &.purple { background-color: $purple; }
-    &.magenta { background-color: $magenta; }
-    &.orange { background-color: $orange; }
-    &.gold { background-color: $gold; }
-    &.eggshell { background-color: $eggshell; }
-    &.gray { background-color: $gray; }
 }
+
+.hero-cs__accent-bar.red { background-color: $red; }
+.hero-cs__accent-bar.peach { background-color: $peach; }
+.hero-cs__accent-bar.navy { background-color: $navy; }
+.hero-cs__accent-bar.purple { background-color: $purple; }
+.hero-cs__accent-bar.magenta { background-color: $magenta; }
+.hero-cs__accent-bar.orange { background-color: $orange; }
+.hero-cs__accent-bar.gold { background-color: $gold; }
+.hero-cs__accent-bar.eggshell { background-color: $eggshell; }
+.hero-cs__accent-bar.gray { background-color: $gray; }
 
 // ---- Dark overlay ----
 .hero-cs__overlay {
@@ -88,39 +88,48 @@
         padding-bottom: 3.5rem;
         max-width: 70%;
     }
+}
 
-    h1, h2, h3, h4, h5, h6, p, li, span {
-        color: $white;
+.hero-cs__content h1,
+.hero-cs__content h2,
+.hero-cs__content h3,
+.hero-cs__content h4,
+.hero-cs__content h5,
+.hero-cs__content h6,
+.hero-cs__content p,
+.hero-cs__content li,
+.hero-cs__content span {
+    color: $white;
+}
+
+.hero-cs__content h1,
+.hero-cs__content .hero-cs__title {
+    font-family: $font-head;
+    font-weight: 700;
+    font-size: 2.125rem;
+    line-height: 2.75rem;
+    letter-spacing: 0.34px;
+    margin: 0 0 0.75rem 0;
+
+    @media screen and (min-width: $small-width) {
+        font-size: 3rem;
+        line-height: 3.5rem;
     }
+}
 
-    h1, .hero-cs__title {
-        font-family: $font-head;
-        font-weight: 700;
-        font-size: 2.125rem; // 34px mobile – Figma H1
-        line-height: 2.75rem; // 44px
-        letter-spacing: 0.34px;
-        margin: 0 0 0.75rem 0;
+.hero-cs__content .hero-cs__subtitle,
+.hero-cs__content > p,
+.hero-cs__content > .wp-block[data-type="core/paragraph"] p {
+    font-family: $font-body;
+    font-weight: 300;
+    font-size: 1.0625rem;
+    line-height: 1.625rem;
+    opacity: 0.85;
+    margin: 0;
 
-        @media screen and (min-width: $small-width) {
-            font-size: 3rem; // 48px desktop
-            line-height: 3.5rem; // 56px
-        }
-    }
-
-    .hero-cs__subtitle,
-    > p,
-    > .wp-block[data-type="core/paragraph"] p {
-        font-family: $font-body;
-        font-weight: 300;
-        font-size: 1.0625rem; // 17px mobile – Figma H4
-        line-height: 1.625rem; // 26px
-        opacity: 0.85;
-        margin: 0;
-
-        @media screen and (min-width: $small-width) {
-            font-size: 1.125rem;
-            line-height: 1.75rem;
-        }
+    @media screen and (min-width: $small-width) {
+        font-size: 1.125rem;
+        line-height: 1.75rem;
     }
 }
 

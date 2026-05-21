@@ -18,13 +18,13 @@
         padding-top: 5rem;
         padding-bottom: 5rem;
     }
-
-    > .block-wrapper {
-        @include block-wrapper;
-    }
 }
 
-// Background color classes
+.device-showcase > .block-wrapper {
+    @include block-wrapper;
+}
+
+// ---- Background color classes ----
 .device-showcase.gray { background-color: $gray; }
 .device-showcase.navy { background-color: $navy; }
 .device-showcase.eggshell { background-color: $eggshell; }
@@ -33,77 +33,47 @@
 // ---- Devices container (frontend) ----
 .device-showcase__devices {
     position: relative;
+}
 
-    // Button styling for dark bg
-    .wp-block-buttons {
-        justify-content: center;
-        margin-top: 2.5rem;
+.device-showcase__devices .wp-block-buttons {
+    justify-content: center;
+    margin-top: 2.5rem;
 
-        @media screen and (min-width: $small-width) {
-            margin-top: 3.5rem;
-        }
+    @media screen and (min-width: $small-width) {
+        margin-top: 3.5rem;
     }
 }
 
-// Frontend: position the two device frames side by side
 .device-showcase__devices > .device-frame--desktop,
 .device-showcase__devices > .device-frame--mobile {
     display: block;
 }
 
-// ---- Device layout on frontend ----
-.device-showcase__devices {
-    @media screen and (min-width: $small-width) {
+// ---- Device layout on frontend (desktop) ----
+@media screen and (min-width: $small-width) {
+    .device-showcase__devices {
         display: flex;
         flex-wrap: wrap;
         align-items: flex-end;
         justify-content: center;
-
-        .device-frame--desktop {
-            flex: 0 0 70%;
-            max-width: 70%;
-            z-index: 1;
-        }
-
-        .device-frame--mobile {
-            flex: 0 0 28%;
-            max-width: 28%;
-            margin-left: -8%;
-            z-index: 2;
-        }
-
-        .wp-block-buttons {
-            width: 100%;
-            flex-shrink: 0;
-        }
     }
-}
 
-// ---- Editor layout: mirror the frontend overlap ----
-.device-showcase__devices > .block-editor-inner-blocks > .block-editor-block-list__layout {
-    @media screen and (min-width: $small-width) {
-        display: flex;
-        flex-wrap: wrap;
-        align-items: flex-end;
-        justify-content: center;
+    .device-showcase__devices .device-frame--desktop {
+        flex: 0 0 70%;
+        max-width: 70%;
+        z-index: 1;
+    }
 
-        > .wp-block[data-type="red-egg-block/device-frame"]:first-child {
-            flex: 0 0 70%;
-            max-width: 70%;
-            z-index: 1;
-        }
+    .device-showcase__devices .device-frame--mobile {
+        flex: 0 0 28%;
+        max-width: 28%;
+        margin-left: -8%;
+        z-index: 2;
+    }
 
-        > .wp-block[data-type="red-egg-block/device-frame"]:nth-child(2) {
-            flex: 0 0 28%;
-            max-width: 28%;
-            margin-left: -8%;
-            z-index: 2;
-        }
-
-        > .wp-block[data-type="core/buttons"] {
-            width: 100%;
-            flex-shrink: 0;
-        }
+    .device-showcase__devices .wp-block-buttons {
+        width: 100%;
+        flex-shrink: 0;
     }
 }
 
@@ -113,6 +83,34 @@
 
     @media screen and (min-width: $small-width) {
         margin-top: 0;
+    }
+}
+
+// ---- Editor layout: mirror the frontend overlap ----
+@media screen and (min-width: $small-width) {
+    .device-showcase__devices > .block-editor-inner-blocks > .block-editor-block-list__layout {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: flex-end;
+        justify-content: center;
+    }
+
+    .device-showcase__devices > .block-editor-inner-blocks > .block-editor-block-list__layout > .wp-block[data-type="red-egg-block/device-frame"]:first-child {
+        flex: 0 0 70%;
+        max-width: 70%;
+        z-index: 1;
+    }
+
+    .device-showcase__devices > .block-editor-inner-blocks > .block-editor-block-list__layout > .wp-block[data-type="red-egg-block/device-frame"]:nth-child(2) {
+        flex: 0 0 28%;
+        max-width: 28%;
+        margin-left: -8%;
+        z-index: 2;
+    }
+
+    .device-showcase__devices > .block-editor-inner-blocks > .block-editor-block-list__layout > .wp-block[data-type="core/buttons"] {
+        width: 100%;
+        flex-shrink: 0;
     }
 }
 
@@ -126,7 +124,6 @@
     width: 100%;
 }
 
-// Device frame image (monitor/phone)
 .device-frame__device {
     display: block;
     width: 100%;
@@ -135,7 +132,6 @@
     z-index: 1;
 }
 
-// Screenshot overlay positioned over the screen area
 .device-frame__screenshot {
     position: absolute;
     z-index: 0;

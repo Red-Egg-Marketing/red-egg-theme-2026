@@ -16,10 +16,11 @@
         padding-top: 5rem;
         padding-bottom: 5rem;
     }
+}
 
-    > .block-wrapper {
-        @include block-wrapper;
-    }
+.color-palette-block > .block-wrapper {
+    @include block-wrapper;
+    display: block;
 }
 
 // ---- Label ----
@@ -27,7 +28,7 @@
 p.color-palette__label {
     font-family: $font-head;
     font-weight: 500;
-    font-size: 1.0625rem; // 17px – Figma H4 SUP
+    font-size: 1.0625rem;
     line-height: 1.625rem;
     letter-spacing: 2px;
     text-transform: uppercase;
@@ -54,92 +55,80 @@ p.color-palette__label {
 
 // ---- Swatch grid (frontend) ----
 // First 2 swatches: 50/50, rest: 3-col
-.color-palette-block > .block-wrapper {
+.color-palette-block > .block-wrapper .color-swatch {
+    display: inline-block;
+    vertical-align: top;
+    box-sizing: border-box;
+}
 
-    // Target the swatches directly after the heading
-    // Uses flex-wrap with specific widths
-    display: block;
+.color-palette-block > .block-wrapper .color-swatch:nth-of-type(1),
+.color-palette-block > .block-wrapper .color-swatch:nth-of-type(2) {
+    width: calc(50% - 0.5rem);
+    margin-right: 1rem;
+    margin-bottom: 1rem;
+}
 
-    .color-swatch {
-        display: inline-block;
-        vertical-align: top;
-        box-sizing: border-box;
+.color-palette-block > .block-wrapper .color-swatch:nth-of-type(1) .color-swatch__color,
+.color-palette-block > .block-wrapper .color-swatch:nth-of-type(2) .color-swatch__color {
+    height: 160px;
+
+    @media screen and (min-width: $small-width) {
+        height: 220px;
     }
+}
 
-    // First two swatches: half width (large)
-    .color-swatch:nth-of-type(1),
-    .color-swatch:nth-of-type(2) {
-        width: calc(50% - 0.5rem);
-        margin-right: 1rem;
-        margin-bottom: 1rem;
+.color-palette-block > .block-wrapper .color-swatch:nth-of-type(2) {
+    margin-right: 0;
+}
 
-        .color-swatch__color {
-            height: 160px;
+.color-palette-block > .block-wrapper .color-swatch:nth-of-type(n+3) {
+    width: calc(33.333% - 0.667rem);
+    margin-right: 1rem;
+    margin-bottom: 1rem;
+}
 
-            @media screen and (min-width: $small-width) {
-                height: 220px;
-            }
-        }
+.color-palette-block > .block-wrapper .color-swatch:nth-of-type(n+3) .color-swatch__color {
+    height: 120px;
+
+    @media screen and (min-width: $small-width) {
+        height: 160px;
     }
+}
 
-    .color-swatch:nth-of-type(2) {
-        margin-right: 0;
-    }
-
-    // Remaining swatches: third width
-    .color-swatch:nth-of-type(n+3) {
-        width: calc(33.333% - 0.667rem);
-        margin-right: 1rem;
-        margin-bottom: 1rem;
-
-        .color-swatch__color {
-            height: 120px;
-
-            @media screen and (min-width: $small-width) {
-                height: 160px;
-            }
-        }
-    }
-
-    // Remove right margin on last in each row
-    .color-swatch:nth-of-type(2),
-    .color-swatch:nth-of-type(3n+5) {
-        margin-right: 0;
-    }
+.color-palette-block > .block-wrapper .color-swatch:nth-of-type(2),
+.color-palette-block > .block-wrapper .color-swatch:nth-of-type(3n+5) {
+    margin-right: 0;
 }
 
 // ---- Editor: swatch grid ----
 .color-palette-block > .block-wrapper > .block-editor-inner-blocks > .block-editor-block-list__layout {
-
     display: flex;
     flex-wrap: wrap;
     gap: 1rem;
+}
 
-    // Label + heading take full width
-    > .wp-block[data-type="core/paragraph"],
-    > .wp-block[data-type="core/heading"] {
-        width: 100%;
-        flex-shrink: 0;
-    }
+.color-palette-block > .block-wrapper > .block-editor-inner-blocks > .block-editor-block-list__layout > .wp-block[data-type="core/paragraph"],
+.color-palette-block > .block-wrapper > .block-editor-inner-blocks > .block-editor-block-list__layout > .wp-block[data-type="core/heading"] {
+    width: 100%;
+    flex-shrink: 0;
+}
 
-    // First two swatches: half width
-    > .wp-block[data-type="red-egg-block/color-swatch"]:nth-of-type(1),
-    > .wp-block[data-type="red-egg-block/color-swatch"]:nth-of-type(2) {
-        width: calc(50% - 0.5rem);
+.color-palette-block > .block-wrapper > .block-editor-inner-blocks > .block-editor-block-list__layout > .wp-block[data-type="red-egg-block/color-swatch"]:nth-of-type(1),
+.color-palette-block > .block-wrapper > .block-editor-inner-blocks > .block-editor-block-list__layout > .wp-block[data-type="red-egg-block/color-swatch"]:nth-of-type(2) {
+    width: calc(50% - 0.5rem);
+}
 
-        .color-swatch__color {
-            height: 200px;
-        }
-    }
+.color-palette-block > .block-wrapper > .block-editor-inner-blocks > .block-editor-block-list__layout > .wp-block[data-type="red-egg-block/color-swatch"]:nth-of-type(1) .color-swatch__color,
+.color-palette-block > .block-wrapper > .block-editor-inner-blocks > .block-editor-block-list__layout > .wp-block[data-type="red-egg-block/color-swatch"]:nth-of-type(2) .color-swatch__color {
+    height: 200px;
+}
 
-    // Remaining swatches: third width
-    > .wp-block[data-type="red-egg-block/color-swatch"]:nth-of-type(n+3) {
-        width: calc(33.333% - 0.667rem);
+.color-palette-block > .block-wrapper > .block-editor-inner-blocks > .block-editor-block-list__layout > .wp-block[data-type="red-egg-block/color-swatch"]:nth-of-type(n+3) {
+    width: calc(33.333% - 0.667rem);
+}
 
-        .color-swatch__color {
-            height: 140px;
-        }
-    }
+.color-palette-block > .block-wrapper > .block-editor-inner-blocks > .block-editor-block-list__layout > .wp-block[data-type="red-egg-block/color-swatch"]:nth-of-type(n+3) .color-swatch__color {
+    height: 140px;
 }
 
 // ---- Color Swatch ----
@@ -162,7 +151,6 @@ p.color-palette__label {
     display: block;
 }
 
-// Editor input styling
 .color-swatch__label-input {
     border: none;
     background: transparent;

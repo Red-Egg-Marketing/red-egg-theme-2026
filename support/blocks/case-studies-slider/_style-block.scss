@@ -15,144 +15,144 @@
         padding-top: 5rem;
         padding-bottom: 5rem;
     }
+}
 
-    > .block-wrapper {
-        @include block-wrapper;
+.case-studies-slider > .block-wrapper {
+    @include block-wrapper;
+}
+
+// ---- Header area (InnerBlocks: header-intro + buttons) ----
+.case-studies-slider .case-studies-slider__header {
+    margin-bottom: 2.5rem;
+
+    @media screen and (min-width: $small-width) {
+        margin-bottom: 3rem;
+    }
+}
+
+// ---- Swiper container ----
+.case-studies-slider .resources-wrap {
+    position: relative;
+    margin-bottom: 2.5rem;
+}
+
+.case-studies-slider .case-studies-swiper {
+    overflow: hidden;
+}
+
+// ---- Swiper navigation arrows ----
+.case-studies-slider .swiper-button-prev,
+.case-studies-slider .swiper-button-next {
+    width: 44px;
+    height: 44px;
+    border: 1px solid $gray;
+    border-radius: 50%;
+    background: $white;
+    transition: background-color 0.3s ease;
+
+    &::after {
+        font-size: 14px;
+        color: $gray;
+        transition: color 0.3s ease;
     }
 
-    // ---- Header area (InnerBlocks: header-intro + buttons) ----
-    .case-studies-slider__header {
-        margin-bottom: 2.5rem;
-
-        @media screen and (min-width: $small-width) {
-            margin-bottom: 3rem;
-        }
-    }
-
-    // ---- Swiper container ----
-    .resources-wrap {
-        position: relative;
-        margin-bottom: 2.5rem;
-    }
-
-    .case-studies-swiper {
-        overflow: hidden;
-    }
-
-    // ---- Swiper navigation arrows ----
-    .swiper-button-prev,
-    .swiper-button-next {
-        width: 44px;
-        height: 44px;
-        border: 1px solid $gray;
-        border-radius: 50%;
-        background: $white;
-        transition: background-color 0.3s ease;
+    &:hover {
+        background-color: $gray;
 
         &::after {
-            font-size: 14px;
-            color: $gray;
-            transition: color 0.3s ease;
-        }
-
-        &:hover {
-            background-color: $gray;
-
-            &::after {
-                color: $white;
-            }
-        }
-
-        &.swiper-button-disabled {
-            opacity: 0.35;
+            color: $white;
         }
     }
 
-    // ---- Resource card (slide) ----
-    .resource-card {
-        display: flex;
-        flex-direction: column;
-        text-decoration: none;
-        color: $gray;
-        height: auto;
-
-        .resource-extra {
-            height: 100%;
-        }
-
-        .resource-wrap {
-            display: block;
-            text-decoration: none;
-            color: inherit;
-            height: 100%;
-        }
-
-        .cont-wrap {
-            display: flex;
-            flex-direction: column;
-            height: 100%;
-            border: 1px solid $gray;
-            border-radius: $default-border-radius;
-            overflow: hidden;
-            transition: box-shadow 0.3s ease, transform 0.2s ease;
-
-            &:hover {
-                box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-                transform: translateY(-2px);
-            }
-        }
-
-        .image-cont {
-            aspect-ratio: 16 / 9;
-            overflow: hidden;
-
-            img {
-                display: block;
-                width: 100%;
-                height: 100%;
-                object-fit: cover;
-            }
-        }
-
-        .content {
-            padding: 1.25rem 1.5rem;
-            flex-grow: 1;
-        }
-
-        .resource-title {
-            @include primary-h3;
-            margin: 0;
-        }
-
-        .resource-excerpt {
-            @include body-text;
-            margin: 0.5rem 0 0 0;
-        }
+    &.swiper-button-disabled {
+        opacity: 0.35;
     }
+}
 
-    // ---- Loading / empty states ----
-    .case-studies-slider__loading {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        min-height: 200px;
+// ---- Resource card (slide) ----
+.case-studies-slider .resource-card {
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    color: $gray;
+    height: auto;
+}
 
-        p {
-            @include primary-h4;
-            margin: 0;
-        }
+.case-studies-slider .resource-card .resource-extra {
+    height: 100%;
+}
+
+.case-studies-slider .resource-card .resource-wrap {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    height: 100%;
+}
+
+.case-studies-slider .resource-card .cont-wrap {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    border: 1px solid $gray;
+    border-radius: $default-border-radius;
+    overflow: hidden;
+    transition: box-shadow 0.3s ease, transform 0.2s ease;
+
+    &:hover {
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        transform: translateY(-2px);
     }
+}
 
-    .error {
-        text-align: center;
-        padding: 3rem;
+.case-studies-slider .resource-card .image-cont {
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+}
 
-        h3 {
-            @include primary-h4;
-            color: $gray;
-            opacity: 0.6;
-        }
-    }
+.case-studies-slider .resource-card .image-cont img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.case-studies-slider .resource-card .content {
+    padding: 1.25rem 1.5rem;
+    flex-grow: 1;
+}
+
+.case-studies-slider .resource-card .resource-title {
+    @include primary-h3;
+    margin: 0;
+}
+
+.case-studies-slider .resource-card .resource-excerpt {
+    @include body-text;
+    margin: 0.5rem 0 0 0;
+}
+
+// ---- Loading / empty states ----
+.case-studies-slider .case-studies-slider__loading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 200px;
+}
+
+.case-studies-slider .case-studies-slider__loading p {
+    @include primary-h4;
+    margin: 0;
+}
+
+.case-studies-slider .error {
+    text-align: center;
+    padding: 3rem;
+}
+
+.case-studies-slider .error h3 {
+    @include primary-h4;
+    color: $gray;
+    opacity: 0.6;
 }
 
 // ---- Full-width in editor ----

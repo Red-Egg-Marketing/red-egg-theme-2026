@@ -16,22 +16,34 @@
         padding-top: 5rem;
         padding-bottom: 5rem;
     }
-
-    > .block-wrapper {
-        @include block-wrapper;
-    }
 }
 
-// Background color classes
+.cs-gallery > .block-wrapper {
+    @include block-wrapper;
+}
+
+// ---- Background color classes ----
 .cs-gallery.eggshell { background-color: $eggshell; }
 .cs-gallery.white { background-color: $white; }
+
 .cs-gallery.navy {
     background-color: $navy;
-    .cs-gallery__label, h2, p { color: $white; }
 }
+
+.cs-gallery.navy .cs-gallery__label,
+.cs-gallery.navy h2,
+.cs-gallery.navy p {
+    color: $white;
+}
+
 .cs-gallery.gray {
     background-color: $gray;
-    .cs-gallery__label, h2, p { color: $white; }
+}
+
+.cs-gallery.gray .cs-gallery__label,
+.cs-gallery.gray h2,
+.cs-gallery.gray p {
+    color: $white;
 }
 
 // ---- Label ----
@@ -39,8 +51,8 @@
 p.cs-gallery__label {
     font-family: $font-head;
     font-weight: 500;
-    font-size: 1.0625rem; // 17px – Figma H4 SUP
-    line-height: 1.625rem; // 26px
+    font-size: 1.0625rem;
+    line-height: 1.625rem;
     letter-spacing: 2px;
     text-transform: uppercase;
     color: $gray;
@@ -75,13 +87,13 @@ p.cs-gallery__label {
 .cs-gallery .wp-block-gallery .wp-block-image {
     border-radius: $default-border-radius;
     overflow: hidden;
+}
 
-    img {
-        display: block;
-        width: 100%;
-        height: auto;
-        border-radius: $default-border-radius;
-    }
+.cs-gallery .wp-block-gallery .wp-block-image img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: $default-border-radius;
 }
 
 // ---- Full-width in editor ----

@@ -18,10 +18,10 @@
         padding-top: 5rem;
         padding-bottom: 5rem;
     }
+}
 
-    > .block-wrapper {
-        @include block-wrapper;
-    }
+.vibe-cta > .block-wrapper {
+    @include block-wrapper;
 }
 
 // ---- Scrolling Marquee ----
@@ -39,19 +39,19 @@
     display: flex;
     white-space: nowrap;
     animation: marquee-scroll-left 25s linear infinite;
+}
 
-    span {
-        display: inline-block;
-        font-family: $font-head;
-        font-weight: 700;
-        font-size: 2.125rem; // 34px mobile – matches Figma H1
-        line-height: 1.2;
-        color: $purple;
-        padding-right: 0.35em;
+.vibe-cta__marquee-line span {
+    display: inline-block;
+    font-family: $font-head;
+    font-weight: 700;
+    font-size: 2.125rem;
+    line-height: 1.2;
+    color: $purple;
+    padding-right: 0.35em;
 
-        @media screen and (min-width: $small-width) {
-            font-size: 5.5rem;
-        }
+    @media screen and (min-width: $small-width) {
+        font-size: 5.5rem;
     }
 }
 
@@ -59,28 +59,30 @@
 .vibe-cta__buttons {
     display: flex;
     justify-content: center;
+}
 
-    .wp-block-buttons {
-        justify-content: center;
-    }
+.vibe-cta__buttons .wp-block-buttons {
+    justify-content: center;
 }
 
 // ---- Background color classes ----
 .vibe-cta.eggshell { background-color: $eggshell; }
 .vibe-cta.white { background-color: $white; }
+
 .vibe-cta.navy {
     background-color: $navy;
-
-    .vibe-cta__marquee-line span {
-        color: rgba($white, 0.3);
-    }
 }
+
+.vibe-cta.navy .vibe-cta__marquee-line span {
+    color: rgba($white, 0.3);
+}
+
 .vibe-cta.gray {
     background-color: $gray;
+}
 
-    .vibe-cta__marquee-line span {
-        color: rgba($white, 0.3);
-    }
+.vibe-cta.gray .vibe-cta__marquee-line span {
+    color: rgba($white, 0.3);
 }
 
 // ---- Full-width in editor ----

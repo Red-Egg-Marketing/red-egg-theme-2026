@@ -23,28 +23,52 @@
         padding-top: 5rem;
         padding-bottom: 5rem;
     }
-
-    .block-wrapper {
-        @include block-wrapper;
-    }
 }
 
-// Background color classes
+.hero-background .block-wrapper {
+    @include block-wrapper;
+}
+
+// ---- Background color classes ----
 .hero-background.peach { background-color: $peach; }
 .hero-background.eggshell { background-color: $eggshell; }
+.hero-background.white { background-color: $white; }
+
 .hero-background.navy {
     background-color: $navy;
-    h1, h2, h3, p, li { color: $white; }
 }
+
+.hero-background.navy h1,
+.hero-background.navy h2,
+.hero-background.navy h3,
+.hero-background.navy p,
+.hero-background.navy li {
+    color: $white;
+}
+
 .hero-background.gray {
     background-color: $gray;
-    h1, h2, h3, p, li { color: $white; }
 }
+
+.hero-background.gray h1,
+.hero-background.gray h2,
+.hero-background.gray h3,
+.hero-background.gray p,
+.hero-background.gray li {
+    color: $white;
+}
+
 .hero-background.red {
     background-color: $red;
-    h1, h2, h3, p, li { color: $white; }
 }
-.hero-background.white { background-color: $white; }
+
+.hero-background.red h1,
+.hero-background.red h2,
+.hero-background.red h3,
+.hero-background.red p,
+.hero-background.red li {
+    color: $white;
+}
 
 // ---- Two-column layout ----
 .hero-background__columns {
@@ -64,37 +88,44 @@
     position: relative;
     z-index: 2;
     order: 2;
+
     @media screen and (min-width: $small-width) {
         flex: 0 0 50%;
         max-width: 50%;
         order: 1;
     }
-    h1, h2, h3, h4, h5, h6 {
-        color: $head-color;
-    }
+}
 
-    h1 {
-        @include hero-h1;
-        margin-top: 0;
+.hero-background__content h1,
+.hero-background__content h2,
+.hero-background__content h3,
+.hero-background__content h4,
+.hero-background__content h5,
+.hero-background__content h6 {
+    color: $head-color;
+}
+
+.hero-background__content h1 {
+    @include hero-h1;
+    margin-top: 0;
+    margin-bottom: 1.5rem;
+
+    @media screen and (min-width: $small-width) {
+        margin-bottom: 2rem;
+    }
+}
+
+.hero-background__content p {
+    @include primary-h4;
+    margin-bottom: 1.25rem;
+
+    @media screen and (min-width: $small-width) {
         margin-bottom: 1.5rem;
-
-        @media screen and (min-width: $small-width) {
-            margin-bottom: 2rem;
-        }
     }
+}
 
-    p {
-        @include primary-h4;
-        margin-bottom: 1.25rem;
-
-        @media screen and (min-width: $small-width) {
-            margin-bottom: 1.5rem;
-        }
-    }
-
-    .wp-block-buttons {
-        margin-top: 1rem;
-    }
+.hero-background__content .wp-block-buttons {
+    margin-top: 1rem;
 }
 
 // ---- Media column (right) ----
@@ -102,6 +133,7 @@
     position: relative;
     z-index: 1;
     order: 1;
+
     @media screen and (min-width: $small-width) {
         order: 2;
         flex: 0 0 50%;
@@ -146,14 +178,14 @@
     flex-wrap: wrap;
     gap: 2rem;
     align-items: center;
+}
 
-    > .wp-block[data-type="red-egg-block/hero-content"] {
-        flex: 0 0 48%;
-        max-width: 48%;
-    }
+.hero-background__columns > .block-editor-inner-blocks > .block-editor-block-list__layout > .wp-block[data-type="red-egg-block/hero-content"] {
+    flex: 0 0 48%;
+    max-width: 48%;
+}
 
-    > .wp-block[data-type="red-egg-block/hero-media"] {
-        flex: 0 0 48%;
-        max-width: 48%;
-    }
+.hero-background__columns > .block-editor-inner-blocks > .block-editor-block-list__layout > .wp-block[data-type="red-egg-block/hero-media"] {
+    flex: 0 0 48%;
+    max-width: 48%;
 }

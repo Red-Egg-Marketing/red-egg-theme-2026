@@ -17,80 +17,81 @@
         padding-top: 5rem;
         padding-bottom: 5rem;
     }
+}
 
-    // ---- Purple/mauve background ----
-    .testimonials-block__bg {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-color: $purple;
-        z-index: 0;
+// ---- Purple/mauve background ----
+.testimonials-block .testimonials-block__bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: $purple;
+    z-index: 0;
+}
+
+// ---- Egg pattern overlay ----
+.testimonials-block .testimonials-block__pattern {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('../img/egg-pattern.png');
+    background-size: 300px;
+    background-repeat: repeat;
+    opacity: 0.08;
+    z-index: 0;
+}
+
+.testimonials-block > .block-wrapper {
+    @include block-wrapper;
+    position: relative;
+    z-index: 1;
+}
+
+// ---- Header area (InnerBlocks: header-intro) ----
+.testimonials-block .testimonials-block__header {
+    margin-bottom: 2.5rem;
+
+    @media screen and (min-width: $small-width) {
+        margin-bottom: 3rem;
     }
+}
 
-    // ---- Egg pattern overlay ----
-    .testimonials-block__pattern {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-image: url('../img/egg-pattern.png');
-        background-size: 300px;
-        background-repeat: repeat;
-        opacity: 0.08;
-        z-index: 0;
-    }
+// White text on purple background
+.testimonials-block .testimonials-block__header .header-intro-block h1,
+.testimonials-block .testimonials-block__header .header-intro-block h2,
+.testimonials-block .testimonials-block__header .header-intro-block h3,
+.testimonials-block .testimonials-block__header .header-intro-block h4,
+.testimonials-block .testimonials-block__header .header-intro-block h5,
+.testimonials-block .testimonials-block__header .header-intro-block h6,
+.testimonials-block .testimonials-block__header .header-intro-block p,
+.testimonials-block .testimonials-block__header .header-intro-block li {
+    color: $white;
+}
 
-    > .block-wrapper {
-        @include block-wrapper;
-        position: relative;
-        z-index: 1;
-    }
+// ---- Editor: shortcode preview placeholder ----
+.testimonials-block .testimonials-block__shortcode-preview {
+    text-align: center;
+    padding: 2rem;
+}
 
-    // ---- Header area (InnerBlocks: header-intro) ----
-    .testimonials-block__header {
-        margin-bottom: 2.5rem;
+.testimonials-block__shortcode-tag {
+    @include primary-h4;
+    color: $white;
+    opacity: 0.8;
+    margin: 0;
+    padding: 1.5rem;
+    border: 1px dashed rgba($white, 0.4);
+    border-radius: $default-border-radius;
+}
 
-        @media screen and (min-width: $small-width) {
-            margin-bottom: 3rem;
-        }
-
-        // White text on purple background
-        .header-intro-block {
-            h1, h2, h3, h4, h5, h6, p, li { color: $white; }
-        }
-    }
-
-    // ---- Reviews shortcode output ----
-    .testimonials-block__reviews {
-        // Plugin handles its own styling.
-        // Add overrides here if needed to match the theme.
-    }
-
-    // ---- Editor: shortcode preview placeholder ----
-    .testimonials-block__shortcode-preview {
-        text-align: center;
-        padding: 2rem;
-    }
-
-    .testimonials-block__shortcode-tag {
-        @include primary-h4;
-        color: $white;
-        opacity: 0.8;
-        margin: 0;
-        padding: 1.5rem;
-        border: 1px dashed rgba($white, 0.4);
-        border-radius: $default-border-radius;
-    }
-
-    .testimonials-block__shortcode-empty {
-        @include primary-h4;
-        color: $white;
-        opacity: 0.5;
-        margin: 0;
-    }
+.testimonials-block__shortcode-empty {
+    @include primary-h4;
+    color: $white;
+    opacity: 0.5;
+    margin: 0;
 }
 
 // ---- Full-width in editor ----
