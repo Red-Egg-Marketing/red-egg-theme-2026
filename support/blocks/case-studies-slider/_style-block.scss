@@ -24,6 +24,10 @@
     }
 }
 
+.case-studies-slider .swiper-wrapper {
+    align-items: center;
+}
+
 .case-studies-slider > .block-wrapper {
     @include block-wrapper;
 }
@@ -49,6 +53,9 @@
     overflow: hidden;
     background: $white;
     transition: box-shadow 0.3s ease, opacity 0.3s ease;
+    @media screen and (min-width: $small-width) {
+        width: 528px;
+    }
 }
 
 .cs-slide__link {
@@ -90,9 +97,9 @@
     @include body-text;
     color: $gray;
     margin: 0.5rem 0 0 0;
-    max-height: 0;
     opacity: 0;
     overflow: hidden;
+    height: 0;
     transition: max-height 0.4s ease, opacity 0.3s ease;
 }
 
@@ -101,14 +108,17 @@
     transform: translateY(-2px);
 }
 
-.cs-slide:hover .cs-slide__excerpt {
-    max-height: 80px;
+.cs-slide--active .cs-slide__excerpt {
     opacity: 1;
+    height: auto;
 }
 
 // ---- Active slide emphasis ----
 .cs-slide--active {
     box-shadow: 0 4px 24px rgba(0, 0, 0, 0.1);
+     @media screen and (min-width: $small-width) {
+        width: 689px;
+     }
 }
 
 // Non-active slides dimmed
@@ -155,16 +165,15 @@
     justify-content: center;
     width: 44px;
     height: 44px;
-    border: 1px solid $gray;
     border-radius: 50%;
     background: $white;
     color: $gray;
     cursor: pointer;
     transition: background-color 0.3s ease, color 0.3s ease;
     padding: 0;
-
+    border: none;
     &:hover {
-        background-color: $gray;
+        background-color: $white;
         color: $white;
     }
 

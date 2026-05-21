@@ -47,17 +47,18 @@ const SliderContent = ( { postsToShow, industry, navPrev, navNext } ) => {
                 swiperInstanceRef.current = new Swiper( swiperRef.current, {
                     loop: true,
                     centeredSlides: true,
+                    centeredSlidesBounds: true,
                     slidesPerView: 1.15,
                     spaceBetween: 16,
                     speed: 500,
                     slideActiveClass: 'cs-slide--active',
                     breakpoints: {
                         768: {
-                            slidesPerView: 2.5,
+                            slidesPerView: 'auto',
                             spaceBetween: 24,
                         },
                         1080: {
-                            slidesPerView: 3,
+                            slidesPerView: 'auto',
                             spaceBetween: 24,
                         },
                     },
