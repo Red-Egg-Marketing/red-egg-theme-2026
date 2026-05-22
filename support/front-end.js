@@ -42,3 +42,7 @@ import './format-types/rotate-words/frontend';
 
 // Blob Animation – GSAP MorphSVG blob morphing
 import './js/blob-animation';
+
+
+// Blob Animation – GSAP MorphSVG blob morphing
+import './js/mask-morph';

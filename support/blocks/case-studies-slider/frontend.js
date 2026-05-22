@@ -67,6 +67,7 @@ const SliderContent = ( { postsToShow, industry, navPrev, navNext } ) => {
                         prevEl: navPrev,
                     },
                 } );
+                document.dispatchEvent( new CustomEvent( 'csSliderReady' ) );
             }, 50 );
         }
 
@@ -91,18 +92,28 @@ const SliderContent = ( { postsToShow, industry, navPrev, navNext } ) => {
 
     return (
         <div className="cs-slider__swiper swiper" ref={ swiperRef }>
+            <svg viewBox="0 0 765 431" className="svg-mask" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <mask id="DripMask1">
+                            <path d="M0 0H765V0C765 0 754.608 0 741.816 0C710.32 0 653.182 0 528 0C552.226 0 518.72 0 458.977 0C399.233 0 365.727 0 305.983 0C246.24 0 212.733 0 152.99 0C111.778 0 54.64 0 23.144 0C10.352 0 0 0 0 0V0Z
+" fill="white" />
+                        </mask>
+                    </defs>
+                </svg>
             <div className="swiper-wrapper">
                 { studies.map( ( study, i ) => (
                     <div className="cs-slide swiper-slide" key={ study.ID || i }>
                         <a className="cs-slide__link" href={ study.link || '#' }>
                             { study.media_url && (
-                                <div className="cs-slide__image">
-                                    <img
-                                        src={ study.media_url }
-                                        alt={ study.post_title || '' }
-                                        loading="lazy"
-                                    />
-                                </div>
+                                <Fragment>
+                                    <div className="cs-slide__image mask-enabled">
+                                        <img
+                                            src={ study.media_url }
+                                            alt={ study.post_title || '' }
+                                            loading="lazy"
+                                        />
+                                    </div>
+                                </Fragment>
                             ) }
                             <div className="cs-slide__content">
                                 <h3 className="cs-slide__title">{ study.post_title || study.title }</h3>
@@ -141,5 +152,6 @@ bodies.forEach( ( body ) => {
         );
     }
 } );
+
 
 } // end wp check

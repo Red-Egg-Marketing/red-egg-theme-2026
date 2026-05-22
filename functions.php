@@ -168,11 +168,20 @@ function red_egg_theme_scripts() {
         true
     );
 
+    // GSAP MorphSVG Plugin (CDN – free since 3.13)
+    wp_enqueue_script(
+        'gsap-scrolltrigger',
+        'https://cdn.jsdelivr.net/npm/gsap@3.13/dist/ScrollTrigger.min.js',
+        [ 'gsap-core' ],
+        '3.13.0',
+        true
+    );
+
     // Frontend JS (compiled from support/front-end.js)
     wp_enqueue_script(
         'red-egg-main-js',
         get_template_directory_uri() . '/support/assets/js/main.js',
-        [ 'swiper-js', 'gsap-core', 'gsap-morphsvg' ],
+        [ 'swiper-js', 'gsap-core', 'gsap-morphsvg', 'gsap-scrolltrigger' ],
         file_exists( $main_js ) ? filemtime( $main_js ) : false,
         true
     );
