@@ -25,12 +25,12 @@
 
         gsap.to( el, {
             clipPath: 'inset(0 0% 0 0)',
-            duration: 1.2,
+            duration: 3.5,
             ease: 'power2.out',
             scrollTrigger: {
                 trigger: el,
-                start: 'top 85%',
-                once: true,
+                start: 'top 50%',
+                // once: true,
             },
         } );
     } );

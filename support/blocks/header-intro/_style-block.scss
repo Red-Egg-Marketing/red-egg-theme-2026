@@ -84,23 +84,29 @@
 
 // ---- Squiggle decoration ----
 .squiggle-decoration {
-    position: absolute;
-    top: -20px;
+/*    position: absolute;*/
+/*    top: -20px;*/
     left: 0;
     width: 100%;
     overflow: hidden;
     z-index: 1;
     pointer-events: none;
-
+    margin-top: 5px;
+    margin-bottom: 50px;
     @media screen and (min-width: $small-width) {
-        top: -25px;
+/*        top: -25px;*/
+        margin-bottom: 100px;
+        margin-top: 10px;
     }
 }
 
 .squiggle-decoration__svg {
     display: block;
-    width: 100%;
+    width: 160px;
     height: auto;
+    @media screen and (min-width: $small-width) {
+        width: 190px;
+    }
 }
 
 // ---- Two-column layout ----

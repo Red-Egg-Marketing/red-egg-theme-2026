@@ -21,6 +21,7 @@
 
 .insights-block > .block-wrapper {
     @include block-wrapper;
+    position: relative;
 }
 
 // ---- Header area (InnerBlocks: header-intro) ----

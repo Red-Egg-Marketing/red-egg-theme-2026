@@ -46,6 +46,9 @@
                 var paddingTop = parseFloat( parentStyles.paddingTop ) || 0;
                 var paddingBottom = parseFloat( parentStyles.paddingBottom ) || 0;
 
+                console.log('the padding top is ' + paddingTop);
+                console.log('the padding top is ' + paddingBottom);
+
                 var blobOffsetX = blobRect.left - parentRect.left;
                 // X: blob's left edge starts at 0, right edge stops at viewport width
                 var xMin = -blobOffsetX;
