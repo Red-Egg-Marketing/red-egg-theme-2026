@@ -82,6 +82,27 @@
     color: $white;
 }
 
+// ---- Squiggle decoration ----
+.squiggle-decoration {
+    position: absolute;
+    top: -20px;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    z-index: 1;
+    pointer-events: none;
+
+    @media screen and (min-width: $small-width) {
+        top: -25px;
+    }
+}
+
+.squiggle-decoration__svg {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
 // ---- Two-column layout ----
 .header-intro__columns {
     display: flex;

@@ -57,6 +57,10 @@ registerBlockType( 'red-egg-block/header-intro', {
         blockId: {
             type: 'string',
         },
+        squiggleEnabled: {
+            type: 'boolean',
+            default: false,
+        },
     },
     edit,
     save,

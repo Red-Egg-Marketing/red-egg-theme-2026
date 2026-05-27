@@ -43,6 +43,9 @@ import './format-types/rotate-words/frontend';
 // Blob Animation – GSAP MorphSVG blob morphing
 import './js/blob-animation';
 
+// Squiggle Decoration – GSAP ScrollTrigger clip-path reveal
+import './js/squiggle-animation';
+
 
 // Blob Animation – GSAP MorphSVG blob morphing
 import './js/mask-morph';
