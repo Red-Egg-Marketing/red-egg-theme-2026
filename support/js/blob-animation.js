@@ -46,17 +46,14 @@
                 var paddingTop = parseFloat( parentStyles.paddingTop ) || 0;
                 var paddingBottom = parseFloat( parentStyles.paddingBottom ) || 0;
 
-                console.log('the padding top is ' + paddingTop);
-                console.log('the padding top is ' + paddingBottom);
-
                 var blobOffsetX = blobRect.left - parentRect.left;
-                // X: blob's left edge starts at 0, right edge stops at viewport width
-                var xMin = -blobOffsetX;
-                var xMax = window.innerWidth - blobOffsetX - blobRect.width;
+                // X: allow blob to drift past viewport edges (parent has overflow-x visible)
+                var xMin = -blobOffsetX - blobRect.width * 0.25;
+                var xMax = window.innerWidth - blobOffsetX - blobRect.width * 0.75;
 
                 var availableHeight = parentRect.height - paddingTop - paddingBottom;
                 var blobOffsetY = blobRect.top - parentRect.top - paddingTop;
-                // Y: blob's top edge starts at padding top, bottom edge stops at padding bottom
+                // Y: clamp within parent padding bounds
                 var yMin = -blobOffsetY;
                 var yMax = availableHeight - blobOffsetY - blobRect.height;
 
