@@ -39,10 +39,10 @@
 .insights-block .resources.grid {
     display: flex;
     flex-wrap: wrap;
-    gap: 1.5rem;
+    gap: 25px;
 
     @media screen and (min-width: $small-width) {
-        gap: 2rem;
+        gap: 50px;
     }
 }
 
@@ -52,7 +52,7 @@
     border-radius: $default-border-radius;
 
     @media screen and (min-width: $small-width) {
-        width: calc(50% - 1rem);
+        width: calc(50% - 25px);
     }
 }
 
