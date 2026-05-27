@@ -136,7 +136,7 @@ const EditInsights = ( { attributes, setAttributes, isSelected, clientId } ) => 
                                 resourceIndex={ i }
                                 resourceURL={ resource.link }
                                 resourceID={ resource.ID || resource.id }
-                                resourceImg={ resource.featured_image || resource.image || false }
+                                resourceImg={ false }
                                 resourceTitle={ resource.title }
                                 resourceExcerpt={ resource.excerpt }
                                 updateResourceImage={ null }

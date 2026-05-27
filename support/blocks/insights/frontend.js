@@ -49,7 +49,7 @@ const InsightsFrontend = ( { postsToShow, category } ) => {
                     <div className="resource-extra">
                         <a className="resource-wrap" href={ post.link || '#' }>
                             <div className="cont-wrap">
-                                { ( post.featured_image || post.image ) && (
+                                {/*{ ( post.featured_image || post.image ) && (
                                     <div className="image-cont">
                                         <img
                                             className="resource-img"
@@ -58,13 +58,15 @@ const InsightsFrontend = ( { postsToShow, category } ) => {
                                             loading="lazy"
                                         />
                                     </div>
-                                ) }
+                                ) }*/}
                                 <div className="content">
                                     <h3 className="resource-title">{ post.title }</h3>
                                     { post.excerpt && (
                                         <p className="resource-excerpt">{ post.excerpt }</p>
                                     ) }
-                                    <button className="wp-button">Read More</button>
+                                    <div className="wp-block-button is-style-outline-gray">
+                                        <button className="wp-button wp-block-button__link wp-element-button">Read More</button>
+                                    </div>
                                 </div>
                             </div>
                         </a>
