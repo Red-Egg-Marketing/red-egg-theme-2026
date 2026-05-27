@@ -61,6 +61,22 @@ registerBlockType( 'red-egg-block/insights', {
         blockId: {
             type: 'string',
         },
+        blobEnabled: {
+            type: 'boolean',
+            default: false,
+        },
+        blobShape: {
+            type: 'string',
+            default: 'shape1',
+        },
+        blobSpeed: {
+            type: 'number',
+            default: 8,
+        },
+        blobPosition: {
+            type: 'string',
+            default: 'bottom-left',
+        },
     },
     edit,
     save,

@@ -15,6 +15,7 @@ import ResourceCard from '../../components/ResourceCard.js';
 import BackgroundColor from '../../components/BackgroundColor.js';
 import PaddingSelector from '../../components/Padding.js';
 import MarginSelector from '../../components/Margin.js';
+import BlobAnimation from '../../components/BlobAnimation.js';
 
 const apiUrl = '/wp-json/red-egg/v2/posts';
 const catUrl = '/wp-json/wp/v2/categories?per_page=100';
@@ -28,7 +29,11 @@ const allowedBlocks = [
 ];
 
 const EditInsights = ( { attributes, setAttributes, isSelected, clientId } ) => {
-    const { category, postsToShow, bgColor, bgSlug, padding, margin, blockId } = attributes;
+    const {
+        category, postsToShow, bgColor, bgSlug,
+        padding, margin, blockId,
+        blobEnabled, blobShape, blobSpeed, blobPosition
+    } = attributes;
 
     const [ resources, setResources ] = useState( false );
     const [ currentCats, setCurrentCats ] = useState( false );
@@ -107,6 +112,13 @@ const EditInsights = ( { attributes, setAttributes, isSelected, clientId } ) => 
                     setAttributes={ setAttributes }
                     title="Meta Info Color"
                 />
+                <BlobAnimation.Controls
+                    blobEnabled={ blobEnabled }
+                    blobShape={ blobShape }
+                    blobSpeed={ blobSpeed }
+                    blobPosition={ blobPosition }
+                    setAttributes={ setAttributes }
+                />
             </InspectorControls>
 
             <PaddingSelector
@@ -121,6 +133,11 @@ const EditInsights = ( { attributes, setAttributes, isSelected, clientId } ) => 
             />
 
             <section { ...blockProps }>
+                <BlobAnimation.Preview
+                    blobEnabled={ blobEnabled }
+                    blobShape={ blobShape }
+                    blobPosition={ blobPosition }
+                />
                 <div className="block-wrapper">
                     <header className="insights-block__header">
                         <InnerBlocks
@@ -131,20 +148,26 @@ const EditInsights = ( { attributes, setAttributes, isSelected, clientId } ) => 
 
                     <div className="resources grid">
                         { resources && resources.length > 0 && resources.map( ( resource, i ) => (
-                            <ResourceCard
-                                key={ resource.ID || resource.id || i }
-                                resourceIndex={ i }
-                                resourceURL={ resource.link }
-                                resourceID={ resource.ID || resource.id }
-                                resourceImg={ false }
-                                resourceTitle={ resource.title }
-                                resourceExcerpt={ resource.excerpt }
-                                updateResourceImage={ null }
-                                updateResourceText={ null }
-                                updateResourceExcerpt={ null }
-                                displayButton={ true }
-                                displayExcerpt={ true }
-                            />
+                            <div className="resource-card" key={ resource.ID || resource.id || i }>
+                                <div className="resource-extra">
+                                    <div className="resource-wrap">
+                                        <div className="cont-wrap">
+                                            <div className="content">
+                                                { resource.date && (
+                                                    <span className="resource-date">{ resource.date }</span>
+                                                ) }
+                                                <h3 className="resource-title">{ resource.title }</h3>
+                                                { resource.excerpt && (
+                                                    <p className="resource-excerpt">{ resource.excerpt }</p>
+                                                ) }
+                                                <div className="wp-block-button is-style-outline-gray">
+                                                    <button className="wp-button wp-block-button__link wp-element-button">Read More</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         ) ) }
                         { resources && resources.length === 0 && (
                             <p className="insights-block__empty">

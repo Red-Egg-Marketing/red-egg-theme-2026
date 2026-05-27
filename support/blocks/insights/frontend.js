@@ -2,8 +2,9 @@
  * Insights Block – Frontend Component
  *
  * Hydrates #InsightsBlockRoot with data from
- * the red-egg/v2/resources REST endpoint.
- * Renders resource cards in a grid layout.
+ * the red-egg/v2/posts REST endpoint.
+ * Renders resource cards with date, title,
+ * excerpt, and read more button.
  */
 
 if ( typeof wp !== 'undefined' && wp.element && document.getElementById( 'InsightsBlockRoot' ) ) {
@@ -49,17 +50,10 @@ const InsightsFrontend = ( { postsToShow, category } ) => {
                     <div className="resource-extra">
                         <a className="resource-wrap" href={ post.link || '#' }>
                             <div className="cont-wrap">
-                                {/*{ ( post.featured_image || post.image ) && (
-                                    <div className="image-cont">
-                                        <img
-                                            className="resource-img"
-                                            src={ post.featured_image || post.image }
-                                            alt={ post.title || '' }
-                                            loading="lazy"
-                                        />
-                                    </div>
-                                ) }*/}
                                 <div className="content">
+                                    { post.date && (
+                                        <span className="resource-date">{ post.date }</span>
+                                    ) }
                                     <h3 className="resource-title">{ post.title }</h3>
                                     { post.excerpt && (
                                         <p className="resource-excerpt">{ post.excerpt }</p>
