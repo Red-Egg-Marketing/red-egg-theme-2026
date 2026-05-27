@@ -5,10 +5,10 @@
 
 .quote-block .quote-wrap,
 div.wprevpro_t1_DIV_2 {
-	padding-right: 20px;
-	padding-left: 20px;
-	padding-top: 20px;
-	padding-bottom: 20px;
+	padding-right: 30px;
+	padding-left: 30px;
+	padding-top: 30px;
+	padding-bottom: 30px;
 	@media screen and (min-width: $small-width) {
 		padding-left: 50px;
 		padding-right: 50px;
@@ -27,6 +27,7 @@ div.wprevpro_t1_DIV_2 {
 div.wprs_unslider ul {
 	display: flex;
 	flex-wrap: wrap;
+	align-items: stretch;
 }
 
 ul.wprs_unslider-wrap.wprs_unslider-carousel>li {
@@ -35,14 +36,24 @@ ul.wprs_unslider-wrap.wprs_unslider-carousel>li {
 
 div.wprevpro_t1_outer_div {
 	padding: 0;
+	display: flex;
+	flex-wrap: wrap;
+	@media screen and (min-width: $small-width) {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		column-gap: 50px;
+	}
+}
 
-/*	display: flex;*/
-/*	flex-wrap: wrap;*/
-/*	grid-column-gap: 50px;*/
+div.wprevpro_t1_DIV_1 {
+	margin-bottom: 0;
 }
 
 div.w3_wprs-col {
 /*	float: none;*/
+	display: flex;
+	width: 100% !important;
+	align-items: stretch;
 }
 
 .wp-block.selected-quote {
@@ -87,7 +98,7 @@ div.wprevpro_t1_DIV_2:after {
 }
 
 .wprevpro .indrevdiv {
-	margin: 1.25rem;
+	margin: 0;
 }
 
 .wprevpro .wprevpro_t1_SPAN_5 {
@@ -95,28 +106,10 @@ div.wprevpro_t1_DIV_2:after {
 	padding-right: 1.25rem;
 }
 
-.wprs_unslider .wprs_unslider-arrow {
-	@media screen and (max-width: $small-width) {
-		top: -1.25rem;
-	}
-}
-
 .wprs_unslider .wprs_unslider-arrow.next {
 	// Only on Mobile
-	@media screen and (max-width: $small-width) {
-		right: calc(40% - 2rem);
-	}
+	transform: rotate(-180deg);
 
-	margin: 0 1.25rem;
-}
-
-.wprs_unslider .wprs_unslider-arrow.prev {
-	// Only on Mobile
-	@media screen and (max-width: $small-width) {
-		left: calc(40% - 2rem);
-	}
-
-	margin: 0 1.25rem;
 }
 
 #wprev-slider-1.wprevpro .readmoretextdiv {
@@ -177,7 +170,7 @@ div.wprevpro_t1_DIV_2 p {
 div.wprevpro_t1_DIV_2,
 .quote-block .quote-wrap,
 .slickwprev-slide .indrevdiv {
-   box-shadow: 0 0 20px 0 rgba(0, 0, 0, .08);
+   box-shadow: none;
 }
 
 .quote-block .review-text,
@@ -213,13 +206,11 @@ div.wprevpro_t1_DIV_2,
 
 .review-company,
 .wprev-slider .wprevcompany {
-   font-size: 18px;
+   font-size: 20px;
    line-height: 24px;
-   letter-spacing: 0.5px;
-   margin-top: 5px;
-   line-height: 22px;
-   text-transform: uppercase;
-   color: #424143;
+   margin-top: 0;
+   text-transform: capitalize;
+   color: $gray;
    display: block;
 }
 
@@ -231,15 +222,37 @@ p.reviewer-name,
    font-size: 18px;
    font-weight: 600;
    margin-bottom: 0;
+   margin-top: 10px;
    @media screen and (min-width: $small-width) {
-      font-size: 24px;
-      line-height: 36px !important;
-      letter-spacing: 0.5px;
+      font-size: 22px;
+      line-height: 34px !important;
+      margin-top: 15px;
    }
 }
 
 .wprev-slick-slider {
    position: relative;
+}
+
+span.wprs_unslider-arrow {
+	bottom: 0;
+	top: 100%;
+	background-image: url($arrow-white-l);
+	background-color: transparent;
+	background-size: 25px;
+	right: 0;
+   @media screen and (min-width: $small-width) {
+   	background-size: 35px;
+   }
+}
+
+span.wprs_unslider-arrow.prev {
+	left: auto;
+	right: 35px;
+	transform: rotate(0);
+	 @media screen and (min-width: $small-width) {
+	 	right: 45px;
+	 }
 }
 
 .wprev-slick-slider .wprevsiteicon {
@@ -411,9 +424,13 @@ button.slickwprev-prev:before {
 	height: 25px;
 }
 
+#wprev-slider-1 span.wprs_rd_more {
+	color: $red;
+}
+
 .ratings.wprevpro_star_imgs,
 .wprevpro_star_imgs_T1 {
-	margin-bottom: 15px;
+	margin-bottom: 8px;
 }
 
 .shortcode-case-study {
