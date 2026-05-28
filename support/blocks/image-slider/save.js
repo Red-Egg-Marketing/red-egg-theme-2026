@@ -2,6 +2,7 @@
  * Image Slider Block – Save Component
  *
  * Outputs Swiper-ready markup with images as slides.
+ * Uses centeredSlides with overflow visible for bleed effect.
  * Frontend JS initializes the Swiper instance.
  */
 
@@ -21,28 +22,30 @@ const SaveImageSlider = ( { attributes } ) => {
 
     return (
         <div { ...blockProps }>
-            <div
-                className="image-slider__swiper swiper"
-                data-slides-per-view={ slidesPerView }
-                data-space-between={ spaceBetween }
-            >
-                <div className="swiper-wrapper">
-                    { images.map( ( img, i ) => (
-                        <div className="swiper-slide" key={ img.id || i }>
-                            <div className="image-slider__slide">
-                                <img
-                                    src={ img.url }
-                                    alt={ img.alt }
-                                    loading="lazy"
-                                />
+            <div className="image-slider__swiper-wrap">
+                <div
+                    className="image-slider__swiper swiper"
+                    data-slides-per-view={ slidesPerView }
+                    data-space-between={ spaceBetween }
+                >
+                    <div className="swiper-wrapper">
+                        { images.map( ( img, i ) => (
+                            <div className="swiper-slide" key={ img.id || i }>
+                                <div className="image-slider__slide">
+                                    <img
+                                        src={ img.url }
+                                        alt={ img.alt }
+                                        loading="lazy"
+                                    />
+                                </div>
                             </div>
-                        </div>
-                    ) ) }
+                        ) ) }
+                    </div>
                 </div>
-                <div className="image-slider__nav">
-                    <div className="swiper-button-prev"></div>
-                    <div className="swiper-button-next"></div>
-                </div>
+            </div>
+            <div className="image-slider__nav">
+                <div className="swiper-button-prev"></div>
+                <div className="swiper-button-next"></div>
             </div>
         </div>
     );

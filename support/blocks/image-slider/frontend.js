@@ -2,7 +2,8 @@
  * Image Slider – Frontend
  *
  * Initializes Swiper on all .image-slider__swiper elements.
- * Reads config from data attributes.
+ * Uses centeredSlides with active slide emphasis
+ * (matching case-studies-slider behavior).
  */
 
 ( function() {
@@ -13,20 +14,21 @@
         if ( sliders.length === 0 ) return;
 
         sliders.forEach( function( el ) {
-            var slidesPerView = parseInt( el.getAttribute( 'data-slides-per-view' ) ) || 3;
             var spaceBetween = parseInt( el.getAttribute( 'data-space-between' ) ) || 20;
             var parent = el.closest( '.image-slider' );
-            var prevEl = el.querySelector( '.swiper-button-prev' );
-            var nextEl = el.querySelector( '.swiper-button-next' );
+            var prevEl = parent.querySelector( '.swiper-button-prev' );
+            var nextEl = parent.querySelector( '.swiper-button-next' );
 
             new Swiper( el, {
-                loop: false,
+                loop: true,
+                centeredSlides: true,
                 slidesPerView: 1.15,
-                spaceBetween: 10,
+                spaceBetween: 12,
                 speed: 500,
+                slideActiveClass: 'image-slider__slide--active',
                 breakpoints: {
                     768: {
-                        slidesPerView: slidesPerView,
+                        slidesPerView: 'auto',
                         spaceBetween: spaceBetween,
                     },
                 },

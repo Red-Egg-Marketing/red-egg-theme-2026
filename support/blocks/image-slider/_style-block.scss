@@ -2,23 +2,43 @@
 //  Image Slider Block Styles
 //  Block: red-egg-block/image-slider
 //
-//  Swiper image slider with rounded corners
-//  and circular nav buttons (matches case-studies-slider).
+//  Swiper image slider with centeredSlides,
+//  active slide emphasis, and overflow bleed.
+//  Nav matches case-studies-slider style.
 // ========================================
 
 .image-slider {
     position: relative;
     width: 100%;
     margin-top: 2rem;
+    overflow: hidden;
 
     @media screen and (min-width: $small-width) {
         margin-top: 3rem;
     }
 }
 
-// ---- Swiper container ----
+// ---- Swiper wrap: allows slides to bleed ----
+.image-slider__swiper-wrap {
+    overflow: visible;
+}
+
 .image-slider__swiper {
-    overflow: hidden;
+    overflow: visible;
+}
+
+// ---- Slides: auto width at desktop for centered effect ----
+.image-slider__swiper .swiper-slide {
+    @media screen and (min-width: $small-width) {
+        width: 380px;
+        transition: width 0.3s ease;
+    }
+}
+
+.image-slider__swiper .swiper-slide.image-slider__slide--active {
+    @media screen and (min-width: $small-width) {
+        width: 480px;
+    }
 }
 
 // ---- Slide images ----
@@ -26,6 +46,7 @@
     border-radius: $default-border-radius;
     overflow: hidden;
     border: 1px solid $gray;
+    transition: box-shadow 0.3s ease, opacity 0.3s ease;
 
     img {
         display: block;
@@ -33,10 +54,30 @@
         height: auto;
         object-fit: cover;
         aspect-ratio: 4 / 3;
+        transition: transform 0.4s ease;
     }
 }
 
-// ---- Navigation (matches case-studies-slider) ----
+// ---- Active slide emphasis ----
+.image-slider__slide--active .image-slider__slide {
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.1);
+}
+
+// Non-active slides dimmed
+.swiper-slide:not(.image-slider__slide--active) .image-slider__slide {
+    opacity: 0.65;
+}
+
+.swiper-slide:not(.image-slider__slide--active):hover .image-slider__slide {
+    opacity: 1;
+}
+
+// Hover zoom on active slide
+.image-slider__slide--active .image-slider__slide:hover img {
+    transform: scale(1.03);
+}
+
+// ---- Navigation ----
 .image-slider__nav {
     display: flex;
     justify-content: flex-end;
