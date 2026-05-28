@@ -50,7 +50,7 @@
     display: flex;
     flex-wrap: wrap;
     gap: 1.5rem;
-
+    align-items: stretch;
     @media screen and (min-width: $small-width) {
         gap: 2rem;
     }
@@ -73,10 +73,53 @@
 // ---- Flip cards: navy variant ----
 .values-section .flip-card {
     width: 100%;
-
+    border: 1px solid white;
+    border-radius: 8px;
+    min-height: inherit;
+    display: flex;
+    align-items: stretch;
+    padding: 28px;
+    transition: .5s background-color;
     @media screen and (min-width: $small-width) {
         width: calc(33.333% - 1.334rem);
+        padding: 40px;
     }
+    &:hover {
+        background-color: white;
+        cursor: pointer;
+    }
+
+}
+
+.values-section .flip-card__svg-icon {
+    margin-bottom: 0;
+}
+
+.values-section .flip-card .exterior-wrap {
+    min-height: inherit;
+}
+
+.values-section .flip-card__hover-overlay {
+    position: relative;
+    height: 0;
+    overflow: hidden;
+    opacity: 0;
+    padding: 0;
+}
+
+.values-section .flip-card:hover .flip-card__hover-overlay,
+.values-section .flip-card:hover .flip-card__hover-overlay p
+ {
+    opacity: 1;
+    height: auto;
+}
+
+.values-section .flip-card__hover-overlay p {
+    opacity: 0;
+    height: 0;
+    transition: 0.5s opacity, height;
+    color: $navy;
+    margin-top: 5px;
 }
 
 .values-section .flip-card .block-wrapper,
@@ -86,7 +129,18 @@
 }
 
 .values-section .flip-card h3 {
+    @include primary-h3;
     color: $white;
+    margin-bottom: 0;
+    transition: 0.5s color;
+    margin-top: 15px;
+    @media screen and (min-width: $small-width) {
+        margin-top: 21px;
+    }
+}
+
+.values-section .flip-card:hover h3 {
+    color: $navy;
 }
 
 .values-section .flip-card .flip-card__icon img {
@@ -159,4 +213,17 @@
 .wp-block.values-section {
     max-width: 100%;
     width: 100%;
+}
+.values-section .flip-card .block-content {
+    gap: 0;
+}
+
+.values-section .flip-card:hover .hover-solid-white {
+    fill: white;
+    opacity: 1;
+}
+
+.values-section .flip-card:hover .hover-solid-teal {
+    fill: $teal;
+    opacity: 1;
 }

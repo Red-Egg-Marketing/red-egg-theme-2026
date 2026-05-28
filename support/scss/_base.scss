@@ -40,6 +40,10 @@ p {
     }
 }
 
+[class*="hover-solid"] {
+    transition: 0.5s all;
+}
+
 a {
     color: $link-color;
     text-decoration: none;

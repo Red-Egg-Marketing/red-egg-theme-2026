@@ -120,7 +120,7 @@
 
 // ---- Hover overlay ----
 .flip-card__hover-overlay {
-    position: absolute;
+   /* position: absolute;
     top: 0;
     left: 0;
     width: 100%;
@@ -135,11 +135,10 @@
     transition: opacity 0.35s ease;
     z-index: 3;
     pointer-events: none;
-
+*/
     p {
         @include body-text;
         color: $white;
-        text-align: center;
         margin: 0;
     }
 }
