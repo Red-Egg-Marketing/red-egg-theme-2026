@@ -3,7 +3,7 @@
 //  Block: red-egg-block/image-slider
 //
 //  Swiper image slider with rounded corners
-//  and small circular nav buttons.
+//  and circular nav buttons (matches case-studies-slider).
 // ========================================
 
 .image-slider {
@@ -36,28 +36,37 @@
     }
 }
 
-// ---- Navigation ----
+// ---- Navigation (matches case-studies-slider) ----
 .image-slider__nav {
     display: flex;
     justify-content: flex-end;
     gap: 8px;
-    margin-top: 1.25rem;
-    padding-right: 0.5rem;
+    margin-top: 1.5rem;
+
+    @media screen and (min-width: $small-width) {
+        margin-top: 2rem;
+    }
 }
 
 .image-slider__nav .swiper-button-prev,
 .image-slider__nav .swiper-button-next {
     position: static;
-    width: 36px;
-    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
     margin: 0;
     border: 1px solid $gray;
     border-radius: 50%;
     background: $white;
-    transition: background-color 0.3s ease;
+    color: $gray;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    padding: 0;
 
     &::after {
-        font-size: 12px;
+        font-size: 14px;
         color: $gray;
         transition: color 0.3s ease;
     }
@@ -72,6 +81,15 @@
 
     &.swiper-button-disabled {
         opacity: 0.35;
+        cursor: default;
+
+        &:hover {
+            background-color: $white;
+
+            &::after {
+                color: $gray;
+            }
+        }
     }
 }
 
