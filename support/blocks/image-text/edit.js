@@ -221,7 +221,7 @@ const EditImageText = ( { attributes, setAttributes, clientId } ) => {
             />
 
             <div { ...blockProps }>
-                <div className={ `block-content ${ contentAlign }` }>
+                <div className={ `block-wrapper ${ contentAlign }` }>
                     <div className="image-col column">
                         { vidOrImg === 'image' && (
                             <ImageComp

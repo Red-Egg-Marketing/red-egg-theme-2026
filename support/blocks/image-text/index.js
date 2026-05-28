@@ -19,7 +19,7 @@ registerBlockType( 'red-egg-block/image-text', {
     icon: 'columns',
     category: 'layout',
     keywords: [ __( 'image', 'red-egg' ), __( 'text', 'red-egg' ), __( 'columns', 'red-egg' ), __( 'two column', 'red-egg' ) ],
-    parent: [ 'red-egg-block/columns-group' ],
+    // parent: [ 'red-egg-block/columns-group' ],
     supports: { anchor: true },
     attributes: {
         contentAlign: {

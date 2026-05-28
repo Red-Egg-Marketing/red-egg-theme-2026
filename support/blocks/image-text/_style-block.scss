@@ -36,7 +36,7 @@
     }
 }
 
-.image-columns > .block-content {
+.image-columns > .block-wrapper {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
@@ -110,7 +110,7 @@
 }
 
 .image-columns .wrap p {
-    @include primary-h4;
+    @include body-text;
     margin-bottom: 0;
 }
 

@@ -52,7 +52,7 @@ const SaveImageText = ( { attributes } ) => {
             <PaddingSelector.View padding={ padding } id={ blockId } />
             <MarginSelector.View margin={ margin } id={ blockId } />
             <div { ...blockProps }>
-                <div className={ `block-content ${ contentAlign }` }>
+                <div className={ `block-wrapper ${ contentAlign }` }>
                     <div className="image-col column">
                         { vidOrImg === 'image' && (
                             <ImageComp.View
