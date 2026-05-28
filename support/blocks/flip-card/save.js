@@ -1,8 +1,9 @@
 /**
  * Flip Card Block – Save Component
  *
- * Renders the front (icon + InnerBlocks heading) and
+ * Renders the front (icon/SVG + InnerBlocks heading) and
  * back (description + link) in a flip container.
+ * Optional hover overlay with fade-in text.
  */
 
 const { Fragment } = wp.element;
@@ -12,12 +13,14 @@ const SaveFlipCard = ( { attributes } ) => {
     const {
         icon, iconAlt, bgSlug,
         link, content, buttonText,
+        svgMarkup, hoverText,
     } = attributes;
 
     const blockProps = useBlockProps.save( {
         className: 'flip-card'
             + ( bgSlug ? ' ' + bgSlug : '' )
-            + ( content ? '' : ' no-flip' ),
+            + ( content ? '' : ' no-flip' )
+            + ( hoverText ? ' has-hover-overlay' : '' ),
     } );
 
     return (
@@ -25,6 +28,12 @@ const SaveFlipCard = ( { attributes } ) => {
             <div className="exterior-wrap">
                 <div className="wrapper">
                     <div className="block-content">
+                        { svgMarkup && (
+                            <div
+                                className="flip-card__svg-icon"
+                                dangerouslySetInnerHTML={ { __html: svgMarkup } }
+                            />
+                        ) }
                         { icon && (
                             <div className="flip-card__icon">
                                 <img src={ icon } alt={ iconAlt } loading="lazy" />
@@ -33,6 +42,11 @@ const SaveFlipCard = ( { attributes } ) => {
                         <InnerBlocks.Content />
                     </div>
                 </div>
+                { hoverText && (
+                    <div className="flip-card__hover-overlay">
+                        <p>{ hoverText }</p>
+                    </div>
+                ) }
                 { ( link || content ) && (
                     <div className="flip-card-wrap">
                         <div className="wrapper">

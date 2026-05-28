@@ -101,6 +101,54 @@
     }
 }
 
+// ---- Inline SVG icon ----
+.flip-card__svg-icon {
+    margin-bottom: 1.5rem;
+
+    svg {
+        display: block;
+        width: auto;
+        height: 60px;
+        max-width: 80px;
+
+        @media screen and (min-width: $small-width) {
+            height: 70px;
+            max-width: 90px;
+        }
+    }
+}
+
+// ---- Hover overlay ----
+.flip-card__hover-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.75);
+    border-radius: $default-border-radius;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2.5rem;
+    opacity: 0;
+    transition: opacity 0.35s ease;
+    z-index: 3;
+    pointer-events: none;
+
+    p {
+        @include body-text;
+        color: $white;
+        text-align: center;
+        margin: 0;
+    }
+}
+
+.flip-card.has-hover-overlay:hover .flip-card__hover-overlay {
+    opacity: 1;
+    pointer-events: auto;
+}
+
 // ---- Card heading (from InnerBlocks) ----
 .flip-card h3 {
     @include primary-h2;

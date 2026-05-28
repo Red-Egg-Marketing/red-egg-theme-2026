@@ -1,14 +1,15 @@
 /**
  * Flip Card Block – Edit Component
  *
- * Front: MediaUpload icon + InnerBlocks (heading)
+ * Front: MediaUpload icon (or inline SVG) + InnerBlocks (heading)
  * Back: RichText description + link/button text
+ * Hover overlay: optional text that fades in on hover
  * Editor has a "Flip Side" toggle to switch views.
  */
 
-const { Fragment, useState } = wp.element;
+const { Fragment, useState, RawHTML } = wp.element;
 const { RichText, MediaUpload, InnerBlocks, InspectorControls, useBlockProps, URLInputButton } = wp.blockEditor;
-const { PanelBody, Button, TextControl, Flex } = wp.components;
+const { PanelBody, Button, TextControl, TextareaControl, Flex } = wp.components;
 const { __ } = wp.i18n;
 
 import BackgroundColor from '../../components/BackgroundColor.js';
@@ -25,7 +26,7 @@ const allowedBlocks = [
 const EditFlipCard = ( { attributes, setAttributes, clientId } ) => {
     const {
         icon, iconId, iconAlt, bgColor, bgSlug,
-        link, content, buttonText,
+        link, content, buttonText, svgMarkup, hoverText,
     } = attributes;
 
     const [ flipCard, swapSide ] = useState( false );
@@ -36,7 +37,8 @@ const EditFlipCard = ( { attributes, setAttributes, clientId } ) => {
         id: blockId,
         className: 'flip-card'
             + ( bgSlug ? ' ' + bgSlug : '' )
-            + ( content ? '' : ' no-flip' ),
+            + ( content ? '' : ' no-flip' )
+            + ( hoverText ? ' has-hover-overlay' : '' ),
     } );
 
     return (
@@ -82,8 +84,42 @@ const EditFlipCard = ( { attributes, setAttributes, clientId } ) => {
                     />
                 </PanelBody>
                 <PanelBody
+                    title={ __( 'Inline SVG Icon', 'red-egg' ) }
+                    initialOpen={ false }
+                >
+                    <TextareaControl
+                        label={ __( 'SVG Markup', 'red-egg' ) }
+                        help={ __( 'Paste raw SVG code. Displays alongside or instead of the image icon.', 'red-egg' ) }
+                        value={ svgMarkup }
+                        onChange={ ( val ) => setAttributes( { svgMarkup: val } ) }
+                        rows={ 6 }
+                    />
+                    { svgMarkup && (
+                        <div style={ { marginTop: '8px' } }>
+                            <p style={ { fontSize: '12px', marginBottom: '4px' } }>{ __( 'Preview:', 'red-egg' ) }</p>
+                            <div
+                                className="flip-card__svg-preview"
+                                style={ { maxWidth: '80px' } }
+                                dangerouslySetInnerHTML={ { __html: svgMarkup } }
+                            />
+                        </div>
+                    ) }
+                </PanelBody>
+                <PanelBody
+                    title={ __( 'Hover Overlay', 'red-egg' ) }
+                    initialOpen={ false }
+                >
+                    <TextareaControl
+                        label={ __( 'Hover Text', 'red-egg' ) }
+                        help={ __( 'Text revealed on hover with a fade overlay.', 'red-egg' ) }
+                        value={ hoverText }
+                        onChange={ ( val ) => setAttributes( { hoverText: val } ) }
+                        rows={ 3 }
+                    />
+                </PanelBody>
+                <PanelBody
                     title={ __( 'Back Side Content', 'red-egg' ) }
-                    initialOpen={ true }
+                    initialOpen={ false }
                 >
                     <TextControl
                         label={ __( 'Button Text', 'red-egg' ) }
@@ -103,6 +139,12 @@ const EditFlipCard = ( { attributes, setAttributes, clientId } ) => {
                 { ! flipCard && (
                     <div className="wrapper">
                         <div className="block-content">
+                            { svgMarkup && (
+                                <div
+                                    className="flip-card__svg-icon"
+                                    dangerouslySetInnerHTML={ { __html: svgMarkup } }
+                                />
+                            ) }
                             { icon && (
                                 <div className="flip-card__icon">
                                     <img src={ icon } alt={ iconAlt } />
@@ -112,6 +154,11 @@ const EditFlipCard = ( { attributes, setAttributes, clientId } ) => {
                                 template={ template }
                                 allowedBlocks={ allowedBlocks }
                             />
+                            { hoverText && (
+                                <p className="flip-card__hover-text-preview" style={ { opacity: 0.5, fontStyle: 'italic', fontSize: '13px', marginTop: '0.5rem' } }>
+                                    { __( 'Hover text: ', 'red-egg' ) }{ hoverText }
+                                </p>
+                            ) }
                         </div>
                     </div>
                 ) }

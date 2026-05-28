@@ -52,6 +52,14 @@ registerBlockType( 'red-egg-block/flip-card', {
             type: 'string',
             default: 'Learn More',
         },
+        svgMarkup: {
+            type: 'string',
+            default: '',
+        },
+        hoverText: {
+            type: 'string',
+            default: '',
+        },
     },
     edit,
     save,
