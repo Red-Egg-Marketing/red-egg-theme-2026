@@ -79,6 +79,7 @@
                     duration: speed,
                     ease: 'sine.inOut',
                 },
+                yoyo: true
             } );
 
             sequence.forEach( function( shapeKey ) {
@@ -94,7 +95,7 @@
                             redraw: false
                         }
                     },
-                    yoyo: true
+                    // yoyo: true
                 } );
             } );
 

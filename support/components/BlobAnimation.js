@@ -102,7 +102,7 @@ const Controls = ( { blobEnabled, blobShape, blobSpeed, blobPosition, setAttribu
                         value={ blobSpeed }
                         onChange={ ( val ) => setAttributes( { blobSpeed: val } ) }
                         min={ 3 }
-                        max={ 20 }
+                        max={ 100 }
                         step={ 1 }
                         help={ __( 'Duration of each morph cycle', 'red-egg' ) }
                     />
