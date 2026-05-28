@@ -156,4 +156,9 @@ wp.domReady( () => {
         name: 'outline-white',
         label: 'Outline White (Arrow)',
     } );
+
+    wp.blocks.registerBlockStyle( 'core/paragraph', {
+        name: 'section-label',
+        label: 'Section Label',
+    } );
 } );

@@ -186,3 +186,22 @@ p.has-medium-font-size {
         line-height: 2.125rem;
     }
 }
+
+// ---- Section Label – Paragraph Block Style ----
+// Registered as block style "section-label" on core/paragraph
+p.is-style-section-label {
+    font-family: $font-head;
+    font-weight: 500;
+    font-size: 1.0625rem;
+    line-height: 1.625rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: $gray;
+    margin: 0 0 0.5rem 0;
+
+    @media screen and (min-width: $small-width) {
+        font-size: 0.875rem;
+        line-height: 1.3;
+        letter-spacing: 1px;
+    }
+}
