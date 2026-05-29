@@ -11,8 +11,6 @@
     position: relative;
     width: 100%;
     margin-top: 2rem;
-    overflow: hidden;
-
     @media screen and (min-width: $small-width) {
         margin-top: 3rem;
     }
@@ -27,25 +25,13 @@
     overflow: visible;
 }
 
-// ---- Slides: auto width at desktop for centered effect ----
-.image-slider__swiper .swiper-slide {
-    @media screen and (min-width: $small-width) {
-        width: 380px;
-        transition: width 0.3s ease;
-    }
-}
 
-.image-slider__swiper .swiper-slide.image-slider__slide--active {
-    @media screen and (min-width: $small-width) {
-        width: 480px;
-    }
-}
 
 // ---- Slide images ----
 .image-slider__slide {
     border-radius: $default-border-radius;
     overflow: hidden;
-    border: 1px solid $gray;
+/*    border: 1px solid $gray;*/
     transition: box-shadow 0.3s ease, opacity 0.3s ease;
 
     img {
@@ -53,7 +39,7 @@
         width: 100%;
         height: auto;
         object-fit: cover;
-        aspect-ratio: 4 / 3;
+        aspect-ratio: 103 / 58;
         transition: transform 0.4s ease;
     }
 }
@@ -100,7 +86,7 @@
     margin: 0;
     border: 1px solid $gray;
     border-radius: 50%;
-    background: $white;
+    background: none;
     color: $gray;
     cursor: pointer;
     transition: background-color 0.3s ease, color 0.3s ease;
@@ -190,4 +176,26 @@
 .wp-block.image-slider {
     width: 100%;
     max-width: 100%;
+}
+
+.swiper-slide {
+    border: 1px solid $gray;
+    border-radius: $default-border-radius;
+    overflow: hidden;
+    background: $white;
+    transition: box-shadow 0.3s ease, opacity 0.3s ease;
+    @media screen and (min-width: $small-width) {
+        width: 528px;
+    }
+}
+
+.swiper-slide.image-slider__slide--active {
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.1);
+     @media screen and (min-width: $small-width) {
+        width: 689px;
+     }
+}
+
+.swiper-wrapper {
+    align-items: center;
 }

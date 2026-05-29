@@ -10,7 +10,7 @@
     position: relative;
     padding-top: $default-section-padding-top;
     padding-bottom: $default-section-padding-bottom;
-
+    overflow: hidden;
     @media screen and (min-width: $small-width) {
         padding-top: 5rem;
         padding-bottom: 5rem;
@@ -28,15 +28,7 @@
 
 // ---- Image slider overrides ----
 // Slider bleeds outside block-wrapper for edge effect
-.community-section .image-slider {
-    margin-left: -$site-padding-mobile;
-    margin-right: -$site-padding-mobile;
 
-    @media screen and (min-width: $small-width) {
-        margin-left: -$site-padding;
-        margin-right: -$site-padding;
-    }
-}
 
 // Nav stays within content area
 .community-section .image-slider .image-slider__nav {

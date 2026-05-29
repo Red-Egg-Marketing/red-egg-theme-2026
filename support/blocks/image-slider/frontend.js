@@ -16,8 +16,8 @@
         sliders.forEach( function( el ) {
             var spaceBetween = parseInt( el.getAttribute( 'data-space-between' ) ) || 20;
             var parent = el.closest( '.image-slider' );
-            var prevEl = parent.querySelector( '.swiper-button-prev' );
-            var nextEl = parent.querySelector( '.swiper-button-next' );
+            var prevEl = parent.querySelector( '.cs-slider__nav' );
+            var nextEl = parent.querySelector( '.cs-slider__nav-next' );
 
             new Swiper( el, {
                 loop: true,
