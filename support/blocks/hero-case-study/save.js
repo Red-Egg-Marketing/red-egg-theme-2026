@@ -11,7 +11,7 @@ import MarginSelector from '../../components/Margin.js';
 const SaveHeroCaseStudy = ( { attributes } ) => {
     const {
         image, vidOrImg, videoID, videoURL,
-        accentSlug, padding, margin, blockId,
+        padding, margin, blockId,
     } = attributes;
 
     // Build background image inline styles
@@ -45,9 +45,6 @@ const SaveHeroCaseStudy = ( { attributes } ) => {
             <PaddingSelector.View padding={ padding } id={ blockId } />
             <MarginSelector.View margin={ margin } id={ blockId } />
             <section { ...blockProps }>
-                { accentSlug && (
-                    <div className={ 'hero-cs__accent-bar ' + accentSlug }></div>
-                ) }
                 <div className="hero-cs__overlay"></div>
 
                 { vidOrImg === 'video' && videoID && (

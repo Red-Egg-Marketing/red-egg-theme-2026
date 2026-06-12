@@ -3,7 +3,6 @@
  *
  * Background image/video with dark overlay.
  * InnerBlocks for title heading + subtitle paragraph.
- * Accent color bar at top via BackgroundColor.
  */
 
 const { Fragment, useEffect } = wp.element;
@@ -11,7 +10,6 @@ const { InnerBlocks, InspectorControls, MediaUpload, useBlockProps } = wp.blockE
 const { PanelBody, Button, SelectControl } = wp.components;
 const { __ } = wp.i18n;
 
-import BackgroundColor from '../../components/BackgroundColor.js';
 import BackgroundSelector from '../../components/BackgroundSelector.js';
 import PaddingSelector from '../../components/Padding.js';
 import MarginSelector from '../../components/Margin.js';
@@ -25,6 +23,9 @@ const allowedBlocks = [
     'core/heading',
     'core/paragraph',
     'core/buttons',
+    'core/image',
+    'core/spacer',
+    'core/list',
 ];
 
 const vidImgOptions = [
@@ -35,7 +36,6 @@ const vidImgOptions = [
 const EditHeroCaseStudy = ( { attributes, setAttributes, clientId } ) => {
     const {
         image, vidOrImg, videoID, videoURL,
-        accentColor, accentSlug,
         padding, margin, blockId,
     } = attributes;
 
@@ -96,17 +96,6 @@ const EditHeroCaseStudy = ( { attributes, setAttributes, clientId } ) => {
                         onChange={ ( val ) => setAttributes( { vidOrImg: val } ) }
                     />
                 </PanelBody>
-                <BackgroundColor
-                    bgColor={ accentColor }
-                    bgSlug={ accentSlug }
-                    setAttributes={ ( val ) => {
-                        setAttributes( {
-                            accentColor: val.bgColor !== undefined ? val.bgColor : accentColor,
-                            accentSlug: val.bgSlug !== undefined ? val.bgSlug : accentSlug,
-                        } );
-                    } }
-                    title={ __( 'Accent Bar Color', 'red-egg' ) }
-                />
             </InspectorControls>
 
             <PaddingSelector
@@ -121,9 +110,6 @@ const EditHeroCaseStudy = ( { attributes, setAttributes, clientId } ) => {
             />
 
             <section { ...blockProps }>
-                { accentSlug && (
-                    <div className={ 'hero-cs__accent-bar ' + accentSlug }></div>
-                ) }
                 <div className="hero-cs__overlay"></div>
 
                 { vidOrImg === 'video' && (

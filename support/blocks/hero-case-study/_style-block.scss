@@ -3,7 +3,7 @@
 //  Block: red-egg-block/hero-case-study
 //
 //  Full-width hero with background image/video,
-//  dark overlay, accent bar, and bottom-left content.
+//  dark overlay, and bottom-left content.
 // ========================================
 
 .hero-case-study {
@@ -27,26 +27,6 @@
     position: relative;
     z-index: 2;
 }
-
-// ---- Accent color bar at top ----
-.hero-cs__accent-bar {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 6px;
-    z-index: 3;
-}
-
-.hero-cs__accent-bar.red { background-color: $red; }
-.hero-cs__accent-bar.peach { background-color: $peach; }
-.hero-cs__accent-bar.navy { background-color: $navy; }
-.hero-cs__accent-bar.purple { background-color: $purple; }
-.hero-cs__accent-bar.magenta { background-color: $magenta; }
-.hero-cs__accent-bar.orange { background-color: $orange; }
-.hero-cs__accent-bar.gold { background-color: $gold; }
-.hero-cs__accent-bar.eggshell { background-color: $eggshell; }
-.hero-cs__accent-bar.gray { background-color: $gray; }
 
 // ---- Dark overlay ----
 .hero-cs__overlay {

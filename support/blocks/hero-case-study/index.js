@@ -3,7 +3,7 @@
  *
  * Full-width hero with background image/video,
  * dark overlay, and bottom-left aligned content
- * (title + subtitle text). Accent color bar at top.
+ * (title + subtitle text).
  *
  *    ____          _   _____              
  *   |  _ \ ___  __| | | ____|__ _  __ _   
@@ -47,14 +47,6 @@ registerBlockType( 'red-egg-block/hero-case-study', {
         videoURL: {
             type: 'string',
             default: '',
-        },
-        accentColor: {
-            type: 'string',
-            default: '',
-        },
-        accentSlug: {
-            type: 'string',
-            default: 'red',
         },
         padding: {
             type: 'object',
