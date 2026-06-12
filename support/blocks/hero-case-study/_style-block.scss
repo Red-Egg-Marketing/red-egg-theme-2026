@@ -2,119 +2,76 @@
 //  Hero – Case Study Block Styles
 //  Block: red-egg-block/hero-case-study
 //
-//  Full-width hero with background image/video,
-//  dark overlay, and bottom-left content.
+//  Modeled on hero-background: bg image/color
+//  with two-column child blocks
+//  (hero-content left + hero-media right).
+//  Column layout styles come from
+//  hero-background (_style-block.scss) since
+//  the child blocks share those classes.
 // ========================================
 
-.hero-case-study {
-    position: relative;
+.wp-block.hero-case-study {
     width: 100%;
-    min-height: 350px;
-    display: flex;
-    align-items: flex-end;
+    max-width: 100%;
+}
+
+.hero-case-study {
+    background-color: $peach;
+    position: relative;
     overflow: hidden;
     background-size: cover;
     background-position: center center;
     background-repeat: no-repeat;
+    padding-top: $default-section-padding-top;
+    padding-bottom: $default-section-padding-top;
 
     @media screen and (min-width: $small-width) {
-        min-height: 500px;
+        padding-top: 5rem;
+        padding-bottom: 5rem;
     }
 }
 
-.hero-case-study > .block-wrapper {
+.hero-case-study .block-wrapper {
     @include block-wrapper;
-    position: relative;
-    z-index: 2;
 }
 
-// ---- Dark overlay ----
-.hero-cs__overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(0, 0, 0, 0.35);
-    z-index: 1;
+// ---- Background color classes ----
+.hero-case-study.peach { background-color: $peach; }
+.hero-case-study.eggshell { background-color: $eggshell; }
+.hero-case-study.white { background-color: $white; }
+
+.hero-case-study.navy {
+    background-color: $navy;
 }
 
-// ---- Video background ----
-.hero-cs__video {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    z-index: 0;
-}
-
-.hero-cs__video-wrap {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-}
-
-// ---- Content: bottom-left aligned ----
-.hero-cs__content {
-    padding-top: 6rem;
-    padding-bottom: 2.5rem;
-
-    @media screen and (min-width: $small-width) {
-        padding-top: 8rem;
-        padding-bottom: 3.5rem;
-        max-width: 70%;
-    }
-}
-
-.hero-cs__content h1,
-.hero-cs__content h2,
-.hero-cs__content h3,
-.hero-cs__content h4,
-.hero-cs__content h5,
-.hero-cs__content h6,
-.hero-cs__content p,
-.hero-cs__content li,
-.hero-cs__content span {
+.hero-case-study.navy h1,
+.hero-case-study.navy h2,
+.hero-case-study.navy h3,
+.hero-case-study.navy p,
+.hero-case-study.navy li {
     color: $white;
 }
 
-.hero-cs__content h1,
-.hero-cs__content .hero-cs__title {
-    font-family: $font-head;
-    font-weight: 700;
-    font-size: 2.125rem;
-    line-height: 2.75rem;
-    letter-spacing: 0.34px;
-    margin: 0 0 0.75rem 0;
-
-    @media screen and (min-width: $small-width) {
-        font-size: 3rem;
-        line-height: 3.5rem;
-    }
+.hero-case-study.gray {
+    background-color: $gray;
 }
 
-.hero-cs__content .hero-cs__subtitle,
-.hero-cs__content > p,
-.hero-cs__content > .wp-block[data-type="core/paragraph"] p {
-    font-family: $font-body;
-    font-weight: 300;
-    font-size: 1.0625rem;
-    line-height: 1.625rem;
-    opacity: 0.85;
-    margin: 0;
-
-    @media screen and (min-width: $small-width) {
-        font-size: 1.125rem;
-        line-height: 1.75rem;
-    }
+.hero-case-study.gray h1,
+.hero-case-study.gray h2,
+.hero-case-study.gray h3,
+.hero-case-study.gray p,
+.hero-case-study.gray li {
+    color: $white;
 }
 
-// ---- Full-width in editor ----
-.wp-block.hero-case-study {
-    width: 100%;
-    max-width: 100%;
+.hero-case-study.red {
+    background-color: $red;
+}
+
+.hero-case-study.red h1,
+.hero-case-study.red h2,
+.hero-case-study.red h3,
+.hero-case-study.red p,
+.hero-case-study.red li {
+    color: $white;
 }

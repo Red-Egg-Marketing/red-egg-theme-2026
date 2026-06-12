@@ -1,54 +1,41 @@
 /**
  * Hero – Case Study Block – Edit Component
  *
- * Background image/video with dark overlay.
- * InnerBlocks for title heading + subtitle paragraph.
+ * Two-column hero with hero-content (left) and hero-media (right).
+ * Background image/color, mobile bg override, min-height control.
+ * Modeled on hero-background.
  */
 
-const { Fragment, useEffect } = wp.element;
-const { InnerBlocks, InspectorControls, MediaUpload, useBlockProps } = wp.blockEditor;
-const { PanelBody, Button, SelectControl } = wp.components;
+const { Fragment } = wp.element;
+const { InnerBlocks, useBlockProps, InspectorControls } = wp.blockEditor;
+const { PanelBody, RangeControl } = wp.components;
 const { __ } = wp.i18n;
 
 import BackgroundSelector from '../../components/BackgroundSelector.js';
+import MobileBackgroundSelector from '../../components/MobileBackgroundSelector.js';
+import BackgroundColor from '../../components/BackgroundColor.js';
 import PaddingSelector from '../../components/Padding.js';
 import MarginSelector from '../../components/Margin.js';
 
 const template = [
-    [ 'core/heading', { level: 1, placeholder: 'Case Study Title', className: 'hero-cs__title' } ],
-    [ 'core/paragraph', { placeholder: 'Case Study | Branding | Website', className: 'hero-cs__subtitle' } ],
+    [ 'red-egg-block/hero-content', {} ],
+    [ 'red-egg-block/hero-media', {} ],
 ];
 
 const allowedBlocks = [
-    'core/heading',
-    'core/paragraph',
-    'core/buttons',
-    'core/image',
-    'core/spacer',
-    'core/list',
-];
-
-const vidImgOptions = [
-    { label: __( 'Image', 'red-egg' ), value: 'image' },
-    { label: __( 'Video', 'red-egg' ), value: 'video' },
+    'red-egg-block/hero-content',
+    'red-egg-block/hero-media',
 ];
 
 const EditHeroCaseStudy = ( { attributes, setAttributes, clientId } ) => {
-    const {
-        image, vidOrImg, videoID, videoURL,
-        padding, margin, blockId,
-    } = attributes;
+    const { image, mobileimage, bgColor, bgSlug, minHeight, padding, margin } = attributes;
 
-    useEffect( () => {
-        if ( ! blockId ) {
-            setAttributes( { blockId: 'block-' + clientId } );
-        }
-    }, [] );
+    const blockId = `block-${ clientId }`;
 
-    // Build background image inline styles
+    // Build inline background styles for editor preview
     const bgStyle = {};
     if ( image.url !== '' ) {
-        bgStyle.backgroundImage = 'url(' + image.url + ')';
+        bgStyle.backgroundImage = `url(${ image.url })`;
         bgStyle.backgroundRepeat = image.repeat || 'no-repeat';
         bgStyle.backgroundAttachment = image.attachment || 'scroll';
         bgStyle.backgroundSize = image.sizekey || 'cover';
@@ -57,83 +44,74 @@ const EditHeroCaseStudy = ( { attributes, setAttributes, clientId } ) => {
             bgStyle.backgroundPosition = image.position || 'center center';
         } else {
             const unit = image.bgunit || 'px';
-            bgStyle.backgroundPosition = ( image.positionX || 0 ) + unit + ' ' + ( image.positionY || 0 ) + unit;
+            bgStyle.backgroundPosition = `${ image.positionX || 0 }${ unit } ${ image.positionY || 0 }${ unit }`;
         }
 
         if ( image.sizekey === '' && image.size ) {
-            bgStyle.backgroundSize = image.size + ( image.unit || '%' );
+            bgStyle.backgroundSize = `${ image.size }${ image.unit || '%' }`;
         }
+    }
+
+    if ( bgColor ) {
+        bgStyle.backgroundColor = bgColor;
+    }
+
+    if ( minHeight > 0 ) {
+        bgStyle.minHeight = minHeight + 'px';
     }
 
     const blockProps = useBlockProps( {
         id: blockId,
-        className: 'hero-case-study',
-        style: bgStyle,
+        className: 'hero-case-study' + ( bgSlug ? ' ' + bgSlug : '' ),
     } );
-
-    const updateVideoAttr = ( media ) => {
-        setAttributes( {
-            videoURL: media.url + '#t=0.5',
-            videoID: media.id,
-        } );
-    };
 
     return (
         <Fragment>
             <InspectorControls>
+                <BackgroundColor
+                    bgColor={ bgColor }
+                    bgSlug={ bgSlug }
+                    setAttributes={ setAttributes }
+                />
                 <BackgroundSelector
                     image={ image }
                     setAttributes={ setAttributes }
                 />
+                <MobileBackgroundSelector
+                    image={ mobileimage }
+                    updateProp="mobileimage"
+                    setAttributes={ setAttributes }
+                />
                 <PanelBody
-                    title={ __( 'Media Type', 'red-egg' ) }
+                    title={ __( 'Hero Height', 'red-egg' ) }
                     initialOpen={ false }
                 >
-                    <SelectControl
-                        label={ __( 'Background Type', 'red-egg' ) }
-                        value={ vidOrImg }
-                        options={ vidImgOptions }
-                        onChange={ ( val ) => setAttributes( { vidOrImg: val } ) }
+                    <RangeControl
+                        label={ __( 'Minimum Height (px)', 'red-egg' ) }
+                        value={ minHeight }
+                        onChange={ ( val ) => setAttributes( { minHeight: val } ) }
+                        min={ 0 }
+                        max={ 900 }
+                        step={ 10 }
+                        help={ __( '0 = auto height based on content', 'red-egg' ) }
                     />
                 </PanelBody>
             </InspectorControls>
 
             <PaddingSelector
                 padding={ padding }
-                id={ 'block-' + clientId }
+                id={ blockId }
                 setAttributes={ setAttributes }
             />
             <MarginSelector
                 margin={ margin }
-                id={ 'block-' + clientId }
+                id={ blockId }
                 setAttributes={ setAttributes }
             />
 
-            <section { ...blockProps }>
-                <div className="hero-cs__overlay"></div>
-
-                { vidOrImg === 'video' && (
-                    <div className="hero-cs__video-wrap">
-                        <MediaUpload
-                            onSelect={ updateVideoAttr }
-                            allowedTypes={ [ 'video' ] }
-                            value={ videoID }
-                            render={ ( { open } ) => (
-                                <Button className="button" onClick={ open }>
-                                    { __( 'Upload/Change Video', 'red-egg' ) }
-                                </Button>
-                            ) }
-                        />
-                        { videoID && (
-                            <video className="hero-cs__video" autoPlay playsInline muted loop>
-                                <source src={ videoURL } type="video/mp4" />
-                            </video>
-                        ) }
-                    </div>
-                ) }
-
+            <section { ...blockProps } style={ bgStyle }>
                 <div className="block-wrapper">
-                    <div className="hero-cs__content">
+                    <div className="hero-background__columns">
                         <InnerBlocks
                             template={ template }
                             allowedBlocks={ allowedBlocks }

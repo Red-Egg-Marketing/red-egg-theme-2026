@@ -1,23 +1,28 @@
 /**
  * Hero – Case Study Block – Save Component
+ *
+ * Modeled on hero-background.
  */
 
-const { Fragment } = wp.element;
 const { InnerBlocks, useBlockProps } = wp.blockEditor;
+const { Fragment } = wp.element;
 
 import PaddingSelector from '../../components/Padding.js';
 import MarginSelector from '../../components/Margin.js';
 
 const SaveHeroCaseStudy = ( { attributes } ) => {
-    const {
-        image, vidOrImg, videoID, videoURL,
-        padding, margin, blockId,
-    } = attributes;
+    const { image, mobileimage, bgColor, bgSlug, minHeight, padding, margin } = attributes;
 
-    // Build background image inline styles
+    const blockProps = useBlockProps.save( {
+        className: 'hero-case-study' + ( bgSlug ? ' ' + bgSlug : '' ),
+    } );
+
+    const blockId = blockProps.id;
+
+    // Build inline background styles
     const bgStyle = {};
-    if ( image.url !== '' && vidOrImg === 'image' ) {
-        bgStyle.backgroundImage = 'url(' + image.url + ')';
+    if ( image.url !== '' ) {
+        bgStyle.backgroundImage = `url(${ image.url })`;
         bgStyle.backgroundRepeat = image.repeat || 'no-repeat';
         bgStyle.backgroundAttachment = image.attachment || 'scroll';
         bgStyle.backgroundSize = image.sizekey || 'cover';
@@ -26,35 +31,38 @@ const SaveHeroCaseStudy = ( { attributes } ) => {
             bgStyle.backgroundPosition = image.position || 'center center';
         } else {
             const unit = image.bgunit || 'px';
-            bgStyle.backgroundPosition = ( image.positionX || 0 ) + unit + ' ' + ( image.positionY || 0 ) + unit;
+            bgStyle.backgroundPosition = `${ image.positionX || 0 }${ unit } ${ image.positionY || 0 }${ unit }`;
         }
 
         if ( image.sizekey === '' && image.size ) {
-            bgStyle.backgroundSize = image.size + ( image.unit || '%' );
+            bgStyle.backgroundSize = `${ image.size }${ image.unit || '%' }`;
         }
     }
 
-    const blockProps = useBlockProps.save( {
-        id: blockId,
-        className: 'hero-case-study',
-        style: bgStyle,
-    } );
+    if ( bgColor ) {
+        bgStyle.backgroundColor = bgColor;
+    }
+
+    if ( minHeight > 0 ) {
+        bgStyle.minHeight = minHeight + 'px';
+    }
 
     return (
         <Fragment>
             <PaddingSelector.View padding={ padding } id={ blockId } />
             <MarginSelector.View margin={ margin } id={ blockId } />
-            <section { ...blockProps }>
-                <div className="hero-cs__overlay"></div>
 
-                { vidOrImg === 'video' && videoID && (
-                    <video className="hero-cs__video" autoPlay playsInline muted loop>
-                        <source src={ videoURL } type="video/mp4" />
-                    </video>
-                ) }
-
+            <section { ...blockProps } style={ bgStyle }
+                data-mobile-bg={ mobileimage.url !== '' ? JSON.stringify( {
+                    backgroundImage: `url(${ mobileimage.url })`,
+                    backgroundRepeat: mobileimage.repeat || 'no-repeat',
+                    backgroundAttachment: mobileimage.attachment || 'scroll',
+                    backgroundPosition: mobileimage.position || 'center center',
+                    backgroundSize: mobileimage.sizekey || 'cover',
+                } ) : '' }
+            >
                 <div className="block-wrapper">
-                    <div className="hero-cs__content">
+                    <div className="hero-background__columns">
                         <InnerBlocks.Content />
                     </div>
                 </div>
