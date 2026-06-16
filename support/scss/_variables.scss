@@ -262,3 +262,53 @@ $arrow-white-r: "data:image/svg+xml,%3Csvg%20width%3D%2235%22%20height%3D%2235%2
         }
     }
 }
+
+// Shared outline button base (arrow via ::after, rotates on hover)
+// Used by .is-style-outline-gray/-white block styles (_base.scss)
+// and Gravity Forms submit (contact-section). Lives here so both
+// style.scss and editor.scss can access it.
+@mixin outline-button-base( $color ) {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: transparent;
+    border: 1px solid $color;
+    border-radius: $button-border-radius;
+    color: $color;
+    font-family: $font-head;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 23px;
+    letter-spacing: 0.32px;
+    padding: 15px 25px 15px 30px;
+    text-decoration: none;
+    cursor: pointer;
+    transition: none;
+
+    @media screen and (min-width: $small-width) {
+        font-size: 17px;
+        line-height: 25px;
+        letter-spacing: 0.34px;
+        padding: 15px 30px 15px 35px;
+        gap: 10px;
+    }
+
+    &::after {
+        // FA Pro Light: arrow-right (Unicode f061)
+        content: '\f061';
+        font-family: 'Font Awesome 6 Pro';
+        font-weight: 300;
+        font-size: 16px;
+        display: inline-block;
+        transition: transform 0.3s ease;
+    }
+
+    &:hover {
+        color: $color;
+        background: transparent;
+
+        &::after {
+            transform: rotate(45deg);
+        }
+    }
+}
