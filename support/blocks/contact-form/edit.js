@@ -1,7 +1,7 @@
 const { InnerBlocks, useBlockProps } = wp.blockEditor;
 
 const template = [
-    [ 'core/shortcode', {} ],
+    [ 'gravityforms/form', {} ],
 ];
 
 const allowedBlocks = [

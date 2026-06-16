@@ -25,9 +25,10 @@
     > .block-wrapper > .wp-block[data-type="core/heading"] h2 {
         @include primary-h2;
         margin-bottom: 2rem;
-
+        font-size: 2.125rem;
         @media screen and (min-width: $small-width) {
             margin-bottom: 2.5rem;
+            font-size: 3.125rem;
         }
     }
 }

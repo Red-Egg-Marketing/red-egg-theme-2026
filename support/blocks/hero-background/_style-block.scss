@@ -143,9 +143,14 @@
 
 .hero-background__media-img {
     display: block;
-    width: 100%;
     height: auto;
-    max-width: 100%;
+    max-width: 80%;
+    width: 80%;
+    margin: 0 auto;
+    @media screen and (min-width: $small-width) {
+        width: 100%;
+        max-width: 100%;
+    }
 }
 
 .hero-background__media-video {
