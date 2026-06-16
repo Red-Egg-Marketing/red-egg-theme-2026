@@ -22,7 +22,7 @@
 
 const { Fragment } = wp.element;
 const { RichText, MediaUpload } = wp.blockEditor;
-const { Button, SelectControl, TextareaControl } = wp.components;
+const { Button, TextareaControl, Dropdown } = wp.components;
 const { __ } = wp.i18n;
 
 /**
@@ -80,17 +80,6 @@ const iconSVGs = {
         </svg>
     ),
 };
-
-const iconOptions = [
-    { label: __( 'Email', 'red-egg' ), value: 'email' },
-    { label: __( 'Phone', 'red-egg' ), value: 'phone' },
-    { label: __( 'Location', 'red-egg' ), value: 'location' },
-    { label: __( 'Clock', 'red-egg' ), value: 'clock' },
-    { label: __( 'Globe', 'red-egg' ), value: 'globe' },
-    { label: __( 'Chat', 'red-egg' ), value: 'chat' },
-    { label: __( 'User', 'red-egg' ), value: 'user' },
-    { label: __( 'Calendar', 'red-egg' ), value: 'calendar' },
-];
 
 /**
  * Get SVG markup string for a given icon slug.
@@ -162,9 +151,78 @@ const ContactIcons = ( { icons, setAttributes } ) => {
         <div className="contact-icons">
             { icons.map( ( row, i ) => (
                 <div className="contact-icons__row" key={ i }>
-                    <div className="contact-icons__icon">
-                        { renderIconPreview( row ) }
-                    </div>
+                    <Dropdown
+                        className="contact-icons__edit-dropdown"
+                        contentClassName="contact-icons__popover"
+                        popoverProps={ { placement: 'bottom-start' } }
+                        renderToggle={ ( { isOpen, onToggle } ) => (
+                            <Button
+                                className="contact-icons__icon-toggle"
+                                onClick={ onToggle }
+                                aria-expanded={ isOpen }
+                                label={ __( 'Edit icon', 'red-egg' ) }
+                                showTooltip
+                            >
+                                <span className="contact-icons__icon">
+                                    { renderIconPreview( row ) }
+                                </span>
+                            </Button>
+                        ) }
+                        renderContent={ () => (
+                            <div className="contact-icons__popover-inner">
+                                <MediaUpload
+                                    onSelect={ ( media ) => {
+                                        let updated = JSON.parse( JSON.stringify( icons ) );
+                                        updated[ i ].iconImage = media.url;
+                                        updated[ i ].iconImageId = media.id;
+                                        updated[ i ].iconImageAlt = media.alt || '';
+                                        setAttributes( { icons: updated } );
+                                    } }
+                                    allowedTypes={ [ 'image' ] }
+                                    value={ row.iconImageId }
+                                    render={ ( { open } ) => (
+                                        <div className="contact-icons__media">
+                                            { row.iconImage && (
+                                                <img
+                                                    className="contact-icons__media-preview"
+                                                    src={ row.iconImage }
+                                                    alt={ row.iconImageAlt || '' }
+                                                />
+                                            ) }
+                                            <Button onClick={ open } variant="secondary" isSmall>
+                                                { row.iconImage ? __( 'Replace Image', 'red-egg' ) : __( 'Upload Image', 'red-egg' ) }
+                                            </Button>
+                                            { row.iconImage && (
+                                                <Button
+                                                    onClick={ () => {
+                                                        let updated = JSON.parse( JSON.stringify( icons ) );
+                                                        updated[ i ].iconImage = '';
+                                                        updated[ i ].iconImageId = 0;
+                                                        updated[ i ].iconImageAlt = '';
+                                                        setAttributes( { icons: updated } );
+                                                    } }
+                                                    variant="link"
+                                                    isDestructive
+                                                    isSmall
+                                                >
+                                                    { __( 'Remove Image', 'red-egg' ) }
+                                                </Button>
+                                            ) }
+                                        </div>
+                                    ) }
+                                />
+
+                                <TextareaControl
+                                    label={ __( 'Inline SVG', 'red-egg' ) }
+                                    help={ __( 'Paste raw SVG. Overrides image.', 'red-egg' ) }
+                                    value={ row.svgMarkup || '' }
+                                    onChange={ ( val ) => updateIconField( i, 'svgMarkup', val ) }
+                                    rows={ 5 }
+                                />
+                            </div>
+                        ) }
+                    />
+
                     <div className="contact-icons__text-wrap">
                         <RichText
                             tagName="p"
@@ -174,67 +232,17 @@ const ContactIcons = ( { icons, setAttributes } ) => {
                             placeholder={ __( 'Contact info…', 'red-egg' ) }
                         />
                     </div>
-                    <div className="contact-icons__controls">
-                        <SelectControl
-                            label={ __( 'Preset Icon', 'red-egg' ) }
-                            value={ row.icon }
-                            options={ iconOptions }
-                            onChange={ ( val ) => updateIconField( i, 'icon', val ) }
-                            help={ __( 'Used when no image or SVG is set.', 'red-egg' ) }
-                            __nextHasNoMarginBottom
-                        />
 
-                        <MediaUpload
-                            onSelect={ ( media ) => {
-                                let updated = JSON.parse( JSON.stringify( icons ) );
-                                updated[ i ].iconImage = media.url;
-                                updated[ i ].iconImageId = media.id;
-                                updated[ i ].iconImageAlt = media.alt || '';
-                                setAttributes( { icons: updated } );
-                            } }
-                            allowedTypes={ [ 'image' ] }
-                            value={ row.iconImageId }
-                            render={ ( { open } ) => (
-                                <div className="contact-icons__media">
-                                    <Button onClick={ open } variant="secondary" isSmall>
-                                        { row.iconImage ? __( 'Replace Image', 'red-egg' ) : __( 'Upload Image', 'red-egg' ) }
-                                    </Button>
-                                    { row.iconImage && (
-                                        <Button
-                                            onClick={ () => {
-                                                let updated = JSON.parse( JSON.stringify( icons ) );
-                                                updated[ i ].iconImage = '';
-                                                updated[ i ].iconImageId = 0;
-                                                updated[ i ].iconImageAlt = '';
-                                                setAttributes( { icons: updated } );
-                                            } }
-                                            variant="link"
-                                            isDestructive
-                                            isSmall
-                                        >
-                                            { __( 'Remove Image', 'red-egg' ) }
-                                        </Button>
-                                    ) }
-                                </div>
-                            ) }
-                        />
-
-                        <TextareaControl
-                            label={ __( 'Inline SVG', 'red-egg' ) }
-                            help={ __( 'Paste raw SVG. Overrides image and preset.', 'red-egg' ) }
-                            value={ row.svgMarkup || '' }
-                            onChange={ ( val ) => updateIconField( i, 'svgMarkup', val ) }
-                            rows={ 4 }
-                        />
-
-                        <Button
-                            isDestructive
-                            isSmall
-                            onClick={ () => removeIcon( i ) }
-                        >
-                            { __( 'Remove Row', 'red-egg' ) }
-                        </Button>
-                    </div>
+                    <Button
+                        className="contact-icons__remove"
+                        isDestructive
+                        isSmall
+                        onClick={ () => removeIcon( i ) }
+                        label={ __( 'Remove row', 'red-egg' ) }
+                        showTooltip
+                    >
+                        { __( 'Remove', 'red-egg' ) }
+                    </Button>
                 </div>
             ) ) }
             <Button

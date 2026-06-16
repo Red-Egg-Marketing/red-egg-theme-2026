@@ -157,6 +157,53 @@ p.contact-section__label {
     height: auto;
 }
 
+// ---- Editor-only: icon edit toggle + popover ----
+.contact-icons__icon-toggle.components-button {
+    flex: 0 0 auto;
+    width: auto;
+    height: auto;
+    min-width: 0;
+    padding: 4px;
+    margin-right: 12px;
+    margin-top: 2px;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    cursor: pointer;
+
+    &:hover {
+        border-color: $gray;
+        background: rgba(0, 0, 0, 0.04);
+    }
+
+    .contact-icons__icon {
+        width: 25px;
+        margin: 0;
+    }
+
+    @media screen and (min-width: $small-width) {
+        margin-right: 16px;
+    }
+}
+
+.contact-icons__popover-inner {
+    padding: 16px;
+    min-width: 260px;
+    max-width: 300px;
+}
+
+.contact-icons__media-preview {
+    display: block;
+    max-width: 60px;
+    height: auto;
+    margin-bottom: 8px;
+}
+
+.contact-icons__remove.components-button {
+    flex: 0 0 auto;
+    margin-left: 12px;
+    align-self: flex-start;
+}
+
 .contact-icons__text {
     font-family: $font-head;
     font-weight: 600;
