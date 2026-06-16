@@ -41,12 +41,6 @@
     }
 }
 
-.contact-section.red .contact-icons__icon svg,
-.contact-section.navy .contact-icons__icon svg,
-.contact-section.gray .contact-icons__icon svg {
-    stroke: $white;
-}
-
 // ---- Two-column layout ----
 .contact-section__columns {
     display: flex;
@@ -123,8 +117,8 @@ p.contact-section__label {
 
 .contact-icons__row {
     display: flex;
-    align-items: flex-start;
-    margin-bottom: 1rem;
+    align-items: center;
+    margin-bottom: 1.25rem;
 
     @media screen and (min-width: $small-width) {
         margin-bottom: 1.5rem;
@@ -133,28 +127,43 @@ p.contact-section__label {
 
 .contact-icons__icon {
     flex: 0 0 auto;
-    width: 20px;
-    margin-right: 12px;
-    margin-top: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    margin-right: 16px;
+    background-color: $peach;
+    border-radius: 50%;
 
     @media screen and (min-width: $small-width) {
-        width: 25px;
-        margin-right: 16px;
-        margin-top: 4px;
+        width: 56px;
+        height: 56px;
+        margin-right: 20px;
     }
 }
 
 .contact-icons__icon svg {
     display: block;
-    width: 100%;
-    height: auto;
-    stroke: $gray;
+    width: 24px;
+    height: 24px;
+    stroke: $white;
+
+    @media screen and (min-width: $small-width) {
+        width: 26px;
+        height: 26px;
+    }
 }
 
 .contact-icons__icon--img img {
     display: block;
-    width: 100%;
-    height: auto;
+    width: 24px;
+    height: 24px;
+
+    @media screen and (min-width: $small-width) {
+        width: 26px;
+        height: 26px;
+    }
 }
 
 // ---- Editor-only: icon edit toggle + popover ----
@@ -205,17 +214,10 @@ p.contact-section__label {
 }
 
 .contact-icons__text {
-    font-family: $font-head;
-    font-weight: 600;
-    font-size: 1.125rem;
-    line-height: 1.75rem;
+    @include primary-h4;
+    font-weight: 500;
     color: $gray;
     margin: 0;
-
-    @media screen and (min-width: $small-width) {
-        font-size: 1.25rem;
-        line-height: 1.875rem;
-    }
 }
 
 .contact-icons__text a {
@@ -231,20 +233,139 @@ p.contact-section__label {
     flex: 1;
 }
 
-// ---- Editor: icon row controls ----
-.contact-icons__controls {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    margin-left: 8px;
+// ========================================
+//  Gravity Forms – scoped to contact section
+//  Matches Figma: white fields, gray border,
+//  5px radius, two-column rows, pill submit.
+// ========================================
+
+.contact-section .gform_wrapper {
+    margin: 0;
 }
 
-.contact-icons__controls .components-select-control__input {
-    min-height: 30px;
-    font-size: 12px;
+// Form heading ("Main Contact Form")
+.contact-section .gform_heading,
+.contact-section .gform_title {
+    @include primary-h2;
+    color: $head-color;
+    margin: 0 0 0.5rem 0;
 }
 
-// ---- Editor: two-column preview ----
+// "* indicates required fields"
+.contact-section .gform_required_legend {
+    @include body-text;
+    font-size: 0.875rem;
+    color: $gray;
+    margin: 0 0 1.5rem 0;
+}
+
+// Field grid: two columns on desktop
+.contact-section .gform_fields {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+
+    @media screen and (min-width: $small-width) {
+        grid-template-columns: 1fr 1fr;
+        gap: 1.25rem;
+    }
+}
+
+// Full-width fields (message, etc.) span both columns
+.contact-section .gfield--width-full,
+.contact-section .gfield.gfield--type-textarea {
+    @media screen and (min-width: $small-width) {
+        grid-column: 1 / -1;
+    }
+}
+
+// Hide labels (Figma uses placeholders only)
+.contact-section .gfield_label {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+// Inputs + textarea
+.contact-section .gfield input[type="text"],
+.contact-section .gfield input[type="email"],
+.contact-section .gfield input[type="tel"],
+.contact-section .gfield input[type="url"],
+.contact-section .gfield input[type="number"],
+.contact-section .gfield select,
+.contact-section .gfield textarea {
+    width: 100%;
+    box-sizing: border-box;
+    background-color: $white;
+    border: 1px solid $gray;
+    border-radius: 5px;
+    padding: 14px 18px;
+    font-family: $font-body;
+    font-weight: 300;
+    font-size: 1.0625rem;
+    line-height: 1.5;
+    color: $gray;
+
+    &::placeholder {
+        color: rgba( $gray, 0.6 );
+    }
+
+    &:focus {
+        outline: none;
+        border-color: $red;
+    }
+}
+
+.contact-section .gfield textarea {
+    min-height: 180px;
+    resize: vertical;
+}
+
+// Validation
+.contact-section .gfield_error input,
+.contact-section .gfield_error textarea {
+    border-color: $red;
+}
+
+.contact-section .gfield_validation_message,
+.contact-section .validation_message {
+    @include body-text;
+    font-size: 0.8125rem;
+    color: $red;
+    margin-top: 4px;
+}
+
+// Submit button – pill outline with arrow (matches outline-gray)
+.contact-section .gform_footer {
+    margin-top: 1.5rem;
+
+    @media screen and (min-width: $small-width) {
+        margin-top: 2rem;
+    }
+}
+
+.contact-section .gform_footer input[type="submit"],
+.contact-section .gform_footer button[type="submit"] {
+    @include outline-button-base( $gray );
+    text-transform: uppercase;
+
+    &:hover {
+        color: $gray;
+        background-color: transparent;
+
+        &::after {
+            transform: rotate(45deg);
+        }
+    }
+}
+
+
 .contact-section__columns > .block-editor-inner-blocks > .block-editor-block-list__layout {
     display: flex;
     flex-wrap: wrap;
