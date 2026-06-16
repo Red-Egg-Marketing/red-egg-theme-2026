@@ -305,3 +305,10 @@ require get_template_directory() . '/inc/custom-endpoints.php';
  * Template Functions (helpers for templates)
  */
 require get_template_directory() . '/inc/template-functions.php';
+
+/**
+ * Gravity Forms Customizations
+ */
+if ( class_exists( 'GFForms' ) ) {
+    require get_template_directory() . '/inc/gravity-forms.php';
+}
