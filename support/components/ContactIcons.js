@@ -1,9 +1,14 @@
 /**
  * ContactIcons Component
  *
- * Lightweight SVG-based icon rows for contact info.
- * No FontAwesome dependency — uses inline SVGs.
- * Each row: icon dropdown + RichText for contact text.
+ * Icon rows for contact info. Each row supports three
+ * icon sources (priority: inline SVG markup → uploaded
+ * image → predefined dropdown SVG):
+ *   - Predefined SVG via dropdown (email, phone, etc.)
+ *   - Uploaded image icon (MediaUpload)
+ *   - Raw inline SVG markup (paste)
+ *
+ * Mirrors the flip-card block's dual-icon editing.
  *
  * Usage (edit):
  *   <ContactIcons
@@ -16,8 +21,8 @@
  */
 
 const { Fragment } = wp.element;
-const { RichText } = wp.blockEditor;
-const { Button, SelectControl } = wp.components;
+const { RichText, MediaUpload } = wp.blockEditor;
+const { Button, SelectControl, TextareaControl } = wp.components;
 const { __ } = wp.i18n;
 
 /**
@@ -106,6 +111,31 @@ const getIconSVGString = ( slug ) => {
 };
 
 /**
+ * Render the icon preview for a row in the editor.
+ * Priority: inline SVG markup → uploaded image → predefined SVG.
+ */
+const renderIconPreview = ( row ) => {
+    if ( row.svgMarkup ) {
+        return (
+            <div
+                className="contact-icons__svg"
+                dangerouslySetInnerHTML={ { __html: row.svgMarkup } }
+            />
+        );
+    }
+    if ( row.iconImage ) {
+        return (
+            <img
+                className="contact-icons__img"
+                src={ row.iconImage }
+                alt={ row.iconImageAlt || '' }
+            />
+        );
+    }
+    return iconSVGs[ row.icon ] || iconSVGs.email;
+};
+
+/**
  * ContactIcons Edit Component
  */
 const ContactIcons = ( { icons, setAttributes } ) => {
@@ -118,7 +148,7 @@ const ContactIcons = ( { icons, setAttributes } ) => {
 
     const addIcon = () => {
         let updated = JSON.parse( JSON.stringify( icons ) );
-        updated.push( { icon: 'email', text: '' } );
+        updated.push( { icon: 'email', text: '', iconImage: '', iconImageId: 0, iconImageAlt: '', svgMarkup: '' } );
         setAttributes( { icons: updated } );
     };
 
@@ -133,7 +163,7 @@ const ContactIcons = ( { icons, setAttributes } ) => {
             { icons.map( ( row, i ) => (
                 <div className="contact-icons__row" key={ i }>
                     <div className="contact-icons__icon">
-                        { iconSVGs[ row.icon ] || iconSVGs.email }
+                        { renderIconPreview( row ) }
                     </div>
                     <div className="contact-icons__text-wrap">
                         <RichText
@@ -146,17 +176,63 @@ const ContactIcons = ( { icons, setAttributes } ) => {
                     </div>
                     <div className="contact-icons__controls">
                         <SelectControl
+                            label={ __( 'Preset Icon', 'red-egg' ) }
                             value={ row.icon }
                             options={ iconOptions }
                             onChange={ ( val ) => updateIconField( i, 'icon', val ) }
+                            help={ __( 'Used when no image or SVG is set.', 'red-egg' ) }
                             __nextHasNoMarginBottom
                         />
+
+                        <MediaUpload
+                            onSelect={ ( media ) => {
+                                let updated = JSON.parse( JSON.stringify( icons ) );
+                                updated[ i ].iconImage = media.url;
+                                updated[ i ].iconImageId = media.id;
+                                updated[ i ].iconImageAlt = media.alt || '';
+                                setAttributes( { icons: updated } );
+                            } }
+                            allowedTypes={ [ 'image' ] }
+                            value={ row.iconImageId }
+                            render={ ( { open } ) => (
+                                <div className="contact-icons__media">
+                                    <Button onClick={ open } variant="secondary" isSmall>
+                                        { row.iconImage ? __( 'Replace Image', 'red-egg' ) : __( 'Upload Image', 'red-egg' ) }
+                                    </Button>
+                                    { row.iconImage && (
+                                        <Button
+                                            onClick={ () => {
+                                                let updated = JSON.parse( JSON.stringify( icons ) );
+                                                updated[ i ].iconImage = '';
+                                                updated[ i ].iconImageId = 0;
+                                                updated[ i ].iconImageAlt = '';
+                                                setAttributes( { icons: updated } );
+                                            } }
+                                            variant="link"
+                                            isDestructive
+                                            isSmall
+                                        >
+                                            { __( 'Remove Image', 'red-egg' ) }
+                                        </Button>
+                                    ) }
+                                </div>
+                            ) }
+                        />
+
+                        <TextareaControl
+                            label={ __( 'Inline SVG', 'red-egg' ) }
+                            help={ __( 'Paste raw SVG. Overrides image and preset.', 'red-egg' ) }
+                            value={ row.svgMarkup || '' }
+                            onChange={ ( val ) => updateIconField( i, 'svgMarkup', val ) }
+                            rows={ 4 }
+                        />
+
                         <Button
                             isDestructive
                             isSmall
                             onClick={ () => removeIcon( i ) }
                         >
-                            { __( 'Remove', 'red-egg' ) }
+                            { __( 'Remove Row', 'red-egg' ) }
                         </Button>
                     </div>
                 </div>
@@ -177,19 +253,41 @@ const ContactIcons = ( { icons, setAttributes } ) => {
 ContactIcons.View = ( { icons } ) => {
     return (
         <div className="contact-icons">
-            { icons.map( ( row, i ) => (
-                <div className="contact-icons__row" key={ i }>
-                    <div
-                        className="contact-icons__icon"
-                        dangerouslySetInnerHTML={ { __html: getIconSVGString( row.icon ) } }
-                    />
-                    <RichText.Content
-                        tagName="p"
-                        className="contact-icons__text"
-                        value={ row.text }
-                    />
-                </div>
-            ) ) }
+            { icons.map( ( row, i ) => {
+                let iconEl;
+                if ( row.svgMarkup ) {
+                    iconEl = (
+                        <div
+                            className="contact-icons__icon contact-icons__icon--svg"
+                            dangerouslySetInnerHTML={ { __html: row.svgMarkup } }
+                        />
+                    );
+                } else if ( row.iconImage ) {
+                    iconEl = (
+                        <div className="contact-icons__icon contact-icons__icon--img">
+                            <img src={ row.iconImage } alt={ row.iconImageAlt || '' } loading="lazy" />
+                        </div>
+                    );
+                } else {
+                    iconEl = (
+                        <div
+                            className="contact-icons__icon"
+                            dangerouslySetInnerHTML={ { __html: getIconSVGString( row.icon ) } }
+                        />
+                    );
+                }
+
+                return (
+                    <div className="contact-icons__row" key={ i }>
+                        { iconEl }
+                        <RichText.Content
+                            tagName="p"
+                            className="contact-icons__text"
+                            value={ row.text }
+                        />
+                    </div>
+                );
+            } ) }
         </div>
     );
 };

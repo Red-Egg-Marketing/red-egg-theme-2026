@@ -151,6 +151,12 @@ p.contact-section__label {
     stroke: $gray;
 }
 
+.contact-icons__icon--img img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
 .contact-icons__text {
     font-family: $font-head;
     font-weight: 600;
