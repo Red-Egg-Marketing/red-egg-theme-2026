@@ -120,6 +120,11 @@ import './stat-card/index';
 // Case Study Body (label + free content sections + blob)
 import './case-study-body/index';
 
+// Feature Cards (dark section: label + heading + icon card grid)
+import './feature-cards/index';
+// Feature Card (child of feature-cards)
+import './feature-card/index';
+
 // Case Study Gallery (label + heading + core/gallery)
 import './case-study-gallery/index';
 

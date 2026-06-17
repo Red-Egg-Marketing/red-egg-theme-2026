@@ -1,0 +1,102 @@
+// ========================================
+//  Feature Card Block Styles
+//  Block: red-egg-block/feature-card
+//
+//  Icon (circular) + title + body card.
+//  Child of feature-cards (dark section).
+// ========================================
+
+.feature-card {
+    display: flex;
+    flex-direction: column;
+    padding: 2rem 1.75rem;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: $default-border-radius;
+
+    @media screen and (min-width: $small-width) {
+        padding: 2.5rem 2rem;
+    }
+}
+
+// ---- Icon (circular) ----
+.feature-card__icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 56px;
+    height: 56px;
+    margin-bottom: 1.5rem;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+
+    @media screen and (min-width: $small-width) {
+        width: 64px;
+        height: 64px;
+    }
+}
+
+.feature-card__icon svg {
+    display: block;
+    width: 26px;
+    height: 26px;
+    stroke: $white;
+
+    @media screen and (min-width: $small-width) {
+        width: 28px;
+        height: 28px;
+    }
+}
+
+.feature-card__icon--img img {
+    display: block;
+    width: 28px;
+    height: 28px;
+    object-fit: contain;
+}
+
+.feature-card__icon--placeholder {
+    background-color: rgba(255, 255, 255, 0.06);
+}
+
+// ---- Content ----
+.feature-card__content h3,
+.feature-card__title {
+    @include primary-h4;
+    font-weight: 700;
+    color: $white;
+    margin: 0 0 0.75rem 0;
+}
+
+.feature-card__content p,
+.feature-card__body {
+    @include body-text;
+    color: rgba(255, 255, 255, 0.8);
+    margin: 0;
+}
+
+// ---- Light parent backgrounds: dark card text + borders ----
+.feature-cards.eggshell,
+.feature-cards.white,
+.feature-cards.peach {
+    .feature-card {
+        border-color: rgba(0, 0, 0, 0.12);
+    }
+
+    .feature-card__icon {
+        background-color: rgba(0, 0, 0, 0.06);
+    }
+
+    .feature-card__icon svg {
+        stroke: $gray;
+    }
+
+    .feature-card__content h3,
+    .feature-card__title {
+        color: $head-color;
+    }
+
+    .feature-card__content p,
+    .feature-card__body {
+        color: $head-color;
+    }
+}

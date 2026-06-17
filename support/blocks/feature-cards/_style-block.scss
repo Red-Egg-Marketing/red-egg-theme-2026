@@ -1,0 +1,86 @@
+// ========================================
+//  Feature Cards Block Styles
+//  Block: red-egg-block/feature-cards
+//
+//  Dark section: label + heading + 3-up grid
+//  of feature-card children. Defaults to gray bg.
+// ========================================
+
+.wp-block.feature-cards {
+    width: 100%;
+    max-width: 100%;
+}
+
+.feature-cards {
+    position: relative;
+    background-color: $gray;
+    padding-top: $default-section-padding-top;
+    padding-bottom: $default-section-padding-top;
+
+    @media screen and (min-width: $small-width) {
+        padding-top: 5rem;
+        padding-bottom: 5rem;
+    }
+}
+
+.feature-cards .block-wrapper {
+    @include block-wrapper;
+}
+
+// ---- Background color classes ----
+.feature-cards.gray { background-color: $gray; }
+.feature-cards.navy { background-color: $navy; }
+.feature-cards.eggshell { background-color: $eggshell; }
+.feature-cards.white { background-color: $white; }
+.feature-cards.peach { background-color: $peach; }
+
+// ---- Label ----
+.feature-cards__label {
+    font-family: $font-head;
+    font-weight: 500;
+    font-size: 1.0625rem;
+    line-height: 1.625rem;
+    letter-spacing: 1.1px;
+    text-transform: uppercase;
+    color: $white;
+    margin: 0 0 0.5rem 0;
+
+    @media screen and (min-width: $small-width) {
+        font-size: 1.375rem;
+        line-height: 2.125rem;
+    }
+}
+
+// ---- Heading ----
+.feature-cards__heading {
+    @include primary-h2;
+    color: $white;
+    margin: 0 0 2.5rem 0;
+    max-width: 936px;
+
+    @media screen and (min-width: $small-width) {
+        margin-bottom: 3.5rem;
+    }
+}
+
+// ---- Light backgrounds: dark text ----
+.feature-cards.eggshell,
+.feature-cards.white,
+.feature-cards.peach {
+    .feature-cards__label,
+    .feature-cards__heading {
+        color: $head-color;
+    }
+}
+
+// ---- Card grid ----
+.feature-cards__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+
+    @media screen and (min-width: $small-width) {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2rem;
+    }
+}

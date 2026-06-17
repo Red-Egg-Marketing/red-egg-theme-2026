@@ -293,6 +293,16 @@ function red_egg_register_blocks() {
         'editor_script' => 'red-egg-editor-blocks',
     ] );
 
+    // Feature Cards (dark section: label + heading + icon card grid)
+    register_block_type( 'red-egg-block/feature-cards', [
+        'editor_script' => 'red-egg-editor-blocks',
+    ] );
+
+    // Feature Card (child of feature-cards)
+    register_block_type( 'red-egg-block/feature-card', [
+        'editor_script' => 'red-egg-editor-blocks',
+    ] );
+
     // Case Study Gallery (label + heading + core/gallery)
     register_block_type( 'red-egg-block/case-study-gallery', [
         'editor_script' => 'red-egg-editor-blocks',
