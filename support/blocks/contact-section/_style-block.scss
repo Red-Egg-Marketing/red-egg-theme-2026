@@ -126,44 +126,17 @@ p.contact-section__label {
 }
 
 .contact-icons__icon {
-    flex: 0 0 auto;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 48px;
-    height: 48px;
-    margin-right: 16px;
-    background-color: $peach;
-    border-radius: 50%;
-
+    margin-right: 10px;
+    max-width: 40px;
     @media screen and (min-width: $small-width) {
-        width: 56px;
-        height: 56px;
-        margin-right: 20px;
+        margin-right: 15px;
+        max-width: 65px;
     }
 }
 
+.contact-icons__icon img,
 .contact-icons__icon svg {
-    display: block;
-    width: 24px;
-    height: 24px;
-    stroke: $white;
-
-    @media screen and (min-width: $small-width) {
-        width: 26px;
-        height: 26px;
-    }
-}
-
-.contact-icons__icon--img img {
-    display: block;
-    width: 24px;
-    height: 24px;
-
-    @media screen and (min-width: $small-width) {
-        width: 26px;
-        height: 26px;
-    }
+    max-width: 100%;
 }
 
 // ---- Editor-only: icon edit toggle + popover ----
