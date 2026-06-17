@@ -1,0 +1,83 @@
+// ========================================
+//  Case Study Body Block Styles
+//  Block: red-egg-block/case-study-body
+//
+//  Figma: CASE STUDY label + stacked heading/body
+//  sections (The Challenge / Solution / Results)
+//  on white bg with optional corner blob.
+//
+//  Label:    Poppins Medium 22/34, gray, 1.1px, uppercase
+//  Headings: H2 (Poppins Bold 37/47, gray, 0.37px)
+//  Body:     Figtree Light 20/30, gray
+// ========================================
+
+.case-study-body {
+    position: relative;
+    overflow: hidden;
+    background-color: $white;
+    padding-top: $default-section-padding-top;
+    padding-bottom: $default-section-padding-top;
+
+    @media screen and (min-width: $small-width) {
+        padding-top: 5rem;
+        padding-bottom: 5rem;
+    }
+}
+
+.case-study-body .block-wrapper {
+    @include block-wrapper;
+    position: relative;
+    z-index: 1;
+}
+
+// ---- Label ----
+.case-study-body__label {
+    font-family: $font-head;
+    font-weight: 500;
+    font-size: 1.0625rem;
+    line-height: 1.625rem;
+    letter-spacing: 1.1px;
+    text-transform: uppercase;
+    color: $gray;
+    margin: 0 0 0.5rem 0;
+
+    @media screen and (min-width: $small-width) {
+        font-size: 1.375rem;
+        line-height: 2.125rem;
+    }
+}
+
+// ---- Content sections ----
+// Constrain text column to ~936px per Figma
+.case-study-body__content {
+    max-width: 936px;
+}
+
+// Section headings (H2)
+.case-study-body__content h2,
+.case-study-body__heading {
+    @include primary-h2;
+    color: $head-color;
+    margin: 2.5rem 0 1rem 0;
+
+    @media screen and (min-width: $small-width) {
+        margin: 3.5rem 0 1.25rem 0;
+    }
+}
+
+// First heading: no top margin (label sits above)
+.case-study-body__content > h2:first-child,
+.case-study-body__content > .case-study-body__heading:first-child {
+    margin-top: 0.5rem;
+}
+
+// Body paragraphs
+.case-study-body__content p {
+    @include body-text;
+    color: $head-color;
+    margin: 0 0 1rem 0;
+}
+
+.case-study-body__content p:last-child {
+    margin-bottom: 0;
+}

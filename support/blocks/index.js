@@ -114,9 +114,11 @@ import './hero-case-study/index';
 
 // Case Study Stats (key metrics grid)
 import './case-study-stats/index';
-
 // Stat Card (child of case-study-stats)
 import './stat-card/index';
+
+// Case Study Body (label + free content sections + blob)
+import './case-study-body/index';
 
 // Case Study Gallery (label + heading + core/gallery)
 import './case-study-gallery/index';

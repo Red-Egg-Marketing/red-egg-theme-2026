@@ -288,6 +288,11 @@ function red_egg_register_blocks() {
         'editor_script' => 'red-egg-editor-blocks',
     ] );
 
+    // Case Study Body (label + free content sections + blob)
+    register_block_type( 'red-egg-block/case-study-body', [
+        'editor_script' => 'red-egg-editor-blocks',
+    ] );
+
     // Case Study Gallery (label + heading + core/gallery)
     register_block_type( 'red-egg-block/case-study-gallery', [
         'editor_script' => 'red-egg-editor-blocks',
