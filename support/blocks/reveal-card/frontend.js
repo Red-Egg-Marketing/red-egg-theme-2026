@@ -5,11 +5,17 @@
  * 2. When the back content is taller than the card, it auto-scrolls
  *    vertically (gentle yoyo), pausing on hover or touch.
  *
+ * Hardened against double-firing: some plugins / accessibility
+ * overlays re-dispatch click events, so we (a) never bind a card
+ * twice, (b) ignore a duplicate click inside a short window, and
+ * (c) set the flipped state explicitly instead of blind-toggling.
+ *
  * No React — plain DOM. Compiled into main.js via front-end.js.
  */
 
-const SPEED = 26;       // px per second
-const HOLD = 1400;      // pause (ms) at the top/bottom of a pass
+const SPEED = 26;        // px per second
+const HOLD = 1400;       // pause (ms) at the top/bottom of a pass
+const DEBOUNCE = 150;    // ms – swallow duplicate click dispatches
 
 function buildAutoScroll( card ) {
     const viewport = card.querySelector( '.reveal-card__back-scroll' );
@@ -84,15 +90,33 @@ function buildAutoScroll( card ) {
 }
 
 function initRevealCard( card ) {
+    // Guard: never wire the same card twice.
+    if ( card.dataset.revealCardReady === '1' ) {
+        return;
+    }
+    card.dataset.revealCardReady = '1';
+
     const btn = card.querySelector( '.reveal-card__toggle' );
     if ( ! btn ) {
         return;
     }
 
     const scroller = buildAutoScroll( card );
+    let lastClick = 0;
 
-    btn.addEventListener( 'click', () => {
-        const flipped = card.classList.toggle( 'is-flipped' );
+    btn.addEventListener( 'click', ( e ) => {
+        e.preventDefault();
+
+        // Guard: ignore a duplicate dispatch of the same click.
+        const now = e.timeStamp || Date.now();
+        if ( now - lastClick < DEBOUNCE ) {
+            return;
+        }
+        lastClick = now;
+
+        // Set state explicitly so a stray double-fire can't cancel it.
+        const flipped = ! card.classList.contains( 'is-flipped' );
+        card.classList.toggle( 'is-flipped', flipped );
         btn.setAttribute( 'aria-expanded', flipped ? 'true' : 'false' );
         btn.setAttribute( 'aria-label', flipped ? 'Close details' : 'Show details' );
 
