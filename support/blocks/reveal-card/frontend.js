@@ -89,47 +89,58 @@ function buildAutoScroll( card ) {
     return { start, stop };
 }
 
+function buildTimeline(card) {
+  const front   = card.querySelector('.reveal-card__face--front');
+  const back    = card.querySelector('.reveal-card__face--back');
+  const heading = front.querySelector('.reveal-card__front-content h3');
+  const rest    = front.querySelectorAll('.reveal-card__icon, .reveal-card__front-content p');
+
+  // Back starts hidden but laid out (also set this in CSS to avoid a flash).
+  gsap.set(back, { autoAlpha: 0 });
+
+  return gsap.timeline({ paused: true, defaults: { ease: 'power2.inOut' } })
+    .to(heading, { y: -20, duration: 0.4 })                 // 1. header slides up
+    .to(rest,    { autoAlpha: 0, duration: 0.3 }, '-=0.2')  // 2. other content fades
+    .to(heading, { autoAlpha: 0, duration: 0.3 })           // 3. header fades
+    .to(back,    { autoAlpha: 1, duration: 0.4 }, '-=0.1'); // 4. back reveals/fades in
+}
+
 function initRevealCard( card ) {
-    // Guard: never wire the same card twice.
-    if ( card.dataset.revealCardReady === '1' ) {
-        return;
+  if (card.dataset.revealCardReady === '1') return;
+  card.dataset.revealCardReady = '1';
+
+  const btn = card.querySelector('.reveal-card__toggle');
+  if (!btn || typeof gsap === 'undefined') return;
+
+  const scroller = buildAutoScroll(card);
+  const tl = buildTimeline(card);
+  let lastClick = 0;
+
+  // Start the auto-scroll exactly when the back finishes revealing.
+  if (scroller) tl.eventCallback('onComplete', () => scroller.start());
+
+  btn.addEventListener('click', (e) => {
+    e.preventDefault();
+    const now = e.timeStamp || Date.now();
+    if (now - lastClick < DEBOUNCE) return;   // swallow duplicate dispatch
+    lastClick = now;
+
+    // Works mid-animation too: reverses an in-progress open, replays an in-progress close.
+    const opening = tl.reversed() || tl.progress() === 0;
+
+    if (opening) {
+      card.classList.add('is-flipped');                    // keeps the +/× icon swap
+      btn.setAttribute('aria-expanded', 'true');
+      btn.setAttribute('aria-label', 'Close details');
+      tl.play();
+    } else {
+      card.classList.remove('is-flipped');
+      btn.setAttribute('aria-expanded', 'false');
+      btn.setAttribute('aria-label', 'Show details');
+      if (scroller) scroller.stop();                       // stop before closing
+      tl.reverse();
     }
-    card.dataset.revealCardReady = '1';
-
-    const btn = card.querySelector( '.reveal-card__toggle' );
-    if ( ! btn ) {
-        return;
-    }
-
-    const scroller = buildAutoScroll( card );
-    let lastClick = 0;
-
-    btn.addEventListener( 'click', ( e ) => {
-        e.preventDefault();
-
-        // Guard: ignore a duplicate dispatch of the same click.
-        const now = e.timeStamp || Date.now();
-        if ( now - lastClick < DEBOUNCE ) {
-            return;
-        }
-        lastClick = now;
-
-        // Set state explicitly so a stray double-fire can't cancel it.
-        const flipped = ! card.classList.contains( 'is-flipped' );
-        card.classList.toggle( 'is-flipped', flipped );
-        btn.setAttribute( 'aria-expanded', flipped ? 'true' : 'false' );
-        btn.setAttribute( 'aria-label', flipped ? 'Close details' : 'Show details' );
-
-        if ( ! scroller ) {
-            return;
-        }
-        if ( flipped ) {
-            // Wait for the flip transition so heights measure correctly.
-            window.setTimeout( () => scroller.start(), 650 );
-        } else {
-            scroller.stop();
-        }
-    } );
+  });
 }
 
 function initRevealCards() {
