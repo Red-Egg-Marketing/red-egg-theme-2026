@@ -35,6 +35,9 @@ import './blocks/awards-section/frontend';
 // Filter Case Studies – frontend interactivity
 import './blocks/filter-case-studies/frontend';
 
+// Reveal Card – click-to-flip + auto-scroll back content
+import './blocks/reveal-card/frontend';
+
 // ---- Format Types ----
 
 // Rotate Words – word swap animation

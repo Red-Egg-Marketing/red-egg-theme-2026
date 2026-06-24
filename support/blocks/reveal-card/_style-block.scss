@@ -1,0 +1,313 @@
+// ========================================
+//  Reveal Card Block Styles
+//  Blocks: red-egg-block/reveal-card (+ -front, -back)
+//
+//  Click-to-flip card. The toggle button sits outside the
+//  rotating inner so it stays put and swaps its icon (+/x).
+//  Long back content auto-scrolls (handled by frontend.js).
+// ========================================
+
+.reveal-card {
+    position: relative;
+    width: 100%;
+    perspective: 1200px;
+}
+
+.reveal-card__inner {
+    position: relative;
+    width: 100%;
+    min-height: 360px;
+    transition: transform 0.6s ease;
+    transform-style: preserve-3d;
+
+    @media screen and (min-width: $small-width) {
+        min-height: 420px;
+    }
+}
+
+.reveal-card.is-flipped .reveal-card__inner {
+    transform: rotateY(180deg);
+}
+
+// ---- Faces ----
+.reveal-card__face {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border: 1px solid $gray;
+    border-radius: $default-border-radius;
+    background: $white;
+    overflow: hidden;
+}
+
+.reveal-card__face--front {
+    z-index: 2;
+}
+
+.reveal-card__face--back {
+    transform: rotateY(180deg);
+    z-index: 1;
+}
+
+// ---- Front face ----
+.reveal-card__face-inner {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    padding: 2.5rem;
+    padding-bottom: 5rem;
+
+    @media screen and (min-width: $small-width) {
+        padding: 3rem;
+        padding-bottom: 5.5rem;
+    }
+}
+
+.reveal-card__front-content {
+    margin-top: auto;
+}
+
+.reveal-card__front-content h3 {
+    @include primary-h2;
+    margin: 0 0 0.75rem 0;
+}
+
+.reveal-card__front-content p {
+    @include body-text;
+    margin: 0;
+}
+
+// ---- Icon blob ----
+.reveal-card__icon {
+    width: 84px;
+    height: 84px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.75rem;
+    background: $red;
+    color: $white;
+    // Organic egg-ish blob shape
+    border-radius: 47% 53% 45% 55% / 55% 48% 52% 45%;
+}
+
+.reveal-card__icon i {
+    font-size: 2rem;
+    line-height: 1;
+    color: $white;
+}
+
+.reveal-card__icon img {
+    display: block;
+    width: auto;
+    height: 42px;
+    max-width: 48px;
+}
+
+.reveal-card__icon-svg {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.reveal-card__icon-svg svg {
+    display: block;
+    width: auto;
+    height: 42px;
+    max-width: 48px;
+    fill: currentColor;
+}
+
+// Blob color slugs (match BackgroundColor palette)
+.reveal-card__icon.red          { background: $red; }
+.reveal-card__icon.magenta      { background: #E32E6D; }
+.reveal-card__icon.orange       { background: #F68633; }
+.reveal-card__icon.gold         { background: #F6B319; }
+.reveal-card__icon.purple       { background: $purple; }
+.reveal-card__icon.dark-purple  { background: #91288D; }
+.reveal-card__icon.navy         { background: $navy; }
+.reveal-card__icon.peach        { background: $peach; }
+.reveal-card__icon.gray         { background: $gray; }
+
+.reveal-card__icon.eggshell,
+.reveal-card__icon.white {
+    background: $eggshell;
+
+    i,
+    svg {
+        color: $gray;
+    }
+}
+
+.reveal-card__icon.white {
+    background: $white;
+    border: 1px solid $gray;
+}
+
+// ---- Back face (scrolling) ----
+.reveal-card__back-scroll {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+}
+
+.reveal-card__back-inner {
+    padding: 2.5rem;
+    padding-bottom: 5rem;
+    will-change: transform;
+
+    @media screen and (min-width: $small-width) {
+        padding: 3rem;
+        padding-bottom: 5.5rem;
+    }
+}
+
+.reveal-card__face--back h4 {
+    @include h3-caps;
+    color: $red;
+    margin: 0 0 1rem 0;
+}
+
+.reveal-card__face--back ul,
+.reveal-card__face--back ol {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.reveal-card__face--back li {
+    @include body-text;
+    margin: 0 0 0.5rem 0;
+}
+
+.reveal-card__face--back p {
+    @include body-text;
+    margin: 0 0 1rem 0;
+}
+
+// ---- Toggle button (stays put, swaps icon) ----
+.reveal-card__toggle {
+    position: absolute;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    width: 44px;
+    height: 44px;
+    padding: 0;
+    border: 0;
+    border-radius: 50%;
+    background: $gray;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 5;
+    transition: background 0.25s ease;
+
+    @media screen and (min-width: $small-width) {
+        bottom: 1.75rem;
+        right: 1.75rem;
+    }
+
+    &:hover {
+        background: $red;
+    }
+}
+
+.reveal-card__toggle i {
+    font-size: 1.125rem;
+    line-height: 1;
+    color: $white;
+}
+
+.reveal-card__toggle-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.reveal-card__toggle-icon--close {
+    display: none;
+}
+
+.reveal-card.is-flipped .reveal-card__toggle-icon--open {
+    display: none;
+}
+
+.reveal-card.is-flipped .reveal-card__toggle-icon--close {
+    display: flex;
+}
+
+// ========================================
+//  Editor overrides — unfold both faces so
+//  they're editable in place (no 3D flip).
+//  ".reveal-card--editing" only exists in the editor.
+// ========================================
+
+.reveal-card--editing {
+    perspective: none;
+}
+
+.reveal-card--editing .reveal-card__inner {
+    transform: none !important;
+    transform-style: flat;
+    min-height: 0;
+}
+
+.reveal-card--editing .reveal-card__face {
+    position: relative;
+    inset: auto;
+    height: auto;
+    transform: none;
+    backface-visibility: visible;
+    overflow: visible;
+    margin-bottom: 1.25rem;
+    padding-top: 1.5rem;
+}
+
+.reveal-card--editing .reveal-card__face::before {
+    display: block;
+    @include button-text;
+    font-size: 0.7rem;
+    letter-spacing: 0.08em;
+    color: $red;
+    opacity: 0.75;
+    margin: 0 0 0.5rem 1.5rem;
+}
+
+.reveal-card--editing .reveal-card__face--front::before {
+    content: 'FRONT';
+}
+
+.reveal-card--editing .reveal-card__face--back::before {
+    content: 'BACK — revealed on click';
+}
+
+.reveal-card--editing .reveal-card__face-inner {
+    height: auto;
+    padding-top: 1rem;
+    padding-bottom: 2.5rem;
+}
+
+.reveal-card--editing .reveal-card__front-content {
+    margin-top: 1rem;
+}
+
+.reveal-card--editing .reveal-card__back-scroll {
+    position: relative;
+    inset: auto;
+    overflow: visible;
+}
+
+.reveal-card--editing .reveal-card__back-inner {
+    transform: none !important;
+    padding-top: 1rem;
+    padding-bottom: 2.5rem;
+}
+
+.reveal-card--editing .reveal-card__toggle {
+    pointer-events: none;
+    opacity: 0.6;
+}

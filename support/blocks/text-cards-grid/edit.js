@@ -17,13 +17,13 @@ import MarginSelector from '../../components/Margin.js';
 
 const template = [
     [ 'red-egg-block/header-intro', {} ],
-    [ 'red-egg-block/flip-card', {} ],
-    [ 'red-egg-block/flip-card', {} ],
-    [ 'red-egg-block/flip-card', {} ],
+    [ 'red-egg-block/reveal-card', {} ],
+    [ 'red-egg-block/reveal-card', {} ],
+    [ 'red-egg-block/reveal-card', {} ],
 ];
 
 const allowedBlocks = [
-    'red-egg-block/flip-card',
+    'red-egg-block/reveal-card',
     'red-egg-block/header-intro',
     'core/buttons',
 ];

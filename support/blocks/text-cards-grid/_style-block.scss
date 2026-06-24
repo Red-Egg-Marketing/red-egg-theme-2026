@@ -41,19 +41,22 @@
 }
 
 // ---- Columns layout ----
-.text-cards-grid.columns-2 .flip-card {
+.text-cards-grid.columns-2 .flip-card,
+.text-cards-grid.columns-2 .reveal-card {
     @media screen and (min-width: $small-width) {
         width: calc(50% - 1rem);
     }
 }
 
-.text-cards-grid.columns-3 .flip-card {
+.text-cards-grid.columns-3 .flip-card,
+.text-cards-grid.columns-3 .reveal-card {
     @media screen and (min-width: $small-width) {
         width: calc(33.333% - 1.334rem);
     }
 }
 
-.text-cards-grid.columns-4 .flip-card {
+.text-cards-grid.columns-4 .flip-card,
+.text-cards-grid.columns-4 .reveal-card {
     @media screen and (min-width: $small-width) {
         width: calc(25% - 1.5rem);
     }

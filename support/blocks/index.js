@@ -39,6 +39,11 @@ import './header-intro-right/index';
 // Block 3c: Flip Card (child of Text Cards Grid)
 import './flip-card/index';
 
+// Block 3d: Reveal Card (parent) + front/back faces (Text Cards Grid)
+import './reveal-card/index';
+import './reveal-card-front/index';
+import './reveal-card-back/index';
+
 // Block 4: Numbered List Items
 import './numbered-list/index';
 import './numbered-list-items/index';

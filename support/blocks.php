@@ -124,6 +124,19 @@ function red_egg_register_blocks() {
         'editor_script' => 'red-egg-editor-blocks',
     ] );
 
+    // ---- 3d. Reveal Card (parent) + front/back faces ----
+    register_block_type( 'red-egg-block/reveal-card', [
+        'editor_script' => 'red-egg-editor-blocks',
+    ] );
+
+    register_block_type( 'red-egg-block/reveal-card-front', [
+        'editor_script' => 'red-egg-editor-blocks',
+    ] );
+
+    register_block_type( 'red-egg-block/reveal-card-back', [
+        'editor_script' => 'red-egg-editor-blocks',
+    ] );
+
     // ---- 4. Numbered List Items ----
     register_block_type( 'red-egg-block/numbered-list', [
         'editor_script' => 'red-egg-editor-blocks',
