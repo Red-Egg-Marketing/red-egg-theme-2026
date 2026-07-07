@@ -11,11 +11,11 @@
     position: relative;
     display: flex;
     align-items: center;
-    min-height: 500px;
+    min-height: 400px;
     margin-bottom: 0;
 
     @media screen and (min-width: $small-width) {
-        min-height: 75vh;
+        min-height: 600px;
     }
 
     // ---- Overlay ----
@@ -50,18 +50,18 @@
 
 
 // ---- Hero title (h1) ----
-.hero .hero__title {
+.hero-case-study .hero__title {
     font-family: $font-head;
     font-weight: 600;
-    font-size: 44px;
-    line-height: 54px;
+    font-size: 30px;
+    line-height: 40px;
     letter-spacing: 0;
     margin: 0 0 1rem 0;
     text-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 
     @media screen and (min-width: $small-width) {
-        font-size: 88px;
-        line-height: 108px;
+        font-size: 50px;
+        line-height: 60px;
     }
 }
 
@@ -70,15 +70,24 @@
     margin-top: 1rem;
 }
 
+.hero-case-study .hero__content p, 
+.hero-case-study .hero__content li {
+    font-size: 18px;
+    font-weight: 500;
+    @media screen and (min-width: $small-width) {
+        font-size: 22px;
+    }
+}
+
 // ---- Full-width in editor ----
 .wp-block.hero-case-study {
     max-width: 100%;
     width: 100%;
     margin-bottom: 0;
     position: relative;
-    min-height: 450px;
+    min-height: 400px;
 
     @media screen and (min-width: $small-width) {
-        min-height: 75vh;
+        min-height: 600px;
     }
 }

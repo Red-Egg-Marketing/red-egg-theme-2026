@@ -20,7 +20,7 @@ import save from './save';
 
 registerBlockType( 'red-egg-block/hero-case-study', {
     apiVersion: 2,
-    title: __( 'Hero', 'red-egg' ),
+    title: __( 'Hero - Case Study', 'red-egg' ),
     description: __( 'Case Studies hero with background image or video and flexible content via InnerBlocks.', 'red-egg' ),
     icon: 'id',
     category: 'layout',

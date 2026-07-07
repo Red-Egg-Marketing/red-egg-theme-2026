@@ -36,7 +36,7 @@ const SaveHeroCase = ( { attributes } ) => {
 
     const blockProps = useBlockProps.save( {
         id: blockId,
-        className: 'hero' + ( overlay ? ' with-overlay' : '' ),
+        className: 'hero-case-study' + ( overlay ? ' with-overlay' : '' ),
     } );
 
     return (

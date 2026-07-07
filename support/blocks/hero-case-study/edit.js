@@ -70,7 +70,7 @@ const EditHeroCase = ( { attributes, setAttributes, clientId } ) => {
 
     const blockProps = useBlockProps( {
         id: blockId,
-        className: 'hero' + ( overlay ? ' with-overlay' : '' ),
+        className: 'hero-case-study' + ( overlay ? ' with-overlay' : '' ),
     } );
 
     const updateVideoAttr = ( media ) => {

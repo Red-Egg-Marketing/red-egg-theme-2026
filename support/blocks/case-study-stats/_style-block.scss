@@ -10,23 +10,59 @@
 // ========================================
 
 .case-study-stats {
-    border: 1px solid rgba(0, 0, 0, 0.1);
-    border-radius: $default-border-radius;
-    padding: 2rem 1.5rem;
+    padding: 2rem 0;
     margin-top: 2.5rem;
-
     @media screen and (min-width: $small-width) {
-        padding: 2.5rem 3rem;
+        padding: 2.5rem 0;
         margin-top: 3.5rem;
     }
 }
 
+.case-study-stats .squiggle-decoration {
+    position: absolute;
+    top: 0;
+    transform: translateY(-50%);
+    margin-bottom: 0;
+    margin-top: 0;
+}
+
+.case-study-stats .outer-wrap {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: flex-start;
+    max-width: 1184px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+    @media screen and (min-width: $small-width) {
+        padding-left: 2.5rem;
+        padding-right: 2.5rem;
+    }
+}
+
+.case-study-stats .block-wrapper {
+    position: relative;
+    max-width: 936px;
+    background: $eggshell;
+    margin-left: 0;
+    margin-right: auto;
+    border-radius: 8px;
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+    width: 100%;
+     @media screen and (min-width: $small-width) {
+        padding-bottom: 2.5rem;
+        padding-top: 2.5rem;
+     }
+}
+
 // ---- Label ----
 .case-study-stats__label {
-    margin-bottom: 1.5rem;
-
+    margin-bottom: 1rem;
     @media screen and (min-width: $small-width) {
-        margin-bottom: 2rem;
+        margin-bottom: 1.5rem;
     }
 
     span {
@@ -43,11 +79,12 @@
 // ---- Stats grid ----
 .case-study-stats__grid {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr;
     gap: 1.5rem;
 
     @media screen and (min-width: $small-width) {
         gap: 0;
+        grid-template-columns: 1fr 1fr 1fr;
     }
 }
 
@@ -64,11 +101,12 @@
 
 // ---- Stat Card ----
 .stat-card {
+    border-bottom: 1px solid $gray;
     @media screen and (min-width: $small-width) {
         padding-left: 2rem;
         padding-right: 2rem;
-        border-left: 1px solid rgba(0, 0, 0, 0.1);
-
+        border-left: 1px solid $gray;
+        border-bottom: none;
         &:first-child {
             padding-left: 0;
             border-left: none;
@@ -78,13 +116,16 @@
             padding-right: 0;
         }
     }
+    &:last-child {
+        border-bottom: none;
+    }
 
     h3, .stat-card__number {
         font-family: $font-head;
         font-weight: 700;
         font-size: 1.75rem; // 28px mobile
         line-height: 1.2;
-        color: $gray;
+        color: $red;
         margin: 0 0 0.25rem 0;
 
         @media screen and (min-width: $small-width) {
@@ -96,14 +137,14 @@
 
     p, .stat-card__desc {
         font-family: $font-body;
-        font-weight: 300;
+        font-weight: 500;
         font-size: 1.125rem; // 18px mobile – Figma body
         line-height: 1.75rem; // 28px
         color: $gray;
         margin: 0;
 
         @media screen and (min-width: $small-width) {
-            font-size: 1rem; // 16px desktop (tighter in grid)
+            font-size: 1.4rem; // 16px desktop (tighter in grid)
         }
     }
 }
