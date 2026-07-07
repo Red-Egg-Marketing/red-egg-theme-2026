@@ -114,8 +114,11 @@ import './service-list-item/index';
 // Filter Case Studies (dynamic grid with taxonomy filters)
 import './filter-case-studies/index';
 
-// Hero – Case Study (full-width hero with overlay + accent bar)
+// Hero – Services (full-width hero with overlay + accent bar)
 import './hero-services/index';
+
+// Hero – Case Study (full-width hero with overlay + accent bar)
+import './hero-case-study/index';
 
 // Case Study Stats (key metrics grid)
 import './case-study-stats/index';

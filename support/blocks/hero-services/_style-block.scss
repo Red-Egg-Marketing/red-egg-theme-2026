@@ -1,6 +1,6 @@
 // ========================================
 //  Hero – Case Study Block Styles
-//  Block: red-egg-block/hero-case-study
+//  Block: red-egg-block/hero-services
 //
 //  Two-column case study hero (hero-content +
 //  hero-media children). Eggshell background with
@@ -10,12 +10,12 @@
 //  those classes (hero-background__content / __media).
 // ========================================
 
-.wp-block.hero-case-study {
+.wp-block.hero-services {
     width: 100%;
     max-width: 100%;
 }
 
-.hero-case-study {
+.hero-services {
     position: relative;
     overflow: hidden;
     background-color: $eggshell;
@@ -29,7 +29,7 @@
 }
 
 // ---- Egg pattern overlay ----
-.hero-case-study {
+.hero-services {
     background-image: url(img/Red_Egg_pattern_case.svg);
     background-repeat: repeat;
     background-size: 145px;
@@ -37,28 +37,28 @@
     background-attachment: fixed;
 }
 
-.hero-case-study .hero-background__content {
+.hero-services .hero-background__content {
     @media screen and (min-width: $small-width) {
         flex: 0 0 66.6667%;
         max-width: 66.6667%;
     }
 }
 
-.hero-case-study .hero-background__media {
+.hero-services .hero-background__media {
     @media screen and (min-width: $small-width) {
         flex: 0 0 33.3333%;
         max-width: 33.3333%;
     }
 }
 
-.hero-case-study .block-wrapper {
+.hero-services .block-wrapper {
     @include block-wrapper;
     position: relative;
     z-index: 1;
 }
 
 // ---- Magenta heading ----
-.hero-case-study .hero-background__content h1 {
+.hero-services .hero-background__content h1 {
     color: $magenta;
     font-size: 2.125rem;
     line-height: 2.75rem;
@@ -70,15 +70,15 @@
 }
 
 // ---- Subtitle: gray body ----
-.hero-case-study .hero-background__content p {
+.hero-services .hero-background__content p {
     color: $gray;
 }
 
 // ---- Background color overrides (optional) ----
-.hero-case-study.peach { background-color: $peach; }
-.hero-case-study.white { background-color: $white; }
+.hero-services.peach { background-color: $peach; }
+.hero-services.white { background-color: $white; }
 
-.hero-case-study.navy {
+.hero-services.navy {
     background-color: $navy;
 
     .hero-background__content h1 { color: $white; }
