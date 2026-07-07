@@ -27,7 +27,7 @@ const allowedBlocks = [
     'red-egg-block/hero-media',
 ];
 
-const EditHeroCaseStudy = ( { attributes, setAttributes, clientId } ) => {
+const EditHeroServices = ( { attributes, setAttributes, clientId } ) => {
     const { image, mobileimage, bgColor, bgSlug, minHeight, padding, margin } = attributes;
 
     const blockId = `block-${ clientId }`;
@@ -123,4 +123,4 @@ const EditHeroCaseStudy = ( { attributes, setAttributes, clientId } ) => {
     );
 };
 
-export default EditHeroCaseStudy;
+export default EditHeroServices;

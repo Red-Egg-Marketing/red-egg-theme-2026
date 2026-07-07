@@ -17,7 +17,7 @@ registerBlockType( 'red-egg-block/hero-media', {
     description: __( 'Image or video column for the hero section.', 'red-egg' ),
     icon: 'format-image',
     category: 'layout',
-    parent: [ 'red-egg-block/hero-background', 'red-egg-block/hero-case-study' ],
+    parent: [ 'red-egg-block/hero-background', 'red-egg-block/hero-services' ],
     supports: { anchor: false, inserter: false },
     attributes: {
         mediaType: {

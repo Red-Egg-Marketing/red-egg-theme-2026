@@ -10,7 +10,7 @@ const { Fragment } = wp.element;
 import PaddingSelector from '../../components/Padding.js';
 import MarginSelector from '../../components/Margin.js';
 
-const SaveHeroCaseStudy = ( { attributes } ) => {
+const SaveHeroServices = ( { attributes } ) => {
     const { image, mobileimage, bgColor, bgSlug, minHeight, padding, margin } = attributes;
 
     const blockProps = useBlockProps.save( {
@@ -71,4 +71,4 @@ const SaveHeroCaseStudy = ( { attributes } ) => {
     );
 };
 
-export default SaveHeroCaseStudy;
+export default SaveHeroServices;

@@ -17,7 +17,7 @@ registerBlockType( 'red-egg-block/hero-content', {
     description: __( 'Text and CTA column for the hero section.', 'red-egg' ),
     icon: 'editor-alignleft',
     category: 'layout',
-    parent: [ 'red-egg-block/hero-background', 'red-egg-block/hero-case-study' ],
+    parent: [ 'red-egg-block/hero-background', 'red-egg-block/hero-services' ],
     supports: { anchor: false, inserter: false },
     attributes: {},
     edit,

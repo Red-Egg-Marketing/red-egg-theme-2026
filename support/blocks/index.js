@@ -115,7 +115,7 @@ import './service-list-item/index';
 import './filter-case-studies/index';
 
 // Hero – Case Study (full-width hero with overlay + accent bar)
-import './hero-case-study/index';
+import './hero-services/index';
 
 // Case Study Stats (key metrics grid)
 import './case-study-stats/index';

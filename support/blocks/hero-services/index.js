@@ -20,9 +20,9 @@ const { __ } = wp.i18n;
 import edit from './edit';
 import save from './save';
 
-registerBlockType( 'red-egg-block/hero-case-study', {
+registerBlockType( 'red-egg-block/hero-services', {
     apiVersion: 2,
-    title: __( 'Hero – Case Study', 'red-egg' ),
+    title: __( 'Hero – Services', 'red-egg' ),
     description: __( 'Two-column case study hero with content + media child blocks.', 'red-egg' ),
     icon: 'id',
     category: 'layout',
