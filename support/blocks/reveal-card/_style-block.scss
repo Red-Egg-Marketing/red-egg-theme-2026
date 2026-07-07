@@ -40,6 +40,7 @@
     border-radius: $default-border-radius;
     background: $white;
     overflow: hidden;
+    box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.20);
 }
 
 .reveal-card__face--front {
@@ -196,21 +197,15 @@
     padding: 0;
     border: 0;
     border-radius: 50%;
-    background: $gray;
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
     z-index: 5;
-    transition: background 0.25s ease;
-
+    background: none;
     @media screen and (min-width: $small-width) {
         bottom: 1.75rem;
         right: 1.75rem;
-    }
-
-    &:hover {
-        background: $red;
     }
 }
 

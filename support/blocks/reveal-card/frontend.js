@@ -99,10 +99,10 @@ function buildTimeline(card) {
   gsap.set(back, { autoAlpha: 0 });
 
   return gsap.timeline({ paused: true, defaults: { ease: 'power2.inOut' } })
-    .to(heading, { y: -20, duration: 0.4 })                 // 1. header slides up
-    .to(rest,    { autoAlpha: 0, duration: 0.3 }, '-=0.2')  // 2. other content fades
-    .to(heading, { autoAlpha: 0, duration: 0.3 })           // 3. header fades
-    .to(back,    { autoAlpha: 1, duration: 0.4 }, '-=0.1'); // 4. back reveals/fades in
+    .to(rest,    { autoAlpha: 0, duration: 0.4 })  // 2. other content fades
+    .to(rest,    { height: 0, duration: 0.4, marginBottom: 0 })  // 2. other content fades
+    // .to(heading, { y: -20, duration: 0.4 })                 // 1. header slides up
+    .to(back,    { autoAlpha: 1, duration: 0.4 }, '-=0.1') // 4. back reveals/fades in
 }
 
 function initRevealCard( card ) {
