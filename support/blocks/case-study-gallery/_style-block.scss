@@ -76,17 +76,29 @@ p.cs-gallery__label {
 }
 
 // ---- Gallery overrides ----
-.cs-gallery .wp-block-gallery {
-    gap: 1rem;
+.cs-gallery figure.wp-block-gallery {
+    gap: 2rem;
 
     @media screen and (min-width: $small-width) {
-        gap: 1.5rem;
+        gap: 3rem;
     }
+}
+
+.cs-gallery .wp-block-gallery.has-nested-images figure.wp-block-image:not(#individual-image) {
+    @media screen and (min-width: $small-width) {
+        width: calc(50% - 3rem);
+    }
+}
+
+.cs-gallery .wp-block-gallery.has-nested-images figure.wp-block-image figcaption {
+    background: linear-gradient(0deg, black, rgba(0, 0, 0 ,0));
+    font-weight: 500;
 }
 
 .cs-gallery .wp-block-gallery .wp-block-image {
     border-radius: $default-border-radius;
     overflow: hidden;
+    border: 1px solid $gray;
 }
 
 .cs-gallery .wp-block-gallery .wp-block-image img {
