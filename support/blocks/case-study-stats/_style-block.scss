@@ -88,6 +88,10 @@
     }
 }
 
+:where(.editor-styles-wrapper) .case-study-stats__grid {
+    display: block;
+}
+
 // Editor grid layout
 .case-study-stats__grid > .block-editor-inner-blocks > .block-editor-block-list__layout {
     display: grid;
