@@ -1,7 +1,7 @@
 /**
  * Color Palette Block – Edit Component
  *
- * InnerBlocks: header-intro (label + heading), then color-swatch children.
+ * InnerBlocks: header-intro-left (label + heading), then color-swatch children.
  * Swatches laid out in a CSS grid that matches the Figma
  * (2 large on top, 3 smaller on bottom).
  */
