@@ -154,6 +154,10 @@ import './process-steps/index';
 // Process Step (child: badge + content + tag cloud)
 import './process-step/index';
 
+// Icon Cards (parent) + Icon Card (child)
+import './icon-cards/index';
+import './icon-cards/icon-card/index';
+
 // ---- Format Types ----
 // Rotate Words (Word Swap) – core/heading only
 import '../format-types/rotate-words/index';

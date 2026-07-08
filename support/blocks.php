@@ -350,6 +350,16 @@ function red_egg_register_blocks() {
     register_block_type( 'red-egg-block/process-step', [
         'editor_script' => 'red-egg-editor-blocks',
     ] );
+
+    // Icon Cards (parent: eyebrow + heading + static icon card grid)
+    register_block_type( 'red-egg-block/icon-cards', [
+        'editor_script' => 'red-egg-editor-blocks',
+    ] );
+
+    // Icon Card (child of icon-cards)
+    register_block_type( 'red-egg-block/icon-card', [
+        'editor_script' => 'red-egg-editor-blocks',
+    ] );
 }
 add_action( 'init', 'red_egg_register_blocks' );
 
