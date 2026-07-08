@@ -23,81 +23,122 @@
     display: block;
 }
 
-// ---- Label ----
-.color-palette__label,
-p.color-palette__label {
-    font-family: $font-head;
-    font-weight: 500;
-    font-size: 1.0625rem;
-    line-height: 1.625rem;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: $gray;
-    margin: 0 0 0.25rem 0;
-
-    @media screen and (min-width: $small-width) {
-        font-size: 0.875rem;
-        line-height: 1.3;
-        letter-spacing: 1px;
-    }
-}
-
-// ---- Heading ----
-.color-palette-block h2 {
-    @include primary-h2;
-    margin: 0 0 2rem 0;
-
-    @media screen and (min-width: $small-width) {
-        margin: 0 0 2.5rem 0;
-        max-width: 70%;
-    }
-}
+// ---- Label + Heading ----
+// Now rendered via red-egg-block/header-intro (see header-intro/_style-block.scss
+// for .header-intro__label / .header-intro__left h2 styling — same values as below,
+// kept here commented out for reference.)
+// .color-palette__label,
+// p.color-palette__label {
+//     font-family: $font-head;
+//     font-weight: 500;
+//     font-size: 1.0625rem;
+//     line-height: 1.625rem;
+//     letter-spacing: 2px;
+//     text-transform: uppercase;
+//     color: $gray;
+//     margin: 0 0 0.25rem 0;
+//
+//     @media screen and (min-width: $small-width) {
+//         font-size: 0.875rem;
+//         line-height: 1.3;
+//         letter-spacing: 1px;
+//     }
+// }
+//
+// .color-palette-block h2 {
+//     @include primary-h2;
+//     margin: 0 0 2rem 0;
+//
+//     @media screen and (min-width: $small-width) {
+//         margin: 0 0 2.5rem 0;
+//         max-width: 70%;
+//     }
+// }
 
 // ---- Swatch grid (frontend) ----
-// First 2 swatches: 50/50, rest: 3-col
+// First 2 swatches: 50/50, rest: 3-col.
+// NOTE: header-intro-block renders before the swatches as a block-level
+// (non inline-block) sibling, so it always starts its own row — but it is
+// still a <div>, so the nth-child math below is offset by 1 to skip it.
 .color-palette-block > .block-wrapper .color-swatch {
     display: inline-block;
     vertical-align: top;
     box-sizing: border-box;
+    position: relative;
 }
 
-.color-palette-block > .block-wrapper .color-swatch:nth-of-type(1),
-.color-palette-block > .block-wrapper .color-swatch:nth-of-type(2) {
-    width: calc(50% - 0.5rem);
-    margin-right: 1rem;
-    margin-bottom: 1rem;
-}
-
-.color-palette-block > .block-wrapper .color-swatch:nth-of-type(1) .color-swatch__color,
-.color-palette-block > .block-wrapper .color-swatch:nth-of-type(2) .color-swatch__color {
-    height: 160px;
-
+.color-palette-block > .block-wrapper .color-swatch:nth-child(2),
+.color-palette-block > .block-wrapper .color-swatch:nth-child(3) {
     @media screen and (min-width: $small-width) {
-        height: 220px;
+        width: calc(50% - 1.3rem);
+        margin-right: 2.6rem;
+        margin-bottom: 2.6rem;
     }
 }
 
-.color-palette-block > .block-wrapper .color-swatch:nth-of-type(2) {
-    margin-right: 0;
-}
-
-.color-palette-block > .block-wrapper .color-swatch:nth-of-type(n+3) {
-    width: calc(33.333% - 0.667rem);
-    margin-right: 1rem;
-    margin-bottom: 1rem;
-}
-
-.color-palette-block > .block-wrapper .color-swatch:nth-of-type(n+3) .color-swatch__color {
-    height: 120px;
-
-    @media screen and (min-width: $small-width) {
-        height: 160px;
+.color-palette-block > .block-wrapper .color-swatch:nth-child(2) {
+    @media screen and (max-width: $small-width - 1px) {
+        width: 100%;
     }
 }
 
-.color-palette-block > .block-wrapper .color-swatch:nth-of-type(2),
-.color-palette-block > .block-wrapper .color-swatch:nth-of-type(3n+5) {
-    margin-right: 0;
+.color-palette-block > .block-wrapper .color-swatch:nth-child(n+3) {
+    @media screen and (max-width: $small-width - 1px) {
+        width: calc(50% - 1rem);
+    }
+}
+
+
+.color-palette-block > .block-wrapper .color-swatch:nth-child(2n+1) {
+      @media screen and (max-width: $small-width - 1px) {
+        margin-right: 2rem;
+      }
+}
+
+.color-palette-block > .block-wrapper .color-swatch:nth-child(2) .color-swatch__color,
+.color-palette-block > .block-wrapper .color-swatch:nth-child(3) .color-swatch__color {
+    @media screen and (min-width: $small-width) {
+        height: 345px;
+    }
+}
+
+.color-palette-block > .block-wrapper .color-swatch .color-swatch__color {
+     @media screen and (max-width: $small-width - 1px) {
+        height: 150px;
+     }
+}
+
+.color-palette-block > .block-wrapper .color-swatch {
+     @media screen and (max-width: $small-width - 1px) {
+        margin-bottom: 2rem;
+     }
+}
+
+.color-palette-block > .block-wrapper .color-swatch:nth-child(3) {
+    @media screen and (min-width: $small-width) {
+        margin-right: 0;
+    }
+}
+
+.color-palette-block > .block-wrapper .color-swatch:nth-child(n+4) {
+    @media screen and (min-width: $small-width) {
+        width: calc(33.333% - 1.7333rem);
+        margin-right: 2.6rem;
+        margin-bottom: 2.6rem;
+    }
+}
+
+.color-palette-block > .block-wrapper .color-swatch:nth-child(n+4) .color-swatch__color {
+    @media screen and (min-width: $small-width) {
+        height: 345px;
+    }
+}
+
+.color-palette-block > .block-wrapper .color-swatch:nth-child(3),
+.color-palette-block > .block-wrapper .color-swatch:nth-child(3n+6) {
+    @media screen and (min-width: $small-width) {
+        margin-right: 0;
+    }
 }
 
 // ---- Editor: swatch grid ----
@@ -107,27 +148,26 @@ p.color-palette__label {
     gap: 1rem;
 }
 
-.color-palette-block > .block-wrapper > .block-editor-inner-blocks > .block-editor-block-list__layout > .wp-block[data-type="core/paragraph"],
-.color-palette-block > .block-wrapper > .block-editor-inner-blocks > .block-editor-block-list__layout > .wp-block[data-type="core/heading"] {
+.color-palette-block > .block-wrapper > .block-editor-inner-blocks > .block-editor-block-list__layout > .wp-block[data-type="red-egg-block/header-intro"] {
     width: 100%;
     flex-shrink: 0;
 }
 
-.color-palette-block > .block-wrapper > .block-editor-inner-blocks > .block-editor-block-list__layout > .wp-block[data-type="red-egg-block/color-swatch"]:nth-of-type(1),
-.color-palette-block > .block-wrapper > .block-editor-inner-blocks > .block-editor-block-list__layout > .wp-block[data-type="red-egg-block/color-swatch"]:nth-of-type(2) {
+.color-palette-block > .block-wrapper > .block-editor-inner-blocks > .block-editor-block-list__layout > .wp-block:nth-child(2),
+.color-palette-block > .block-wrapper > .block-editor-inner-blocks > .block-editor-block-list__layout > .wp-block:nth-child(3) {
     width: calc(50% - 0.5rem);
 }
 
-.color-palette-block > .block-wrapper > .block-editor-inner-blocks > .block-editor-block-list__layout > .wp-block[data-type="red-egg-block/color-swatch"]:nth-of-type(1) .color-swatch__color,
-.color-palette-block > .block-wrapper > .block-editor-inner-blocks > .block-editor-block-list__layout > .wp-block[data-type="red-egg-block/color-swatch"]:nth-of-type(2) .color-swatch__color {
+.color-palette-block > .block-wrapper > .block-editor-inner-blocks > .block-editor-block-list__layout > .wp-block:nth-child(2) .color-swatch__color,
+.color-palette-block > .block-wrapper > .block-editor-inner-blocks > .block-editor-block-list__layout > .wp-block:nth-child(3) .color-swatch__color {
     height: 200px;
 }
 
-.color-palette-block > .block-wrapper > .block-editor-inner-blocks > .block-editor-block-list__layout > .wp-block[data-type="red-egg-block/color-swatch"]:nth-of-type(n+3) {
+.color-palette-block > .block-wrapper > .block-editor-inner-blocks > .block-editor-block-list__layout > .wp-block:nth-child(n+4) {
     width: calc(33.333% - 0.667rem);
 }
 
-.color-palette-block > .block-wrapper > .block-editor-inner-blocks > .block-editor-block-list__layout > .wp-block[data-type="red-egg-block/color-swatch"]:nth-of-type(n+3) .color-swatch__color {
+.color-palette-block > .block-wrapper > .block-editor-inner-blocks > .block-editor-block-list__layout > .wp-block:nth-child(n+4) .color-swatch__color {
     height: 140px;
 }
 
@@ -138,8 +178,8 @@ p.color-palette__label {
     transition: box-shadow 0.3s ease;
 }
 
-.color-swatch__label,
-.color-swatch__label-input {
+.color-palette-block .color-swatch__label,
+.color-palette-block .color-swatch__label-input {
     font-family: $font-head;
     font-weight: 500;
     font-size: 0.8125rem;
@@ -147,8 +187,10 @@ p.color-palette__label {
     letter-spacing: 1px;
     text-transform: uppercase;
     color: $gray;
-    margin: 0.5rem 0 0 0;
+    margin: 0 0 0.75rem 1rem;
     display: block;
+    position: absolute;
+    bottom: 0;
 }
 
 .color-swatch__label-input {
@@ -163,6 +205,16 @@ p.color-palette__label {
     }
 }
 
+// ---- Label color option (white / gray) ----
+.color-swatch--label-white .color-swatch__label,
+.color-swatch--label-white .color-swatch__label-input {
+    color: $white;
+
+    &::placeholder {
+        color: rgba($white, 0.5);
+    }
+}
+
 // ---- Full-width in editor ----
 .wp-block.color-palette-block {
     width: 100%;
@@ -171,4 +223,18 @@ p.color-palette__label {
 
 .wp-block[data-type="red-egg-block/color-swatch"] {
     max-width: 100%;
+}
+
+.color-palette-block .block-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.color-palette-block .header-intro__left {
+    margin-bottom: 25px;
+    @media screen and (min-width: $small-width) {
+        flex: 0 100%;
+        max-width: 100%;
+        margin-bottom: 35px;
+    }
 }

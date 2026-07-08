@@ -1,7 +1,7 @@
 /**
  * Color Palette Block – Edit Component
  *
- * InnerBlocks: label + heading, then color-swatch children.
+ * InnerBlocks: header-intro (label + heading), then color-swatch children.
  * Swatches laid out in a CSS grid that matches the Figma
  * (2 large on top, 3 smaller on bottom).
  */
@@ -14,8 +14,7 @@ import PaddingSelector from '../../components/Padding.js';
 import MarginSelector from '../../components/Margin.js';
 
 const template = [
-    [ 'core/paragraph', { placeholder: 'COLOR PALETTE', className: 'color-palette__label' } ],
-    [ 'core/heading', { level: 2, placeholder: 'Leveraging color to communicate trust and authority...' } ],
+    [ 'red-egg-block/header-intro-left', {} ],
     [ 'red-egg-block/color-swatch', { color: '#024D69', label: 'BLUE' } ],
     [ 'red-egg-block/color-swatch', { color: '#D4982A', label: 'GOLD' } ],
     [ 'red-egg-block/color-swatch', { color: '#8FA3A8', label: 'SILVER' } ],
@@ -24,8 +23,7 @@ const template = [
 ];
 
 const allowedBlocks = [
-    'core/paragraph',
-    'core/heading',
+    'red-egg-block/header-intro-left',
     'red-egg-block/color-swatch',
 ];
 

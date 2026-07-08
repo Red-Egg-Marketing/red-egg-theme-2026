@@ -5,10 +5,10 @@
 const { useBlockProps } = wp.blockEditor;
 
 const SaveColorSwatch = ( { attributes } ) => {
-    const { color, label } = attributes;
+    const { color, label, labelColor } = attributes;
 
     const blockProps = useBlockProps.save( {
-        className: 'color-swatch',
+        className: 'color-swatch' + ( labelColor === 'white' ? ' color-swatch--label-white' : '' ),
     } );
 
     return (

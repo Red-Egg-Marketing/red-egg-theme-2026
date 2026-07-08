@@ -34,6 +34,10 @@ registerBlockType( 'red-egg-block/color-swatch', {
             type: 'string',
             default: '',
         },
+        labelColor: {
+            type: 'string',
+            default: 'gray',
+        },
     },
     edit,
     save,

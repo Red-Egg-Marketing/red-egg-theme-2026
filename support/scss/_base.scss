@@ -60,6 +60,10 @@ img {
     height: auto;
 }
 
+div.wp-block-cover img {
+    border-radius: 0;
+}
+
 // ---- Lists ----
 ul, ol {
     margin: 0 0 1rem 1.5rem;
