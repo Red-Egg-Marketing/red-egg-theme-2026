@@ -19,7 +19,7 @@
                     <!-- Column 1: Logo + Contact Info -->
                     <div class="site-footer__col site-footer__col--info">
                         <a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="site-footer__logo" aria-label="<?php bloginfo( 'name' ); ?>">
-                            <img src="<?php echo esc_url( get_template_directory_uri() . '/img/re-logo-inline-white.svg' ); ?>" alt="<?php bloginfo( 'name' ); ?>" />
+                            <img src="<?php echo esc_url( get_template_directory_uri() . '/img/red-egg-footer-logo.svg' ); ?>" alt="<?php bloginfo( 'name' ); ?>" />
                         </a>
                         <div class="site-footer__contact">
                             <p>

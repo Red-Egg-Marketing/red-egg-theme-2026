@@ -28,7 +28,7 @@
 
             <div class="site-header__logo">
                 <a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home" aria-label="<?php bloginfo( 'name' ); ?>">
-                    <img src="<?php echo esc_url( get_template_directory_uri() . '/img/re-logo.svg' ); ?>" alt="<?php bloginfo( 'name' ); ?>" class="site-header__logo-img" />
+                    <img src="<?php echo esc_url( get_template_directory_uri() . '/img/red-egg-header-logo.svg' ); ?>" alt="<?php bloginfo( 'name' ); ?>" class="site-header__logo-img" />
                 </a>
             </div><!-- .site-header__logo -->
 
