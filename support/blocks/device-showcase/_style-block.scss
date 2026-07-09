@@ -80,7 +80,6 @@
 // ---- Mobile: stack devices ----
 .device-frame--mobile {
     margin-top: 2rem;
-
     @media screen and (min-width: $small-width) {
         margin-top: 0;
     }
@@ -89,15 +88,21 @@
 .device-frame--desktop {
     position: relative;
     width: 100%;
-    padding-bottom: 59.6%;
+    padding-bottom: 78.6%;
     background: url(img/desktop-view.png) no-repeat center center / contain;
+    @media screen and (min-width: $small-width) {
+        padding-bottom: 59.6%;
+    }
 }
 
 .device-frame--mobile {
     position: relative;
     background: url(img/mobile-view.png) no-repeat center center / contain;
     width: 100%;
-    padding-bottom: 48%;
+    padding-bottom: 200%;
+    @media screen and (min-width: $small-width) {
+        padding-bottom: 48%;
+    }
 }
 
 
@@ -155,12 +160,7 @@
     padding-bottom: 190.2%;
     height: 0;
     width: 88.3%;
-    clip-path: inset(0% round 4.5%);
-
-}
-
-.device-frame--mobile img.device-frame__device {
-/*    border-radius: 24px;*/
+    clip-path: inset(0 round 8.5% / 5.1%);
 }
 
 img.device-frame__device {

@@ -39,9 +39,11 @@
 // ---- Header (header-intro-left) on dark section ----
 .icon-cards .header-intro__left {
     margin-bottom: 2.5rem;
-
     @media screen and (min-width: $small-width) {
         margin-bottom: 3.5rem;
+        width: 100%;
+        max-width: 100%;
+        
     }
 
     .header-intro__label,
