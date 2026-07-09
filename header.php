@@ -40,7 +40,8 @@
                     'menu_class'     => 'primary-menu',
                     'container'      => false,
                     'fallback_cb'    => false,
-                    'depth'          => 2,
+                    'depth'          => 3,
+                    'walker'         => new Red_Egg_Mega_Walker(),
                 ] );
                 ?>
             </nav><!-- #site-navigation -->

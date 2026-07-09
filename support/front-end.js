@@ -26,6 +26,9 @@ import './blocks/insights/frontend';
 // Custom video play/pause controls
 import './js/video';
 
+// Desktop mega menu navigation
+import './js/navigation';
+
 // Image Slider – Swiper initialization
 import './blocks/image-slider/frontend';
 

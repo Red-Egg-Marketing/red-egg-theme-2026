@@ -307,6 +307,11 @@ require get_template_directory() . '/inc/custom-endpoints.php';
 require get_template_directory() . '/inc/template-functions.php';
 
 /**
+ * Mega Menu Nav Walker
+ */
+require get_template_directory() . '/inc/nav-walker.php';
+
+/**
  * Gravity Forms Customizations
  */
 if ( class_exists( 'GFForms' ) ) {
