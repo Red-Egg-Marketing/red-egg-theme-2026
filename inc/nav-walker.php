@@ -84,7 +84,10 @@ class Red_Egg_Mega_Walker extends Walker_Nav_Menu {
             $output .= '<div class="mega-menu__inner">';
             $output .= '<div class="mega-menu__bar">';
             $output .= '<a class="mega-menu__logo" href="' . esc_url( home_url( '/' ) ) . '" aria-label="' . esc_attr( get_bloginfo( 'name' ) ) . '"><img src="' . $logo . '" alt="" /></a>';
-            $output .= '<button type="button" class="mega-menu__close" aria-label="' . esc_attr__( 'Close menu', 'red-egg' ) . '"><span aria-hidden="true">&times;</span></button>';
+            $output .= '<button type="button" class="mega-menu__close" aria-label="' . esc_attr__( 'Close menu', 'red-egg' ) . '"><span aria-hidden="true"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M0.367283 2.13337C-0.122428 1.64366 -0.122428 0.851784 0.367283 0.367283C0.856994 -0.117218 1.64887 -0.122428 2.13337 0.367283L10 8.23392L17.8666 0.367283C18.3563 -0.122428 19.1482 -0.122428 19.6327 0.367283C20.1172 0.856994 20.1224 1.64887 19.6327 2.13337L11.7661 10L19.6327 17.8666C20.1224 18.3563 20.1224 19.1482 19.6327 19.6327C19.143 20.1172 18.3511 20.1224 17.8666 19.6327L10 11.7661L2.13337 19.6327C1.64366 20.1224 0.851784 20.1224 0.367283 19.6327C-0.117218 19.143 -0.122428 18.3511 0.367283 17.8666L8.23392 10L0.367283 2.13337Z" fill="white"/>
+</svg>
+</span></button>';
             $output .= '</div>';
             $output .= '<span class="mega-menu__eyebrow">' . esc_html( $item->title ) . '</span>';
             $output .= '<div class="mega-menu__cols">';
