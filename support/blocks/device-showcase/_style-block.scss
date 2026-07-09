@@ -211,3 +211,8 @@ img.device-frame__device {
 .wp-block[data-type="red-egg-block/device-frame"] {
     max-width: 100%;
 }
+
+.device-showcase__devices > .block-editor-inner-blocks,
+.device-showcase__devices > .block-editor-inner-blocks > .block-editor-block-list__layout {
+    width: 100%;
+}
