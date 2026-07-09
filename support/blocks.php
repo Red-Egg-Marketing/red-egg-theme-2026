@@ -356,7 +356,12 @@ function red_egg_register_blocks() {
         'editor_script' => 'red-egg-editor-blocks',
     ] );
 
-    // Icon Card (child of icon-cards)
+    // Icon Cards Items Wrapper (child of icon-cards)
+    register_block_type( 'red-egg-block/icon-cards-items', [
+        'editor_script' => 'red-egg-editor-blocks',
+    ] );
+
+    // Icon Card (child of icon-cards-items)
     register_block_type( 'red-egg-block/icon-card', [
         'editor_script' => 'red-egg-editor-blocks',
     ] );

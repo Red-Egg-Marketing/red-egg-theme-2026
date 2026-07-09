@@ -1,125 +1,137 @@
-/* =========================================================
-   Icon Cards
-   Eyebrow + heading + static 3-up icon card grid.
-   Dark section by default; overridden by BackgroundColor slug.
-   ========================================================= */
+// ========================================
+//  Icon Cards Block Styles
+//  Blocks: red-egg-block/icon-cards
+//          red-egg-block/icon-cards-items
+//          red-egg-block/icon-card
+//
+//  header-intro-left + static 3-up card grid.
+//  Dark section by default (navy); bg slug classes override.
+// ========================================
 
-.icon-cards {
-    background-color: $navy; // sensible default; BackgroundColor slug/inline can override
-
-    .block-wrapper {
-        @include block-wrapper;
-    }
-
-    // ---- Header ----------------------------------------------------
-    .icon-cards-header {
-        max-width: 760px;
-        margin-bottom: 3rem;
-    }
-
-    .icon-cards-eyebrow {
-        display: block;
-        margin-bottom: 1rem;
-        font-family: $font-body;
-        font-size: 13px;
-        font-weight: 600;
-        letter-spacing: 0.12em;
-        text-transform: uppercase;
-        color: $white;
-    }
-
-    .icon-cards-heading {
-        margin: 0;
-        color: $white;
-    }
-
-    // ---- Grid ------------------------------------------------------
-    .icon-cards-grid {
-        display: grid;
-        grid-template-columns: 1fr;
-        gap: 1.5rem;
-
-        @media screen and (min-width: $small-med-width) {
-            grid-template-columns: repeat(2, 1fr);
-        }
-
-        @media screen and (min-width: $med-small-width) {
-            &.cols-2 { grid-template-columns: repeat(2, 1fr); }
-            &.cols-3 { grid-template-columns: repeat(3, 1fr); }
-            &.cols-4 { grid-template-columns: repeat(4, 1fr); }
-        }
-    }
-
-    // ---- Card ------------------------------------------------------
-    .icon-card {
-        display: flex;
-        flex-direction: column;
-        padding: 2.5rem 2rem;
-        border: 1px solid rgba($white, 0.14);
-        border-radius: 4px;
-    }
-
-    .icon-card-icon {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        width: 56px;
-        height: 56px;
-        margin-bottom: 2rem;
-        border-radius: 50%;
-        background-color: rgba($white, 0.08);
-
-        img,
-        svg {
-            width: 24px;
-            height: 24px;
-            display: block;
-        }
-
-        svg [fill] { fill: $white; }
-        svg [stroke] { stroke: $white; }
-
-        &.is-placeholder {
-            background-color: rgba($white, 0.05);
-        }
-    }
-
-    .icon-card-body {
-        h3, h4 {
-            margin: 0 0 1rem;
-            color: $white;
-        }
-
-        p {
-            margin: 0;
-            color: rgba($white, 0.7);
-        }
-    }
-
-    // ---- Light background variants ---------------------------------
-    // When a light BackgroundColor slug is chosen, flip text/borders.
-    &.eggshell,
-    &.white,
-    &.peach {
-        .icon-cards-eyebrow,
-        .icon-cards-heading,
-        .icon-card-body h3,
-        .icon-card-body h4 { color: $navy; }
-
-        .icon-card-body p { color: $body-color; }
-
-        .icon-card { border-color: rgba($navy, 0.12); }
-
-        .icon-card-icon {
-            background-color: rgba($navy, 0.06);
-            svg [fill] { fill: $navy; }
-            svg [stroke] { stroke: $navy; }
-        }
-    }
-}
-
-/* Full-width in the editor column */
 .wp-block.icon-cards {
     width: 100%;
     max-width: 100%;
+}
+
+.icon-cards {
+    position: relative;
+    background-color: $navy;
+    padding-top: $default-section-padding-top;
+    padding-bottom: $default-section-padding-top;
+
+    @media screen and (min-width: $small-width) {
+        padding-top: 5rem;
+        padding-bottom: 5rem;
+    }
+}
+
+.icon-cards .block-wrapper {
+    @include block-wrapper;
+}
+
+// ---- Background color classes ----
+.icon-cards.gray { background-color: $gray; }
+.icon-cards.navy { background-color: $navy; }
+.icon-cards.eggshell { background-color: $eggshell; }
+.icon-cards.white { background-color: $white; }
+.icon-cards.peach { background-color: $peach; }
+
+// ---- Header (header-intro-left) on dark section ----
+.icon-cards .header-intro__left {
+    max-width: 936px;
+    margin-bottom: 2.5rem;
+
+    @media screen and (min-width: $small-width) {
+        margin-bottom: 3.5rem;
+    }
+
+    .header-intro__label,
+    h2, h3 {
+        color: $white;
+    }
+}
+
+// ---- Light backgrounds: dark text ----
+.icon-cards.eggshell,
+.icon-cards.white,
+.icon-cards.peach {
+    .header-intro__left {
+        .header-intro__label,
+        h2, h3 { color: $head-color; }
+    }
+
+    .icon-card {
+        border-color: rgba($navy, 0.12);
+
+        .icon-card__title { color: $head-color; }
+        .icon-card__body { color: $body-color; }
+    }
+
+    .icon-card__icon {
+        background-color: rgba($navy, 0.06);
+
+        svg [fill] { fill: $navy; }
+        svg [stroke] { stroke: $navy; }
+    }
+}
+
+// ---- Card grid ----
+.icon-cards__items {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+
+    @media screen and (min-width: $small-med-width) {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    @media screen and (min-width: $med-small-width) {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+// ---- Card ----
+.icon-card {
+    display: flex;
+    flex-direction: column;
+    padding: 2.5rem 2rem;
+    border: 1px solid rgba($white, 0.14);
+    border-radius: 4px;
+}
+
+.icon-card__icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 56px;
+    height: 56px;
+    margin-bottom: 2rem;
+    border-radius: 50%;
+    background-color: rgba($white, 0.08);
+
+    img,
+    svg {
+        width: 24px;
+        height: 24px;
+        display: block;
+    }
+
+    svg [fill] { fill: $white; }
+    svg [stroke] { stroke: $white; }
+
+    &--placeholder {
+        background-color: rgba($white, 0.05);
+    }
+}
+
+.icon-card__content {
+    .icon-card__title {
+        margin: 0 0 1rem;
+        color: $white;
+    }
+
+    .icon-card__body {
+        margin: 0;
+        color: rgba($white, 0.7);
+    }
 }

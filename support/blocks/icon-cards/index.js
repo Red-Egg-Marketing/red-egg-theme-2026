@@ -4,67 +4,35 @@
  *  | | (_| (_) | .` | | (__/ _ \|   / |) \__ \
  * |___\___\___/|_|\_|  \___/_/ \_\_|_\___/|___/
  *
- * Parent section: eyebrow + heading + static 3-up icon card grid.
- * Cards are InnerBlocks (red-egg-block/icon-card). No hover/flip reveal —
- * all card content is visible at rest.
+ * Section: header-intro-left + icon-cards-items wrapper (single InnerBlocks).
+ * Static 3-up icon card grid — no hover/flip reveal.
  */
 
 const { registerBlockType } = wp.blocks;
 const { __ } = wp.i18n;
-
 import edit from './edit';
 import save from './save';
 
 registerBlockType( 'red-egg-block/icon-cards', {
     apiVersion: 2,
     title: __( 'Icon Cards', 'red-egg' ),
-    description: __( 'Eyebrow, heading, and a static grid of icon cards.', 'red-egg' ),
-    category: 'layout',
+    description: __( 'Header intro + static grid of icon cards.', 'red-egg' ),
     icon: 'screenoptions',
-    supports: {
-        anchor: true,
-    },
+    category: 'layout',
+    keywords: [ __( 'icon', 'red-egg' ), __( 'cards', 'red-egg' ), __( 'features', 'red-egg' ) ],
+    supports: { anchor: true },
     attributes: {
-        eyebrow: {
-            type: 'string',
-            default: '',
-        },
-        heading: {
-            type: 'string',
-            default: '',
-        },
-        columns: {
-            type: 'number',
-            default: 3,
-        },
-        bgColor: {
-            type: 'string',
-            default: '',
-        },
-        bgSlug: {
-            type: 'string',
-            default: '',
-        },
+        bgColor: { type: 'string', default: '' },
+        bgSlug: { type: 'string', default: '' },
         padding: {
             type: 'object',
-            default: {
-                paddingtop: '',
-                paddingright: '',
-                paddingbottom: '',
-                paddingleft: '',
-                unit: 'rem',
-            },
+            default: { paddingtop: '', paddingright: '', paddingbottom: '', paddingleft: '', unit: 'rem' },
         },
         margin: {
             type: 'object',
-            default: {
-                margintop: '',
-                marginright: '',
-                marginbottom: '',
-                marginleft: '',
-                unit: 'rem',
-            },
+            default: { margintop: '', marginright: '', marginbottom: '', marginleft: '', unit: 'rem' },
         },
+        blockId: { type: 'string' },
     },
     edit,
     save,
