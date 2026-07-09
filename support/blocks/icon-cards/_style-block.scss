@@ -38,7 +38,6 @@
 
 // ---- Header (header-intro-left) on dark section ----
 .icon-cards .header-intro__left {
-    max-width: 936px;
     margin-bottom: 2.5rem;
 
     @media screen and (min-width: $small-width) {
@@ -61,25 +60,38 @@
     }
 
     .icon-card {
-        border-color: rgba($navy, 0.12);
+/*        border-color: rgba($navy, 0.12);*/
 
         .icon-card__title { color: $head-color; }
         .icon-card__body { color: $body-color; }
     }
-
     .icon-card__icon {
-        background-color: rgba($navy, 0.06);
+/*        background-color: rgba($navy, 0.06);*/
 
-        svg [fill] { fill: $navy; }
-        svg [stroke] { stroke: $navy; }
+       /* svg [fill] { fill: $navy; }
+        svg [stroke] { stroke: $navy; }*/
     }
 }
 
 // ---- Card grid ----
-.icon-cards__items {
+.icon-cards__items:not(.block-editor-block-list__block) {
     display: grid;
     grid-template-columns: 1fr;
-    gap: 1.5rem;
+    gap: 2.6rem;
+
+    @media screen and (min-width: $small-med-width) {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    @media screen and (min-width: $med-small-width) {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+.icon-cards__items > .block-editor-inner-blocks > .block-editor-block-list__layout {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2.6rem;
 
     @media screen and (min-width: $small-med-width) {
         grid-template-columns: repeat(2, 1fr);
@@ -95,7 +107,7 @@
     display: flex;
     flex-direction: column;
     padding: 2.5rem 2rem;
-    border: 1px solid rgba($white, 0.14);
+    border: 1px solid rgba($white, 1);
     border-radius: 4px;
 }
 
@@ -105,19 +117,19 @@
     justify-content: center;
     width: 56px;
     height: 56px;
-    margin-bottom: 2rem;
-    border-radius: 50%;
-    background-color: rgba($white, 0.08);
+    margin-bottom: 1.425rem;
+/*    border-radius: 50%;*/
+/*    background-color: rgba($white, 0.08);*/
 
     img,
     svg {
-        width: 24px;
-        height: 24px;
+        width: 100%;
+        height: 100%;
         display: block;
     }
 
-    svg [fill] { fill: $white; }
-    svg [stroke] { stroke: $white; }
+/*    svg [fill] { fill: $white; }*/
+/*    svg [stroke] { stroke: $white; }*/
 
     &--placeholder {
         background-color: rgba($white, 0.05);
