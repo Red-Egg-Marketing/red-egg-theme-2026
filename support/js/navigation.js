@@ -30,6 +30,14 @@ function initMegaMenu() {
     const panelFor = ( toggle ) =>
         document.getElementById( toggle.getAttribute( 'aria-controls' ) );
 
+    const FOCUSABLE =
+        'a[href], button:not([disabled]), input, select, textarea, [tabindex]:not([tabindex="-1"])';
+
+    const focusableIn = ( panel ) =>
+        Array.from( panel.querySelectorAll( FOCUSABLE ) ).filter(
+            ( el ) => el.offsetWidth > 0 || el.offsetHeight > 0 || el === document.activeElement
+        );
+
     function openMega( toggle ) {
         const panel = panelFor( toggle );
         if ( ! panel ) {
@@ -103,10 +111,34 @@ function initMegaMenu() {
         }
     } );
 
-    // Escape closes.
+    // Escape closes; Tab is trapped inside the open panel.
     document.addEventListener( 'keydown', ( e ) => {
-        if ( 'Escape' === e.key && openPanel ) {
+        if ( ! openPanel ) {
+            return;
+        }
+
+        if ( 'Escape' === e.key ) {
             closeMega();
+            return;
+        }
+
+        if ( 'Tab' === e.key ) {
+            const focusable = focusableIn( openPanel );
+            if ( ! focusable.length ) {
+                e.preventDefault();
+                return;
+            }
+            const first = focusable[ 0 ];
+            const last = focusable[ focusable.length - 1 ];
+            const active = document.activeElement;
+
+            if ( e.shiftKey && ( active === first || ! openPanel.contains( active ) ) ) {
+                e.preventDefault();
+                last.focus();
+            } else if ( ! e.shiftKey && active === last ) {
+                e.preventDefault();
+                first.focus();
+            }
         }
     } );
 
