@@ -237,8 +237,11 @@
 // Spacer keeps leaf items aligned with items that have a caret.
 .post-toc__caret--empty {
     flex: 0 0 auto;
-    width: 15px;
-    height: 15px;
+    width: 7px;
+    height: 7px;
+    background: $gray;
+    border-radius: 15px;
+    opacity: 0.75;
 }
 
 // Rotate the caret when its item is expanded.
