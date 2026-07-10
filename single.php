@@ -50,6 +50,8 @@ while ( have_posts() ) :
             </div><!-- .block-wrapper -->
         </article><!-- #post-<?php the_ID(); ?> -->
 
+        <?php red_egg_related_posts(); ?>
+
     </main><!-- #primary -->
 
     <?php

@@ -419,3 +419,147 @@ function red_egg_the_author_bio() {
 
     echo '</div><!-- .author-bio -->';
 }
+
+
+// ============================================
+//  Blob Decoration (PHP mirror of BlobAnimation.View)
+//
+//  Outputs the same markup the Insights block uses so
+//  js/blob-animation.js (GSAP MorphSVG) animates it.
+//  Shapes are inline — no assets required.
+// ============================================
+
+function red_egg_blob_decoration( $shape = 'shape1', $position = 'center-right', $speed = 12 ) {
+
+    $shapes = [
+        'shape1' => 'M646.7,199.1c-7.8-33.2-3.8-68.6-17.5-100.7-33.7-81.5-141.3-112.6-220.7-62.7-71.5,42.5-69.3,134.1-114.9,196.8C223.9,343.3,30.1,293.1,15.4,448.6c-9.4,150.5,206.7,204.9,316.2,122,102.3-71.7,162-93.4,280.4-36.4,195.7,85.9,375.9-168.4,156.2-264.9-52.8-15.3-107.1-1.8-121.5-70.3Z',
+        'shape2' => 'M623.4,77c-208.5-49.5-122.1,158.6-397,106.3-72.5-11.9-135.3,28.9-147.9,102.7-34.3,152.5,93.9,306.7,250.2,229.7,39.1-19.1,78.8-45.5,123.9-44.3,49.5,1.3,95,25.4,143.9,30.4,97.1,5.9,219.1-58.2,214.5-167.7-5.8-109.4-76.3-232.8-187.6-257.1h0Z',
+        'shape3' => 'M623.4,76.9c-208.5-49.5-122.1,158.6-397,106.3-72.5-11.9-135.3,28.9-147.9,102.6-34.3,152.5,93.9,306.7,250.2,229.7,39.1-19.1,78.8-45.5,123.9-44.3,49.5,1.3,95,25.4,143.9,30.4,97.1,5.9,219.1-58.2,214.5-167.7-5.8-109.4-76.3-232.8-187.6-257.1h0Z',
+    ];
+
+    $d = isset( $shapes[ $shape ] ) ? $shapes[ $shape ] : $shapes['shape1'];
+
+    $html  = '<div class="blob-decoration blob-decoration--' . esc_attr( $position ) . '" data-blob-enabled="true" data-blob-shape="' . esc_attr( $shape ) . '" data-blob-speed="' . esc_attr( $speed ) . '">';
+    $html .= '<svg class="blob-decoration__svg" viewBox="0 0 884 621" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" aria-hidden="true" focusable="false">';
+    $html .= '<path class="blob-decoration__path" d="' . $d . '" fill="#F2ECE5" />';
+    $html .= '</svg>';
+    $html .= '</div>';
+
+    return $html;
+}
+
+
+// ============================================
+//  Related Posts (single.php)
+//
+//  Up to 2 posts sharing a category with the current
+//  post (falls back to most-recent posts). Rendered in
+//  PHP with the Insights block markup/classes so the
+//  card + grid styling is shared.
+// ============================================
+
+/**
+ * @param int $post_id
+ * @param int $number
+ * @return int[] Post IDs.
+ */
+function red_egg_get_related_post_ids( $post_id, $number = 2 ) {
+
+    $found = [];
+    $cats  = wp_get_post_categories( $post_id );
+
+    if ( ! empty( $cats ) ) {
+        $related = new WP_Query( [
+            'post_type'           => 'post',
+            'posts_per_page'      => $number,
+            'post__not_in'        => [ $post_id ],
+            'category__in'        => $cats,
+            'orderby'             => 'date',
+            'order'               => 'DESC',
+            'ignore_sticky_posts' => true,
+            'no_found_rows'       => true,
+            'fields'              => 'ids',
+        ] );
+        $found = $related->posts;
+    }
+
+    // Backfill with recent posts if the category didn't yield enough.
+    if ( count( $found ) < $number ) {
+        $exclude = array_merge( [ $post_id ], $found );
+        $fill    = new WP_Query( [
+            'post_type'           => 'post',
+            'posts_per_page'      => $number - count( $found ),
+            'post__not_in'        => $exclude,
+            'orderby'             => 'date',
+            'order'               => 'DESC',
+            'ignore_sticky_posts' => true,
+            'no_found_rows'       => true,
+            'fields'              => 'ids',
+        ] );
+        $found = array_merge( $found, $fill->posts );
+    }
+
+    return $found;
+}
+
+/**
+ * Render a single related-post card (matches Insights markup).
+ *
+ * @param int $id
+ * @return string
+ */
+function red_egg_related_post_card( $id ) {
+
+    $permalink = get_the_permalink( $id );
+    $title     = get_the_title( $id );
+    $date      = get_the_date( 'n.j.y', $id );
+    $excerpt   = wp_trim_words( get_the_excerpt( $id ), 25, '…' );
+
+    $html  = '<div class="resource-card">';
+    $html .= '<div class="resource-extra">';
+    $html .= '<a class="resource-wrap" href="' . esc_url( $permalink ) . '">';
+    $html .= '<div class="cont-wrap">';
+    $html .= '<div class="content">';
+    $html .= '<span class="resource-date">' . esc_html( $date ) . '</span>';
+    $html .= '<h3 class="resource-title">' . esc_html( $title ) . '</h3>';
+    $html .= '<p class="resource-excerpt">' . esc_html( $excerpt ) . '</p>';
+    $html .= '<div class="wp-block-button is-style-outline-gray">';
+    $html .= '<span class="wp-button wp-block-button__link wp-element-button">' . esc_html__( 'Read More', 'red-egg' ) . '</span>';
+    $html .= '</div>';
+    $html .= '</div><!-- .content -->';
+    $html .= '</div><!-- .cont-wrap -->';
+    $html .= '</a>';
+    $html .= '</div><!-- .resource-extra -->';
+    $html .= '</div><!-- .resource-card -->';
+
+    return $html;
+}
+
+/**
+ * Output the Related Posts section for the current post.
+ */
+function red_egg_related_posts() {
+
+    $post_id = get_the_ID();
+    $ids     = red_egg_get_related_post_ids( $post_id, 2 );
+
+    if ( empty( $ids ) ) {
+        return;
+    }
+
+    echo '<section class="insights-block related-posts">';
+        echo red_egg_blob_decoration( 'shape1', 'center-right', 14 ); // phpcs:ignore WordPress.Security.EscapingOutput.OutputNotEscaped
+        echo red_egg_blob_decoration( 'shape2', 'bottom-left', 18 );  // phpcs:ignore WordPress.Security.EscapingOutput.OutputNotEscaped
+        echo '<div class="block-wrapper">';
+            echo '<header class="insights-block__header related-posts__header">';
+                echo '<p class="related-posts__label">' . esc_html__( 'Insights', 'red-egg' ) . '</p>';
+                echo '<h2 class="related-posts__heading">' . esc_html__( 'Related Posts', 'red-egg' ) . '</h2>';
+            echo '</header>';
+            echo '<div class="resources grid">';
+                foreach ( $ids as $rid ) {
+                    echo red_egg_related_post_card( $rid ); // phpcs:ignore WordPress.Security.EscapingOutput.OutputNotEscaped
+                }
+            echo '</div><!-- .resources.grid -->';
+        echo '</div><!-- .block-wrapper -->';
+    echo '</section><!-- .related-posts -->';
+}

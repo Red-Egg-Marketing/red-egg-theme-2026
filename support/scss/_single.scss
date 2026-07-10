@@ -367,3 +367,29 @@
         }
     }
 }
+
+// ---- Related Posts (single.php) ----
+// Reuses .insights-block card + grid styles; only the section
+// header needs its own rules here.
+.related-posts {
+    overflow: hidden; // keep blob decorations from causing scroll
+}
+
+.related-posts__header {
+    text-align: left;
+}
+
+.related-posts__label {
+    font-family: $font-head;
+    font-weight: 600;
+    font-size: 0.875rem;
+    letter-spacing: 0.1875rem;
+    text-transform: uppercase;
+    color: $gray;
+    margin: 0 0 0.5rem 0;
+}
+
+.related-posts__heading {
+    @include primary-h1;
+    margin: 0;
+}
