@@ -381,10 +381,10 @@ function red_egg_the_author_bio() {
         if ( $image ) {
             // ACF image return format may be array, ID, or URL.
             if ( is_array( $image ) ) {
-                $src = isset( $image['sizes']['thumbnail'] ) ? $image['sizes']['thumbnail'] : $image['url'];
+                $src = isset( $image['sizes']['medium'] ) ? $image['sizes']['medium'] : $image['url'];
                 $alt = ! empty( $image['alt'] ) ? $image['alt'] : $name;
             } elseif ( is_numeric( $image ) ) {
-                $src = wp_get_attachment_image_url( (int) $image, 'thumbnail' );
+                $src = wp_get_attachment_image_url( (int) $image, 'medium' );
                 $alt = $name;
             } else {
                 $src = $image;
