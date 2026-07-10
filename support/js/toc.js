@@ -1,9 +1,10 @@
 /**
  * Table of Contents – Frontend
  *
- * On mobile the TOC list is collapsed behind a toggle button.
- * On desktop the list is always shown (CSS forces it open), and
- * the toggle simply acts as a non-interactive heading.
+ * 1. Per-item carets expand/collapse their children. Every level
+ *    below the top (H2) starts collapsed.
+ * 2. On mobile the whole TOC list is collapsed behind the heading
+ *    toggle; on desktop it is always shown (CSS).
  * Compiled into main.js via front-end.js.
  */
 
@@ -11,14 +12,26 @@ function initToc() {
     const blocks = document.querySelectorAll( '.post-toc' );
 
     blocks.forEach( ( toc ) => {
+
+        // Whole-box toggle (mobile).
         const toggle = toc.querySelector( '.post-toc__toggle' );
-        if ( ! toggle ) {
-            return;
+        if ( toggle ) {
+            toggle.addEventListener( 'click', () => {
+                const isOpen = toc.classList.toggle( 'is-open' );
+                toggle.setAttribute( 'aria-expanded', isOpen ? 'true' : 'false' );
+            } );
         }
 
-        toggle.addEventListener( 'click', () => {
-            const isOpen = toc.classList.toggle( 'is-open' );
-            toggle.setAttribute( 'aria-expanded', isOpen ? 'true' : 'false' );
+        // Per-item expand/collapse carets.
+        toc.querySelectorAll( '.post-toc__caret[aria-expanded]' ).forEach( ( caret ) => {
+            caret.addEventListener( 'click', () => {
+                const item = caret.closest( '.post-toc__item' );
+                if ( ! item ) {
+                    return;
+                }
+                const isOpen = item.classList.toggle( 'is-open' );
+                caret.setAttribute( 'aria-expanded', isOpen ? 'true' : 'false' );
+            } );
         } );
     } );
 }

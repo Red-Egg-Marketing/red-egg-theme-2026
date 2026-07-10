@@ -163,14 +163,8 @@
         padding: 0;
     }
 
-    // Nested levels indent
-    ul ul {
-        margin-left: 1.25rem;
-        margin-top: 0.35rem;
-    }
-
     li {
-        margin: 0 0 0.6rem 0;
+        margin: 0;
         padding: 0;
     }
 }
@@ -179,37 +173,72 @@
     display: block;
 }
 
+// Sub-levels start collapsed; shown when the parent item is open.
+.post-toc__sublist {
+    display: none;
+    margin-left: 1.75rem;
+}
+
+.post-toc__item.is-open > .post-toc__sublist {
+    display: block;
+    margin-top: 0.5rem;
+}
+
+.post-toc__row {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.6rem;
+}
+
+// Caret toggle — only rendered on items that have children.
+.post-toc__caret {
+    flex: 0 0 auto;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 15px;
+    height: 15px;
+    padding: 0;
+    background: transparent;
+    border: 0;
+    cursor: pointer;
+
+    .post-toc__caret-icon {
+        display: block;
+        transition: transform 0.2s ease;
+    }
+}
+
+// Spacer keeps leaf items aligned with items that have a caret.
+.post-toc__caret--empty {
+    flex: 0 0 auto;
+    width: 15px;
+    height: 15px;
+}
+
+// Rotate the caret when its item is expanded.
+.post-toc__item.is-open > .post-toc__row .post-toc__caret-icon {
+    transform: rotate(180deg);
+}
+
 .post-toc__link {
-    position: relative;
-    display: inline-block;
-    padding-left: 1rem;
     font-family: $font-body;
     font-weight: 400;
     font-size: 1rem;
     line-height: 1.4rem;
     color: $navy;
-    text-decoration: none;
-
-    // Red chevron marker
-    &::before {
-        content: '';
-        position: absolute;
-        left: 0;
-        top: 0.35rem;
-        width: 6px;
-        height: 6px;
-        border-right: 2px solid $red;
-        border-top: 2px solid $red;
-        transform: rotate(45deg);
-    }
+    text-decoration: underline;
+    text-decoration-color: rgba($navy, 0.35);
+    text-underline-offset: 3px;
 
     &:hover {
         color: $red;
-        text-decoration: underline;
+        text-decoration-color: $red;
     }
 }
 
-// Deeper levels: slightly muted
+// Deeper levels: slightly smaller / muted
 .post-toc__item--h3 .post-toc__link,
 .post-toc__item--h4 .post-toc__link,
 .post-toc__item--h5 .post-toc__link,
