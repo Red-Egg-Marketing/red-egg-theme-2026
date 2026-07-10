@@ -1,0 +1,41 @@
+// ========================================
+//  _list-markers.scss
+//  Optional "Egg Markers" style for core/list.
+//
+//  Registered as a block style (see blocks/index.js) so editors can
+//  toggle it on any list via the block Styles panel. Replaces the
+//  default bullet/number with the Red Egg egg icon.
+//
+//  Shared by style.scss (frontend) and editor.scss (editor preview).
+// ========================================
+
+.entry-content ul.is-style-egg-markers,
+.entry-content ol.is-style-egg-markers,
+.editor-styles-wrapper ul.is-style-egg-markers,
+.editor-styles-wrapper ol.is-style-egg-markers {
+    list-style: none;
+    padding-left: 1.75rem;
+
+    > li {
+        position: relative;
+        padding-left: 0.5rem;
+        margin-bottom: 0.5rem;
+
+        &::before {
+            content: '';
+            position: absolute;
+            left: -1.4rem;
+            top: 0.2em;
+            width: 15px;
+            height: 19px;
+            background: url("data:image/svg+xml,%3Csvg%20width=%2215%22%20height=%2219%22%20viewBox=%220%200%2015%2019%22%20fill=%22none%22%20xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cpath%20d=%22M7.5%2019C3.35938%2019%200%2014.9625%200%2010.7667C0%206.33333%202.5%200%207.5%200C12.5%200%2015%206.33333%2015%2010.7667C15%2014.9625%2011.6406%2019%207.5%2019ZM6.04688%204.67083C6.30078%204.43333%206.32031%204.03354%206.08594%203.77625C5.85156%203.51896%205.45703%203.49917%205.20312%203.73667C4.26953%204.59958%203.59766%205.82271%203.16016%207.06958C2.72266%208.32042%202.5%209.64646%202.5%2010.7706C2.5%2011.119%202.78125%2011.404%203.125%2011.404C3.46875%2011.404%203.75%2011.119%203.75%2010.7706C3.75%209.80083%203.94531%208.61729%204.33984%207.49312C4.73438%206.365%205.31641%205.35167%206.04688%204.67479V4.67083Z%22%20fill=%22%23DC2035%22/%3E%3C/svg%3E") no-repeat center;
+            background-size: contain;
+        }
+
+        // Remove the egg from any nested (non-egg) lists.
+        ul:not(.is-style-egg-markers) > li::before,
+        ol:not(.is-style-egg-markers) > li::before {
+            content: none;
+        }
+    }
+}

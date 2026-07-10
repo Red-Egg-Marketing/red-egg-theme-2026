@@ -188,4 +188,9 @@ wp.domReady( () => {
         name: 'section-label',
         label: 'Section Label',
     } );
+
+    wp.blocks.registerBlockStyle( 'core/list', {
+        name: 'egg-markers',
+        label: 'Egg Markers',
+    } );
 } );
