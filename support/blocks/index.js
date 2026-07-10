@@ -159,6 +159,13 @@ import './icon-cards/index';
 import './icon-cards-items/index';
 import './icon-card/index';
 
+// ---- Blog Content Blocks ----
+// Callout (orange border / drop shadow)
+import './callout/index';
+// FAQ Accordion (parent) + Accordion Item (child)
+import './faq-accordion/index';
+import './accordion-item/index';
+
 // ---- Format Types ----
 // Rotate Words (Word Swap) – core/heading only
 import '../format-types/rotate-words/index';

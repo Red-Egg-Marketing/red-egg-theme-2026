@@ -365,6 +365,21 @@ function red_egg_register_blocks() {
     register_block_type( 'red-egg-block/icon-card', [
         'editor_script' => 'red-egg-editor-blocks',
     ] );
+
+    // ---- Blog: Callout (post content) ----
+    register_block_type( 'red-egg-block/callout', [
+        'editor_script' => 'red-egg-editor-blocks',
+    ] );
+
+    // ---- Blog: FAQ Accordion (parent) ----
+    register_block_type( 'red-egg-block/faq-accordion', [
+        'editor_script' => 'red-egg-editor-blocks',
+    ] );
+
+    // ---- Blog: Accordion Item (child of faq-accordion) ----
+    register_block_type( 'red-egg-block/accordion-item', [
+        'editor_script' => 'red-egg-editor-blocks',
+    ] );
 }
 add_action( 'init', 'red_egg_register_blocks' );
 

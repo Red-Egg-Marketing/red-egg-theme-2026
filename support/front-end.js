@@ -55,3 +55,11 @@ import './js/squiggle-animation';
 
 // Blob Animation – GSAP MorphSVG blob morphing
 import './js/mask-morph';
+
+// ---- Blog ----
+
+// FAQ Accordion – expand/collapse
+import './blocks/faq-accordion/frontend';
+
+// Table of Contents – collapsible on mobile
+import './js/toc';

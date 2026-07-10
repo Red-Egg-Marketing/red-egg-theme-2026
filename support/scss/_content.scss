@@ -1,0 +1,197 @@
+// ========================================
+//  _content.scss
+//  Core block styling for post/page content
+//
+//  These styles target the STANDARD core blocks
+//  (headings, paragraphs, lists, tables, blockquote,
+//  images) when they sit at the TOP LEVEL of the
+//  content area — i.e. direct children of .entry-content.
+//
+//  The child combinator (>) is intentional: a core block
+//  nested inside another block (columns-group, callout,
+//  accordion, etc.) is NOT a direct child, so it does NOT
+//  inherit these defaults — the parent block controls it.
+//
+//  .entry-content is used by single.php, page.php and the
+//  CPT single templates, so these styles apply across all
+//  post types and pages.
+// ========================================
+
+.entry-content {
+    @include body-text;
+
+    // ---- Headings ----
+    > h2,
+    > h3,
+    > h4,
+    > h5,
+    > h6 {
+        margin-top: 2.5rem;
+        margin-bottom: 1rem;
+
+        &:first-child {
+            margin-top: 0;
+        }
+    }
+
+    > h2 { @include primary-h2; }
+    > h3 { @include primary-h3; }
+    > h4 { @include primary-h4; font-weight: 700; }
+
+    > h5 {
+        font-family: $font-head;
+        font-weight: 700;
+        font-size: 1rem;
+        line-height: 1.5rem;
+        letter-spacing: 0.0625rem;
+        text-transform: uppercase;
+        color: $head-color;
+    }
+
+    > h6 {
+        font-family: $font-head;
+        font-weight: 600;
+        font-size: 0.875rem;
+        line-height: 1.375rem;
+        letter-spacing: 0.09375rem;
+        text-transform: uppercase;
+        color: $gray;
+    }
+
+    // ---- Paragraphs ----
+    > p {
+        margin-bottom: 1.25rem;
+    }
+
+    // ---- Links (in flowing text) ----
+    a {
+        color: $red;
+        text-decoration: underline;
+
+        &:hover {
+            color: darken($red, 10%);
+        }
+    }
+
+    // ---- Images ----
+    > figure.wp-block-image {
+        margin: 2rem 0;
+
+        img {
+            border-radius: $default-border-radius;
+        }
+    }
+
+    // ---- Lists ----
+    > ul,
+    > ol,
+    > ul.wp-block-list,
+    > ol.wp-block-list {
+        margin: 0 0 1.25rem 1.25rem;
+        padding: 0;
+
+        li {
+            margin-bottom: 0.5rem;
+            padding-left: 0.35rem;
+        }
+
+        // Nested lists inside a top-level list are still content.
+        ul,
+        ol {
+            margin: 0.5rem 0 0.5rem 1.25rem;
+        }
+    }
+
+    > ul,
+    > ul.wp-block-list {
+        list-style: disc;
+
+        li::marker {
+            color: $red;
+        }
+    }
+
+    > ol,
+    > ol.wp-block-list {
+        list-style: decimal;
+
+        li::marker {
+            color: $red;
+            font-weight: 700;
+            font-family: $font-head;
+        }
+    }
+
+    // ---- Blockquote ----
+    > blockquote,
+    > blockquote.wp-block-quote {
+        margin: 2.5rem 0;
+        padding: 0.5rem 0 0.5rem 2rem;
+        border-left: 4px solid $red;
+        font-family: $font-head;
+        font-style: italic;
+        font-weight: 500;
+        color: $gray;
+
+        p {
+            margin-bottom: 0.75rem;
+
+            &:last-child {
+                margin-bottom: 0;
+            }
+        }
+
+        cite {
+            display: block;
+            margin-top: 0.5rem;
+            font-family: $font-body;
+            font-style: normal;
+            font-weight: 400;
+            font-size: 0.9375rem;
+            color: rgba($gray, 0.7);
+        }
+    }
+
+    // ---- Tables ----
+    > figure.wp-block-table,
+    > table {
+        margin: 2.5rem 0;
+        overflow-x: auto;
+    }
+
+    > figure.wp-block-table table,
+    > table {
+        width: 100%;
+        border-collapse: collapse;
+        font-family: $font-body;
+
+        th,
+        td {
+            padding: 0.85rem 1.25rem;
+            border: 1px solid rgba($gray, 0.18);
+            text-align: left;
+            vertical-align: top;
+        }
+
+        thead th {
+            background-color: $orange;
+            color: $white;
+            font-family: $font-head;
+            font-weight: 700;
+            font-size: 0.9375rem;
+            letter-spacing: 0.0625rem;
+            text-transform: uppercase;
+        }
+
+        tbody tr:nth-child(even) {
+            background-color: rgba($eggshell, 0.5);
+        }
+    }
+
+    // ---- Separator ----
+    > hr.wp-block-separator {
+        margin: 3rem 0;
+        border: 0;
+        border-top: 1px solid rgba($gray, 0.2);
+    }
+}

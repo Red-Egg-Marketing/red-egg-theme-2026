@@ -307,6 +307,11 @@ require get_template_directory() . '/inc/custom-endpoints.php';
 require get_template_directory() . '/inc/template-functions.php';
 
 /**
+ * Single Post Helpers (TOC, read time, author bio)
+ */
+require get_template_directory() . '/inc/single-post.php';
+
+/**
  * Mega Menu Nav Walker
  */
 require get_template_directory() . '/inc/nav-walker.php';

@@ -1,6 +1,11 @@
 // ========================================
 //  _templates.scss
 //  Styles for WordPress template files
+//
+//  NOTE: Single-post layout (header, thumbnail, read time,
+//  TOC, author) lives in _single.scss. Core content block
+//  styling (headings, tables, lists, blockquote) lives in
+//  _content.scss.
 // ========================================
 
 // ---- Site main ----
@@ -29,120 +34,6 @@
 .archive-description {
     @include primary-h4;
     margin-top: 1rem;
-}
-
-// ---- Entry (single post) ----
-.entry-header {
-    padding-top: $default-section-padding-top;
-    padding-bottom: 2rem;
-
-    @media screen and (min-width: $small-width) {
-        padding-top: 5rem;
-        padding-bottom: 2.5rem;
-    }
-}
-
-.entry-title {
-    @include primary-h1;
-    margin: 0 0 1rem 0;
-}
-
-.entry-meta {
-    @include primary-h4;
-    opacity: 0.7;
-
-    .posted-on,
-    .byline {
-        display: inline;
-    }
-
-    .byline {
-        margin-left: 0.25rem;
-    }
-
-    a {
-        color: $gray;
-        text-decoration: underline;
-
-        &:hover {
-            color: $red;
-        }
-    }
-}
-
-.entry-thumbnail {
-    margin-bottom: 2.5rem;
-    border-radius: $default-border-radius;
-    overflow: hidden;
-
-    img {
-        display: block;
-        width: 100%;
-        height: auto;
-    }
-}
-
-.entry-content {
-    @include body-text;
-    padding-bottom: 0;
-
-    h2, h3, h4 {
-        margin-top: 2rem;
-        margin-bottom: 1rem;
-    }
-
-    h2 {
-        @include primary-h2;
-    }
-
-    h3 {
-        @include primary-h3;
-    }
-
-    h4 {
-        @include primary-h4;
-    }
-
-    p {
-        margin-bottom: 1.25rem;
-    }
-
-    img {
-        border-radius: $default-border-radius;
-    }
-
-    a {
-        color: $red;
-        text-decoration: underline;
-
-        &:hover {
-            color: darken($red, 10%);
-        }
-    }
-
-    blockquote {
-        border-left: 4px solid $peach;
-        margin: 2rem 0;
-        padding: 1rem 0 1rem 2rem;
-        font-style: italic;
-    }
-}
-
-.entry-footer {
-    @include body-text;
-    font-size: 0.9375rem;
-    padding: 1.5rem 0 3rem;
-    border-top: 1px solid rgba($gray, 0.15);
-
-    .cat-links,
-    .tags-links {
-        display: block;
-        margin-bottom: 0.5rem;
-
-        a {
-            color: $red;
-        }
-    }
 }
 
 // ---- Post navigation (prev/next) ----

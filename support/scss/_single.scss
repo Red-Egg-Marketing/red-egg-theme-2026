@@ -1,0 +1,298 @@
+// ========================================
+//  _single.scss
+//  Single blog post layout
+//
+//  Featured image → date → title → read time →
+//  Table of Contents → content → author bio
+// ========================================
+
+.single-post__wrapper {
+    padding-top: 2.5rem;
+    padding-bottom: 4rem;
+
+    @media screen and (min-width: $small-width) {
+        padding-top: 3.5rem;
+        padding-bottom: 5.5rem;
+    }
+}
+
+// ---- Featured image ----
+.single-post .entry-thumbnail {
+    margin-bottom: 2rem;
+    border-radius: $default-border-radius;
+    overflow: hidden;
+
+    @media screen and (min-width: $small-width) {
+        margin-bottom: 2.5rem;
+    }
+
+    img {
+        display: block;
+        width: 100%;
+        height: auto;
+    }
+}
+
+// ---- Header (centered) ----
+.single-post .entry-header {
+    text-align: center;
+    margin-bottom: 2.5rem;
+
+    @media screen and (min-width: $small-width) {
+        margin-bottom: 3rem;
+    }
+}
+
+.single-post .entry-date {
+    font-family: $font-head;
+    font-weight: 600;
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    letter-spacing: 0.125rem;
+    text-transform: uppercase;
+    color: $red;
+    margin: 0 0 0.75rem 0;
+}
+
+.single-post .entry-title {
+    @include primary-h1;
+    color: $red;
+    margin: 0 0 0.75rem 0;
+}
+
+.single-post .entry-read-time {
+    font-family: $font-body;
+    font-weight: 400;
+    font-size: 1rem;
+    color: rgba($gray, 0.7);
+    margin: 0;
+
+    span {
+        font-weight: 600;
+    }
+}
+
+// ---- Table of Contents ----
+.post-toc {
+    background-color: $eggshell;
+    border-radius: $default-border-radius;
+    padding: 1.5rem 1.75rem;
+    margin-bottom: 2.5rem;
+
+    @media screen and (min-width: $small-width) {
+        padding: 1.75rem 2.25rem;
+        margin-bottom: 3rem;
+    }
+}
+
+.post-toc__toggle {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    width: 100%;
+    padding: 0;
+    background: transparent;
+    border: 0;
+    cursor: pointer;
+
+    @media screen and (min-width: $small-width) {
+        cursor: default;
+    }
+}
+
+.post-toc__label {
+    font-family: $font-head;
+    font-weight: 700;
+    font-size: 0.875rem;
+    letter-spacing: 0.1875rem;
+    text-transform: uppercase;
+    color: $gray;
+}
+
+// +/– style toggle icon (mobile only)
+.post-toc__toggle-icon {
+    position: relative;
+    flex: 0 0 auto;
+    width: 18px;
+    height: 18px;
+
+    &::before,
+    &::after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        background: $red;
+        transition: transform 0.25s ease, opacity 0.25s ease;
+    }
+
+    &::before {
+        width: 14px;
+        height: 2px;
+        transform: translate(-50%, -50%);
+    }
+
+    &::after {
+        width: 2px;
+        height: 14px;
+        transform: translate(-50%, -50%);
+    }
+
+    @media screen and (min-width: $small-width) {
+        display: none;
+    }
+}
+
+.post-toc.is-open .post-toc__toggle-icon::after {
+    transform: translate(-50%, -50%) rotate(90deg);
+    opacity: 0;
+}
+
+.post-toc__nav {
+    display: none;
+    margin-top: 1.25rem;
+
+    @media screen and (min-width: $small-width) {
+        display: block;
+    }
+
+    ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    // Nested levels indent
+    ul ul {
+        margin-left: 1.25rem;
+        margin-top: 0.35rem;
+    }
+
+    li {
+        margin: 0 0 0.6rem 0;
+        padding: 0;
+    }
+}
+
+.post-toc.is-open .post-toc__nav {
+    display: block;
+}
+
+.post-toc__link {
+    position: relative;
+    display: inline-block;
+    padding-left: 1rem;
+    font-family: $font-body;
+    font-weight: 400;
+    font-size: 1rem;
+    line-height: 1.4rem;
+    color: $navy;
+    text-decoration: none;
+
+    // Red chevron marker
+    &::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0.35rem;
+        width: 6px;
+        height: 6px;
+        border-right: 2px solid $red;
+        border-top: 2px solid $red;
+        transform: rotate(45deg);
+    }
+
+    &:hover {
+        color: $red;
+        text-decoration: underline;
+    }
+}
+
+// Deeper levels: slightly muted
+.post-toc__item--h3 .post-toc__link,
+.post-toc__item--h4 .post-toc__link,
+.post-toc__item--h5 .post-toc__link,
+.post-toc__item--h6 .post-toc__link {
+    font-size: 0.9375rem;
+    color: rgba($gray, 0.85);
+}
+
+// ---- Author bio ----
+.author-bio {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.25rem;
+    margin-top: 3rem;
+    padding-top: 2.5rem;
+    border-top: 1px solid rgba($gray, 0.15);
+
+    @media screen and (min-width: $form-width) {
+        flex-direction: row;
+        align-items: center;
+        gap: 1.75rem;
+    }
+}
+
+.author-bio__avatar {
+    flex: 0 0 auto;
+
+    img {
+        display: block;
+        width: 90px;
+        height: 90px;
+        border-radius: 50%;
+        object-fit: cover;
+    }
+}
+
+.author-bio__name {
+    font-family: $font-head;
+    font-weight: 700;
+    font-size: 1rem;
+    letter-spacing: 0.09375rem;
+    text-transform: uppercase;
+    margin: 0 0 0.25rem 0;
+
+    a {
+        color: $red;
+        text-decoration: none;
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+}
+
+.author-bio__title {
+    font-family: $font-body;
+    font-weight: 500;
+    font-size: 0.9375rem;
+    color: rgba($gray, 0.7);
+    margin: 0 0 0.5rem 0;
+}
+
+.author-bio__text {
+    @include body-text;
+    font-size: 1rem;
+    line-height: 1.625rem;
+    margin: 0;
+}
+
+// ---- Entry footer (categories / tags) ----
+.single-post .entry-footer {
+    @include body-text;
+    font-size: 0.9375rem;
+    padding: 1.5rem 0 0;
+
+    .cat-links,
+    .tags-links {
+        display: block;
+        margin-top: 1rem;
+
+        a {
+            color: $red;
+        }
+    }
+}

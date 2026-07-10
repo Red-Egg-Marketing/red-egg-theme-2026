@@ -1,0 +1,96 @@
+// ========================================
+//  Callout Block Styles
+//  Block: red-egg-block/callout
+//
+//  Two block styles:
+//    .is-style-border-top → orange top border, tinted card
+//    .is-style-shadow     → white card with drop shadow
+// ========================================
+
+.callout-block {
+    margin: 2.5rem 0;
+
+    .callout-block__inner {
+        display: flex;
+        align-items: flex-start;
+        gap: 1rem;
+        padding: 1.5rem 1.75rem;
+        border-radius: $default-border-radius;
+
+        // Default look = Orange Border style (WP does not always emit the
+        // is-style class for the default style, so it lives on the base).
+        background-color: rgba($peach, 0.18);
+        border-top: 4px solid $orange;
+
+        @media screen and (min-width: $small-width) {
+            padding: 1.75rem 2.25rem;
+            gap: 1.25rem;
+        }
+    }
+
+    .callout-block__icon {
+        flex: 0 0 auto;
+        line-height: 1;
+        font-size: 1.375rem;
+        color: $red;
+
+        i {
+            display: block;
+        }
+    }
+
+    .callout-block__content {
+        flex: 1 1 auto;
+
+        // Headings inside a callout: compact, uppercase, accent color.
+        h2, h3, h4, h5, h6 {
+            margin-top: 0;
+            margin-bottom: 0.5rem;
+            font-family: $font-head;
+            font-weight: 700;
+            font-size: 1.0625rem;
+            line-height: 1.5rem;
+            letter-spacing: 0.0625rem;
+            text-transform: uppercase;
+            color: $red;
+        }
+
+        p {
+            @include body-text;
+            font-size: 1rem;
+            line-height: 1.625rem;
+            margin-bottom: 0;
+
+            & + p {
+                margin-top: 0.75rem;
+            }
+        }
+
+        > *:last-child {
+            margin-bottom: 0;
+        }
+    }
+
+    // ---- Style: Orange Border (default, explicit) ----
+    &.is-style-border-top .callout-block__inner {
+        background-color: rgba($peach, 0.18);
+        border-top: 4px solid $orange;
+        border-left: 0;
+        border-right: 0;
+        border-bottom: 0;
+        box-shadow: none;
+    }
+
+    // ---- Style: Drop Shadow ----
+    &.is-style-shadow .callout-block__inner {
+        background-color: $white;
+        border: 1px solid rgba($gray, 0.12);
+        box-shadow: 0 12px 30px rgba($gray, 0.14);
+    }
+
+    &.is-style-shadow .callout-block__content {
+        h2, h3, h4, h5, h6 {
+            color: $gray;
+        }
+    }
+}

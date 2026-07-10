@@ -23,6 +23,10 @@
 // ---- Template Styles ----
 @import 'templates';
 
+// ---- Content (core blocks) + Single Post ----
+@import 'content';
+@import 'single';
+
 // ---- Block Styles ----
 @import '../blocks/hero-background/style-block';
 @import '../blocks/columns-group/style-block';
@@ -60,6 +64,10 @@
 @import '../blocks/device-showcase/style-block';
 @import '../blocks/process-steps/style-block';
 @import '../blocks/icon-cards/style-block';
+
+// ---- Blog Content Blocks ----
+@import '../blocks/callout/style-block';
+@import '../blocks/faq-accordion/style-block';
 @import 'blob-animation';
 @import 'reviews';
 @import 'backgrounds';
