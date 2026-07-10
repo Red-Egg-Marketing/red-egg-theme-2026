@@ -14,8 +14,12 @@ function initToc() {
     blocks.forEach( ( toc ) => {
 
         // Whole-box toggle (mobile).
+        // NOTE: main.js is enqueued under two handles, so the bundle can
+        // run twice. Guard against binding the same control twice (which
+        // would toggle open + closed on a single click = no-op).
         const toggle = toc.querySelector( '.post-toc__toggle' );
-        if ( toggle ) {
+        if ( toggle && ! toggle.dataset.tocBound ) {
+            toggle.dataset.tocBound = 'true';
             toggle.addEventListener( 'click', () => {
                 const isOpen = toc.classList.toggle( 'is-open' );
                 toggle.setAttribute( 'aria-expanded', isOpen ? 'true' : 'false' );
@@ -24,6 +28,11 @@ function initToc() {
 
         // Per-item expand/collapse carets.
         toc.querySelectorAll( '.post-toc__caret[aria-expanded]' ).forEach( ( caret ) => {
+            if ( caret.dataset.tocBound ) {
+                return;
+            }
+            caret.dataset.tocBound = 'true';
+
             caret.addEventListener( 'click', () => {
                 const item = caret.closest( '.post-toc__item' );
                 if ( ! item ) {
