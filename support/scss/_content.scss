@@ -20,6 +20,22 @@
 .entry-content {
     @include body-text;
 
+    // ---- Readable, centered column ----
+    // Standard top-level content elements are capped at 936px and
+    // centered. (Full-width Red Egg section blocks are unaffected.)
+    > p,
+    > h2, > h3, > h4, > h5, > h6,
+    > ul, > ol,
+    > blockquote,
+    > figure.wp-block-image,
+    > figure.wp-block-table,
+    > table,
+    > hr.wp-block-separator {
+        max-width: 936px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
     // ---- Headings ----
     > h2,
     > h3,
@@ -75,7 +91,7 @@
 
     // ---- Images ----
     > figure.wp-block-image {
-        margin: 2rem 0;
+        margin: 2rem auto;
 
         img {
             border-radius: $default-border-radius;
@@ -87,8 +103,8 @@
     > ol,
     > ul.wp-block-list,
     > ol.wp-block-list {
-        margin: 0 0 1.25rem 1.25rem;
-        padding: 0;
+        margin: 0 auto 1.25rem;
+        padding: 0 0 0 1.25rem; // keep room for markers while centered
 
         li {
             margin-bottom: 0.5rem;
@@ -125,7 +141,7 @@
     // ---- Blockquote ----
     > blockquote,
     > blockquote.wp-block-quote {
-        margin: 2.5rem 0;
+        margin: 2.5rem auto;
         padding: 0.5rem 0 0.5rem 2rem;
         border-left: 4px solid $red;
         font-family: $font-head;
@@ -155,7 +171,7 @@
     // ---- Tables ----
     > figure.wp-block-table,
     > table {
-        margin: 2.5rem 0;
+        margin: 2.5rem auto;
         overflow-x: auto;
     }
 
@@ -190,7 +206,7 @@
 
     // ---- Separator ----
     > hr.wp-block-separator {
-        margin: 3rem 0;
+        margin: 3rem auto;
         border: 0;
         border-top: 1px solid rgba($gray, 0.2);
     }
