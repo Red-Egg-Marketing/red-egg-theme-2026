@@ -43,18 +43,6 @@ get_header();
         </div><!-- .block-wrapper -->
     </article><!-- #post-<?php the_ID(); ?> -->
 
-    <?php
-    // Previous/Next post navigation
-    the_post_navigation( [
-        'prev_text' => '<span class="nav-subtitle">' . esc_html__( 'Previous:', 'red-egg' ) . '</span> <span class="nav-title">%title</span>',
-        'next_text' => '<span class="nav-subtitle">' . esc_html__( 'Next:', 'red-egg' ) . '</span> <span class="nav-title">%title</span>',
-    ] );
-
-    // Comments
-    if ( comments_open() || get_comments_number() ) :
-        comments_template();
-    endif;
-    ?>
 
 </main><!-- #primary -->
 
