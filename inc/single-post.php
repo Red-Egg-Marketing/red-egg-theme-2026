@@ -563,3 +563,28 @@ function red_egg_related_posts() {
         echo '</div><!-- .block-wrapper -->';
     echo '</section><!-- .related-posts -->';
 }
+
+function red_egg_posts_topics(int $id, string $tax = 'category', $label = '') {
+    $topics = get_the_terms($id, $tax);
+
+    $head_label = $label == '' ? ucfirst($tax) . ' Tagged' : $label;
+
+    if (!empty($topics) && ($topics instanceof WP_Error) == false) {
+    ?>
+        <h3 class="footer-header"><?= $head_label; ?></h3>
+        <ul class="tax-links link-buttons flex center">
+        <?php
+            foreach($topics as $topic) {
+                $t_id = $topic->term_id;
+                $t_name = $topic->name;
+                $t_link = get_term_link($t_id, $tax);
+                ?>
+                    <li class="tax-link"><a href="<?= $t_link; ?>"><?= $t_name; ?></a></li>
+                <?php
+            }
+        ?>
+        </ul>
+    <?php
+    }
+}
+

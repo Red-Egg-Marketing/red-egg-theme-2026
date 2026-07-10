@@ -51,7 +51,19 @@ while ( have_posts() ) :
         </article><!-- #post-<?php the_ID(); ?> -->
 
         <?php red_egg_related_posts(); ?>
-
+        <div class="wrapper single-meta">
+            <div class="block-wrapper flex center">
+                <div class="col-6 flex center">
+                    <?php red_egg_posts_topics($id); ?>
+                </div>
+                <div class="col-6 flex center">
+                    <?php
+                        get_template_part('template-parts/social-share');
+                    ?>
+                </div>
+            </div>
+        </div>
+    </div>
     </main><!-- #primary -->
 
     <?php

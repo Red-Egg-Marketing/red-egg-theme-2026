@@ -40,6 +40,29 @@
     }
 }
 
+.tax-links {
+    list-style-type: none;
+    width: 100%;
+    margin: 0;
+    gap: 0.5rem;
+    @media screen and (min-width: $small-width) {
+        gap: 1rem;
+    }
+}
+
+.tax-link a {
+    @include gray-button;
+}
+
+.single-meta {
+    background: $eggshell;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    @media screen and (min-width: $small-width) {
+        padding-top: 110px;
+        padding-bottom: 110px;
+    }
+}
 
 .single .entry-thumbnail {
     display: flex;
@@ -390,7 +413,37 @@
     margin: 0 0 0.5rem 0;
 }
 
+.tax-link a:hover {
+    color: white;
+}
+
 .related-posts__heading {
     @include primary-h1;
     margin: 0;
+}
+
+.share-content {
+    width: 100%;
+    gap: 0.5rem;
+    @media screen and (min-width: $small-width) {
+        gap: 1rem;
+    }
+}
+
+.share-icons {
+    gap: 0.5rem;
+    @media screen and (min-width: $small-width) {
+        gap: 1rem;
+    }
+}
+
+.share-content a { 
+    text-decoration: none; 
+}
+
+.footer-header {
+    margin-bottom: 20px;
+    @media screen and (min-width: $small-width) {
+        margin-bottom: 35px;
+    }
 }

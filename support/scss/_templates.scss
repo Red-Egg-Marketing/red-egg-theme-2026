@@ -25,6 +25,16 @@
     }
 }
 
+.flex {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+}
+
+.center {
+    justify-content: center;
+}
+
 .page-title,
 .archive-title {
     @include primary-h1;
@@ -34,6 +44,13 @@
 .archive-description {
     @include primary-h4;
     margin-top: 1rem;
+}
+
+.col-6 {
+    width: 100%;
+    @media screen and (min-width: $small-width) {
+        width: 50%;
+    }
 }
 
 // ---- Post navigation (prev/next) ----
