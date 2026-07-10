@@ -79,15 +79,7 @@
         margin-bottom: 1.25rem;
     }
 
-    // ---- Links (in flowing text) ----
-    a {
-        color: $red;
-        text-decoration: underline;
 
-        &:hover {
-            color: darken($red, 10%);
-        }
-    }
 
     // ---- Images ----
     > figure.wp-block-image {
@@ -123,7 +115,7 @@
         list-style: disc;
 
         li::marker {
-            color: $red;
+            color: $gray;
         }
     }
 
@@ -142,18 +134,22 @@
     > blockquote,
     > blockquote.wp-block-quote {
         margin: 2.5rem auto;
-        padding: 0.5rem 0 0.5rem 2rem;
+        padding: 1.25rem 0 1.25rem 2rem;
         border-left: 4px solid $red;
         font-family: $font-head;
-        font-style: italic;
         font-weight: 500;
         color: $gray;
 
         p {
             margin-bottom: 0.75rem;
-
+            font-size: 1rem;
+            line-height: 1.875rem;
             &:last-child {
                 margin-bottom: 0;
+            }
+            @media screen and (min-width: $small-width) {
+                font-size: 1.375rem;
+                line-height: 2.125rem;
             }
         }
 
@@ -184,24 +180,24 @@
         th,
         td {
             padding: 0.85rem 1.25rem;
-            border: 1px solid rgba($gray, 0.18);
+            border: 1px solid $gray;
             text-align: left;
             vertical-align: top;
         }
 
         thead th {
             background-color: $orange;
-            color: $white;
+            color: $gray;
             font-family: $font-head;
-            font-weight: 700;
+            font-weight: 500;
             font-size: 0.9375rem;
             letter-spacing: 0.0625rem;
             text-transform: uppercase;
+            @media screen and (min-width: $small-width) {
+                font-size: 1.375rem;
+            }
         }
 
-        tbody tr:nth-child(even) {
-            background-color: rgba($eggshell, 0.5);
-        }
     }
 
     // ---- Separator ----
@@ -210,4 +206,8 @@
         border: 0;
         border-top: 1px solid rgba($gray, 0.2);
     }
+}
+
+.wp-block-table thead {
+    border-bottom: none;
 }

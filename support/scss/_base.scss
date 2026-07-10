@@ -45,13 +45,10 @@ p {
 }
 
 a {
-    color: $link-color;
-    text-decoration: none;
+    color: $gray;
+    text-decoration: underline;
     transition: color 0.2s ease;
 
-    &:hover {
-        color: darken($link-color, 10%);
-    }
 }
 
 // ---- Images ----

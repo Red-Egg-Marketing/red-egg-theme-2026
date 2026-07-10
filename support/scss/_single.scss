@@ -282,12 +282,13 @@
     gap: 1.25rem;
     margin-top: 3rem;
     padding-top: 2.5rem;
-    border-top: 1px solid rgba($gray, 0.15);
+    border-top: 1px solid $gray;
 
     @media screen and (min-width: $form-width) {
         flex-direction: row;
-        align-items: center;
+        align-items: flex-start;
         gap: 1.75rem;
+        padding-top: 3.75rem;
     }
 }
 
@@ -298,8 +299,13 @@
         display: block;
         width: 90px;
         height: 90px;
-        border-radius: 50%;
+        border-radius: $default-border-radius;
         object-fit: cover;
+        border: 1px solid $gray;
+        @media screen and (min-width: $form-width) {
+            width: 197px;
+            height: 197px;
+        }
     }
 }
 
@@ -309,10 +315,12 @@
     font-size: 1rem;
     letter-spacing: 0.09375rem;
     text-transform: uppercase;
-    margin: 0 0 0.25rem 0;
-
+    margin: 0 0 1rem 0;
+     @media screen and (min-width: $small-width) {
+        font-size: 1.375rem;
+     }
     a {
-        color: $red;
+        color: $gray;
         text-decoration: none;
 
         &:hover {
@@ -334,6 +342,10 @@
     font-size: 1rem;
     line-height: 1.625rem;
     margin: 0;
+    @media screen and (min-width: $small-width) {
+        font-size: 1.25rem;
+        line-height: 1.875rem;
+    }
 }
 
 // ---- Entry footer (categories / tags) ----
