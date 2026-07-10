@@ -18,19 +18,33 @@
 
 // ---- Featured image ----
 .single-post .entry-thumbnail {
-    margin-bottom: 2rem;
     border-radius: $default-border-radius;
     overflow: hidden;
-
-    @media screen and (min-width: $small-width) {
-        margin-bottom: 2.5rem;
-    }
-
     img {
         display: block;
         width: 100%;
         height: auto;
     }
+}
+
+.single .entry-thumbnail img,
+.single-post__wrapper.block-wrapper {
+    max-width: 936px;
+}
+
+.single .entry-thumbnail img {
+    border-radius: 8px;
+    margin-top: 25px;
+    @media screen and (min-width: $small-width) {
+        margin-top: 150px;
+    }
+}
+
+.single .entry-thumbnail {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(to bottom, $eggshell 47.5%, transparent 47.5%);
 }
 
 // ---- Header (centered) ----
@@ -50,8 +64,13 @@
     line-height: 1.25rem;
     letter-spacing: 0.125rem;
     text-transform: uppercase;
-    color: $red;
+    color: $gray;
     margin: 0 0 0.75rem 0;
+    @media screen and (min-width: $small-width) {
+        font-size: 1rem;
+        line-height: 1.5rem;
+        letter-spacing: 0.1rem;
+    }
 }
 
 .single-post .entry-title {
@@ -107,7 +126,10 @@
     font-size: 0.875rem;
     letter-spacing: 0.1875rem;
     text-transform: uppercase;
-    color: $gray;
+    color: $red;
+    @media screen and (min-width: $small-width) {
+        font-size: 1rem;
+    }
 }
 
 // +/– style toggle icon (mobile only)
@@ -181,7 +203,9 @@
 
 .post-toc__item.is-open > .post-toc__sublist {
     display: block;
-    margin-top: 0.5rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    margin-left: 1.25rem;
 }
 
 .post-toc__row {
@@ -227,14 +251,17 @@
     font-weight: 400;
     font-size: 1rem;
     line-height: 1.4rem;
-    color: $navy;
+    color: $gray;
     text-decoration: underline;
-    text-decoration-color: rgba($navy, 0.35);
+    text-decoration-color: $gray;
     text-underline-offset: 3px;
 
     &:hover {
         color: $red;
         text-decoration-color: $red;
+    }
+    @media screen and (min-width: $small-width) {
+        font-size: 1.25rem;
     }
 }
 

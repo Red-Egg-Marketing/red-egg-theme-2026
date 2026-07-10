@@ -17,13 +17,12 @@ while ( have_posts() ) :
 
     <main id="primary" class="site-main">
         <article id="post-<?php the_ID(); ?>" <?php post_class( 'single-post' ); ?>>
-            <div class="block-wrapper single-post__wrapper">
-
-                <?php if ( has_post_thumbnail() ) : ?>
+            <?php if ( has_post_thumbnail() ) : ?>
                     <div class="entry-thumbnail">
                         <?php the_post_thumbnail( 'large' ); ?>
                     </div><!-- .entry-thumbnail -->
-                <?php endif; ?>
+            <?php endif; ?>
+            <div class="block-wrapper single-post__wrapper">
 
                 <header class="entry-header">
                     <p class="entry-date"><?php echo esc_html( get_the_date() ); ?></p>
@@ -46,18 +45,10 @@ while ( have_posts() ) :
 
                 <footer class="entry-footer">
                     <?php red_egg_the_author_bio(); ?>
-                    <?php red_egg_entry_footer(); ?>
                 </footer><!-- .entry-footer -->
 
             </div><!-- .block-wrapper -->
         </article><!-- #post-<?php the_ID(); ?> -->
-
-        <?php
-        // Comments
-        if ( comments_open() || get_comments_number() ) :
-            comments_template();
-        endif;
-        ?>
 
     </main><!-- #primary -->
 
