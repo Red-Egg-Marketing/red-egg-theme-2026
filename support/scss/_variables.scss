@@ -234,6 +234,8 @@ $arrow-white-r: "data:image/svg+xml,%3Csvg%20width%3D%2235%22%20height%3D%2235%2
     @media screen and (min-width: $small-width) {
         padding: 15px 30px 15px 35px;
     }
+    font-weight: 500;
+    text-transform: uppercase;
     span {
         @include button-text;
         color: $gray;

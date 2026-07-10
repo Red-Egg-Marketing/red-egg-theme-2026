@@ -52,6 +52,7 @@
 
 .tax-link a {
     @include gray-button;
+    text-transform: capitalize;
 }
 
 .single-meta {
