@@ -3,7 +3,7 @@
  *
  * 1. Click the toggle button to flip the card (front <-> back).
  * 2. When the back content is taller than the card, it auto-scrolls
- *    vertically (gentle yoyo), pausing on hover or touch.
+ *    vertically in a continuous loop, pausing on hover or touch.
  *
  * Hardened against double-firing: some plugins / accessibility
  * overlays re-dispatch click events, so we (a) never bind a card
@@ -26,12 +26,40 @@ function buildAutoScroll( card ) {
 
     let raf = null;
     let paused = false;
-    let dir = 1;
     let pos = 0;
     let last = 0;
     let holdUntil = 0;
+    let loopDist = 0;
+    let cloned = false;
 
-    const overflow = () => inner.scrollHeight - viewport.clientHeight;
+    // Duplicate the content once so the scroll can wrap seamlessly.
+    // loopDist = distance to the top of the clone; wrapping there lands
+    // on identical content, so there is no visible jump or reversal.
+    const setup = () => {
+        if ( ! cloned ) {
+            // Only loop when the content actually overflows the viewport.
+            if ( inner.scrollHeight <= viewport.clientHeight + 1 ) {
+                loopDist = 0;
+                return;
+            }
+
+            const group = document.createElement( 'div' );
+            group.className = 'reveal-card__back-loop';
+            while ( inner.firstChild ) {
+                group.appendChild( inner.firstChild );
+            }
+            inner.appendChild( group );
+
+            const clone = group.cloneNode( true );
+            clone.setAttribute( 'aria-hidden', 'true' );
+            clone.classList.add( 'reveal-card__back-loop--clone' );
+            inner.appendChild( clone );
+
+            cloned = true;
+        }
+
+        loopDist = inner.children[ 1 ] ? inner.children[ 1 ].offsetTop : 0;
+    };
 
     const step = ( ts ) => {
         if ( ! last ) {
@@ -40,23 +68,16 @@ function buildAutoScroll( card ) {
         const dt = ( ts - last ) / 1000;
         last = ts;
 
-        const max = overflow();
-        if ( max <= 0 ) {
+        if ( loopDist <= 0 ) {
             inner.style.transform = 'translateY(0)';
             raf = null;
             return;
         }
 
         if ( ! paused && ts >= holdUntil ) {
-            pos += dir * SPEED * dt;
-            if ( pos >= max ) {
-                pos = max;
-                dir = -1;
-                holdUntil = ts + HOLD;
-            } else if ( pos <= 0 ) {
-                pos = 0;
-                dir = 1;
-                holdUntil = ts + HOLD;
+            pos += SPEED * dt;
+            if ( pos >= loopDist ) {
+                pos -= loopDist; // seamless wrap – no reverse
             }
             inner.style.transform = 'translateY(' + ( -pos ) + 'px)';
         }
@@ -66,9 +87,9 @@ function buildAutoScroll( card ) {
 
     const start = () => {
         stop();
+        setup();
         last = 0;
         pos = 0;
-        dir = 1;
         holdUntil = performance.now() + HOLD;
         inner.style.transform = 'translateY(0)';
         raf = requestAnimationFrame( step );
