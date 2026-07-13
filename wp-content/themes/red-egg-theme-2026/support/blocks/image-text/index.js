@@ -76,10 +76,6 @@ registerBlockType( 'red-egg-block/image-text', {
                 url: '', width: '', height: '',
             },
         },
-        withDrop: {
-            type: 'boolean',
-            default: true,
-        },
         padding: {
             type: 'object',
             default: {

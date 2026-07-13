@@ -3238,15 +3238,6 @@ p.contact-section__label {
   }
 }
 
-.image-columns.no-ds .image-col {
-  box-shadow: none;
-}
-
-@media screen and (min-width: 768px) {
-  .image-columns.img-right.no-ds .content-columns {
-    padding-left: 1.25rem;
-  }
-}
 .image-columns video {
   max-width: 100%;
   display: block;
@@ -4327,14 +4318,6 @@ p.contact-section__label {
   display: block;
   width: 100%;
   height: auto;
-}
-
-.media-content .image-col.with-ds .img-container {
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
-}
-
-.media-content .image-col.no-ds .img-container {
-  box-shadow: none;
 }
 
 .media-content .content-columns {

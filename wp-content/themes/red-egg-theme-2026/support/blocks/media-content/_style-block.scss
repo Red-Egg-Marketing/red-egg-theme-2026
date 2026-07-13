@@ -68,15 +68,6 @@
     }
 }
 
-// Drop shadow on the media child block
-.media-content .image-col.with-ds .img-container {
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
-}
-
-.media-content .image-col.no-ds .img-container {
-    box-shadow: none;
-}
-
 // ---- Content / Text column ----
 .media-content .content-columns {
     width: 100%;

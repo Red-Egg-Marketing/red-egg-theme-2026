@@ -153,17 +153,6 @@
     }
 }
 
-// ---- Drop shadow ----
-.image-columns.no-ds .image-col {
-    box-shadow: none;
-}
-
-@media screen and (min-width: $small-width) {
-    .image-columns.img-right.no-ds .content-columns {
-        padding-left: 1.25rem;
-    }
-}
-
 // ---- Video ----
 .image-columns video {
     max-width: 100%;

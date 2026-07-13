@@ -18,12 +18,11 @@ const vidImgOptions = [
 
 const EditMediaContentMedia = ( { attributes, setAttributes } ) => {
     const {
-        media, vidOrImg, videoID, videoURL, videothumb, withDrop
+        media, vidOrImg, videoID, videoURL, videothumb
     } = attributes;
 
     const blockProps = useBlockProps( {
-        className: 'media-content__media image-col column'
-            + ( withDrop ? ' with-ds' : ' no-ds' ),
+        className: 'media-content__media image-col column',
     } );
 
     // Media handlers
@@ -83,11 +82,6 @@ const EditMediaContentMedia = ( { attributes, setAttributes } ) => {
                         value={ vidOrImg }
                         options={ vidImgOptions }
                         onChange={ ( val ) => setAttributes( { vidOrImg: val } ) }
-                    />
-                    <ToggleControl
-                        label={ __( 'Image Drop Shadow', 'red-egg' ) }
-                        checked={ !! withDrop }
-                        onChange={ () => setAttributes( { withDrop: ! withDrop } ) }
                     />
                 </PanelBody>
 

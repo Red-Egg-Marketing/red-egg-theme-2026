@@ -48,10 +48,6 @@ registerBlockType( 'red-egg-block/media-content-media', {
                 url: '', width: '', height: '',
             },
         },
-        withDrop: {
-            type: 'boolean',
-            default: true,
-        }
     },
     edit,
     save,

@@ -48,7 +48,7 @@ const allowBlocks = [
 const EditImageText = ( { attributes, setAttributes, clientId } ) => {
     const {
         contentAlign, columnwidth, media, image, bgColor, bgSlug,
-        vidOrImg, videoID, videoURL, videothumb, withDrop,
+        vidOrImg, videoID, videoURL, videothumb,
         padding, margin, blockId,
         blobEnabled, blobShape, blobSpeed, blobPosition, squiggleEnabled,
     } = attributes;
@@ -119,7 +119,6 @@ const EditImageText = ( { attributes, setAttributes, clientId } ) => {
             + ' ' + contentAlign
             + ' ' + columnwidth
             + ( bgSlug ? ' ' + bgSlug + ' with-bg' : '' )
-            + ( withDrop ? ' with-ds' : ' no-ds' )
             + ( blobEnabled ? ' has-blob' : '' )
             + ( squiggleEnabled ? ' has-squiggle' : '' ),
         style: bgStyle,
@@ -201,16 +200,6 @@ const EditImageText = ( { attributes, setAttributes, clientId } ) => {
                         />
                     </PanelBody>
                 ) }
-                <PanelBody
-                    title={ __( 'Display Options', 'red-egg' ) }
-                    initialOpen={ false }
-                >
-                    <ToggleControl
-                        label={ __( 'With Drop Shadow?', 'red-egg' ) }
-                        checked={ !! withDrop }
-                        onChange={ () => setAttributes( { withDrop: ! withDrop } ) }
-                    />
-                </PanelBody>
                 <BlobAnimation.Controls
                     blobEnabled={ blobEnabled }
                     blobShape={ blobShape }

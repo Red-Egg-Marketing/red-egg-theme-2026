@@ -10,12 +10,11 @@ import ImageComp from '../../components/ImageComp.js';
 
 const SaveMediaContentMedia = ( { attributes } ) => {
     const {
-        media, vidOrImg, videoID, videoURL, videothumb, withDrop
+        media, vidOrImg, videoID, videoURL, videothumb
     } = attributes;
 
     const blockProps = useBlockProps.save( {
-        className: 'media-content__media image-col column'
-            + ( withDrop ? ' with-ds' : ' no-ds' ),
+        className: 'media-content__media image-col column',
     } );
 
     const srcSet = '';

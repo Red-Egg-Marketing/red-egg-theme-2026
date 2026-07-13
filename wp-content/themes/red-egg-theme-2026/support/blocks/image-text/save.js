@@ -13,7 +13,7 @@ import BlobAnimation from '../../components/BlobAnimation.js';
 const SaveImageText = ( { attributes } ) => {
     const {
         contentAlign, columnwidth, media, image, bgColor, bgSlug,
-        vidOrImg, videoID, videoURL, videothumb, withDrop,
+        vidOrImg, videoID, videoURL, videothumb,
         padding, margin, blockId,
         blobEnabled, blobShape, blobSpeed, blobPosition, squiggleEnabled,
     } = attributes;
@@ -42,7 +42,6 @@ const SaveImageText = ( { attributes } ) => {
             + ' ' + contentAlign
             + ' ' + columnwidth
             + ( bgSlug ? ' ' + bgSlug + ' with-bg' : '' )
-            + ( withDrop ? ' with-ds' : ' no-ds' )
             + ( blobEnabled ? ' has-blob' : '' )
             + ( squiggleEnabled ? ' has-squiggle' : '' ),
         style: bgStyle,
