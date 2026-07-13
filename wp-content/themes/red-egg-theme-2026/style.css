@@ -5614,6 +5614,30 @@ p.contact-section__label {
   background-color: #FFFFFF;
 }
 
+.image-columns.has-blob {
+  overflow: hidden;
+}
+
+.image-columns > .block-wrapper {
+  position: relative;
+  z-index: 1;
+}
+
+.image-columns .squiggle-decoration {
+  position: absolute;
+  left: 1.25rem;
+  bottom: 1.25rem;
+  width: auto;
+  margin: 0;
+  z-index: 2;
+}
+@media screen and (min-width: 768px) {
+  .image-columns .squiggle-decoration {
+    left: 2.5rem;
+    bottom: 2rem;
+  }
+}
+
 .values-section {
   position: relative;
   background-color: #024D69;

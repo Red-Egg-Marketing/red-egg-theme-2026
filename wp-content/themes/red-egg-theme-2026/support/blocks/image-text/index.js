@@ -97,6 +97,26 @@ registerBlockType( 'red-egg-block/image-text', {
         blockId: {
             type: 'string',
         },
+        blobEnabled: {
+            type: 'boolean',
+            default: false,
+        },
+        blobShape: {
+            type: 'string',
+            default: 'shape1',
+        },
+        blobSpeed: {
+            type: 'number',
+            default: 8,
+        },
+        blobPosition: {
+            type: 'string',
+            default: 'bottom-left',
+        },
+        squiggleEnabled: {
+            type: 'boolean',
+            default: false,
+        },
     },
     edit,
     save,
