@@ -1,16 +1,20 @@
 /**
  * Testimonials Block – Save Component
  *
- * Outputs InnerBlocks header content + a marker div
- * for the shortcode. The PHP render callback will
- * process the shortcode via do_shortcode().
+ * This block uses a PHP render_callback (red_egg_render_testimonials),
+ * which wraps the saved InnerBlocks in the section markup and appends
+ * the reviews shortcode output.
  *
- * NOTE: This block uses a PHP render_callback, so
- * save() returns null. All output is handled server-side.
+ * For that to work the InnerBlocks header MUST be serialized into
+ * post_content, so save() returns <InnerBlocks.Content />. Returning
+ * null (the previous behaviour) meant the render callback received an
+ * empty $content and the header never saved.
  */
 
+const { InnerBlocks } = wp.blockEditor;
+
 const SaveTestimonials = () => {
-    return null;
+    return <InnerBlocks.Content />;
 };
 
 export default SaveTestimonials;
