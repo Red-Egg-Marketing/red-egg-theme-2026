@@ -1,29 +1,45 @@
-# ---------------------------------------------
-#  Red Egg Marketing – WP Engine deployment
-#  Repo root maps to the WordPress install root.
-#  Only the theme is tracked. Compiled build assets
-#  (style.css, blocks.editor.css, support/assets/js)
-#  ARE committed so WP Engine serves them directly —
-#  WP Engine does not run the webpack build.
-# ---------------------------------------------
+# ============================================================
+#  Red Egg Marketing – WP Engine Git Push deployment
+#
+#  The repo root maps to the WordPress install root, but we only
+#  want to deploy OUR theme — not WordPress core, wp-config.php,
+#  uploads, or other plugins/themes.
+#
+#  Strategy: ignore everything, then explicitly un-ignore the
+#  path down to the theme. Add more "!" lines below if you later
+#  want to deploy a specific plugin or mu-plugin.
+# ============================================================
 
-# Node dependencies (build tooling only — not needed on the server)
+# Ignore everything at the WP root by default
+/*
+
+# ...but keep this ignore file
+!/.gitignore
+
+# Descend into wp-content, ignoring everything inside it
+!/wp-content
+/wp-content/*
+
+# ...down to the themes directory, ignoring all other themes
+!/wp-content/themes
+/wp-content/themes/*
+
+# ...and finally allow our theme
+!/wp-content/themes/red-egg-theme-2026
+
+# ------------------------------------------------------------
+#  Within the theme: exclude build tooling + local cruft
+# ------------------------------------------------------------
 wp-content/themes/red-egg-theme-2026/support/node_modules/
 
-# OS files
+# OS / editor / logs (anywhere)
 .DS_Store
 Thumbs.db
-
-# IDE / editor
 .vscode/
 .idea/
 *.sublime-project
 *.sublime-workspace
-
-# Logs
 *.log
 npm-debug.log*
-
-# Environment
 .env
 .env.local
