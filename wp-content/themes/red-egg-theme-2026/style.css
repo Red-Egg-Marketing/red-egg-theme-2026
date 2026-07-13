@@ -5605,10 +5605,6 @@ p.contact-section__label {
   background-color: #FFFFFF;
 }
 
-.image-columns.has-blob {
-  overflow: hidden;
-}
-
 .image-columns > .block-wrapper {
   position: relative;
   z-index: 1;

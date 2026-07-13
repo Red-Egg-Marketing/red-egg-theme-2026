@@ -208,10 +208,6 @@
 .image-columns.white.with-bg { background-color: $white; }
 
 // ---- Blob + squiggle decorations (toggled per block) ----
-.image-columns.has-blob {
-    overflow: hidden; // contain the blob's negative offsets (no page scroll)
-}
-
 // Keep the content column above the blob background.
 .image-columns > .block-wrapper {
     position: relative;
