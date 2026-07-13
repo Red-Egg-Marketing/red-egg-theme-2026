@@ -102,7 +102,7 @@ function buildTimeline(card) {
     .to(rest,    { autoAlpha: 0, duration: 0.4 })  // 2. other content fades
     .to(rest,    { height: 0, duration: 0.4, marginBottom: 0 })  // 2. other content fades
     // .to(heading, { y: -20, duration: 0.4 })                 // 1. header slides up
-    .to(back,    { autoAlpha: 1, duration: 0.4 }, '-=0.1') // 4. back reveals/fades in
+    .to(back,    { autoAlpha: 1, duration: 0.4, zIndex: 2 }, '-=0.1') // 4. back reveals/fades in
 }
 
 function initRevealCard( card ) {
