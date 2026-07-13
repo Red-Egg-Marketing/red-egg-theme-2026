@@ -14,7 +14,7 @@ const SaveHeroServices = ( { attributes } ) => {
     const { image, mobileimage, bgColor, bgSlug, minHeight, padding, margin } = attributes;
 
     const blockProps = useBlockProps.save( {
-        className: 'hero-case-study' + ( bgSlug ? ' ' + bgSlug : '' ),
+        className: 'hero-services' + ( bgSlug ? ' ' + bgSlug : '' ),
     } );
 
     const blockId = blockProps.id;

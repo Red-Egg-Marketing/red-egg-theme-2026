@@ -885,10 +885,6 @@ body.mega-open {
   text-decoration: underline;
 }
 
-.site-main {
-  min-height: 60vh;
-}
-
 .page-header,
 .archive-header {
   padding-top: 4.5rem;

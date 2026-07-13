@@ -62,7 +62,7 @@ const EditHeroServices = ( { attributes, setAttributes, clientId } ) => {
 
     const blockProps = useBlockProps( {
         id: blockId,
-        className: 'hero-case-study' + ( bgSlug ? ' ' + bgSlug : '' ),
+        className: 'hero-services' + ( bgSlug ? ' ' + bgSlug : '' ),
     } );
 
     return (
