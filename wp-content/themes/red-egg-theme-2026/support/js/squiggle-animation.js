@@ -25,7 +25,7 @@
 
         gsap.to( el, {
             clipPath: 'inset(0 0% 0 0)',
-            duration: 3.5,
+            duration: 1.5,
             ease: 'power2.out',
             scrollTrigger: {
                 trigger: el,

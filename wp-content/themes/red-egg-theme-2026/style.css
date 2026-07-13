@@ -1529,6 +1529,9 @@ body.mega-open {
     line-height: 1.875rem;
   }
 }
+.entry-content {
+  overflow: hidden;
+}
 .entry-content > p,
 .entry-content > h2, .entry-content > h3, .entry-content > h4, .entry-content > h5, .entry-content > h6,
 .entry-content > ul, .entry-content > ol,
@@ -5351,7 +5354,7 @@ p.contact-section__label {
 .image-columns > .block-wrapper {
   display: flex;
   flex-wrap: wrap;
-  align-items: center;
+  align-items: flex-start;
 }
 
 .image-columns .image-col {
@@ -9277,7 +9280,6 @@ img.device-frame__device {
 .service-list,
 .insights-block {
   position: relative;
-  overflow: hidden;
 }
 .media-content > .block-wrapper,
 .service-list > .block-wrapper,

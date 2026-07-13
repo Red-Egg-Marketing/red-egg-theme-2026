@@ -3050,7 +3050,7 @@ p.contact-section__label {
 .image-columns > .block-wrapper {
   display: flex;
   flex-wrap: wrap;
-  align-items: center;
+  align-items: flex-start;
 }
 
 .image-columns .image-col {
@@ -6976,7 +6976,6 @@ img.device-frame__device {
 .service-list,
 .insights-block {
   position: relative;
-  overflow: hidden;
 }
 .media-content > .block-wrapper,
 .service-list > .block-wrapper,

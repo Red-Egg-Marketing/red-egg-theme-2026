@@ -68,7 +68,7 @@
 
             // ---- Subtle random drift: max 50px in any direction ----
             gsap.to( blob, {
-                x: 'random(-50, 50)',
+                x: 'random(-150, 150)',
                 duration: 'random(' + ( speed * 2 ) + ', ' + ( speed * 3 ) + ')',
                 ease: 'sine.inOut',
                 repeat: -1,
