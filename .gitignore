@@ -1,16 +1,20 @@
-# Dependencies
-support/node_modules/
+# ---------------------------------------------
+#  Red Egg Marketing – WP Engine deployment
+#  Repo root maps to the WordPress install root.
+#  Only the theme is tracked. Compiled build assets
+#  (style.css, blocks.editor.css, support/assets/js)
+#  ARE committed so WP Engine serves them directly —
+#  WP Engine does not run the webpack build.
+# ---------------------------------------------
 
-# Compiled output (rebuild from source)
-support/assets/js/
-style.css
-blocks.editor.css
+# Node dependencies (build tooling only — not needed on the server)
+wp-content/themes/red-egg-theme-2026/support/node_modules/
 
 # OS files
 .DS_Store
 Thumbs.db
 
-# IDE
+# IDE / editor
 .vscode/
 .idea/
 *.sublime-project
@@ -23,6 +27,3 @@ npm-debug.log*
 # Environment
 .env
 .env.local
-
-# Package lock (optional – uncomment if you want to track it)
-# support/package-lock.json
