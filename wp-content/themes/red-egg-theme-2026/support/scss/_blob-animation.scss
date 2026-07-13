@@ -72,3 +72,10 @@
         z-index: 1;
     }
 }
+
+// ---- Double-blob arrangement (position option "double") ----
+// A large blob center-right + a smaller one lower-left.
+.blob-decoration--double-b {
+    width: 42%;
+    max-width: 480px;
+}

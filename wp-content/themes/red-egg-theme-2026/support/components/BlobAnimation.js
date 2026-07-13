@@ -67,6 +67,7 @@ const positionOptions = [
     { label: __( 'Bottom Left', 'red-egg' ), value: 'bottom-left' },
     { label: __( 'Center Right', 'red-egg' ), value: 'center-right' },
     { label: __( 'Center Left', 'red-egg' ), value: 'center-left' },
+    { label: __( 'Double (right + lower-left)', 'red-egg' ), value: 'double' },
 ];
 
 /**
@@ -113,10 +114,41 @@ const Controls = ( { blobEnabled, blobShape, blobSpeed, blobPosition, setAttribu
 };
 
 /**
+ * Renders the two-blob "double" arrangement: a large blob center-right
+ * and a smaller one lower-left (matches the Related Posts section).
+ * @param {boolean} animate  Add data-blob-* attrs for the GSAP morph.
+ * @param {number}  speed    Morph speed (view only).
+ */
+const doubleBlob = ( animate, speed ) => {
+    const a = BLOB_SHAPES.shape1;
+    const b = BLOB_SHAPES.shape2;
+    const attrsA = animate ? { 'data-blob-enabled': 'true', 'data-blob-shape': 'shape1', 'data-blob-speed': speed } : {};
+    const attrsB = animate ? { 'data-blob-enabled': 'true', 'data-blob-shape': 'shape2', 'data-blob-speed': speed } : {};
+    return (
+        <Fragment>
+            <div className="blob-decoration blob-decoration--center-right blob-decoration--double-a" { ...attrsA }>
+                <svg className="blob-decoration__svg" viewBox={ a.viewBox } xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+                    <path className="blob-decoration__path" d={ a.path } fill="#F2ECE5" />
+                </svg>
+            </div>
+            <div className="blob-decoration blob-decoration--bottom-left blob-decoration--double-b" { ...attrsB }>
+                <svg className="blob-decoration__svg" viewBox={ b.viewBox } xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+                    <path className="blob-decoration__path" d={ b.path } fill="#F2ECE5" />
+                </svg>
+            </div>
+        </Fragment>
+    );
+};
+
+/**
  * BlobAnimation.Preview – Editor static preview
  */
 const Preview = ( { blobEnabled, blobShape, blobPosition } ) => {
     if ( ! blobEnabled ) return null;
+
+    if ( blobPosition === 'double' ) {
+        return doubleBlob( false );
+    }
 
     const shape = BLOB_SHAPES[ blobShape ] || BLOB_SHAPES.shape1;
 
@@ -141,6 +173,10 @@ const Preview = ( { blobEnabled, blobShape, blobPosition } ) => {
  */
 const View = ( { blobEnabled, blobShape, blobSpeed, blobPosition } ) => {
     if ( ! blobEnabled ) return null;
+
+    if ( blobPosition === 'double' ) {
+        return doubleBlob( true, blobSpeed );
+    }
 
     const shape = BLOB_SHAPES[ blobShape ] || BLOB_SHAPES.shape1;
 
