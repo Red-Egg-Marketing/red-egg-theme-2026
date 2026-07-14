@@ -14,7 +14,7 @@ import BlobAnimation from '../../components/BlobAnimation.js';
 
 const SaveInsights = ( { attributes } ) => {
     const {
-        category, postsToShow, bgColor, bgSlug,
+        category, industry, postsToShow, bgColor, bgSlug,
         padding, margin, blockId,
         blobEnabled, blobShape, blobSpeed, blobPosition, squiggleEnabled
     } = attributes;
@@ -46,6 +46,7 @@ const SaveInsights = ( { attributes } ) => {
                         className="resources grid"
                         data-posts-to-show={ postsToShow }
                         data-category={ category || '' }
+                        data-industry={ industry || '' }
                     ></div>
                     { squiggleEnabled && (
                     <div className="squiggle-decoration" data-squiggle-animate="true">

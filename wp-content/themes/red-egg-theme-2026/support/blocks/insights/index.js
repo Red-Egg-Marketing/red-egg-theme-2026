@@ -32,6 +32,10 @@ registerBlockType( 'red-egg-block/insights', {
             type: 'string',
             default: '',
         },
+        industry: {
+            type: 'string',
+            default: '',
+        },
         postsToShow: {
             type: 'number',
             default: 2,

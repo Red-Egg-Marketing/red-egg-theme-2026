@@ -292,8 +292,9 @@ function red_egg_return_posts( $data ) {
 	$pt         = isset( $get['post_type'] ) ? explode( ',', $get['post_type'] ) : false;
 	$date       = isset( $get['date'] ) ? boolval( $get['date'] ) : true;
 	$with_thumb = isset( $get['with_thumb'] ) ? boolval( $get['with_thumb'] ) : false;
+	$industry   = isset( $get['industry'] ) ? sanitize_text_field( $get['industry'] ) : false;
 
-	if ( $cats != false || $tags != false || $author != false ) {
+	if ( $cats != false || $tags != false || $author != false || $industry != false ) {
 		$post_types[] = 'post';
 	}
 
@@ -329,6 +330,21 @@ function red_egg_return_posts( $data ) {
 				'terms'    => $custom_tax,
 			],
 		];
+	}
+
+	// Filter by industry taxonomy (shared with case studies)
+	if ( $industry != false ) {
+		$industry_clause = [
+			'taxonomy' => 'industry',
+			'field'    => 'slug',
+			'terms'    => $industry,
+		];
+		if ( isset( $args['tax_query'] ) ) {
+			$args['tax_query'][]           = $industry_clause;
+			$args['tax_query']['relation'] = 'AND';
+		} else {
+			$args['tax_query'] = [ $industry_clause ];
+		}
 	}
 
 	$posts = $html == false ? [] : '';

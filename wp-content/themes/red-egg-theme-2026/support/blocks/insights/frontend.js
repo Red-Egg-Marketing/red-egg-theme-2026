@@ -13,7 +13,7 @@ const { render, Fragment, useState, useEffect } = wp.element;
 
 const RootElement = document.getElementById( 'InsightsBlockRoot' );
 
-const InsightsFrontend = ( { postsToShow, category } ) => {
+const InsightsFrontend = ( { postsToShow, category, industry } ) => {
     const [ posts, setPosts ] = useState( [] );
     const [ loading, setLoading ] = useState( true );
 
@@ -21,6 +21,9 @@ const InsightsFrontend = ( { postsToShow, category } ) => {
         let url = '/red-egg/v2/posts?ppp=' + postsToShow;
         if ( category && category !== 'all' ) {
             url += '&category=' + category;
+        }
+        if ( industry ) {
+            url += '&industry=' + industry;
         }
         wp.apiRequest( { path: url } ).then( ( data ) => {
             setPosts( data );
@@ -74,8 +77,9 @@ const InsightsFrontend = ( { postsToShow, category } ) => {
 if ( RootElement ) {
     const postsToShow = parseInt( RootElement.getAttribute( 'data-posts-to-show' ) ) || 2;
     const category = RootElement.getAttribute( 'data-category' ) || '';
+    const industry = RootElement.getAttribute( 'data-industry' ) || '';
     render(
-        <InsightsFrontend postsToShow={ postsToShow } category={ category } />,
+        <InsightsFrontend postsToShow={ postsToShow } category={ category } industry={ industry } />,
         RootElement
     );
 }
