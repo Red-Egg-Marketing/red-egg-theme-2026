@@ -16,13 +16,12 @@
 .image-columns {
     width: 100%;
     position: relative;
-    max-width: $max-cont-w;
     margin: 0 auto;
     padding-top: $default-section-padding-top;
     padding-bottom: $default-section-padding-bottom;
     @media screen and (min-width: $small-width) {
-        padding-top: 5.75rem;
-        padding-bottom: 5.75rem;
+        padding-top: 7rem;
+        padding-bottom: 7rem;
     }
 }
 

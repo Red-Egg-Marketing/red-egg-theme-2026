@@ -46,13 +46,13 @@ const SaveServiceList = ( { attributes } ) => {
             <PaddingSelector.View padding={ padding } id={ blockId } />
             <MarginSelector.View margin={ margin } id={ blockId } />
             <section { ...blockProps }>
+                <div className="block-wrapper">
                 <BlobAnimation.View
                     blobEnabled={ blobEnabled }
                     blobShape={ blobShape }
                     blobSpeed={ blobSpeed }
                     blobPosition={ blobPosition }
                 />
-                <div className="block-wrapper">
                     <InnerBlocks.Content />
                 </div>
             </section>

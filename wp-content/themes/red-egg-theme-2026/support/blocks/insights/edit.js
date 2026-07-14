@@ -170,13 +170,14 @@ const EditInsights = ( { attributes, setAttributes, isSelected, clientId } ) => 
             />
 
             <section { ...blockProps }>
-                <BlobAnimation.Preview
-                    blobEnabled={ blobEnabled }
-                    blobShape={ blobShape }
-                    blobPosition={ blobPosition }
-                />
                
                 <div className="block-wrapper">
+                     <BlobAnimation.Preview
+                        blobEnabled={ blobEnabled }
+                        blobShape={ blobShape }
+                        blobPosition={ blobPosition }
+                      />
+               
                     <header className="insights-block__header">
                         <InnerBlocks
                             template={ template }

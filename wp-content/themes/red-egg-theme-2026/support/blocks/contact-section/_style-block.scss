@@ -13,8 +13,8 @@
     padding-bottom: $default-section-padding-bottom;
 
     @media screen and (min-width: $small-width) {
-        padding-top: 5rem;
-        padding-bottom: 5rem;
+        padding-top: 7rem;
+        padding-bottom: 7rem;
     }
 }
 
@@ -272,7 +272,7 @@ p.contact-section__label {
     font-family: $font-body;
     font-weight: 300;
     font-size: 1.0625rem;
-    line-height: 1.5;
+    line-height: 2;
     color: $gray;
 
     &::placeholder {
@@ -302,6 +302,17 @@ p.contact-section__label {
     font-size: 0.8125rem;
     color: $red;
     margin-top: 4px;
+}
+
+div.gform_wrapper.gravity-theme .gform_fields {
+    grid-row-gap: 29px;
+    grid-column-gap: 20px;
+}
+
+div.gform_wrapper.gravity-theme .gform_footer,
+div.gform_wrapper.gravity-theme .gform_page_footer {
+    padding-top: 0;
+    margin-top: 0;
 }
 
 // Submit button – pill outline with arrow (matches outline-gray)

@@ -29,7 +29,7 @@
             ease: 'power2.out',
             scrollTrigger: {
                 trigger: el,
-                start: 'top 50%',
+                start: 'top 90%',
                 // once: true,
             },
         } );

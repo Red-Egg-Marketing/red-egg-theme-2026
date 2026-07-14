@@ -103,12 +103,13 @@ const EditServiceList = ( { attributes, setAttributes, clientId } ) => {
             />
 
             <section { ...blockProps }>
-                <BlobAnimation.Preview
-                    blobEnabled={ blobEnabled }
-                    blobShape={ blobShape }
-                    blobPosition={ blobPosition }
-                />
+                
                 <div className="block-wrapper">
+                    <BlobAnimation.Preview
+                        blobEnabled={ blobEnabled }
+                        blobShape={ blobShape }
+                        blobPosition={ blobPosition }
+                    />
                     <InnerBlocks
                         template={ template }
                         allowedBlocks={ allowedBlocks }

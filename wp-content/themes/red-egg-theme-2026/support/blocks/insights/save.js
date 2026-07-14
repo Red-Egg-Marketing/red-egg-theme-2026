@@ -29,14 +29,15 @@ const SaveInsights = ( { attributes } ) => {
             <PaddingSelector.View padding={ padding } id={ blockId } />
             <MarginSelector.View margin={ margin } id={ blockId } />
             <section { ...blockProps }>
-                <BlobAnimation.View
-                    blobEnabled={ blobEnabled }
-                    blobShape={ blobShape }
-                    blobSpeed={ blobSpeed }
-                    blobPosition={ blobPosition }
-                />
+               
                 
                 <div className="block-wrapper">
+                     <BlobAnimation.View
+                        blobEnabled={ blobEnabled }
+                        blobShape={ blobShape }
+                        blobSpeed={ blobSpeed }
+                        blobPosition={ blobPosition }
+                    />
                     <header className="insights-block__header">
                         <InnerBlocks.Content />
                     </header>
