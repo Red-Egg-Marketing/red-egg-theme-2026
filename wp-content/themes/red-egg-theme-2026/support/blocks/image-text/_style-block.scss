@@ -113,7 +113,10 @@
 
 .image-columns .wrap p {
     @include body-text;
-    margin-bottom: 0;
+}
+
+.image-columns .wrap p:last-child {
+
 }
 
 // ---- Column width classes ----

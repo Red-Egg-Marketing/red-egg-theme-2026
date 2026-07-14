@@ -5530,9 +5530,6 @@ div.gform_wrapper.gravity-theme .gform_page_footer {
     line-height: 1.875rem;
   }
 }
-.image-columns .wrap p {
-  margin-bottom: 0;
-}
 
 @media screen and (min-width: 768px) {
   .image-columns.col-50 .image-col {
