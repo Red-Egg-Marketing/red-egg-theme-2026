@@ -21,7 +21,7 @@
     padding-bottom: $default-section-padding-bottom;
     @media screen and (min-width: $small-width) {
         padding-top: 7rem;
-        padding-bottom: 7rem;
+        padding-bottom: 5rem;
     }
 }
 
@@ -38,6 +38,10 @@
     display: flex;
     flex-wrap: wrap;
     align-items: flex-start;
+    padding-bottom: 2rem;
+     @media screen and (min-width: $small-width) {
+        padding-bottom: 3rem;
+     }
 }
 
 // ---- Image column ----
