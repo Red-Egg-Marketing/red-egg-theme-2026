@@ -16,11 +16,11 @@ import PaddingSelector from '../../components/Padding.js';
 import MarginSelector from '../../components/Margin.js';
 
 const template = [
-    [ 'red-egg-block/header-intro', {} ],
+    [ 'red-egg-block/header-intro-left', {} ],
 ];
 
 const allowedBlocks = [
-    'red-egg-block/header-intro',
+    'red-egg-block/header-intro-left',
     'core/heading',
     'core/paragraph',
 ];

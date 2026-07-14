@@ -17,7 +17,7 @@ registerBlockType( 'red-egg-block/header-intro-left', {
     description: __( 'Left column for section label and heading.', 'red-egg' ),
     icon: 'align-left',
     category: 'layout',
-    parent: [ 'red-egg-block/header-intro', 'red-egg-block/numbered-list', 'red-egg-block/color-palette', 'red-egg-block/icon-cards' ],
+    parent: [ 'red-egg-block/header-intro', 'red-egg-block/numbered-list', 'red-egg-block/color-palette', 'red-egg-block/icon-cards', 'red-egg-block/awards-section' ],
     supports: { anchor: false, inserter: false },
     attributes: {},
     edit,

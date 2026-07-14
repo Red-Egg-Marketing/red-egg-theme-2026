@@ -3979,6 +3979,13 @@ div.gform_wrapper.gravity-theme .gform_page_footer {
   margin-bottom: 0;
 }
 
+@media screen and (min-width: 768px) {
+  .awards-section .header-intro__left {
+    flex: 0 0 100%;
+    max-width: 100% %;
+  }
+}
+
 .awards-section .awards-section__slider-wrap {
   position: relative;
 }

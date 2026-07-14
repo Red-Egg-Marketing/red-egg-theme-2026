@@ -34,6 +34,13 @@
     margin-bottom: 0;
 }
 
+.awards-section .header-intro__left {
+    @media screen and (min-width: $small-width) {
+        flex: 0 0 100%;
+        max-width: 100%%;
+    }
+}
+
 // ---- Swiper container ----
 .awards-section .awards-section__slider-wrap {
     position: relative;
