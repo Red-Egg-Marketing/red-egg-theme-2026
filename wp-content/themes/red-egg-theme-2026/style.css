@@ -9331,6 +9331,10 @@ img.device-frame__device {
   max-width: 480px;
 }
 
+[class*=blob-phase-] {
+  display: none;
+}
+
 .selected-quote {
   position: relative;
 }

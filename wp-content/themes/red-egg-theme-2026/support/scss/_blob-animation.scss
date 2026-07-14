@@ -79,3 +79,9 @@
     width: 42%;
     max-width: 480px;
 }
+
+// ---- Blob undulation phase targets ----
+// Hidden target shapes for js/blob-undulate.js; never rendered.
+[class*="blob-phase-"] {
+    display: none;
+}

@@ -1,21 +1,44 @@
 /**
- * Blob Undulate – gentle point wobble
+ * Blob Undulate – gentle shape animation
  *
- * Any SVG <path class="blob-animation"> gently undulates: its points
- * drift by a small amount and settle, on a slow loop. Unlike
- * js/blob-animation.js (which morphs between distinct blob shapes),
- * this keeps the SAME shape and only nudges its own points, so it
- * reads as a soft, organic breathing motion. Intended for the blob
- * backing on SVG upload areas.
+ * Animates any visible <path class="blob-animation"> in an inline SVG.
+ *
+ * Two modes:
+ *  1. Author-drawn phases (preferred): add hidden target shapes in the
+ *     SAME <svg>, e.g.
+ *         <path class="blob-phase-1" d="…"/>
+ *         <path class="blob-phase-2" d="…"/>
+ *     The visible path morphs through them (in numeric order) and back
+ *     to its original shape, on a loop. Phase paths are hidden via CSS
+ *     (_blob-animation.scss) so they never render.
+ *  2. Fallback: if no phase paths are found, the path gently wobbles
+ *     its own points (auto-jitter).
  *
  * Requires GSAP + MorphSVGPlugin (already enqueued). Respects
  * prefers-reduced-motion. Guarded against the double main.js enqueue.
  *
- * NOTE: paths should be curve/line based (M/L/C/S/Q/H/V/Z). Arc (A)
- * commands carry boolean flags that must not be perturbed.
+ * NOTE: shapes should be curve/line based (M/L/C/S/Q/H/V/Z) — arc (A)
+ * commands carry boolean flags that must not be perturbed by jitter.
  */
 
 ( function () {
+
+    function phaseNum( el ) {
+        const m = ( el.getAttribute( 'class' ) || '' ).match( /blob-phase-(\d+)/ );
+        return m ? parseInt( m[ 1 ], 10 ) : 0;
+    }
+
+    // Nudge each coordinate; phase varies displacement per point so the
+    // bulge travels around the shape rather than pulsing uniformly.
+    function jitter( d, amp, phase ) {
+        let i = -1;
+        return d.replace( /-?\d*\.?\d+(?:e[-+]?\d+)?/gi, function ( n ) {
+            i++;
+            const off = Math.sin( i * 1.9 + phase ) * amp;
+            return ( parseFloat( n ) + off ).toFixed( 3 );
+        } );
+    }
+
     function init() {
         if ( typeof gsap === 'undefined' || typeof MorphSVGPlugin === 'undefined' ) return;
         gsap.registerPlugin( MorphSVGPlugin );
@@ -26,18 +49,6 @@
         const paths = document.querySelectorAll( 'path.blob-animation' );
         if ( ! paths.length ) return;
 
-        // Nudge each coordinate in the path data. Phase varies the
-        // displacement per point so different points bulge at different
-        // times → a travelling undulation rather than a uniform pulse.
-        const jitter = function ( d, amp, phase ) {
-            let i = -1;
-            return d.replace( /-?\d*\.?\d+(?:e[-+]?\d+)?/gi, function ( n ) {
-                i++;
-                const off = Math.sin( i * 1.9 + phase ) * amp;
-                return ( parseFloat( n ) + off ).toFixed( 3 );
-            } );
-        };
-
         paths.forEach( function ( path ) {
             if ( path.dataset.undulateBound ) return;
             path.dataset.undulateBound = '1';
@@ -45,23 +56,36 @@
             const base = path.getAttribute( 'd' );
             if ( ! base ) return;
 
-            // Amplitude ~2% of the shape's largest dimension, so it
-            // looks the same on a 65px icon or a large decoration.
-            let amp = 2;
-            try {
-                const bb = path.getBBox();
-                amp = Math.max( bb.width, bb.height ) * 0.08;
-            } catch ( e ) {}
+            // Collect author-drawn phase shapes from the same SVG.
+            let phases = [];
+            const svg = path.closest( 'svg' );
+            if ( svg ) {
+                const els = Array.prototype.slice.call( svg.querySelectorAll( '[class*="blob-phase-"]' ) );
+                els.sort( function ( a, b ) { return phaseNum( a ) - phaseNum( b ); } );
+                phases = els.map( function ( el ) { return el.getAttribute( 'd' ); } ).filter( Boolean );
+            }
 
-            const a = jitter( base, amp, 0 );
-            const b = jitter( base, amp, 2.1 );
-            const c = jitter( base, amp, 4.2 );
+            const tl = gsap.timeline( { repeat: -1, defaults: { duration: 3.2, ease: 'sine.inOut' } } );
 
-            gsap.timeline( { repeat: -1, defaults: { duration: 3.2, ease: 'sine.inOut' } } )
-                .to( path, { morphSVG: { shape: a } } )
-                .to( path, { morphSVG: { shape: b } } )
-                .to( path, { morphSVG: { shape: c } } )
-                .to( path, { morphSVG: { shape: base } } );
+            if ( phases.length ) {
+                // Morph through each drawn phase, then back to the original.
+                phases.forEach( function ( d ) {
+                    tl.to( path, { morphSVG: { shape: d } } );
+                } );
+                tl.to( path, { morphSVG: { shape: base } } );
+            } else {
+                // Fallback: gentle self-jitter (~2% of the shape size).
+                let amp = 2;
+                try {
+                    const bb = path.getBBox();
+                    amp = Math.max( bb.width, bb.height ) * 0.08;
+                } catch ( e ) {}
+
+                tl.to( path, { morphSVG: { shape: jitter( base, amp, 0 ) } } )
+                  .to( path, { morphSVG: { shape: jitter( base, amp, 2.1 ) } } )
+                  .to( path, { morphSVG: { shape: jitter( base, amp, 4.2 ) } } )
+                  .to( path, { morphSVG: { shape: base } } );
+            }
         } );
     }
 
