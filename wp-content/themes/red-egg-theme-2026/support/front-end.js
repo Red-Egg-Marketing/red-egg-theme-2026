@@ -63,3 +63,6 @@ import './blocks/faq-accordion/frontend';
 
 // Table of Contents – collapsible on mobile
 import './js/toc';
+
+// Smooth scroll for internal anchor links (site-wide)
+import './js/smooth-scroll';
