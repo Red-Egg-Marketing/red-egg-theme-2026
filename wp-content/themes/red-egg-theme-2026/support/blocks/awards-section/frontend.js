@@ -15,8 +15,8 @@
         sliders.forEach( function( el ) {
             var slidesPerView = parseInt( el.getAttribute( 'data-slides-per-view' ) ) || 6;
             var spaceBetween = parseInt( el.getAttribute( 'data-space-between' ) ) || 30;
-            var prevEl = el.querySelector( '.swiper-button-prev' );
-            var nextEl = el.querySelector( '.swiper-button-next' );
+            var prevEl = el.querySelector( '.cs-slider__nav-prev' );
+            var nextEl = el.querySelector( '.cs-slider__nav-next' );
 
             new Swiper( el, {
                 loop: false,
