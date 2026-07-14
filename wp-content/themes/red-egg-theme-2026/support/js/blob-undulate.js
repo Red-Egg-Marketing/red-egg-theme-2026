@@ -50,7 +50,7 @@
             let amp = 2;
             try {
                 const bb = path.getBBox();
-                amp = Math.max( bb.width, bb.height ) * 0.02;
+                amp = Math.max( bb.width, bb.height ) * 0.08;
             } catch ( e ) {}
 
             const a = jitter( base, amp, 0 );
