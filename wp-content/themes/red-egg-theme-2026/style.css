@@ -5378,12 +5378,12 @@ div.gform_wrapper.gravity-theme .gform_page_footer {
   position: relative;
   margin: 0 auto;
   padding-top: 4.5rem;
-  padding-bottom: 2.25rem;
+  padding-bottom: 4.5rem;
 }
 @media screen and (min-width: 768px) {
   .image-columns {
     padding-top: 7rem;
-    padding-bottom: 2rem;
+    padding-bottom: 7rem;
   }
 }
 
