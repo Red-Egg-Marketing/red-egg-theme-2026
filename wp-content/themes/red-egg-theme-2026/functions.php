@@ -88,6 +88,11 @@ function red_egg_theme_setup() {
             'color' => '#F6B319',
         ],
         [
+            'name'  => esc_html__( 'Dark Purple', 'red-egg' ),
+            'slug'  => 'dark-purple',
+            'color' => '#91288D',
+        ],
+        [
             'name'  => esc_html__( 'White', 'red-egg' ),
             'slug'  => 'white',
             'color' => '#FFFFFF',
