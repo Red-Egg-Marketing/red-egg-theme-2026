@@ -18,10 +18,10 @@
     position: relative;
     margin: 0 auto;
     padding-top: $default-section-padding-top;
-    padding-bottom: $default-section-padding-bottom;
+    padding-bottom: $default-section-padding-bottom/2;
     @media screen and (min-width: $small-width) {
         padding-top: 7rem;
-        padding-bottom: 5rem;
+        padding-bottom: 2rem;
     }
 }
 
@@ -38,9 +38,9 @@
     display: flex;
     flex-wrap: wrap;
     align-items: flex-start;
-    padding-bottom: 2rem;
+    padding-bottom: 3rem;
      @media screen and (min-width: $small-width) {
-        padding-bottom: 3rem;
+        padding-bottom: 5rem;
      }
 }
 
@@ -220,13 +220,12 @@
 .image-columns .squiggle-decoration {
     position: absolute;
     left: 1.25rem;
-    bottom: 1.25rem;
     width: auto;
     margin: 0;
     z-index: 2;
-
+    top: auto;
     @media screen and (min-width: $small-width) {
         left: 2.5rem;
-        bottom: 2rem;
+        bottom: 0;
     }
 }

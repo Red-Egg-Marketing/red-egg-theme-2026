@@ -5378,12 +5378,12 @@ div.gform_wrapper.gravity-theme .gform_page_footer {
   position: relative;
   margin: 0 auto;
   padding-top: 4.5rem;
-  padding-bottom: 4.5rem;
+  padding-bottom: 2.25rem;
 }
 @media screen and (min-width: 768px) {
   .image-columns {
     padding-top: 7rem;
-    padding-bottom: 5rem;
+    padding-bottom: 2rem;
   }
 }
 
@@ -5400,11 +5400,11 @@ div.gform_wrapper.gravity-theme .gform_page_footer {
   display: flex;
   flex-wrap: wrap;
   align-items: flex-start;
-  padding-bottom: 2rem;
+  padding-bottom: 3rem;
 }
 @media screen and (min-width: 768px) {
   .image-columns > .block-wrapper {
-    padding-bottom: 3rem;
+    padding-bottom: 5rem;
   }
 }
 
@@ -5667,15 +5667,15 @@ div.gform_wrapper.gravity-theme .gform_page_footer {
 .image-columns .squiggle-decoration {
   position: absolute;
   left: 1.25rem;
-  bottom: 1.25rem;
   width: auto;
   margin: 0;
   z-index: 2;
+  top: auto;
 }
 @media screen and (min-width: 768px) {
   .image-columns .squiggle-decoration {
     left: 2.5rem;
-    bottom: 2rem;
+    bottom: 0;
   }
 }
 
