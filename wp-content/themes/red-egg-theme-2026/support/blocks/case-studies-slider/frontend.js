@@ -13,7 +13,7 @@ if ( typeof wp !== 'undefined' && wp.element ) {
 
 const { render, Fragment, useState, useEffect, useRef } = wp.element;
 
-const SliderContent = ( { postsToShow, industry, navPrev, navNext } ) => {
+const SliderContent = ( { postsToShow, industry, service, navPrev, navNext } ) => {
     const [ studies, setStudies ] = useState( [] );
     const [ loading, setLoading ] = useState( true );
     const swiperRef = useRef( null );
@@ -21,9 +21,10 @@ const SliderContent = ( { postsToShow, industry, navPrev, navNext } ) => {
 
     useEffect( () => {
         let url = '/red-egg/v2/case-studies';
-        if ( industry ) {
-            url += '?industry=' + industry;
-        }
+        const params = [];
+        if ( industry ) params.push( 'industry=' + industry );
+        if ( service ) params.push( 'service=' + service );
+        if ( params.length ) url += '?' + params.join( '&' );
         wp.apiRequest( { path: url } ).then( ( data ) => {
             let posts = [];
             if ( data && data[0] && data[0].resources ) {
@@ -140,11 +141,13 @@ bodies.forEach( ( body ) => {
     if ( swiperWrap ) {
         const postsToShow = parseInt( body.getAttribute( 'data-posts-to-show' ) ) || 15;
         const industry = body.getAttribute( 'data-industry' ) || '';
+        const service = body.getAttribute( 'data-service' ) || '';
 
         render(
             <SliderContent
                 postsToShow={ postsToShow }
                 industry={ industry }
+                service={ service }
                 navPrev={ navPrev }
                 navNext={ navNext }
             />,

@@ -14,6 +14,7 @@ import ResourceCard from '../../components/ResourceCard.js';
 
 const apiUrl = '/wp-json/red-egg/v2/case-studies';
 const industriesUrl = '/wp-json/red-egg/v2/industries';
+const servicesUrl = '/wp-json/red-egg/v2/services';
 
 const buttonTemplate = [
     [ 'core/buttons', {}, [
@@ -26,10 +27,11 @@ const buttonAllowed = [
 ];
 
 const EditSliderBody = ( { attributes, setAttributes, clientId } ) => {
-    const { industry, postsToShow, blockId } = attributes;
+    const { industry, service, postsToShow, blockId } = attributes;
 
     const [ resources, setResources ] = useState( false );
     const [ industries, setIndustries ] = useState( false );
+    const [ services, setServices ] = useState( false );
 
     const blockProps = useBlockProps( {
         id: blockId,
@@ -58,12 +60,29 @@ const EditSliderBody = ( { attributes, setAttributes, clientId } ) => {
         }
     }, [] );
 
+    // Fetch services for the filter dropdown
+    useEffect( () => {
+        if ( services === false ) {
+            wp.apiFetch( { url: servicesUrl } ).then( ( terms ) => {
+                let opts = [ { label: '--', value: '' } ];
+                terms.forEach( ( term ) => {
+                    opts.push( {
+                        label: term.name,
+                        value: term.slug,
+                    } );
+                } );
+                setServices( opts );
+            } );
+        }
+    }, [] );
+
     // Fetch case studies
     useEffect( () => {
         let url = apiUrl;
-        if ( industry ) {
-            url += '?industry=' + industry;
-        }
+        const params = [];
+        if ( industry ) params.push( 'industry=' + industry );
+        if ( service ) params.push( 'service=' + service );
+        if ( params.length ) url += '?' + params.join( '&' );
         wp.apiFetch( { url } ).then( ( data ) => {
             let posts = [];
             if ( data && data[0] && data[0].resources ) {
@@ -76,7 +95,7 @@ const EditSliderBody = ( { attributes, setAttributes, clientId } ) => {
         } ).catch( () => {
             setResources( [] );
         } );
-    }, [ industry, postsToShow ] );
+    }, [ industry, service, postsToShow ] );
 
     return (
         <Fragment>
@@ -91,6 +110,14 @@ const EditSliderBody = ( { attributes, setAttributes, clientId } ) => {
                             value={ industry }
                             options={ industries }
                             onChange={ ( val ) => setAttributes( { industry: val } ) }
+                        />
+                    ) }
+                    { services && (
+                        <SelectControl
+                            label={ __( 'Filter by Service', 'red-egg' ) }
+                            value={ service }
+                            options={ services }
+                            onChange={ ( val ) => setAttributes( { service: val } ) }
                         />
                     ) }
                     <RangeControl

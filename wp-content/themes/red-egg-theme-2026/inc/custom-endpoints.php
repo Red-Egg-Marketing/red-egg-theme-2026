@@ -199,16 +199,32 @@ function red_egg_return_case_studies( $data ) {
 		'posts_per_page' => -1,
 	];
 
-	// Filter by industry taxonomy if provided
+	// Filter by industry and/or service taxonomy if provided
+	$tax_query = [];
+
 	$industry = isset( $get['industry'] ) ? sanitize_text_field( $get['industry'] ) : '';
 	if ( ! empty( $industry ) ) {
-		$args['tax_query'] = [
-			[
-				'taxonomy' => 'industry',
-				'field'    => 'slug',
-				'terms'    => $industry,
-			],
+		$tax_query[] = [
+			'taxonomy' => 'industry',
+			'field'    => 'slug',
+			'terms'    => $industry,
 		];
+	}
+
+	$service = isset( $get['service'] ) ? sanitize_text_field( $get['service'] ) : '';
+	if ( ! empty( $service ) ) {
+		$tax_query[] = [
+			'taxonomy' => 'service',
+			'field'    => 'slug',
+			'terms'    => $service,
+		];
+	}
+
+	if ( count( $tax_query ) > 1 ) {
+		$tax_query['relation'] = 'AND';
+	}
+	if ( ! empty( $tax_query ) ) {
+		$args['tax_query'] = $tax_query;
 	}
 
 	$query = new WP_Query( $args );
@@ -434,6 +450,35 @@ function red_egg_return_industries( $request ) {
 
 
 // ============================================
+//  Services Taxonomy Terms
+// ============================================
+
+function red_egg_return_services( $request ) {
+	$terms = get_terms( [
+		'taxonomy'   => 'service',
+		'hide_empty' => true,
+		'orderby'    => 'name',
+		'order'      => 'ASC',
+	] );
+
+	$services = [];
+
+	if ( ! is_wp_error( $terms ) && ! empty( $terms ) ) {
+		foreach ( $terms as $term ) {
+			$services[] = [
+				'id'    => $term->term_id,
+				'name'  => $term->name,
+				'slug'  => $term->slug,
+				'count' => $term->count,
+			];
+		}
+	}
+
+	return rest_ensure_response( $services );
+}
+
+
+// ============================================
 //  Reviews (from WP FB Reviews plugin table)
 // ============================================
 
@@ -503,6 +548,13 @@ add_action( 'rest_api_init', function () {
 	register_rest_route( 'red-egg/v2', '/industries/', [
 		'methods'             => 'GET',
 		'callback'            => 'red_egg_return_industries',
+		'permission_callback' => '__return_true',
+	] );
+
+	// Services taxonomy terms
+	register_rest_route( 'red-egg/v2', '/services/', [
+		'methods'             => 'GET',
+		'callback'            => 'red_egg_return_services',
 		'permission_callback' => '__return_true',
 	] );
 

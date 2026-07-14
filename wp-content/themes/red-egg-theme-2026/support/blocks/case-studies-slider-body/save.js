@@ -10,13 +10,14 @@ const { Fragment } = wp.element;
 const { InnerBlocks, useBlockProps } = wp.blockEditor;
 
 const SaveSliderBody = ( { attributes } ) => {
-    const { industry, postsToShow, blockId } = attributes;
+    const { industry, service, postsToShow, blockId } = attributes;
 
     const blockProps = useBlockProps.save( {
         id: blockId,
         className: 'case-studies-slider__body',
         'data-posts-to-show': postsToShow,
         'data-industry': industry || '',
+        'data-service': service || '',
     } );
 
     return (

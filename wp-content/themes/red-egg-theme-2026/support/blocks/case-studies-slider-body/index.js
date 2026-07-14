@@ -19,6 +19,10 @@ registerBlockType( 'red-egg-block/case-studies-slider-body', {
     parent: [ 'red-egg-block/case-studies-slider' ],
     supports: { anchor: false, inserter: false },
     attributes: {
+        service: {
+            type: 'string',
+            default: '',
+        },
         industry: {
             type: 'string',
             default: '',
