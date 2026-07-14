@@ -102,12 +102,12 @@
 }
 
 .image-columns .wrap h2 {
-    @include primary-h1;
+    @include primary-h2;
     margin-bottom: 1rem;
 }
 
 .image-columns .wrap h3 {
-    @include primary-h2;
+    @include primary-h3;
     margin-bottom: 0.5rem;
 }
 

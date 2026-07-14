@@ -5483,16 +5483,15 @@ div.gform_wrapper.gravity-theme .gform_page_footer {
 .image-columns .wrap h2 {
   font-family: "Poppins", sans-serif;
   font-weight: 700;
-  font-size: 2.125rem;
-  line-height: 2.75rem;
-  letter-spacing: 0.02125rem;
+  font-size: 1.5625rem;
+  line-height: 2.1875rem;
+  letter-spacing: 0.0625rem;
   color: #424042;
 }
 @media screen and (min-width: 768px) {
   .image-columns .wrap h2 {
-    font-size: 3.125rem;
-    line-height: 3.75rem;
-    letter-spacing: 0.03125rem;
+    font-size: 2.3125rem;
+    line-height: 2.9375rem;
   }
 }
 .image-columns .wrap h2 {
@@ -5502,15 +5501,15 @@ div.gform_wrapper.gravity-theme .gform_page_footer {
 .image-columns .wrap h3 {
   font-family: "Poppins", sans-serif;
   font-weight: 700;
-  font-size: 1.5625rem;
-  line-height: 2.1875rem;
+  font-size: 1.125rem;
+  line-height: 1.75rem;
   letter-spacing: 0.0625rem;
   color: #424042;
 }
 @media screen and (min-width: 768px) {
   .image-columns .wrap h3 {
-    font-size: 2.3125rem;
-    line-height: 2.9375rem;
+    font-size: 1.5625rem;
+    line-height: 2.1875rem;
   }
 }
 .image-columns .wrap h3 {
@@ -7449,14 +7448,17 @@ div.gform_wrapper.gravity-theme .gform_page_footer {
 
 .hero-services .hero-background__content h1 {
   color: #E32E6D;
-  font-size: 2.125rem;
-  line-height: 2.75rem;
+  font-family: "Poppins", sans-serif;
+  font-weight: 700;
+  font-size: 1.5625rem;
+  line-height: 2.1875rem;
+  letter-spacing: 0.0625rem;
+  color: #424042;
 }
 @media screen and (min-width: 768px) {
   .hero-services .hero-background__content h1 {
-    font-size: 3.125rem;
-    line-height: 3.75rem;
-    letter-spacing: 0.5px;
+    font-size: 2.3125rem;
+    line-height: 2.9375rem;
   }
 }
 

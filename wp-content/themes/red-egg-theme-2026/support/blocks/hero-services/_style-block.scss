@@ -60,13 +60,7 @@
 // ---- Magenta heading ----
 .hero-services .hero-background__content h1 {
     color: $magenta;
-    font-size: 2.125rem;
-    line-height: 2.75rem;
-    @media screen and (min-width: $small-width) {
-        font-size: 3.125rem;
-        line-height: 3.75rem;
-        letter-spacing: 0.5px;
-    }
+     @include primary-h2;
 }
 
 // ---- Subtitle: gray body ----
