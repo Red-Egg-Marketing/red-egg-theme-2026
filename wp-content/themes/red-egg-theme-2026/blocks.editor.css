@@ -164,8 +164,8 @@
 }
 @media screen and (min-width: 768px) {
   .hero-background__content p {
-    font-size: 1.375rem;
-    line-height: 2.125rem;
+    font-size: 1.25rem;
+    line-height: 2rem;
   }
 }
 .hero-background__content p {
@@ -1878,8 +1878,8 @@
 }
 @media screen and (min-width: 768px) {
   .case-studies-slider .case-studies-slider__loading p {
-    font-size: 1.375rem;
-    line-height: 2.125rem;
+    font-size: 1.25rem;
+    line-height: 2rem;
   }
 }
 .case-studies-slider .case-studies-slider__loading p {
@@ -1900,8 +1900,8 @@
 }
 @media screen and (min-width: 768px) {
   .case-studies-slider .error h3 {
-    font-size: 1.375rem;
-    line-height: 2.125rem;
+    font-size: 1.25rem;
+    line-height: 2rem;
   }
 }
 .case-studies-slider .error h3 {
@@ -2091,8 +2091,8 @@
 }
 @media screen and (min-width: 768px) {
   .testimonials-block__shortcode-tag {
-    font-size: 1.375rem;
-    line-height: 2.125rem;
+    font-size: 1.25rem;
+    line-height: 2rem;
   }
 }
 .testimonials-block__shortcode-tag {
@@ -2113,8 +2113,8 @@
 }
 @media screen and (min-width: 768px) {
   .testimonials-block__shortcode-empty {
-    font-size: 1.375rem;
-    line-height: 2.125rem;
+    font-size: 1.25rem;
+    line-height: 2rem;
   }
 }
 .testimonials-block__shortcode-empty {
@@ -2385,8 +2385,8 @@
 }
 @media screen and (min-width: 768px) {
   .insights-block .insights-block__loading p {
-    font-size: 1.375rem;
-    line-height: 2.125rem;
+    font-size: 1.25rem;
+    line-height: 2rem;
   }
 }
 .insights-block .insights-block__loading p {
@@ -2402,8 +2402,8 @@
 }
 @media screen and (min-width: 768px) {
   .insights-block .insights-block__empty {
-    font-size: 1.375rem;
-    line-height: 2.125rem;
+    font-size: 1.25rem;
+    line-height: 2rem;
   }
 }
 .insights-block .insights-block__empty {
@@ -2552,16 +2552,15 @@ p.contact-section__label {
 .contact-section__left h2 {
   font-family: "Poppins", sans-serif;
   font-weight: 700;
-  font-size: 2.125rem;
-  line-height: 2.75rem;
-  letter-spacing: 0.02125rem;
+  font-size: 1.5625rem;
+  line-height: 2.1875rem;
+  letter-spacing: 0.0625rem;
   color: #424042;
 }
 @media screen and (min-width: 768px) {
   .contact-section__left h2 {
-    font-size: 3.125rem;
-    line-height: 3.75rem;
-    letter-spacing: 0.03125rem;
+    font-size: 2.3125rem;
+    line-height: 2.9375rem;
   }
 }
 .contact-section__left h2 {
@@ -2691,8 +2690,8 @@ p.contact-section__label {
 }
 @media screen and (min-width: 768px) {
   .contact-icons__text {
-    font-size: 1.375rem;
-    line-height: 2.125rem;
+    font-size: 1.25rem;
+    line-height: 2rem;
   }
 }
 .contact-icons__text {
@@ -5721,8 +5720,8 @@ div.gform_wrapper.gravity-theme .gform_page_footer {
 @media screen and (min-width: 768px) {
   .feature-card__content h3,
   .feature-card__title {
-    font-size: 1.375rem;
-    line-height: 2.125rem;
+    font-size: 1.25rem;
+    line-height: 2rem;
   }
 }
 .feature-card__content h3,
@@ -6898,8 +6897,8 @@ img.device-frame__device {
 }
 @media screen and (min-width: 768px) {
   .faq-accordion__trigger .faq-accordion__question {
-    font-size: 1.375rem;
-    line-height: 2.125rem;
+    font-size: 1.25rem;
+    line-height: 2rem;
   }
 }
 .faq-accordion__trigger .faq-accordion__question {
