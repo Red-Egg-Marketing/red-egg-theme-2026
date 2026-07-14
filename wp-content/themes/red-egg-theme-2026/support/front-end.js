@@ -49,6 +49,9 @@ import './format-types/rotate-words/frontend';
 // Blob Animation – GSAP MorphSVG blob morphing
 import './js/blob-animation';
 
+// Blob Undulate – gentle point wobble for path.blob-animation (SVG upload areas)
+import './js/blob-undulate';
+
 // Squiggle Decoration – GSAP ScrollTrigger clip-path reveal
 import './js/squiggle-animation';
 
