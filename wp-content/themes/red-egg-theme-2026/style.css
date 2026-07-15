@@ -377,10 +377,10 @@ p.is-style-section-label {
   margin: 0;
   padding: 0;
 }
-.primary-menu li {
+.primary-menu > li {
   position: relative;
 }
-.primary-menu li a {
+.primary-menu > li > a {
   font-family: "Poppins", sans-serif;
   font-weight: 500;
   font-size: 1.0625rem;
@@ -392,10 +392,10 @@ p.is-style-section-label {
   transition: color 0.2s ease;
   padding: 0.5rem 0;
 }
-.primary-menu li a:hover {
+.primary-menu > li > a:hover {
   color: #DC2035;
 }
-.primary-menu li .sub-menu {
+.primary-menu > li .sub-menu {
   display: none;
   position: absolute;
   top: 100%;
@@ -410,16 +410,16 @@ p.is-style-section-label {
   margin: 0.5rem 0 0;
   z-index: 100;
 }
-.primary-menu li .sub-menu li a {
+.primary-menu > li .sub-menu li a {
   display: block;
   padding: 0.5rem 1.25rem;
   font-size: 0.9375rem;
   white-space: nowrap;
 }
-.primary-menu li .sub-menu li a:hover {
+.primary-menu > li .sub-menu li a:hover {
   background: #F2ECE5;
 }
-.primary-menu li:hover > .sub-menu {
+.primary-menu > li:hover > .sub-menu {
   display: block;
 }
 
