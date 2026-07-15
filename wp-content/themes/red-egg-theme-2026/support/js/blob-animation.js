@@ -54,14 +54,10 @@
                 morphTl.to( path, {
                     morphSVG: {
                         shape: shapes[ shapeKey ],
-                        type: 'rotational',
-                        map: 'complexity',
+                        type: 'rotational',   // curved (not linear) interpolation — no pinching
+                        shapeIndex: 'auto',   // shortest-path anchor mapping — prevents straight-line flash
                         precision: 5,
                         origin: '50% 50%',
-                        smooth: {
-                            points: 88,
-                            redraw: false
-                        }
                     },
                 } );
             } );
