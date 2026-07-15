@@ -45,6 +45,14 @@ registerBlockType( 'red-egg-block/service-list-item', {
             type: 'boolean',
             default: false,
         },
+        hoverColor: {
+            type: 'string',
+            default: 'rgba(227, 46, 109, 1)',
+        },
+        hoverSlug: {
+            type: 'string',
+            default: 'magenta',
+        },
     },
     edit,
     save,

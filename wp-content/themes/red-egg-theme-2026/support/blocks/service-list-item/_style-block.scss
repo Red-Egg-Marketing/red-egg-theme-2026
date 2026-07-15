@@ -17,23 +17,60 @@
     }
 }
 
+// ---- Hover background color (per-item, selectable) ----
+// Applies whether the item is a plain bar or wrapped in a link.
+$service-hover-colors: (
+    'white':        $white,
+    'eggshell':     $eggshell,
+    'gray':         $gray,
+    'red':          $red,
+    'peach':        $peach,
+    'navy':         $navy,
+    'purple':       $purple,
+    'magenta':      $magenta,
+    'orange':       $orange,
+    'gold':         $gold,
+    'dark-purple':  $dark-purple,
+);
+
+@each $slug, $color in $service-hover-colors {
+    .service-list-item.hover-#{$slug}:hover .service-list-item__inner {
+        background-color: $color;
+    }
+}
+
+// Light hover backgrounds: flip text + arrow to dark for legibility
+$service-hover-light: ('white', 'eggshell', 'peach', 'gold', 'purple');
+
+@each $slug in $service-hover-light {
+    .service-list-item.hover-#{$slug}:hover {
+        .service-list-item__title,
+        .service-list-item__description {
+            color: $gray;
+        }
+
+        .service-list-item__arrow svg path {
+            fill: $gray;
+        }
+    }
+}
+
+// ---- Hover motion (applies to every item) ----
+.service-list-item:hover {
+    .service-list-item__title {
+        transform: translateX(5px);
+    }
+
+    .service-list-item__arrow svg {
+        transform: scale(1.2);
+    }
+}
+
 // ---- Link wrapper ----
 .service-list-item__link {
     display: block;
     text-decoration: none;
     color: inherit;
-
-    &:hover .service-list-item__inner {
-        background-color: $magenta;
-    }
-
-    &:hover .service-list-item__title {
-        transform: translateX(5px);
-    }
-
-    &:hover .service-list-item__arrow svg {
-        transform: scale(1.2);
-    }
 }
 
 // ---- Inner bar ----

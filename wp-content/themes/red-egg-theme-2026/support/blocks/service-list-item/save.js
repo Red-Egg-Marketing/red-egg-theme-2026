@@ -8,10 +8,10 @@
 const { RichText, useBlockProps } = wp.blockEditor;
 
 const SaveServiceListItem = ( { attributes } ) => {
-    const { title, description, linkUrl, linkTarget } = attributes;
+    const { title, description, linkUrl, linkTarget, hoverSlug } = attributes;
 
     const blockProps = useBlockProps.save( {
-        className: 'service-list-item',
+        className: 'service-list-item' + ( hoverSlug ? ' hover-' + hoverSlug : '' ),
     } );
 
     const inner = (

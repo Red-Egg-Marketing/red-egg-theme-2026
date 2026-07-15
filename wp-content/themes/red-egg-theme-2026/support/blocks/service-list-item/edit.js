@@ -10,11 +10,13 @@ const { RichText, InspectorControls, useBlockProps } = wp.blockEditor;
 const { PanelBody, TextControl, ToggleControl } = wp.components;
 const { __ } = wp.i18n;
 
+import BackgroundColor from '../../components/BackgroundColor.js';
+
 const EditServiceListItem = ( { attributes, setAttributes } ) => {
-    const { title, description, linkUrl, linkTarget } = attributes;
+    const { title, description, linkUrl, linkTarget, hoverColor, hoverSlug } = attributes;
 
     const blockProps = useBlockProps( {
-        className: 'service-list-item',
+        className: 'service-list-item' + ( hoverSlug ? ' hover-' + hoverSlug : '' ),
     } );
 
     return (
@@ -36,6 +38,14 @@ const EditServiceListItem = ( { attributes, setAttributes } ) => {
                         onChange={ () => setAttributes( { linkTarget: ! linkTarget } ) }
                     />
                 </PanelBody>
+                <BackgroundColor
+                    bgColor={ hoverColor }
+                    bgSlug={ hoverSlug }
+                    updateProp="hoverColor"
+                    updateSlug="hoverSlug"
+                    title="Hover Background Color"
+                    setAttributes={ setAttributes }
+                />
             </InspectorControls>
 
             <div { ...blockProps }>

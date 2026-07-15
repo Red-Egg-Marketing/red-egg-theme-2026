@@ -1,7 +1,7 @@
 /**
  * Service List Block – Edit Component
  *
- * InnerBlocks: core/heading + service-list-item children.
+ * InnerBlocks: header-intro + service-list-item children.
  * BlobAnimation support for decorative morphing blob.
  */
 
@@ -16,7 +16,7 @@ import MarginSelector from '../../components/Margin.js';
 import BlobAnimation from '../../components/BlobAnimation.js';
 
 const template = [
-    [ 'core/heading', { level: 2, placeholder: 'Branding Services' } ],
+    [ 'red-egg-block/header-intro', {} ],
     [ 'red-egg-block/service-list-item', {} ],
     [ 'red-egg-block/service-list-item', {} ],
     [ 'red-egg-block/service-list-item', {} ],
@@ -24,7 +24,7 @@ const template = [
 ];
 
 const allowedBlocks = [
-    'core/heading',
+    'red-egg-block/header-intro',
     'red-egg-block/service-list-item',
 ];
 
