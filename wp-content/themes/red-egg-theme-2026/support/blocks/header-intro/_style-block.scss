@@ -132,19 +132,19 @@
 
 .header-intro__left .header-intro__label,
 .header-intro__left p.header-intro__label {
-    font-family: $font-head;
-    font-weight: 500;
-    font-size: 1.0625rem;
-    line-height: 1.625rem;
-    letter-spacing: 2px;
-    text-transform: uppercase;
+    font-family: $font-head !important;
+    font-weight: 500 !important;
+    font-size: 1.0625rem !important;
+    line-height: 1.625rem !important;
+    letter-spacing: 2px !important;
+    text-transform: uppercase !important;
     color: $gray;
     margin: 0 0 0.5rem 0;
 
     @media screen and (min-width: $small-width) {
-        font-size: 1rem;
-        line-height: 1.3;
-        letter-spacing: 1px;
+        font-size: 1rem !important;
+        line-height: 1.3 !important;
+        letter-spacing: 1px !important;
     }
 }
 

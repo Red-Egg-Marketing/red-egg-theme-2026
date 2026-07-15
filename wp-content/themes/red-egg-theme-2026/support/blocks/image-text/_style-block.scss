@@ -112,7 +112,7 @@
     margin-bottom: 0.5rem;
 }
 
-.image-columns .wrap p:not(.is-style-section-label) {
+.image-columns .wrap p {
     @include body-text;
 }
 
