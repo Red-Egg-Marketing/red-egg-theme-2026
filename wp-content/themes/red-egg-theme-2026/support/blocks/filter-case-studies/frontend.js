@@ -241,6 +241,12 @@ const FilterCaseStudiesFrontend = () => {
         updateUrl( updated, lookups.byId );
     };
 
+    var clearAll = function() {
+        setSelectTax( [] );
+        setResources( allResources );
+        updateUrl( [], lookups.byId );
+    };
+
     if ( loading ) {
         return (
             <div className="filter-case-studies__loading">
@@ -258,6 +264,11 @@ const FilterCaseStudiesFrontend = () => {
                     toggleCats={ toggleCats }
                     currentTax={ selectTax }
                 />
+                { selectTax.length > 0 && (
+                    <button type="button" className="filter-clear" onClick={ clearAll }>
+                        Clear filters <span className="filter-clear__x">×</span>
+                    </button>
+                ) }
             </div>
 
             <div className="filter-case-studies__grid">

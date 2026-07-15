@@ -247,6 +247,12 @@ const FilterPostsFrontend = () => {
         updateUrl( updated, lookups.byId );
     };
 
+    var clearAll = function() {
+        setSelectTax( [] );
+        setResources( allResources );
+        updateUrl( [], lookups.byId );
+    };
+
     if ( loading ) {
         return (
             <div className="filter-posts__loading">
@@ -264,6 +270,11 @@ const FilterPostsFrontend = () => {
                     toggleCats={ toggleCats }
                     currentTax={ selectTax }
                 />
+                { selectTax.length > 0 && (
+                    <button type="button" className="filter-clear" onClick={ clearAll }>
+                        Clear filters <span className="filter-clear__x">×</span>
+                    </button>
+                ) }
             </div>
 
             <div className="filter-posts__grid">

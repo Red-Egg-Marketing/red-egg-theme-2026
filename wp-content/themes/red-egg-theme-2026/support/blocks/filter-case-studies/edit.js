@@ -107,6 +107,15 @@ const EditFilterCaseStudies = ( { attributes, setAttributes, clientId } ) => {
         } );
     };
 
+    // Clear all selected filters
+    const clearAll = () => {
+        setSelectTax( [] );
+        wp.apiFetch( { url: apiUrl } ).then( ( data ) => {
+            let posts = ( data && data[0] && data[0].resources ) ? data[0].resources : [];
+            setResources( posts );
+        } );
+    };
+
     // Toggle dropdown
     const toggleCats = ( key, item ) => {
         let allFilt = document.querySelectorAll( '.filter-block' );
@@ -213,6 +222,11 @@ const EditFilterCaseStudies = ( { attributes, setAttributes, clientId } ) => {
                                 ) ) }
                             </div>
                         </form>
+                        { selectTax.length > 0 && (
+                            <button type="button" className="filter-clear" onClick={ clearAll }>
+                                { __( 'Clear filters', 'red-egg' ) } <span className="filter-clear__x">×</span>
+                            </button>
+                        ) }
                     </div>
 
                     <div className="filter-case-studies__grid">

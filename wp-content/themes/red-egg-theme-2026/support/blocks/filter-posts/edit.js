@@ -112,6 +112,11 @@ const EditFilterPosts = ( { attributes, setAttributes, clientId } ) => {
         applyFilter( updated );
     };
 
+    const clearAll = () => {
+        setSelectTax( [] );
+        applyFilter( [] );
+    };
+
     const toggleCats = ( item ) => {
         const parent = item.parentElement;
         document.querySelectorAll( '.filter-block' ).forEach( ( filt ) => {
@@ -219,6 +224,11 @@ const EditFilterPosts = ( { attributes, setAttributes, clientId } ) => {
                                 ) ) }
                             </div>
                         </form>
+                        { selectTax.length > 0 && (
+                            <button type="button" className="filter-clear" onClick={ clearAll }>
+                                { __( 'Clear filters', 'red-egg' ) } <span className="filter-clear__x">×</span>
+                            </button>
+                        ) }
                     </div>
 
                     <div className="filter-posts__grid">
