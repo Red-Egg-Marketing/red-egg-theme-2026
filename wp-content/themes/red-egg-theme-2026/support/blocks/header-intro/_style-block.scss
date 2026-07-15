@@ -151,12 +151,12 @@
 .header-intro__left h1,
 .header-intro__left h2,
 .header-intro__left h3 {
-    margin: 0;
+    margin-top: 0;
 }
 
 .header-intro__left h2 {
     @include primary-h2;
-    margin: 0;
+    margin-top: 0;
 }
 
 // ---- Right column: description ----

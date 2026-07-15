@@ -2452,6 +2452,7 @@ body.mega-open {
 .hero-background__content h1 {
   margin-top: 0;
   margin-bottom: 1.5rem;
+  white-space: pre;
 }
 @media screen and (min-width: 768px) {
   .hero-background__content h1 {
@@ -2925,7 +2926,7 @@ body.mega-open {
 .header-intro__left h1,
 .header-intro__left h2,
 .header-intro__left h3 {
-  margin: 0;
+  margin-top: 0;
 }
 
 .header-intro__left h2 {
@@ -2943,7 +2944,7 @@ body.mega-open {
   }
 }
 .header-intro__left h2 {
-  margin: 0;
+  margin-top: 0;
 }
 
 @media screen and (min-width: 768px) {
