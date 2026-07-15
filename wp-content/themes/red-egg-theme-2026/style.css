@@ -5425,13 +5425,16 @@ div.gform_wrapper.gravity-theme .gform_page_footer {
   width: 100%;
 }
 
+.image-columns .img-container {
+  border: 1px solid #424042;
+}
+
 .image-columns .img-container img {
   display: block;
   width: 100%;
   height: 100%;
   -o-object-fit: cover;
      object-fit: cover;
-  border: 1px solid #424042;
 }
 
 .image-columns .image-comp {

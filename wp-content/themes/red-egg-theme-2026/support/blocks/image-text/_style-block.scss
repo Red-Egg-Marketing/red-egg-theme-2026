@@ -62,12 +62,15 @@
     width: 100%;
 }
 
+.image-columns .img-container  {
+    border: 1px solid $gray;
+}
+
 .image-columns .img-container img {
     display: block;
     width: 100%;
     height: 100%;
     object-fit: cover;
-    border: 1px solid $gray;
 }
 
 .image-columns .image-comp {
