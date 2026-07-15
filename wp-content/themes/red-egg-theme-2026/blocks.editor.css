@@ -3212,7 +3212,7 @@ div.gform_wrapper.gravity-theme .gform_page_footer {
   margin-bottom: 0.5rem;
 }
 
-.image-columns .wrap p {
+.image-columns .wrap p:not(.is-style-section-label) {
   font-family: "Figtree", sans-serif;
   font-weight: 300;
   font-size: 1.125rem;
@@ -3220,7 +3220,7 @@ div.gform_wrapper.gravity-theme .gform_page_footer {
   color: #424042;
 }
 @media screen and (min-width: 768px) {
-  .image-columns .wrap p {
+  .image-columns .wrap p:not(.is-style-section-label) {
     font-size: 1.25rem;
     line-height: 1.875rem;
   }
