@@ -623,14 +623,6 @@
 .header-intro__left h2,
 .header-intro__left h3 {
   margin-top: 0;
-  margin-bottom: 2.1875rem;
-}
-@media screen and (min-width: 768px) {
-  .header-intro__left h1,
-  .header-intro__left h2,
-  .header-intro__left h3 {
-    margin-bottom: 3.5rem;
-  }
 }
 
 .header-intro__left h2 {
