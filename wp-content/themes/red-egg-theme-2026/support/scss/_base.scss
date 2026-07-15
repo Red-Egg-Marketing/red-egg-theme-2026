@@ -11,6 +11,15 @@
 }
 
 // ---- Body ----
+// ---- Page wrapper ----
+// Prevent horizontal scroll from full-width sections / decorative blob
+// bleed WITHOUT clipping vertical overflow (filter dropdowns, blobs).
+// overflow-x: clip (not hidden) does NOT create a scroll container, so
+// the sticky header keeps working.
+#page {
+    overflow-x: clip;
+}
+
 body {
     margin: 0;
     padding: 0;
