@@ -219,6 +219,46 @@ $button-border-radius:  50px;
 - Desktop: https://www.figma.com/proto/Fl5BVVyhYGn7QEU8vLw9Ba/Red-Egg-26-Mockup
 - Mobile: https://www.figma.com/proto/645cGhfarOogOzc6tLqpNL/Red-Egg-26-Mobile
 
+## Blob Decoration (GSAP MorphSVG)
+
+The `BlobAnimation` component (`support/components/BlobAnimation.js`) renders a
+decorative SVG blob that morphs between shapes via GSAP MorphSVG. Path data lives
+in TWO places that must stay in sync: `BLOB_SHAPES` in the component (editor/save
+output) and the `shapes` object in `support/js/blob-animation.js` (frontend morph
+targets).
+
+**Before wiring up ANY new/edited blob path, verify all shapes pass these checks**
+(a stray straight line during the morph almost always traces back to one of them):
+
+- **Equal anchor counts** — every shape must have the SAME number of cubic
+  segments. Unequal counts force MorphSVG to inject points, which flatten a
+  segment mid-tween.
+- **No zero-length / degenerate segments** — design tools (Figma/Illustrator)
+  often export a closed path whose last point sits exactly on the start, adding a
+  zero-length closing line. Invisible when static, but it breaks the morph. The
+  final cubic must end exactly on the M start point, closed with a single `Z`.
+- **All absolute cubics** — normalize to `M … C … Z` (no relative/line commands)
+  so structure is identical across shapes.
+- **Phase-aligned** — all shapes should start at the same relative position
+  (e.g. same angle from centroid) and share winding direction (CW), so mapped
+  points travel minimal distances. Resampling to a high equal point count
+  (~48) at equal arc-length is the most robust way to guarantee this.
+- **Morph config** (`js/blob-animation.js`): `type:'rotational'`,
+  `shapeIndex:'auto'`, `precision:5`, `origin:'50% 50%'`. Do NOT use invented
+  options like `smooth:{}` (silently ignored). `map:'complexity'` only matters
+  for unequal counts — omit it.
+
+Quick sanity check with `svgpathtools`: `parse_path(d)` should report the same
+count of `CubicBezier` for every shape, zero `Line` segments, and `isclosed()`.
+
+Note: changing a blob path changes save-block markup, so existing blob-using
+blocks (hero, service-list, etc.) will show a "block contains unexpected content"
+notice until re-saved / recovered.
+
+The blob bleeds outside its block by design (`overflow: visible`); do NOT try to
+fix a straight edge with `overflow: hidden` on an ancestor — that clips the blob
+into a rectangle AND (on a `position: sticky` ancestor chain) breaks stickiness.
+
 ## General Principles
 
 - Keep things practical and working. Don't over-abstract.
