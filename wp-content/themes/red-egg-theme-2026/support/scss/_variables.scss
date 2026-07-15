@@ -71,13 +71,13 @@ $arrow-white-r: "data:image/svg+xml,%3Csvg%20width%3D%2235%22%20height%3D%2235%2
 @mixin hero-h1 {
     font-family: $font-head;
     font-weight: 600;
-    font-size: 2.75rem; // 44px mobile
-    line-height: 3.375rem; // 54px
+    font-size: 2.65rem; // 44px mobile
+    line-height: 3.275rem; // 54px
     letter-spacing: 0;
     color: $head-color;
     @media screen and (min-width: $small-width) {
-        font-size: 5.5rem; // 88px desktop
-        line-height: 6.75rem; // 108px
+        font-size: 4.5rem; // 88px desktop
+        line-height: 4.75rem; // 108px
     }
 }
 
