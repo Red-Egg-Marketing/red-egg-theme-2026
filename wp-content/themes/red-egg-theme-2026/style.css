@@ -3777,6 +3777,24 @@ body.mega-open {
 }
 
 .numbered-list__badge .number-badge__input {
+  -moz-appearance: none;
+       appearance: none;
+  -webkit-appearance: none;
+  background: transparent;
+  border: 0;
+  padding: 0;
+  margin: 0;
+  box-shadow: none;
+  font-family: inherit;
+  font-weight: inherit;
+}
+
+.numbered-list__badge .number-badge__input:focus {
+  outline: none;
+  opacity: 0.6;
+}
+
+.numbered-list__badge .number-badge__input {
   width: 60px;
 }
 @media screen and (min-width: 768px) {
