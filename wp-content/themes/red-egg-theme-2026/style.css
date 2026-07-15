@@ -241,7 +241,7 @@ p.is-style-section-label {
 }
 @media screen and (min-width: 768px) {
   p.is-style-section-label {
-    font-size: 0.875rem;
+    font-size: 1rem;
     line-height: 1.3;
     letter-spacing: 1px;
   }
@@ -2916,7 +2916,7 @@ body.mega-open {
 @media screen and (min-width: 768px) {
   .header-intro__left .header-intro__label,
   .header-intro__left p.header-intro__label {
-    font-size: 0.875rem;
+    font-size: 1rem;
     line-height: 1.3;
     letter-spacing: 1px;
   }
