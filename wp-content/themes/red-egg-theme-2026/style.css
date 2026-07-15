@@ -2779,11 +2779,11 @@ body.mega-open {
 
 .header-intro-block {
   position: relative;
-  margin-bottom: 2.5rem;
+  margin-bottom: 2rem;
 }
 @media screen and (min-width: 768px) {
   .header-intro-block {
-    margin-bottom: 3.5rem;
+    margin-bottom: 2.5rem;
   }
 }
 
@@ -5431,6 +5431,7 @@ div.gform_wrapper.gravity-theme .gform_page_footer {
   height: 100%;
   -o-object-fit: cover;
      object-fit: cover;
+  border: 1px solid #424042;
 }
 
 .image-columns .image-comp {
