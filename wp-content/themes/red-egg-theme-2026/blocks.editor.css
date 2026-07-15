@@ -985,6 +985,10 @@
   perspective: 1200px;
 }
 
+.reveal-card a {
+  text-decoration: none;
+}
+
 .reveal-card__inner {
   position: relative;
   width: 100%;
