@@ -130,12 +130,12 @@ $arrow-white-r: "data:image/svg+xml,%3Csvg%20width%3D%2235%22%20height%3D%2235%2
     font-weight: 700;
     font-size: 1.125rem; // 18px mobile
     line-height: 1.75rem; // 28px
-    letter-spacing: 0.3125rem; // 5px
+    letter-spacing: 0.2125rem; // 5px
     text-transform: uppercase;
     color: $head-color;
     @media screen and (min-width: $small-width) {
-        font-size: 1.5625rem; // 25px desktop
-        line-height: 2.1875rem; // 35px
+        font-size: 1.3625rem; // 25px desktop
+        line-height: 1.975rem; // 35px
     }
 }
 

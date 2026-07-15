@@ -3500,14 +3500,14 @@ body.mega-open {
   font-weight: 700;
   font-size: 1.125rem;
   line-height: 1.75rem;
-  letter-spacing: 0.3125rem;
+  letter-spacing: 0.2125rem;
   text-transform: uppercase;
   color: #424042;
 }
 @media screen and (min-width: 768px) {
   .reveal-card__face--back h4 {
-    font-size: 1.5625rem;
-    line-height: 2.1875rem;
+    font-size: 1.3625rem;
+    line-height: 1.975rem;
   }
 }
 .reveal-card__face--back h4 {
@@ -3827,14 +3827,14 @@ body.mega-open {
   font-weight: 700;
   font-size: 1.125rem;
   line-height: 1.75rem;
-  letter-spacing: 0.3125rem;
+  letter-spacing: 0.2125rem;
   text-transform: uppercase;
   color: #424042;
 }
 @media screen and (min-width: 768px) {
   .numbered-list__item-content h3 {
-    font-size: 1.5625rem;
-    line-height: 2.1875rem;
+    font-size: 1.3625rem;
+    line-height: 1.975rem;
   }
 }
 .numbered-list__item-content h3 {
