@@ -6,7 +6,7 @@
  */
 
 const { Fragment, useState, useEffect } = wp.element;
-const { InspectorControls, useBlockProps } = wp.blockEditor;
+const { InnerBlocks, InspectorControls, useBlockProps } = wp.blockEditor;
 const { Button } = wp.components;
 const { __ } = wp.i18n;
 
@@ -15,6 +15,16 @@ import PaddingSelector from '../../components/Padding.js';
 import MarginSelector from '../../components/Margin.js';
 
 const apiUrl = '/wp-json/red-egg/v2/case-studies';
+
+// Hero: reuse the existing hero blocks (services hero by default).
+const heroTemplate = [
+    [ 'red-egg-block/hero-services', {} ],
+];
+const heroAllowed = [
+    'red-egg-block/hero-services',
+    'red-egg-block/hero-background',
+    'red-egg-block/hero',
+];
 
 const EditFilterCaseStudies = ( { attributes, setAttributes, clientId } ) => {
     const { padding, margin, blockId } = attributes;
@@ -146,6 +156,13 @@ const EditFilterCaseStudies = ( { attributes, setAttributes, clientId } ) => {
             />
 
             <section { ...blockProps }>
+                <div className="filter-case-studies__hero">
+                    <InnerBlocks
+                        template={ heroTemplate }
+                        allowedBlocks={ heroAllowed }
+                        templateLock={ false }
+                    />
+                </div>
                 <div className="block-wrapper">
                     <div className="filter-case-studies__filters">
                         <form className="form-filters">

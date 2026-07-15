@@ -286,6 +286,11 @@ function red_egg_register_blocks() {
         'editor_script' => 'red-egg-editor-blocks',
     ] );
 
+    // Filter Posts (hero + dynamic grid with taxonomy filters)
+    register_block_type( 'red-egg-block/filter-posts', [
+        'editor_script' => 'red-egg-editor-blocks',
+    ] );
+
     // Hero – Case Study (full-width hero with overlay + accent bar)
     register_block_type( 'red-egg-block/hero-case-study', [
         'editor_script' => 'red-egg-editor-blocks',

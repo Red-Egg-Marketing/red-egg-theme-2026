@@ -1,8 +1,10 @@
 /**
- * Filter Case Studies Block – Save Component
+ * Filter Posts Block – Save Component
  *
- * Outputs a root element for frontend.js to hydrate.
- * No static content — everything rendered client-side.
+ * Outputs the editable hero (InnerBlocks) outside the
+ * block-wrapper, then a hydration root for frontend.js.
+ * hiddenTaxonomies is passed through a data attribute so
+ * the frontend can drop those taxonomies from the filters.
  */
 
 const { Fragment } = wp.element;
@@ -11,12 +13,12 @@ const { InnerBlocks, useBlockProps } = wp.blockEditor;
 import PaddingSelector from '../../components/Padding.js';
 import MarginSelector from '../../components/Margin.js';
 
-const SaveFilterCaseStudies = ( { attributes } ) => {
-    const { padding, margin, blockId } = attributes;
+const SaveFilterPosts = ( { attributes } ) => {
+    const { hiddenTaxonomies, padding, margin, blockId } = attributes;
 
     const blockProps = useBlockProps.save( {
         id: blockId,
-        className: 'filter-case-studies',
+        className: 'filter-posts',
     } );
 
     return (
@@ -24,15 +26,18 @@ const SaveFilterCaseStudies = ( { attributes } ) => {
             <PaddingSelector.View padding={ padding } id={ blockId } />
             <MarginSelector.View margin={ margin } id={ blockId } />
             <section { ...blockProps }>
-                <div className="filter-case-studies__hero">
+                <div className="filter-posts__hero">
                     <InnerBlocks.Content />
                 </div>
                 <div className="block-wrapper">
-                    <div id="FilterCaseStudiesRoot"></div>
+                    <div
+                        id="FilterPostsRoot"
+                        data-hidden-taxonomies={ JSON.stringify( hiddenTaxonomies || [] ) }
+                    ></div>
                 </div>
             </section>
         </Fragment>
     );
 };
 
-export default SaveFilterCaseStudies;
+export default SaveFilterPosts;

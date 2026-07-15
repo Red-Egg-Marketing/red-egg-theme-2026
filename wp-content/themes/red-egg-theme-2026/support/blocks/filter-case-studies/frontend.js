@@ -114,6 +114,38 @@ const FilterCaseStudiesFrontend = () => {
     const [ taxonomy, setTaxonomy ] = useState( {} );
     const [ selectTax, setSelectTax ] = useState( [] );
     const [ loading, setLoading ] = useState( true );
+    // term_id -> { taxonomy, term_slug }; and "taxSlug|termSlug" -> term_id
+    const [ lookups, setLookups ] = useState( { byId: {}, bySlug: {} } );
+
+    // AND filter: a post must contain every selected term id.
+    var runFilter = function( source, selected ) {
+        if ( selected.length === 0 ) return source;
+        return source.filter( function( post ) {
+            if ( ! post.taxonomies ) return false;
+            var ids = [];
+            Object.values( post.taxonomies ).forEach( function( terms ) {
+                terms.forEach( function( term ) { ids.push( String( term.term_id ) ); } );
+            } );
+            return selected.every( function( id ) { return ids.indexOf( String( id ) ) > -1; } );
+        } );
+    };
+
+    // Mirror selection to URL: ?taxSlug=termSlug,termSlug
+    var updateUrl = function( selected, byId ) {
+        var groups = {};
+        selected.forEach( function( id ) {
+            var info = byId[ id ];
+            if ( ! info ) return;
+            if ( ! groups[ info.taxonomy ] ) groups[ info.taxonomy ] = [];
+            groups[ info.taxonomy ].push( info.term_slug );
+        } );
+        var params = new URLSearchParams();
+        Object.keys( groups ).forEach( function( taxSlug ) {
+            params.set( taxSlug, groups[ taxSlug ].join( ',' ) );
+        } );
+        var qs = params.toString();
+        window.history.replaceState( {}, '', window.location.pathname + ( qs ? '?' + qs : '' ) + window.location.hash );
+    };
 
     // Close dropdowns on outside click
     useEffect( () => {
@@ -142,9 +174,31 @@ const FilterCaseStudiesFrontend = () => {
             if ( data && data[1] ) {
                 taxes = data[1];
             }
+
+            // Build slug<->id lookups from the taxonomy array
+            var byId = {}, bySlug = {};
+            Object.values( taxes ).forEach( function( group ) {
+                Object.values( group ).forEach( function( term ) {
+                    byId[ term.tax_id ] = { taxonomy: term.taxonomy, term_slug: term.tax_slug };
+                    bySlug[ term.taxonomy + '|' + term.tax_slug ] = term.tax_id;
+                } );
+            } );
+
+            // Read initial selection from the URL
+            var initial = [];
+            var qp = new URLSearchParams( window.location.search );
+            qp.forEach( function( val, key ) {
+                val.split( ',' ).forEach( function( slug ) {
+                    var id = bySlug[ key + '|' + slug ];
+                    if ( id && initial.indexOf( id ) === -1 ) initial.push( id );
+                } );
+            } );
+
             setAllResources( posts );
-            setResources( posts );
             setTaxonomy( taxes );
+            setLookups( { byId: byId, bySlug: bySlug } );
+            setSelectTax( initial );
+            setResources( runFilter( posts, initial ) );
             setLoading( false );
         } ).catch( () => {
             setAllResources( [] );
@@ -183,31 +237,8 @@ const FilterCaseStudiesFrontend = () => {
         }
 
         setSelectTax( updated );
-
-        // Client-side filter from allResources
-        if ( updated.length === 0 ) {
-            setResources( allResources );
-        } else {
-            var filtered = allResources.filter( function( post ) {
-                if ( ! post.taxonomies ) return false;
-                var postTaxes = Object.entries( post.taxonomies );
-                var matches = 0;
-
-                updated.forEach( function( taxId ) {
-                    postTaxes.forEach( function( entry ) {
-                        var terms = entry[1];
-                        terms.forEach( function( term ) {
-                            if ( term.term_id == taxId ) {
-                                matches++;
-                            }
-                        } );
-                    } );
-                } );
-
-                return matches >= updated.length;
-            } );
-            setResources( filtered );
-        }
+        setResources( runFilter( allResources, updated ) );
+        updateUrl( updated, lookups.byId );
     };
 
     if ( loading ) {

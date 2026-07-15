@@ -38,6 +38,9 @@ import './blocks/awards-section/frontend';
 // Filter Case Studies – frontend interactivity
 import './blocks/filter-case-studies/frontend';
 
+// Filter Posts – frontend interactivity
+import './blocks/filter-posts/frontend';
+
 // Reveal Card – click-to-flip + auto-scroll back content
 import './blocks/reveal-card/frontend';
 

@@ -534,6 +534,88 @@ function red_egg_return_games() {
 
 
 // ============================================
+//  Filterable Posts Callback
+//  Returns: [ post_array, tax_array, tax_meta ]
+//  Includes ALL public taxonomies on `post` (incl. tags).
+//  tax_meta lists every taxonomy (slug + label) so the
+//  block can offer per-taxonomy visibility toggles.
+// ============================================
+
+function red_egg_return_filter_posts( $data ) {
+
+	$args = [
+		'post_type'      => [ 'post' ],
+		'post_status'    => 'publish',
+		'posts_per_page' => -1,
+	];
+
+	$query      = new WP_Query( $args );
+	$post_array = [ 'resources' => [] ];
+	$tax_array  = [];
+
+	// Every public taxonomy registered on `post`.
+	$all_taxes = get_object_taxonomies( 'post', 'objects' );
+	$tax_meta  = [];
+	$tax_slugs = [];
+
+	foreach ( $all_taxes as $tx ) {
+		if ( empty( $tx->public ) || $tx->name === 'post_format' ) {
+			continue;
+		}
+		$tax_meta[]  = [
+			'slug'  => $tx->name,
+			'label' => $tx->labels->name,
+		];
+		$tax_slugs[] = $tx->name;
+	}
+
+	if ( $query->have_posts() ) {
+		foreach ( $query->posts as $post ) {
+			$id = $post->ID;
+
+			$post->link         = get_permalink( $id );
+			$post->post_excerpt = wp_trim_words( get_the_excerpt( $id ), 25, '...' );
+			$post->taxonomies   = [];
+			$thumbnail          = get_the_post_thumbnail_url( $id, 'post-landscape' ) != false
+				? get_the_post_thumbnail_url( $id, 'post-landscape' )
+				: get_the_post_thumbnail_url( $id, 'thumbnail' );
+			$post->media_url    = $thumbnail;
+
+			foreach ( $tax_slugs as $c_tax ) {
+				$post_taxes = get_the_terms( $id, $c_tax );
+				if ( empty( $post_taxes ) || is_wp_error( $post_taxes ) ) {
+					continue;
+				}
+				$tax_obj    = get_taxonomy( $c_tax );
+				$sing_label = $tax_obj->labels->singular_name;
+
+				foreach ( $post_taxes as $post_tax ) {
+					$tax_array[ $sing_label ][ $post_tax->name ] = [
+						'tax_name' => $post_tax->name,
+						'tax_id'   => $post_tax->term_id,
+						'tax_slug' => $post_tax->slug,
+						'taxonomy' => $post_tax->taxonomy,
+					];
+					$post->taxonomies[ $sing_label ][] = [
+						'term_name' => $post_tax->name,
+						'term_id'   => $post_tax->term_id,
+						'term_slug' => $post_tax->slug,
+						'taxonomy'  => $post_tax->taxonomy,
+					];
+				}
+			}
+
+			$post_array['resources'][] = $post;
+		}
+
+		wp_reset_postdata();
+	}
+
+	return [ $post_array, $tax_array, $tax_meta ];
+}
+
+
+// ============================================
 //  Register All Routes
 // ============================================
 
@@ -557,6 +639,13 @@ add_action( 'rest_api_init', function () {
 	register_rest_route( 'red-egg/v2', '/posts/', [
 		'methods'             => 'GET',
 		'callback'            => 'red_egg_return_posts',
+		'permission_callback' => '__return_true',
+	] );
+
+	// Filterable Posts (all taxonomies + meta for toggles)
+	register_rest_route( 'red-egg/v2', '/filter-posts/', [
+		'methods'             => 'GET',
+		'callback'            => 'red_egg_return_filter_posts',
 		'permission_callback' => '__return_true',
 	] );
 
