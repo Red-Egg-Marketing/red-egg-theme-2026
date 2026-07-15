@@ -13,6 +13,10 @@
   box-sizing: border-box;
 }
 
+#page {
+  overflow-x: clip;
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -1530,7 +1534,7 @@ body.mega-open {
   }
 }
 .entry-content {
-  overflow: hidden;
+  overflow: visible;
 }
 .entry-content > p,
 .entry-content > h2, .entry-content > h3, .entry-content > h4, .entry-content > h5, .entry-content > h6,
@@ -2247,7 +2251,7 @@ body.mega-open {
 }
 
 .related-posts {
-  overflow: hidden;
+  overflow: visible;
 }
 
 .related-posts__header {

@@ -397,7 +397,8 @@
 // Reuses .insights-block card + grid styles; only the section
 // header needs its own rules here.
 .related-posts {
-    overflow: hidden; // keep blob decorations from causing scroll
+    // blob bleed allowed; horizontal scroll prevented by #page overflow-x: clip
+    overflow: visible;
 }
 
 .related-posts__header {
