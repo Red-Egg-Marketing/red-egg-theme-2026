@@ -7981,7 +7981,7 @@ div.filter-posts__hero .hero-services h1 {
 }
 
 .post-card__image {
-  aspect-ratio: 16/10;
+  aspect-ratio: 5/3;
   overflow: hidden;
 }
 .post-card__image img {
