@@ -51,6 +51,10 @@
     z-index: 1;
 }
 
+.testimonials-block.testimonials-block--single > .block-wrapper {
+    max-width: 930px;
+}
+
 // ---- Header area (InnerBlocks: header-intro) ----
 .testimonials-block .testimonials-block__header {
     margin-bottom: 2.5rem;
@@ -204,7 +208,7 @@
 
 .testimonials-slider--single {
     @media screen and (min-width: $small-width) {
-        max-width: calc( 50% - 1rem );
+        max-width: 100%;
     }
 }
 

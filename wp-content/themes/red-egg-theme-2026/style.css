@@ -4414,6 +4414,10 @@ body.mega-open {
   z-index: 1;
 }
 
+.testimonials-block.testimonials-block--single > .block-wrapper {
+  max-width: 930px;
+}
+
 .testimonials-block .testimonials-block__header {
   margin-bottom: 2.5rem;
 }
@@ -4574,7 +4578,7 @@ body.mega-open {
 
 @media screen and (min-width: 768px) {
   .testimonials-slider--single {
-    max-width: calc(50% - 1rem);
+    max-width: 100%;
   }
 }
 
