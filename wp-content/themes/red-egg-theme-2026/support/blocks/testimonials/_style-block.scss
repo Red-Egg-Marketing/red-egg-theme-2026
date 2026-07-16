@@ -119,8 +119,9 @@
 }
 
 .testimonial-card__star {
-    color: $gold;
-    font-size: 1.375rem;
+    display: block;
+    width: 22px;
+    height: auto;
 }
 
 .testimonial-card__text {

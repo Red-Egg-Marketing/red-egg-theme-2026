@@ -4478,8 +4478,9 @@ body.mega-open {
 }
 
 .testimonial-card__star {
-  color: #F6B319;
-  font-size: 1.375rem;
+  display: block;
+  width: 22px;
+  height: auto;
 }
 
 .testimonial-card__text {
