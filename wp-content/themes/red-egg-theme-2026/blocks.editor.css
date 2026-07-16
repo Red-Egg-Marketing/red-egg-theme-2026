@@ -1683,7 +1683,7 @@
 }
 
 .cs-slide__image {
-  aspect-ratio: 16/10;
+  aspect-ratio: 5/3;
   overflow: hidden;
   background-color: #424042;
 }
