@@ -2235,6 +2235,7 @@
 }
 .testimonials-slider__swiper .swiper-slide {
   height: auto;
+  display: flex;
 }
 
 @media screen and (min-width: 768px) {
@@ -2254,25 +2255,24 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 44px;
-  height: 44px;
-  border-radius: 50%;
+  padding: 0;
   border: none;
+  background: none;
+  line-height: 0;
   cursor: pointer;
-  background: rgba(255, 255, 255, 0.25);
-  color: #FFFFFF;
-  transition: background 0.2s ease, color 0.2s ease, opacity 0.2s ease;
+  transition: opacity 0.2s ease, transform 0.2s ease;
 }
 .testimonials-slider__arrow:hover {
-  background: #FFFFFF;
-  color: #A89AAE;
+  opacity: 0.75;
 }
 .testimonials-slider__arrow.swiper-button-disabled {
-  opacity: 0.4;
+  opacity: 0.35;
   cursor: default;
 }
 .testimonials-slider__arrow svg {
   display: block;
+  width: 35px;
+  height: 35px;
 }
 
 .wp-block.testimonials-block {

@@ -176,6 +176,7 @@
 
     .swiper-slide {
         height: auto; // let flex cards stretch to equal height
+        display: flex;
     }
 }
 
@@ -197,26 +198,27 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 44px;
-    height: 44px;
-    border-radius: 50%;
+    padding: 0;
     border: none;
+    background: none;
+    line-height: 0;
     cursor: pointer;
-    background: rgba($white, 0.25);
-    color: $white;
-    transition: background 0.2s ease, color 0.2s ease, opacity 0.2s ease;
+    transition: opacity 0.2s ease, transform 0.2s ease;
 
     &:hover {
-        background: $white;
-        color: $purple;
+        opacity: 0.75;
     }
 
     &.swiper-button-disabled {
-        opacity: 0.4;
+        opacity: 0.35;
         cursor: default;
     }
 
-    svg { display: block; }
+    svg {
+        display: block;
+        width: 35px;
+        height: 35px;
+    }
 }
 
 // ---- Full-width in editor ----
