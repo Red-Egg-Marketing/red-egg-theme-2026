@@ -2257,7 +2257,7 @@
 }
 
 .testimonials-slider__swiper .swiper-wrapper {
-  align-items: stretch;
+  align-items: flex-start;
 }
 
 @media screen and (min-width: 768px) {

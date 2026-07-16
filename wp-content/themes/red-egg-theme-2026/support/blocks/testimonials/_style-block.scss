@@ -199,7 +199,7 @@
 // each card's natural height; it then sets explicit equal heights on the
 // currently-visible slides per view.
 .testimonials-slider__swiper .swiper-wrapper {
-    align-items: stretch;
+    align-items: flex-start;
 }
 
 .testimonials-slider--single {
