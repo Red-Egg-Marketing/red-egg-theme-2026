@@ -41,6 +41,9 @@ import './blocks/filter-case-studies/frontend';
 // Filter Posts – frontend interactivity
 import './blocks/filter-posts/frontend';
 
+// Testimonials – reviews slider
+import './blocks/testimonials/frontend';
+
 // Reveal Card – click-to-flip + auto-scroll back content
 import './blocks/reveal-card/frontend';
 

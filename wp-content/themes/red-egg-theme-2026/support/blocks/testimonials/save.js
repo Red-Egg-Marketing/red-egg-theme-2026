@@ -1,20 +1,47 @@
 /**
  * Testimonials Block – Save Component
  *
- * This block uses a PHP render_callback (red_egg_render_testimonials),
- * which wraps the saved InnerBlocks in the section markup and appends
- * the reviews shortcode output.
- *
- * For that to work the InnerBlocks header MUST be serialized into
- * post_content, so save() returns <InnerBlocks.Content />. Returning
- * null (the previous behaviour) meant the render callback received an
- * empty $content and the header never saved.
+ * Static save: section chrome + header InnerBlocks, plus a
+ * hydration root carrying the reviews source config via data
+ * attributes. frontend.js fetches the reviews and renders the
+ * cards / Swiper slider.
  */
 
-const { InnerBlocks } = wp.blockEditor;
+const { Fragment } = wp.element;
+const { InnerBlocks, useBlockProps } = wp.blockEditor;
 
-const SaveTestimonials = () => {
-    return <InnerBlocks.Content />;
+import PaddingSelector from '../../components/Padding.js';
+import MarginSelector from '../../components/Margin.js';
+
+const SaveTestimonials = ( { attributes } ) => {
+    const { reviewMode, reviewId, reviewIds, padding, margin, blockId } = attributes;
+
+    const blockProps = useBlockProps.save( {
+        id: blockId,
+        className: 'testimonials-block',
+    } );
+
+    return (
+        <Fragment>
+            <PaddingSelector.View padding={ padding } id={ blockId } />
+            <MarginSelector.View margin={ margin } id={ blockId } />
+            <section { ...blockProps }>
+                <div className="testimonials-block__bg"></div>
+                <div className="testimonials-block__pattern"></div>
+                <div className="block-wrapper">
+                    <div className="testimonials-block__header">
+                        <InnerBlocks.Content />
+                    </div>
+                    <div
+                        className="testimonials-block__root"
+                        data-review-mode={ reviewMode }
+                        data-review-id={ reviewId || '' }
+                        data-review-ids={ JSON.stringify( reviewIds || [] ) }
+                    ></div>
+                </div>
+            </section>
+        </Fragment>
+    );
 };
 
 export default SaveTestimonials;
