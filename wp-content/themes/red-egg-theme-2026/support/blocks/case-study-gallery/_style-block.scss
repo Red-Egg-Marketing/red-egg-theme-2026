@@ -68,19 +68,20 @@ p.cs-gallery__label {
 // ---- Heading ----
 .cs-gallery h2 {
     @include primary-h2;
-    margin: 0 0 2rem 0;
+    margin: 0 0 0.5rem 0;
 
     @media screen and (min-width: $small-width) {
-        margin: 0 0 2.5rem 0;
+        margin: 0 0 1rem 0;
     }
 }
 
 // ---- Gallery overrides ----
 .cs-gallery figure.wp-block-gallery {
     gap: 2rem;
-
+    margin-top: 20px;
     @media screen and (min-width: $small-width) {
         gap: 3rem;
+        margin-top: 40px;
     }
 }
 
