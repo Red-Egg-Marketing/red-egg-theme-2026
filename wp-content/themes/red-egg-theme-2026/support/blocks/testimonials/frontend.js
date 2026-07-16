@@ -98,6 +98,7 @@ const TestimonialsView = ( { config } ) => {
                 spaceBetween: 24,
                 speed: 500,
                 watchOverflow: true,
+                autoHeight: true, // container height follows the current slide(s)
                 breakpoints: {
                     768: { slidesPerView: 2, spaceBetween: 32 },
                 },
@@ -112,26 +113,6 @@ const TestimonialsView = ( { config } ) => {
                 instanceRef.current.destroy( true, true );
                 instanceRef.current = null;
             }
-        };
-    }, [ reviews ] );
-
-    // Equalize card heights so slides don't jump between pairs.
-    useEffect( function() {
-        if ( ! reviews || reviews.length < 2 || ! swiperRef.current ) return;
-        var el = swiperRef.current;
-        var equalize = function() {
-            var cards = el.querySelectorAll( '.testimonial-card' );
-            if ( ! cards.length ) return;
-            var max = 0;
-            cards.forEach( function( c ) { c.style.minHeight = ''; } );
-            cards.forEach( function( c ) { max = Math.max( max, c.offsetHeight ); } );
-            cards.forEach( function( c ) { c.style.minHeight = max + 'px'; } );
-        };
-        var t = setTimeout( equalize, 80 );
-        window.addEventListener( 'resize', equalize );
-        return function() {
-            clearTimeout( t );
-            window.removeEventListener( 'resize', equalize );
         };
     }, [ reviews ] );
 
