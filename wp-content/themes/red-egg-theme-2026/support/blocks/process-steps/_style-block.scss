@@ -158,11 +158,12 @@
 }
 
 .tag-cloud__tag-text {
-    font-size: 1rem;
+    font-size: 0.8rem;
+    line-height: 1.25rem;
     letter-spacing: 0.17px;
     @media screen and (min-width: $small-width) {
-        font-size: 1.065rem;
-
+        font-size: 0.9rem;
+        line-height: 1.4rem;
     }
 }
 
@@ -177,9 +178,9 @@
     background: $white;
     border-top: 1px solid $peach;
     border-bottom: 1px solid $peach;
-    padding: 0.25rem 0;
+    padding: 0.1rem 0;
     @media screen and (min-width: $small-width) {
-        padding: 0.35rem 0;
+        padding: 0.15rem 0;
     }
 }
 

@@ -111,15 +111,15 @@
 
 .insights-block .resource-card .resource-date {
     display: block;
-    font-family: $font-body;
-    font-weight: 300;
-    font-size: 1rem;
+    font-family: $font-head;
+    font-weight: 500;
+    font-size: 0.9rem;
     line-height: 1.5rem;
     color: $head-color;
     margin: 0 0 0.5rem 0;
     @media screen and (min-width: $small-width) {
-        font-size: 1.125rem;
-        line-height: 1.625rem;
+        font-size: 1rem;
+        line-height: 1.425rem;
     }
 }
 

@@ -4732,17 +4732,17 @@ body.mega-open {
 
 .insights-block .resource-card .resource-date {
   display: block;
-  font-family: "Figtree", sans-serif;
-  font-weight: 300;
-  font-size: 1rem;
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+  font-size: 0.9rem;
   line-height: 1.5rem;
   color: #424042;
   margin: 0 0 0.5rem 0;
 }
 @media screen and (min-width: 768px) {
   .insights-block .resource-card .resource-date {
-    font-size: 1.125rem;
-    line-height: 1.625rem;
+    font-size: 1rem;
+    line-height: 1.425rem;
   }
 }
 
@@ -9416,12 +9416,14 @@ img.device-frame__device {
 }
 
 .tag-cloud__tag-text {
-  font-size: 1rem;
+  font-size: 0.8rem;
+  line-height: 1.25rem;
   letter-spacing: 0.17px;
 }
 @media screen and (min-width: 768px) {
   .tag-cloud__tag-text {
-    font-size: 1.065rem;
+    font-size: 0.9rem;
+    line-height: 1.4rem;
   }
 }
 
@@ -9436,11 +9438,11 @@ img.device-frame__device {
   background: #FFFFFF;
   border-top: 1px solid #F79E83;
   border-bottom: 1px solid #F79E83;
-  padding: 0.25rem 0;
+  padding: 0.1rem 0;
 }
 @media screen and (min-width: 768px) {
   .tag-cloud__tag {
-    padding: 0.35rem 0;
+    padding: 0.15rem 0;
   }
 }
 

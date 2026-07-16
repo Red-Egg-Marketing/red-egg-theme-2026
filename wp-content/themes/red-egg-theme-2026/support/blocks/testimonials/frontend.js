@@ -154,7 +154,7 @@ const TestimonialsView = ( { config } ) => {
                 speed: 500,
                 watchOverflow: true,
                 breakpoints: {
-                    768: { slidesPerView: 2, spaceBetween: 32 },
+                    768: { slidesPerView: 2, spaceBetween: 50 },
                 },
                 navigation: {
                     prevEl: prevRef.current,
