@@ -108,7 +108,19 @@ const TestimonialsView = ( { config } ) => {
                     slides[ i ].style.height = '';
                 }
                 var max = 0;
-                var visible = swiper.el.querySelectorAll( '.swiper-slide-visible' );
+                var visible = Array.prototype.slice.call(
+                    swiper.el.querySelectorAll( '.swiper-slide-visible' )
+                );
+                // Fallback: derive visible slides from the active index if
+                // the class isn't present for any reason.
+                if ( ! visible.length ) {
+                    var per = Math.round( swiper.params.slidesPerView ) || 1;
+                    for ( var v = 0; v < per; v++ ) {
+                        if ( slides[ swiper.activeIndex + v ] ) {
+                            visible.push( slides[ swiper.activeIndex + v ] );
+                        }
+                    }
+                }
                 if ( ! visible.length ) return;
                 visible.forEach( function( slide ) {
                     var card = slide.querySelector( '.testimonial-card' );
@@ -124,6 +136,7 @@ const TestimonialsView = ( { config } ) => {
                 spaceBetween: 24,
                 speed: 500,
                 watchOverflow: true,
+                watchSlidesProgress: true, // adds .swiper-slide-visible (needed by equalizer)
                 breakpoints: {
                     768: { slidesPerView: 2, spaceBetween: 32 },
                 },
@@ -132,7 +145,7 @@ const TestimonialsView = ( { config } ) => {
                     nextEl: nextRef.current,
                 },
                 on: {
-                    init: function() { equalize( this ); },
+                    init: function() { var sw = this; requestAnimationFrame( function() { equalize( sw ); } ); },
                     slideChange: function() { equalize( this ); },
                     transitionEnd: function() { equalize( this ); },
                     resize: function() { equalize( this ); },
