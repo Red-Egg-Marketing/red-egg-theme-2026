@@ -14,7 +14,7 @@ import PaddingSelector from '../../components/Padding.js';
 import MarginSelector from '../../components/Margin.js';
 
 const template = [
-    [ 'red-egg-block/header-intro-left', {} ],
+    [ 'red-egg-block/header-single', {} ],
     [ 'red-egg-block/color-swatch', { color: '#024D69', label: 'BLUE' } ],
     [ 'red-egg-block/color-swatch', { color: '#D4982A', label: 'GOLD' } ],
     [ 'red-egg-block/color-swatch', { color: '#8FA3A8', label: 'SILVER' } ],
@@ -23,7 +23,7 @@ const template = [
 ];
 
 const allowedBlocks = [
-    'red-egg-block/header-intro-left',
+    'red-egg-block/header-single',
     'red-egg-block/color-swatch',
 ];
 

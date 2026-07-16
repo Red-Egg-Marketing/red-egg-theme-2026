@@ -1,7 +1,7 @@
 /**
  * Case Study Gallery Block – Edit Component
  *
- * InnerBlocks: label paragraph + heading + core/gallery.
+ * InnerBlocks: header-single + core/gallery.
  */
 
 const { Fragment, useEffect } = wp.element;
@@ -13,14 +13,12 @@ import PaddingSelector from '../../components/Padding.js';
 import MarginSelector from '../../components/Margin.js';
 
 const template = [
-    [ 'core/paragraph', { placeholder: 'BRANDING', className: 'cs-gallery__label' } ],
-    [ 'core/heading', { level: 2, placeholder: 'Gallery Section Title' } ],
+    [ 'red-egg-block/header-single', {} ],
     [ 'core/gallery', { columns: 2 } ],
 ];
 
 const allowedBlocks = [
-    'core/paragraph',
-    'core/heading',
+    'red-egg-block/header-single',
     'core/gallery',
     'core/image',
 ];

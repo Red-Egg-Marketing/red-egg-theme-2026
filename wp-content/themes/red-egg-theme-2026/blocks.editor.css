@@ -6563,6 +6563,7 @@ p.case-study-body__label {
 }
 
 .cs-gallery.navy .cs-gallery__label,
+.cs-gallery.navy .header-single__label,
 .cs-gallery.navy h2,
 .cs-gallery.navy p {
   color: #FFFFFF;
@@ -6573,9 +6574,19 @@ p.case-study-body__label {
 }
 
 .cs-gallery.gray .cs-gallery__label,
+.cs-gallery.gray .header-single__label,
 .cs-gallery.gray h2,
 .cs-gallery.gray p {
   color: #FFFFFF;
+}
+
+.cs-gallery .header-single {
+  margin-bottom: 2rem;
+}
+@media screen and (min-width: 768px) {
+  .cs-gallery .header-single {
+    margin-bottom: 2.5rem;
+  }
 }
 
 .cs-gallery__label,
@@ -6871,13 +6882,13 @@ p.cs-gallery__label {
   flex-wrap: wrap;
 }
 
-.color-palette-block .header-intro__left {
+.color-palette-block .header-single {
   flex: 0 0 100%;
   max-width: 100%;
   margin-bottom: 25px;
 }
 @media screen and (min-width: 768px) {
-  .color-palette-block .header-intro__left {
+  .color-palette-block .header-single {
     margin-bottom: 35px;
   }
 }

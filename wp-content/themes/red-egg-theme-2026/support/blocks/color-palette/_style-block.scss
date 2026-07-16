@@ -256,7 +256,7 @@
 // .block-wrapper is flex on mobile too. Same class is present on the
 // editor's block wrapper (useBlockProps merges it onto the .wp-block
 // element), so this one rule covers both contexts.
-.color-palette-block .header-intro__left {
+.color-palette-block .header-single {
     flex: 0 0 100%;
     max-width: 100%;
     margin-bottom: 25px;

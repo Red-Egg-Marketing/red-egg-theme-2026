@@ -31,6 +31,7 @@
 }
 
 .cs-gallery.navy .cs-gallery__label,
+.cs-gallery.navy .header-single__label,
 .cs-gallery.navy h2,
 .cs-gallery.navy p {
     color: $white;
@@ -41,9 +42,19 @@
 }
 
 .cs-gallery.gray .cs-gallery__label,
+.cs-gallery.gray .header-single__label,
 .cs-gallery.gray h2,
 .cs-gallery.gray p {
     color: $white;
+}
+
+// Spacing below the header block
+.cs-gallery .header-single {
+    margin-bottom: 2rem;
+
+    @media screen and (min-width: $small-width) {
+        margin-bottom: 2.5rem;
+    }
 }
 
 // ---- Label ----
