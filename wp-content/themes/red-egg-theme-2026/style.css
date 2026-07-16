@@ -5008,13 +5008,22 @@ body.mega-open {
 
 .contact-section__label,
 p.contact-section__label {
-  font-family: "Poppins", sans-serif;
-  font-weight: 500;
-  font-size: 1.0625rem;
-  line-height: 1.625rem;
-  letter-spacing: 2px;
-  text-transform: uppercase;
+  font-family: "Poppins", sans-serif !important;
+  font-weight: 500 !important;
+  font-size: 1.0625rem !important;
+  line-height: 1.625rem !important;
+  letter-spacing: 2px !important;
+  text-transform: uppercase !important;
+  color: #424042;
   margin: 0 0 0.5rem 0;
+}
+@media screen and (min-width: 768px) {
+  .contact-section__label,
+  p.contact-section__label {
+    font-size: 1rem !important;
+    line-height: 1.3 !important;
+    letter-spacing: 1px !important;
+  }
 }
 
 .contact-section__left h2 {
