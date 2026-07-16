@@ -2910,6 +2910,13 @@ body.mega-open {
   }
 }
 
+@media screen and (min-width: 768px) {
+  .header-intro-block.cols-50-50 .header-intro__left {
+    flex: 0 0 50%;
+    max-width: 50%;
+  }
+}
+
 .header-intro__left .header-intro__label,
 .header-intro__left p.header-intro__label {
   font-family: "Poppins", sans-serif !important;

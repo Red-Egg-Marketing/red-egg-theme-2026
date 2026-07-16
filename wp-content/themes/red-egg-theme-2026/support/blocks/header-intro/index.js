@@ -61,6 +61,10 @@ registerBlockType( 'red-egg-block/header-intro', {
             type: 'boolean',
             default: false,
         },
+        columnWidth: {
+            type: 'string',
+            default: '33-66',
+        },
     },
     edit,
     save,

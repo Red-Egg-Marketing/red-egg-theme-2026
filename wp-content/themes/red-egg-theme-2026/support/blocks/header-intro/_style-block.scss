@@ -130,6 +130,14 @@
     }
 }
 
+// ---- Column width options (default 33/66 from base rule above) ----
+.header-intro-block.cols-50-50 .header-intro__left {
+    @media screen and (min-width: $small-width) {
+        flex: 0 0 50%;
+        max-width: 50%;
+    }
+}
+
 .header-intro__left .header-intro__label,
 .header-intro__left p.header-intro__label {
     font-family: $font-head !important;

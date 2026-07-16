@@ -9,7 +9,7 @@
 
 const { Fragment, useEffect } = wp.element;
 const { InnerBlocks, InspectorControls, useBlockProps } = wp.blockEditor;
-const { PanelBody, ToggleControl } = wp.components;
+const { PanelBody, ToggleControl, SelectControl } = wp.components;
 const { __ } = wp.i18n;
 
 import BackgroundColor from '../../components/BackgroundColor.js';
@@ -29,7 +29,7 @@ const allowedBlocks = [
 
 const EditHeaderIntro = ( { attributes, setAttributes, clientId } ) => {
     const {
-        image, bgColor, bgSlug, coloroverlay, padding, margin, squiggleEnabled,
+        image, bgColor, bgSlug, coloroverlay, padding, margin, squiggleEnabled, columnWidth,
     } = attributes;
 
     const blockId = `block-${ clientId }`;
@@ -62,7 +62,8 @@ const EditHeaderIntro = ( { attributes, setAttributes, clientId } ) => {
         id: blockId,
         className: 'header-intro-block'
             + ( coloroverlay ? ' with-overlay' : '' )
-            + ( bgSlug ? ' ' + bgSlug + ' with-bg' : '' ),
+            + ( bgSlug ? ' ' + bgSlug + ' with-bg' : '' )
+            + ( columnWidth ? ' cols-' + columnWidth : '' ),
         style: bgStyle,
     } );
 
@@ -78,6 +79,20 @@ const EditHeaderIntro = ( { attributes, setAttributes, clientId } ) => {
                     image={ image }
                     setAttributes={ setAttributes }
                 />
+                <PanelBody
+                    title={ __( 'Layout', 'red-egg' ) }
+                    initialOpen={ true }
+                >
+                    <SelectControl
+                        label={ __( 'Column Widths', 'red-egg' ) }
+                        value={ columnWidth }
+                        options={ [
+                            { label: __( '33% / 66%', 'red-egg' ), value: '33-66' },
+                            { label: __( '50% / 50%', 'red-egg' ), value: '50-50' },
+                        ] }
+                        onChange={ ( value ) => setAttributes( { columnWidth: value } ) }
+                    />
+                </PanelBody>
                 <PanelBody
                     title={ __( 'Overlay', 'red-egg' ) }
                     initialOpen={ false }
