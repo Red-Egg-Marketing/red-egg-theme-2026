@@ -93,12 +93,37 @@ const TestimonialsView = ( { config } ) => {
     // Init Swiper once 2+ reviews are rendered.
     useEffect( function() {
         if ( reviews && reviews.length > 1 && swiperRef.current && typeof Swiper !== 'undefined' ) {
+
+            // Size the wrapper + visible slides to the TALLEST currently
+            // visible card, recalculated on every navigation / resize.
+            // (Swiper's own autoHeight only reads the active slide and
+            // fights align-items:stretch, so we do it explicitly.)
+            var equalize = function( swiper ) {
+                if ( ! swiper ) return;
+                var slides = swiper.slides;
+                // reset so we measure natural card heights (wrapper is
+                // align-items:flex-start, so resetting stops stretch)
+                swiper.wrapperEl.style.height = '';
+                for ( var i = 0; i < slides.length; i++ ) {
+                    slides[ i ].style.height = '';
+                }
+                var max = 0;
+                var visible = swiper.el.querySelectorAll( '.swiper-slide-visible' );
+                if ( ! visible.length ) return;
+                visible.forEach( function( slide ) {
+                    var card = slide.querySelector( '.testimonial-card' );
+                    var h = card ? card.offsetHeight : slide.offsetHeight;
+                    if ( h > max ) max = h;
+                } );
+                visible.forEach( function( slide ) { slide.style.height = max + 'px'; } );
+                swiper.wrapperEl.style.height = max + 'px';
+            };
+
             instanceRef.current = new Swiper( swiperRef.current, {
                 slidesPerView: 1,
                 spaceBetween: 24,
                 speed: 500,
                 watchOverflow: true,
-                autoHeight: true, // container height follows the current slide(s)
                 breakpoints: {
                     768: { slidesPerView: 2, spaceBetween: 32 },
                 },
@@ -106,10 +131,28 @@ const TestimonialsView = ( { config } ) => {
                     prevEl: prevRef.current,
                     nextEl: nextRef.current,
                 },
+                on: {
+                    init: function() { equalize( this ); },
+                    slideChange: function() { equalize( this ); },
+                    transitionEnd: function() { equalize( this ); },
+                    resize: function() { equalize( this ); },
+                    breakpoint: function() { equalize( this ); },
+                },
             } );
+
+            // Re-equalize when a card's read-more toggles (height changes).
+            var el = swiperRef.current;
+            var onClick = function( e ) {
+                if ( e.target.closest( '.testimonial-card__readmore' ) ) {
+                    setTimeout( function() { equalize( instanceRef.current ); }, 0 );
+                }
+            };
+            el.addEventListener( 'click', onClick );
+            instanceRef.current.__reReadmore = function() { el.removeEventListener( 'click', onClick ); };
         }
         return function() {
             if ( instanceRef.current ) {
+                if ( instanceRef.current.__reReadmore ) instanceRef.current.__reReadmore();
                 instanceRef.current.destroy( true, true );
                 instanceRef.current = null;
             }

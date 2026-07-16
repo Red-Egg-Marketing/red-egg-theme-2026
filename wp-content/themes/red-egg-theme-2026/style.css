@@ -4564,8 +4564,8 @@ body.mega-open {
   display: flex;
 }
 
-.testimonials-slider__swiper.swiper-autoheight .swiper-wrapper {
-  align-items: stretch;
+.testimonials-slider__swiper .swiper-wrapper {
+  align-items: flex-start;
 }
 
 @media screen and (min-width: 768px) {

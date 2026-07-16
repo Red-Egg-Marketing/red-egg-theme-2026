@@ -195,12 +195,11 @@
     }
 }
 
-// Swiper's autoHeight sets .swiper-wrapper { align-items: flex-start },
-// which top-aligns slides so a shorter card won't fill. Force stretch so
-// the two visible cards match height (autoHeight still sizes the wrapper
-// to the current pair, not the global tallest).
-.testimonials-slider__swiper.swiper-autoheight .swiper-wrapper {
-    align-items: stretch;
+// Keep slides top-aligned (not stretched) so the JS equalizer can measure
+// each card's natural height; it then sets explicit equal heights on the
+// currently-visible slides per view.
+.testimonials-slider__swiper .swiper-wrapper {
+    align-items: flex-start;
 }
 
 .testimonials-slider--single {
