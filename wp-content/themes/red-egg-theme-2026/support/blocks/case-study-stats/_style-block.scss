@@ -10,10 +10,10 @@
 // ========================================
 
 .case-study-stats {
-    padding: 2rem 0;
+    padding: 0 0 2rem;
     margin-top: 0;
     @media screen and (min-width: $small-width) {
-        padding: 2.5rem 0;
+        padding: 0 0 2.5rem;
         margin-top: 0;
     }
 }
@@ -148,13 +148,12 @@
     p, .stat-card__desc {
         font-family: $font-body;
         font-weight: 500;
-        font-size: 1.125rem; // 18px mobile – Figma body
+        font-size: 1rem; // 18px mobile – Figma body
         line-height: 1.75rem; // 28px
         color: $gray;
         margin: 0;
-
         @media screen and (min-width: $small-width) {
-            font-size: 1.4rem; // 16px desktop (tighter in grid)
+            font-size: 1.1rem; // 16px desktop (tighter in grid)
         }
     }
 }

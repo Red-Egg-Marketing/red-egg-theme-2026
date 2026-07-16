@@ -15,12 +15,7 @@
 // The nested hero block controls its own layout/background;
 // we only add spacing beneath it.
 .filter-posts__hero {
-    margin-bottom: 2.5rem;
-
-    @media screen and (min-width: $small-width) {
-        margin-bottom: 3.5rem;
-    }
-
+    margin-bottom: 0;
     // let the nested hero span full width in the editor
     .wp-block {
         max-width: none;
@@ -34,6 +29,10 @@
     @media screen and (min-width: $small-width) {
         padding-bottom: 5rem;
     }
+}
+
+div.filter-posts__hero .hero-services h1 {
+    @include hero-h1;
 }
 
 // ---- Filter bar ----
@@ -59,32 +58,48 @@
     gap: 10px;
     width: 100%;
     justify-content: flex-start;
+    margin-top: 15px;
+    margin-bottom: 30px;
+    position: relative;
+    @media screen and (min-width: $small-width) {
+        margin-top: 20px;
+        margin-bottom: 45px;
+    }
 }
 
 .filter-posts .filter-block {
-    position: relative;
+    @media screen and (min-width: $small-width) {
+        position: relative
+    }
 }
 
 .filter-posts .tax-filter-button {
-    display: inline-flex;
+     display: inline-flex;
     align-items: center;
-    gap: 6px;
+    gap: 8px;
     border: 1px solid $gray;
     border-radius: $button-border-radius;
     background: transparent;
     color: $gray;
     font-family: $font-head;
-    font-weight: 600;
-    font-size: 0.8125rem;
-    letter-spacing: 0.5px;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 23px;
+    letter-spacing: 0.32px;
+    padding: 10px 20px 10px 26px;
     text-transform: uppercase;
-    padding: 0.625rem 1.5rem;
     cursor: pointer;
     transition: border-color 0.3s ease, color 0.3s ease;
-
     &:hover {
         border-color: $red;
         color: $red;
+    }
+    @media screen and (min-width: $small-width) {
+        font-size: 17px;
+        line-height: 25px;
+        letter-spacing: 0.34px;
+        padding: 12px 24px 12px 30px;
+        gap: 10px;
     }
 }
 
@@ -103,9 +118,6 @@
     display: none;
 }
 
-.filter-posts .filter-block.active {
-    position: relative;
-}
 
 .filter-posts .filter-block.active .tax-cont {
     display: block;

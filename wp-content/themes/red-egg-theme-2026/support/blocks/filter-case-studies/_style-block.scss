@@ -9,11 +9,11 @@
 
 .filter-case-studies {
     position: relative;
-    padding-top: $default-section-padding-top;
+    padding-top: 0;
     padding-bottom: $default-section-padding-bottom;
 
     @media screen and (min-width: $small-width) {
-        padding-top: 5rem;
+        padding-top: 0;
         padding-bottom: 5rem;
     }
 }
@@ -24,16 +24,15 @@
 
 // ---- Hero (outside .block-wrapper, full-bleed) ----
 .filter-case-studies__hero {
-    margin-bottom: 2.5rem;
-
-    @media screen and (min-width: $small-width) {
-        margin-bottom: 3.5rem;
-    }
-
+    margin-bottom: 0;
     // let the nested hero span full width in the editor
     .wp-block {
         max-width: none;
     }
+}
+
+div.filter-case-studies__hero .hero-services h1 {
+    @include hero-h1;
 }
 
 // ---- Filter bar ----
@@ -59,32 +58,43 @@
     gap: 10px;
     width: 100%;
     justify-content: flex-start;
+    margin-top: 15px;
+    margin-bottom: 30px;
+    position: relative;
+    @media screen and (min-width: $small-width) {
+        margin-top: 20px;
+        margin-bottom: 45px;
+    }
 }
 
-.filter-case-studies .filter-block {
-    position: relative;
-}
 
 .filter-case-studies .tax-filter-button {
     display: inline-flex;
     align-items: center;
-    gap: 6px;
-    border: 2px solid $gray;
+    gap: 8px;
+    border: 1px solid $gray;
     border-radius: $button-border-radius;
     background: transparent;
     color: $gray;
     font-family: $font-head;
-    font-weight: 600;
-    font-size: 0.8125rem;
-    letter-spacing: 0.5px;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 23px;
+    letter-spacing: 0.32px;
+    padding: 10px 20px 10px 26px;
     text-transform: uppercase;
-    padding: 0.625rem 1.5rem;
     cursor: pointer;
     transition: border-color 0.3s ease, color 0.3s ease;
-
     &:hover {
         border-color: $red;
         color: $red;
+    }
+    @media screen and (min-width: $small-width) {
+        font-size: 17px;
+        line-height: 25px;
+        letter-spacing: 0.34px;
+        padding: 12px 24px 12px 30px;
+        gap: 10px;
     }
 }
 
@@ -104,7 +114,9 @@
 }
 
 .filter-case-studies .filter-block.active {
-    position: relative;
+    @media screen and (min-width: $small-width) {
+        position: relative
+    }
 }
 
 .filter-case-studies .filter-block.active .tax-cont {
@@ -113,13 +125,20 @@
     top: 100%;
     left: 0;
     z-index: 998;
-    min-width: 320px;
-    max-width: 450px;
+    min-width: 300px;
+    width: 100%;
+    max-width: 100%;
     background: $white;
     box-shadow: 0 4px 24px rgba(0, 0, 0, 0.1);
     border-radius: $default-border-radius;
-    border: 1px solid rgba(0, 0, 0, 0.08);
+    border: 1px solid $gray;
     margin-top: 8px;
+    @media screen and (min-width: $small-width) {
+        min-width: 425px;
+        max-width: 500px;
+        width: 100%;
+        left: 0;
+    }
 }
 
 .filter-case-studies .tax-wrapper {
@@ -156,7 +175,7 @@
 .filter-case-studies ul.tax-list li.tax-item {
     margin: 0;
     padding: 0;
-
+    line-height: 1;
     &::before {
         display: none;
     }
@@ -172,16 +191,15 @@
     position: absolute;
     top: 1px;
     left: 0;
-    width: 20px;
-    height: 20px;
+    width: 15px;
+    height: 15px;
     background: $white;
-    border: 2px solid $gray;
-    border-radius: 3px;
+    border: 1px solid $gray;
 }
 
 .filter-case-studies ul.tax-list .checkbox-component {
-    width: 20px;
-    height: 20px;
+    width: 15px;
+    height: 15px;
     opacity: 0;
     position: absolute;
     top: 1px;
@@ -193,12 +211,12 @@
 .filter-case-studies ul.tax-list .checkbox-component:checked + label::after {
     content: '';
     position: absolute;
-    top: 5px;
-    left: 4px;
-    width: 12px;
-    height: 12px;
-    background: $red;
-    border-radius: 2px;
+    top: 2px;
+    left: -26px;
+    width: 11px;
+    height: 11px;
+    background: $gray;
+    border-radius: 0;
 }
 
 .filter-case-studies ul.tax-list label {
@@ -268,7 +286,7 @@
 .cs-card__title {
     font-family: $font-head;
     font-weight: 700;
-    font-size: 1.125rem;
+    font-size: 1.25rem;
     line-height: 1.75rem;
     letter-spacing: 0.18px;
     color: $gray;
