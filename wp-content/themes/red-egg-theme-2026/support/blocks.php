@@ -289,6 +289,11 @@ function red_egg_register_blocks() {
         'editor_script' => 'red-egg-editor-blocks',
     ] );
 
+    // Header (Single Column) – reusable one-col section header
+    register_block_type( 'red-egg-block/header-single', [
+        'editor_script' => 'red-egg-editor-blocks',
+    ] );
+
     // Feature Card (child of feature-cards)
     register_block_type( 'red-egg-block/feature-card', [
         'editor_script' => 'red-egg-editor-blocks',

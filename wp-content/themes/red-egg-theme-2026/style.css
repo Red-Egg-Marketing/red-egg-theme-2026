@@ -8568,24 +8568,95 @@ p.case-study-body__label {
   background-color: #F79E83;
 }
 
-.feature-cards__label {
-  font-family: "Poppins", sans-serif;
-  font-weight: 500;
-  font-size: 1.0625rem;
-  line-height: 1.625rem;
-  letter-spacing: 1.1px;
-  text-transform: uppercase;
-  color: #FFFFFF;
-  margin: 0 0 0.5rem 0;
+.feature-cards .block-content {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
 }
 @media screen and (min-width: 768px) {
-  .feature-cards__label {
-    font-size: 1.375rem;
-    line-height: 2.125rem;
+  .feature-cards .block-content {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
   }
 }
 
-.feature-cards__heading {
+.feature-cards .block-content > .header-single {
+  grid-column: 1/-1;
+  margin-bottom: 1rem;
+}
+@media screen and (min-width: 768px) {
+  .feature-cards .block-content > .header-single {
+    margin-bottom: 1.5rem;
+  }
+}
+
+.feature-cards .header-single__label,
+.feature-cards .header-single__heading,
+.feature-cards .header-single h1,
+.feature-cards .header-single h2,
+.feature-cards .header-single h3,
+.feature-cards .header-single__desc,
+.feature-cards .header-single p {
+  color: #FFFFFF;
+}
+
+.feature-cards.eggshell .header-single__label,
+.feature-cards.eggshell .header-single__heading,
+.feature-cards.eggshell .header-single h1,
+.feature-cards.eggshell .header-single h2,
+.feature-cards.eggshell .header-single h3,
+.feature-cards.eggshell .header-single__desc,
+.feature-cards.eggshell .header-single p,
+.feature-cards.white .header-single__label,
+.feature-cards.white .header-single__heading,
+.feature-cards.white .header-single h1,
+.feature-cards.white .header-single h2,
+.feature-cards.white .header-single h3,
+.feature-cards.white .header-single__desc,
+.feature-cards.white .header-single p,
+.feature-cards.peach .header-single__label,
+.feature-cards.peach .header-single__heading,
+.feature-cards.peach .header-single h1,
+.feature-cards.peach .header-single h2,
+.feature-cards.peach .header-single h3,
+.feature-cards.peach .header-single__desc,
+.feature-cards.peach .header-single p {
+  color: #424042;
+}
+
+.header-single {
+  position: relative;
+}
+
+.header-single__inner {
+  display: flex;
+  flex-direction: column;
+}
+
+.header-single__label,
+.header-single p.header-single__label {
+  font-family: "Poppins", sans-serif !important;
+  font-weight: 500 !important;
+  font-size: 1.0625rem !important;
+  line-height: 1.625rem !important;
+  letter-spacing: 2px !important;
+  text-transform: uppercase !important;
+  color: #424042;
+  margin: 0 0 0.5rem 0;
+}
+@media screen and (min-width: 768px) {
+  .header-single__label,
+  .header-single p.header-single__label {
+    font-size: 1rem !important;
+    line-height: 1.3 !important;
+    letter-spacing: 1px !important;
+  }
+}
+
+.header-single__heading,
+.header-single h1,
+.header-single h2,
+.header-single h3 {
   font-family: "Poppins", sans-serif;
   font-weight: 700;
   font-size: 1.5625rem;
@@ -8594,41 +8665,45 @@ p.case-study-body__label {
   color: #424042;
 }
 @media screen and (min-width: 768px) {
-  .feature-cards__heading {
+  .header-single__heading,
+  .header-single h1,
+  .header-single h2,
+  .header-single h3 {
     font-size: 2.3125rem;
     line-height: 2.9375rem;
   }
 }
-.feature-cards__heading {
-  color: #FFFFFF;
-  margin: 0 0 2.5rem 0;
+.header-single__heading,
+.header-single h1,
+.header-single h2,
+.header-single h3 {
+  margin: 0;
   max-width: 936px;
 }
-@media screen and (min-width: 768px) {
-  .feature-cards__heading {
-    margin-bottom: 3.5rem;
-  }
-}
 
-.feature-cards.eggshell .feature-cards__label,
-.feature-cards.eggshell .feature-cards__heading,
-.feature-cards.white .feature-cards__label,
-.feature-cards.white .feature-cards__heading,
-.feature-cards.peach .feature-cards__label,
-.feature-cards.peach .feature-cards__heading {
+.header-single__desc,
+.header-single__inner > p:not(.header-single__label) {
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+  font-size: 1.0625rem;
+  line-height: 1.625rem;
   color: #424042;
 }
-
-.feature-cards__grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 1.5rem;
-}
 @media screen and (min-width: 768px) {
-  .feature-cards__grid {
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2rem;
+  .header-single__desc,
+  .header-single__inner > p:not(.header-single__label) {
+    font-size: 1.15rem;
+    line-height: 1.85rem;
   }
+}
+.header-single__desc,
+.header-single__inner > p:not(.header-single__label) {
+  margin: 1rem 0 0 0;
+  max-width: 936px;
+}
+.header-single__desc:first-of-type,
+.header-single__inner > p:not(.header-single__label):first-of-type {
+  margin-top: 1rem;
 }
 
 .feature-card {

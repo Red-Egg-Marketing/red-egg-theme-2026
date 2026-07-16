@@ -55,6 +55,7 @@
 @import '../blocks/case-study-stats/style-block';
 @import '../blocks/case-study-body/style-block';
 @import '../blocks/feature-cards/style-block';
+@import '../blocks/header-single/style-block';
 @import '../blocks/feature-card/style-block';
 @import '../blocks/case-study-gallery/style-block';
 @import '../blocks/color-palette/style-block';
@@ -135,4 +136,28 @@
     > [data-type="red-egg-block/numbered-list-items"] {
     margin-top: 0;
     margin-bottom: 0;
+}
+
+// ========================================
+//  Editor-only: Feature Cards grid layout
+//  (Gutenberg's .block-editor-block-list__layout wrapper breaks the
+//  frontend grid; re-apply it and span the header full width.)
+// ========================================
+
+.editor-styles-wrapper .feature-cards .block-content .block-editor-block-list__layout {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+
+    @media screen and (min-width: $small-width) {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2rem;
+    }
+}
+
+.editor-styles-wrapper .feature-cards .block-content .block-editor-block-list__layout
+    > [data-type="red-egg-block/header-single"] {
+    grid-column: 1 / -1;
+    margin-top: 0;
+    margin-bottom: 0.5rem;
 }

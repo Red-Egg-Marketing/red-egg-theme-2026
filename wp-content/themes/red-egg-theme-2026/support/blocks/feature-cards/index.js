@@ -20,20 +20,12 @@ import save from './save';
 registerBlockType( 'red-egg-block/feature-cards', {
     apiVersion: 2,
     title: __( 'Feature Cards', 'red-egg' ),
-    description: __( 'Dark section with label, heading, and a grid of icon feature cards.', 'red-egg' ),
+    description: __( 'Dark section: single-column header + a grid of icon feature cards.', 'red-egg' ),
     icon: 'screenoptions',
     category: 'layout',
     keywords: [ __( 'features', 'red-egg' ), __( 'cards', 'red-egg' ), __( 'icons', 'red-egg' ), __( 'services', 'red-egg' ) ],
     supports: { anchor: true },
     attributes: {
-        label: {
-            type: 'string',
-            default: 'WEB DEVELOPMENT',
-        },
-        heading: {
-            type: 'string',
-            default: '',
-        },
         bgColor: {
             type: 'string',
             default: '',

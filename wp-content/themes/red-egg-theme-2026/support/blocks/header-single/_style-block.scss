@@ -1,0 +1,57 @@
+// ========================================
+//  Header Single Block Styles
+//  Block: red-egg-block/header-single
+//
+//  One-column section header: label + heading +
+//  description, stacked. Sibling of header-intro.
+// ========================================
+
+.header-single {
+    position: relative;
+}
+
+.header-single__inner {
+    display: flex;
+    flex-direction: column;
+}
+
+// ---- Label (matches header-intro__label) ----
+.header-single__label,
+.header-single p.header-single__label {
+    font-family: $font-head !important;
+    font-weight: 500 !important;
+    font-size: 1.0625rem !important;
+    line-height: 1.625rem !important;
+    letter-spacing: 2px !important;
+    text-transform: uppercase !important;
+    color: $gray;
+    margin: 0 0 0.5rem 0;
+
+    @media screen and (min-width: $small-width) {
+        font-size: 1rem !important;
+        line-height: 1.3 !important;
+        letter-spacing: 1px !important;
+    }
+}
+
+// ---- Heading ----
+.header-single__heading,
+.header-single h1,
+.header-single h2,
+.header-single h3 {
+    @include primary-h2;
+    margin: 0;
+    max-width: 936px;
+}
+
+// ---- Description ----
+.header-single__desc,
+.header-single__inner > p:not(.header-single__label) {
+    @include primary-h4;
+    margin: 1rem 0 0 0;
+    max-width: 936px;
+
+    &:first-of-type {
+        margin-top: 1rem;
+    }
+}

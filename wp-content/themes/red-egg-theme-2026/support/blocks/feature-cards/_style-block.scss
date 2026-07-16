@@ -34,47 +34,8 @@
 .feature-cards.white { background-color: $white; }
 .feature-cards.peach { background-color: $peach; }
 
-// ---- Label ----
-.feature-cards__label {
-    font-family: $font-head;
-    font-weight: 500;
-    font-size: 1.0625rem;
-    line-height: 1.625rem;
-    letter-spacing: 1.1px;
-    text-transform: uppercase;
-    color: $white;
-    margin: 0 0 0.5rem 0;
-
-    @media screen and (min-width: $small-width) {
-        font-size: 1.375rem;
-        line-height: 2.125rem;
-    }
-}
-
-// ---- Heading ----
-.feature-cards__heading {
-    @include primary-h2;
-    color: $white;
-    margin: 0 0 2.5rem 0;
-    max-width: 936px;
-
-    @media screen and (min-width: $small-width) {
-        margin-bottom: 3.5rem;
-    }
-}
-
-// ---- Light backgrounds: dark text ----
-.feature-cards.eggshell,
-.feature-cards.white,
-.feature-cards.peach {
-    .feature-cards__label,
-    .feature-cards__heading {
-        color: $head-color;
-    }
-}
-
-// ---- Card grid ----
-.feature-cards__grid {
+// ---- Layout: header spans full width, cards in a grid ----
+.feature-cards .block-content {
     display: grid;
     grid-template-columns: 1fr;
     gap: 1.5rem;
@@ -82,5 +43,39 @@
     @media screen and (min-width: $small-width) {
         grid-template-columns: repeat(3, 1fr);
         gap: 2rem;
+    }
+}
+
+.feature-cards .block-content > .header-single {
+    grid-column: 1 / -1;
+    margin-bottom: 1rem;
+
+    @media screen and (min-width: $small-width) {
+        margin-bottom: 1.5rem;
+    }
+}
+
+// ---- Header text: white on the dark default, dark on light backgrounds ----
+.feature-cards .header-single__label,
+.feature-cards .header-single__heading,
+.feature-cards .header-single h1,
+.feature-cards .header-single h2,
+.feature-cards .header-single h3,
+.feature-cards .header-single__desc,
+.feature-cards .header-single p {
+    color: $white;
+}
+
+.feature-cards.eggshell,
+.feature-cards.white,
+.feature-cards.peach {
+    .header-single__label,
+    .header-single__heading,
+    .header-single h1,
+    .header-single h2,
+    .header-single h3,
+    .header-single__desc,
+    .header-single p {
+        color: $head-color;
     }
 }
