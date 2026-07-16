@@ -1726,6 +1726,14 @@
 .cs-slide__title {
   margin: 0;
   transition: transform 0.3s ease;
+  font-size: 1.1rem;
+  line-height: 1.5rem;
+}
+@media screen and (min-width: 768px) {
+  .cs-slide__title {
+    font-size: 1.45rem;
+    line-height: 1.95rem;
+  }
 }
 
 .cs-slide__excerpt {
