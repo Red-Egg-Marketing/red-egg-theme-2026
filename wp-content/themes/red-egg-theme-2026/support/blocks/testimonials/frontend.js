@@ -14,6 +14,24 @@ const { render, Fragment, useState, useEffect, useRef } = wp.element;
 const apiUrl = '/red-egg/v2/reviews';
 const READMORE_LIMIT = 230; // characters before truncating
 
+// Reviews come straight from the DB, so text can contain HTML entities
+// (&amp;, &#039;, etc.). Decode them for display.
+var _decodeEl;
+function decodeEntities( str ) {
+    if ( ! str ) return '';
+    _decodeEl = _decodeEl || document.createElement( 'textarea' );
+    _decodeEl.innerHTML = str;
+    return _decodeEl.value;
+}
+function decodeReview( r ) {
+    return Object.assign( {}, r, {
+        review_text: decodeEntities( r.review_text ),
+        reviewer_name: decodeEntities( r.reviewer_name ),
+        company_name: decodeEntities( r.company_name ),
+        company_title: decodeEntities( r.company_title ),
+    } );
+}
+
 /**
  * One review card with read-more expansion.
  */
@@ -40,6 +58,7 @@ const TestimonialCard = ( { review } ) => {
                     } ) }
                 </div>
             ) }
+            { text && (
             <p className="testimonial-card__text">
                 { shown }
                 { isLong && (
@@ -52,6 +71,7 @@ const TestimonialCard = ( { review } ) => {
                     </button>
                 ) }
             </p>
+            ) }
             <div className="testimonial-card__meta">
                 { review.reviewer_name && (
                     <p className="testimonial-card__name">{ review.reviewer_name }</p>
@@ -86,7 +106,7 @@ const TestimonialsView = ( { config } ) => {
                 var ids = config.ids.map( String );
                 list = all.filter( function( r ) { return ids.indexOf( String( r.id ) ) > -1; } );
             }
-            setReviews( list );
+            setReviews( list.map( decodeReview ) );
         } ).catch( function() { setReviews( [] ); } );
     }, [] );
 
@@ -108,17 +128,14 @@ const TestimonialsView = ( { config } ) => {
                     slides[ i ].style.height = '';
                 }
                 var max = 0;
-                var visible = Array.prototype.slice.call(
-                    swiper.el.querySelectorAll( '.swiper-slide-visible' )
-                );
-                // Fallback: derive visible slides from the active index if
-                // the class isn't present for any reason.
-                if ( ! visible.length ) {
-                    var per = Math.round( swiper.params.slidesPerView ) || 1;
-                    for ( var v = 0; v < per; v++ ) {
-                        if ( slides[ swiper.activeIndex + v ] ) {
-                            visible.push( slides[ swiper.activeIndex + v ] );
-                        }
+                // Select EXACTLY the slides in the current view by index.
+                // (Not .swiper-slide-visible — that also flags partially
+                // peeking neighbours, which inflated the height.)
+                var per = Math.round( swiper.params.slidesPerView ) || 1;
+                var visible = [];
+                for ( var v = 0; v < per; v++ ) {
+                    if ( slides[ swiper.activeIndex + v ] ) {
+                        visible.push( slides[ swiper.activeIndex + v ] );
                     }
                 }
                 if ( ! visible.length ) return;
@@ -136,7 +153,6 @@ const TestimonialsView = ( { config } ) => {
                 spaceBetween: 24,
                 speed: 500,
                 watchOverflow: true,
-                watchSlidesProgress: true, // adds .swiper-slide-visible (needed by equalizer)
                 breakpoints: {
                     768: { slidesPerView: 2, spaceBetween: 32 },
                 },

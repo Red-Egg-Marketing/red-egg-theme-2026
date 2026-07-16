@@ -27,6 +27,22 @@ const allowedBlocks = [
 ];
 
 // Short label for a review in the picker.
+// Decode DB HTML entities (&amp; etc.) for display.
+let _decodeEl;
+const decodeEntities = ( str ) => {
+    if ( ! str ) return '';
+    _decodeEl = _decodeEl || document.createElement( 'textarea' );
+    _decodeEl.innerHTML = str;
+    return _decodeEl.value;
+};
+const decodeReview = ( r ) => ( {
+    ...r,
+    review_text: decodeEntities( r.review_text ),
+    reviewer_name: decodeEntities( r.reviewer_name ),
+    company_name: decodeEntities( r.company_name ),
+    company_title: decodeEntities( r.company_title ),
+} );
+
 const reviewLabel = ( r ) => {
     const name = r.reviewer_name || __( '(no name)', 'red-egg' );
     const snippet = ( r.review_text || '' ).slice( 0, 40 );
@@ -47,7 +63,7 @@ const PreviewCard = ( { review } ) => {
                     ) ) }
                 </div>
             ) }
-            <p className="testimonial-card__text">{ review.review_text }</p>
+            { review.review_text && <p className="testimonial-card__text">{ review.review_text }</p> }
             <div className="testimonial-card__meta">
                 { review.reviewer_name && (
                     <p className="testimonial-card__name">{ review.reviewer_name }</p>
@@ -75,7 +91,7 @@ const EditTestimonials = ( { attributes, setAttributes, clientId } ) => {
 
     useEffect( () => {
         wp.apiFetch( { url: apiUrl } ).then( ( data ) => {
-            setReviews( Array.isArray( data ) ? data : [] );
+            setReviews( Array.isArray( data ) ? data.map( decodeReview ) : [] );
         } ).catch( () => setReviews( [] ) );
     }, [] );
 
