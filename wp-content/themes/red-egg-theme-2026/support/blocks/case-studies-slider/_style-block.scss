@@ -101,6 +101,12 @@
     @include primary-h3;
     margin: 0;
     transition: transform 0.3s ease;
+    font-size: 1.1rem;
+    line-height: 1.5rem;
+    @media screen and (min-width: $small-width) {
+        font-size: 1.45rem;
+        line-height: 1.95rem;
+    }
 }
 
 .cs-slide__excerpt {
