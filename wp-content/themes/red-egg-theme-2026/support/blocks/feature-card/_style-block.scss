@@ -10,7 +10,7 @@
     display: flex;
     flex-direction: column;
     padding: 2rem 1.75rem;
-    border: 1px solid rgba(255, 255, 255, 0.18);
+    border: 1px solid white;
     border-radius: $default-border-radius;
 
     @media screen and (min-width: $small-width) {
@@ -26,31 +26,24 @@
     width: 56px;
     height: 56px;
     margin-bottom: 1.5rem;
-    background-color: rgba(255, 255, 255, 0.1);
     border-radius: 50%;
 
     @media screen and (min-width: $small-width) {
-        width: 64px;
-        height: 64px;
+        width: 76px;
+        height: 76px;
     }
 }
 
 .feature-card__icon svg {
     display: block;
-    width: 26px;
-    height: 26px;
-    stroke: $white;
-
-    @media screen and (min-width: $small-width) {
-        width: 28px;
-        height: 28px;
-    }
+    width: 100%;
+    height: 100%;
 }
 
 .feature-card__icon--img img {
     display: block;
-    width: 28px;
-    height: 28px;
+    width: 100%;
+    height: 100%;
     object-fit: contain;
 }
 

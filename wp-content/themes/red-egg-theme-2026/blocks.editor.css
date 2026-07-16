@@ -6371,34 +6371,30 @@ p.case-study-body__label {
 
 .header-single__desc,
 .header-single__inner > p:not(.header-single__label) {
-  font-family: "Poppins", sans-serif;
-  font-weight: 500;
-  font-size: 1.0625rem;
-  line-height: 1.625rem;
-  color: #424042;
-}
-@media screen and (min-width: 768px) {
-  .header-single__desc,
-  .header-single__inner > p:not(.header-single__label) {
-    font-size: 1.15rem;
-    line-height: 1.85rem;
-  }
-}
-.header-single__desc,
-.header-single__inner > p:not(.header-single__label) {
   margin: 1rem 0 0 0;
-  max-width: 936px;
+  color: white;
+  font-size: 1.5875rem;
+  line-height: 1.9rem;
+  font-family: "Poppins", sans-serif;
+  font-weight: 700;
 }
 .header-single__desc:first-of-type,
 .header-single__inner > p:not(.header-single__label):first-of-type {
   margin-top: 1rem;
+}
+@media screen and (min-width: 768px) {
+  .header-single__desc,
+  .header-single__inner > p:not(.header-single__label) {
+    font-size: 1.55rem;
+    line-height: 2.1rem;
+  }
 }
 
 .feature-card {
   display: flex;
   flex-direction: column;
   padding: 2rem 1.75rem;
-  border: 1px solid rgba(255, 255, 255, 0.18);
+  border: 1px solid white;
   border-radius: 8px;
 }
 @media screen and (min-width: 768px) {
@@ -6414,33 +6410,25 @@ p.case-study-body__label {
   width: 56px;
   height: 56px;
   margin-bottom: 1.5rem;
-  background-color: rgba(255, 255, 255, 0.1);
   border-radius: 50%;
 }
 @media screen and (min-width: 768px) {
   .feature-card__icon {
-    width: 64px;
-    height: 64px;
+    width: 76px;
+    height: 76px;
   }
 }
 
 .feature-card__icon svg {
   display: block;
-  width: 26px;
-  height: 26px;
-  stroke: #FFFFFF;
-}
-@media screen and (min-width: 768px) {
-  .feature-card__icon svg {
-    width: 28px;
-    height: 28px;
-  }
+  width: 100%;
+  height: 100%;
 }
 
 .feature-card__icon--img img {
   display: block;
-  width: 28px;
-  height: 28px;
+  width: 100%;
+  height: 100%;
   -o-object-fit: contain;
      object-fit: contain;
 }
@@ -7512,6 +7500,12 @@ img.device-frame__device {
   width: 100%;
   height: 100%;
   display: block;
+}
+@media screen and (min-width: 768px) {
+  .icon-card__icon {
+    width: 76px;
+    height: 76px;
+  }
 }
 .icon-card__icon {
   /*    svg [fill] { fill: $white; }*/
