@@ -105,10 +105,14 @@
     border-radius: $default-border-radius;
     padding: 1.75rem;
     box-sizing: border-box;
-
+    border: none;
     @media screen and (min-width: $small-width) {
         padding: 2.5rem;
     }
+}
+
+.testimonials-block .swiper-slide {
+    border: none;
 }
 
 .testimonial-card__stars {
@@ -122,12 +126,23 @@
     display: block;
     width: 22px;
     height: auto;
+    margin-right: 5px;
 }
 
 .testimonial-card__text {
     @include body-text;
+    font-size: 18px;
     color: $gray;
+    font-weight: 400;
     margin: 0 0 1.75rem 0;
+    @media screen and (min-width: $small-width) {
+        font-size: 20px;
+    }
+}
+
+.testimonial-card__text:before {
+    content: "\201D";
+    font-family: $font-head;
 }
 
 .testimonial-card__readmore {
@@ -153,17 +168,16 @@
 
 .testimonial-card__name {
     font-family: $font-head;
-    font-weight: 700;
-    font-size: 1.125rem;
+    font-weight: 500;
+    font-size: 1.25rem;
     color: $gray;
     margin: 0 0 0.25rem 0;
 }
 
 .testimonial-card__company {
     font-family: $font-body;
-    font-size: 0.9375rem;
+    font-size: 1rem;
     color: $gray;
-    opacity: 0.75;
 }
 
 // ---- Slider ----

@@ -2155,11 +2155,16 @@
   border-radius: 8px;
   padding: 1.75rem;
   box-sizing: border-box;
+  border: none;
 }
 @media screen and (min-width: 768px) {
   .testimonial-card {
     padding: 2.5rem;
   }
+}
+
+.testimonials-block .swiper-slide {
+  border: none;
 }
 
 .testimonial-card__stars {
@@ -2173,6 +2178,7 @@
   display: block;
   width: 22px;
   height: auto;
+  margin-right: 5px;
 }
 
 .testimonial-card__text {
@@ -2189,8 +2195,20 @@
   }
 }
 .testimonial-card__text {
+  font-size: 18px;
   color: #424042;
+  font-weight: 400;
   margin: 0 0 1.75rem 0;
+}
+@media screen and (min-width: 768px) {
+  .testimonial-card__text {
+    font-size: 20px;
+  }
+}
+
+.testimonial-card__text:before {
+  content: "”";
+  font-family: "Poppins", sans-serif;
 }
 
 .testimonial-card__readmore {
@@ -2214,17 +2232,16 @@
 
 .testimonial-card__name {
   font-family: "Poppins", sans-serif;
-  font-weight: 700;
-  font-size: 1.125rem;
+  font-weight: 500;
+  font-size: 1.25rem;
   color: #424042;
   margin: 0 0 0.25rem 0;
 }
 
 .testimonial-card__company {
   font-family: "Figtree", sans-serif;
-  font-size: 0.9375rem;
+  font-size: 1rem;
   color: #424042;
-  opacity: 0.75;
 }
 
 .testimonials-slider {
