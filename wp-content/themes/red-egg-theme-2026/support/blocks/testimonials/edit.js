@@ -95,11 +95,6 @@ const EditTestimonials = ( { attributes, setAttributes, clientId } ) => {
         } ).catch( () => setReviews( [] ) );
     }, [] );
 
-    const blockProps = useBlockProps( {
-        id: blockId,
-        className: 'testimonials-block',
-    } );
-
     // Which reviews to preview, per the current source setting.
     const displayed = ( () => {
         if ( ! reviews || reviews.length === 0 ) return [];
@@ -111,6 +106,11 @@ const EditTestimonials = ( { attributes, setAttributes, clientId } ) => {
         }
         return reviews;
     } )();
+
+    const blockProps = useBlockProps( {
+        id: blockId,
+        className: 'testimonials-block' + ( displayed.length === 1 ? ' testimonials-block--single' : '' ),
+    } );
 
     const toggleSelected = ( id, on ) => {
         let updated = reviewIds.map( String );

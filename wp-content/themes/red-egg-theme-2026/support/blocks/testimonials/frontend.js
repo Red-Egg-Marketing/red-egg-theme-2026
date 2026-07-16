@@ -89,7 +89,7 @@ const TestimonialCard = ( { review } ) => {
 /**
  * Reviews view: single card, or Swiper slider for 2+.
  */
-const TestimonialsView = ( { config } ) => {
+const TestimonialsView = ( { config, root } ) => {
     const [ reviews, setReviews ] = useState( null );
     const swiperRef = useRef( null );
     const prevRef = useRef( null );
@@ -109,6 +109,16 @@ const TestimonialsView = ( { config } ) => {
             setReviews( list.map( decodeReview ) );
         } ).catch( function() { setReviews( [] ); } );
     }, [] );
+
+    // Add a modifier class to the parent section when exactly one review
+    // is shown (for styling / width). Count is only known after fetch.
+    useEffect( function() {
+        if ( reviews === null || ! root ) return;
+        var section = root.closest( '.testimonials-block' );
+        if ( section ) {
+            section.classList.toggle( 'testimonials-block--single', reviews.length === 1 );
+        }
+    }, [ reviews ] );
 
     // Init Swiper once 2+ reviews are rendered.
     useEffect( function() {
@@ -236,7 +246,7 @@ document.querySelectorAll( '.testimonials-block__root' ).forEach( function( root
         id: root.getAttribute( 'data-review-id' ) || '',
         ids: ids,
     };
-    render( <TestimonialsView config={ config } />, root );
+    render( <TestimonialsView config={ config } root={ root } />, root );
 } );
 
 } // end wp check
