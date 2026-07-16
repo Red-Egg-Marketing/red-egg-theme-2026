@@ -114,12 +114,12 @@ $arrow-white-r: "data:image/svg+xml,%3Csvg%20width%3D%2235%22%20height%3D%2235%2
 @mixin primary-h3 {
     font-family: $font-head;
     font-weight: 700;
-    font-size: 1.125rem; // 18px mobile
+    font-size: 1.225rem; // 18px mobile
     line-height: 1.75rem; // 28px
     letter-spacing: 0.0625rem;
     color: $head-color;
     @media screen and (min-width: $small-width) {
-        font-size: 1.5625rem; // 25px desktop
+        font-size: 1.7625rem; // 25px desktop
         line-height: 2.1875rem; // 35px
     }
 }
@@ -128,14 +128,14 @@ $arrow-white-r: "data:image/svg+xml,%3Csvg%20width%3D%2235%22%20height%3D%2235%2
 @mixin h3-caps {
     font-family: $font-head;
     font-weight: 700;
-    font-size: 1.125rem; // 18px mobile
-    line-height: 1.75rem; // 28px
-    letter-spacing: 0.2125rem; // 5px
+    font-size: 1.105rem; // 18px mobile
+    line-height: 1.70rem; // 28px
+    letter-spacing: 0.125rem; // 5px
     text-transform: uppercase;
     color: $head-color;
     @media screen and (min-width: $small-width) {
-        font-size: 1.3625rem; // 25px desktop
-        line-height: 1.975rem; // 35px
+        font-size: 1.2625rem; // 25px desktop
+        line-height: 1.775rem; // 35px
     }
 }
 
@@ -147,8 +147,8 @@ $arrow-white-r: "data:image/svg+xml,%3Csvg%20width%3D%2235%22%20height%3D%2235%2
     line-height: 1.625rem; // 26px
     color: $head-color;
     @media screen and (min-width: $small-width) {
-        font-size: 1.25rem; // 20px desktop
-        line-height: 2rem; // 34px
+        font-size: 1.15rem; // 20px desktop
+        line-height: 1.85rem; // 34px
     }
 }
 
@@ -172,12 +172,12 @@ $arrow-white-r: "data:image/svg+xml,%3Csvg%20width%3D%2235%22%20height%3D%2235%2
 @mixin body-text {
     font-family: $font-body;
     font-weight: 300;
-    font-size: 1.125rem; // 18px mobile
+    font-size: 1.105rem; // 18px mobile
     line-height: 1.75rem; // 28px
     color: $body-color;
     @media screen and (min-width: $small-width) {
-        font-size: 1.25rem; // 20px desktop
-        line-height: 1.875rem; // 30px
+        font-size: 1.15rem; // 20px desktop
+        line-height: 1.75rem; // 30px
     }
 }
 
@@ -224,7 +224,7 @@ $arrow-white-r: "data:image/svg+xml,%3Csvg%20width%3D%2235%22%20height%3D%2235%2
     align-items: center;
     justify-content: center;
     gap: 8px;
-    padding: 15px 30px 15px 35px;
+    padding: 10px 20px 10px 26px;
     border: 1px solid $gray;
     border-radius: $button-border-radius;
     background: transparent;
@@ -232,7 +232,7 @@ $arrow-white-r: "data:image/svg+xml,%3Csvg%20width%3D%2235%22%20height%3D%2235%2
     text-decoration: none;
     transition: background-color 0.3s ease, color 0.3s ease;
     @media screen and (min-width: $small-width) {
-        padding: 15px 30px 15px 35px;
+        padding: 12px 24px 12px 30px;
     }
     font-weight: 500;
     text-transform: uppercase;
@@ -255,7 +255,7 @@ $arrow-white-r: "data:image/svg+xml,%3Csvg%20width%3D%2235%22%20height%3D%2235%2
         }
     }
     &:hover {
-        background-color: $gray;
+        background-color: transparent;
         span {
             color: $white;
         }
@@ -282,7 +282,7 @@ $arrow-white-r: "data:image/svg+xml,%3Csvg%20width%3D%2235%22%20height%3D%2235%2
     font-size: 16px;
     line-height: 23px;
     letter-spacing: 0.32px;
-    padding: 15px 25px 15px 30px;
+    padding: 10px 20px 10px 26px;
     text-decoration: none;
     cursor: pointer;
     transition: none;
@@ -291,7 +291,7 @@ $arrow-white-r: "data:image/svg+xml,%3Csvg%20width%3D%2235%22%20height%3D%2235%2
         font-size: 17px;
         line-height: 25px;
         letter-spacing: 0.34px;
-        padding: 15px 30px 15px 35px;
+        padding: 12px 24px 12px 30px;
         gap: 10px;
     }
 

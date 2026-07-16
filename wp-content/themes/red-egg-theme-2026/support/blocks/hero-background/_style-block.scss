@@ -105,11 +105,14 @@
     color: $head-color;
 }
 
+.hero-background h1 {
+    white-space: pre;
+}
+
 .hero-background__content h1 {
     @include hero-h1;
     margin-top: 0;
     margin-bottom: 1.5rem;
-    white-space: pre;
     @media screen and (min-width: $small-width) {
         margin-bottom: 2rem;
     }

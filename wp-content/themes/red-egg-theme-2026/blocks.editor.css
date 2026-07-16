@@ -131,6 +131,10 @@
   color: #424042;
 }
 
+.hero-background h1 {
+  white-space: pre;
+}
+
 .hero-background__content h1 {
   font-family: "Poppins", sans-serif;
   font-weight: 600;
@@ -148,7 +152,6 @@
 .hero-background__content h1 {
   margin-top: 0;
   margin-bottom: 1.5rem;
-  white-space: pre;
 }
 @media screen and (min-width: 768px) {
   .hero-background__content h1 {
@@ -165,8 +168,8 @@
 }
 @media screen and (min-width: 768px) {
   .hero-background__content p {
-    font-size: 1.25rem;
-    line-height: 2rem;
+    font-size: 1.15rem;
+    line-height: 1.85rem;
   }
 }
 .hero-background__content p {
@@ -650,22 +653,30 @@
   }
 }
 
+.header-intro__left p,
 .header-intro__right p {
-  font-family: "Figtree", sans-serif;
-  font-weight: 300;
-  font-size: 1.125rem;
-  line-height: 1.75rem;
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+  font-size: 1.0625rem;
+  line-height: 1.625rem;
   color: #424042;
 }
 @media screen and (min-width: 768px) {
+  .header-intro__left p,
   .header-intro__right p {
-    font-size: 1.25rem;
-    line-height: 1.875rem;
+    font-size: 1.15rem;
+    line-height: 1.85rem;
   }
 }
+.header-intro__left p,
 .header-intro__right p {
-  margin: 0 0 1rem 0;
+  margin: 1rem 0 1rem 0;
 }
+.header-intro__left p:first-of-type,
+.header-intro__right p:first-of-type {
+  margin-top: 0;
+}
+.header-intro__left p:last-child,
 .header-intro__right p:last-child {
   margin-bottom: 0;
 }
@@ -772,14 +783,14 @@
 .flip-card .flip-card-wrap .content {
   font-family: "Figtree", sans-serif;
   font-weight: 300;
-  font-size: 1.125rem;
+  font-size: 1.105rem;
   line-height: 1.75rem;
   color: #424042;
 }
 @media screen and (min-width: 768px) {
   .flip-card .flip-card-wrap .content {
-    font-size: 1.25rem;
-    line-height: 1.875rem;
+    font-size: 1.15rem;
+    line-height: 1.75rem;
   }
 }
 .flip-card .flip-card-wrap .content {
@@ -839,14 +850,14 @@
 .flip-card__hover-overlay p {
   font-family: "Figtree", sans-serif;
   font-weight: 300;
-  font-size: 1.125rem;
+  font-size: 1.105rem;
   line-height: 1.75rem;
   color: #424042;
 }
 @media screen and (min-width: 768px) {
   .flip-card__hover-overlay p {
-    font-size: 1.25rem;
-    line-height: 1.875rem;
+    font-size: 1.15rem;
+    line-height: 1.75rem;
   }
 }
 .flip-card__hover-overlay p {
@@ -897,7 +908,7 @@
   align-items: center;
   justify-content: center;
   gap: 8px;
-  padding: 15px 30px 15px 35px;
+  padding: 10px 20px 10px 26px;
   border: 1px solid #424042;
   border-radius: 50px;
   background: transparent;
@@ -907,7 +918,7 @@
 }
 @media screen and (min-width: 768px) {
   .flip-card .flip-link {
-    padding: 15px 30px 15px 35px;
+    padding: 12px 24px 12px 30px;
   }
 }
 .flip-card .flip-link {
@@ -949,7 +960,7 @@
   }
 }
 .flip-card .flip-link:hover {
-  background-color: #424042;
+  background-color: transparent;
 }
 .flip-card .flip-link:hover span {
   color: #FFFFFF;
@@ -1045,15 +1056,15 @@
 .reveal-card__front-content h3 {
   font-family: "Poppins", sans-serif;
   font-weight: 700;
-  font-size: 1.5625rem;
-  line-height: 2.1875rem;
+  font-size: 1.225rem;
+  line-height: 1.75rem;
   letter-spacing: 0.0625rem;
   color: #424042;
 }
 @media screen and (min-width: 768px) {
   .reveal-card__front-content h3 {
-    font-size: 2.3125rem;
-    line-height: 2.9375rem;
+    font-size: 1.7625rem;
+    line-height: 2.1875rem;
   }
 }
 .reveal-card__front-content h3 {
@@ -1063,14 +1074,14 @@
 .reveal-card__front-content p {
   font-family: "Figtree", sans-serif;
   font-weight: 300;
-  font-size: 1.125rem;
+  font-size: 1.105rem;
   line-height: 1.75rem;
   color: #424042;
 }
 @media screen and (min-width: 768px) {
   .reveal-card__front-content p {
-    font-size: 1.25rem;
-    line-height: 1.875rem;
+    font-size: 1.15rem;
+    line-height: 1.75rem;
   }
 }
 .reveal-card__front-content p {
@@ -1186,16 +1197,16 @@
 .reveal-card__face--back h4 {
   font-family: "Poppins", sans-serif;
   font-weight: 700;
-  font-size: 1.125rem;
-  line-height: 1.75rem;
-  letter-spacing: 0.2125rem;
+  font-size: 1.105rem;
+  line-height: 1.7rem;
+  letter-spacing: 0.125rem;
   text-transform: uppercase;
   color: #424042;
 }
 @media screen and (min-width: 768px) {
   .reveal-card__face--back h4 {
-    font-size: 1.3625rem;
-    line-height: 1.975rem;
+    font-size: 1.2625rem;
+    line-height: 1.775rem;
   }
 }
 .reveal-card__face--back h4 {
@@ -1213,14 +1224,14 @@
 .reveal-card__face--back li {
   font-family: "Figtree", sans-serif;
   font-weight: 300;
-  font-size: 1.125rem;
+  font-size: 1.105rem;
   line-height: 1.75rem;
   color: #424042;
 }
 @media screen and (min-width: 768px) {
   .reveal-card__face--back li {
-    font-size: 1.25rem;
-    line-height: 1.875rem;
+    font-size: 1.15rem;
+    line-height: 1.75rem;
   }
 }
 .reveal-card__face--back li {
@@ -1230,14 +1241,14 @@
 .reveal-card__face--back p {
   font-family: "Figtree", sans-serif;
   font-weight: 300;
-  font-size: 1.125rem;
+  font-size: 1.105rem;
   line-height: 1.75rem;
   color: #424042;
 }
 @media screen and (min-width: 768px) {
   .reveal-card__face--back p {
-    font-size: 1.25rem;
-    line-height: 1.875rem;
+    font-size: 1.15rem;
+    line-height: 1.75rem;
   }
 }
 .reveal-card__face--back p {
@@ -1371,6 +1382,10 @@
   opacity: 0.6;
 }
 
+.reveal-card__back-loop {
+  margin-bottom: 100px;
+}
+
 .numbered-list {
   position: relative;
   padding-top: 4.5rem;
@@ -1460,14 +1475,14 @@
 .numbered-list__badge .number-badge__input {
   color: #FFFFFF;
   opacity: 0.3;
-  font-size: 2.75rem;
+  font-size: 2.5rem;
   line-height: 1;
   width: 60px;
 }
 @media screen and (min-width: 768px) {
   .numbered-list__badge .number-badge__value,
   .numbered-list__badge .number-badge__input {
-    font-size: 5.5rem;
+    font-size: 4.5rem;
     width: 100px;
     text-align: right;
   }
@@ -1513,16 +1528,16 @@
 .numbered-list__item-content h3 {
   font-family: "Poppins", sans-serif;
   font-weight: 700;
-  font-size: 1.125rem;
-  line-height: 1.75rem;
-  letter-spacing: 0.2125rem;
+  font-size: 1.105rem;
+  line-height: 1.7rem;
+  letter-spacing: 0.125rem;
   text-transform: uppercase;
   color: #424042;
 }
 @media screen and (min-width: 768px) {
   .numbered-list__item-content h3 {
-    font-size: 1.3625rem;
-    line-height: 1.975rem;
+    font-size: 1.2625rem;
+    line-height: 1.775rem;
   }
 }
 .numbered-list__item-content h3 {
@@ -1533,14 +1548,14 @@
 .numbered-list__item-content p {
   font-family: "Figtree", sans-serif;
   font-weight: 300;
-  font-size: 1.125rem;
+  font-size: 1.105rem;
   line-height: 1.75rem;
   color: #424042;
 }
 @media screen and (min-width: 768px) {
   .numbered-list__item-content p {
-    font-size: 1.25rem;
-    line-height: 1.875rem;
+    font-size: 1.15rem;
+    line-height: 1.75rem;
   }
 }
 .numbered-list__item-content p {
@@ -1690,14 +1705,14 @@
 .cs-slide__title {
   font-family: "Poppins", sans-serif;
   font-weight: 700;
-  font-size: 1.125rem;
+  font-size: 1.225rem;
   line-height: 1.75rem;
   letter-spacing: 0.0625rem;
   color: #424042;
 }
 @media screen and (min-width: 768px) {
   .cs-slide__title {
-    font-size: 1.5625rem;
+    font-size: 1.7625rem;
     line-height: 2.1875rem;
   }
 }
@@ -1709,14 +1724,14 @@
 .cs-slide__excerpt {
   font-family: "Figtree", sans-serif;
   font-weight: 300;
-  font-size: 1.125rem;
+  font-size: 1.105rem;
   line-height: 1.75rem;
   color: #424042;
 }
 @media screen and (min-width: 768px) {
   .cs-slide__excerpt {
-    font-size: 1.25rem;
-    line-height: 1.875rem;
+    font-size: 1.15rem;
+    line-height: 1.75rem;
   }
 }
 .cs-slide__excerpt {
@@ -1771,7 +1786,7 @@
   align-items: center;
   justify-content: center;
   gap: 8px;
-  padding: 15px 30px 15px 35px;
+  padding: 10px 20px 10px 26px;
   border: 1px solid #424042;
   border-radius: 50px;
   background: transparent;
@@ -1781,7 +1796,7 @@
 }
 @media screen and (min-width: 768px) {
   .cs-slider__cta .outline-gray {
-    padding: 15px 30px 15px 35px;
+    padding: 12px 24px 12px 30px;
   }
 }
 .cs-slider__cta .outline-gray {
@@ -1823,7 +1838,7 @@
   }
 }
 .cs-slider__cta .outline-gray:hover {
-  background-color: #424042;
+  background-color: transparent;
 }
 .cs-slider__cta .outline-gray:hover span {
   color: #FFFFFF;
@@ -1901,8 +1916,8 @@
 }
 @media screen and (min-width: 768px) {
   .case-studies-slider .case-studies-slider__loading p {
-    font-size: 1.25rem;
-    line-height: 2rem;
+    font-size: 1.15rem;
+    line-height: 1.85rem;
   }
 }
 .case-studies-slider .case-studies-slider__loading p {
@@ -1923,8 +1938,8 @@
 }
 @media screen and (min-width: 768px) {
   .case-studies-slider .error h3 {
-    font-size: 1.25rem;
-    line-height: 2rem;
+    font-size: 1.15rem;
+    line-height: 1.85rem;
   }
 }
 .case-studies-slider .error h3 {
@@ -1978,14 +1993,14 @@
 .case-studies-slider__grid .resource-card .resource-title {
   font-family: "Poppins", sans-serif;
   font-weight: 700;
-  font-size: 1.125rem;
+  font-size: 1.225rem;
   line-height: 1.75rem;
   letter-spacing: 0.0625rem;
   color: #424042;
 }
 @media screen and (min-width: 768px) {
   .case-studies-slider__grid .resource-card .resource-title {
-    font-size: 1.5625rem;
+    font-size: 1.7625rem;
     line-height: 2.1875rem;
   }
 }
@@ -1996,14 +2011,14 @@
 .case-studies-slider__grid .resource-card .resource-excerpt {
   font-family: "Figtree", sans-serif;
   font-weight: 300;
-  font-size: 1.125rem;
+  font-size: 1.105rem;
   line-height: 1.75rem;
   color: #424042;
 }
 @media screen and (min-width: 768px) {
   .case-studies-slider__grid .resource-card .resource-excerpt {
-    font-size: 1.25rem;
-    line-height: 1.875rem;
+    font-size: 1.15rem;
+    line-height: 1.75rem;
   }
 }
 .case-studies-slider__grid .resource-card .resource-excerpt {
@@ -2114,8 +2129,8 @@
 }
 @media screen and (min-width: 768px) {
   .testimonials-block__shortcode-tag {
-    font-size: 1.25rem;
-    line-height: 2rem;
+    font-size: 1.15rem;
+    line-height: 1.85rem;
   }
 }
 .testimonials-block__shortcode-tag {
@@ -2136,8 +2151,8 @@
 }
 @media screen and (min-width: 768px) {
   .testimonials-block__shortcode-empty {
-    font-size: 1.25rem;
-    line-height: 2rem;
+    font-size: 1.15rem;
+    line-height: 1.85rem;
   }
 }
 .testimonials-block__shortcode-empty {
@@ -2288,34 +2303,20 @@
 }
 
 .insights-block .resource-card .resource-title {
-  font-family: "Poppins", sans-serif;
-  font-weight: 700;
-  font-size: 1.125rem;
-  line-height: 1.75rem;
-  letter-spacing: 0.0625rem;
-  color: #424042;
-}
-@media screen and (min-width: 768px) {
-  .insights-block .resource-card .resource-title {
-    font-size: 1.5625rem;
-    line-height: 2.1875rem;
-  }
-}
-.insights-block .resource-card .resource-title {
   margin: 0 0 0.75rem 0;
 }
 
 .insights-block .resource-card .resource-excerpt {
   font-family: "Figtree", sans-serif;
   font-weight: 300;
-  font-size: 1.125rem;
+  font-size: 1.105rem;
   line-height: 1.75rem;
   color: #424042;
 }
 @media screen and (min-width: 768px) {
   .insights-block .resource-card .resource-excerpt {
-    font-size: 1.25rem;
-    line-height: 1.875rem;
+    font-size: 1.15rem;
+    line-height: 1.75rem;
   }
 }
 .insights-block .resource-card .resource-excerpt {
@@ -2328,7 +2329,7 @@
   align-items: center;
   justify-content: center;
   gap: 8px;
-  padding: 15px 30px 15px 35px;
+  padding: 10px 20px 10px 26px;
   border: 1px solid #424042;
   border-radius: 50px;
   background: transparent;
@@ -2338,7 +2339,7 @@
 }
 @media screen and (min-width: 768px) {
   .insights-block .resource-card .wp-button {
-    padding: 15px 30px 15px 35px;
+    padding: 12px 24px 12px 30px;
   }
 }
 .insights-block .resource-card .wp-button {
@@ -2380,7 +2381,7 @@
   }
 }
 .insights-block .resource-card .wp-button:hover {
-  background-color: #424042;
+  background-color: transparent;
 }
 .insights-block .resource-card .wp-button:hover span {
   color: #FFFFFF;
@@ -2408,8 +2409,8 @@
 }
 @media screen and (min-width: 768px) {
   .insights-block .insights-block__loading p {
-    font-size: 1.25rem;
-    line-height: 2rem;
+    font-size: 1.15rem;
+    line-height: 1.85rem;
   }
 }
 .insights-block .insights-block__loading p {
@@ -2425,8 +2426,8 @@
 }
 @media screen and (min-width: 768px) {
   .insights-block .insights-block__empty {
-    font-size: 1.25rem;
-    line-height: 2rem;
+    font-size: 1.15rem;
+    line-height: 1.85rem;
   }
 }
 .insights-block .insights-block__empty {
@@ -2632,7 +2633,7 @@ p.contact-section__label {
 }
 @media screen and (min-width: 768px) {
   .contact-icons__row {
-    margin-bottom: 1.5rem;
+    margin-bottom: 1.25rem;
   }
 }
 
@@ -2713,8 +2714,8 @@ p.contact-section__label {
 }
 @media screen and (min-width: 768px) {
   .contact-icons__text {
-    font-size: 1.25rem;
-    line-height: 2rem;
+    font-size: 1.15rem;
+    line-height: 1.85rem;
   }
 }
 .contact-icons__text {
@@ -2764,14 +2765,14 @@ p.contact-section__label {
 .contact-section .gform_required_legend {
   font-family: "Figtree", sans-serif;
   font-weight: 300;
-  font-size: 1.125rem;
+  font-size: 1.105rem;
   line-height: 1.75rem;
   color: #424042;
 }
 @media screen and (min-width: 768px) {
   .contact-section .gform_required_legend {
-    font-size: 1.25rem;
-    line-height: 1.875rem;
+    font-size: 1.15rem;
+    line-height: 1.75rem;
   }
 }
 .contact-section .gform_required_legend {
@@ -2857,15 +2858,15 @@ p.contact-section__label {
 .contact-section .validation_message {
   font-family: "Figtree", sans-serif;
   font-weight: 300;
-  font-size: 1.125rem;
+  font-size: 1.105rem;
   line-height: 1.75rem;
   color: #424042;
 }
 @media screen and (min-width: 768px) {
   .contact-section .gfield_validation_message,
   .contact-section .validation_message {
-    font-size: 1.25rem;
-    line-height: 1.875rem;
+    font-size: 1.15rem;
+    line-height: 1.75rem;
   }
 }
 .contact-section .gfield_validation_message,
@@ -2909,7 +2910,7 @@ div.gform_wrapper.gravity-theme .gform_page_footer {
   font-size: 16px;
   line-height: 23px;
   letter-spacing: 0.32px;
-  padding: 15px 25px 15px 30px;
+  padding: 10px 20px 10px 26px;
   text-decoration: none;
   cursor: pointer;
   transition: none;
@@ -2920,7 +2921,7 @@ div.gform_wrapper.gravity-theme .gform_page_footer {
     font-size: 17px;
     line-height: 25px;
     letter-spacing: 0.34px;
-    padding: 15px 30px 15px 35px;
+    padding: 12px 24px 12px 30px;
     gap: 10px;
   }
 }
@@ -3223,14 +3224,14 @@ div.gform_wrapper.gravity-theme .gform_page_footer {
 .image-columns .wrap h3 {
   font-family: "Poppins", sans-serif;
   font-weight: 700;
-  font-size: 1.125rem;
+  font-size: 1.225rem;
   line-height: 1.75rem;
   letter-spacing: 0.0625rem;
   color: #424042;
 }
 @media screen and (min-width: 768px) {
   .image-columns .wrap h3 {
-    font-size: 1.5625rem;
+    font-size: 1.7625rem;
     line-height: 2.1875rem;
   }
 }
@@ -3241,14 +3242,14 @@ div.gform_wrapper.gravity-theme .gform_page_footer {
 .image-columns .wrap p {
   font-family: "Figtree", sans-serif;
   font-weight: 300;
-  font-size: 1.125rem;
+  font-size: 1.105rem;
   line-height: 1.75rem;
   color: #424042;
 }
 @media screen and (min-width: 768px) {
   .image-columns .wrap p {
-    font-size: 1.25rem;
-    line-height: 1.875rem;
+    font-size: 1.15rem;
+    line-height: 1.75rem;
   }
 }
 
@@ -3533,14 +3534,14 @@ div.gform_wrapper.gravity-theme .gform_page_footer {
 .values-section .flip-card h3 {
   font-family: "Poppins", sans-serif;
   font-weight: 700;
-  font-size: 1.125rem;
+  font-size: 1.225rem;
   line-height: 1.75rem;
   letter-spacing: 0.0625rem;
   color: #424042;
 }
 @media screen and (min-width: 768px) {
   .values-section .flip-card h3 {
-    font-size: 1.5625rem;
+    font-size: 1.7625rem;
     line-height: 2.1875rem;
   }
 }
@@ -4459,14 +4460,14 @@ div.gform_wrapper.gravity-theme .gform_page_footer {
 .media-content .wrap h3 {
   font-family: "Poppins", sans-serif;
   font-weight: 700;
-  font-size: 1.125rem;
+  font-size: 1.225rem;
   line-height: 1.75rem;
   letter-spacing: 0.0625rem;
   color: #424042;
 }
 @media screen and (min-width: 768px) {
   .media-content .wrap h3 {
-    font-size: 1.5625rem;
+    font-size: 1.7625rem;
     line-height: 2.1875rem;
   }
 }
@@ -4477,14 +4478,14 @@ div.gform_wrapper.gravity-theme .gform_page_footer {
 .media-content .wrap p {
   font-family: "Figtree", sans-serif;
   font-weight: 300;
-  font-size: 1.125rem;
+  font-size: 1.105rem;
   line-height: 1.75rem;
   color: #424042;
 }
 @media screen and (min-width: 768px) {
   .media-content .wrap p {
-    font-size: 1.25rem;
-    line-height: 1.875rem;
+    font-size: 1.15rem;
+    line-height: 1.75rem;
   }
 }
 
@@ -5961,14 +5962,14 @@ div.gform_wrapper.gravity-theme .gform_page_footer {
 .case-study-body__content p {
   font-family: "Figtree", sans-serif;
   font-weight: 300;
-  font-size: 1.125rem;
+  font-size: 1.105rem;
   line-height: 1.75rem;
   color: #424042;
 }
 @media screen and (min-width: 768px) {
   .case-study-body__content p {
-    font-size: 1.25rem;
-    line-height: 1.875rem;
+    font-size: 1.15rem;
+    line-height: 1.75rem;
   }
 }
 .case-study-body__content p {
@@ -6167,8 +6168,8 @@ div.gform_wrapper.gravity-theme .gform_page_footer {
 @media screen and (min-width: 768px) {
   .feature-card__content h3,
   .feature-card__title {
-    font-size: 1.25rem;
-    line-height: 2rem;
+    font-size: 1.15rem;
+    line-height: 1.85rem;
   }
 }
 .feature-card__content h3,
@@ -6182,15 +6183,15 @@ div.gform_wrapper.gravity-theme .gform_page_footer {
 .feature-card__body {
   font-family: "Figtree", sans-serif;
   font-weight: 300;
-  font-size: 1.125rem;
+  font-size: 1.105rem;
   line-height: 1.75rem;
   color: #424042;
 }
 @media screen and (min-width: 768px) {
   .feature-card__content p,
   .feature-card__body {
-    font-size: 1.25rem;
-    line-height: 1.875rem;
+    font-size: 1.15rem;
+    line-height: 1.75rem;
   }
 }
 .feature-card__content p,
@@ -7275,14 +7276,14 @@ img.device-frame__device {
 .callout-block .callout-block__content p {
   font-family: "Figtree", sans-serif;
   font-weight: 300;
-  font-size: 1.125rem;
+  font-size: 1.105rem;
   line-height: 1.75rem;
   color: #424042;
 }
 @media screen and (min-width: 768px) {
   .callout-block .callout-block__content p {
-    font-size: 1.25rem;
-    line-height: 1.875rem;
+    font-size: 1.15rem;
+    line-height: 1.75rem;
   }
 }
 .callout-block .callout-block__content p {
@@ -7344,8 +7345,8 @@ img.device-frame__device {
 }
 @media screen and (min-width: 768px) {
   .faq-accordion__trigger .faq-accordion__question {
-    font-size: 1.25rem;
-    line-height: 2rem;
+    font-size: 1.15rem;
+    line-height: 1.85rem;
   }
 }
 .faq-accordion__trigger .faq-accordion__question {
@@ -7393,14 +7394,14 @@ img.device-frame__device {
   padding: 0 0 1.5rem;
   font-family: "Figtree", sans-serif;
   font-weight: 300;
-  font-size: 1.125rem;
+  font-size: 1.105rem;
   line-height: 1.75rem;
   color: #424042;
 }
 @media screen and (min-width: 768px) {
   .faq-accordion__panel-inner {
-    font-size: 1.25rem;
-    line-height: 1.875rem;
+    font-size: 1.15rem;
+    line-height: 1.75rem;
   }
 }
 .faq-accordion__panel-inner p {

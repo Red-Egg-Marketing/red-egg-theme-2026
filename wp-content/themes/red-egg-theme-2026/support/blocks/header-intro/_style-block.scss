@@ -167,10 +167,13 @@
     }
 }
 
+.header-intro__left p,
 .header-intro__right p {
-    @include body-text;
-    margin: 0 0 1rem 0;
-
+    @include primary-h4;
+    margin: 1rem 0 1rem 0;
+    &:first-of-type {
+        margin-top: 0;
+    }
     &:last-child {
         margin-bottom: 0;
     }
