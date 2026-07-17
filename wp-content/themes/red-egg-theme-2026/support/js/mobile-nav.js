@@ -60,4 +60,21 @@
     document.addEventListener( 'keydown', function ( e ) {
         if ( e.key === 'Escape' && menu.classList.contains( 'is-open' ) ) close();
     } );
+
+    // Resizing up to desktop hides the overlay via CSS but leaves the body
+    // scroll-lock on — close it so the page stays scrollable.
+    var desktopMq = window.matchMedia( '(min-width: 768px)' );
+    var onMqChange = function ( ev ) {
+        if ( ev.matches && menu.classList.contains( 'is-open' ) ) {
+            menu.classList.remove( 'is-open' );
+            menu.setAttribute( 'aria-hidden', 'true' );
+            toggleBtn.setAttribute( 'aria-expanded', 'false' );
+            document.body.classList.remove( 'mobile-nav-open' );
+        }
+    };
+    if ( desktopMq.addEventListener ) {
+        desktopMq.addEventListener( 'change', onMqChange );
+    } else if ( desktopMq.addListener ) {
+        desktopMq.addListener( onMqChange ); // Safari < 14
+    }
 } )();
