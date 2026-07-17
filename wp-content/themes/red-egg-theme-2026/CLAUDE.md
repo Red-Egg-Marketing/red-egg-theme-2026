@@ -259,6 +259,44 @@ The blob bleeds outside its block by design (`overflow: visible`); do NOT try to
 fix a straight edge with `overflow: hidden` on an ancestor — that clips the blob
 into a rectangle AND (on a `position: sticky` ancestor chain) breaks stickiness.
 
+## Editor Layout Overrides — Tech Debt (TODO)
+
+Several blocks whose InnerBlocks lay out in a grid/flex (`feature-cards`,
+`text-cards-grid`, `numbered-list`) rely on **editor-only CSS** in
+`support/scss/editor.scss` that targets Gutenberg's internal wrappers:
+`.block-content > .block-editor-inner-blocks > .block-editor-block-list__layout`.
+
+Those wrapper class names are internal Gutenberg markup with **no stability
+guarantee** — a future WP/Gutenberg release can rename or restructure them
+and silently break the editor layout (frontend is unaffected; it uses the
+block's own `.block-content` grid).
+
+**Durable fix (do later):** switch each block's `edit.js` from plain
+`<InnerBlocks/>` to `useInnerBlocksProps` spread onto the `.block-content`
+element, e.g.
+
+```js
+const innerProps = wp.blockEditor.useInnerBlocksProps(
+    { className: 'block-content' },
+    { template, allowedBlocks }
+);
+// ...
+<div className="block-wrapper"><div { ...innerProps } /></div>
+```
+
+Then the block children render as **direct** children of `.block-content`
+(no `.block-editor-inner-blocks` / `__layout` wrappers), so the frontend
+`.block-content { display:grid }` applies in the editor too — and the
+matching `editor.scss` overrides + resets can be **deleted**. This is the
+official API, so it survives Gutenberg updates.
+
+Scope: 3 blocks. Recommended order — do `feature-cards` first as a pilot,
+verify in the editor, then apply the same pattern to `text-cards-grid` and
+`numbered-list`. ~20–30 min + a per-block visual check.
+
+To find the current editor DOM for any block, inspect it in the editor and
+grab the `.block-content` subtree (fastest way to write/verify the selector).
+
 ## General Principles
 
 - Keep things practical and working. Don't over-abstract.
