@@ -528,14 +528,19 @@ body.mobile-nav-open {
   padding: 0.5rem;
   line-height: 0;
   cursor: pointer;
-  color: #FFFFFF;
-  transition: color 0.2s ease;
 }
-.mobile-nav__close:hover {
-  color: #DC2035;
-}
-.mobile-nav__close svg {
+
+.mobile-nav__close-icon {
   display: block;
+  width: 30px;
+  height: 30px;
+}
+.mobile-nav__close-icon path {
+  transition: fill 0.2s ease;
+}
+
+.mobile-nav__close:hover .mobile-nav__close-icon path {
+  fill: #DC2035;
 }
 
 .mobile-nav__list {

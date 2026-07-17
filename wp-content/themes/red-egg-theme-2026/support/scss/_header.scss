@@ -230,11 +230,18 @@ body.mobile-nav-open {
     padding: 0.5rem;
     line-height: 0;
     cursor: pointer;
-    color: $white;
-    transition: color 0.2s ease;
+}
 
-    &:hover { color: $red; }
-    svg { display: block; }
+.mobile-nav__close-icon {
+    display: block;
+    width: 30px;
+    height: 30px;
+
+    path { transition: fill 0.2s ease; }
+}
+
+.mobile-nav__close:hover .mobile-nav__close-icon path {
+    fill: $red;
 }
 
 // ---- List ----
