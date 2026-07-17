@@ -141,6 +141,37 @@
 
 
 
+// ========================================
+//  Editor-only: Feature Cards grid
+//  Real editor DOM:
+//    .block-content > .block-editor-inner-blocks > .block-editor-block-list__layout > [ header-single, feature-card... ]
+//  The frontend grid on .block-content only wraps .block-editor-inner-blocks
+//  in the editor (single child), so neutralize it there and put the grid on
+//  the actual layout. The full child chain targets ONLY the top layout, so
+//  it can't leak into each card's nested InnerBlocks.
+// ========================================
+
+.editor-styles-wrapper .feature-cards .block-content {
+    display: block;
+}
+
+.editor-styles-wrapper .feature-cards .block-content > .block-editor-inner-blocks > .block-editor-block-list__layout {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+
+    @media screen and (min-width: $small-width) {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2rem;
+    }
+}
+
+.editor-styles-wrapper .feature-cards .block-content > .block-editor-inner-blocks > .block-editor-block-list__layout
+    > [data-type="red-egg-block/header-single"] {
+    grid-column: 1 / -1;
+}
+
+
 // ---- Reset nested InnerBlocks so card/child content stacks normally ----
 // The grid/flex above uses a descendant selector and would also hit the
 // InnerBlocks layout INSIDE each child block. Those are inside a
