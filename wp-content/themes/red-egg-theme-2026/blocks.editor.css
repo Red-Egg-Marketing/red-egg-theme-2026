@@ -8756,26 +8756,6 @@ button.slickwprev-prev:before {
   margin-bottom: 0;
 }
 
-.editor-styles-wrapper .feature-cards .block-content {
-  display: block;
-}
-
-.editor-styles-wrapper .feature-cards .block-content > .block-editor-inner-blocks > .block-editor-block-list__layout {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 1.5rem;
-}
-@media screen and (min-width: 768px) {
-  .editor-styles-wrapper .feature-cards .block-content > .block-editor-inner-blocks > .block-editor-block-list__layout {
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2rem;
-  }
-}
-
-.editor-styles-wrapper .feature-cards .block-content > .block-editor-inner-blocks > .block-editor-block-list__layout > [data-type="red-egg-block/header-single"] {
-  grid-column: 1/-1;
-}
-
 .editor-styles-wrapper .text-cards-grid .block-content [data-type] .block-editor-block-list__layout,
 .editor-styles-wrapper .numbered-list .block-wrapper [data-type] .block-editor-block-list__layout,
 .editor-styles-wrapper .feature-cards .block-content [data-type] .block-editor-block-list__layout {

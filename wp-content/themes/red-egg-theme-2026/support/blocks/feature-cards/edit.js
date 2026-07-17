@@ -6,7 +6,7 @@
  */
 
 const { Fragment, useEffect } = wp.element;
-const { InnerBlocks, InspectorControls, useBlockProps } = wp.blockEditor;
+const { InnerBlocks, InspectorControls, useBlockProps, useInnerBlocksProps } = wp.blockEditor;
 const { __ } = wp.i18n;
 
 import BackgroundColor from '../../components/BackgroundColor.js';
@@ -39,6 +39,15 @@ const EditFeatureCards = ( { attributes, setAttributes, clientId } ) => {
         className: 'feature-cards' + ( bgSlug ? ' ' + bgSlug : '' ),
     } );
 
+    // Spread the inner-blocks props onto .block-content so the block
+    // children render as its DIRECT children (no .block-editor-inner-blocks
+    // / __layout wrappers). The frontend .block-content grid then applies in
+    // the editor too — no editor-only override needed.
+    const innerBlocksProps = useInnerBlocksProps(
+        { className: 'block-content' },
+        { template, allowedBlocks }
+    );
+
     return (
         <Fragment>
             <InspectorControls>
@@ -62,12 +71,7 @@ const EditFeatureCards = ( { attributes, setAttributes, clientId } ) => {
 
             <section { ...blockProps }>
                 <div className="block-wrapper">
-                    <div className="block-content">
-                        <InnerBlocks
-                            template={ template }
-                            allowedBlocks={ allowedBlocks }
-                        />
-                    </div>
+                    <div { ...innerBlocksProps } />
                 </div>
             </section>
         </Fragment>
