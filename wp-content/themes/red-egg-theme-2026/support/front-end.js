@@ -74,4 +74,6 @@ import './blocks/faq-accordion/frontend';
 import './js/toc';
 
 // Smooth scroll for internal anchor links (site-wide)
+import './blocks/section-nav/frontend';
+
 import './js/smooth-scroll';

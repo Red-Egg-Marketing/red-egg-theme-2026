@@ -132,6 +132,7 @@ import './case-study-body/index';
 // Feature Cards (dark section: label + heading + icon card grid)
 import './feature-cards/index';
 import './header-single/index';
+import './section-nav/index';
 // Feature Card (child of feature-cards)
 import './feature-card/index';
 

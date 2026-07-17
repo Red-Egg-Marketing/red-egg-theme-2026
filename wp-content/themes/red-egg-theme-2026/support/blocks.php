@@ -294,6 +294,11 @@ function red_egg_register_blocks() {
         'editor_script' => 'red-egg-editor-blocks',
     ] );
 
+    // Section Nav (sticky on-page anchor nav)
+    register_block_type( 'red-egg-block/section-nav', [
+        'editor_script' => 'red-egg-editor-blocks',
+    ] );
+
     // Feature Card (child of feature-cards)
     register_block_type( 'red-egg-block/feature-card', [
         'editor_script' => 'red-egg-editor-blocks',

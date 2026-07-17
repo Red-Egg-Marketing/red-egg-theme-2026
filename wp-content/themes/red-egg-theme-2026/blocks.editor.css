@@ -6402,6 +6402,107 @@ p.case-study-body__label {
   }
 }
 
+.wp-block.section-nav {
+  width: 100%;
+  max-width: 100%;
+}
+
+.section-nav {
+  position: sticky;
+  top: 80px;
+  z-index: 900;
+  width: 100%;
+  background-color: #FFFFFF;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid rgba(66, 64, 66, 0.12);
+}
+
+.section-nav.white {
+  background-color: #FFFFFF;
+}
+
+.section-nav.eggshell {
+  background-color: #F2ECE5;
+}
+
+.section-nav.gray {
+  background-color: #424042;
+}
+
+.section-nav.navy {
+  background-color: #024D69;
+}
+
+.section-nav > .block-wrapper {
+  max-width: 1184px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+}
+@media screen and (min-width: 768px) {
+  .section-nav > .block-wrapper {
+    padding-left: 2.5rem;
+    padding-right: 2.5rem;
+  }
+}
+
+.section-nav .wp-block-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin: 0;
+}
+
+.section-nav .wp-block-button {
+  margin: 0;
+}
+
+.section-nav .wp-block-button__link {
+  display: inline-block;
+  border: 2px solid #424042;
+  border-radius: 999px;
+  background: transparent;
+  color: #424042;
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  font-size: 0.8125rem;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  padding: 0.55rem 1.4rem;
+  line-height: 1;
+  text-decoration: none;
+  transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+}
+.section-nav .wp-block-button__link:hover {
+  border-color: #DC2035;
+  color: #DC2035;
+}
+
+.section-nav .wp-block-button.is-active .wp-block-button__link {
+  background-color: #424042;
+  border-color: #424042;
+  color: #FFFFFF;
+}
+
+.section-nav.gray .wp-block-button__link,
+.section-nav.navy .wp-block-button__link {
+  border-color: #FFFFFF;
+  color: #FFFFFF;
+}
+.section-nav.gray .wp-block-button__link:hover,
+.section-nav.navy .wp-block-button__link:hover {
+  border-color: #F79E83;
+  color: #F79E83;
+}
+
+.section-nav.gray .wp-block-button.is-active .wp-block-button__link,
+.section-nav.navy .wp-block-button.is-active .wp-block-button__link {
+  background-color: #FFFFFF;
+  border-color: #FFFFFF;
+  color: #424042;
+}
+
 .feature-card {
   display: flex;
   flex-direction: column;

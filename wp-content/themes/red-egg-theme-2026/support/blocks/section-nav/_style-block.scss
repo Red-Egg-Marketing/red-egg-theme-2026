@@ -1,0 +1,92 @@
+// ========================================
+//  Section Nav Block Styles
+//  Block: red-egg-block/section-nav
+//
+//  Sticky, full-width bar of pill buttons for on-page
+//  (anchor) navigation. Sticks below the site header.
+// ========================================
+
+.wp-block.section-nav {
+    width: 100%;
+    max-width: 100%;
+}
+
+.section-nav {
+    position: sticky;
+    top: 80px; // .site-header height
+    z-index: 900; // below header (1000) and mega panel (1100)
+    width: 100%;
+    background-color: $white;
+    padding: 0.75rem 0;
+    border-bottom: 1px solid rgba($gray, 0.12);
+}
+
+// ---- Background color slug classes ----
+.section-nav.white { background-color: $white; }
+.section-nav.eggshell { background-color: $eggshell; }
+.section-nav.gray { background-color: $gray; }
+.section-nav.navy { background-color: $navy; }
+
+.section-nav > .block-wrapper {
+    @include block-wrapper;
+}
+
+// ---- Buttons row ----
+.section-nav .wp-block-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin: 0;
+}
+
+.section-nav .wp-block-button {
+    margin: 0;
+}
+
+.section-nav .wp-block-button__link {
+    display: inline-block;
+    border: 2px solid $gray;
+    border-radius: 999px;
+    background: transparent;
+    color: $gray;
+    font-family: $font-head;
+    font-weight: 600;
+    font-size: 0.8125rem;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    padding: 0.55rem 1.4rem;
+    line-height: 1;
+    text-decoration: none;
+    transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+
+    &:hover {
+        border-color: $red;
+        color: $red;
+    }
+}
+
+// ---- Active (scrollspy) ----
+.section-nav .wp-block-button.is-active .wp-block-button__link {
+    background-color: $gray;
+    border-color: $gray;
+    color: $white;
+}
+
+// Dark bars: invert button colors
+.section-nav.gray .wp-block-button__link,
+.section-nav.navy .wp-block-button__link {
+    border-color: $white;
+    color: $white;
+
+    &:hover {
+        border-color: $peach;
+        color: $peach;
+    }
+}
+
+.section-nav.gray .wp-block-button.is-active .wp-block-button__link,
+.section-nav.navy .wp-block-button.is-active .wp-block-button__link {
+    background-color: $white;
+    border-color: $white;
+    color: $gray;
+}

@@ -18,7 +18,12 @@
 
     const headerOffset = function () {
         const header = document.querySelector( '.site-header' );
-        const h = header ? header.offsetHeight : 0;
+        let h = header ? header.offsetHeight : 0;
+        // Also clear a sticky section-nav bar if one is present.
+        const nav = document.querySelector( '.section-nav' );
+        if ( nav && getComputedStyle( nav ).position === 'sticky' ) {
+            h += nav.offsetHeight;
+        }
         return h + 16; // small breathing gap
     };
 
