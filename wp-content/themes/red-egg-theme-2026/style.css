@@ -3500,13 +3500,13 @@ body.mega-open {
 .reveal-card__inner {
   position: relative;
   width: 100%;
-  min-height: 360px;
+  min-height: 285px;
   transition: transform 0.6s ease;
   transform-style: preserve-3d;
 }
 @media screen and (min-width: 768px) {
   .reveal-card__inner {
-    min-height: 420px;
+    min-height: 350px;
   }
 }
 
@@ -3535,13 +3535,13 @@ body.mega-open {
   display: flex;
   flex-direction: column;
   height: 100%;
-  padding: 2.5rem;
-  padding-bottom: 5rem;
+  padding: 2rem;
+  padding-bottom: 4rem;
 }
 @media screen and (min-width: 768px) {
   .reveal-card__face-inner {
-    padding: 3rem;
-    padding-bottom: 5.5rem;
+    padding: 2.5rem;
+    padding-bottom: 4.5rem;
   }
 }
 
@@ -3753,8 +3753,8 @@ body.mega-open {
 
 .reveal-card__toggle {
   position: absolute;
-  bottom: 1.5rem;
-  right: 1.5rem;
+  bottom: 0.75rem;
+  right: 0.75rem;
   width: 44px;
   height: 44px;
   padding: 0;
@@ -3769,8 +3769,8 @@ body.mega-open {
 }
 @media screen and (min-width: 768px) {
   .reveal-card__toggle {
-    bottom: 1.75rem;
-    right: 1.75rem;
+    bottom: 1rem;
+    right: 1rem;
   }
 }
 
@@ -3784,6 +3784,7 @@ body.mega-open {
   display: flex;
   align-items: center;
   justify-content: center;
+  width: 30px;
 }
 
 .reveal-card__toggle-icon--close {
