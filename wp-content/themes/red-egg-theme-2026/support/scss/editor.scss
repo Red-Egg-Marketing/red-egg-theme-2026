@@ -140,27 +140,16 @@
 }
 
 // ========================================
-//  Editor-only: Feature Cards grid layout
-//  (Gutenberg's .block-editor-block-list__layout wrapper breaks the
-//  frontend grid; re-apply it and span the header full width.)
+//  Editor-only: Feature Cards stack for editing
+//  The frontend grid (.feature-cards .block-content) auto-injects into the
+//  editor via :where(.editor-styles-wrapper). Three narrow columns make the
+//  cards awkward to edit, so turn the grid off in the editor — cards stack
+//  full width. The frontend keeps its grid. (Higher specificity than the
+//  zero-specificity :where() rule, so no !important needed.)
 // ========================================
 
-.editor-styles-wrapper .feature-cards .block-content .block-editor-block-list__layout {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 1.5rem;
-
-    @media screen and (min-width: $small-width) {
-        grid-template-columns: repeat(3, 1fr);
-        gap: 2rem;
-    }
-}
-
-.editor-styles-wrapper .feature-cards .block-content .block-editor-block-list__layout
-    > [data-type="red-egg-block/header-single"] {
-    grid-column: 1 / -1;
-    margin-top: 0;
-    margin-bottom: 0.5rem;
+.editor-styles-wrapper .feature-cards .block-content {
+    display: block;
 }
 
 
