@@ -6649,6 +6649,7 @@ p.case-study-body__label {
 }
 
 .feature-card__icon {
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -6690,6 +6691,31 @@ p.case-study-body__label {
   font-size: 2rem;
   line-height: 1;
   color: #FFFFFF;
+}
+
+.feature-card__icon--blob {
+  background-color: transparent;
+  border-radius: 0;
+  overflow: visible;
+}
+
+.feature-card__icon-shape {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  display: block;
+  pointer-events: none;
+}
+
+.feature-card__icon-shape svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.feature-card__icon i {
+  position: relative;
+  z-index: 1;
 }
 
 .feature-card__content h3,

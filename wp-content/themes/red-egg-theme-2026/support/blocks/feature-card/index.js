@@ -23,6 +23,18 @@ registerBlockType( 'red-egg-block/feature-card', {
             type: 'string',
             default: '',
         },
+        iconShape: {
+            type: 'string',
+            default: 'circle',
+        },
+        iconColor: {
+            type: 'string',
+            default: '',
+        },
+        iconSlug: {
+            type: 'string',
+            default: '',
+        },
         icon: {
             type: 'string',
             default: '',

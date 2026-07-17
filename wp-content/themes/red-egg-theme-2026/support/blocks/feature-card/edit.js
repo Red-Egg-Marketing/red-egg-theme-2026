@@ -7,8 +7,11 @@
 
 const { Fragment } = wp.element;
 const { InnerBlocks, InspectorControls, MediaUpload, useBlockProps } = wp.blockEditor;
-const { PanelBody, Button, TextareaControl, TextControl } = wp.components;
+const { PanelBody, Button, TextareaControl, TextControl, SelectControl } = wp.components;
 const { __ } = wp.i18n;
+
+import BackgroundColor from '../../components/BackgroundColor.js';
+import { BLOB_SHAPES, SHAPE_OPTIONS } from './shapes.js';
 
 const template = [
     [ 'core/heading', { level: 3, placeholder: 'Card title…', className: 'feature-card__title' } ],
@@ -20,11 +23,19 @@ const allowedBlocks = [
     'core/paragraph',
 ];
 
-const renderIconPreview = ( { faClass, icon, iconAlt, svgMarkup } ) => {
+const renderIconPreview = ( { faClass, icon, iconAlt, svgMarkup, iconShape, iconColor } ) => {
     if ( faClass ) {
+        const isBlob = iconShape && iconShape !== 'circle' && BLOB_SHAPES[ iconShape ];
+        const shapeClass = isBlob ? ' feature-card__icon--blob feature-card__icon--' + iconShape : '';
         return (
-            <div className="feature-card__icon feature-card__icon--fa">
-                <i className={ faClass }></i>
+            <div className={ 'feature-card__icon feature-card__icon--fa' + shapeClass }>
+                { isBlob && (
+                    <span
+                        className="feature-card__icon-shape"
+                        dangerouslySetInnerHTML={ { __html: BLOB_SHAPES[ iconShape ] } }
+                    />
+                ) }
+                <i className={ faClass } style={ iconColor ? { color: iconColor } : {} }></i>
             </div>
         );
     }
@@ -49,7 +60,7 @@ const renderIconPreview = ( { faClass, icon, iconAlt, svgMarkup } ) => {
 };
 
 const EditFeatureCard = ( { attributes, setAttributes } ) => {
-    const { faClass, icon, iconId, iconAlt, svgMarkup } = attributes;
+    const { faClass, icon, iconId, iconAlt, svgMarkup, iconShape, iconColor, iconSlug } = attributes;
 
     const blockProps = useBlockProps( {
         className: 'feature-card',
@@ -68,6 +79,14 @@ const EditFeatureCard = ( { attributes, setAttributes } ) => {
                         value={ faClass }
                         onChange={ ( val ) => setAttributes( { faClass: val } ) }
                     />
+                    { faClass && (
+                        <SelectControl
+                            label={ __( 'Icon Background Shape', 'red-egg' ) }
+                            value={ iconShape }
+                            options={ SHAPE_OPTIONS }
+                            onChange={ ( val ) => setAttributes( { iconShape: val } ) }
+                        />
+                    ) }
                     <MediaUpload
                         onSelect={ ( media ) => setAttributes( {
                             icon: media.url,
@@ -110,10 +129,18 @@ const EditFeatureCard = ( { attributes, setAttributes } ) => {
                         rows={ 5 }
                     />
                 </PanelBody>
+                <BackgroundColor
+                    bgColor={ iconColor }
+                    bgSlug={ iconSlug }
+                    updateProp="iconColor"
+                    updateSlug="iconSlug"
+                    title="Icon Color"
+                    setAttributes={ setAttributes }
+                />
             </InspectorControls>
 
             <div { ...blockProps }>
-                { renderIconPreview( { faClass, icon, iconAlt, svgMarkup } ) }
+                { renderIconPreview( { faClass, icon, iconAlt, svgMarkup, iconShape, iconColor } ) }
                 <div className="feature-card__content">
                     <InnerBlocks
                         template={ template }

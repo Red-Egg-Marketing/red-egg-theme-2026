@@ -20,6 +20,7 @@
 
 // ---- Icon (circular) ----
 .feature-card__icon {
+    position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -60,6 +61,33 @@
     font-size: 2rem;
     line-height: 1;
     color: $white;
+}
+
+// ---- Blob background shape (replaces the circle) ----
+.feature-card__icon--blob {
+    background-color: transparent;
+    border-radius: 0;
+    overflow: visible;
+}
+
+.feature-card__icon-shape {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    display: block;
+    pointer-events: none;
+}
+
+.feature-card__icon-shape svg {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+// keep the glyph above the blob
+.feature-card__icon i {
+    position: relative;
+    z-index: 1;
 }
 
 // ---- Content ----
