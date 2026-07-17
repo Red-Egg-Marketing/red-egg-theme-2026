@@ -50,7 +50,10 @@
             var header = document.querySelector( '.site-header' );
             var hh = header ? header.offsetHeight : 0;
             var nh = nav.offsetHeight || 0;
-            return hh + nh + 8;
+            // Slightly larger than smooth-scroll's landing offset (+16) so a
+            // section you just jumped to registers as current, not the one
+            // above it.
+            return hh + nh + 28;
         }
 
         function update() {
@@ -65,6 +68,13 @@
                 m.btn.classList.toggle( 'is-active', m.target === current );
             } );
         }
+
+        // Snappy feedback: highlight the clicked button right away.
+        map.forEach( function ( m ) {
+            m.btn.addEventListener( 'click', function () {
+                map.forEach( function ( n ) { n.btn.classList.toggle( 'is-active', n === m ); } );
+            } );
+        } );
 
         var ticking = false;
         function onScroll() {
