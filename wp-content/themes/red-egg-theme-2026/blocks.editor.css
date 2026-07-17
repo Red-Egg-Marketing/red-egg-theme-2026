@@ -6230,6 +6230,15 @@ p.case-study-body__label {
   margin-bottom: 0;
 }
 
+.case-study-body .blob-decoration {
+  max-width: 380px;
+}
+@media screen and (min-width: 768px) {
+  .case-study-body .blob-decoration {
+    max-width: 620px;
+  }
+}
+
 @media screen and (min-width: 768px) {
   .case-study-body .block-wrapper {
     background: url(img/partner-resource-red.svg) no-repeat center right/197px;
