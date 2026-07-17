@@ -160,7 +160,7 @@ class Red_Egg_Mobile_Walker extends Walker_Nav_Menu {
 			$output .= '<a class="mobile-nav__link" href="' . $url . '">' . $title . '</a>';
 			if ( $has_children ) {
 				$output .= '<button type="button" class="mobile-nav__toggle" aria-expanded="false" aria-label="' . esc_attr__( 'Toggle submenu', 'red-egg' ) . '">';
-				$output .= '<span class="mobile-nav__toggle-icon" aria-hidden="true"></span>';
+				$output .= '<svg class="mobile-nav__toggle-icon" width="30" height="30" viewBox="0 0 35 35" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M17.5 35C27.166 35 35 27.166 35 17.5C35 7.83398 27.166 0 17.5 0C7.83398 0 0 7.83398 0 17.5C0 27.166 7.83398 35 17.5 35ZM15.8594 25.1562V19.1406H9.84375V15.8594H15.8594V9.84375H19.1406V15.8594H25.1562V19.1406H19.1406V25.1562H15.8594Z" fill="white"/></svg>';
 				$output .= '</button>';
 			}
 		} else {
