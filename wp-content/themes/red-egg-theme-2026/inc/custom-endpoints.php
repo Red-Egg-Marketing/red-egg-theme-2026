@@ -14,6 +14,18 @@
  */
 
 
+
+// ============================================
+//  Helper: Decode HTML entities in strings
+//  (term names, titles, excerpts come back
+//  HTML-encoded, e.g. "&amp;" -> "&").
+// ============================================
+
+function red_egg_decode( $str ) {
+	return is_string( $str ) ? html_entity_decode( $str, ENT_QUOTES, 'UTF-8' ) : $str;
+}
+
+
 // ============================================
 //  Helper: Return taxonomies for post types
 // ============================================
@@ -97,7 +109,8 @@ function red_egg_build_post_tax_array( $posts, $tax, $post_types = [] ) {
 			$id = $post->ID;
 
 			$post->link         = get_permalink( $id );
-			$post->post_excerpt = wp_trim_words( $post->post_excerpt, 25, '...' );
+			$post->post_excerpt = red_egg_decode( wp_trim_words( $post->post_excerpt, 25, '...' ) );
+			$post->post_title   = red_egg_decode( $post->post_title );
 			$post->taxonomies   = [];
 			$post_type  = get_post_type( $id );
 			$post_label = get_post_type_object( $post_type );
@@ -117,13 +130,13 @@ function red_egg_build_post_tax_array( $posts, $tax, $post_types = [] ) {
 
 				if ( ! empty( $post_taxes ) ) {
 					$singular   = get_object_taxonomies( $post_type, 'object' );
-					$sing_label = $singular[ $c_tax ]->labels->singular_name;
+					$sing_label = red_egg_decode( $singular[ $c_tax ]->labels->singular_name );
 
 					foreach ( $post_taxes as $post_tax ) {
 						$term_slug = $post_tax->slug;
 						$term_id   = $post_tax->term_id;
 						$term_tax  = $post_tax->taxonomy;
-						$term_name = $post_tax->name;
+						$term_name = red_egg_decode( $post_tax->name );
 						$tax_array[ $sing_label ][ $term_name ]['tax_name']  = $term_name;
 						$tax_array[ $sing_label ][ $term_name ]['tax_id']    = $term_id;
 						$tax_array[ $sing_label ][ $term_name ]['tax_slug']  = $term_slug;
@@ -367,9 +380,9 @@ function red_egg_return_posts( $data ) {
 				$post    = $query->post;
 				$postObj = new stdClass;
 				$postObj->ID       = $id;
-				$postObj->title    = $post->post_title;
+				$postObj->title    = red_egg_decode( $post->post_title );
 				$postObj->label    = $post_label;
-				$postObj->excerpt  = wp_trim_words( $post->post_content, 25, '...' );
+				$postObj->excerpt  = red_egg_decode( wp_trim_words( $post->post_content, 25, '...' ) );
 				$postObj->link     = get_the_permalink( $id );
 				$thumbnail         = get_the_post_thumbnail_url( $id, 'post-landscape' ) != false
 					? get_the_post_thumbnail_url( $id, 'post-landscape' )
@@ -454,7 +467,7 @@ function red_egg_return_industries( $request ) {
 		foreach ( $terms as $term ) {
 			$industries[] = [
 				'id'    => $term->term_id,
-				'name'  => $term->name,
+				'name'  => red_egg_decode( $term->name ),
 				'slug'  => $term->slug,
 				'count' => $term->count,
 			];
@@ -483,7 +496,7 @@ function red_egg_return_services( $request ) {
 		foreach ( $terms as $term ) {
 			$services[] = [
 				'id'    => $term->term_id,
-				'name'  => $term->name,
+				'name'  => red_egg_decode( $term->name ),
 				'slug'  => $term->slug,
 				'count' => $term->count,
 			];
@@ -564,7 +577,7 @@ function red_egg_return_filter_posts( $data ) {
 		}
 		$tax_meta[]  = [
 			'slug'  => $tx->name,
-			'label' => $tx->labels->name,
+			'label' => red_egg_decode( $tx->labels->name ),
 		];
 		$tax_slugs[] = $tx->name;
 	}
@@ -574,7 +587,8 @@ function red_egg_return_filter_posts( $data ) {
 			$id = $post->ID;
 
 			$post->link         = get_permalink( $id );
-			$post->post_excerpt = wp_trim_words( get_the_excerpt( $id ), 25, '...' );
+			$post->post_excerpt = red_egg_decode( wp_trim_words( get_the_excerpt( $id ), 25, '...' ) );
+			$post->post_title   = red_egg_decode( $post->post_title );
 			$post->taxonomies   = [];
 			$thumbnail          = get_the_post_thumbnail_url( $id, 'post-landscape' ) != false
 				? get_the_post_thumbnail_url( $id, 'post-landscape' )
@@ -587,17 +601,18 @@ function red_egg_return_filter_posts( $data ) {
 					continue;
 				}
 				$tax_obj    = get_taxonomy( $c_tax );
-				$sing_label = $tax_obj->labels->singular_name;
+				$sing_label = red_egg_decode( $tax_obj->labels->singular_name );
 
 				foreach ( $post_taxes as $post_tax ) {
-					$tax_array[ $sing_label ][ $post_tax->name ] = [
-						'tax_name' => $post_tax->name,
+					$term_name = red_egg_decode( $post_tax->name );
+					$tax_array[ $sing_label ][ $term_name ] = [
+						'tax_name' => $term_name,
 						'tax_id'   => $post_tax->term_id,
 						'tax_slug' => $post_tax->slug,
 						'taxonomy' => $post_tax->taxonomy,
 					];
 					$post->taxonomies[ $sing_label ][] = [
-						'term_name' => $post_tax->name,
+						'term_name' => $term_name,
 						'term_id'   => $post_tax->term_id,
 						'term_slug' => $post_tax->slug,
 						'taxonomy'  => $post_tax->taxonomy,
