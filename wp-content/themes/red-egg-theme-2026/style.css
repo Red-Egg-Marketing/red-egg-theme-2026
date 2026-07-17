@@ -8792,6 +8792,7 @@ p.case-study-body__label {
 }
 
 .section-nav {
+  margin-top: 10px;
   z-index: 900;
   width: 100%;
   background-color: transparent;
@@ -8802,6 +8803,7 @@ p.case-study-body__label {
 @media screen and (min-width: 768px) {
   .section-nav {
     position: sticky;
+    margin-top: 20px;
     top: 80px;
   }
 }
@@ -8809,6 +8811,12 @@ p.case-study-body__label {
 .section-nav.is-stuck {
   /*    border-bottom-color: rgba($gray, 0.12);*/
   /*    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);*/
+  margin-top: 10px;
+}
+@media screen and (min-width: 768px) {
+  .section-nav.is-stuck {
+    margin-top: 0;
+  }
 }
 
 .section-nav.is-stuck.white {
