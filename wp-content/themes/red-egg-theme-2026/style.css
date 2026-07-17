@@ -473,50 +473,182 @@ p.is-style-section-label {
   transform: translateY(-9.5px) rotate(-45deg);
 }
 
-.main-navigation.is-open {
-  display: block;
-  position: fixed;
-  top: 80px;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: #FFFFFF;
-  z-index: 999;
-  padding: 2rem 1.25rem;
-  overflow-y: auto;
-}
-.main-navigation.is-open .primary-menu {
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 0;
-}
-.main-navigation.is-open .primary-menu li {
-  width: 100%;
-  border-bottom: 1px solid rgba(66, 64, 66, 0.1);
-}
-.main-navigation.is-open .primary-menu li a {
-  display: block;
-  padding: 1rem 0;
-  font-size: 1.25rem;
-}
-.main-navigation.is-open .primary-menu li .sub-menu {
+.mobile-nav {
   display: none;
-  position: static;
-  box-shadow: none;
-  border: none;
-  padding: 0 0 0 1rem;
-  min-width: 0;
+}
+
+@media screen and (max-width: 767px) {
+  .mobile-nav {
+    display: block;
+    position: fixed;
+    inset: 0;
+    z-index: 1200;
+    background: #424042;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    padding: 0 1.25rem 3rem;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-8px);
+    transition: opacity 0.25s ease, transform 0.25s ease, visibility 0.25s ease;
+  }
+  .mobile-nav.is-open {
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+  }
+}
+body.mobile-nav-open {
+  overflow: hidden;
+}
+
+.mobile-nav__bar {
+  position: sticky;
+  top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 80px;
+  background: #424042;
+  z-index: 1;
+}
+
+.mobile-nav__logo {
+  display: block;
+  line-height: 0;
+}
+.mobile-nav__logo img {
+  width: auto;
+  height: 44px;
+}
+
+.mobile-nav__close {
+  background: none;
+  border: 0;
+  padding: 0.5rem;
+  line-height: 0;
+  cursor: pointer;
+  color: #FFFFFF;
+  transition: color 0.2s ease;
+}
+.mobile-nav__close:hover {
+  color: #DC2035;
+}
+.mobile-nav__close svg {
+  display: block;
+}
+
+.mobile-nav__list {
+  list-style: none;
+  margin: 0;
+  padding: 1rem 0 0;
+}
+
+.mobile-nav__item {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  padding: 0.5rem 0;
+}
+
+.mobile-nav__link {
+  font-family: "Poppins", sans-serif;
+  font-weight: 700;
+  font-size: 2rem;
+  line-height: 1.2;
+  color: #FFFFFF;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.mobile-nav__item.is-open > .mobile-nav__link {
+  color: #DC2035;
+}
+
+.mobile-nav__toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  margin-left: 0.85rem;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: #FFFFFF;
+  cursor: pointer;
+  flex: 0 0 auto;
+  transition: background 0.2s ease;
+}
+
+.mobile-nav__toggle-icon {
+  position: relative;
+  display: block;
+  width: 14px;
+  height: 14px;
+}
+
+.mobile-nav__toggle-icon::before,
+.mobile-nav__toggle-icon::after {
+  content: "";
+  position: absolute;
+  background: #424042;
+  transition: background 0.2s ease;
+}
+
+.mobile-nav__toggle-icon::before {
+  top: 6px;
+  left: 0;
+  width: 14px;
+  height: 2px;
+}
+
+.mobile-nav__toggle-icon::after {
+  top: 0;
+  left: 6px;
+  width: 2px;
+  height: 14px;
+}
+
+.mobile-nav__item.is-open > .mobile-nav__toggle {
+  background: #DC2035;
+}
+
+.mobile-nav__item.is-open > .mobile-nav__toggle .mobile-nav__toggle-icon::before,
+.mobile-nav__item.is-open > .mobile-nav__toggle .mobile-nav__toggle-icon::after {
+  background: #FFFFFF;
+}
+
+.mobile-nav__sub {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  flex: 0 0 100%;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+}
+
+.mobile-nav__item.is-open > .mobile-nav__sub {
+  max-height: 1200px;
+}
+
+.mobile-nav__sub-item {
   margin: 0;
 }
-.main-navigation.is-open .primary-menu li .sub-menu li {
-  border-bottom: none;
-}
-.main-navigation.is-open .primary-menu li .sub-menu li a {
-  font-size: 1.0625rem;
-  padding: 0.625rem 0;
-}
-.main-navigation.is-open .primary-menu li.menu-item-has-children.is-open > .sub-menu {
+
+.mobile-nav__sub-link {
   display: block;
+  font-family: "Figtree", sans-serif;
+  font-weight: 300;
+  font-size: 1.125rem;
+  line-height: 1.4;
+  color: #FFFFFF;
+  text-decoration: none;
+  padding: 0.4rem 0;
+}
+.mobile-nav__sub-link:hover {
+  color: #F79E83;
 }
 
 .mega-toggle {

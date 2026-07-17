@@ -29,6 +29,9 @@ import './js/video';
 // Desktop mega menu navigation
 import './js/navigation';
 
+// Mobile navigation (full-screen overlay + accordion)
+import './js/mobile-nav';
+
 // Image Slider – Swiper initialization
 import './blocks/image-slider/frontend';
 

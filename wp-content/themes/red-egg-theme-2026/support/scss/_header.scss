@@ -166,58 +166,190 @@
     }
 }
 
-// ---- Mobile menu overlay ----
-.main-navigation.is-open {
-    display: block;
-    position: fixed;
-    top: 80px;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: $white;
-    z-index: 999;
-    padding: 2rem $site-padding-mobile;
-    overflow-y: auto;
+// ---- Mobile Nav (full-screen overlay) ----
+// The old .main-navigation.is-open mobile menu is replaced by a dedicated
+// #mobile-menu overlay rendered with Red_Egg_Mobile_Walker.
 
-    .primary-menu {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 0;
+.mobile-nav {
+    display: none; // desktop: never; mobile: shown via .is-open
+}
 
-        li {
-            width: 100%;
-            border-bottom: 1px solid rgba($gray, 0.1);
-
-            a {
-                display: block;
-                padding: 1rem 0;
-                font-size: 1.25rem;
-            }
-
-            .sub-menu {
-                display: none;
-                position: static;
-                box-shadow: none;
-                border: none;
-                padding: 0 0 0 1rem;
-                min-width: 0;
-                margin: 0;
-
-                li {
-                    border-bottom: none;
-
-                    a {
-                        font-size: 1.0625rem;
-                        padding: 0.625rem 0;
-                    }
-                }
-            }
-
-            &.menu-item-has-children.is-open > .sub-menu {
-                display: block;
-            }
-        }
+@media screen and (max-width: #{$small-width - 1px}) {
+    .mobile-nav {
+        display: block;
+        position: fixed;
+        inset: 0;
+        z-index: 1200; // above the sticky header
+        background: $gray;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+        padding: 0 $site-padding-mobile 3rem;
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(-8px);
+        transition: opacity 0.25s ease, transform 0.25s ease, visibility 0.25s ease;
     }
+
+    .mobile-nav.is-open {
+        opacity: 1;
+        visibility: visible;
+        transform: none;
+    }
+}
+
+// Lock body scroll while the overlay is open
+body.mobile-nav-open {
+    overflow: hidden;
+}
+
+// ---- Top bar (logo + close), sticky so it doesn't scroll away ----
+.mobile-nav__bar {
+    position: sticky;
+    top: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 80px;
+    background: $gray;
+    z-index: 1;
+}
+
+.mobile-nav__logo {
+    display: block;
+    line-height: 0;
+
+    img {
+        width: auto;
+        height: 44px;
+    }
+}
+
+.mobile-nav__close {
+    background: none;
+    border: 0;
+    padding: 0.5rem;
+    line-height: 0;
+    cursor: pointer;
+    color: $white;
+    transition: color 0.2s ease;
+
+    &:hover { color: $red; }
+    svg { display: block; }
+}
+
+// ---- List ----
+.mobile-nav__list {
+    list-style: none;
+    margin: 0;
+    padding: 1rem 0 0;
+}
+
+.mobile-nav__item {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    padding: 0.5rem 0;
+}
+
+.mobile-nav__link {
+    font-family: $font-head;
+    font-weight: 700;
+    font-size: 2rem;
+    line-height: 1.2;
+    color: $white;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.mobile-nav__item.is-open > .mobile-nav__link {
+    color: $red;
+}
+
+// ---- Toggle (+) button ----
+.mobile-nav__toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    margin-left: 0.85rem;
+    padding: 0;
+    border: 0;
+    border-radius: 50%;
+    background: $white;
+    cursor: pointer;
+    flex: 0 0 auto;
+    transition: background 0.2s ease;
+}
+
+.mobile-nav__toggle-icon {
+    position: relative;
+    display: block;
+    width: 14px;
+    height: 14px;
+}
+
+.mobile-nav__toggle-icon::before,
+.mobile-nav__toggle-icon::after {
+    content: '';
+    position: absolute;
+    background: $gray;
+    transition: background 0.2s ease;
+}
+
+.mobile-nav__toggle-icon::before { // horizontal
+    top: 6px;
+    left: 0;
+    width: 14px;
+    height: 2px;
+}
+
+.mobile-nav__toggle-icon::after { // vertical
+    top: 0;
+    left: 6px;
+    width: 2px;
+    height: 14px;
+}
+
+.mobile-nav__item.is-open > .mobile-nav__toggle {
+    background: $red;
+}
+
+.mobile-nav__item.is-open > .mobile-nav__toggle .mobile-nav__toggle-icon::before,
+.mobile-nav__item.is-open > .mobile-nav__toggle .mobile-nav__toggle-icon::after {
+    background: $white;
+}
+
+// ---- Submenu accordion ----
+.mobile-nav__sub {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    flex: 0 0 100%;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+}
+
+.mobile-nav__item.is-open > .mobile-nav__sub {
+    max-height: 1200px;
+}
+
+.mobile-nav__sub-item {
+    margin: 0;
+}
+
+.mobile-nav__sub-link {
+    display: block;
+    font-family: $font-body;
+    font-weight: 300;
+    font-size: 1.125rem;
+    line-height: 1.4;
+    color: $white;
+    text-decoration: none;
+    padding: 0.4rem 0;
+
+    &:hover { color: $peach; }
 }
 
 // ========================================

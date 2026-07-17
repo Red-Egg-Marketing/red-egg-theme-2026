@@ -130,3 +130,46 @@ class Red_Egg_Mega_Walker extends Walker_Nav_Menu {
         // depth 2 <li> is self-closed in start_el().
     }
 }
+
+
+/**
+ * Mobile Nav Walker
+ *
+ * Full-screen mobile menu. Top-level items with children get a
+ * toggle button that expands an accordion of their children; the
+ * item title itself stays a normal link.
+ */
+class Red_Egg_Mobile_Walker extends Walker_Nav_Menu {
+
+	public function start_lvl( &$output, $depth = 0, $args = null ) {
+		$output .= '<ul class="mobile-nav__sub">';
+	}
+
+	public function end_lvl( &$output, $depth = 0, $args = null ) {
+		$output .= '</ul>';
+	}
+
+	public function start_el( &$output, $item, $depth = 0, $args = null, $id = 0 ) {
+		$title = esc_html( $item->title );
+		$url   = ( $item->url && '#' !== $item->url ) ? esc_url( $item->url ) : '#';
+		$has_children = in_array( 'menu-item-has-children', (array) $item->classes, true );
+
+		if ( 0 === $depth ) {
+			$classes = 'mobile-nav__item' . ( $has_children ? ' has-children' : '' );
+			$output .= '<li class="' . esc_attr( $classes ) . '">';
+			$output .= '<a class="mobile-nav__link" href="' . $url . '">' . $title . '</a>';
+			if ( $has_children ) {
+				$output .= '<button type="button" class="mobile-nav__toggle" aria-expanded="false" aria-label="' . esc_attr__( 'Toggle submenu', 'red-egg' ) . '">';
+				$output .= '<span class="mobile-nav__toggle-icon" aria-hidden="true"></span>';
+				$output .= '</button>';
+			}
+		} else {
+			$output .= '<li class="mobile-nav__sub-item">';
+			$output .= '<a class="mobile-nav__sub-link" href="' . $url . '">' . $title . '</a>';
+		}
+	}
+
+	public function end_el( &$output, $item, $depth = 0, $args = null ) {
+		$output .= '</li>';
+	}
+}

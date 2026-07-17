@@ -30,6 +30,7 @@ function red_egg_theme_setup() {
     // Register nav menus
     register_nav_menus( [
         'primary' => esc_html__( 'Primary Menu', 'red-egg' ),
+        'mobile'  => esc_html__( 'Mobile Menu', 'red-egg' ),
         'footer'  => esc_html__( 'Footer Menu', 'red-egg' ),
     ] );
 
