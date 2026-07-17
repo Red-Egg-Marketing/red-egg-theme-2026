@@ -86,7 +86,7 @@
 //  shared .text-cards-grid.columns-N .reveal-card rules.)
 // ========================================
 
-.editor-styles-wrapper .text-cards-grid .block-content > .block-editor-block-list__layout {
+.editor-styles-wrapper .text-cards-grid .block-content .block-editor-block-list__layout {
     display: flex;
     flex-wrap: wrap;
     align-items: flex-start;
@@ -99,7 +99,7 @@
 }
 
 // header-intro always spans the full row in the editor
-.editor-styles-wrapper .text-cards-grid .block-content > .block-editor-block-list__layout
+.editor-styles-wrapper .text-cards-grid .block-content .block-editor-block-list__layout
     > [data-type="red-egg-block/header-intro"] {
     width: 100%;
     flex-shrink: 0;
@@ -107,7 +107,7 @@
 
 // Gutenberg adds vertical block margins to inner blocks; zero them so the
 // flex gap controls spacing and rows align cleanly.
-.editor-styles-wrapper .text-cards-grid .block-content > .block-editor-block-list__layout
+.editor-styles-wrapper .text-cards-grid .block-content .block-editor-block-list__layout
     > [data-type="red-egg-block/reveal-card"] {
     margin-top: 0;
     margin-bottom: 0;
@@ -123,7 +123,7 @@
 //  the heading to a sliver. Re-apply flex on the wrapper.
 // ========================================
 
-.editor-styles-wrapper .numbered-list .block-wrapper > .block-editor-block-list__layout {
+.editor-styles-wrapper .numbered-list .block-wrapper .block-editor-block-list__layout {
     display: flex;
     flex-wrap: wrap;
     align-items: flex-start;
@@ -131,9 +131,9 @@
 }
 
 // zero Gutenberg's default inner-block margins on the two columns
-.editor-styles-wrapper .numbered-list .block-wrapper > .block-editor-block-list__layout
+.editor-styles-wrapper .numbered-list .block-wrapper .block-editor-block-list__layout
     > [data-type="red-egg-block/header-intro-left"],
-.editor-styles-wrapper .numbered-list .block-wrapper > .block-editor-block-list__layout
+.editor-styles-wrapper .numbered-list .block-wrapper .block-editor-block-list__layout
     > [data-type="red-egg-block/numbered-list-items"] {
     margin-top: 0;
     margin-bottom: 0;
@@ -145,7 +145,7 @@
 //  frontend grid; re-apply it and span the header full width.)
 // ========================================
 
-.editor-styles-wrapper .feature-cards .block-content > .block-editor-block-list__layout {
+.editor-styles-wrapper .feature-cards .block-content .block-editor-block-list__layout {
     display: grid;
     grid-template-columns: 1fr;
     gap: 1.5rem;
@@ -156,11 +156,25 @@
     }
 }
 
-.editor-styles-wrapper .feature-cards .block-content > .block-editor-block-list__layout
+.editor-styles-wrapper .feature-cards .block-content .block-editor-block-list__layout
     > [data-type="red-egg-block/header-single"] {
     grid-column: 1 / -1;
     margin-top: 0;
     margin-bottom: 0.5rem;
+}
+
+
+
+// ---- Reset nested InnerBlocks so card/child content stacks normally ----
+// The grid/flex above uses a descendant selector and would also hit the
+// InnerBlocks layout INSIDE each child block. Those are inside a
+// [data-type] wrapper (the top-level layout is not), so this reset targets
+// only the nested ones.
+.editor-styles-wrapper .text-cards-grid .block-content [data-type] .block-editor-block-list__layout,
+.editor-styles-wrapper .numbered-list .block-wrapper [data-type] .block-editor-block-list__layout,
+.editor-styles-wrapper .feature-cards .block-content [data-type] .block-editor-block-list__layout {
+    display: block;
+    width: auto;
 }
 
 // ========================================
