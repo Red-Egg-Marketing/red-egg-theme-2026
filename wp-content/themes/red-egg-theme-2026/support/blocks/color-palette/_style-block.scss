@@ -141,53 +141,6 @@
     }
 }
 
-// ---- Editor: swatch grid ----
-// Adding display:flex to .block-wrapper (frontend rule below) also affects
-// the editor, where .block-wrapper's only direct child is Gutenberg's own
-// .block-editor-inner-blocks wrapper — force it to fill the row so the
-// nested grid below has full width to work with.
-.color-palette-block:not([class*="swatch-cols-"]) > .block-wrapper > .block-editor-inner-blocks {
-    flex: 1 1 100%;
-    width: 100%;
-}
-
-.color-palette-block:not([class*="swatch-cols-"]) > .block-wrapper > .block-editor-inner-blocks > .block-editor-block-list__layout {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1rem;
-}
-
-// Match against the .color-swatch class directly (same class used on the
-// frontend) rather than .wp-block, since Gutenberg's block-list layout can
-// interleave its own non-block elements (insertion points, etc.) among the
-// .wp-block siblings, which throws off plain positional counting.
-.color-palette-block:not([class*="swatch-cols-"]) > .block-wrapper > .block-editor-inner-blocks > .block-editor-block-list__layout > .color-swatch:nth-child(2),
-.color-palette-block:not([class*="swatch-cols-"]) > .block-wrapper > .block-editor-inner-blocks > .block-editor-block-list__layout > .color-swatch:nth-child(3) {
-    flex: 0 0 calc(50% - 0.5rem);
-    max-width: calc(50% - 0.5rem);
-}
-
-.color-palette-block:not([class*="swatch-cols-"]) > .block-wrapper > .block-editor-inner-blocks > .block-editor-block-list__layout > .color-swatch {
-    margin-left: 0;
-    margin-right: 0;
-    margin-bottom: 0;
-    margin-top: 0;
-}
-
-.color-palette-block:not([class*="swatch-cols-"]) > .block-wrapper > .block-editor-inner-blocks > .block-editor-block-list__layout > .color-swatch:nth-child(2) .color-swatch__color,
-.color-palette-block:not([class*="swatch-cols-"]) > .block-wrapper > .block-editor-inner-blocks > .block-editor-block-list__layout > .color-swatch:nth-child(3) .color-swatch__color {
-    height: 220px;
-}
-
-.color-palette-block:not([class*="swatch-cols-"]) > .block-wrapper > .block-editor-inner-blocks > .block-editor-block-list__layout > .color-swatch:nth-child(n+4) {
-    flex: 0 0 calc(33.333% - 0.667rem);
-    max-width: calc(33.333% - 0.667rem);
-}
-
-.color-palette-block:not([class*="swatch-cols-"]) > .block-wrapper > .block-editor-inner-blocks > .block-editor-block-list__layout > .color-swatch:nth-child(n+4) .color-swatch__color {
-    height: 160px;
-}
-
 // ---- Color Swatch ----
 .color-swatch__color {
     width: 100%;

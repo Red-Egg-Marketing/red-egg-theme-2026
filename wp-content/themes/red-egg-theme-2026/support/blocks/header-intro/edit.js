@@ -8,7 +8,7 @@
  */
 
 const { Fragment, useEffect } = wp.element;
-const { InnerBlocks, InspectorControls, useBlockProps } = wp.blockEditor;
+const { InnerBlocks, InspectorControls, useBlockProps, useInnerBlocksProps } = wp.blockEditor;
 const { PanelBody, ToggleControl, SelectControl } = wp.components;
 const { __ } = wp.i18n;
 
@@ -57,6 +57,11 @@ const EditHeaderIntro = ( { attributes, setAttributes, clientId } ) => {
     if ( bgColor ) {
         bgStyle.backgroundColor = bgColor;
     }
+
+    const innerBlocksProps = useInnerBlocksProps(
+        { className: 'header-intro__columns' },
+        { template, allowedBlocks }
+    );
 
     const blockProps = useBlockProps( {
         id: blockId,
@@ -135,12 +140,7 @@ const EditHeaderIntro = ( { attributes, setAttributes, clientId } ) => {
                         </svg>
                     </div>
                 ) }
-                <div className="header-intro__columns">
-                    <InnerBlocks
-                        template={ template }
-                        allowedBlocks={ allowedBlocks }
-                    />
-                </div>
+                <div { ...innerBlocksProps } />
             </div>
         </Fragment>
     );

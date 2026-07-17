@@ -6,7 +6,7 @@
  */
 
 const { Fragment } = wp.element;
-const { InnerBlocks, useBlockProps, InspectorControls } = wp.blockEditor;
+const { InnerBlocks, useBlockProps, InspectorControls, useInnerBlocksProps } = wp.blockEditor;
 const { PanelBody, SelectControl } = wp.components;
 const { __ } = wp.i18n;
 
@@ -39,6 +39,11 @@ const EditTextCardsGrid = ( { attributes, setAttributes, clientId } ) => {
     const { columns, bgColor, bgSlug, padding, margin } = attributes;
 
     const blockId = `block-${ clientId }`;
+
+    const innerBlocksProps = useInnerBlocksProps(
+        { className: 'block-content' },
+        { template, allowedBlocks }
+    );
 
     const blockProps = useBlockProps( {
         id: blockId,
@@ -87,12 +92,7 @@ const EditTextCardsGrid = ( { attributes, setAttributes, clientId } ) => {
 
             <section { ...blockProps } style={ bgStyle }>
                 <div className="block-wrapper">
-                    <div className="block-content">
-                        <InnerBlocks
-                            template={ template }
-                            allowedBlocks={ allowedBlocks }
-                        />
-                    </div>
+                    <div { ...innerBlocksProps } />
                 </div>
             </section>
         </Fragment>

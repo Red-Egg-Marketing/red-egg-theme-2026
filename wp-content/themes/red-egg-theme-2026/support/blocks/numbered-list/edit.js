@@ -5,7 +5,7 @@
  */
 
 const { Fragment, useEffect } = wp.element;
-const { InnerBlocks, InspectorControls, useBlockProps } = wp.blockEditor;
+const { InnerBlocks, InspectorControls, useBlockProps, useInnerBlocksProps } = wp.blockEditor;
 const { __ } = wp.i18n;
 
 import PaddingSelector from '../../components/Padding.js';
@@ -30,6 +30,11 @@ const EditNumberedList = ( { attributes, setAttributes, clientId } ) => {
         }
     }, [] );
 
+    const innerBlocksProps = useInnerBlocksProps(
+        { className: 'block-wrapper' },
+        { template, allowedBlocks }
+    );
+
     const blockProps = useBlockProps( {
         id: blockId,
         className: 'numbered-list',
@@ -53,12 +58,7 @@ const EditNumberedList = ( { attributes, setAttributes, clientId } ) => {
 
             <section { ...blockProps }>
                 <div className="numbered-list__bg"></div>
-                <div className="block-wrapper">
-                    <InnerBlocks
-                        template={ template }
-                        allowedBlocks={ allowedBlocks }
-                    />
-                </div>
+                <div { ...innerBlocksProps } />
             </section>
         </Fragment>
     );

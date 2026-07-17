@@ -7,7 +7,7 @@
  */
 
 const { Fragment, useEffect } = wp.element;
-const { InnerBlocks, InspectorControls, useBlockProps } = wp.blockEditor;
+const { InnerBlocks, InspectorControls, useBlockProps, useInnerBlocksProps } = wp.blockEditor;
 const { PanelBody, SelectControl } = wp.components;
 const { __ } = wp.i18n;
 
@@ -36,6 +36,11 @@ const EditColorPalette = ( { attributes, setAttributes, clientId } ) => {
             setAttributes( { blockId: 'block-' + clientId } );
         }
     }, [] );
+
+    const innerBlocksProps = useInnerBlocksProps(
+        { className: 'block-wrapper' },
+        { template, allowedBlocks }
+    );
 
     const blockProps = useBlockProps( {
         id: blockId,
@@ -72,12 +77,7 @@ const EditColorPalette = ( { attributes, setAttributes, clientId } ) => {
             />
 
             <section { ...blockProps }>
-                <div className="block-wrapper">
-                    <InnerBlocks
-                        template={ template }
-                        allowedBlocks={ allowedBlocks }
-                    />
-                </div>
+                <div { ...innerBlocksProps } />
             </section>
         </Fragment>
     );
