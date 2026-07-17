@@ -28,6 +28,8 @@
     height: 56px;
     margin-bottom: 1.5rem;
     border-radius: 50%;
+    color: $white;      // FA renders <i> as <svg> using currentColor
+    font-size: 2rem;    // FA svg is 1em tall
 
     @media screen and (min-width: $small-width) {
         width: 76px;
@@ -35,7 +37,8 @@
     }
 }
 
-.feature-card__icon svg {
+// Pasted inline SVG fills the circle; FA's own <svg> is sized via font-size.
+.feature-card__icon--svg svg {
     display: block;
     width: 100%;
     height: 100%;
@@ -116,9 +119,10 @@
 
     .feature-card__icon {
         background-color: rgba(0, 0, 0, 0.06);
+        color: $gray;
     }
 
-    .feature-card__icon svg {
+    .feature-card__icon--svg svg {
         stroke: $gray;
     }
 

@@ -70,7 +70,7 @@
 .feature-cards.white,
 .feature-cards.peach {
     .feature-card__icon--fa { background-color: rgba($gray, 0.08); }
-    .feature-card__icon i { color: $gray; }
+    .feature-card__icon { color: $gray; }
 
     .header-single__label,
     .header-single__heading,
