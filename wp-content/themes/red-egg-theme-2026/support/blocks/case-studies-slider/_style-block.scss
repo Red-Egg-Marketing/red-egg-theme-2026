@@ -54,14 +54,13 @@
     background: $white;
     transition: box-shadow 0.3s ease, opacity 0.3s ease;
     @media screen and (min-width: $small-width) {
-        width: 528px;
+        width: 410px;
     }
 }
 
 .swiper-slide.cs-slide--active {
-    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.1);
      @media screen and (min-width: $small-width) {
-        width: 689px;
+        width: 550px;
     }
 }
 
@@ -73,7 +72,7 @@
 }
 
 .cs-slide__image {
-    aspect-ratio: 5 / 3;
+    aspect-ratio: 103 / 58;
     overflow: hidden;
     background-color: $gray;
 }
@@ -131,7 +130,6 @@
 
 // ---- Active slide emphasis ----
 .cs-slide--active {
-    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.1);
      @media screen and (min-width: $small-width) {
         width: 689px;
      }

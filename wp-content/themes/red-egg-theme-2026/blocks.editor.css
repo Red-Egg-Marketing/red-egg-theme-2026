@@ -1672,16 +1672,13 @@
 }
 @media screen and (min-width: 768px) {
   .cs-slide {
-    width: 528px;
+    width: 410px;
   }
 }
 
-.swiper-slide.cs-slide--active {
-  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.1);
-}
 @media screen and (min-width: 768px) {
   .swiper-slide.cs-slide--active {
-    width: 689px;
+    width: 550px;
   }
 }
 
@@ -1693,7 +1690,7 @@
 }
 
 .cs-slide__image {
-  aspect-ratio: 5/3;
+  aspect-ratio: 103/58;
   overflow: hidden;
   background-color: #424042;
 }
@@ -1777,9 +1774,6 @@
   height: auto;
 }
 
-.cs-slide--active {
-  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.1);
-}
 @media screen and (min-width: 768px) {
   .cs-slide--active {
     width: 689px;

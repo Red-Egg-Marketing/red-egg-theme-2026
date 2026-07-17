@@ -60,7 +60,7 @@ const SliderContent = ( { postsToShow, industry, service, navPrev, navNext } ) =
                         },
                         1080: {
                             slidesPerView: 'auto',
-                            spaceBetween: 24,
+                            spaceBetween: 50,
                         },
                     },
                     navigation: {
