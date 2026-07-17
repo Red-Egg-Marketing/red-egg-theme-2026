@@ -230,18 +230,11 @@ body.mobile-nav-open {
     padding: 0.5rem;
     line-height: 0;
     cursor: pointer;
-}
+    color: $white;
+    transition: color 0.2s ease;
 
-.mobile-nav__close-icon {
-    display: block;
-    width: 30px;
-    height: 30px;
-
-    path { transition: fill 0.2s ease; }
-}
-
-.mobile-nav__close:hover .mobile-nav__close-icon path {
-    fill: $red;
+    &:hover { color: $red; }
+    svg { display: block; }
 }
 
 // ---- List ----
@@ -294,13 +287,17 @@ body.mobile-nav-open {
     height: 30px;
 }
 
-// CSS beats the inline fill, so the open state recolours the icon to red
-.mobile-nav__toggle-icon path {
-    transition: fill 0.2s ease;
+// Plus shows when collapsed, circle-X when the submenu is open
+.mobile-nav__toggle-icon--close {
+    display: none;
 }
 
-.mobile-nav__item.is-open > .mobile-nav__toggle .mobile-nav__toggle-icon path {
-    fill: $red;
+.mobile-nav__item.is-open > .mobile-nav__toggle .mobile-nav__toggle-icon--open {
+    display: none;
+}
+
+.mobile-nav__item.is-open > .mobile-nav__toggle .mobile-nav__toggle-icon--close {
+    display: block;
 }
 
 // ---- Submenu accordion ----
