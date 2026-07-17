@@ -1662,7 +1662,7 @@
   overflow: visible;
 }
 
-.cs-slide {
+.swiper-slide.cs-slide {
   border: 1px solid #424042;
   border-radius: 8px;
   overflow: hidden;
@@ -1670,8 +1670,8 @@
   transition: box-shadow 0.3s ease, opacity 0.3s ease;
 }
 @media screen and (min-width: 768px) {
-  .cs-slide {
-    width: 410px;
+  .swiper-slide.cs-slide {
+    width: 450px;
   }
 }
 

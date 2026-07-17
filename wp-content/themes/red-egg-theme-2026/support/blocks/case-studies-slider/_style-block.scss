@@ -47,14 +47,14 @@
 }
 
 // ---- Slide card ----
-.cs-slide {
+.swiper-slide.cs-slide {
     border: 1px solid $gray;
     border-radius: $default-border-radius;
     overflow: hidden;
     background: $white;
     transition: box-shadow 0.3s ease, opacity 0.3s ease;
     @media screen and (min-width: $small-width) {
-        width: 410px;
+        width: 450px;
     }
 }
 
