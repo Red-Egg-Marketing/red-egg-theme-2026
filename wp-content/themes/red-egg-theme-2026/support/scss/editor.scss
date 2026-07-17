@@ -139,19 +139,6 @@
     margin-bottom: 0;
 }
 
-// ========================================
-//  Editor-only: Feature Cards stack for editing
-//  The frontend grid (.feature-cards .block-content) auto-injects into the
-//  editor via :where(.editor-styles-wrapper). Three narrow columns make the
-//  cards awkward to edit, so turn the grid off in the editor — cards stack
-//  full width. The frontend keeps its grid. (Higher specificity than the
-//  zero-specificity :where() rule, so no !important needed.)
-// ========================================
-
-.editor-styles-wrapper .feature-cards .block-content {
-    display: block;
-}
-
 
 
 // ---- Reset nested InnerBlocks so card/child content stacks normally ----
