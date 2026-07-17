@@ -146,12 +146,12 @@
 // the editor, where .block-wrapper's only direct child is Gutenberg's own
 // .block-editor-inner-blocks wrapper — force it to fill the row so the
 // nested grid below has full width to work with.
-.color-palette-block > .block-wrapper > .block-editor-inner-blocks {
+.color-palette-block:not([class*="swatch-cols-"]) > .block-wrapper > .block-editor-inner-blocks {
     flex: 1 1 100%;
     width: 100%;
 }
 
-.color-palette-block > .block-wrapper > .block-editor-inner-blocks > .block-editor-block-list__layout {
+.color-palette-block:not([class*="swatch-cols-"]) > .block-wrapper > .block-editor-inner-blocks > .block-editor-block-list__layout {
     display: flex;
     flex-wrap: wrap;
     gap: 1rem;
@@ -161,30 +161,30 @@
 // frontend) rather than .wp-block, since Gutenberg's block-list layout can
 // interleave its own non-block elements (insertion points, etc.) among the
 // .wp-block siblings, which throws off plain positional counting.
-.color-palette-block > .block-wrapper > .block-editor-inner-blocks > .block-editor-block-list__layout > .color-swatch:nth-child(2),
-.color-palette-block > .block-wrapper > .block-editor-inner-blocks > .block-editor-block-list__layout > .color-swatch:nth-child(3) {
+.color-palette-block:not([class*="swatch-cols-"]) > .block-wrapper > .block-editor-inner-blocks > .block-editor-block-list__layout > .color-swatch:nth-child(2),
+.color-palette-block:not([class*="swatch-cols-"]) > .block-wrapper > .block-editor-inner-blocks > .block-editor-block-list__layout > .color-swatch:nth-child(3) {
     flex: 0 0 calc(50% - 0.5rem);
     max-width: calc(50% - 0.5rem);
 }
 
-.color-palette-block > .block-wrapper > .block-editor-inner-blocks > .block-editor-block-list__layout > .color-swatch {
+.color-palette-block:not([class*="swatch-cols-"]) > .block-wrapper > .block-editor-inner-blocks > .block-editor-block-list__layout > .color-swatch {
     margin-left: 0;
     margin-right: 0;
     margin-bottom: 0;
     margin-top: 0;
 }
 
-.color-palette-block > .block-wrapper > .block-editor-inner-blocks > .block-editor-block-list__layout > .color-swatch:nth-child(2) .color-swatch__color,
-.color-palette-block > .block-wrapper > .block-editor-inner-blocks > .block-editor-block-list__layout > .color-swatch:nth-child(3) .color-swatch__color {
+.color-palette-block:not([class*="swatch-cols-"]) > .block-wrapper > .block-editor-inner-blocks > .block-editor-block-list__layout > .color-swatch:nth-child(2) .color-swatch__color,
+.color-palette-block:not([class*="swatch-cols-"]) > .block-wrapper > .block-editor-inner-blocks > .block-editor-block-list__layout > .color-swatch:nth-child(3) .color-swatch__color {
     height: 220px;
 }
 
-.color-palette-block > .block-wrapper > .block-editor-inner-blocks > .block-editor-block-list__layout > .color-swatch:nth-child(n+4) {
+.color-palette-block:not([class*="swatch-cols-"]) > .block-wrapper > .block-editor-inner-blocks > .block-editor-block-list__layout > .color-swatch:nth-child(n+4) {
     flex: 0 0 calc(33.333% - 0.667rem);
     max-width: calc(33.333% - 0.667rem);
 }
 
-.color-palette-block > .block-wrapper > .block-editor-inner-blocks > .block-editor-block-list__layout > .color-swatch:nth-child(n+4) .color-swatch__color {
+.color-palette-block:not([class*="swatch-cols-"]) > .block-wrapper > .block-editor-inner-blocks > .block-editor-block-list__layout > .color-swatch:nth-child(n+4) .color-swatch__color {
     height: 160px;
 }
 
@@ -306,4 +306,24 @@
     width: auto;
     max-width: none;
     margin: 0;
+}
+
+// Uniform, proportional swatch height per column count (overrides the
+// original nth-child 345px heights, which were built for the 2-big + 3 layout).
+.color-palette-block.swatch-cols-2 > .block-wrapper .color-swatch:nth-child(n) .color-swatch__color,
+.color-palette-block.swatch-cols-3 > .block-wrapper .color-swatch:nth-child(n) .color-swatch__color,
+.color-palette-block.swatch-cols-4 > .block-wrapper .color-swatch:nth-child(n) .color-swatch__color {
+    height: 200px;
+}
+
+@media screen and (min-width: $small-width) {
+    .color-palette-block.swatch-cols-2 > .block-wrapper .color-swatch:nth-child(n) .color-swatch__color {
+        height: 320px;
+    }
+    .color-palette-block.swatch-cols-3 > .block-wrapper .color-swatch:nth-child(n) .color-swatch__color {
+        height: 280px;
+    }
+    .color-palette-block.swatch-cols-4 > .block-wrapper .color-swatch:nth-child(n) .color-swatch__color {
+        height: 240px;
+    }
 }
