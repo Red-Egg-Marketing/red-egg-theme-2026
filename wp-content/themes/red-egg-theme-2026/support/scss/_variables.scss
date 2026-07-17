@@ -224,15 +224,24 @@ $arrow-white-r: "data:image/svg+xml,%3Csvg%20width%3D%2235%22%20height%3D%2235%2
     align-items: center;
     justify-content: center;
     gap: 8px;
-    padding: 10px 20px 10px 26px;
+    padding: 10px 20px 10px 20px;
     border: 1px solid $gray;
     border-radius: $button-border-radius;
     background: transparent;
     cursor: pointer;
     text-decoration: none;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 23px;
+    letter-spacing: 0.32px;
     transition: background-color 0.3s ease, color 0.3s ease;
+    color: $gray;
+    font-family: $font-head;
     @media screen and (min-width: $small-width) {
-        padding: 12px 24px 12px 30px;
+        padding: 12px 24px 12px 24px;
+        line-height: 25px;
+        font-size: 17px;
+        letter-spacing: 0.34px;
     }
     font-weight: 500;
     text-transform: uppercase;

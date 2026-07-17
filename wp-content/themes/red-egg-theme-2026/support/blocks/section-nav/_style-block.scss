@@ -12,20 +12,23 @@
 }
 
 .section-nav {
-    position: sticky;
-    top: 80px; // .site-header height
+ 
     z-index: 900; // below header (1000) and mega panel (1100)
     width: 100%;
     background-color: transparent;
     padding: 0.75rem 0;
     border-bottom: 1px solid transparent;
     transition: background-color 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+    @media screen and (min-width: $small-width) {
+        position: sticky;
+        top: 80px; // .site-header height
+    }
 }
 
 // ---- Background color only while stuck ----
 .section-nav.is-stuck {
-    border-bottom-color: rgba($gray, 0.12);
-    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+/*    border-bottom-color: rgba($gray, 0.12);*/
+/*    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);*/
 }
 
 .section-nav.is-stuck.white { background-color: $white; }
@@ -57,32 +60,18 @@
 }
 
 .section-nav .wp-block-button__link {
-    display: inline-block;
-    border: 2px solid $gray;
-    border-radius: 999px;
-    background: transparent;
-    color: $gray;
-    font-family: $font-head;
-    font-weight: 600;
-    font-size: 0.8125rem;
-    letter-spacing: 0.5px;
-    text-transform: uppercase;
-    padding: 0.55rem 1.4rem;
-    line-height: 1;
-    text-decoration: none;
-    transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
-
+    @include gray-button;
     &:hover {
-        border-color: $red;
         color: $red;
+        border-color: $red;
     }
 }
 
 // ---- Active (scrollspy) ----
 .section-nav .wp-block-button.is-active .wp-block-button__link {
-    background-color: $gray;
-    border-color: $gray;
-    color: $white;
+    background-color: transparent;
+    border-color: $red;
+    color: $red;
 }
 
 // Dark bars: invert button colors

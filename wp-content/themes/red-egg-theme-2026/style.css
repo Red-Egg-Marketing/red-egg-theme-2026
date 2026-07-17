@@ -1151,17 +1151,26 @@ body.mega-open {
   align-items: center;
   justify-content: center;
   gap: 8px;
-  padding: 10px 20px 10px 26px;
+  padding: 10px 20px 10px 20px;
   border: 1px solid #424042;
   border-radius: 50px;
   background: transparent;
   cursor: pointer;
   text-decoration: none;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 23px;
+  letter-spacing: 0.32px;
   transition: background-color 0.3s ease, color 0.3s ease;
+  color: #424042;
+  font-family: "Poppins", sans-serif;
 }
 @media screen and (min-width: 768px) {
   .post-card .btn-gray {
-    padding: 12px 24px 12px 30px;
+    padding: 12px 24px 12px 24px;
+    line-height: 25px;
+    font-size: 17px;
+    letter-spacing: 0.34px;
   }
 }
 .post-card .btn-gray {
@@ -1318,17 +1327,26 @@ body.mega-open {
   align-items: center;
   justify-content: center;
   gap: 8px;
-  padding: 10px 20px 10px 26px;
+  padding: 10px 20px 10px 20px;
   border: 1px solid #424042;
   border-radius: 50px;
   background: transparent;
   cursor: pointer;
   text-decoration: none;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 23px;
+  letter-spacing: 0.32px;
   transition: background-color 0.3s ease, color 0.3s ease;
+  color: #424042;
+  font-family: "Poppins", sans-serif;
 }
 @media screen and (min-width: 768px) {
   .error-404 .page-content .btn-gray {
-    padding: 12px 24px 12px 30px;
+    padding: 12px 24px 12px 24px;
+    line-height: 25px;
+    font-size: 17px;
+    letter-spacing: 0.34px;
   }
 }
 .error-404 .page-content .btn-gray {
@@ -1422,17 +1440,26 @@ body.mega-open {
   align-items: center;
   justify-content: center;
   gap: 8px;
-  padding: 10px 20px 10px 26px;
+  padding: 10px 20px 10px 20px;
   border: 1px solid #424042;
   border-radius: 50px;
   background: transparent;
   cursor: pointer;
   text-decoration: none;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 23px;
+  letter-spacing: 0.32px;
   transition: background-color 0.3s ease, color 0.3s ease;
+  color: #424042;
+  font-family: "Poppins", sans-serif;
 }
 @media screen and (min-width: 768px) {
   .no-results .page-content .btn-gray {
-    padding: 12px 24px 12px 30px;
+    padding: 12px 24px 12px 24px;
+    line-height: 25px;
+    font-size: 17px;
+    letter-spacing: 0.34px;
   }
 }
 .no-results .page-content .btn-gray {
@@ -1815,17 +1842,26 @@ body.mega-open {
   align-items: center;
   justify-content: center;
   gap: 8px;
-  padding: 10px 20px 10px 26px;
+  padding: 10px 20px 10px 20px;
   border: 1px solid #424042;
   border-radius: 50px;
   background: transparent;
   cursor: pointer;
   text-decoration: none;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 23px;
+  letter-spacing: 0.32px;
   transition: background-color 0.3s ease, color 0.3s ease;
+  color: #424042;
+  font-family: "Poppins", sans-serif;
 }
 @media screen and (min-width: 768px) {
   .tax-link a {
-    padding: 12px 24px 12px 30px;
+    padding: 12px 24px 12px 24px;
+    line-height: 25px;
+    font-size: 17px;
+    letter-spacing: 0.34px;
   }
 }
 .tax-link a {
@@ -3227,17 +3263,26 @@ body.mega-open {
   align-items: center;
   justify-content: center;
   gap: 8px;
-  padding: 10px 20px 10px 26px;
+  padding: 10px 20px 10px 20px;
   border: 1px solid #424042;
   border-radius: 50px;
   background: transparent;
   cursor: pointer;
   text-decoration: none;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 23px;
+  letter-spacing: 0.32px;
   transition: background-color 0.3s ease, color 0.3s ease;
+  color: #424042;
+  font-family: "Poppins", sans-serif;
 }
 @media screen and (min-width: 768px) {
   .flip-card .flip-link {
-    padding: 12px 24px 12px 30px;
+    padding: 12px 24px 12px 24px;
+    line-height: 25px;
+    font-size: 17px;
+    letter-spacing: 0.34px;
   }
 }
 .flip-card .flip-link {
@@ -4113,17 +4158,26 @@ body.mega-open {
   align-items: center;
   justify-content: center;
   gap: 8px;
-  padding: 10px 20px 10px 26px;
+  padding: 10px 20px 10px 20px;
   border: 1px solid #424042;
   border-radius: 50px;
   background: transparent;
   cursor: pointer;
   text-decoration: none;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 23px;
+  letter-spacing: 0.32px;
   transition: background-color 0.3s ease, color 0.3s ease;
+  color: #424042;
+  font-family: "Poppins", sans-serif;
 }
 @media screen and (min-width: 768px) {
   .cs-slider__cta .outline-gray {
-    padding: 12px 24px 12px 30px;
+    padding: 12px 24px 12px 24px;
+    line-height: 25px;
+    font-size: 17px;
+    letter-spacing: 0.34px;
   }
 }
 .cs-slider__cta .outline-gray {
@@ -4789,17 +4843,26 @@ body.mega-open {
   align-items: center;
   justify-content: center;
   gap: 8px;
-  padding: 10px 20px 10px 26px;
+  padding: 10px 20px 10px 20px;
   border: 1px solid #424042;
   border-radius: 50px;
   background: transparent;
   cursor: pointer;
   text-decoration: none;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 23px;
+  letter-spacing: 0.32px;
   transition: background-color 0.3s ease, color 0.3s ease;
+  color: #424042;
+  font-family: "Poppins", sans-serif;
 }
 @media screen and (min-width: 768px) {
   .insights-block .resource-card .wp-button {
-    padding: 12px 24px 12px 30px;
+    padding: 12px 24px 12px 24px;
+    line-height: 25px;
+    font-size: 17px;
+    letter-spacing: 0.34px;
   }
 }
 .insights-block .resource-card .wp-button {
@@ -8409,7 +8472,6 @@ div.filter-posts__hero .hero-services h1 {
 
 .case-study-body {
   position: relative;
-  overflow: hidden;
   padding-top: 4.5rem;
   padding-bottom: 4.5rem;
 }
@@ -8720,8 +8782,6 @@ p.case-study-body__label {
 }
 
 .section-nav {
-  position: sticky;
-  top: 80px;
   z-index: 900;
   width: 100%;
   background-color: transparent;
@@ -8729,10 +8789,16 @@ p.case-study-body__label {
   border-bottom: 1px solid transparent;
   transition: background-color 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
 }
+@media screen and (min-width: 768px) {
+  .section-nav {
+    position: sticky;
+    top: 80px;
+  }
+}
 
 .section-nav.is-stuck {
-  border-bottom-color: rgba(66, 64, 66, 0.12);
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+  /*    border-bottom-color: rgba($gray, 0.12);*/
+  /*    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);*/
 }
 
 .section-nav.is-stuck.white {
@@ -8805,30 +8871,88 @@ p.case-study-body__label {
 }
 
 .section-nav .wp-block-button__link {
-  display: inline-block;
-  border: 2px solid #424042;
-  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px 20px 10px 20px;
+  border: 1px solid #424042;
+  border-radius: 50px;
   background: transparent;
+  cursor: pointer;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 23px;
+  letter-spacing: 0.32px;
+  transition: background-color 0.3s ease, color 0.3s ease;
   color: #424042;
   font-family: "Poppins", sans-serif;
-  font-weight: 600;
-  font-size: 0.8125rem;
-  letter-spacing: 0.5px;
+}
+@media screen and (min-width: 768px) {
+  .section-nav .wp-block-button__link {
+    padding: 12px 24px 12px 24px;
+    line-height: 25px;
+    font-size: 17px;
+    letter-spacing: 0.34px;
+  }
+}
+.section-nav .wp-block-button__link {
+  font-weight: 500;
   text-transform: uppercase;
-  padding: 0.55rem 1.4rem;
-  line-height: 1;
-  text-decoration: none;
-  transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+}
+.section-nav .wp-block-button__link span {
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+  font-size: 1rem;
+  line-height: 1.4375rem;
+  letter-spacing: 0.02rem;
+  text-transform: uppercase;
+}
+@media screen and (min-width: 768px) {
+  .section-nav .wp-block-button__link span {
+    font-size: 1.0625rem;
+    line-height: 1.5625rem;
+    letter-spacing: 0.02125rem;
+  }
+}
+.section-nav .wp-block-button__link span {
+  color: #424042;
+  white-space: nowrap;
+}
+.section-nav .wp-block-button__link .btn-arrow {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  border-right: 1px solid #424042;
+  border-top: 1px solid #424042;
+  transform: rotate(45deg);
+  transition: border-color 0.3s ease;
+}
+@media screen and (min-width: 768px) {
+  .section-nav .wp-block-button__link .btn-arrow {
+    width: 14px;
+    height: 14px;
+  }
 }
 .section-nav .wp-block-button__link:hover {
-  border-color: #DC2035;
+  background-color: transparent;
+}
+.section-nav .wp-block-button__link:hover span {
+  color: #FFFFFF;
+}
+.section-nav .wp-block-button__link:hover .btn-arrow {
+  border-color: #FFFFFF;
+}
+.section-nav .wp-block-button__link:hover {
   color: #DC2035;
+  border-color: #DC2035;
 }
 
 .section-nav .wp-block-button.is-active .wp-block-button__link {
-  background-color: #424042;
-  border-color: #424042;
-  color: #FFFFFF;
+  background-color: transparent;
+  border-color: #DC2035;
+  color: #DC2035;
 }
 
 .section-nav.gray .wp-block-button__link,
