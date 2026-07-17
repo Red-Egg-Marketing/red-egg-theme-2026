@@ -14,7 +14,6 @@ const SaveSectionNav = ( { attributes } ) => {
     const blockProps = useBlockProps.save( {
         id: blockId,
         className: 'section-nav' + ( bgSlug ? ' ' + bgSlug : '' ),
-        style: bgColor ? { backgroundColor: bgColor } : {},
     } );
 
     return (

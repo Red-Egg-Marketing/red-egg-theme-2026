@@ -162,3 +162,21 @@
     margin-top: 0;
     margin-bottom: 0.5rem;
 }
+
+// ========================================
+//  Editor-only: Section Nav shows its bar background
+//  (frontend only paints the bg once stuck; in the editor
+//  it isn't sticky, so show it so the bar is visible).
+// ========================================
+
+.editor-styles-wrapper .section-nav.white { background-color: $white; }
+.editor-styles-wrapper .section-nav.eggshell { background-color: $eggshell; }
+.editor-styles-wrapper .section-nav.gray { background-color: $gray; }
+.editor-styles-wrapper .section-nav.navy { background-color: $navy; }
+.editor-styles-wrapper .section-nav.peach { background-color: $peach; }
+.editor-styles-wrapper .section-nav.red { background-color: $red; }
+.editor-styles-wrapper .section-nav.purple { background-color: $purple; }
+.editor-styles-wrapper .section-nav.magenta { background-color: $magenta; }
+.editor-styles-wrapper .section-nav.orange { background-color: $orange; }
+.editor-styles-wrapper .section-nav.gold { background-color: $gold; }
+.editor-styles-wrapper .section-nav.dark-purple { background-color: $dark-purple; }

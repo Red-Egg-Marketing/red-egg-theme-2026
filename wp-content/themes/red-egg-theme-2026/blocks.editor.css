@@ -6412,25 +6412,59 @@ p.case-study-body__label {
   top: 80px;
   z-index: 900;
   width: 100%;
-  background-color: #FFFFFF;
+  background-color: transparent;
   padding: 0.75rem 0;
-  border-bottom: 1px solid rgba(66, 64, 66, 0.12);
+  border-bottom: 1px solid transparent;
+  transition: background-color 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
 }
 
-.section-nav.white {
+.section-nav.is-stuck {
+  border-bottom-color: rgba(66, 64, 66, 0.12);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+}
+
+.section-nav.is-stuck.white {
   background-color: #FFFFFF;
 }
 
-.section-nav.eggshell {
+.section-nav.is-stuck.eggshell {
   background-color: #F2ECE5;
 }
 
-.section-nav.gray {
+.section-nav.is-stuck.gray {
   background-color: #424042;
 }
 
-.section-nav.navy {
+.section-nav.is-stuck.navy {
   background-color: #024D69;
+}
+
+.section-nav.is-stuck.peach {
+  background-color: #F79E83;
+}
+
+.section-nav.is-stuck.red {
+  background-color: #DC2035;
+}
+
+.section-nav.is-stuck.purple {
+  background-color: #A89AAE;
+}
+
+.section-nav.is-stuck.magenta {
+  background-color: #E32E6D;
+}
+
+.section-nav.is-stuck.orange {
+  background-color: #F68633;
+}
+
+.section-nav.is-stuck.gold {
+  background-color: #F6B319;
+}
+
+.section-nav.is-stuck.dark-purple {
+  background-color: #91288D;
 }
 
 .section-nav > .block-wrapper {
@@ -8534,4 +8568,48 @@ button.slickwprev-prev:before {
   grid-column: 1/-1;
   margin-top: 0;
   margin-bottom: 0.5rem;
+}
+
+.editor-styles-wrapper .section-nav.white {
+  background-color: #FFFFFF;
+}
+
+.editor-styles-wrapper .section-nav.eggshell {
+  background-color: #F2ECE5;
+}
+
+.editor-styles-wrapper .section-nav.gray {
+  background-color: #424042;
+}
+
+.editor-styles-wrapper .section-nav.navy {
+  background-color: #024D69;
+}
+
+.editor-styles-wrapper .section-nav.peach {
+  background-color: #F79E83;
+}
+
+.editor-styles-wrapper .section-nav.red {
+  background-color: #DC2035;
+}
+
+.editor-styles-wrapper .section-nav.purple {
+  background-color: #A89AAE;
+}
+
+.editor-styles-wrapper .section-nav.magenta {
+  background-color: #E32E6D;
+}
+
+.editor-styles-wrapper .section-nav.orange {
+  background-color: #F68633;
+}
+
+.editor-styles-wrapper .section-nav.gold {
+  background-color: #F6B319;
+}
+
+.editor-styles-wrapper .section-nav.dark-purple {
+  background-color: #91288D;
 }

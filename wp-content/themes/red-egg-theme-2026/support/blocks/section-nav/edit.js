@@ -32,7 +32,6 @@ const EditSectionNav = ( { attributes, setAttributes, clientId } ) => {
     const blockProps = useBlockProps( {
         id: blockId,
         className: 'section-nav' + ( bgSlug ? ' ' + bgSlug : '' ),
-        style: bgColor ? { backgroundColor: bgColor } : {},
     } );
 
     return (

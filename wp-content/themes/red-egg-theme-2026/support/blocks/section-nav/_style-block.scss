@@ -16,16 +16,29 @@
     top: 80px; // .site-header height
     z-index: 900; // below header (1000) and mega panel (1100)
     width: 100%;
-    background-color: $white;
+    background-color: transparent;
     padding: 0.75rem 0;
-    border-bottom: 1px solid rgba($gray, 0.12);
+    border-bottom: 1px solid transparent;
+    transition: background-color 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
 }
 
-// ---- Background color slug classes ----
-.section-nav.white { background-color: $white; }
-.section-nav.eggshell { background-color: $eggshell; }
-.section-nav.gray { background-color: $gray; }
-.section-nav.navy { background-color: $navy; }
+// ---- Background color only while stuck ----
+.section-nav.is-stuck {
+    border-bottom-color: rgba($gray, 0.12);
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+}
+
+.section-nav.is-stuck.white { background-color: $white; }
+.section-nav.is-stuck.eggshell { background-color: $eggshell; }
+.section-nav.is-stuck.gray { background-color: $gray; }
+.section-nav.is-stuck.navy { background-color: $navy; }
+.section-nav.is-stuck.peach { background-color: $peach; }
+.section-nav.is-stuck.red { background-color: $red; }
+.section-nav.is-stuck.purple { background-color: $purple; }
+.section-nav.is-stuck.magenta { background-color: $magenta; }
+.section-nav.is-stuck.orange { background-color: $orange; }
+.section-nav.is-stuck.gold { background-color: $gold; }
+.section-nav.is-stuck.dark-purple { background-color: $dark-purple; }
 
 .section-nav > .block-wrapper {
     @include block-wrapper;

@@ -12,6 +12,28 @@
     window.__reSectionNavBound = true;
 
     function initNav( nav ) {
+        // Toggle .is-stuck when the bar is pinned under the header, so the
+        // background only shows while stuck.
+        ( function () {
+            function stuckOffset() {
+                var header = document.querySelector( '.site-header' );
+                return header ? header.offsetHeight : 0;
+            }
+            var stuckTicking = false;
+            function checkStuck() {
+                var pinned = Math.round( nav.getBoundingClientRect().top ) <= stuckOffset() + 1;
+                nav.classList.toggle( 'is-stuck', pinned );
+            }
+            function onStuckScroll() {
+                if ( stuckTicking ) return;
+                stuckTicking = true;
+                window.requestAnimationFrame( function () { checkStuck(); stuckTicking = false; } );
+            }
+            window.addEventListener( 'scroll', onStuckScroll, { passive: true } );
+            window.addEventListener( 'resize', onStuckScroll, { passive: true } );
+            checkStuck();
+        } )();
+
         var links = Array.prototype.slice.call( nav.querySelectorAll( 'a[href^="#"]' ) );
         var map = [];
         links.forEach( function ( link ) {
