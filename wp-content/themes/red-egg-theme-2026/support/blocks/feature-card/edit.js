@@ -7,7 +7,7 @@
 
 const { Fragment } = wp.element;
 const { InnerBlocks, InspectorControls, MediaUpload, useBlockProps } = wp.blockEditor;
-const { PanelBody, Button, TextareaControl } = wp.components;
+const { PanelBody, Button, TextareaControl, TextControl } = wp.components;
 const { __ } = wp.i18n;
 
 const template = [
@@ -20,7 +20,14 @@ const allowedBlocks = [
     'core/paragraph',
 ];
 
-const renderIconPreview = ( { icon, iconAlt, svgMarkup } ) => {
+const renderIconPreview = ( { faClass, icon, iconAlt, svgMarkup } ) => {
+    if ( faClass ) {
+        return (
+            <div className="feature-card__icon feature-card__icon--fa">
+                <i className={ faClass }></i>
+            </div>
+        );
+    }
     if ( svgMarkup ) {
         return (
             <div
@@ -42,7 +49,7 @@ const renderIconPreview = ( { icon, iconAlt, svgMarkup } ) => {
 };
 
 const EditFeatureCard = ( { attributes, setAttributes } ) => {
-    const { icon, iconId, iconAlt, svgMarkup } = attributes;
+    const { faClass, icon, iconId, iconAlt, svgMarkup } = attributes;
 
     const blockProps = useBlockProps( {
         className: 'feature-card',
@@ -55,6 +62,12 @@ const EditFeatureCard = ( { attributes, setAttributes } ) => {
                     title={ __( 'Card Icon', 'red-egg' ) }
                     initialOpen={ true }
                 >
+                    <TextControl
+                        label={ __( 'FontAwesome Class', 'red-egg' ) }
+                        help={ __( 'e.g. "fa-light fa-bullseye-arrow". Takes priority over SVG/image.', 'red-egg' ) }
+                        value={ faClass }
+                        onChange={ ( val ) => setAttributes( { faClass: val } ) }
+                    />
                     <MediaUpload
                         onSelect={ ( media ) => setAttributes( {
                             icon: media.url,
@@ -91,7 +104,7 @@ const EditFeatureCard = ( { attributes, setAttributes } ) => {
                     />
                     <TextareaControl
                         label={ __( 'Inline SVG', 'red-egg' ) }
-                        help={ __( 'Paste raw SVG. Overrides image.', 'red-egg' ) }
+                        help={ __( 'Paste raw SVG. Used if no FA class is set. Overrides image.', 'red-egg' ) }
                         value={ svgMarkup }
                         onChange={ ( val ) => setAttributes( { svgMarkup: val } ) }
                         rows={ 5 }
@@ -100,7 +113,7 @@ const EditFeatureCard = ( { attributes, setAttributes } ) => {
             </InspectorControls>
 
             <div { ...blockProps }>
-                { renderIconPreview( { icon, iconAlt, svgMarkup } ) }
+                { renderIconPreview( { faClass, icon, iconAlt, svgMarkup } ) }
                 <div className="feature-card__content">
                     <InnerBlocks
                         template={ template }

@@ -6326,6 +6326,16 @@ p.case-study-body__label {
   color: #FFFFFF;
 }
 
+.feature-cards.eggshell .feature-card__icon--fa,
+.feature-cards.white .feature-card__icon--fa,
+.feature-cards.peach .feature-card__icon--fa {
+  background-color: rgba(66, 64, 66, 0.08);
+}
+.feature-cards.eggshell .feature-card__icon i,
+.feature-cards.white .feature-card__icon i,
+.feature-cards.peach .feature-card__icon i {
+  color: #424042;
+}
 .feature-cards.eggshell .header-single__label,
 .feature-cards.eggshell .header-single__heading,
 .feature-cards.eggshell .header-single h1,
@@ -6670,6 +6680,16 @@ p.case-study-body__label {
 
 .feature-card__icon--placeholder {
   background-color: rgba(255, 255, 255, 0.06);
+}
+
+.feature-card__icon--fa {
+  background-color: rgba(255, 255, 255, 0.12);
+}
+
+.feature-card__icon i {
+  font-size: 2rem;
+  line-height: 1;
+  color: #FFFFFF;
 }
 
 .feature-card__content h3,

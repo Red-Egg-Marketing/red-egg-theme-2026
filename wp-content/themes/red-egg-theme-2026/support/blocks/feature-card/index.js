@@ -19,6 +19,10 @@ registerBlockType( 'red-egg-block/feature-card', {
     parent: [ 'red-egg-block/feature-cards' ],
     supports: { anchor: false, inserter: true },
     attributes: {
+        faClass: {
+            type: 'string',
+            default: '',
+        },
         icon: {
             type: 'string',
             default: '',
