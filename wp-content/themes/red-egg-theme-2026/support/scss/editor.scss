@@ -201,3 +201,40 @@
 .editor-styles-wrapper .section-nav.orange { background-color: $orange; }
 .editor-styles-wrapper .section-nav.gold { background-color: $gold; }
 .editor-styles-wrapper .section-nav.dark-purple { background-color: $dark-purple; }
+
+// ========================================
+//  Editor-only: Color Palette swatch columns
+//  Same pattern as feature-cards — the swatches live in
+//  .block-wrapper > .block-editor-inner-blocks > .block-editor-block-list__layout,
+//  so neutralize the frontend grid on .block-wrapper and grid the layout.
+// ========================================
+
+.editor-styles-wrapper .color-palette-block.swatch-cols-2 > .block-wrapper,
+.editor-styles-wrapper .color-palette-block.swatch-cols-3 > .block-wrapper,
+.editor-styles-wrapper .color-palette-block.swatch-cols-4 > .block-wrapper {
+    display: block;
+}
+
+.editor-styles-wrapper .color-palette-block.swatch-cols-2 > .block-wrapper > .block-editor-inner-blocks > .block-editor-block-list__layout,
+.editor-styles-wrapper .color-palette-block.swatch-cols-3 > .block-wrapper > .block-editor-inner-blocks > .block-editor-block-list__layout,
+.editor-styles-wrapper .color-palette-block.swatch-cols-4 > .block-wrapper > .block-editor-inner-blocks > .block-editor-block-list__layout {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: repeat(2, 1fr);
+
+    @media screen and (min-width: $small-width) {
+        gap: 2.6rem;
+    }
+}
+
+@media screen and (min-width: $small-width) {
+    .editor-styles-wrapper .color-palette-block.swatch-cols-2 > .block-wrapper > .block-editor-inner-blocks > .block-editor-block-list__layout { grid-template-columns: repeat(2, 1fr); }
+    .editor-styles-wrapper .color-palette-block.swatch-cols-3 > .block-wrapper > .block-editor-inner-blocks > .block-editor-block-list__layout { grid-template-columns: repeat(3, 1fr); }
+    .editor-styles-wrapper .color-palette-block.swatch-cols-4 > .block-wrapper > .block-editor-inner-blocks > .block-editor-block-list__layout { grid-template-columns: repeat(4, 1fr); }
+}
+
+.editor-styles-wrapper .color-palette-block.swatch-cols-2 > .block-wrapper > .block-editor-inner-blocks > .block-editor-block-list__layout > [data-type="red-egg-block/header-single"],
+.editor-styles-wrapper .color-palette-block.swatch-cols-3 > .block-wrapper > .block-editor-inner-blocks > .block-editor-block-list__layout > [data-type="red-egg-block/header-single"],
+.editor-styles-wrapper .color-palette-block.swatch-cols-4 > .block-wrapper > .block-editor-inner-blocks > .block-editor-block-list__layout > [data-type="red-egg-block/header-single"] {
+    grid-column: 1 / -1;
+}

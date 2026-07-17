@@ -8,6 +8,7 @@
 
 const { Fragment, useEffect } = wp.element;
 const { InnerBlocks, InspectorControls, useBlockProps } = wp.blockEditor;
+const { PanelBody, SelectControl } = wp.components;
 const { __ } = wp.i18n;
 
 import PaddingSelector from '../../components/Padding.js';
@@ -28,7 +29,7 @@ const allowedBlocks = [
 ];
 
 const EditColorPalette = ( { attributes, setAttributes, clientId } ) => {
-    const { padding, margin, blockId } = attributes;
+    const { padding, margin, blockId, columns } = attributes;
 
     useEffect( () => {
         if ( ! blockId ) {
@@ -38,12 +39,25 @@ const EditColorPalette = ( { attributes, setAttributes, clientId } ) => {
 
     const blockProps = useBlockProps( {
         id: blockId,
-        className: 'color-palette-block',
+        className: 'color-palette-block' + ( columns && columns !== 'original' ? ' swatch-cols-' + columns : '' ),
     } );
 
     return (
         <Fragment>
             <InspectorControls>
+                <PanelBody title={ __( 'Swatch Layout', 'red-egg' ) } initialOpen={ true }>
+                    <SelectControl
+                        label={ __( 'Columns', 'red-egg' ) }
+                        value={ columns }
+                        options={ [
+                            { label: __( 'Original grid', 'red-egg' ), value: 'original' },
+                            { label: __( '2 columns', 'red-egg' ), value: '2' },
+                            { label: __( '3 columns', 'red-egg' ), value: '3' },
+                            { label: __( '4 columns', 'red-egg' ), value: '4' },
+                        ] }
+                        onChange={ ( val ) => setAttributes( { columns: val } ) }
+                    />
+                </PanelBody>
             </InspectorControls>
 
             <PaddingSelector

@@ -9513,6 +9513,47 @@ p.cs-gallery__label {
   }
 }
 
+.color-palette-block.swatch-cols-2 > .block-wrapper,
+.color-palette-block.swatch-cols-3 > .block-wrapper,
+.color-palette-block.swatch-cols-4 > .block-wrapper {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(2, 1fr);
+}
+@media screen and (min-width: 768px) {
+  .color-palette-block.swatch-cols-2 > .block-wrapper,
+  .color-palette-block.swatch-cols-3 > .block-wrapper,
+  .color-palette-block.swatch-cols-4 > .block-wrapper {
+    gap: 2.6rem;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .color-palette-block.swatch-cols-2 > .block-wrapper {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .color-palette-block.swatch-cols-3 > .block-wrapper {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .color-palette-block.swatch-cols-4 > .block-wrapper {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+.color-palette-block.swatch-cols-2 > .block-wrapper > .header-single,
+.color-palette-block.swatch-cols-3 > .block-wrapper > .header-single,
+.color-palette-block.swatch-cols-4 > .block-wrapper > .header-single {
+  grid-column: 1/-1;
+}
+
+.color-palette-block.swatch-cols-2 > .block-wrapper .color-swatch:nth-child(n),
+.color-palette-block.swatch-cols-3 > .block-wrapper .color-swatch:nth-child(n),
+.color-palette-block.swatch-cols-4 > .block-wrapper .color-swatch:nth-child(n) {
+  display: block;
+  width: auto;
+  max-width: none;
+  margin: 0;
+}
+
 .device-showcase {
   position: relative;
   padding-top: 4.5rem;

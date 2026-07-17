@@ -9,11 +9,11 @@ import PaddingSelector from '../../components/Padding.js';
 import MarginSelector from '../../components/Margin.js';
 
 const SaveColorPalette = ( { attributes } ) => {
-    const { padding, margin, blockId } = attributes;
+    const { padding, margin, blockId, columns } = attributes;
 
     const blockProps = useBlockProps.save( {
         id: blockId,
-        className: 'color-palette-block',
+        className: 'color-palette-block' + ( columns && columns !== 'original' ? ' swatch-cols-' + columns : '' ),
     } );
 
     return (

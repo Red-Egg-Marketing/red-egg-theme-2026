@@ -265,3 +265,45 @@
         margin-bottom: 35px;
     }
 }
+
+// ========================================
+//  Swatch column options (2 / 3 / 4)
+//  'original' = no class = the nth-child layout above.
+//  These switch the swatches to an even CSS grid.
+// ========================================
+
+.color-palette-block.swatch-cols-2 > .block-wrapper,
+.color-palette-block.swatch-cols-3 > .block-wrapper,
+.color-palette-block.swatch-cols-4 > .block-wrapper {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: repeat(2, 1fr); // mobile: 2-up
+
+    @media screen and (min-width: $small-width) {
+        gap: 2.6rem;
+    }
+}
+
+@media screen and (min-width: $small-width) {
+    .color-palette-block.swatch-cols-2 > .block-wrapper { grid-template-columns: repeat(2, 1fr); }
+    .color-palette-block.swatch-cols-3 > .block-wrapper { grid-template-columns: repeat(3, 1fr); }
+    .color-palette-block.swatch-cols-4 > .block-wrapper { grid-template-columns: repeat(4, 1fr); }
+}
+
+// header spans the full row
+.color-palette-block.swatch-cols-2 > .block-wrapper > .header-single,
+.color-palette-block.swatch-cols-3 > .block-wrapper > .header-single,
+.color-palette-block.swatch-cols-4 > .block-wrapper > .header-single {
+    grid-column: 1 / -1;
+}
+
+// reset the original inline-block widths/margins so swatches fill the tracks
+// (nth-child(n) + extra class beats the original nth-child rules)
+.color-palette-block.swatch-cols-2 > .block-wrapper .color-swatch:nth-child(n),
+.color-palette-block.swatch-cols-3 > .block-wrapper .color-swatch:nth-child(n),
+.color-palette-block.swatch-cols-4 > .block-wrapper .color-swatch:nth-child(n) {
+    display: block;
+    width: auto;
+    max-width: none;
+    margin: 0;
+}

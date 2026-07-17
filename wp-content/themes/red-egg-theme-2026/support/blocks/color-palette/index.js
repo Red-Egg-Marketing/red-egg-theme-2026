@@ -44,6 +44,10 @@ registerBlockType( 'red-egg-block/color-palette', {
         blockId: {
             type: 'string',
         },
+        columns: {
+            type: 'string',
+            default: 'original',
+        },
     },
     edit,
     save,
