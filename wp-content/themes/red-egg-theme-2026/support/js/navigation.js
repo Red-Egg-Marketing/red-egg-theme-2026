@@ -17,6 +17,9 @@
 const DESKTOP_MQ = '(min-width: 768px)';
 
 function initMegaMenu() {
+    if ( window.__reMegaMenuBound ) return;
+    window.__reMegaMenuBound = true;
+
     const toggles = Array.from( document.querySelectorAll( '.mega-toggle' ) );
     if ( ! toggles.length ) {
         return;
@@ -26,6 +29,7 @@ function initMegaMenu() {
     const mq = window.matchMedia( DESKTOP_MQ );
     let openPanel = null;
     let activeToggle = null;
+    let hideTimer = null;
 
     const panelFor = ( toggle ) =>
         document.getElementById( toggle.getAttribute( 'aria-controls' ) );
@@ -46,6 +50,7 @@ function initMegaMenu() {
         if ( openPanel && openPanel !== panel ) {
             closeMega( { restoreFocus: false } );
         }
+        window.clearTimeout( hideTimer );
         panel.hidden = false;
         // Force reflow so the transition runs from the hidden state.
         void panel.offsetWidth;
@@ -73,13 +78,17 @@ function initMegaMenu() {
         }
         document.body.classList.remove( 'mega-open' );
 
-        const onEnd = () => {
-            panel.hidden = true;
-            panel.removeEventListener( 'transitionend', onEnd );
+        const deferredHide = () => {
+            // Bail if the panel was reopened before this fired.
+            if ( ! panel.classList.contains( 'is-open' ) ) {
+                panel.hidden = true;
+            }
+            panel.removeEventListener( 'transitionend', deferredHide );
         };
-        panel.addEventListener( 'transitionend', onEnd );
+        panel.addEventListener( 'transitionend', deferredHide );
         // Fallback if no transition fires.
-        window.setTimeout( () => { panel.hidden = true; }, 400 );
+        window.clearTimeout( hideTimer );
+        hideTimer = window.setTimeout( deferredHide, 400 );
 
         openPanel = null;
         activeToggle = null;
