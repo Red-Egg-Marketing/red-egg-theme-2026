@@ -8,6 +8,8 @@
  * - Subtle rotation and scale breathing
  */
 
+import { onPageView } from './lifecycle';
+
 ( function() {
 
     function initMaskAnimations() {
@@ -55,10 +57,9 @@
 
     }
 
-    if ( document.readyState === 'loading' ) {
-        document.addEventListener( 'csSliderReady', initMaskAnimations );
-    } else {
-        initMaskAnimations();
-    }
+    // Re-run whenever the case-studies slider (re)mounts its React DOM,
+    // and after every SPA page swap.
+    document.addEventListener( 'csSliderReady', initMaskAnimations );
+    onPageView( initMaskAnimations );
 
 } )();

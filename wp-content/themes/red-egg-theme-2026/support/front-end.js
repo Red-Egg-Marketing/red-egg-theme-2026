@@ -80,3 +80,9 @@ import './js/toc';
 import './blocks/section-nav/frontend';
 
 import './js/smooth-scroll';
+
+// ---- SPA Navigation ----
+
+// Swup page transitions – swaps #content, dispatches
+// red-egg:page-leave / red-egg:page-view lifecycle events
+import './js/spa-nav';

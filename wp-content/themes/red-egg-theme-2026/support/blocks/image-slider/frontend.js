@@ -6,6 +6,8 @@
  * (matching case-studies-slider behavior).
  */
 
+import { onPageView } from '../../js/lifecycle';
+
 ( function() {
 
     function initImageSliders() {
@@ -14,6 +16,9 @@
         if ( sliders.length === 0 ) return;
 
         sliders.forEach( function( el ) {
+            if ( el.dataset.swiperInit ) return;
+            el.dataset.swiperInit = '1';
+
             var spaceBetween = parseInt( el.getAttribute( 'data-space-between' ) ) || 20;
             var parent = el.closest( '.image-slider' );
             var prevEl = parent.querySelector( '.cs-slider__nav' );
@@ -40,10 +45,6 @@
         } );
     }
 
-    if ( document.readyState === 'loading' ) {
-        document.addEventListener( 'DOMContentLoaded', initImageSliders );
-    } else {
-        initImageSliders();
-    }
+    onPageView( initImageSliders );
 
 } )();

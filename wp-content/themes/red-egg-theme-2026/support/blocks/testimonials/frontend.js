@@ -8,7 +8,9 @@
  * prev/next arrows. Long reviews get an inline read-more toggle.
  */
 
-if ( typeof wp !== 'undefined' && wp.element && document.querySelector( '.testimonials-block__root' ) ) {
+import { onPageView } from '../../js/lifecycle';
+
+if ( typeof wp !== 'undefined' && wp.element ) {
 
 const { render, Fragment, useState, useEffect, useRef } = wp.element;
 const apiUrl = '/red-egg/v2/reviews';
@@ -238,15 +240,22 @@ const TestimonialsView = ( { config, root } ) => {
 };
 
 // Hydrate every testimonials block on the page.
-document.querySelectorAll( '.testimonials-block__root' ).forEach( function( root ) {
-    var ids = [];
-    try { ids = JSON.parse( root.getAttribute( 'data-review-ids' ) || '[]' ); } catch ( e ) { ids = []; }
-    var config = {
-        mode: root.getAttribute( 'data-review-mode' ) || 'all',
-        id: root.getAttribute( 'data-review-id' ) || '',
-        ids: ids,
-    };
-    render( <TestimonialsView config={ config } root={ root } />, root );
-} );
+function initTestimonials() {
+    document.querySelectorAll( '.testimonials-block__root' ).forEach( function( root ) {
+        if ( root.dataset.reMounted ) return;
+        root.dataset.reMounted = '1';
+
+        var ids = [];
+        try { ids = JSON.parse( root.getAttribute( 'data-review-ids' ) || '[]' ); } catch ( e ) { ids = []; }
+        var config = {
+            mode: root.getAttribute( 'data-review-mode' ) || 'all',
+            id: root.getAttribute( 'data-review-id' ) || '',
+            ids: ids,
+        };
+        render( <TestimonialsView config={ config } root={ root } />, root );
+    } );
+}
+
+onPageView( initTestimonials );
 
 } // end wp check

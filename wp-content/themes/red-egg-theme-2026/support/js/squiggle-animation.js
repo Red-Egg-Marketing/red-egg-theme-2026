@@ -6,32 +6,46 @@
  * scrolls into view.
  *
  * Targets: [data-squiggle-animate="true"]
+ *
+ * SPA-aware: re-runs on every red-egg:page-view (ScrollTriggers on
+ * outgoing content are killed globally by js/spa-nav.js).
  */
 
+import { onPageView } from './lifecycle';
+
 ( function () {
-    if ( typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined' ) return;
 
-    gsap.registerPlugin( ScrollTrigger );
+    function initSquiggles() {
+        if ( typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined' ) return;
 
-    const squiggles = document.querySelectorAll( '[data-squiggle-animate="true"]' );
+        gsap.registerPlugin( ScrollTrigger );
 
-    if ( ! squiggles.length ) return;
+        const squiggles = document.querySelectorAll( '[data-squiggle-animate="true"]' );
 
-    squiggles.forEach( function ( el ) {
-        // Start fully clipped (hidden), reveal left to right
-        gsap.set( el, {
-            clipPath: 'inset(0 100% 0 0)',
+        if ( ! squiggles.length ) return;
+
+        squiggles.forEach( function ( el ) {
+            if ( el.dataset.squiggleInit ) return;
+            el.dataset.squiggleInit = '1';
+
+            // Start fully clipped (hidden), reveal left to right
+            gsap.set( el, {
+                clipPath: 'inset(0 100% 0 0)',
+            } );
+
+            gsap.to( el, {
+                clipPath: 'inset(0 0% 0 0)',
+                duration: 1.5,
+                ease: 'power2.out',
+                scrollTrigger: {
+                    trigger: el,
+                    start: 'top 90%',
+                    // once: true,
+                },
+            } );
         } );
+    }
 
-        gsap.to( el, {
-            clipPath: 'inset(0 0% 0 0)',
-            duration: 1.5,
-            ease: 'power2.out',
-            scrollTrigger: {
-                trigger: el,
-                start: 'top 90%',
-                // once: true,
-            },
-        } );
-    } );
+    onPageView( initSquiggles );
+
 } )();

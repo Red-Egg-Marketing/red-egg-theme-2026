@@ -7,11 +7,11 @@
  * excerpt, and read more button.
  */
 
-if ( typeof wp !== 'undefined' && wp.element && document.getElementById( 'InsightsBlockRoot' ) ) {
+import { onPageView } from '../../js/lifecycle';
+
+if ( typeof wp !== 'undefined' && wp.element ) {
 
 const { render, Fragment, useState, useEffect } = wp.element;
-
-const RootElement = document.getElementById( 'InsightsBlockRoot' );
 
 const InsightsFrontend = ( { postsToShow, category, industry } ) => {
     const [ posts, setPosts ] = useState( [] );
@@ -74,7 +74,11 @@ const InsightsFrontend = ( { postsToShow, category, industry } ) => {
     );
 };
 
-if ( RootElement ) {
+function initInsights() {
+    const RootElement = document.getElementById( 'InsightsBlockRoot' );
+    if ( ! RootElement || RootElement.dataset.reMounted ) return;
+    RootElement.dataset.reMounted = '1';
+
     const postsToShow = parseInt( RootElement.getAttribute( 'data-posts-to-show' ) ) || 2;
     const category = RootElement.getAttribute( 'data-category' ) || '';
     const industry = RootElement.getAttribute( 'data-industry' ) || '';
@@ -83,5 +87,7 @@ if ( RootElement ) {
         RootElement
     );
 }
+
+onPageView( initInsights );
 
 } // end wp check

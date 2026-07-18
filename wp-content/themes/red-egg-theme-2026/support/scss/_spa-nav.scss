@@ -1,0 +1,15 @@
+// ============================================
+//  SPA Navigation – Swup crossfade
+// ============================================
+//
+// Swup toggles html.is-changing / html.is-animating while swapping
+// #content (see support/js/spa-nav.js). The .transition-fade class
+// on #content opts it into the crossfade.
+
+html.is-changing .transition-fade {
+    transition: opacity 0.25s ease;
+}
+
+html.is-animating .transition-fade {
+    opacity: 0;
+}

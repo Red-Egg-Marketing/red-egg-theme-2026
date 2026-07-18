@@ -6,6 +6,8 @@
  * (not seeking), the overlay returns.
  */
 
+import { onPageView } from './lifecycle';
+
 ( function() {
 
     function CustomVideoControls() {
@@ -14,6 +16,9 @@
         if ( buttons.length === 0 ) return;
 
         buttons.forEach( function( bttn ) {
+            if ( bttn.dataset.videoBound ) return;
+            bttn.dataset.videoBound = '1';
+
             var vid = bttn.nextElementSibling;
             var par = bttn.parentNode;
 
@@ -39,10 +44,6 @@
     }
 
     // Run on DOMContentLoaded and also immediately for late-loading scripts
-    if ( document.readyState === 'loading' ) {
-        document.addEventListener( 'DOMContentLoaded', CustomVideoControls );
-    } else {
-        CustomVideoControls();
-    }
+    onPageView( CustomVideoControls );
 
 } )();

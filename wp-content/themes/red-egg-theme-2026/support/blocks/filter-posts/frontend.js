@@ -12,19 +12,17 @@
  * - Matching is AND: a post must have every selected term.
  */
 
-if ( typeof wp !== 'undefined' && wp.element && document.getElementById( 'FilterPostsRoot' ) ) {
+import { onPageView } from '../../js/lifecycle';
+
+if ( typeof wp !== 'undefined' && wp.element ) {
 
 const { render, Fragment, useState, useEffect } = wp.element;
 
-const RootElement = document.getElementById( 'FilterPostsRoot' );
 const apiUrl = '/red-egg/v2/filter-posts';
 
+// Parsed from the root's data attribute inside initFilterPosts()
+// (the root may not exist until an SPA swap brings it in).
 let hiddenTax = [];
-try {
-    hiddenTax = JSON.parse( RootElement.getAttribute( 'data-hidden-taxonomies' ) || '[]' );
-} catch ( e ) {
-    hiddenTax = [];
-}
 
 // Taxonomy slug for a tax_array group (from its first term).
 const groupTaxSlug = ( groupValue ) => {
@@ -291,8 +289,20 @@ const FilterPostsFrontend = () => {
     );
 };
 
-if ( RootElement ) {
-    render( <FilterPostsFrontend />, RootElement );
+function initFilterPosts() {
+    const root = document.getElementById( 'FilterPostsRoot' );
+    if ( ! root || root.dataset.reMounted ) return;
+    root.dataset.reMounted = '1';
+
+    try {
+        hiddenTax = JSON.parse( root.getAttribute( 'data-hidden-taxonomies' ) || '[]' );
+    } catch ( e ) {
+        hiddenTax = [];
+    }
+
+    render( <FilterPostsFrontend />, root );
 }
+
+onPageView( initFilterPosts );
 
 } // end wp check

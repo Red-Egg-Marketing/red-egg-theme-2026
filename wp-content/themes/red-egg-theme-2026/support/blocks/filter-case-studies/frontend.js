@@ -7,11 +7,12 @@
  * Cards show image + title, with hover revealing excerpt.
  */
 
-if ( typeof wp !== 'undefined' && wp.element && document.getElementById( 'FilterCaseStudiesRoot' ) ) {
+import { onPageView } from '../../js/lifecycle';
+
+if ( typeof wp !== 'undefined' && wp.element ) {
 
 const { render, Fragment, useState, useEffect } = wp.element;
 
-const RootElement = document.getElementById( 'FilterCaseStudiesRoot' );
 const apiUrl = '/red-egg/v2/case-studies';
 
 /**
@@ -288,8 +289,13 @@ const FilterCaseStudiesFrontend = () => {
     );
 };
 
-if ( RootElement ) {
-    render( <FilterCaseStudiesFrontend />, RootElement );
+function initFilterCaseStudies() {
+    const root = document.getElementById( 'FilterCaseStudiesRoot' );
+    if ( ! root || root.dataset.reMounted ) return;
+    root.dataset.reMounted = '1';
+    render( <FilterCaseStudiesFrontend />, root );
 }
+
+onPageView( initFilterCaseStudies );
 
 } // end wp check

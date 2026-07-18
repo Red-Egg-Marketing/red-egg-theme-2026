@@ -13,6 +13,8 @@
  * No React — plain DOM. Compiled into main.js via front-end.js.
  */
 
+import { onPageView } from '../../js/lifecycle';
+
 const SPEED = 26;        // px per second
 const HOLD = 1400;       // pause (ms) at the top/bottom of a pass
 const DEBOUNCE = 150;    // ms – swallow duplicate click dispatches
@@ -168,8 +170,4 @@ function initRevealCards() {
     document.querySelectorAll( '.reveal-card' ).forEach( initRevealCard );
 }
 
-if ( document.readyState === 'loading' ) {
-    document.addEventListener( 'DOMContentLoaded', initRevealCards );
-} else {
-    initRevealCards();
-}
+onPageView( initRevealCards );

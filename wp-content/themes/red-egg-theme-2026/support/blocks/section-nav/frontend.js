@@ -7,11 +7,20 @@
  * js/smooth-scroll.js. Plain DOM; compiled into main.js.
  */
 
+import { onPageView } from '../../js/lifecycle';
+
 ( function () {
-    if ( window.__reSectionNavBound ) return;
-    window.__reSectionNavBound = true;
 
     function initNav( nav ) {
+        if ( nav.dataset.sectionNavBound ) return;
+        nav.dataset.sectionNavBound = '1';
+
+        // Window listeners self-remove once this nav leaves the DOM
+        // (SPA swap), so swapped-out pages don't leak scroll handlers.
+        function gone() {
+            return ! document.contains( nav );
+        }
+
         // Toggle .is-stuck when the bar is pinned under the header, so the
         // background only shows while stuck.
         ( function () {
@@ -25,6 +34,11 @@
                 nav.classList.toggle( 'is-stuck', pinned );
             }
             function onStuckScroll() {
+                if ( gone() ) {
+                    window.removeEventListener( 'scroll', onStuckScroll );
+                    window.removeEventListener( 'resize', onStuckScroll );
+                    return;
+                }
                 if ( stuckTicking ) return;
                 stuckTicking = true;
                 window.requestAnimationFrame( function () { checkStuck(); stuckTicking = false; } );
@@ -78,6 +92,11 @@
 
         var ticking = false;
         function onScroll() {
+            if ( gone() ) {
+                window.removeEventListener( 'scroll', onScroll );
+                window.removeEventListener( 'resize', onScroll );
+                return;
+            }
             if ( ticking ) return;
             ticking = true;
             window.requestAnimationFrame( function () { update(); ticking = false; } );
@@ -88,5 +107,9 @@
         update();
     }
 
-    document.querySelectorAll( '.section-nav' ).forEach( initNav );
+    function initSectionNavs() {
+        document.querySelectorAll( '.section-nav' ).forEach( initNav );
+    }
+
+    onPageView( initSectionNavs );
 } )();
