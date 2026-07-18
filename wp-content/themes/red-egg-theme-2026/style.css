@@ -313,6 +313,14 @@ p.is-style-section-label {
   }
 }
 
+html.is-changing .transition-fade {
+  transition: opacity 0.25s ease;
+}
+
+html.is-animating .transition-fade {
+  opacity: 0;
+}
+
 .site-header {
   position: sticky;
   top: 0;
