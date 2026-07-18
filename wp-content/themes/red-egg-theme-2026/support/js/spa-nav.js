@@ -39,16 +39,40 @@
         plugins: plugins,
     } );
 
-    // ---- Gravity Forms bailout -------------------------------------
-    // GF injects inline scripts and expects a full load. If the
-    // incoming page contains a form, abandon the swap and navigate
-    // natively.
+    // ---- Gravity Forms support --------------------------------------
+    // GF renders its init as inline <script> tags right after the form
+    // markup. Scripts inserted via innerHTML (how Swup swaps content)
+    // never execute, so re-create them after each swap. GF core JS
+    // (window.gform) is loaded on the first page view — the contact
+    // section is on virtually every template — so only the inline
+    // per-form init needs re-running. If GF core somehow isn't loaded
+    // yet, fall back to a hard reload.
     swup.hooks.on( 'page:load', function ( visit, args ) {
         var html = args && args.page ? args.page.html : '';
-        if ( /gform_wrapper|gform_fields/.test( html ) ) {
+        var hasForm = /gform_wrapper|gform_fields/.test( html );
+        if ( hasForm && typeof window.gform === 'undefined' ) {
             swup.destroy();
             window.location.href = visit.to.url;
         }
+    } );
+
+    swup.hooks.on( 'content:replace', function () {
+        var container = document.getElementById( 'content' );
+        if ( ! container ) return;
+
+        // Re-create every script tag inside the new content so the
+        // browser executes it (GF inline init, conditional logic, etc).
+        container.querySelectorAll( 'script' ).forEach( function ( old ) {
+            if ( old.type && old.type !== 'text/javascript' && old.type !== 'module' ) {
+                return; // skip JSON-LD / template scripts
+            }
+            var fresh = document.createElement( 'script' );
+            Array.prototype.forEach.call( old.attributes, function ( attr ) {
+                fresh.setAttribute( attr.name, attr.value );
+            } );
+            fresh.textContent = old.textContent;
+            old.parentNode.replaceChild( fresh, old );
+        } );
     } );
 
     // ---- Teardown before content swap ------------------------------
