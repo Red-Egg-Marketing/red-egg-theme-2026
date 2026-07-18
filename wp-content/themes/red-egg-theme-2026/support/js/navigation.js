@@ -159,6 +159,20 @@ function initMegaMenu() {
             closeMega( { restoreFocus: false } );
         }
     } );
+
+    // With SPA navigation there's no page unload to dismiss the panel:
+    // close immediately when a link inside the open panel is clicked,
+    // and on the swap itself as a fallback (keyboard nav, etc).
+    document.addEventListener( 'click', ( e ) => {
+        const link = e.target.closest ? e.target.closest( 'a[href]' ) : null;
+        if ( openPanel && link && openPanel.contains( link ) ) {
+            closeMega( { restoreFocus: false } );
+        }
+    } );
+
+    document.addEventListener( 'red-egg:page-leave', () => {
+        closeMega( { restoreFocus: false } );
+    } );
 }
 
 if ( document.readyState === 'loading' ) {
