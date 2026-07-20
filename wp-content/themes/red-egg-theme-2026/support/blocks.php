@@ -252,6 +252,11 @@ function red_egg_register_blocks() {
         'editor_script' => 'red-egg-editor-blocks',
     ] );
 
+    // Squiggle Divider (standalone decorative divider)
+    register_block_type( 'red-egg-block/squiggle-divider', [
+        'editor_script' => 'red-egg-editor-blocks',
+    ] );
+
     // Text Columns (parent: two-column text section)
     register_block_type( 'red-egg-block/text-columns', [
         'editor_script' => 'red-egg-editor-blocks',
