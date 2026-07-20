@@ -3318,6 +3318,7 @@ div.gs-team-popup--default .mfp-close {
   text-transform: uppercase !important;
   color: #424042;
   margin: 0 0 0.5rem 0;
+  margin-bottom: 0 !important;
 }
 @media screen and (min-width: 768px) {
   .header-intro__left .header-intro__label,
@@ -6955,15 +6956,20 @@ div.gform_wrapper.gravity-theme .gform_page_footer {
   display: flex;
   align-items: center;
   justify-content: center;
+  height: 90px;
   margin-bottom: 0.75rem;
+}
+@media screen and (min-width: 768px) {
+  .awards-section__award-img {
+    height: 110px;
+  }
 }
 
 .awards-section__award-img img {
   display: block;
   width: auto;
-  height: auto;
+  height: 100%;
   max-width: 150px;
-  max-height: 150px;
   -o-object-fit: contain;
      object-fit: contain;
 }
@@ -7046,17 +7052,17 @@ div.gform_wrapper.gravity-theme .gform_page_footer {
 }
 
 .awards-section.with-cards .awards-section__award-img {
+  height: 70px;
   margin-bottom: 0;
+}
+@media screen and (min-width: 768px) {
+  .awards-section.with-cards .awards-section__award-img {
+    height: 90px;
+  }
 }
 
 .awards-section.with-cards .awards-section__award-img img {
   max-width: 100%;
-  max-height: 100px;
-}
-@media screen and (min-width: 768px) {
-  .awards-section.with-cards .awards-section__award-img img {
-    max-height: 120px;
-  }
 }
 
 .awards-section.with-cards .awards-section__award-caption {
@@ -7108,15 +7114,15 @@ div.gform_wrapper.gravity-theme .gform_page_footer {
   display: flex;
   align-items: center;
   justify-content: center;
+  height: 90px;
   margin-bottom: 0.5rem;
 }
 
 .awards-section__preview-img img {
   display: block;
   width: auto;
-  height: auto;
+  height: 100%;
   max-width: 150px;
-  max-height: 150px;
   -o-object-fit: contain;
      object-fit: contain;
 }
@@ -9113,7 +9119,7 @@ p.case-study-body__label {
 
 @media screen and (min-width: 768px) {
   .case-study-body .block-wrapper {
-    background: url(img/partner-resource-red.svg) no-repeat center right/197px;
+    background: url(img/partner-resource-red.svg) no-repeat center right/contain;
   }
 }
 
@@ -11488,6 +11494,21 @@ button.slickwprev-prev:before {
   background-size: 145px;
   background-position: center;
   background-attachment: fixed;
+}
+
+.partner-logo-red .gs-containeer {
+  position: relative;
+}
+
+.partner-logo-red .gs-containeer:after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  z-index: -1;
+  background: url(img/partner-resource-red.svg) no-repeat center right/contain;
+  width: 175px;
+  height: 175px;
 }
 
 .orange {

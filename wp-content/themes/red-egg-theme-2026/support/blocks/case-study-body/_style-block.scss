@@ -94,6 +94,6 @@ p.case-study-body__label {
 
 .case-study-body .block-wrapper {
     @media screen and (min-width: $small-width) {
-        background: url(img/partner-resource-red.svg) no-repeat center right / 197px;
+        background: url(img/partner-resource-red.svg) no-repeat center right / contain;
     }
 }
