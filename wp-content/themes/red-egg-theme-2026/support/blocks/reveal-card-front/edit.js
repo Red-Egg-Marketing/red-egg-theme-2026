@@ -11,6 +11,7 @@ const { PanelBody, TextControl, TextareaControl, Button } = wp.components;
 const { __ } = wp.i18n;
 
 import BackgroundColor from '../../components/BackgroundColor.js';
+import IconPicker from '../../components/IconPicker.js';
 
 const template = [
     [ 'core/heading', { level: 3, placeholder: 'Card title…' } ],
@@ -34,9 +35,8 @@ const EditRevealCardFront = ( { attributes, setAttributes } ) => {
         <Fragment>
             <InspectorControls>
                 <PanelBody title={ __( 'Icon', 'red-egg' ) } initialOpen={ true }>
-                    <TextControl
-                        label={ __( 'FontAwesome Class', 'red-egg' ) }
-                        help={ __( 'e.g. "fa-light fa-bullseye-arrow". Takes priority over SVG/image.', 'red-egg' ) }
+                    <IconPicker
+                        label={ __( 'Font Awesome Icon', 'red-egg' ) }
                         value={ faClass }
                         onChange={ ( val ) => setAttributes( { faClass: val } ) }
                     />

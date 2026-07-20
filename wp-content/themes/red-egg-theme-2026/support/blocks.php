@@ -39,6 +39,14 @@ function red_egg_enqueue_block_editor_assets() {
         true
     );
 
+    wp_localize_script(
+        'red-egg-editor-blocks',
+        'redEggEditor',
+        [
+            'iconsUrl' => get_template_directory_uri() . '/support/assets/icons.json',
+        ]
+    );
+
     wp_enqueue_style(
         'red-egg-editor-blocks-css',
         get_template_directory_uri() . '/blocks.editor.css',
