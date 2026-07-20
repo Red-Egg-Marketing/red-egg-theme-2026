@@ -2563,9 +2563,9 @@ div.gs_team_area.gs-grid-style-four .single-member-div {
 }
 @media screen and (min-width: 768px) {
   div.gs_team_area.gs-grid-style-four .single-member-div {
-    padding-left: 25px !important;
-    padding-right: 25px !important;
-    padding-bottom: 50px !important;
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+    padding-bottom: 32px !important;
   }
 }
 
@@ -4196,12 +4196,12 @@ div.gs-team-popup--default .mfp-close {
   display: flex;
   align-items: flex-start;
   gap: 1rem;
-  margin-bottom: 2.5rem;
+  margin-bottom: 1.5rem;
 }
 @media screen and (min-width: 768px) {
   .numbered-list__item {
-    gap: 3rem;
-    margin-bottom: 3rem;
+    gap: 2rem;
+    margin-bottom: 2rem;
   }
 }
 .numbered-list__item:last-child {
@@ -5085,7 +5085,7 @@ div.gs-team-popup--default .mfp-close {
 @media screen and (min-width: 768px) {
   .insights-block > .block-wrapper {
     padding-top: 5rem;
-    padding-bottom: 7rem;
+    padding-bottom: 5rem;
   }
 }
 
@@ -5105,11 +5105,11 @@ div.gs-team-popup--default .mfp-close {
 .insights-block .resources.grid {
   display: flex;
   flex-wrap: wrap;
-  gap: 25px;
+  gap: 24px;
 }
 @media screen and (min-width: 768px) {
   .insights-block .resources.grid {
-    gap: 50px;
+    gap: 32px;
   }
 }
 
@@ -5120,7 +5120,7 @@ div.gs-team-popup--default .mfp-close {
 }
 @media screen and (min-width: 768px) {
   .insights-block .resources.grid .resource-card {
-    width: calc(50% - 25px);
+    width: calc(50% - 16px);
   }
 }
 
@@ -7530,6 +7530,8 @@ div.gform_wrapper.gravity-theme .gform_page_footer {
   width: 100%;
   padding-top: 4.5rem;
   padding-bottom: 4.5rem;
+  position: relative;
+  z-index: 2;
 }
 @media screen and (min-width: 768px) {
   .squiggle-divider-block {

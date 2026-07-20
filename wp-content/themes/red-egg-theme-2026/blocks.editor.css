@@ -1747,12 +1747,12 @@ p.is-style-section-label {
   display: flex;
   align-items: flex-start;
   gap: 1rem;
-  margin-bottom: 2.5rem;
+  margin-bottom: 1.5rem;
 }
 @media screen and (min-width: 768px) {
   .numbered-list__item {
-    gap: 3rem;
-    margin-bottom: 3rem;
+    gap: 2rem;
+    margin-bottom: 2rem;
   }
 }
 .numbered-list__item:last-child {
@@ -2636,7 +2636,7 @@ p.is-style-section-label {
 @media screen and (min-width: 768px) {
   .insights-block > .block-wrapper {
     padding-top: 5rem;
-    padding-bottom: 7rem;
+    padding-bottom: 5rem;
   }
 }
 
@@ -2656,11 +2656,11 @@ p.is-style-section-label {
 .insights-block .resources.grid {
   display: flex;
   flex-wrap: wrap;
-  gap: 25px;
+  gap: 24px;
 }
 @media screen and (min-width: 768px) {
   .insights-block .resources.grid {
-    gap: 50px;
+    gap: 32px;
   }
 }
 
@@ -2671,7 +2671,7 @@ p.is-style-section-label {
 }
 @media screen and (min-width: 768px) {
   .insights-block .resources.grid .resource-card {
-    width: calc(50% - 25px);
+    width: calc(50% - 16px);
   }
 }
 
@@ -8346,6 +8346,8 @@ img.device-frame__device {
   width: 100%;
   padding-top: 4.5rem;
   padding-bottom: 4.5rem;
+  position: relative;
+  z-index: 2;
 }
 @media screen and (min-width: 768px) {
   .squiggle-divider-block {
