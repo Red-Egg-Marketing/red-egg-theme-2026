@@ -5643,7 +5643,7 @@ div.filter-case-studies__hero .hero-services h1 {
   overflow: hidden;
 }
 
-.cs-card__title {
+.cs-card h3.cs-card__title {
   font-family: "Poppins", sans-serif;
   font-weight: 700;
   font-size: 1.25rem;
