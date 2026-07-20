@@ -56,8 +56,23 @@
     }
 }
 
+// ---- Editor: Gutenberg nests children in .block-editor-inner-blocks >
+// .block-editor-block-list__layout, so the flex grid above never reaches
+// the cards there. Mirror it onto the layout wrapper (inert on frontend).
+.values-section .block-content > .block-editor-inner-blocks > .block-editor-block-list__layout {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    align-items: stretch;
+
+    @media screen and (min-width: $small-width) {
+        gap: 2rem;
+    }
+}
+
 // header-intro takes full width
 .values-section .block-content > .header-intro-block,
+.values-section .block-content .block-editor-block-list__layout > .wp-block[data-type="red-egg-block/header-intro"],
 .values-section .block-content > .wp-block[data-type="red-egg-block/header-intro"] {
     width: 100%;
     flex-shrink: 0;
@@ -65,6 +80,7 @@
 
 // Buttons take full width
 .values-section .block-content > .wp-block-buttons,
+.values-section .block-content .block-editor-block-list__layout > .wp-block[data-type="core/buttons"],
 .values-section .block-content > .wp-block[data-type="core/buttons"] {
     width: 100%;
     flex-shrink: 0;
