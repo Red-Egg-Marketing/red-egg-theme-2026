@@ -86,3 +86,6 @@ import './js/smooth-scroll';
 // Swup page transitions – swaps #content, dispatches
 // red-egg:page-leave / red-egg:page-view lifecycle events
 import './js/spa-nav';
+
+// Image fade-in + loading placeholders (SPA-aware)
+import './js/image-fade';
