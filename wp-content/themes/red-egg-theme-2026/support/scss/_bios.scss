@@ -1,0 +1,144 @@
+.gs_team_area.gs-grid-style-four  .gs-roow {
+	align-items: stretch;
+	justify-content: center;
+}
+
+div.gs_team_area.gs-grid-style-four .single-member-div {
+	float: none;
+	display: flex;
+	align-items: stretch;
+	padding-left: 10px !important;
+	padding-right: 10px !important;
+	padding-bottom: 20px !important;
+	@media screen and (min-width: $small-width) {
+		padding-left: 25px !important;
+		padding-right: 25px !important;
+		padding-bottom: 50px !important
+	}
+}
+
+.gs_team_area.gs-grid-style-four .single-member-div .single-member {
+	border: 1px solid $gray;	
+	border-radius: $default-border-radius;
+	padding-bottom: 0;
+	width: 100%;
+}
+
+div.gs_tm_theme_v_2 .single-member-div .single-member .gs_team_image__wrapper img {
+	position: relative;
+	height: auto;
+	aspect-ratio: 1/1;
+}
+
+div.gs-grid-style-four .single-member-div .gs_member_info .gs-member-name {
+	text-align: left;
+	font-family: $font-head;
+	text-transform: capitalize;
+	font-size: 22px;
+	width: 100%;
+}
+
+.mfp-content--container {
+	flex-wrap: wrap;
+}
+
+.mfp-gsteam div.white-popup {
+	max-width: 850px;
+	border: 1px solid $gray;
+}
+
+div.gs-team-popup--default .gs_team_popup_img {
+	width: 100px !important;
+}
+
+.gstm-details span.levels {
+	display: none;
+}
+
+div.gs-team-popup--default .gs_team_popup_img img {
+	border-radius: 100px;
+}
+
+div.gs-team-popup--default .gs-member-name {
+	font-family: $font-head;
+	color: $gray;
+	font-size: 22px;
+}
+
+.gs_team_popup .gs-member-desc p {
+	font-family: $font-body;
+	font-size: 18px;
+	line-height: 20px;
+	color: $gray;
+}
+
+.gs_team_popup .gs-member-desc h5 {
+	font-family: $font-body;
+	font-size: 18px;
+	line-height: 20px;
+	color: $gray;
+	margin-bottom: 0;
+}
+
+div.gs-team-popup--default .level-info-email {
+	color: $red;
+	font-size: 18px;
+}
+
+div.gs-team-popup--default .gs-member-desig {
+	color: $gray;
+	font-family: $font-body;
+	font-size: 18px;
+	font-weight: 700;
+	margin-top: 5px;
+}
+
+div.gs-grid-style-four .single-member-div {
+	height: auto;
+}
+
+.gs_team_member_title {
+	margin-left: 20px;
+}
+
+
+div.gs-team-popup--default .mfp-content--container .gs_team_popup_details,
+div.gs-team-popup--default .mfp-content--container .gs_team_popup_left__wrapper {
+	width: 100%;
+	padding-left: 0;
+}
+
+div.gs-team-popup--default .mfp-content--container .gs_team_popup_left__wrapper {
+	display: flex;
+	align-items: flex-start;
+	flex-wrap: wrap;
+}
+
+div.gs-grid-style-four .single-member .gs_member_info {
+	flex: 1 0 auto;
+}
+
+
+div.gs-grid-style-four .single-member-div .gs_member_info {
+	padding-left: 10px;
+	padding-right: 10px;
+	padding-bottom: 10px;
+	position: relative;
+	min-height: revert-rule;
+	overflow: visible;
+	display: flex;
+	flex-wrap: wrap;
+	 @media screen and (min-width: $small-width) {
+	 	padding-left: 20px;
+	 	padding-right: 20px;
+	 	padding-bottom: 20px;
+	 	padding-top: 10px;
+	 }
+}
+
+div.gs-grid-style-four .single-member-div .gs_member_info .gs-member-desig {
+	text-align: left;
+	font-family: $font-body;
+	font-size: 18px;
+	width: 100%;
+}
