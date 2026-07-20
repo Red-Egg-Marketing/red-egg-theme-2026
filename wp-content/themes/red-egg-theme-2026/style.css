@@ -1323,6 +1323,7 @@ body.mega-open {
   background: transparent;
   cursor: pointer;
   text-decoration: none;
+  text-transform: uppercase;
   font-weight: 500;
   font-size: 16px;
   line-height: 23px;
@@ -1499,6 +1500,7 @@ body.mega-open {
   background: transparent;
   cursor: pointer;
   text-decoration: none;
+  text-transform: uppercase;
   font-weight: 500;
   font-size: 16px;
   line-height: 23px;
@@ -1612,6 +1614,7 @@ body.mega-open {
   background: transparent;
   cursor: pointer;
   text-decoration: none;
+  text-transform: uppercase;
   font-weight: 500;
   font-size: 16px;
   line-height: 23px;
@@ -2029,6 +2032,7 @@ body.mega-open {
   background: transparent;
   cursor: pointer;
   text-decoration: none;
+  text-transform: uppercase;
   font-weight: 500;
   font-size: 16px;
   line-height: 23px;
@@ -3636,6 +3640,7 @@ div.gs-team-popup--default .mfp-close {
   background: transparent;
   cursor: pointer;
   text-decoration: none;
+  text-transform: uppercase;
   font-weight: 500;
   font-size: 16px;
   line-height: 23px;
@@ -4525,6 +4530,7 @@ div.gs-team-popup--default .mfp-close {
   background: transparent;
   cursor: pointer;
   text-decoration: none;
+  text-transform: uppercase;
   font-weight: 500;
   font-size: 16px;
   line-height: 23px;
@@ -5210,6 +5216,7 @@ div.gs-team-popup--default .mfp-close {
   background: transparent;
   cursor: pointer;
   text-decoration: none;
+  text-transform: uppercase;
   font-weight: 500;
   font-size: 16px;
   line-height: 23px;
@@ -9412,6 +9419,7 @@ p.case-study-body__label {
   background: transparent;
   cursor: pointer;
   text-decoration: none;
+  text-transform: uppercase;
   font-weight: 500;
   font-size: 16px;
   line-height: 23px;

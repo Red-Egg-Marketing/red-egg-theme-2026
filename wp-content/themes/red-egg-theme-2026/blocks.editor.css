@@ -1191,6 +1191,7 @@ p.is-style-section-label {
   background: transparent;
   cursor: pointer;
   text-decoration: none;
+  text-transform: uppercase;
   font-weight: 500;
   font-size: 16px;
   line-height: 23px;
@@ -2080,6 +2081,7 @@ p.is-style-section-label {
   background: transparent;
   cursor: pointer;
   text-decoration: none;
+  text-transform: uppercase;
   font-weight: 500;
   font-size: 16px;
   line-height: 23px;
@@ -2765,6 +2767,7 @@ p.is-style-section-label {
   background: transparent;
   cursor: pointer;
   text-decoration: none;
+  text-transform: uppercase;
   font-weight: 500;
   font-size: 16px;
   line-height: 23px;
@@ -6840,6 +6843,7 @@ p.case-study-body__label {
   background: transparent;
   cursor: pointer;
   text-decoration: none;
+  text-transform: uppercase;
   font-weight: 500;
   font-size: 16px;
   line-height: 23px;
