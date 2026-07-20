@@ -1,141 +1,148 @@
 
 const { Fragment } = wp.element;
 const { InspectorControls } = wp.blockEditor;
-const { Button, PanelBody, TextControl, ButtonGroup, Flex, FlexItem } = wp.components;
+const { Button, PanelBody, TextControl, ButtonGroup, Flex, FlexItem, TabPanel } = wp.components;
 const { __ } = wp.i18n;
 
+/**
+ * MarginSelector – shared component
+ *
+ * Per-side margin with unit selection, injected as an inline <style>
+ * scoped to the block ID. Desktop and Mobile values are independent:
+ * desktop applies at all widths; mobile overrides at and below the
+ * breakpoint (default {MOBILE_BREAKPOINT}px, overridable per block).
+ *
+ * Mobile values live under margin.mobile inside the existing margin
+ * object attribute, so no block registration changes are needed and
+ * legacy blocks (no mobile values) keep byte-identical save output.
+ */
 
-const MarginSelector = (props) => {
+const MOBILE_BREAKPOINT = 767;
 
-	const { margin, id } = props;
+const SIDES = [
+    { key: 'margintop', label: __( 'Top' ) },
+    { key: 'marginright', label: __( 'Right' ) },
+    { key: 'marginbottom', label: __( 'Bottom' ) },
+    { key: 'marginleft', label: __( 'Left' ) },
+];
 
-    const setMarginTop = (value) => {
-    	let newBody = JSON.parse(JSON.stringify(margin));
-    	newBody.margintop = value;
+const UNITS = [ 'px', '%', 'em', 'rem' ];
 
-    	props.setAttributes({
-    		margin: newBody
-    	});
-    }
+const cssProp = ( key ) => key.replace( 'margin', 'margin-' );
 
-    const setMarginRight = (value) => {
-    	let newBody = JSON.parse(JSON.stringify(margin));
-    	newBody.marginright = value;
+const buildCss = ( values, unit ) => {
+    let out = '';
+    SIDES.forEach( ( side ) => {
+        if ( values[ side.key ] ) {
+            out += cssProp( side.key ) + ':' + values[ side.key ] + unit + ';';
+        }
+    } );
+    return out;
+};
 
-    	props.setAttributes({
-    		margin: newBody
-    	});
-    }
+const hasValues = ( values ) =>
+    !! ( values && SIDES.some( ( side ) => values[ side.key ] ) );
 
-    const setMarginBottom = (value) => {
-        let newBody = JSON.parse(JSON.stringify(margin));
-        newBody.marginbottom = value;
+const MarginSelector = ( props ) => {
+    const { margin, id } = props;
+    const mobile = margin.mobile || {};
+    const mobileUnit = mobile.unit || margin.unit;
+    const breakpoint = parseInt( mobile.breakpoint, 10 ) || MOBILE_BREAKPOINT;
 
-        props.setAttributes({
-            margin: newBody
-        });
-    }
+    const update = ( changes, isMobile ) => {
+        let newBody = JSON.parse( JSON.stringify( margin ) );
+        if ( isMobile ) {
+            newBody.mobile = newBody.mobile || {};
+            Object.assign( newBody.mobile, changes );
+        } else {
+            Object.assign( newBody, changes );
+        }
+        props.setAttributes( { margin: newBody } );
+    };
 
-    const setMarginLeft = (value) => {
-        let newBody = JSON.parse(JSON.stringify(margin));
-        newBody.marginleft = value;
+    const renderFields = ( values, unit, isMobile ) => (
+        <Fragment>
+            <Flex>
+                { SIDES.map( ( side ) => (
+                    <FlexItem key={ side.key }>
+                        <TextControl
+                            label={ side.label }
+                            value={ values[ side.key ] || '' }
+                            type="number"
+                            onChange={ ( val ) => update( { [ side.key ]: val }, isMobile ) }
+                        />
+                    </FlexItem>
+                ) ) }
+            </Flex>
+            <ButtonGroup>
+                { UNITS.map( ( u ) => (
+                    <Button
+                        key={ u }
+                        value={ u }
+                        isPressed={ unit === u }
+                        onClick={ () => update( { unit: u }, isMobile ) }
+                    >
+                        { u }
+                    </Button>
+                ) ) }
+            </ButtonGroup>
+            { isMobile && (
+                <TextControl
+                    label={ __( 'Breakpoint (px)' ) }
+                    help={ __( 'Mobile values apply at and below this width. Leave blank for the default (' + MOBILE_BREAKPOINT + 'px).' ) }
+                    value={ mobile.breakpoint || '' }
+                    type="number"
+                    placeholder={ String( MOBILE_BREAKPOINT ) }
+                    onChange={ ( val ) => update( { breakpoint: val }, true ) }
+                />
+            ) }
+        </Fragment>
+    );
 
-        props.setAttributes({
-            margin: newBody
-        });
-    }
+    const desktopCss = buildCss( margin, margin.unit );
+    const mobileCss = buildCss( mobile, mobileUnit );
 
-    const setMarginUnit = (value) => {
-    	let newBody = JSON.parse(JSON.stringify(margin));
-    	newBody.unit = value;
-
-    	props.setAttributes({
-    		margin: newBody
-    	});
-    }
-
-    let string = margin.margintop ? 'margin-top:' + margin.margintop + margin.unit + ';' : '';
-        string += margin.marginright ? 'margin-right:' + margin.marginright + margin.unit + ';' : '';
-        string += margin.marginbottom ? 'margin-bottom:' + margin.marginbottom + margin.unit + ';' : '';
-        string += margin.marginleft ? 'margin-left:' + margin.marginleft + margin.unit + ';' : '';
-
-	return (
-		<Fragment>
+    return (
+        <Fragment>
             <InspectorControls>
-			<PanelBody
-					title={__('Margin')}
-					initialOpen={false}
-				>
-                    <Flex>
-                    <FlexItem>
-        			 <TextControl
-					   	label={ __( 'Top' ) }
-            		  	value={ margin.margintop }
-                        type="number"
-            		  	onChange={ ( val ) => {
-            		  		setMarginTop( val )
-            		  	}}
-        			 />
-                     </FlexItem>
-                     <FlexItem>
-        			 <TextControl
-					   	label={ __( 'Right' ) }
-            		  	value={ margin.marginright }
-                        type="number"
-            		  	onChange={ ( val ) => {
-            		  		setMarginRight( val )
-            		  	}}
-        			 />
-                     </FlexItem>
-                     <FlexItem>
-        			 <TextControl
-					   	label={ __( 'Bottom' ) }
-            		  	value={ margin.marginbottom }
-                        type="number"
-            		  	onChange={ ( val ) => {
-            		  		setMarginBottom( val )
-            		  	}}
-        			 />
-                     </FlexItem>
-                     <FlexItem>
-        			 <TextControl
-					   	label={ __( 'Left' ) }
-            		  	value={ margin.marginleft }
-                        type="number"
-            		  	onChange={ ( val ) => {
-            		  		setMarginLeft( val )
-            		  	}}
-        			 />
-                     </FlexItem>
-                    </Flex>
-        			<ButtonGroup label="Unit Type" 
-        				onClick={ (value) => {
-        					let inputVal = value.target.attributes.value.nodeValue;
-        					setMarginUnit(inputVal);
-        				}}
-        			>
-            			<Button value="px" isPressed={ margin.unit == 'px' ? true : false}>px</Button>
-            			<Button value="%" isPressed={ margin.unit == '%' ? true : false}>%</Button>
-            			<Button value="em" isPressed={ margin.unit == 'em' ? true : false}>em</Button>
-            			<Button value="rem" isPressed={ margin.unit == 'rem' ? true : false}>rem</Button>
-        			</ButtonGroup>
-			</PanelBody>
+                <PanelBody title={ __( 'Margin' ) } initialOpen={ false }>
+                    <TabPanel
+                        className="re-responsive-tabs"
+                        tabs={ [
+                            { name: 'desktop', title: __( 'Desktop' ) },
+                            { name: 'mobile', title: __( 'Mobile' ) },
+                        ] }
+                    >
+                        { ( tab ) =>
+                            tab.name === 'mobile'
+                                ? renderFields( mobile, mobileUnit, true )
+                                : renderFields( margin, margin.unit, false )
+                        }
+                    </TabPanel>
+                </PanelBody>
             </InspectorControls>
 
-            { (margin.marginleft || margin.marginright || margin.margintop || margin.marginbottom) && (
+            { ( desktopCss || mobileCss ) && (
                 <style type="text/css">
-                    { `#${id} {
-                            ${string}
-                        }`
-                    }
+                    { ( desktopCss ? `#${id} { ${desktopCss} }` : '' )
+                        + ( mobileCss ? ` @media (max-width: ${breakpoint}px) { #${id} { ${mobileCss} } }` : '' ) }
                 </style>
-            )}
-		</Fragment>
-	)
-}
+            ) }
+        </Fragment>
+    );
+};
 
-MarginSelector.View = (props) => {
+MarginSelector.View = ( props ) => {
     const { margin, id } = props;
+    const mobile = margin.mobile || {};
+    const mobileUnit = mobile.unit || margin.unit;
+    const breakpoint = parseInt( mobile.breakpoint, 10 ) || MOBILE_BREAKPOINT;
+
+    const mobileStyle = hasValues( mobile ) ? (
+        <style type="text/css">
+            { `@media (max-width: ${breakpoint}px) { #${id} { ${buildCss( mobile, mobileUnit )} } }` }
+        </style>
+    ) : null;
 
     if (margin.marginleft || margin.marginright || margin.margintop || margin.marginbottom) {
        let string = margin.margintop ? 'margin-top:' + margin.margintop + margin.unit + ';' : '';
@@ -143,16 +150,21 @@ MarginSelector.View = (props) => {
         string += margin.marginbottom ? 'margin-bottom:' + margin.marginbottom + margin.unit + ';' : '';
         string += margin.marginleft ? 'margin-left:' + margin.marginleft + margin.unit + ';' : '';
 	   return (
+        <Fragment>
             <style type="text/css">
                {    `#${id} {
                         ${string}
                     }`
                 }
             </style>
+            { mobileStyle }
+        </Fragment>
         );
+    } else if ( mobileStyle ) {
+        return mobileStyle;
     } else {
         return null;
     }
-}
+};
 
 export default MarginSelector;
