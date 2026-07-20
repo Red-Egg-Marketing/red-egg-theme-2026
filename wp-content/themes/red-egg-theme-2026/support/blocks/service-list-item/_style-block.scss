@@ -66,6 +66,10 @@ $service-hover-light: ('white', 'eggshell', 'peach', 'gold', 'purple');
     }
 }
 
+.service-list-item .service-list-item__title {
+    color: white;
+}
+
 // ---- Link wrapper ----
 .service-list-item__link {
     display: block;

@@ -5244,6 +5244,10 @@ div.gform_wrapper.gravity-theme .gform_page_footer {
   transform: scale(1.2);
 }
 
+.service-list-item .service-list-item__title {
+  color: white;
+}
+
 .service-list-item__link {
   display: block;
   text-decoration: none;
