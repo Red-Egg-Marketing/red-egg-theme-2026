@@ -8037,6 +8037,105 @@ img.device-frame__device {
   overflow: visible;
 }
 
+.text-columns {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  padding-top: 4.5rem;
+  padding-bottom: 4.5rem;
+}
+@media screen and (min-width: 768px) {
+  .text-columns {
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+  }
+}
+.text-columns > .block-wrapper {
+  max-width: 1184px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+}
+@media screen and (min-width: 768px) {
+  .text-columns > .block-wrapper {
+    padding-left: 2.5rem;
+    padding-right: 2.5rem;
+  }
+}
+.text-columns > .block-wrapper {
+  position: relative;
+}
+
+.text-columns .block-content {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 2rem;
+}
+@media screen and (min-width: 768px) {
+  .text-columns .block-content {
+    flex-wrap: nowrap;
+    gap: 4rem;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .text-columns.title-right .block-content {
+    flex-direction: row-reverse;
+  }
+}
+
+.text-columns__col {
+  width: 100%;
+}
+
+@media screen and (min-width: 768px) {
+  .text-columns.split-50-50 .text-columns__col {
+    width: 50%;
+  }
+  .text-columns.split-40-60 .text-columns__col:first-child {
+    width: 40%;
+  }
+  .text-columns.split-40-60 .text-columns__col:last-child {
+    width: 60%;
+  }
+  .text-columns.split-60-40 .text-columns__col:first-child {
+    width: 60%;
+  }
+  .text-columns.split-60-40 .text-columns__col:last-child {
+    width: 40%;
+  }
+}
+.text-columns__eyebrow {
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+  font-size: 1.0625rem;
+  line-height: 1.625rem;
+  letter-spacing: 0.125rem;
+  text-transform: uppercase;
+  color: #424042;
+}
+@media screen and (min-width: 768px) {
+  .text-columns__eyebrow {
+    font-size: 1.375rem;
+    line-height: 2.125rem;
+    letter-spacing: 0.3125rem;
+  }
+}
+.text-columns__eyebrow {
+  margin-bottom: 0.75rem;
+}
+
+.text-columns__lead {
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.text-columns h2 {
+  margin-bottom: 0;
+}
+
 .blob-decoration {
   position: absolute;
   z-index: -1;

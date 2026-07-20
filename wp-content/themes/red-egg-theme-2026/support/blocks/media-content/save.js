@@ -50,7 +50,7 @@ const SaveMediaContent = ( { attributes } ) => {
             
             <div { ...blockProps }>
                 <BlobAnimation.View
-                    blobSpeedblobEnabled={ blobEnabled }
+                    blobEnabled={ blobEnabled }
                     blobShape={ blobShape }
                     blobSpeed={ blobSpeed }
                     blobPosition={ blobPosition }
