@@ -13,6 +13,7 @@ const { PanelBody, Button, TextControl, TextareaControl, Flex } = wp.components;
 const { __ } = wp.i18n;
 
 import BackgroundColor from '../../components/BackgroundColor.js';
+import IconPicker from '../../components/IconPicker.js';
 
 const template = [
     [ 'core/heading', { level: 3, placeholder: 'Card Title...' } ],
@@ -25,7 +26,7 @@ const allowedBlocks = [
 
 const EditFlipCard = ( { attributes, setAttributes, clientId } ) => {
     const {
-        icon, iconId, iconAlt, bgColor, bgSlug,
+        icon, iconId, iconAlt, faClass, bgColor, bgSlug,
         link, content, buttonText, svgMarkup, hoverText,
     } = attributes;
 
@@ -84,6 +85,15 @@ const EditFlipCard = ( { attributes, setAttributes, clientId } ) => {
                     />
                 </PanelBody>
                 <PanelBody
+                    title={ __( 'Font Awesome Icon', 'red-egg' ) }
+                    initialOpen={ false }
+                >
+                    <IconPicker
+                        value={ faClass }
+                        onChange={ ( val ) => setAttributes( { faClass: val } ) }
+                    />
+                </PanelBody>
+                <PanelBody
                     title={ __( 'Inline SVG Icon', 'red-egg' ) }
                     initialOpen={ false }
                 >
@@ -139,13 +149,16 @@ const EditFlipCard = ( { attributes, setAttributes, clientId } ) => {
                 { ! flipCard && (
                     <div className="wrapper">
                         <div className="block-content">
-                            { svgMarkup && (
+                            { faClass ? (
+                                <div className="flip-card__icon flip-card__icon--fa">
+                                    <i className={ faClass }></i>
+                                </div>
+                            ) : svgMarkup ? (
                                 <div
                                     className="flip-card__svg-icon"
                                     dangerouslySetInnerHTML={ { __html: svgMarkup } }
                                 />
-                            ) }
-                            { icon && (
+                            ) : icon && (
                                 <div className="flip-card__icon">
                                     <img src={ icon } alt={ iconAlt } />
                                 </div>

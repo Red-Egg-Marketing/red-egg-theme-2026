@@ -11,7 +11,7 @@ const { RichText, InnerBlocks, useBlockProps } = wp.blockEditor;
 
 const SaveFlipCard = ( { attributes } ) => {
     const {
-        icon, iconAlt, bgSlug,
+        icon, iconAlt, faClass, bgSlug,
         link, content, buttonText,
         svgMarkup, hoverText,
     } = attributes;
@@ -28,13 +28,16 @@ const SaveFlipCard = ( { attributes } ) => {
             <div className="exterior-wrap">
                 <div className="wrapper">
                     <div className="block-content">
-                        { svgMarkup && (
+                        { faClass ? (
+                            <div className="flip-card__icon flip-card__icon--fa">
+                                <i className={ faClass }></i>
+                            </div>
+                        ) : svgMarkup ? (
                             <div
                                 className="flip-card__svg-icon"
                                 dangerouslySetInnerHTML={ { __html: svgMarkup } }
                             />
-                        ) }
-                        { icon && (
+                        ) : icon && (
                             <div className="flip-card__icon">
                                 <img src={ icon } alt={ iconAlt } loading="lazy" />
                             </div>

@@ -24,6 +24,10 @@ registerBlockType( 'red-egg-block/flip-card', {
             type: 'string',
             default: '',
         },
+        faClass: {
+            type: 'string',
+            default: '',
+        },
         iconId: {
             type: 'number',
             default: 0,
