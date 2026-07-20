@@ -3678,8 +3678,13 @@ div.gform_wrapper.gravity-theme .gform_page_footer {
 }
 @media screen and (min-width: 768px) {
   .values-section .flip-card {
-    width: calc(33.333% - 1.334rem);
+    width: calc(50% - 1rem);
     padding: 40px;
+  }
+}
+@media screen and (min-width: 1080px) {
+  .values-section .flip-card {
+    width: calc(33.333% - 1.334rem);
   }
 }
 .values-section .flip-card:hover {
@@ -8049,6 +8054,23 @@ img.device-frame__device {
 .editor-styles-wrapper .faq-accordion__panel {
   max-height: none;
   overflow: visible;
+}
+
+.squiggle-divider-block {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.squiggle-divider-block__svg {
+  display: block;
+  width: 160px;
+  height: auto;
+}
+@media screen and (min-width: 768px) {
+  .squiggle-divider-block__svg {
+    width: 190px;
+  }
 }
 
 .text-columns {
