@@ -42,6 +42,10 @@
     transform: rotateY(180deg);
 }
 
+.flip-card .wrapper {
+    width: 100%;
+}
+
 // ---- Shared face styles ----
 .flip-card .block-wrapper,
 .flip-card .flip-card-wrap {

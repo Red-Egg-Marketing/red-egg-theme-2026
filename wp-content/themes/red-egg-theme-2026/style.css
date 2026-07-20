@@ -3440,6 +3440,10 @@ div.gs-team-popup--default .mfp-close {
   transform: rotateY(180deg);
 }
 
+.flip-card .wrapper {
+  width: 100%;
+}
+
 .flip-card .block-wrapper,
 .flip-card .flip-card-wrap {
   position: absolute;
@@ -6372,6 +6376,7 @@ div.gform_wrapper.gravity-theme .gform_page_footer {
   min-height: inherit;
   display: flex;
   align-items: stretch;
+  flex-wrap: wrap;
   padding: 28px;
   transition: 0.5s background-color;
 }
