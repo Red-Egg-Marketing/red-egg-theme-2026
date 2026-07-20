@@ -245,6 +245,7 @@ p.is-style-section-label {
   text-transform: uppercase !important;
   color: #424042;
   margin: 0 0 0.5rem 0;
+  margin-bottom: 0 !important;
 }
 @media screen and (min-width: 768px) {
   p.is-style-section-label {
@@ -4574,7 +4575,7 @@ div.gform_wrapper.gravity-theme .gform_page_footer {
 }
 
 .awards-section.with-cards .awards-section__award {
-  background: #FFFFFF;
+  background: none;
   border: 1px solid #424042;
   border-radius: 8px;
   padding: 1.25rem;
