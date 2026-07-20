@@ -109,10 +109,6 @@ registerBlockType( 'red-egg-block/image-text', {
             type: 'string',
             default: 'bottom-left',
         },
-        squiggleEnabled: {
-            type: 'boolean',
-            default: false,
-        },
     },
     edit,
     save,

@@ -50,7 +50,7 @@ const EditImageText = ( { attributes, setAttributes, clientId } ) => {
         contentAlign, columnwidth, media, image, bgColor, bgSlug,
         vidOrImg, videoID, videoURL, videothumb,
         padding, margin, blockId,
-        blobEnabled, blobShape, blobSpeed, blobPosition, squiggleEnabled,
+        blobEnabled, blobShape, blobSpeed, blobPosition,
     } = attributes;
 
     useEffect( () => {
@@ -119,8 +119,7 @@ const EditImageText = ( { attributes, setAttributes, clientId } ) => {
             + ' ' + contentAlign
             + ' ' + columnwidth
             + ( bgSlug ? ' ' + bgSlug + ' with-bg' : '' )
-            + ( blobEnabled ? ' has-blob' : '' )
-            + ( squiggleEnabled ? ' has-squiggle' : '' ),
+            + ( blobEnabled ? ' has-blob' : '' ),
         style: bgStyle,
     } );
 
@@ -211,11 +210,6 @@ const EditImageText = ( { attributes, setAttributes, clientId } ) => {
                     title={ __( 'Squiggle Decoration', 'red-egg' ) }
                     initialOpen={ false }
                 >
-                    <ToggleControl
-                        label={ __( 'Enable Squiggle Line', 'red-egg' ) }
-                        checked={ !! squiggleEnabled }
-                        onChange={ () => setAttributes( { squiggleEnabled: ! squiggleEnabled } ) }
-                    />
                 </PanelBody>
             </InspectorControls>
 

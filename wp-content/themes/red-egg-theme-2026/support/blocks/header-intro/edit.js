@@ -29,7 +29,7 @@ const allowedBlocks = [
 
 const EditHeaderIntro = ( { attributes, setAttributes, clientId } ) => {
     const {
-        image, bgColor, bgSlug, coloroverlay, padding, margin, squiggleEnabled, columnWidth,
+        image, bgColor, bgSlug, coloroverlay, padding, margin, columnWidth,
     } = attributes;
 
     const blockId = `block-${ clientId }`;
@@ -112,12 +112,6 @@ const EditHeaderIntro = ( { attributes, setAttributes, clientId } ) => {
                     title={ __( 'Squiggle Decoration', 'red-egg' ) }
                     initialOpen={ false }
                 >
-                    <ToggleControl
-                        label={ __( 'Enable Squiggle Line', 'red-egg' ) }
-                        help={ __( 'Animated wave line that draws in on scroll.', 'red-egg' ) }
-                        checked={ !! squiggleEnabled }
-                        onChange={ () => setAttributes( { squiggleEnabled: ! squiggleEnabled } ) }
-                    />
                 </PanelBody>
             </InspectorControls>
 
