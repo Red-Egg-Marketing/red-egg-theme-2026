@@ -9,11 +9,20 @@
 .flip-card {
     position: relative;
     width: 100%;
+    min-width: 0; // allow shrinking below content size in flex grids (default flex item min-width is content-based, not the specified width)
     perspective: 1000px;
 
     @media screen and (min-width: $small-width) {
         width: calc(33.333% - 1.334rem);
     }
+}
+
+// ---- Editor only: the "Insert link" + "Flip Side" toolbar row
+// (rendered in edit.js, absent from the frontend save output) doesn't
+// wrap by default, which was forcing each card wider than its grid
+// width in the canvas. Let it wrap instead of dictating card width.
+.flip-card > .components-flex {
+    flex-wrap: wrap;
 }
 
 .flip-card .exterior-wrap {
