@@ -6466,10 +6466,14 @@ div.gform_wrapper.gravity-theme .gform_page_footer {
   transition: 0.5s color;
   margin-top: 15px;
   width: 100%;
+  font-size: 1.1rem;
+  line-height: 1.35rem;
 }
 @media screen and (min-width: 768px) {
   .values-section .flip-card h3 {
     margin-top: 21px;
+    font-size: 1.3625rem;
+    line-height: 1.5625rem;
   }
 }
 
