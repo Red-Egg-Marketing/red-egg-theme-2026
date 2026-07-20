@@ -123,8 +123,33 @@
     } );
 
     // ---- Re-init after content swap ---------------------------------
+    // ScrollTriggers on swapped-in content are created before images
+    // load and sliders settle, so their trigger points can be measured
+    // against a layout that shifts afterward. Refresh once the new
+    // frame paints, then again (debounced) as images finish loading.
+    var refreshTimer = null;
+    function queueScrollTriggerRefresh() {
+        window.clearTimeout( refreshTimer );
+        refreshTimer = window.setTimeout( function () {
+            if ( typeof ScrollTrigger !== 'undefined' ) {
+                ScrollTrigger.refresh();
+            }
+        }, 150 );
+    }
+
     swup.hooks.on( 'page:view', function () {
         document.dispatchEvent( new CustomEvent( 'red-egg:page-view' ) );
+
+        window.requestAnimationFrame( queueScrollTriggerRefresh );
+
+        var container = document.getElementById( 'content' );
+        if ( container ) {
+            container.querySelectorAll( 'img' ).forEach( function ( img ) {
+                if ( ! img.complete ) {
+                    img.addEventListener( 'load', queueScrollTriggerRefresh, { once: true } );
+                }
+            } );
+        }
 
         // Manual pageview for analytics (gtag / GTM), if present.
         if ( typeof gtag === 'function' ) {

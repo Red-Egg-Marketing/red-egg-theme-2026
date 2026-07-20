@@ -23,9 +23,17 @@ import { onPageView } from './lifecycle';
 
         if ( masks.length === 0 ) return;
 
-        const imgs = gsap.utils.toArray('.mask-enabled img');
-        const maskPath = document.querySelector( '#DripMask1 path' )
-        const path = maskPath.getAttribute( 'd' );
+        const maskPath = document.querySelector( '#DripMask1 path' );
+
+        // The SVG mask is part of the React-rendered slider DOM — on a
+        // fresh page:view it may not exist yet. Bail and wait for the
+        // csSliderReady re-run instead of crashing.
+        if ( ! maskPath ) return;
+
+        // Idempotent: page:view, csSliderReady, and the double main.js
+        // enqueue can all call this for the same DOM.
+        if ( maskPath.dataset.morphInit ) return;
+        maskPath.dataset.morphInit = '1';
         const midPath = 'M0 0H765V131C765 138.18 754.608 170 741.816 170C710.32 170 653.182 104 611.97 104C552.226 104 518.72 209 458.977 209C399.233 209 365.727 78 305.983 78C246.24 78 212.733 183 152.99 183C111.778 183 54.64 118 23.144 118C10.352 118 0 138.18 0 131V0Z';
         const fullPath = 'M0 0H765V418C765 425.18 754.608 431 741.816 431C710.32 431 653.182 431 611.97 431C552.226 431 518.72 431 458.977 431C399.233 431 365.727 431 305.983 431C246.24 431 212.733 431 152.99 431C111.778 431 54.64 431 23.144 431C10.352 431 0 425.18 0 418V0Z';
 
