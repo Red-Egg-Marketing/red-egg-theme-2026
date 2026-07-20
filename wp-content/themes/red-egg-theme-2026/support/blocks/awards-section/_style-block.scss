@@ -62,15 +62,19 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    height: 90px;
     margin-bottom: 0.75rem;
+
+    @media screen and (min-width: $small-width) {
+        height: 110px;
+    }
 }
 
 .awards-section__award-img img {
     display: block;
     width: auto;
-    height: auto;
+    height: 100%;
     max-width: 150px;
-    max-height: 150px;
     object-fit: contain;
 }
 
@@ -144,16 +148,16 @@
 }
 
 .awards-section.with-cards .awards-section__award-img {
+    height: 70px;
     margin-bottom: 0;
+
+    @media screen and (min-width: $small-width) {
+        height: 90px;
+    }
 }
 
 .awards-section.with-cards .awards-section__award-img img {
     max-width: 100%;
-    max-height: 100px;
-
-    @media screen and (min-width: $small-width) {
-        max-height: 120px;
-    }
 }
 
 .awards-section.with-cards .awards-section__award-caption {
@@ -207,15 +211,15 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    height: 90px;
     margin-bottom: 0.5rem;
 }
 
 .awards-section__preview-img img {
     display: block;
     width: auto;
-    height: auto;
+    height: 100%;
     max-width: 150px;
-    max-height: 150px;
     object-fit: contain;
 }
 
