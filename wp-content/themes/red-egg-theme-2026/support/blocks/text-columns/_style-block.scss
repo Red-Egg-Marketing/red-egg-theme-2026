@@ -86,11 +86,6 @@
 }
 
 // ---- Typography helpers (seeded by block template) ----
-.text-columns__eyebrow {
-    @include h4-sup;
-    margin-bottom: 0.75rem;
-}
-
 .text-columns__lead {
     font-weight: 700;
     margin-bottom: 1rem;

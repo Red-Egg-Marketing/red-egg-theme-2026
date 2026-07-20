@@ -8140,26 +8140,6 @@ img.device-frame__device {
     width: 40%;
   }
 }
-.text-columns__eyebrow {
-  font-family: "Poppins", sans-serif;
-  font-weight: 500;
-  font-size: 1.0625rem;
-  line-height: 1.625rem;
-  letter-spacing: 0.125rem;
-  text-transform: uppercase;
-  color: #424042;
-}
-@media screen and (min-width: 768px) {
-  .text-columns__eyebrow {
-    font-size: 1.375rem;
-    line-height: 2.125rem;
-    letter-spacing: 0.3125rem;
-  }
-}
-.text-columns__eyebrow {
-  margin-bottom: 0.75rem;
-}
-
 .text-columns__lead {
   font-weight: 700;
   margin-bottom: 1rem;

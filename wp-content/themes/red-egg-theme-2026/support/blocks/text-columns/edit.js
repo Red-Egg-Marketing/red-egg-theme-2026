@@ -30,7 +30,7 @@ const splitOptions = [
 
 const template = [
     [ 'red-egg-block/text-columns-col', {}, [
-        [ 'core/paragraph', { className: 'text-columns__eyebrow', placeholder: 'WHAT WE BELIEVE' } ],
+        [ 'core/paragraph', { className: 'is-style-section-label', placeholder: 'WHAT WE BELIEVE' } ],
         [ 'core/heading', { level: 2, placeholder: 'Our Philosophy is Simple' } ],
     ] ],
     [ 'red-egg-block/text-columns-col', {}, [
