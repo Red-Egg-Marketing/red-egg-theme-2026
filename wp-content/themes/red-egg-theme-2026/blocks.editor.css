@@ -979,6 +979,10 @@ p.is-style-section-label {
   flex-wrap: wrap;
 }
 
+.flip-card svg path {
+  transition: transform 0.6s ease;
+}
+
 .flip-card .exterior-wrap {
   position: relative;
   width: 100%;
