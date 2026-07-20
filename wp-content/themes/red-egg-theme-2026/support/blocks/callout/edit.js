@@ -7,6 +7,8 @@ const { InnerBlocks, InspectorControls, useBlockProps } = wp.blockEditor;
 const { PanelBody, TextControl } = wp.components;
 const { __ } = wp.i18n;
 
+import IconPicker from '../../components/IconPicker.js';
+
 const TEMPLATE = [
     [ 'core/heading', { level: 3, placeholder: __( 'Callout title…', 'red-egg' ) } ],
     [ 'core/paragraph', { placeholder: __( 'Callout text…', 'red-egg' ) } ],
@@ -23,9 +25,8 @@ const EditCallout = ( { attributes, setAttributes } ) => {
         <Fragment>
             <InspectorControls>
                 <PanelBody title={ __( 'Callout Settings', 'red-egg' ) } initialOpen={ true }>
-                    <TextControl
-                        label={ __( 'Icon class (Font Awesome)', 'red-egg' ) }
-                        help={ __( 'e.g. fa-solid fa-triangle-exclamation. Leave blank for no icon.', 'red-egg' ) }
+                    <IconPicker
+                        label={ __( 'Icon (Font Awesome)', 'red-egg' ) }
                         value={ icon }
                         onChange={ ( val ) => setAttributes( { icon: val } ) }
                     />

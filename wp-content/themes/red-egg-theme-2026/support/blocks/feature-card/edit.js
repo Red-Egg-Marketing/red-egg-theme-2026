@@ -10,6 +10,8 @@ const { InnerBlocks, InspectorControls, MediaUpload, useBlockProps } = wp.blockE
 const { PanelBody, Button, TextareaControl, TextControl, SelectControl } = wp.components;
 const { __ } = wp.i18n;
 
+import IconPicker from '../../components/IconPicker.js';
+
 import BackgroundColor from '../../components/BackgroundColor.js';
 import { BLOB_SHAPES, SHAPE_OPTIONS } from './shapes.js';
 
@@ -73,9 +75,8 @@ const EditFeatureCard = ( { attributes, setAttributes } ) => {
                     title={ __( 'Card Icon', 'red-egg' ) }
                     initialOpen={ true }
                 >
-                    <TextControl
-                        label={ __( 'FontAwesome Class', 'red-egg' ) }
-                        help={ __( 'e.g. "fa-light fa-bullseye-arrow". Takes priority over SVG/image.', 'red-egg' ) }
+                    <IconPicker
+                        label={ __( 'Font Awesome Icon', 'red-egg' ) }
                         value={ faClass }
                         onChange={ ( val ) => setAttributes( { faClass: val } ) }
                     />
