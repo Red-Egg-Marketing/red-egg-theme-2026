@@ -2675,6 +2675,24 @@ div.gs-grid-style-four .single-member-div .gs_member_info .gs-member-desig {
   width: 100%;
 }
 
+.mfp-close svg {
+  display: none;
+}
+
+div.gs-team-popup--default .mfp-close {
+  opacity: 1;
+  width: 30px;
+  height: 30px;
+}
+
+.mfp-close:before {
+  content: "";
+  display: block;
+  width: 30px;
+  height: 30px;
+  background: url("data:image/svg+xml,%3Csvg width='35' height='35' viewBox='0 0 35 35' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M5.12612 29.8748C11.961 36.7097 23.04 36.7097 29.8749 29.8748C36.7098 23.0399 36.7098 11.961 29.8749 5.12608C23.04 -1.70883 11.961 -1.70883 5.12612 5.12608C-1.70879 11.961 -1.70878 23.0399 5.12612 29.8748ZM10.9266 21.7541L15.1803 17.5004L10.9266 13.2468L13.2468 10.9266L17.5005 15.1803L21.7542 10.9266L24.0744 13.2468L19.8207 17.5004L24.0744 21.7541L21.7542 24.0743L17.5005 19.8206L13.2468 24.0743L10.9266 21.7541Z' fill='%23424042'/%3E%3C/svg%3E") center center/contain;
+}
+
 .wp-block.hero-background {
   width: 100%;
   max-width: 100%;

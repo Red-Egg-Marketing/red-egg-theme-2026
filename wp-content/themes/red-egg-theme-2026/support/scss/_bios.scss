@@ -142,3 +142,21 @@ div.gs-grid-style-four .single-member-div .gs_member_info .gs-member-desig {
 	font-size: 18px;
 	width: 100%;
 }
+
+.mfp-close svg {
+	display: none;
+}
+
+div.gs-team-popup--default .mfp-close {
+	opacity: 1;
+	width: 30px;
+	height: 30px;
+}
+
+.mfp-close:before {
+	content: "";
+	display: block;
+	width: 30px;
+	height: 30px;
+	background: url($close) center center / contain;
+}
