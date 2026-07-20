@@ -3410,12 +3410,17 @@ div.gs-team-popup--default .mfp-close {
 .flip-card {
   position: relative;
   width: 100%;
+  min-width: 0;
   perspective: 1000px;
 }
 @media screen and (min-width: 768px) {
   .flip-card {
     width: calc(33.333% - 1.334rem);
   }
+}
+
+.flip-card > .components-flex {
+  flex-wrap: wrap;
 }
 
 .flip-card .exterior-wrap {
@@ -6372,13 +6377,8 @@ div.gform_wrapper.gravity-theme .gform_page_footer {
 }
 @media screen and (min-width: 768px) {
   .values-section .flip-card {
-    width: calc(50% - 1rem);
-    padding: 40px;
-  }
-}
-@media screen and (min-width: 1080px) {
-  .values-section .flip-card {
     width: calc(33.333% - 1.334rem);
+    padding: 40px;
   }
 }
 .values-section .flip-card:hover {
