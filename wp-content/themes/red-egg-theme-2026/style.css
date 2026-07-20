@@ -3253,14 +3253,14 @@ div.gs-team-popup--default .mfp-close {
   overflow: hidden;
   z-index: 1;
   pointer-events: none;
-  margin-top: 5px;
-  margin-bottom: 50px;
+  margin-top: 0;
+  margin-bottom: 0;
 }
 @media screen and (min-width: 768px) {
   .squiggle-decoration {
     /*        top: -25px;*/
-    margin-bottom: 100px;
-    margin-top: 10px;
+    margin-bottom: 0;
+    margin-top: 0;
   }
 }
 
@@ -3268,6 +3268,7 @@ div.gs-team-popup--default .mfp-close {
   display: block;
   width: 160px;
   height: auto;
+  margin-bottom: 0;
 }
 @media screen and (min-width: 768px) {
   .squiggle-decoration__svg {
@@ -6440,6 +6441,7 @@ div.gform_wrapper.gravity-theme .gform_page_footer {
   margin-bottom: 0;
   transition: 0.5s color;
   margin-top: 15px;
+  width: 100%;
 }
 @media screen and (min-width: 768px) {
   .values-section .flip-card h3 {
@@ -7487,6 +7489,18 @@ div.gform_wrapper.gravity-theme .gform_page_footer {
 .squiggle-divider-block {
   display: flex;
   justify-content: center;
+  width: 100%;
+  padding-top: 4.5rem;
+  padding-bottom: 4.5rem;
+}
+@media screen and (min-width: 768px) {
+  .squiggle-divider-block {
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+  }
+}
+
+.squiggle-divider-block > .block-wrapper {
   width: 100%;
 }
 

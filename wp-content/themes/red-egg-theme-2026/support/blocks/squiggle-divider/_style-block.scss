@@ -9,6 +9,18 @@
     display: flex;
     justify-content: center;
     width: 100%;
+    padding-top: $default-section-padding-top;
+    padding-bottom: $default-section-padding-bottom;
+
+    @media screen and (min-width: $small-width) {
+        padding-top: 5rem;
+        padding-bottom: 5rem;
+    }
+}
+
+.squiggle-divider-block > .block-wrapper {
+    width: 100%;
+
 }
 
 .squiggle-divider-block__svg {

@@ -91,12 +91,12 @@
     overflow: hidden;
     z-index: 1;
     pointer-events: none;
-    margin-top: 5px;
-    margin-bottom: 50px;
+    margin-top: 0;
+    margin-bottom: 0;
     @media screen and (min-width: $small-width) {
 /*        top: -25px;*/
-        margin-bottom: 100px;
-        margin-top: 10px;
+        margin-bottom: 0;
+        margin-top: 0;
     }
 }
 
@@ -104,6 +104,7 @@
     display: block;
     width: 160px;
     height: auto;
+    margin-bottom: 0;
     @media screen and (min-width: $small-width) {
         width: 190px;
     }
