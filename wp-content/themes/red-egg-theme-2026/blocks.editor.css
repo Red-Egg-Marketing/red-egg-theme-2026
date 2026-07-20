@@ -980,7 +980,7 @@ p.is-style-section-label {
 }
 
 .flip-card svg path {
-  transition: transform 0.6s ease;
+  transition: fill 0.3s ease;
 }
 
 .flip-card .exterior-wrap {
