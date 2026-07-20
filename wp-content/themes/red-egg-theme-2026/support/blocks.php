@@ -252,6 +252,16 @@ function red_egg_register_blocks() {
         'editor_script' => 'red-egg-editor-blocks',
     ] );
 
+    // Text Columns (parent: two-column text section)
+    register_block_type( 'red-egg-block/text-columns', [
+        'editor_script' => 'red-egg-editor-blocks',
+    ] );
+
+    // Text Columns – Column (child: text column)
+    register_block_type( 'red-egg-block/text-columns-col', [
+        'editor_script' => 'red-egg-editor-blocks',
+    ] );
+
     // Service List (parent: heading + service rows)
     register_block_type( 'red-egg-block/service-list', [
         'editor_script' => 'red-egg-editor-blocks',
