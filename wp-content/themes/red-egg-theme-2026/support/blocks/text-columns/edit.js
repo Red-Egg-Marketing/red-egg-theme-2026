@@ -140,12 +140,13 @@ const EditTextColumns = ( { attributes, setAttributes, clientId } ) => {
             />
 
             <div { ...blockProps }>
-                <BlobAnimation.Preview
-                    blobEnabled={ blobEnabled }
-                    blobShape={ blobShape }
-                    blobPosition={ blobPosition }
-                />
+                
                 <div className="block-wrapper">
+                    <BlobAnimation.Preview
+                        blobEnabled={ blobEnabled }
+                        blobShape={ blobShape }
+                        blobPosition={ blobPosition }
+                    />
                     <div className={ 'block-content ' + contentAlign }>
                         <InnerBlocks
                             template={ template }

@@ -78,7 +78,7 @@ import { onPageView } from './lifecycle';
             } );
 
             gsap.to( blob, {
-                y: 'random(-50, 50)',
+                y: 'random(-200, 200)',
                 duration: 'random(' + ( speed * 1.8 ) + ', ' + ( speed * 2.5 ) + ')',
                 ease: 'sine.inOut',
                 repeat: -1,

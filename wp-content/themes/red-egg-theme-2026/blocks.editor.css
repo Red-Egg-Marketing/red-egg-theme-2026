@@ -8054,7 +8054,7 @@ img.device-frame__device {
 .text-columns {
   position: relative;
   width: 100%;
-  overflow: hidden;
+  overflow: visible;
   padding-top: 4.5rem;
   padding-bottom: 4.5rem;
 }
@@ -8084,7 +8084,7 @@ img.device-frame__device {
 .text-columns .block-content {
   display: flex;
   flex-wrap: wrap;
-  align-items: center;
+  align-items: flex-start;
   gap: 2rem;
 }
 @media screen and (min-width: 768px) {
@@ -8141,7 +8141,7 @@ img.device-frame__device {
   }
 }
 .text-columns__lead {
-  font-weight: 700;
+  font-weight: 500;
   margin-bottom: 1rem;
 }
 

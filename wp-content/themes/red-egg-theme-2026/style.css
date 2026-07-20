@@ -1759,7 +1759,22 @@ body.mega-open {
 .entry-content > h6:first-child {
   margin-top: 0;
 }
-.entry-content > h2 {
+.entry-content h1 {
+  font-family: "Poppins", sans-serif;
+  font-weight: 700;
+  font-size: 2.125rem;
+  line-height: 2.75rem;
+  letter-spacing: 0.02125rem;
+  color: #424042;
+}
+@media screen and (min-width: 768px) {
+  .entry-content h1 {
+    font-size: 3.125rem;
+    line-height: 3.75rem;
+    letter-spacing: 0.03125rem;
+  }
+}
+.entry-content h2 {
   font-family: "Poppins", sans-serif;
   font-weight: 700;
   font-size: 1.5625rem;
@@ -1768,12 +1783,12 @@ body.mega-open {
   color: #424042;
 }
 @media screen and (min-width: 768px) {
-  .entry-content > h2 {
+  .entry-content h2 {
     font-size: 2.3125rem;
     line-height: 2.9375rem;
   }
 }
-.entry-content > h3 {
+.entry-content h3 {
   font-family: "Poppins", sans-serif;
   font-weight: 700;
   font-size: 1.225rem;
@@ -1782,12 +1797,12 @@ body.mega-open {
   color: #424042;
 }
 @media screen and (min-width: 768px) {
-  .entry-content > h3 {
+  .entry-content h3 {
     font-size: 1.7625rem;
     line-height: 2.1875rem;
   }
 }
-.entry-content > h4 {
+.entry-content h4 {
   font-family: "Poppins", sans-serif;
   font-weight: 500;
   font-size: 1.0625rem;
@@ -1795,15 +1810,15 @@ body.mega-open {
   color: #424042;
 }
 @media screen and (min-width: 768px) {
-  .entry-content > h4 {
+  .entry-content h4 {
     font-size: 1.15rem;
     line-height: 1.85rem;
   }
 }
-.entry-content > h4 {
+.entry-content h4 {
   font-weight: 700;
 }
-.entry-content > h5 {
+.entry-content h5 {
   font-family: "Poppins", sans-serif;
   font-weight: 700;
   font-size: 1rem;
@@ -1812,7 +1827,7 @@ body.mega-open {
   text-transform: uppercase;
   color: #424042;
 }
-.entry-content > h6 {
+.entry-content h6 {
   font-family: "Poppins", sans-serif;
   font-weight: 600;
   font-size: 0.875rem;
@@ -7467,7 +7482,7 @@ div.gform_wrapper.gravity-theme .gform_page_footer {
 .text-columns {
   position: relative;
   width: 100%;
-  overflow: hidden;
+  overflow: visible;
   padding-top: 4.5rem;
   padding-bottom: 4.5rem;
 }
@@ -7497,7 +7512,7 @@ div.gform_wrapper.gravity-theme .gform_page_footer {
 .text-columns .block-content {
   display: flex;
   flex-wrap: wrap;
-  align-items: center;
+  align-items: flex-start;
   gap: 2rem;
 }
 @media screen and (min-width: 768px) {
@@ -7553,28 +7568,8 @@ div.gform_wrapper.gravity-theme .gform_page_footer {
     width: 40%;
   }
 }
-.text-columns__eyebrow {
-  font-family: "Poppins", sans-serif;
-  font-weight: 500;
-  font-size: 1.0625rem;
-  line-height: 1.625rem;
-  letter-spacing: 0.125rem;
-  text-transform: uppercase;
-  color: #424042;
-}
-@media screen and (min-width: 768px) {
-  .text-columns__eyebrow {
-    font-size: 1.375rem;
-    line-height: 2.125rem;
-    letter-spacing: 0.3125rem;
-  }
-}
-.text-columns__eyebrow {
-  margin-bottom: 0.75rem;
-}
-
 .text-columns__lead {
-  font-weight: 700;
+  font-weight: 500;
   margin-bottom: 1rem;
 }
 
