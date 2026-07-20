@@ -44,6 +44,26 @@
     }
 }
 
+// ---- Editor: mirror the flex layout onto Gutenberg's InnerBlocks
+// wrapper (inert on frontend).
+.text-columns .block-content > .block-editor-inner-blocks > .block-editor-block-list__layout {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 2rem;
+
+    @media screen and (min-width: $small-width) {
+        flex-wrap: nowrap;
+        gap: 4rem;
+    }
+}
+
+.text-columns.title-right .block-content > .block-editor-inner-blocks > .block-editor-block-list__layout {
+    @media screen and (min-width: $small-width) {
+        flex-direction: row-reverse;
+    }
+}
+
 // ---- Columns ----
 .text-columns__col {
     width: 100%;
