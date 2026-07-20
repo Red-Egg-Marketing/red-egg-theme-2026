@@ -3523,6 +3523,17 @@ div.gs-team-popup--default .mfp-close {
   }
 }
 
+.flip-card__icon--fa {
+  font-size: 60px;
+  line-height: 1;
+  color: #DC2035;
+}
+@media screen and (min-width: 768px) {
+  .flip-card__icon--fa {
+    font-size: 70px;
+  }
+}
+
 .flip-card__svg-icon {
   margin-bottom: 1.5rem;
 }
