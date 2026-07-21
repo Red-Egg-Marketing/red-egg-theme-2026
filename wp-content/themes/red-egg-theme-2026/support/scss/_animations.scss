@@ -5,52 +5,34 @@
 
 // ---- Cursor blink (used by .rotate-words) ----
 @keyframes cursorAnimation {
-    0% {
-        background: linear-gradient(to bottom, transparent, transparent);
-        background-size: 1px 100%;
-        background-repeat: repeat-y;
-        background-position: top right;
-    }
-    25% {
-        background: linear-gradient(to bottom, currentColor, currentColor);
-        background-size: 1px 100%;
-        background-repeat: repeat-y;
-        background-position: top right;
-    }
-    50% {
-        background: linear-gradient(to bottom, transparent, transparent);
-        background-size: 1px 100%;
-        background-repeat: repeat-y;
-        background-position: top right;
-    }
-    75% {
-        background: linear-gradient(to bottom, currentColor, currentColor);
-        background-size: 1px 100%;
-        background-repeat: repeat-y;
-        background-position: top right;
-    }
-    100% {
-        background: linear-gradient(to bottom, transparent, transparent);
-        background-size: 1px 100%;
-        background-repeat: repeat-y;
-        background-position: top right;
-    }
+    0%, 100% { border-right-color: currentColor; }
+    50% { border-right-color: transparent; }
 }
 
 // ---- Rotate Words ----
+// Cursor is a border-right (a real, stable box-edge) rather than a
+// background gradient. The JS retypes innerHTML every frame; a
+// background-position:right gradient gets repainted against the
+// constantly-changing inline text width each frame and visibly
+// flickers/drops out during typing. A border edge is unaffected by
+// the text content changing, so it stays solid while typing and just
+// blinks on its own timer.
 .rotate-words {
     display: inline;
+    border-right: 2px solid currentColor;
     padding-right: 3px;
-    animation: cursorAnimation 0.8s infinite;
+    animation: cursorAnimation 0.8s step-end infinite;
 }
 
+// While paused between words (the 1.5s hold), stop blinking but KEEP
+// the cursor shown -- steady caret, matching the previous site.
 .rotate-words.waiting {
     animation: none;
-    background: none;
+    border-right-color: currentColor;
 }
 
 .rotate-words.highlight {
-    animation: cursorAnimation 0.8s infinite;
+    animation: cursorAnimation 0.8s step-end infinite;
 }
 
 .partner-logo {
