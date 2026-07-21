@@ -276,7 +276,7 @@ div.filter-case-studies__hero .hero-services h1 {
     // of the image below (not the image itself resizing; see
     // .cs-card__image-inner) as the excerpt grows into the freed
     // space. Matches the 15cqw used for the excerpt's reveal below.
-    padding-bottom: 25%;
+    padding-bottom: 30%;
 }
 
 // The actual image lives in here, at a permanently fixed size driven
@@ -302,9 +302,6 @@ div.filter-case-studies__hero .hero-services h1 {
     transition: transform 0.4s ease;
 }
 
-.cs-card:hover .cs-card__image-inner img {
-    transform: scale(1.03);
-}
 
 .cs-card__content {
     padding: 1.25rem 1.5rem;
@@ -331,7 +328,7 @@ div.filter-case-studies__hero .hero-services h1 {
     margin: 0.5rem 0 0 0;
     max-height: 0;
     opacity: 0;
-    overflow: hidden;
+    overflow: visible;
     transition: max-height 0.35s ease, opacity 0.3s ease;
 }
 
@@ -344,7 +341,7 @@ div.filter-case-studies__hero .hero-services h1 {
 // it's a 3-up desktop row or a full-width mobile card.
 .cs-card:hover .cs-card__excerpt {
     opacity: 1;
-    max-height: 50cqw;
+    max-height: 30cqw;
 }
 
 // ---- Empty / Loading states ----

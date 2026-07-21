@@ -8447,7 +8447,7 @@ div.filter-case-studies__hero .hero-services h1 {
 }
 
 .cs-card:hover .cs-card__image {
-  padding-bottom: 25%;
+  padding-bottom: 30%;
 }
 
 .cs-card__image-inner {
@@ -8466,10 +8466,6 @@ div.filter-case-studies__hero .hero-services h1 {
   -o-object-fit: cover;
      object-fit: cover;
   transition: transform 0.4s ease;
-}
-
-.cs-card:hover .cs-card__image-inner img {
-  transform: scale(1.03);
 }
 
 .cs-card__content {
@@ -8497,13 +8493,13 @@ div.filter-case-studies__hero .hero-services h1 {
   margin: 0.5rem 0 0 0;
   max-height: 0;
   opacity: 0;
-  overflow: hidden;
+  overflow: visible;
   transition: max-height 0.35s ease, opacity 0.3s ease;
 }
 
 .cs-card:hover .cs-card__excerpt {
   opacity: 1;
-  max-height: 50cqw;
+  max-height: 30cqw;
 }
 
 .filter-case-studies__empty,
