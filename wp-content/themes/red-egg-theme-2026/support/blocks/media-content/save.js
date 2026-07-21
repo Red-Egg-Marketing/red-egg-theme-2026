@@ -49,13 +49,14 @@ const SaveMediaContent = ( { attributes } ) => {
             <MarginSelector.View margin={ margin } id={ blockId } />
             
             <div { ...blockProps }>
+                
+                <div className="block-wrapper">
                 <BlobAnimation.View
                     blobEnabled={ blobEnabled }
                     blobShape={ blobShape }
                     blobSpeed={ blobSpeed }
                     blobPosition={ blobPosition }
                 />
-                <div className="block-wrapper">
                     <div className={ 'block-content ' + contentAlign }>
                         <InnerBlocks.Content />
                     </div>

@@ -125,12 +125,13 @@ const EditMediaContent = ( { attributes, setAttributes, clientId } ) => {
             />
 
             <div { ...blockProps }>
+                
+                <div className="block-wrapper">
                  <BlobAnimation.Preview
                     blobEnabled={ blobEnabled }
                     blobShape={ blobShape }
                     blobPosition={ blobPosition }
                 />
-                <div className="block-wrapper">
                     <div className={ 'block-content ' + contentAlign }>
                         <InnerBlocks
                             template={ template }
