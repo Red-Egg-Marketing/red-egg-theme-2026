@@ -4954,6 +4954,7 @@ div.gs-team-popup--default .mfp-close {
   padding-top: 2.25rem;
   padding-bottom: 2.25rem;
   overflow: hidden;
+  z-index: 2;
 }
 @media screen and (min-width: 768px) {
   .testimonials-block {
@@ -5209,8 +5210,8 @@ div.gs-team-popup--default .mfp-close {
 }
 @media screen and (min-width: 768px) {
   .testimonials-slider__arrow svg {
-    width: 44px;
-    height: 44px;
+    width: 35px;
+    height: 35px;
   }
 }
 
@@ -5246,12 +5247,6 @@ div.gs-team-popup--default .mfp-close {
 }
 .insights-block > .block-wrapper {
   position: relative;
-}
-@media screen and (min-width: 768px) {
-  .insights-block > .block-wrapper {
-    padding-top: 5rem;
-    padding-bottom: 5rem;
-  }
 }
 
 .insights-block .insights-block__header {
@@ -8122,6 +8117,8 @@ div.gform_wrapper.gravity-theme .gform_page_footer {
 }
 @media screen and (min-width: 768px) {
   .service-list-item__arrow {
+    top: inherit;
+    right: inherit;
     position: relative;
     display: flex;
     align-items: center;

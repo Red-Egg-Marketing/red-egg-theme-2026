@@ -21,10 +21,6 @@
 .insights-block > .block-wrapper {
     @include block-wrapper;
     position: relative;
-    @media screen and (min-width: $small-width) {
-        padding-top: 5rem;
-        padding-bottom: 5rem;
-    }
 }
 
 // ---- Header area (InnerBlocks: header-intro) ----

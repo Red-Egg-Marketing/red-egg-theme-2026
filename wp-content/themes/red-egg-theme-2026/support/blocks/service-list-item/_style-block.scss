@@ -141,6 +141,8 @@ $service-hover-light: ('white', 'eggshell', 'peach', 'gold', 'purple');
     top: 1.5rem;
     right: 1.5rem;
     @media screen and (min-width: $small-width) {
+        top: inherit;
+        right: inherit;
         position: relative;
         display: flex;
         align-items: center;
