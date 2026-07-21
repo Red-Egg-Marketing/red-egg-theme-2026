@@ -76,7 +76,20 @@
         }
     } );
 
-    swup.hooks.on( 'content:replace', function () {
+    swup.hooks.on( 'content:replace', function ( visit ) {
+        // Explicit scroll reset: don't rely solely on Swup's built-in
+        // scroll-to-top, since our own hooks.before('content:replace')
+        // teardown runs in the same phase and could interfere with it.
+        // This is the fallback Swup's own maintainers recommend when
+        // the built-in behavior isn't landing reliably in a custom
+        // integration. Skip it when the destination has a hash target
+        // (e.g. a cross-page link to /services/#pricing) so Swup/our
+        // own anchor-scroll handling can land on that section instead.
+        var hasHashTarget = !! ( visit && visit.to && visit.to.hash );
+        if ( ! hasHashTarget ) {
+            window.scrollTo( 0, 0 );
+        }
+
         var container = document.getElementById( 'content' );
         if ( ! container ) return;
 
