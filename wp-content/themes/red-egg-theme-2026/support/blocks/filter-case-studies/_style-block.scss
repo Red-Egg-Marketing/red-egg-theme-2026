@@ -276,7 +276,7 @@ div.filter-case-studies__hero .hero-services h1 {
     // of the image below (not the image itself resizing; see
     // .cs-card__image-inner) as the excerpt grows into the freed
     // space. Matches the 15cqw used for the excerpt's reveal below.
-    padding-bottom: 45%;
+    padding-bottom: 25%;
 }
 
 // The actual image lives in here, at a permanently fixed size driven
@@ -344,7 +344,7 @@ div.filter-case-studies__hero .hero-services h1 {
 // it's a 3-up desktop row or a full-width mobile card.
 .cs-card:hover .cs-card__excerpt {
     opacity: 1;
-    max-height: 15cqw;
+    max-height: 50cqw;
 }
 
 // ---- Empty / Loading states ----
