@@ -264,25 +264,37 @@ div.filter-case-studies__hero .hero-services h1 {
 .cs-card__image {
     position: relative;
     width: 100%;
-    padding-top: 60%; // 5:3 aspect ratio at rest
+    height: 0;
+    padding-bottom: 60%; // 5:3 aspect ratio at rest -- this is what shrinks on hover
     overflow: hidden;
-    transition: padding-top 0.35s ease;
+    transition: padding-bottom 0.35s ease;
 }
 
 .cs-card:hover .cs-card__image {
-    // Shrinks by roughly the same amount the excerpt grows below,
-    // so the card's total height stays put -- the image gives up
-    // the space the excerpt reveals into, rather than the card
-    // growing to fit both. Tuned against the excerpt's actual
-    // 2-line rendered height (~56px at this grid's card width),
-    // not its max-height ceiling.
-    padding-top: 45%;
+    // Shrinks the OUTER window by 15% of the card's own width, so
+    // the card's total height stays put -- the window reveals less
+    // of the image below (not the image itself resizing; see
+    // .cs-card__image-inner) as the excerpt grows into the freed
+    // space. Matches the 15cqw used for the excerpt's reveal below.
+    padding-bottom: 45%;
 }
 
-.cs-card__image img {
+// The actual image lives in here, at a permanently fixed size driven
+// by its own aspect-ratio -- completely decoupled from the outer's
+// shrinking padding-bottom, since it's absolutely positioned (out of
+// the outer's flow) and sized from its own width, not inherited. The
+// image itself never changes size on hover; only how much of it is
+// visible through the outer window above does.
+.cs-card__image-inner {
     position: absolute;
     top: 0;
     left: 0;
+    width: 100%;
+    aspect-ratio: 5 / 3;
+    padding: 0; // consistent -- never touched by the hover transition
+}
+
+.cs-card__image-inner img {
     display: block;
     width: 100%;
     height: 100%;
@@ -290,7 +302,7 @@ div.filter-case-studies__hero .hero-services h1 {
     transition: transform 0.4s ease;
 }
 
-.cs-card:hover .cs-card__image img {
+.cs-card:hover .cs-card__image-inner img {
     transform: scale(1.03);
 }
 

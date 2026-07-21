@@ -88,11 +88,13 @@ const CaseStudyCard = ( { resource } ) => {
             <a className="cs-card__link" href={ resource.link || '#' }>
                 { resource.media_url && (
                     <div className="cs-card__image">
-                        <img
-                            src={ resource.media_url }
-                            alt={ resource.post_title || '' }
-                            loading="lazy"
-                        />
+                        <div className="cs-card__image-inner">
+                            <img
+                                src={ resource.media_url }
+                                alt={ resource.post_title || '' }
+                                loading="lazy"
+                            />
+                        </div>
                     </div>
                 ) }
                 <div className="cs-card__content">
