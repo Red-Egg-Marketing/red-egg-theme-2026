@@ -38,10 +38,6 @@
     display: flex;
     flex-wrap: wrap;
     align-items: flex-start;
-    padding-bottom: 3rem;
-     @media screen and (min-width: $small-width) {
-        padding-bottom: 5rem;
-     }
 }
 
 // ---- Image column ----
