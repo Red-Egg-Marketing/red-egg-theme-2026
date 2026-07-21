@@ -15,22 +15,19 @@
 // background-position:right gradient gets repainted against the
 // constantly-changing inline text width each frame and visibly
 // flickers/drops out during typing. A border edge is unaffected by
-// the text content changing, so it stays solid while typing and just
-// blinks on its own timer.
+// the text content changing.
+//
+// Caret behavior: SOLID while actively typing (the element has
+// neither state class then), BLINKS during the pause between words.
+// The JS adds .waiting the moment a word finishes, then .highlight
+// 1.5s later for the hold -- both are "paused" states, so both blink.
 .rotate-words {
     display: inline;
     border-right: 2px solid currentColor;
     padding-right: 3px;
-    animation: cursorAnimation 0.8s step-end infinite;
 }
 
-// While paused between words (the 1.5s hold), stop blinking but KEEP
-// the cursor shown -- steady caret, matching the previous site.
-.rotate-words.waiting {
-    animation: none;
-    border-right-color: currentColor;
-}
-
+.rotate-words.waiting,
 .rotate-words.highlight {
     animation: cursorAnimation 0.8s step-end infinite;
 }
