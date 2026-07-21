@@ -2791,6 +2791,18 @@ p.is-style-section-label {
 
 .insights-block .resource-card .resource-title {
   margin: 0 0 0.75rem 0;
+  font-size: 1.2rem;
+  line-height: 1.55rem;
+  letter-spacing: 0.12px;
+  margin: 0;
+}
+@media screen and (min-width: 768px) {
+  .insights-block .resource-card .resource-title {
+    font-size: 1.35rem;
+    line-height: 1.75rem;
+    letter-spacing: 0.18px;
+    margin-bottom: 1rem;
+  }
 }
 
 .insights-block .resource-card .resource-excerpt {
@@ -4541,6 +4553,7 @@ div.gform_wrapper.gravity-theme .gform_page_footer {
   position: relative;
   padding-top: 2.25rem;
   padding-bottom: 2.25rem;
+  z-index: 2;
 }
 @media screen and (min-width: 768px) {
   .awards-section {
