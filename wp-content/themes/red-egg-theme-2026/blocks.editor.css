@@ -4889,6 +4889,12 @@ div.gform_wrapper.gravity-theme .gform_page_footer {
   align-items: flex-start;
 }
 
+.media-content .block-content > .block-editor-inner-blocks > .block-editor-block-list__layout {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+}
+
 .media-content .image-col {
   position: relative;
   width: 100%;
