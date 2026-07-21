@@ -22,7 +22,6 @@ const SaveMediaContentMedia = ( { attributes } ) => {
 
     return (
         <div { ...blockProps }>
-            <InnerBlocks.Content />
             { vidOrImg === 'image' && (
                 <ImageComp.View
                     source={ media.srcSet.large }
