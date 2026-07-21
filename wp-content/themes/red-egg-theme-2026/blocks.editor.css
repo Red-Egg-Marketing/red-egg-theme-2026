@@ -9223,6 +9223,16 @@ button.slickwprev-prev:before {
   position: relative;
 }
 
+@media screen and (min-width: 768px) {
+  .partner-logo .header-intro__left {
+    background-image: url("img/partner-resource.svg");
+    background-repeat: no-repeat;
+    background-size: 135px;
+    background-size: 175px;
+    background-position: bottom left;
+  }
+}
+
 .partner-logo-red .gs-containeer:after {
   content: "";
   position: relative;

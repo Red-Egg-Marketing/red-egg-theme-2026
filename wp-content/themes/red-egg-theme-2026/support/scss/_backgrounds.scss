@@ -10,6 +10,16 @@
 	position: relative;
 }
 
+.partner-logo .header-intro__left {
+    @media screen and (min-width: $small-width) {
+    	background-image: url('img/partner-resource.svg');
+    	background-repeat: no-repeat;
+    	background-size: 135px;
+        background-size: 175px;
+        background-position: bottom left;
+    }
+}
+
 .partner-logo-red .gs-containeer:after {
 	content: "";
 	position: relative;

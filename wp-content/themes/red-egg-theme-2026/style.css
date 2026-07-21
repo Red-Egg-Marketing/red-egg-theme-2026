@@ -259,17 +259,6 @@ p.is-style-section-label {
   animation: cursorAnimation 0.8s step-end infinite;
 }
 
-.partner-logo {
-  background-image: url("img/partner-resource.svg");
-  background-repeat: no-repeat;
-  background-size: 135px;
-}
-@media screen and (min-width: 768px) {
-  .partner-logo {
-    background-size: 197px;
-  }
-}
-
 html.is-changing .transition-fade {
   transition: opacity 0.25s ease;
 }
@@ -11761,6 +11750,16 @@ button.slickwprev-prev:before {
 
 .partner-logo-red .gs-containeer {
   position: relative;
+}
+
+@media screen and (min-width: 768px) {
+  .partner-logo .header-intro__left {
+    background-image: url("img/partner-resource.svg");
+    background-repeat: no-repeat;
+    background-size: 135px;
+    background-size: 175px;
+    background-position: bottom left;
+  }
 }
 
 .partner-logo-red .gs-containeer:after {

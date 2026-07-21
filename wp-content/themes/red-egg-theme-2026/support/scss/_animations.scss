@@ -32,11 +32,3 @@
     animation: cursorAnimation 0.8s step-end infinite;
 }
 
-.partner-logo {
-    background-image: url('img/partner-resource.svg');
-    background-repeat: no-repeat;
-    background-size: 135px;
-    @media screen and (min-width: $small-width) {
-        background-size: 197px;
-    }
-}
