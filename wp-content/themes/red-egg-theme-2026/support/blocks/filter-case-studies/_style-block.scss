@@ -273,16 +273,16 @@ div.filter-case-studies__hero .hero-services h1 {
     // calc(60% - Npx): reduces the window by an EXACT, width-
     // independent Npx (not a % of width), matching the excerpt's
     // real 2-line height for this breakpoint's line-height (line-
-    // clamp guarantees it's always exactly 2 full lines, a constant
+    // clamp guarantees it's always exactly 3 full lines, a constant
     // in px, not something that scales with card width). Mixing %
     // and px in one calc() is what makes this work at every card
     // width, not just one coincidentally-matching point -- a plain
     // percentage or cqw value can only match a fixed-px target at a
     // single width, drifting everywhere else.
-    padding-bottom: calc(60% - 44.8px); // 2 lines @ mobile font-size (1.4rem)
+    padding-bottom: calc(60% - 67.2px); // 3 lines @ mobile font-size (1.4rem)
 
     @media screen and (min-width: $small-width) {
-        padding-bottom: calc(60% - 56px); // 2 lines @ desktop font-size (1.75rem)
+        padding-bottom: calc(60% - 84px); // 3 lines @ desktop font-size (1.75rem)
     }
 }
 
@@ -351,7 +351,7 @@ div.filter-case-studies__hero .hero-services h1 {
         line-height: 1.75rem;
     }
 
-    // Always exactly 2 lines regardless of the actual excerpt length
+    // Always exactly 3 lines regardless of the actual excerpt length
     // from the REST API (currently trimmed to 25 words server-side,
     // which can still run to 3+ lines). Keeps this card's height-lock
     // with the image above (tuned around a 2-line excerpt) accurate
@@ -361,9 +361,9 @@ div.filter-case-studies__hero .hero-services h1 {
     -webkit-line-clamp: 3;
 }
 
-// Hover reveal: max-height is a fixed px matching exactly 2 full
-// lines at this breakpoint's line-height (28px * 2 = 56px desktop,
-// 22.4px * 2 = 44.8px mobile) -- not a percentage/cqw value, since
+// Hover reveal: max-height is a fixed px matching exactly 3 full
+// lines at this breakpoint's line-height (28px * 3 = 84px desktop,
+// 22.4px * 3 = 67.2px mobile) -- not a percentage/cqw value, since
 // line-clamp guarantees the excerpt's real height is that same
 // constant regardless of card width. The image's hover shrink above
 // uses calc() to reduce by this same exact px amount at every card
@@ -371,10 +371,10 @@ div.filter-case-studies__hero .hero-services h1 {
 // instead of only at one coincidental width.
 .cs-card:hover .cs-card__excerpt {
     opacity: 1;
-    max-height: 44.8px;
+    max-height: 67.2px;
 
     @media screen and (min-width: $small-width) {
-        max-height: 56px;
+        max-height: 84px;
     }
 }
 
