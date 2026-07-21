@@ -40,6 +40,10 @@ const SaveMediaContentMedia = ( { attributes } ) => {
                     >
                         <source src={ videoURL } className="source" type="video/mp4" />
                     </video>
+                    <button className="custom-video-mute" aria-label="Mute video" aria-pressed="false">
+                        <i className="fa-light fa-volume-high custom-video-mute__icon-on"></i>
+                        <i className="fa-light fa-volume-slash custom-video-mute__icon-off"></i>
+                    </button>
                 </Fragment>
             ) }
         </div>
