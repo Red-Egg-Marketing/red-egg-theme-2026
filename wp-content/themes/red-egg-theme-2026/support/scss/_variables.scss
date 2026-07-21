@@ -259,6 +259,7 @@ $close: "data:image/svg+xml,%3Csvg width='35' height='35' viewBox='0 0 35 35' fi
         border-right: 1px solid $gray;
         border-top: 1px solid $gray;
         transform: rotate(45deg);
+        text-transform: uppercase;
         transition: border-color 0.3s ease;
         @media screen and (min-width: $small-width) {
             width: 14px;
@@ -297,7 +298,7 @@ $close: "data:image/svg+xml,%3Csvg width='35' height='35' viewBox='0 0 35 35' fi
     text-decoration: none;
     cursor: pointer;
     transition: none;
-
+    text-transform: uppercase;
     @media screen and (min-width: $small-width) {
         font-size: 17px;
         line-height: 25px;

@@ -70,9 +70,9 @@
 p.contact-section__label {
     font-family: $font-head !important;
     font-weight: 500 !important;
-    font-size: 1.0625rem !important;
-    line-height: 1.625rem !important;
-    letter-spacing: 2px !important;
+    font-size: 0.9rem !important;
+    line-height: 1.3rem !important;
+    letter-spacing: 0.9px !important;
     text-transform: uppercase !important;
     color: $gray;
     margin: 0 0 0.5rem 0;
@@ -315,8 +315,12 @@ p.contact-section__label {
 }
 
 div.gform_wrapper.gravity-theme .gform_fields {
-    grid-row-gap: 29px;
-    grid-column-gap: 20px;
+    grid-row-gap: 19px;
+    grid-column-gap: 10px;
+    @media screen and (min-width: $small-width) {
+       grid-row-gap: 29px;
+       grid-column-gap: 20px;
+    }
 }
 
 div.gform_wrapper.gravity-theme .gform_footer,

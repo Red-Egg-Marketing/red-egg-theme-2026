@@ -51,8 +51,8 @@ const SliderContent = ( { postsToShow, industry, service, navPrev, navNext } ) =
                     loop: true,
                     centeredSlides: true,
                     centeredSlidesBounds: true,
-                    slidesPerView: 1.15,
-                    spaceBetween: 16,
+                    slidesPerView: 1,
+                    spaceBetween: 20,
                     speed: 500,
                     slideActiveClass: 'cs-slide--active',
                     breakpoints: {

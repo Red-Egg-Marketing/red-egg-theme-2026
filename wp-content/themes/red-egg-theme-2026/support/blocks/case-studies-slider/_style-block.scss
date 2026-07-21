@@ -167,8 +167,11 @@
 }
 
 .case-studies-slider .cs-slider__cta {
-    margin-left: auto;
-    margin-right: auto;
+    margin-left: 0;
+    @media screen and (min-width: $small-width) {
+        margin-left: auto;
+        margin-right: auto;
+    }
 }
 
 // Nav arrows

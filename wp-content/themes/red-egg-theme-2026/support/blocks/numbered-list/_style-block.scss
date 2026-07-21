@@ -65,6 +65,7 @@
 .numbered-list__item {
     display: flex;
     align-items: flex-start;
+    flex-wrap: wrap;
     gap: 1rem;
     margin-bottom: 1.5rem;
 
@@ -79,7 +80,10 @@
 }
 
 .numbered-list__badge {
-    flex: 0 0 auto;
+   flex: 0 100%;
+    @media screen and (min-width: $small-width) {
+         flex: 0 0 auto;
+    }
 }
 
 .numbered-list__badge .number-badge__value,
@@ -124,10 +128,11 @@
 }
 
 .numbered-list__item-content {
-    flex: 1;
+    flex: 0 100%;
     min-width: 0;
     @media screen and (min-width: $small-width) {
         padding-top: 0;
+        flex: 1;
     }
 }
 

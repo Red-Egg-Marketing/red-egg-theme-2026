@@ -55,15 +55,6 @@
     max-width: 930px;
 }
 
-// ---- Header area (InnerBlocks: header-intro) ----
-.testimonials-block .testimonials-block__header {
-    margin-bottom: 2.5rem;
-
-    @media screen and (min-width: $small-width) {
-        margin-bottom: 3rem;
-    }
-}
-
 // White text on purple background
 .testimonials-block .testimonials-block__header .header-intro-block h1,
 .testimonials-block .testimonials-block__header .header-intro-block h2,
