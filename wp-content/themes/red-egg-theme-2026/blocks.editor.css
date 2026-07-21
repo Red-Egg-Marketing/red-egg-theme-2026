@@ -5831,7 +5831,7 @@ div.filter-case-studies__hero .hero-services h1 {
 .cs-card__excerpt {
   display: -webkit-box;
   -webkit-box-orient: vertical;
-  -webkit-line-clamp: 2;
+  -webkit-line-clamp: 3;
 }
 
 .cs-card:hover .cs-card__excerpt {
