@@ -8055,6 +8055,17 @@ div.gform_wrapper.gravity-theme .gform_page_footer {
   color: white;
 }
 
+.service-list .service-list-item .service-list-item__title {
+  font-size: 1.25rem;
+  line-height: 1.4rem;
+}
+@media screen and (min-width: 768px) {
+  .service-list .service-list-item .service-list-item__title {
+    font-size: 1.35rem;
+    line-height: 1.5rem;
+  }
+}
+
 .service-list-item__link {
   display: block;
   text-decoration: none;
