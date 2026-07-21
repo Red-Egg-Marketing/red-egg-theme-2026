@@ -12,13 +12,18 @@
 
 .partner-logo-red .gs-containeer:after {
 	content: "";
-	position: absolute;
-	bottom: 0;
-	left: 0;
+	position: relative;
 	z-index: -1;
 	background: url(img/partner-resource-red.svg) no-repeat center right / contain;
-	width: 175px;
-	height: 175px;
+	height: 145px;
+	width: 145px;
+	@media screen and (min-width: $small-width) {
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		width: 175px;
+		height: 175px;
+	}
 }
 
 .orange {

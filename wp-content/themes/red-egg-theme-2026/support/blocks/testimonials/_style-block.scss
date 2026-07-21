@@ -233,8 +233,12 @@
 
     svg {
         display: block;
-        width: 35px;
-        height: 35px;
+        width: 25px;
+        height: 25px;
+        @media screen and (min-width: $small-width) {
+            width: 44px;
+            height: 44px;
+        }
     }
 }
 

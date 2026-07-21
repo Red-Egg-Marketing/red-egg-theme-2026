@@ -34,8 +34,13 @@ div.gs-grid-style-four .single-member-div .gs_member_info .gs-member-name {
 	text-align: left;
 	font-family: $font-head;
 	text-transform: capitalize;
-	font-size: 22px;
+	font-size: 18px;
+	line-height: 21px;
 	width: 100%;
+	@media screen and (min-width: $small-width) {
+		font-size: 21px;
+		line-height: 24px;
+	}
 }
 
 .mfp-content--container {
@@ -123,24 +128,33 @@ div.gs-grid-style-four .single-member-div .gs_member_info {
 	padding-left: 10px;
 	padding-right: 10px;
 	padding-bottom: 10px;
+	padding-top: 10px;
 	position: relative;
 	min-height: revert-rule;
 	overflow: visible;
 	display: flex;
 	flex-wrap: wrap;
+	align-items: flex-start;
 	 @media screen and (min-width: $small-width) {
 	 	padding-left: 20px;
 	 	padding-right: 20px;
 	 	padding-bottom: 20px;
 	 	padding-top: 10px;
+		flex-wrap: wrap;
+		display: flex;
 	 }
 }
 
 div.gs-grid-style-four .single-member-div .gs_member_info .gs-member-desig {
 	text-align: left;
 	font-family: $font-body;
-	font-size: 18px;
+	font-size: 16px;
+	line-height: 19px;
 	width: 100%;
+	@media screen and (min-width: $small-width) {
+		font-size: 18px;
+		line-height: 23px;
+	}
 }
 
 .mfp-close svg {

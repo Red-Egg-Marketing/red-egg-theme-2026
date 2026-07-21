@@ -179,6 +179,7 @@
     display: flex;
     gap: 8px;
     justify-content: flex-end;
+    margin-top: 10px;
 }
 
 .cs-slider__nav-prev,
@@ -186,14 +187,18 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 44px;
-    height: 44px;
+    width: 25px;
+    height: 25px;
     border-radius: 50%;
     color: $gray;
     cursor: pointer;
     background: none;
     padding: 0;
     border: none;
+    @media screen and (min-width: $small-width) {
+        width: 44px;
+        height: 44px;
+    }
     &:hover {
         background-color: none;
         color: $white;

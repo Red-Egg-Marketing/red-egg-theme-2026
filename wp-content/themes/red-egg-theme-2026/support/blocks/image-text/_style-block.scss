@@ -179,6 +179,10 @@
     }
 }
 
+.image-columns.stack-text-first.img-right .content-columns {
+    order: 1;
+}
+
 // ---- Video ----
 .image-columns video {
     max-width: 100%;

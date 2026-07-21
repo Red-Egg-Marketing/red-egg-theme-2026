@@ -84,6 +84,10 @@ ul, ol {
     padding-right: 2.5rem;
   }
 }
+.block-wrapper {
+  position: relative;
+  z-index: 1;
+}
 
 .sr-only {
   position: absolute;
@@ -929,7 +933,7 @@ p.is-style-section-label {
 }
 
 .header-intro__left p,
-.header-intro__right p {
+.header-intro__right p:first-of-type {
   font-family: "Poppins", sans-serif;
   font-weight: 500;
   font-size: 1.0625rem;
@@ -938,21 +942,21 @@ p.is-style-section-label {
 }
 @media screen and (min-width: 768px) {
   .header-intro__left p,
-  .header-intro__right p {
+  .header-intro__right p:first-of-type {
     font-size: 1.15rem;
     line-height: 1.85rem;
   }
 }
 .header-intro__left p,
-.header-intro__right p {
+.header-intro__right p:first-of-type {
   margin: 1rem 0 1rem 0;
 }
 .header-intro__left p:first-of-type,
-.header-intro__right p:first-of-type {
+.header-intro__right p:first-of-type:first-of-type {
   margin-top: 0;
 }
 .header-intro__left p:last-child,
-.header-intro__right p:last-child {
+.header-intro__right p:first-of-type:last-child {
   margin-bottom: 0;
 }
 
@@ -2195,6 +2199,7 @@ p.is-style-section-label {
   display: flex;
   gap: 8px;
   justify-content: flex-end;
+  margin-top: 10px;
 }
 
 .cs-slider__nav-prev,
@@ -2202,14 +2207,21 @@ p.is-style-section-label {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 44px;
-  height: 44px;
+  width: 25px;
+  height: 25px;
   border-radius: 50%;
   color: #424042;
   cursor: pointer;
   background: none;
   padding: 0;
   border: none;
+}
+@media screen and (min-width: 768px) {
+  .cs-slider__nav-prev,
+  .cs-slider__nav-next {
+    width: 44px;
+    height: 44px;
+  }
 }
 .cs-slider__nav-prev:hover,
 .cs-slider__nav-next:hover {
@@ -2616,8 +2628,14 @@ p.is-style-section-label {
 }
 .testimonials-slider__arrow svg {
   display: block;
-  width: 35px;
-  height: 35px;
+  width: 25px;
+  height: 25px;
+}
+@media screen and (min-width: 768px) {
+  .testimonials-slider__arrow svg {
+    width: 44px;
+    height: 44px;
+  }
 }
 
 .wp-block.testimonials-block {
@@ -3785,6 +3803,16 @@ div.gform_wrapper.gravity-theme .gform_page_footer {
   }
 }
 
+@media screen and (max-width: 767px) {
+  .image-columns.stack-text-first .image-col {
+    order: 2;
+    margin-top: 2rem;
+  }
+  .image-columns.stack-text-first .content-columns {
+    order: 1;
+    margin-top: 0;
+  }
+}
 .image-columns.img-right .content-columns {
   order: 2;
   margin-top: 2rem;
@@ -3796,6 +3824,10 @@ div.gform_wrapper.gravity-theme .gform_page_footer {
     padding-right: 2.5rem;
     margin-top: 0;
   }
+}
+
+.image-columns.stack-text-first.img-right .content-columns {
+  order: 1;
 }
 
 .image-columns video {
@@ -4226,16 +4258,6 @@ div.gform_wrapper.gravity-theme .gform_page_footer {
   }
 }
 
-.shortcode-section .header-intro-block {
-  padding-bottom: 0.75rem;
-  margin-bottom: 1.5rem;
-}
-@media screen and (min-width: 768px) {
-  .shortcode-section .header-intro-block {
-    padding-bottom: 1rem;
-    margin-bottom: 2rem;
-  }
-}
 .shortcode-section .header-intro-block h3 {
   margin-top: 0;
 }
@@ -4599,6 +4621,7 @@ div.gform_wrapper.gravity-theme .gform_page_footer {
   line-height: 1.3;
   color: #424042;
   margin: 0;
+  font-weight: 500;
 }
 @media screen and (min-width: 768px) {
   .awards-section__award-caption {
@@ -4780,8 +4803,8 @@ div.gform_wrapper.gravity-theme .gform_page_footer {
 .vibe-cta {
   position: relative;
   overflow: hidden;
-  padding-top: 4.5rem;
-  padding-bottom: 4.5rem;
+  padding-top: 2.25rem;
+  padding-bottom: 2.25rem;
 }
 @media screen and (min-width: 768px) {
   .vibe-cta {
@@ -4808,6 +4831,7 @@ div.gform_wrapper.gravity-theme .gform_page_footer {
   position: relative;
   overflow: hidden;
   margin-bottom: 1.5rem;
+  z-index: 3;
 }
 @media screen and (min-width: 768px) {
   .vibe-cta__marquee {
@@ -5238,6 +5262,11 @@ div.gform_wrapper.gravity-theme .gform_page_footer {
 .service-list-item {
   margin-bottom: 0.75rem;
 }
+@media screen and (min-width: 768px) {
+  .service-list-item {
+    margin-bottom: 1rem;
+  }
+}
 .service-list-item:last-child {
   margin-bottom: 0;
 }
@@ -5333,6 +5362,17 @@ div.gform_wrapper.gravity-theme .gform_page_footer {
   transform: scale(1.2);
 }
 
+.service-list-item__arrow svg {
+  width: 25px;
+  height: 25px;
+}
+@media screen and (min-width: 768px) {
+  .service-list-item__arrow svg {
+    width: 44px;
+    height: 44px;
+  }
+}
+
 .service-list-item .service-list-item__title {
   color: white;
 }
@@ -5341,6 +5381,7 @@ div.gform_wrapper.gravity-theme .gform_page_footer {
   display: block;
   text-decoration: none;
   color: inherit;
+  position: relative;
 }
 
 .service-list-item__inner {
@@ -5351,6 +5392,7 @@ div.gform_wrapper.gravity-theme .gform_page_footer {
   border-radius: 8px;
   padding: 1.5rem;
   transition: background-color 0.3s ease;
+  position: relative;
 }
 @media screen and (min-width: 768px) {
   .service-list-item__inner {
@@ -5390,10 +5432,14 @@ div.gform_wrapper.gravity-theme .gform_page_footer {
 }
 
 .service-list-item__arrow {
-  display: none;
+  display: block;
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
 }
 @media screen and (min-width: 768px) {
   .service-list-item__arrow {
+    position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -8438,8 +8484,8 @@ img.device-frame__device {
   display: flex;
   justify-content: center;
   width: 100%;
-  padding-top: 4.5rem;
-  padding-bottom: 4.5rem;
+  padding-top: 2.25rem;
+  padding-bottom: 2.25rem;
   position: relative;
   z-index: 2;
 }
@@ -8570,6 +8616,7 @@ img.device-frame__device {
   overflow: visible;
   width: 65%;
   max-width: 725px;
+  display: none;
 }
 @media screen and (min-width: 768px) {
   .blob-decoration {
@@ -9149,13 +9196,20 @@ button.slickwprev-prev:before {
 
 .partner-logo-red .gs-containeer:after {
   content: "";
-  position: absolute;
-  bottom: 0;
-  left: 0;
+  position: relative;
   z-index: -1;
   background: url(img/partner-resource-red.svg) no-repeat center right/contain;
-  width: 175px;
-  height: 175px;
+  height: 145px;
+  width: 145px;
+}
+@media screen and (min-width: 768px) {
+  .partner-logo-red .gs-containeer:after {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 175px;
+    height: 175px;
+  }
 }
 
 .orange {

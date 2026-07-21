@@ -27,8 +27,8 @@ import { onPageView } from '../../js/lifecycle';
             new Swiper( el, {
                 loop: true,
                 centeredSlides: true,
-                slidesPerView: 1.15,
-                spaceBetween: 12,
+                slidesPerView: 1,
+                spaceBetween: 20,
                 speed: 500,
                 slideActiveClass: 'image-slider__slide--active',
                 breakpoints: {
