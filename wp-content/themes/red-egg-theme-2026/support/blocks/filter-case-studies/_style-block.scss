@@ -358,7 +358,7 @@ div.filter-case-studies__hero .hero-services h1 {
     // for every case study, not just ones with naturally short copy.
     display: -webkit-box;
     -webkit-box-orient: vertical;
-    -webkit-line-clamp: 2;
+    -webkit-line-clamp: 3;
 }
 
 // Hover reveal: max-height is a fixed px matching exactly 2 full
