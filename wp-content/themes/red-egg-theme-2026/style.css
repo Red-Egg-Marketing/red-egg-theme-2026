@@ -210,29 +210,6 @@ ul, ol {
   transform: rotate(45deg);
 }
 
-@keyframes blink-cursor {
-  0%, 100% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0;
-  }
-}
-.rotate-words {
-  display: inline;
-  border-right: 2px solid currentColor;
-  padding-right: 2px;
-  animation: blink-cursor 0.75s step-end infinite;
-}
-.rotate-words.waiting {
-  animation: none;
-  border-right-color: transparent;
-}
-.rotate-words.highlight {
-  border-right-color: transparent;
-  animation: none;
-}
-
 p.has-medium-font-size {
   font-size: 1.0625rem;
   line-height: 1.625rem;
@@ -264,50 +241,22 @@ p.is-style-section-label {
 }
 
 @keyframes cursorAnimation {
-  0% {
-    background: linear-gradient(to bottom, transparent, transparent);
-    background-size: 1px 100%;
-    background-repeat: repeat-y;
-    background-position: top right;
-  }
-  25% {
-    background: linear-gradient(to bottom, currentColor, currentColor);
-    background-size: 1px 100%;
-    background-repeat: repeat-y;
-    background-position: top right;
+  0%, 100% {
+    border-right-color: currentColor;
   }
   50% {
-    background: linear-gradient(to bottom, transparent, transparent);
-    background-size: 1px 100%;
-    background-repeat: repeat-y;
-    background-position: top right;
-  }
-  75% {
-    background: linear-gradient(to bottom, currentColor, currentColor);
-    background-size: 1px 100%;
-    background-repeat: repeat-y;
-    background-position: top right;
-  }
-  100% {
-    background: linear-gradient(to bottom, transparent, transparent);
-    background-size: 1px 100%;
-    background-repeat: repeat-y;
-    background-position: top right;
+    border-right-color: transparent;
   }
 }
 .rotate-words {
   display: inline;
+  border-right: 2px solid currentColor;
   padding-right: 3px;
-  animation: cursorAnimation 0.8s infinite;
 }
 
-.rotate-words.waiting {
-  animation: none;
-  background: none;
-}
-
+.rotate-words.waiting,
 .rotate-words.highlight {
-  animation: cursorAnimation 0.8s infinite;
+  animation: cursorAnimation 0.8s step-end infinite;
 }
 
 .partner-logo {
