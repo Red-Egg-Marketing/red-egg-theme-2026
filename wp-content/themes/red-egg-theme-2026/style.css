@@ -2073,12 +2073,12 @@ body.mega-open {
 
 .single-post__wrapper {
   padding-top: 2.5rem;
-  padding-bottom: 4rem;
+  padding-bottom: 1.75rem;
 }
 @media screen and (min-width: 768px) {
   .single-post__wrapper {
     padding-top: 3.5rem;
-    padding-bottom: 5.5rem;
+    padding-bottom: 2.5;
   }
 }
 
@@ -2104,6 +2104,15 @@ body.mega-open {
 @media screen and (min-width: 768px) {
   .single .entry-thumbnail img {
     margin-top: 150px;
+  }
+}
+
+.related-posts + .squiggle-divider-block {
+  padding-top: 0;
+}
+@media screen and (min-width: 768px) {
+  .related-posts + .squiggle-divider-block {
+    padding-top: 0;
   }
 }
 
