@@ -6262,6 +6262,7 @@ div.filter-posts__hero .hero-services h1 {
   background-color: #F2ECE5;
   padding-top: 4.5rem;
   padding-bottom: 4.5rem;
+  z-index: 2;
 }
 @media screen and (min-width: 768px) {
   .hero-services {

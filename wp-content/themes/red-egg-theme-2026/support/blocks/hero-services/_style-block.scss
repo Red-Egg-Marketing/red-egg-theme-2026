@@ -21,7 +21,7 @@
     background-color: $eggshell;
     padding-top: $default-section-padding-top;
     padding-bottom: $default-section-padding-top;
-
+    z-index: 2;
     @media screen and (min-width: $small-width) {
         padding-top: 5rem;
         padding-bottom: 5rem;
