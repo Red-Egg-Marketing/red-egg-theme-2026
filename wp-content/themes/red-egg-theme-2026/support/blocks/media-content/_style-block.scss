@@ -40,6 +40,17 @@
     align-items: flex-start;
 }
 
+// ---- Editor: Gutenberg nests InnerBlocks children inside
+// .block-editor-inner-blocks > .block-editor-block-list__layout, so
+// the flex parent above never reaches the actual media/text columns
+// there. Mirror it onto that wrapper (inert on the frontend, which
+// doesn't have this markup at all).
+.media-content .block-content > .block-editor-inner-blocks > .block-editor-block-list__layout {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+}
+
 
 // ---- Image / Media column ----
 .media-content .image-col {
