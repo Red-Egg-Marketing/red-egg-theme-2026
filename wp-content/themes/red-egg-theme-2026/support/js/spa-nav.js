@@ -11,6 +11,8 @@
  * Bailouts (hard reload instead of swap):
  *   - Pages containing a Gravity Form (GF inline scripts expect a
  *     full page load). Detected in the fetched HTML before swapping.
+ *   - Pages containing GS Team plugin markup (its jQuery init never
+ *     re-runs after a swap, no public re-init hook to call).
  *   - Logged-in views with the admin bar (keeps Edit links sane).
  *   - Any link with data-no-swup (Swup honors this natively).
  *
@@ -51,6 +53,24 @@
         var html = args && args.page ? args.page.html : '';
         var hasForm = /gform_wrapper|gform_fields/.test( html );
         if ( hasForm && typeof window.gform === 'undefined' ) {
+            swup.destroy();
+            window.location.href = visit.to.url;
+        }
+    } );
+
+    // ---- GS Team Members plugin bailout ------------------------------
+    // GS Team (the "GS Team" admin menu / [gs_team] shortcode) is an
+    // older jQuery plugin: it binds Magnific Popup + equal-height card
+    // logic once via jQuery(document).ready() on the original page
+    // load and doesn't expose a public re-init hook. After an SPA swap
+    // that ready handler never fires again, so newly-injected member
+    // cards lose their popups/click handlers with no clean way to
+    // rewire them from the theme side. Hard-reload pages that contain
+    // its markup rather than risk silently-broken popups.
+    swup.hooks.on( 'page:load', function ( visit, args ) {
+        var html = args && args.page ? args.page.html : '';
+        var hasGsTeam = /gs_team_popup|gs_member_info|single-member-div/.test( html );
+        if ( hasGsTeam ) {
             swup.destroy();
             window.location.href = visit.to.url;
         }
