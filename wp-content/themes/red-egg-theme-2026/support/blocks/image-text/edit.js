@@ -47,7 +47,7 @@ const allowBlocks = [
 
 const EditImageText = ( { attributes, setAttributes, clientId } ) => {
     const {
-        contentAlign, columnwidth, media, image, bgColor, bgSlug,
+        contentAlign, stackOrder, columnwidth, media, image, bgColor, bgSlug,
         vidOrImg, videoID, videoURL, videothumb,
         padding, margin, blockId,
         blobEnabled, blobShape, blobSpeed, blobPosition,
@@ -118,6 +118,7 @@ const EditImageText = ( { attributes, setAttributes, clientId } ) => {
         className: 'image-columns'
             + ' ' + contentAlign
             + ' ' + columnwidth
+            + ' stack-' + stackOrder
             + ( bgSlug ? ' ' + bgSlug + ' with-bg' : '' )
             + ( blobEnabled ? ' has-blob' : '' ),
         style: bgStyle,
@@ -135,6 +136,16 @@ const EditImageText = ( { attributes, setAttributes, clientId } ) => {
                         value={ contentAlign }
                         options={ alignOptions }
                         onChange={ ( val ) => setAttributes( { contentAlign: val } ) }
+                    />
+                    <SelectControl
+                        label={ __( 'Mobile Stacking Order', 'red-egg' ) }
+                        help={ __( 'Which column shows first when stacked on mobile. Desktop layout is unaffected.', 'red-egg' ) }
+                        value={ stackOrder }
+                        options={ [
+                            { label: __( 'Image First', 'red-egg' ), value: 'image-first' },
+                            { label: __( 'Text First', 'red-egg' ), value: 'text-first' },
+                        ] }
+                        onChange={ ( val ) => setAttributes( { stackOrder: val } ) }
                     />
                 </PanelBody>
                 <ColumnsWidth

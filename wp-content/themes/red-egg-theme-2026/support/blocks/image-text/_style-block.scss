@@ -150,6 +150,23 @@
     }
 }
 
+// ---- Mobile stacking order ----
+// Independent of desktop img-left/img-right: controls which column
+// appears first when the columns collapse to a single stack below
+// $small-width. Desktop layout (handled by img-right above) is
+// untouched since this is scoped to max-width.
+@media screen and (max-width: #{$small-width - 1px}) {
+    .image-columns.stack-text-first .image-col {
+        order: 2;
+        margin-top: 2rem;
+    }
+
+    .image-columns.stack-text-first .content-columns {
+        order: 1;
+        margin-top: 0;
+    }
+}
+
 .image-columns.img-right .content-columns {
     order: 2;
     margin-top: 2rem;

@@ -26,6 +26,10 @@ registerBlockType( 'red-egg-block/image-text', {
             type: 'string',
             default: 'img-left',
         },
+        stackOrder: {
+            type: 'string',
+            default: 'image-first',
+        },
         columnwidth: {
             type: 'string',
             default: 'col-50',

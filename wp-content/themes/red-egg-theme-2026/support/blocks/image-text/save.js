@@ -12,7 +12,7 @@ import BlobAnimation from '../../components/BlobAnimation.js';
 
 const SaveImageText = ( { attributes } ) => {
     const {
-        contentAlign, columnwidth, media, image, bgColor, bgSlug,
+        contentAlign, stackOrder, columnwidth, media, image, bgColor, bgSlug,
         vidOrImg, videoID, videoURL, videothumb,
         padding, margin, blockId,
         blobEnabled, blobShape, blobSpeed, blobPosition,
@@ -41,6 +41,7 @@ const SaveImageText = ( { attributes } ) => {
         className: 'image-columns'
             + ' ' + contentAlign
             + ' ' + columnwidth
+            + ' stack-' + stackOrder
             + ( bgSlug ? ' ' + bgSlug + ' with-bg' : '' )
             + ( blobEnabled ? ' has-blob' : '' ),
         style: bgStyle,
