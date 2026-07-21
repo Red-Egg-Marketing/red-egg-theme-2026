@@ -5228,7 +5228,7 @@ div.gs-team-popup--default .mfp-close {
 @media screen and (min-width: 768px) {
   .insights-block {
     padding-top: 5rem;
-    padding-bottom: 8rem;
+    padding-bottom: 5rem;
   }
 }
 
@@ -8455,11 +8455,11 @@ div.filter-case-studies__hero .hero-services h1 {
 }
 
 .cs-card:hover .cs-card__image {
-  padding-bottom: calc(60% - 44.8px);
+  padding-bottom: calc(60% - 67.2px);
 }
 @media screen and (min-width: 768px) {
   .cs-card:hover .cs-card__image {
-    padding-bottom: calc(60% - 56px);
+    padding-bottom: calc(60% - 84px);
   }
 }
 
@@ -8535,11 +8535,11 @@ div.filter-case-studies__hero .hero-services h1 {
 
 .cs-card:hover .cs-card__excerpt {
   opacity: 1;
-  max-height: 44.8px;
+  max-height: 67.2px;
 }
 @media screen and (min-width: 768px) {
   .cs-card:hover .cs-card__excerpt {
-    max-height: 56px;
+    max-height: 84px;
   }
 }
 
