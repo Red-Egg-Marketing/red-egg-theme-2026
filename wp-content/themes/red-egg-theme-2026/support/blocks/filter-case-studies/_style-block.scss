@@ -242,6 +242,7 @@ div.filter-case-studies__hero .hero-services h1 {
 
 // ---- Case Study Card ----
 .cs-card {
+    container-type: inline-size;
     border-radius: $default-border-radius;
     overflow: hidden;
     background: $white;
@@ -261,11 +262,27 @@ div.filter-case-studies__hero .hero-services h1 {
 }
 
 .cs-card__image {
-    aspect-ratio: 5 / 3;
+    position: relative;
+    width: 100%;
+    padding-top: 60%; // 5:3 aspect ratio at rest
     overflow: hidden;
+    transition: padding-top 0.35s ease;
+}
+
+.cs-card:hover .cs-card__image {
+    // Shrinks by roughly the same amount the excerpt grows below,
+    // so the card's total height stays put -- the image gives up
+    // the space the excerpt reveals into, rather than the card
+    // growing to fit both. Tuned against the excerpt's actual
+    // 2-line rendered height (~56px at this grid's card width),
+    // not its max-height ceiling.
+    padding-top: 45%;
 }
 
 .cs-card__image img {
+    position: absolute;
+    top: 0;
+    left: 0;
     display: block;
     width: 100%;
     height: 100%;
@@ -281,10 +298,6 @@ div.filter-case-studies__hero .hero-services h1 {
     padding: 1.25rem 1.5rem;
     position: relative;
     overflow: hidden;
-    box-sizing: border-box;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
 }
 
 .cs-card h3.cs-card__title {
@@ -310,13 +323,16 @@ div.filter-case-studies__hero .hero-services h1 {
     transition: max-height 0.35s ease, opacity 0.3s ease;
 }
 
-// Hover reveal: the excerpt growing from 0 pushes the title upward on
-// its own since .cs-card__content is a flex column anchored to the
-// bottom -- no separate transform needed on the title, so it can't
-// drift out of sync with the excerpt's own transition.
+// Hover reveal: the image above gives up 15% of the card's own width
+// in height (padding-top 60% -> 45%). The excerpt's reveal height
+// uses the matching container-query unit (15cqw = 15% of the card's
+// width, since .cs-card is the query container) so both sides scale
+// together at every card width in the responsive grid, not just one
+// tuned breakpoint -- keeps the card's total height locked whether
+// it's a 3-up desktop row or a full-width mobile card.
 .cs-card:hover .cs-card__excerpt {
     opacity: 1;
-    max-height: 90px;
+    max-height: 15cqw;
 }
 
 // ---- Empty / Loading states ----
