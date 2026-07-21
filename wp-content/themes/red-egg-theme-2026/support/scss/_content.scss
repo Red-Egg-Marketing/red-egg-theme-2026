@@ -17,6 +17,7 @@
 //  post types and pages.
 // ========================================
 
+.site-content,
 .entry-content {
     @include body-text;
     // Overflow must stay visible so absolutely-positioned filter

@@ -21,8 +21,6 @@
 .insights-block > .block-wrapper {
     @include block-wrapper;
     position: relative;
-    padding-top: 2.5rem;
-    padding-bottom: 2.5rem;
     @media screen and (min-width: $small-width) {
         padding-top: 5rem;
         padding-bottom: 5rem;

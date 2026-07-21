@@ -29,6 +29,7 @@ body {
     line-height: 1.75rem;
     color: $body-color;
     background-color: $white;
+    overflow-x: clip;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }

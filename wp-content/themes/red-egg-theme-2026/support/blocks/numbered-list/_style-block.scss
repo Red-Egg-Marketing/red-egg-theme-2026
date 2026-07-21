@@ -129,6 +129,8 @@
 
 .numbered-list__item-content {
     flex: 0 100%;
+    display: flex;
+    flex-wrap: wrap;
     min-width: 0;
     @media screen and (min-width: $small-width) {
         padding-top: 0;

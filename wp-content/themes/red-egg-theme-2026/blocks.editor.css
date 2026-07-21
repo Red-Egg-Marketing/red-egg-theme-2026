@@ -25,6 +25,7 @@ body {
   line-height: 1.75rem;
   color: #424042;
   background-color: #FFFFFF;
+  overflow-x: clip;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -1837,6 +1838,8 @@ p.is-style-section-label {
 
 .numbered-list__item-content {
   flex: 0 100%;
+  display: flex;
+  flex-wrap: wrap;
   min-width: 0;
 }
 @media screen and (min-width: 768px) {
@@ -1926,8 +1929,8 @@ p.is-style-section-label {
 
 .case-studies-slider {
   position: relative;
-  padding-top: 4.5rem;
-  padding-bottom: 4.5rem;
+  padding-top: 2.25rem;
+  padding-bottom: 2.25rem;
   overflow: hidden;
 }
 @media screen and (min-width: 768px) {
@@ -2389,8 +2392,8 @@ p.is-style-section-label {
 
 .testimonials-block {
   position: relative;
-  padding-top: 4.5rem;
-  padding-bottom: 4.5rem;
+  padding-top: 2.25rem;
+  padding-bottom: 2.25rem;
   overflow: hidden;
 }
 @media screen and (min-width: 768px) {
@@ -2530,7 +2533,8 @@ p.is-style-section-label {
   }
 }
 .testimonial-card__text {
-  font-size: 18px;
+  font-size: 17px;
+  line-height: 23px;
   color: #424042;
   font-weight: 400;
   margin: 0 0 1.75rem 0;
@@ -2538,6 +2542,7 @@ p.is-style-section-label {
 @media screen and (min-width: 768px) {
   .testimonial-card__text {
     font-size: 20px;
+    line-height: 26px;
   }
 }
 
@@ -2568,15 +2573,27 @@ p.is-style-section-label {
 .testimonial-card__name {
   font-family: "Poppins", sans-serif;
   font-weight: 500;
-  font-size: 1.25rem;
+  font-size: 1rem;
+  line-height: 1.25rem;
   color: #424042;
-  margin: 0 0 0.25rem 0;
+  margin: 0;
+}
+@media screen and (min-width: 768px) {
+  .testimonial-card__name {
+    font-size: 1.25rem;
+    line-height: 1.5rem;
+  }
 }
 
 .testimonial-card__company {
   font-family: "Figtree", sans-serif;
-  font-size: 1rem;
+  font-size: 0.85rem;
   color: #424042;
+}
+@media screen and (min-width: 768px) {
+  .testimonial-card__company {
+    font-size: 1rem;
+  }
 }
 
 .testimonials-slider {
@@ -2670,8 +2687,6 @@ p.is-style-section-label {
 }
 .insights-block > .block-wrapper {
   position: relative;
-  padding-top: 2.5rem;
-  padding-bottom: 2.5rem;
 }
 @media screen and (min-width: 768px) {
   .insights-block > .block-wrapper {
@@ -3600,13 +3615,13 @@ div.gform_wrapper.gravity-theme .gform_page_footer {
   width: 100%;
   position: relative;
   margin: 0 auto;
-  padding-top: 4.5rem;
-  padding-bottom: 4.5rem;
+  padding-top: 2.25rem;
+  padding-bottom: 2.25rem;
 }
 @media screen and (min-width: 768px) {
   .image-columns {
-    padding-top: 7rem;
-    padding-bottom: 7rem;
+    padding-top: 5rem;
+    padding-bottom: 5rem;
   }
 }
 
@@ -4534,8 +4549,8 @@ div.gform_wrapper.gravity-theme .gform_page_footer {
 
 .awards-section {
   position: relative;
-  padding-top: 4.5rem;
-  padding-bottom: 4.5rem;
+  padding-top: 2.25rem;
+  padding-bottom: 2.25rem;
 }
 @media screen and (min-width: 768px) {
   .awards-section {
@@ -4555,26 +4570,6 @@ div.gform_wrapper.gravity-theme .gform_page_footer {
   .awards-section > .block-wrapper {
     padding-left: 2.5rem;
     padding-right: 2.5rem;
-  }
-}
-
-.awards-section .awards-section__header {
-  margin-bottom: 2.5rem;
-}
-@media screen and (min-width: 768px) {
-  .awards-section .awards-section__header {
-    margin-bottom: 3rem;
-  }
-}
-
-.awards-section .awards-section__header .header-intro-block {
-  margin-bottom: 0;
-}
-
-@media screen and (min-width: 768px) {
-  .awards-section .header-intro__left {
-    flex: 0 0 100%;
-    max-width: 100%;
   }
 }
 
@@ -5190,8 +5185,8 @@ div.gform_wrapper.gravity-theme .gform_page_footer {
 
 .service-list {
   position: relative;
-  padding-top: 4.5rem;
-  padding-bottom: 4.5rem;
+  padding-top: 2.25rem;
+  padding-bottom: 2.25rem;
 }
 @media screen and (min-width: 768px) {
   .service-list {
@@ -5799,7 +5794,7 @@ div.filter-case-studies__hero .hero-services h1 {
   max-height: 0;
   opacity: 0;
   overflow: hidden;
-  transition: max-height 0.4s ease, opacity 0.3s ease;
+  transition: max-height 0.3s ease, opacity 0.3s ease;
 }
 
 .cs-card:hover .cs-card__title {
@@ -5808,6 +5803,7 @@ div.filter-case-studies__hero .hero-services h1 {
 
 .cs-card:hover .cs-card__excerpt {
   opacity: 1;
+  max-height: 100%;
 }
 
 .filter-case-studies__empty,
@@ -7859,8 +7855,8 @@ img.device-frame__device {
 
 .process-steps {
   position: relative;
-  padding-top: 4.5rem;
-  padding-bottom: 4.5rem;
+  padding-top: 2.25rem;
+  padding-bottom: 2.25rem;
 }
 @media screen and (min-width: 768px) {
   .process-steps {
@@ -7885,12 +7881,11 @@ img.device-frame__device {
 
 .process-steps .header-intro-block {
   paddding-bottom: 3rem;
-  border-bottom: 1px solid rgb(255, 255, 255);
-  margin-bottom: 0;
 }
 @media screen and (min-width: 768px) {
   .process-steps .header-intro-block {
     padding-bottom: 4rem;
+    border-bottom: 1px solid rgb(255, 255, 255);
   }
 }
 
@@ -7917,7 +7912,7 @@ img.device-frame__device {
 }
 
 .process-step {
-  padding: 2rem 0;
+  padding: 1.5rem 0;
 }
 @media screen and (min-width: 768px) {
   .process-step {
@@ -8013,7 +8008,7 @@ img.device-frame__device {
   gap: 10px;
   background: white;
   border-radius: 8px;
-  padding: 1.5rem;
+  padding: 1.25rem;
 }
 @media screen and (min-width: 768px) {
   .tag-cloud__tags {
@@ -8023,14 +8018,14 @@ img.device-frame__device {
 }
 
 .tag-cloud__tag-text {
-  font-size: 0.8rem;
-  line-height: 1.25rem;
+  font-size: 0.9rem;
+  line-height: 1.4rem;
   letter-spacing: 0.17px;
 }
 @media screen and (min-width: 768px) {
   .tag-cloud__tag-text {
-    font-size: 0.9rem;
-    line-height: 1.4rem;
+    font-size: 1rem;
+    line-height: 1.5rem;
   }
 }
 

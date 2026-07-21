@@ -8,8 +8,8 @@
 
 .awards-section {
     position: relative;
-    padding-top: $default-section-padding-top;
-    padding-bottom: $default-section-padding-bottom;
+    padding-top: $default-section-padding-top/2;
+    padding-bottom: $default-section-padding-bottom/2;
 
     @media screen and (min-width: $small-width) {
         padding-top: 5rem;
@@ -22,24 +22,6 @@
 }
 
 // ---- Header area (InnerBlocks: header-intro) ----
-.awards-section .awards-section__header {
-    margin-bottom: 2.5rem;
-
-    @media screen and (min-width: $small-width) {
-        margin-bottom: 3rem;
-    }
-}
-
-.awards-section .awards-section__header .header-intro-block {
-    margin-bottom: 0;
-}
-
-.awards-section .header-intro__left {
-    @media screen and (min-width: $small-width) {
-        flex: 0 0 100%;
-        max-width: 100%;
-    }
-}
 
 // ---- Swiper container ----
 .awards-section .awards-section__slider-wrap {

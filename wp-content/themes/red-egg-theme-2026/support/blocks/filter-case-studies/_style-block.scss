@@ -304,7 +304,7 @@ div.filter-case-studies__hero .hero-services h1 {
     max-height: 0;
     opacity: 0;
     overflow: hidden;
-    transition: max-height 0.4s ease, opacity 0.3s ease;
+    transition: max-height 0.3s ease, opacity 0.3s ease;
 }
 
 // Hover reveal
@@ -314,6 +314,7 @@ div.filter-case-studies__hero .hero-services h1 {
 
 .cs-card:hover .cs-card__excerpt {
     opacity: 1;
+    max-height: 100%;
 }
 
 // ---- Empty / Loading states ----

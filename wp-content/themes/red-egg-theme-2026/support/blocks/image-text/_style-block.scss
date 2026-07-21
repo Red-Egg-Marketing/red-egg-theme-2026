@@ -17,11 +17,11 @@
     width: 100%;
     position: relative;
     margin: 0 auto;
-    padding-top: $default-section-padding-top;
-    padding-bottom: $default-section-padding-bottom;
+    padding-top: $default-section-padding-top/2;
+    padding-bottom: $default-section-padding-bottom/2;
     @media screen and (min-width: $small-width) {
-        padding-top: 7rem;
-        padding-bottom: 7rem;
+        padding-top: 5rem;
+        padding-bottom: 5rem;
     }
 }
 

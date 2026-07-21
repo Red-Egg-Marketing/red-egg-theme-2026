@@ -14,8 +14,8 @@
 
 .case-studies-slider {
     position: relative;
-    padding-top: $default-section-padding-top;
-    padding-bottom: $default-section-padding-bottom;
+    padding-top: $default-section-padding-top/2;
+    padding-bottom: $default-section-padding-bottom/2;
     overflow: hidden;
 
     @media screen and (min-width: $small-width) {

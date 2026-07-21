@@ -26,6 +26,7 @@ body {
   line-height: 1.75rem;
   color: #424042;
   background-color: #FFFFFF;
+  overflow-x: clip;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -1729,6 +1730,7 @@ h3.post-card__title a:hover {
   border-color: #424042;
 }
 
+.site-content,
 .entry-content {
   font-family: "Figtree", sans-serif;
   font-weight: 300;
@@ -1737,17 +1739,32 @@ h3.post-card__title a:hover {
   color: #424042;
 }
 @media screen and (min-width: 768px) {
+  .site-content,
   .entry-content {
     font-size: 1.15rem;
     line-height: 1.75rem;
   }
 }
+.site-content,
 .entry-content {
   overflow: visible;
 }
+.site-content > p,
+.site-content > h2, .site-content > h3, .site-content > h4, .site-content > h5, .site-content > h6,
+.site-content > ul, .site-content > ol,
+.site-content > blockquote,
+.site-content > figure.wp-block-image,
+.site-content > figure.wp-block-table,
+.site-content > table,
+.site-content > hr.wp-block-separator,
 .entry-content > p,
-.entry-content > h2, .entry-content > h3, .entry-content > h4, .entry-content > h5, .entry-content > h6,
-.entry-content > ul, .entry-content > ol,
+.entry-content > h2,
+.entry-content > h3,
+.entry-content > h4,
+.entry-content > h5,
+.entry-content > h6,
+.entry-content > ul,
+.entry-content > ol,
 .entry-content > blockquote,
 .entry-content > figure.wp-block-image,
 .entry-content > figure.wp-block-table,
@@ -1757,6 +1774,11 @@ h3.post-card__title a:hover {
   margin-left: auto;
   margin-right: auto;
 }
+.site-content > h2,
+.site-content > h3,
+.site-content > h4,
+.site-content > h5,
+.site-content > h6,
 .entry-content > h2,
 .entry-content > h3,
 .entry-content > h4,
@@ -1765,6 +1787,11 @@ h3.post-card__title a:hover {
   margin-top: 2.5rem;
   margin-bottom: 1rem;
 }
+.site-content > h2:first-child,
+.site-content > h3:first-child,
+.site-content > h4:first-child,
+.site-content > h5:first-child,
+.site-content > h6:first-child,
 .entry-content > h2:first-child,
 .entry-content > h3:first-child,
 .entry-content > h4:first-child,
@@ -1772,6 +1799,7 @@ h3.post-card__title a:hover {
 .entry-content > h6:first-child {
   margin-top: 0;
 }
+.site-content h1,
 .entry-content h1 {
   font-family: "Poppins", sans-serif;
   font-weight: 700;
@@ -1781,12 +1809,14 @@ h3.post-card__title a:hover {
   color: #424042;
 }
 @media screen and (min-width: 768px) {
+  .site-content h1,
   .entry-content h1 {
     font-size: 3.125rem;
     line-height: 3.75rem;
     letter-spacing: 0.03125rem;
   }
 }
+.site-content h2,
 .entry-content h2 {
   font-family: "Poppins", sans-serif;
   font-weight: 700;
@@ -1796,11 +1826,13 @@ h3.post-card__title a:hover {
   color: #424042;
 }
 @media screen and (min-width: 768px) {
+  .site-content h2,
   .entry-content h2 {
     font-size: 2.3125rem;
     line-height: 2.9375rem;
   }
 }
+.site-content h3,
 .entry-content h3 {
   font-family: "Poppins", sans-serif;
   font-weight: 700;
@@ -1810,11 +1842,13 @@ h3.post-card__title a:hover {
   color: #424042;
 }
 @media screen and (min-width: 768px) {
+  .site-content h3,
   .entry-content h3 {
     font-size: 1.7625rem;
     line-height: 2.1875rem;
   }
 }
+.site-content h4,
 .entry-content h4 {
   font-family: "Poppins", sans-serif;
   font-weight: 500;
@@ -1823,14 +1857,17 @@ h3.post-card__title a:hover {
   color: #424042;
 }
 @media screen and (min-width: 768px) {
+  .site-content h4,
   .entry-content h4 {
     font-size: 1.15rem;
     line-height: 1.85rem;
   }
 }
+.site-content h4,
 .entry-content h4 {
   font-weight: 700;
 }
+.site-content h5,
 .entry-content h5 {
   font-family: "Poppins", sans-serif;
   font-weight: 700;
@@ -1840,6 +1877,7 @@ h3.post-card__title a:hover {
   text-transform: uppercase;
   color: #424042;
 }
+.site-content h6,
 .entry-content h6 {
   font-family: "Poppins", sans-serif;
   font-weight: 600;
@@ -1849,15 +1887,22 @@ h3.post-card__title a:hover {
   text-transform: uppercase;
   color: #424042;
 }
+.site-content > p,
 .entry-content > p {
   margin-bottom: 1.25rem;
 }
+.site-content > figure.wp-block-image,
 .entry-content > figure.wp-block-image {
   margin: 2rem auto;
 }
+.site-content > figure.wp-block-image img,
 .entry-content > figure.wp-block-image img {
   border-radius: 8px;
 }
+.site-content > ul,
+.site-content > ol,
+.site-content > ul.wp-block-list,
+.site-content > ol.wp-block-list,
 .entry-content > ul,
 .entry-content > ol,
 .entry-content > ul.wp-block-list,
@@ -1865,6 +1910,10 @@ h3.post-card__title a:hover {
   margin: 0 auto 1.25rem;
   padding: 0 0 0 1.25rem;
 }
+.site-content > ul li,
+.site-content > ol li,
+.site-content > ul.wp-block-list li,
+.site-content > ol.wp-block-list li,
 .entry-content > ul li,
 .entry-content > ol li,
 .entry-content > ul.wp-block-list li,
@@ -1872,6 +1921,14 @@ h3.post-card__title a:hover {
   margin-bottom: 0.5rem;
   padding-left: 0.35rem;
 }
+.site-content > ul ul,
+.site-content > ul ol,
+.site-content > ol ul,
+.site-content > ol ol,
+.site-content > ul.wp-block-list ul,
+.site-content > ul.wp-block-list ol,
+.site-content > ol.wp-block-list ul,
+.site-content > ol.wp-block-list ol,
 .entry-content > ul ul,
 .entry-content > ul ol,
 .entry-content > ol ul,
@@ -1882,24 +1939,34 @@ h3.post-card__title a:hover {
 .entry-content > ol.wp-block-list ol {
   margin: 0.5rem 0 0.5rem 1.25rem;
 }
+.site-content > ul,
+.site-content > ul.wp-block-list,
 .entry-content > ul,
 .entry-content > ul.wp-block-list {
   list-style: disc;
 }
+.site-content > ul li::marker,
+.site-content > ul.wp-block-list li::marker,
 .entry-content > ul li::marker,
 .entry-content > ul.wp-block-list li::marker {
   color: #424042;
 }
+.site-content > ol,
+.site-content > ol.wp-block-list,
 .entry-content > ol,
 .entry-content > ol.wp-block-list {
   list-style: decimal;
 }
+.site-content > ol li::marker,
+.site-content > ol.wp-block-list li::marker,
 .entry-content > ol li::marker,
 .entry-content > ol.wp-block-list li::marker {
   color: #DC2035;
   font-weight: 700;
   font-family: "Poppins", sans-serif;
 }
+.site-content > blockquote,
+.site-content > blockquote.wp-block-quote,
 .entry-content > blockquote,
 .entry-content > blockquote.wp-block-quote {
   margin: 2.5rem auto;
@@ -1909,23 +1976,31 @@ h3.post-card__title a:hover {
   font-weight: 500;
   color: #424042;
 }
+.site-content > blockquote p,
+.site-content > blockquote.wp-block-quote p,
 .entry-content > blockquote p,
 .entry-content > blockquote.wp-block-quote p {
   margin-bottom: 0.75rem;
   font-size: 1rem;
   line-height: 1.875rem;
 }
+.site-content > blockquote p:last-child,
+.site-content > blockquote.wp-block-quote p:last-child,
 .entry-content > blockquote p:last-child,
 .entry-content > blockquote.wp-block-quote p:last-child {
   margin-bottom: 0;
 }
 @media screen and (min-width: 768px) {
+  .site-content > blockquote p,
+  .site-content > blockquote.wp-block-quote p,
   .entry-content > blockquote p,
   .entry-content > blockquote.wp-block-quote p {
     font-size: 1.375rem;
     line-height: 2.125rem;
   }
 }
+.site-content > blockquote cite,
+.site-content > blockquote.wp-block-quote cite,
 .entry-content > blockquote cite,
 .entry-content > blockquote.wp-block-quote cite {
   display: block;
@@ -1936,17 +2011,25 @@ h3.post-card__title a:hover {
   font-size: 0.9375rem;
   color: rgba(66, 64, 66, 0.7);
 }
+.site-content > figure.wp-block-table,
+.site-content > table,
 .entry-content > figure.wp-block-table,
 .entry-content > table {
   margin: 2.5rem auto;
   overflow-x: auto;
 }
+.site-content > figure.wp-block-table table,
+.site-content > table,
 .entry-content > figure.wp-block-table table,
 .entry-content > table {
   width: 100%;
   border-collapse: collapse;
   font-family: "Figtree", sans-serif;
 }
+.site-content > figure.wp-block-table table th,
+.site-content > figure.wp-block-table table td,
+.site-content > table th,
+.site-content > table td,
 .entry-content > figure.wp-block-table table th,
 .entry-content > figure.wp-block-table table td,
 .entry-content > table th,
@@ -1956,6 +2039,8 @@ h3.post-card__title a:hover {
   text-align: left;
   vertical-align: top;
 }
+.site-content > figure.wp-block-table table thead th,
+.site-content > table thead th,
 .entry-content > figure.wp-block-table table thead th,
 .entry-content > table thead th {
   background-color: #F68633;
@@ -1967,11 +2052,14 @@ h3.post-card__title a:hover {
   text-transform: uppercase;
 }
 @media screen and (min-width: 768px) {
+  .site-content > figure.wp-block-table table thead th,
+  .site-content > table thead th,
   .entry-content > figure.wp-block-table table thead th,
   .entry-content > table thead th {
     font-size: 1.375rem;
   }
 }
+.site-content > hr.wp-block-separator,
 .entry-content > hr.wp-block-separator {
   margin: 3rem auto;
   border: 0;
@@ -4308,6 +4396,8 @@ div.gs-team-popup--default .mfp-close {
 
 .numbered-list__item-content {
   flex: 0 100%;
+  display: flex;
+  flex-wrap: wrap;
   min-width: 0;
 }
 @media screen and (min-width: 768px) {
@@ -4397,8 +4487,8 @@ div.gs-team-popup--default .mfp-close {
 
 .case-studies-slider {
   position: relative;
-  padding-top: 4.5rem;
-  padding-bottom: 4.5rem;
+  padding-top: 2.25rem;
+  padding-bottom: 2.25rem;
   overflow: hidden;
 }
 @media screen and (min-width: 768px) {
@@ -4860,8 +4950,8 @@ div.gs-team-popup--default .mfp-close {
 
 .testimonials-block {
   position: relative;
-  padding-top: 4.5rem;
-  padding-bottom: 4.5rem;
+  padding-top: 2.25rem;
+  padding-bottom: 2.25rem;
   overflow: hidden;
 }
 @media screen and (min-width: 768px) {
@@ -5001,7 +5091,8 @@ div.gs-team-popup--default .mfp-close {
   }
 }
 .testimonial-card__text {
-  font-size: 18px;
+  font-size: 17px;
+  line-height: 23px;
   color: #424042;
   font-weight: 400;
   margin: 0 0 1.75rem 0;
@@ -5009,6 +5100,7 @@ div.gs-team-popup--default .mfp-close {
 @media screen and (min-width: 768px) {
   .testimonial-card__text {
     font-size: 20px;
+    line-height: 26px;
   }
 }
 
@@ -5039,15 +5131,27 @@ div.gs-team-popup--default .mfp-close {
 .testimonial-card__name {
   font-family: "Poppins", sans-serif;
   font-weight: 500;
-  font-size: 1.25rem;
+  font-size: 1rem;
+  line-height: 1.25rem;
   color: #424042;
-  margin: 0 0 0.25rem 0;
+  margin: 0;
+}
+@media screen and (min-width: 768px) {
+  .testimonial-card__name {
+    font-size: 1.25rem;
+    line-height: 1.5rem;
+  }
 }
 
 .testimonial-card__company {
   font-family: "Figtree", sans-serif;
-  font-size: 1rem;
+  font-size: 0.85rem;
   color: #424042;
+}
+@media screen and (min-width: 768px) {
+  .testimonial-card__company {
+    font-size: 1rem;
+  }
 }
 
 .testimonials-slider {
@@ -5141,8 +5245,6 @@ div.gs-team-popup--default .mfp-close {
 }
 .insights-block > .block-wrapper {
   position: relative;
-  padding-top: 2.5rem;
-  padding-bottom: 2.5rem;
 }
 @media screen and (min-width: 768px) {
   .insights-block > .block-wrapper {
@@ -6071,13 +6173,13 @@ div.gform_wrapper.gravity-theme .gform_page_footer {
   width: 100%;
   position: relative;
   margin: 0 auto;
-  padding-top: 4.5rem;
-  padding-bottom: 4.5rem;
+  padding-top: 2.25rem;
+  padding-bottom: 2.25rem;
 }
 @media screen and (min-width: 768px) {
   .image-columns {
-    padding-top: 7rem;
-    padding-bottom: 7rem;
+    padding-top: 5rem;
+    padding-bottom: 5rem;
   }
 }
 
@@ -7005,8 +7107,8 @@ div.gform_wrapper.gravity-theme .gform_page_footer {
 
 .awards-section {
   position: relative;
-  padding-top: 4.5rem;
-  padding-bottom: 4.5rem;
+  padding-top: 2.25rem;
+  padding-bottom: 2.25rem;
 }
 @media screen and (min-width: 768px) {
   .awards-section {
@@ -7026,26 +7128,6 @@ div.gform_wrapper.gravity-theme .gform_page_footer {
   .awards-section > .block-wrapper {
     padding-left: 2.5rem;
     padding-right: 2.5rem;
-  }
-}
-
-.awards-section .awards-section__header {
-  margin-bottom: 2.5rem;
-}
-@media screen and (min-width: 768px) {
-  .awards-section .awards-section__header {
-    margin-bottom: 3rem;
-  }
-}
-
-.awards-section .awards-section__header .header-intro-block {
-  margin-bottom: 0;
-}
-
-@media screen and (min-width: 768px) {
-  .awards-section .header-intro__left {
-    flex: 0 0 100%;
-    max-width: 100%;
   }
 }
 
@@ -7790,8 +7872,8 @@ div.gform_wrapper.gravity-theme .gform_page_footer {
 
 .service-list {
   position: relative;
-  padding-top: 4.5rem;
-  padding-bottom: 4.5rem;
+  padding-top: 2.25rem;
+  padding-bottom: 2.25rem;
 }
 @media screen and (min-width: 768px) {
   .service-list {
@@ -8399,7 +8481,7 @@ div.filter-case-studies__hero .hero-services h1 {
   max-height: 0;
   opacity: 0;
   overflow: hidden;
-  transition: max-height 0.4s ease, opacity 0.3s ease;
+  transition: max-height 0.3s ease, opacity 0.3s ease;
 }
 
 .cs-card:hover .cs-card__title {
@@ -8408,6 +8490,7 @@ div.filter-case-studies__hero .hero-services h1 {
 
 .cs-card:hover .cs-card__excerpt {
   opacity: 1;
+  max-height: 100%;
 }
 
 .filter-case-studies__empty,
@@ -10459,8 +10542,8 @@ img.device-frame__device {
 
 .process-steps {
   position: relative;
-  padding-top: 4.5rem;
-  padding-bottom: 4.5rem;
+  padding-top: 2.25rem;
+  padding-bottom: 2.25rem;
 }
 @media screen and (min-width: 768px) {
   .process-steps {
@@ -10485,12 +10568,11 @@ img.device-frame__device {
 
 .process-steps .header-intro-block {
   paddding-bottom: 3rem;
-  border-bottom: 1px solid rgb(255, 255, 255);
-  margin-bottom: 0;
 }
 @media screen and (min-width: 768px) {
   .process-steps .header-intro-block {
     padding-bottom: 4rem;
+    border-bottom: 1px solid rgb(255, 255, 255);
   }
 }
 
@@ -10517,7 +10599,7 @@ img.device-frame__device {
 }
 
 .process-step {
-  padding: 2rem 0;
+  padding: 1.5rem 0;
 }
 @media screen and (min-width: 768px) {
   .process-step {
@@ -10613,7 +10695,7 @@ img.device-frame__device {
   gap: 10px;
   background: white;
   border-radius: 8px;
-  padding: 1.5rem;
+  padding: 1.25rem;
 }
 @media screen and (min-width: 768px) {
   .tag-cloud__tags {
@@ -10623,14 +10705,14 @@ img.device-frame__device {
 }
 
 .tag-cloud__tag-text {
-  font-size: 0.8rem;
-  line-height: 1.25rem;
+  font-size: 0.9rem;
+  line-height: 1.4rem;
   letter-spacing: 0.17px;
 }
 @media screen and (min-width: 768px) {
   .tag-cloud__tag-text {
-    font-size: 0.9rem;
-    line-height: 1.4rem;
+    font-size: 1rem;
+    line-height: 1.5rem;
   }
 }
 
