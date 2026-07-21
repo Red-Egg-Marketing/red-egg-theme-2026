@@ -72,8 +72,8 @@ $service-hover-light: ('white', 'eggshell', 'peach', 'gold', 'purple');
     width: 25px;
     height: 25px;
     @media screen and (min-width: $small-width) {
-        width: 44px;
-        height: 44px;
+        width: 35px;
+        height: 35px;
     }
 }
 
@@ -157,7 +157,7 @@ $service-hover-light: ('white', 'eggshell', 'peach', 'gold', 'purple');
         align-items: center;
         justify-content: center;
         flex: 0 0 auto;
-        padding: 0 1.5rem;
+        padding: 0 2.5rem 0 0;
     }
     svg {
         transition-property: transform;

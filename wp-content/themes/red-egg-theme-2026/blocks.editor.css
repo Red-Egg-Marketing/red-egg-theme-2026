@@ -5358,8 +5358,8 @@ div.gform_wrapper.gravity-theme .gform_page_footer {
 }
 @media screen and (min-width: 768px) {
   .service-list-item__arrow svg {
-    width: 44px;
-    height: 44px;
+    width: 35px;
+    height: 35px;
   }
 }
 
@@ -5447,7 +5447,7 @@ div.gform_wrapper.gravity-theme .gform_page_footer {
     align-items: center;
     justify-content: center;
     flex: 0 0 auto;
-    padding: 0 1.5rem;
+    padding: 0 2.5rem 0 0;
   }
 }
 .service-list-item__arrow svg {
