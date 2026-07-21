@@ -70,9 +70,9 @@
 .color-palette-block > .block-wrapper .color-swatch:nth-child(2),
 .color-palette-block > .block-wrapper .color-swatch:nth-child(3) {
     @media screen and (min-width: $small-width) {
-        width: calc(50% - 1.3rem);
-        margin-right: 2.6rem;
-        margin-bottom: 2.6rem;
+        width: calc(50% - 1rem);
+        margin-right: 2rem;
+        margin-bottom: 2rem;
     }
 }
 
@@ -84,14 +84,14 @@
 
 .color-palette-block > .block-wrapper .color-swatch:nth-child(n+3) {
     @media screen and (max-width: $small-width - 1px) {
-        width: calc(50% - 1rem);
+        width: calc(50% - 0.75rem);
     }
 }
 
 
 .color-palette-block > .block-wrapper .color-swatch:nth-child(2n+1) {
       @media screen and (max-width: $small-width - 1px) {
-        margin-right: 2rem;
+        margin-right: 1.5rem;
       }
 }
 
@@ -110,7 +110,7 @@
 
 .color-palette-block > .block-wrapper .color-swatch {
      @media screen and (max-width: $small-width - 1px) {
-        margin-bottom: 2rem;
+        margin-bottom: 1.5rem;
      }
 }
 
@@ -122,9 +122,9 @@
 
 .color-palette-block > .block-wrapper .color-swatch:nth-child(n+4) {
     @media screen and (min-width: $small-width) {
-        width: calc(33.333% - 1.7333rem);
-        margin-right: 2.6rem;
-        margin-bottom: 2.6rem;
+        width: calc(33.333% - 1.333rem);
+        margin-right: 2rem;
+        margin-bottom: 2rem;
     }
 }
 
@@ -212,10 +212,10 @@
 .color-palette-block .header-single {
     flex: 0 0 100%;
     max-width: 100%;
-    margin-bottom: 25px;
+    margin-bottom: 1.5rem;
 
     @media screen and (min-width: $small-width) {
-        margin-bottom: 35px;
+        margin-bottom: 2rem;
     }
 }
 

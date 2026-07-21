@@ -145,10 +145,21 @@
     margin: 0 0 0.5rem 0;
 }
 
-h3.post-card__title {
-    @include primary-h3;
+.post-card h3.post-card__title {
     margin: 0 0 0.75rem 0;
-
+    font-family: $font-head;
+    font-weight: 700;
+    font-size: 1.1rem;
+    line-height: 1.55rem;
+    letter-spacing: 0.12px;
+    color: $gray;
+    margin: 0;
+    @media screen and (min-width: $small-width) {
+        font-size: 1.25rem;
+        line-height: 1.75rem;
+        letter-spacing: 0.18px;
+        margin-bottom: 1rem;
+    }
     a {
         color: $gray;
         text-decoration: none;

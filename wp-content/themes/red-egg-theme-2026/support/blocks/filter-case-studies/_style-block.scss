@@ -304,32 +304,44 @@ div.filter-case-studies__hero .hero-services h1 {
 
 
 .cs-card__content {
-    padding: 1.25rem 1.5rem;
+    padding: 1rem 1.15rem;
     position: relative;
     overflow: hidden;
+    @media screen and (min-width: $small-width) {
+        padding: 1.25rem 1.5rem;
+    }
 }
 
 .cs-card h3.cs-card__title {
     font-family: $font-head;
     font-weight: 700;
-    font-size: 1.25rem;
-    line-height: 1.75rem;
-    letter-spacing: 0.18px;
+    font-size: 1.1rem;
+    line-height: 1.55rem;
+    letter-spacing: 0.12px;
     color: $gray;
     margin: 0;
+    @media screen and (min-width: $small-width) {
+        font-size: 1.25rem;
+        line-height: 1.75rem;
+        letter-spacing: 0.18px
+    }
 }
 
 .cs-card__excerpt {
     font-family: $font-body;
     font-weight: 300;
-    font-size: 1.125rem;
-    line-height: 1.75rem;
+    font-size: 1rem;
+    line-height: 1.4rem;
     color: $gray;
     margin: 0.5rem 0 0 0;
     max-height: 0;
     opacity: 0;
     overflow: visible;
     transition: max-height 0.35s ease, opacity 0.3s ease;
+    @media screen and (min-width: $small-width) {
+        font-size: 1.125rem;
+        line-height: 1.75rem;
+    }
 }
 
 // Hover reveal: the image above gives up 15% of the card's own width
