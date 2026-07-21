@@ -81,6 +81,15 @@ $service-hover-light: ('white', 'eggshell', 'peach', 'gold', 'purple');
     color: white;
 }
 
+.service-list .service-list-item .service-list-item__title {
+    font-size: 1.25rem;
+    line-height: 1.4rem;
+    @media screen and (min-width: $small-width) {
+        font-size: 1.35rem;
+        line-height: 1.5rem;
+    }
+}
+
 // ---- Link wrapper ----
 .service-list-item__link {
     display: block;
