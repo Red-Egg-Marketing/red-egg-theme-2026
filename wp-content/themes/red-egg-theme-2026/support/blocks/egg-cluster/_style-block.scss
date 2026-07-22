@@ -58,6 +58,14 @@
     transition: opacity 0.35s ease;
 }
 
+// During the intro sequence the notes fire as fast as 125ms, so the
+// leisurely 0.35s hover fade can't keep up -- use a snappy fade for
+// the .is-popping (sequence-driven) state specifically. Hover and the
+// resting-red hold keep the smooth 0.35s crossfade above.
+.egg-cluster__egg.is-popping .egg-cluster__layer--red {
+    transition: opacity 0.08s ease;
+}
+
 // Hover reveal (per egg, independent) + JS-driven intro "pop"
 // + persistent resting-red state (one egg stays red after the intro)
 .egg-cluster__egg:hover .egg-cluster__layer--red,
