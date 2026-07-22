@@ -1023,7 +1023,7 @@ body.mega-open {
   transition: opacity 0.2s ease;
 }
 .site-footer__social a:hover {
-  opacity: 0.75;
+  color: #DC2035;
 }
 
 .site-footer__newsletter-note {

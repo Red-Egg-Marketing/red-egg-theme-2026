@@ -249,7 +249,7 @@
         transition: opacity 0.2s ease;
 
         &:hover {
-            opacity: 0.75;
+            color: $red;
         }
     }
 }
