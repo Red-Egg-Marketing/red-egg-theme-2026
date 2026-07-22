@@ -121,34 +121,43 @@
 
     // Flex the form so the field body (email) and footer (submit) sit
     // on one inline row -- they're separate <div> siblings in legacy
-    // markup, so this is what pulls them together into the pill.
+    // markup. GF's own formsmain.css competes here, so widths are set
+    // explicitly and the input forced to fill rather than relying on
+    // flex-grow alone (which GF's text-align/float rules can zero out).
     form {
-        display: flex;
+        display: flex !important;
         align-items: stretch;
         max-width: 100%;
         margin: 0;
     }
 
     .gform_body {
-        flex: 1;
+        flex: 1 1 auto;
+        width: auto;
         min-width: 0;
     }
 
     .gform_footer {
-        flex-shrink: 0;
-        margin: 0;
-        padding: 0;
+        flex: 0 0 auto;
+        width: auto !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        clear: none !important;
     }
 
     .gform_fields {
         display: block;
+        width: 100%;
         margin: 0;
         padding: 0;
         list-style: none;
     }
 
     .gfield {
-        margin: 0;
+        width: 100%;
+        max-width: 100%;
+        margin: 0 !important;
+        padding: 0 !important;
     }
 
     // Hide the honeypot + invisible CAPTCHA fields (present in the
@@ -165,12 +174,13 @@
     }
 
     .ginput_container {
+        width: 100%;
         margin: 0;
     }
 
     input[type="email"],
     input[type="text"] {
-        width: 100%;
+        width: 100% !important;
         background: $white;
         border: none;
         border-radius: 5px 0 0 5px;
