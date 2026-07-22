@@ -8,16 +8,30 @@
 
 const { Fragment } = wp.element;
 const { InspectorControls, MediaUpload, useBlockProps } = wp.blockEditor;
-const { PanelBody, Button, SelectControl, ResponsiveWrapper } = wp.components;
+const { PanelBody, Button, SelectControl, RangeControl, ResponsiveWrapper } = wp.components;
 const { __ } = wp.i18n;
 
 const mediaOptions = [
     { label: __( 'Image / SVG', 'red-egg' ), value: 'image' },
     { label: __( 'Video', 'red-egg' ), value: 'video' },
+    { label: __( 'Egg Cluster', 'red-egg' ), value: 'eggs' },
 ];
 
+const renderEggs = ( count ) => {
+    const eggs = [];
+    for ( let i = 1; i <= count; i++ ) {
+        eggs.push(
+            <span className={ 'egg-cluster__egg egg-cluster__egg--' + i } key={ i }>
+                <span className="egg-cluster__layer egg-cluster__layer--white"></span>
+                <span className="egg-cluster__layer egg-cluster__layer--red"></span>
+            </span>
+        );
+    }
+    return eggs;
+};
+
 const EditHeroMedia = ( { attributes, setAttributes } ) => {
-    const { mediaType, media, videoID, videoURL, videothumb } = attributes;
+    const { mediaType, media, videoID, videoURL, videothumb, eggCount, eggTouchBehavior } = attributes;
 
     const blockProps = useBlockProps( {
         className: 'hero-background__media',
@@ -76,6 +90,31 @@ const EditHeroMedia = ( { attributes, setAttributes } ) => {
                         onChange={ ( val ) => setAttributes( { mediaType: val } ) }
                     />
                 </PanelBody>
+
+                { mediaType === 'eggs' && (
+                    <PanelBody
+                        title={ __( 'Egg Cluster', 'red-egg' ) }
+                        initialOpen={ true }
+                    >
+                        <RangeControl
+                            label={ __( 'Number of Eggs', 'red-egg' ) }
+                            value={ eggCount }
+                            onChange={ ( val ) => setAttributes( { eggCount: val } ) }
+                            min={ 1 }
+                            max={ 6 }
+                        />
+                        <SelectControl
+                            label={ __( 'Touch / No-Hover Behavior', 'red-egg' ) }
+                            help={ __( 'What the eggs do on touch devices where there is no hover.', 'red-egg' ) }
+                            value={ eggTouchBehavior }
+                            options={ [
+                                { label: __( 'Stay white', 'red-egg' ), value: 'stay-white' },
+                                { label: __( 'Auto-cycle red', 'red-egg' ), value: 'auto-cycle' },
+                            ] }
+                            onChange={ ( val ) => setAttributes( { eggTouchBehavior: val } ) }
+                        />
+                    </PanelBody>
+                ) }
 
                 { mediaType === 'video' && (
                     <PanelBody
@@ -182,6 +221,11 @@ const EditHeroMedia = ( { attributes, setAttributes } ) => {
                             </video>
                         ) }
                     </Fragment>
+                ) }
+                { mediaType === 'eggs' && (
+                    <div className={ 'egg-cluster egg-cluster--count-' + eggCount }>
+                        { renderEggs( eggCount ) }
+                    </div>
                 ) }
             </div>
         </Fragment>

@@ -47,6 +47,14 @@ registerBlockType( 'red-egg-block/hero-media', {
                 height: '',
             },
         },
+        eggCount: {
+            type: 'number',
+            default: 4,
+        },
+        eggTouchBehavior: {
+            type: 'string',
+            default: 'stay-white',
+        },
     },
     edit,
     save,
