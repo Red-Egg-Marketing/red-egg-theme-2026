@@ -30,23 +30,30 @@
     }
 }
 
-// ---- Column: Info (Logo + Contact) ----
+// ---- Column: Logo ----
+.site-footer__col--logo {
+    @media screen and (min-width: $small-width) {
+        width: 18%;
+        flex-shrink: 0;
+    }
+}
+
+// ---- Column: Contact ----
 .site-footer__col--info {
     @media screen and (min-width: $small-width) {
-        width: 30%;
+        width: 24%;
     }
 }
 
 .site-footer__logo {
     display: inline-block;
-    margin-bottom: 1.5rem;
 
     img {
-        height: 50px;
+        height: 44px;
         width: auto;
 
         @media screen and (min-width: $small-width) {
-            height: 71px;
+            height: 56px;
         }
     }
 }
@@ -67,7 +74,7 @@
 
         a {
             color: $white;
-            text-decoration: underline;
+            text-decoration: none;
 
             &:hover {
                 color: $peach;
@@ -76,10 +83,15 @@
     }
 }
 
+// Email is the one underlined contact link in the design
+.site-footer__email {
+    text-decoration: underline !important;
+}
+
 // ---- Column: Newsletter ----
 .site-footer__col--newsletter {
     @media screen and (min-width: $small-width) {
-        width: 35%;
+        width: 30%;
     }
 }
 
@@ -94,47 +106,91 @@
 }
 
 .site-footer__newsletter-form {
-    display: flex;
     margin-bottom: 1.5rem;
 }
 
-.site-footer__newsletter-input {
-    flex: 1;
-    background: $white;
-    border: none;
-    border-radius: 5px 0 0 5px;
-    padding: 0 1rem;
-    height: 50px;
-    font-family: $font-body;
-    font-weight: 300;
-    font-size: 1.25rem;
-    line-height: 1.875rem;
-    color: $gray;
-    outline: none;
-
-    &::placeholder {
-        color: $gray;
-        opacity: 0.6;
+// The newsletter is a Gravity Form; reuse the original inline email +
+// red SUBMIT pill styling, retargeted at GF's actual output. Scoped
+// to the footer so it doesn't affect Gravity Forms elsewhere.
+.site-footer__newsletter-form {
+    .gform_wrapper {
+        margin: 0;
     }
-}
 
-.site-footer__newsletter-submit {
-    background: $red;
-    color: $white;
-    border: none;
-    border-radius: 0 5px 5px 0;
-    padding: 0 1.5rem;
-    height: 50px;
-    font-family: $font-head;
-    font-weight: 500;
-    font-size: 1.0625rem;
-    letter-spacing: 0.02rem;
-    cursor: pointer;
-    transition: background-color 0.2s ease;
-    white-space: nowrap;
+    .gform_fields {
+        display: block;
+        margin: 0;
+        padding: 0;
+        grid-template-columns: none;
+    }
 
-    &:hover {
-        background: darken($red, 8%);
+    .gfield {
+        margin: 0;
+    }
+
+    // Hide labels/descriptions; the placeholder carries the intent
+    .gfield_label,
+    .gfield_description,
+    .gform_required_legend {
+        display: none;
+    }
+
+    // Inline row: email input + submit button as one pill
+    .gform_body,
+    .gform_footer {
+        display: inline-block;
+        vertical-align: top;
+        margin: 0;
+        padding: 0;
+    }
+
+    input[type="email"],
+    input[type="text"] {
+        background: $white;
+        border: none;
+        border-radius: 5px 0 0 5px;
+        padding: 0 1rem;
+        height: 50px;
+        font-family: $font-body;
+        font-weight: 300;
+        font-size: 1.25rem;
+        line-height: 1.875rem;
+        color: $gray;
+        outline: none;
+        box-sizing: border-box;
+
+        &::placeholder {
+            color: $gray;
+            opacity: 0.6;
+        }
+    }
+
+    .gform_footer button,
+    .gform_footer input[type="submit"] {
+        background: $red;
+        color: $white;
+        border: none;
+        border-radius: 0 5px 5px 0;
+        padding: 0 1.5rem;
+        height: 50px;
+        font-family: $font-head;
+        font-weight: 500;
+        font-size: 1.0625rem;
+        letter-spacing: 0.02rem;
+        text-transform: uppercase;
+        cursor: pointer;
+        transition: background-color 0.2s ease;
+        white-space: nowrap;
+
+        &:hover {
+            background: darken($red, 8%);
+        }
+    }
+
+    .gform_validation_errors,
+    .validation_message {
+        font-size: 0.85rem;
+        color: $white;
     }
 }
 

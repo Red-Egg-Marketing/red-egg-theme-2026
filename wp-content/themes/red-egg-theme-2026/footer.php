@@ -23,6 +23,7 @@ $re_get = function ( $key, $default = '' ) use ( $re_has_acf ) {
 };
 
 $re_name        = $re_get( 'business_name', 'Red Egg Marketing' );
+$re_email       = $re_get( 'business_email', 'hello@redeggmarketing.com' );
 $re_phone       = $re_get( 'business_phone', '720.513.5035' );
 $re_street      = $re_get( 'business_street', '4045 Pecos Street, Suite 180' );
 $re_city        = $re_get( 'business_city', 'Denver' );
@@ -46,19 +47,19 @@ $re_phone_href = preg_replace( '/[^0-9+]/', '', $re_phone );
             <div class="block-wrapper">
                 <div class="site-footer__grid">
 
-                    <!-- Column 1: Logo + Contact Info -->
-                    <div class="site-footer__col site-footer__col--info">
+                    <!-- Column 1: Logo -->
+                    <div class="site-footer__col site-footer__col--logo">
                         <a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="site-footer__logo" aria-label="<?php echo esc_attr( get_bloginfo( 'name' ) ); ?>">
                             <img src="<?php echo esc_url( get_template_directory_uri() . '/img/red-egg-footer-logo.svg' ); ?>" alt="<?php echo esc_attr( get_bloginfo( 'name' ) ); ?>" />
                         </a>
+                    </div><!-- .site-footer__col--logo -->
+
+                    <!-- Column 2: Contact Info -->
+                    <div class="site-footer__col site-footer__col--info">
                         <div class="site-footer__contact">
-                            <?php if ( $re_name ) : ?>
-                                <p class="site-footer__name"><?php echo esc_html( $re_name ); ?></p>
-                            <?php endif; ?>
-                            <?php if ( $re_street || $re_city ) : ?>
+                            <?php if ( $re_email ) : ?>
                                 <p>
-                                    <?php echo esc_html( $re_street ); ?><br />
-                                    <?php echo esc_html( trim( $re_city . ', ' . $re_state . ' ' . $re_zip ) ); ?>
+                                    <a href="mailto:<?php echo esc_attr( $re_email ); ?>" class="site-footer__email"><?php echo esc_html( $re_email ); ?></a>
                                 </p>
                             <?php endif; ?>
                             <?php if ( $re_phone ) : ?>
@@ -66,10 +67,16 @@ $re_phone_href = preg_replace( '/[^0-9+]/', '', $re_phone );
                                     <a href="tel:<?php echo esc_attr( $re_phone_href ); ?>"><?php echo esc_html( $re_phone ); ?></a>
                                 </p>
                             <?php endif; ?>
+                            <?php if ( $re_street || $re_city ) : ?>
+                                <p>
+                                    <?php echo esc_html( $re_street ); ?><br />
+                                    <?php echo esc_html( trim( $re_city . ', ' . $re_state . ' ' . $re_zip ) ); ?>
+                                </p>
+                            <?php endif; ?>
                         </div><!-- .site-footer__contact -->
                     </div><!-- .site-footer__col--info -->
 
-                    <!-- Column 2: Newsletter Signup -->
+                    <!-- Column 3: Newsletter Signup + Social -->
                     <div class="site-footer__col site-footer__col--newsletter">
                         <?php if ( $re_news_heading ) : ?>
                             <p class="site-footer__newsletter-heading"><?php echo esc_html( $re_news_heading ); ?></p>
@@ -132,7 +139,7 @@ $re_phone_href = preg_replace( '/[^0-9+]/', '', $re_phone );
                         <?php endif; ?>
                     </div><!-- .site-footer__col--newsletter -->
 
-                    <!-- Column 3: Footer Nav -->
+                    <!-- Column 4: Footer Nav -->
                     <div class="site-footer__col site-footer__col--nav">
                         <?php
                         wp_nav_menu( [
