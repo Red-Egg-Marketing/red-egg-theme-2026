@@ -83,6 +83,27 @@
         loader.classList.remove( 'is-visible' );
     }
 
+    // Hard-navigate to a URL, guaranteeing a full document load even
+    // when only the hash differs from the current page. Setting
+    // location.href to a same-path #hash target does NOT reload (the
+    // browser just scrolls) -- but swup has already been destroyed by
+    // the bailout, so without a real reload the page is left
+    // half-initialized and the loader spins forever.
+    //
+    // Approach: update the address bar to the target (so the hash is
+    // present), then call reload(), which re-requests whatever is
+    // currently in the address bar -- hash included -- regardless of
+    // whether the pathname changed. This is reliable for both the
+    // same-page hash case and cross-page links.
+    function hardReload( target ) {
+        try {
+            window.history.replaceState( null, '', target );
+        } catch ( e ) {
+            window.location.hash = ( target.split( '#' )[ 1 ] || '' );
+        }
+        window.location.reload();
+    }
+
     // visit:start fires when a navigation begins; page:view when the
     // new content is in. If the gap exceeds LOADER_DELAY the loader
     // shows; otherwise the timer is cleared before it ever appears.
@@ -104,12 +125,9 @@
         var html = args && args.page ? args.page.html : '';
         var hasForm = /gform_wrapper|gform_fields/.test( html );
         if ( hasForm && typeof window.gform === 'undefined' ) {
+            hideLoader();
             swup.destroy();
-            // visit.to.url is the pathname only -- swup keeps the
-            // fragment in visit.to.hash. Re-append it so a cross-page
-            // hash link (e.g. /about/#team) isn't stripped on the
-            // hard-reload fallback.
-            window.location.href = visit.to.url + ( visit.to.hash || '' );
+            hardReload( visit.to.url + ( visit.to.hash || '' ) );
         }
     } );
 
@@ -126,8 +144,9 @@
         var html = args && args.page ? args.page.html : '';
         var hasGsTeam = /gs_team_popup|gs_member_info|single-member-div/.test( html );
         if ( hasGsTeam ) {
+            hideLoader();
             swup.destroy();
-            window.location.href = visit.to.url + ( visit.to.hash || '' );
+            hardReload( visit.to.url + ( visit.to.hash || '' ) );
         }
     } );
 
