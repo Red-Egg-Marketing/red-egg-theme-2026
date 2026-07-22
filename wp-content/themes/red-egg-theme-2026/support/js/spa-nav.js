@@ -48,6 +48,18 @@
         } ) );
     }
 
+    if ( typeof SwupHeadPlugin !== 'undefined' ) {
+        // Syncs <head> on each swap so page-conditional stylesheets/
+        // scripts (Gravity Forms CSS, etc.) that weren't on the first
+        // page still load when navigating to a page that needs them.
+        // persistAssets keeps orphaned link/style/script tags rather
+        // than removing them -- once a third-party stylesheet loads it
+        // stays, avoiding churn when navigating away and back.
+        plugins.push( new SwupHeadPlugin( {
+            persistAssets: true,
+        } ) );
+    }
+
     var swup = new Swup( {
         containers: [ '#content' ],
         plugins: plugins,
