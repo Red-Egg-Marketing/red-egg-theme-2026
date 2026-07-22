@@ -7,11 +7,12 @@
  * Cards show image + title, with hover revealing excerpt.
  */
 
-if ( typeof wp !== 'undefined' && wp.element && document.getElementById( 'FilterCaseStudiesRoot' ) ) {
+import { onPageView } from '../../js/lifecycle';
+
+if ( typeof wp !== 'undefined' && wp.element ) {
 
 const { render, Fragment, useState, useEffect } = wp.element;
 
-const RootElement = document.getElementById( 'FilterCaseStudiesRoot' );
 const apiUrl = '/red-egg/v2/case-studies';
 
 /**
@@ -87,11 +88,13 @@ const CaseStudyCard = ( { resource } ) => {
             <a className="cs-card__link" href={ resource.link || '#' }>
                 { resource.media_url && (
                     <div className="cs-card__image">
-                        <img
-                            src={ resource.media_url }
-                            alt={ resource.post_title || '' }
-                            loading="lazy"
-                        />
+                        <div className="cs-card__image-inner">
+                            <img
+                                src={ resource.media_url }
+                                alt={ resource.post_title || '' }
+                                loading="lazy"
+                            />
+                        </div>
                     </div>
                 ) }
                 <div className="cs-card__content">
@@ -288,8 +291,13 @@ const FilterCaseStudiesFrontend = () => {
     );
 };
 
-if ( RootElement ) {
-    render( <FilterCaseStudiesFrontend />, RootElement );
+function initFilterCaseStudies() {
+    const root = document.getElementById( 'FilterCaseStudiesRoot' );
+    if ( ! root || root.dataset.reMounted ) return;
+    root.dataset.reMounted = '1';
+    render( <FilterCaseStudiesFrontend />, root );
 }
+
+onPageView( initFilterCaseStudies );
 
 } // end wp check

@@ -17,11 +17,11 @@
     width: 100%;
     position: relative;
     margin: 0 auto;
-    padding-top: $default-section-padding-top;
-    padding-bottom: $default-section-padding-bottom;
+    padding-top: $default-section-padding-top/2;
+    padding-bottom: $default-section-padding-bottom/2;
     @media screen and (min-width: $small-width) {
-        padding-top: 7rem;
-        padding-bottom: 7rem;
+        padding-top: 5rem;
+        padding-bottom: 5rem;
     }
 }
 
@@ -38,10 +38,6 @@
     display: flex;
     flex-wrap: wrap;
     align-items: flex-start;
-    padding-bottom: 3rem;
-     @media screen and (min-width: $small-width) {
-        padding-bottom: 5rem;
-     }
 }
 
 // ---- Image column ----
@@ -150,6 +146,23 @@
     }
 }
 
+// ---- Mobile stacking order ----
+// Independent of desktop img-left/img-right: controls which column
+// appears first when the columns collapse to a single stack below
+// $small-width. Desktop layout (handled by img-right above) is
+// untouched since this is scoped to max-width.
+@media screen and (max-width: #{$small-width - 1px}) {
+    .image-columns.stack-text-first .image-col {
+        order: 2;
+        margin-top: 2rem;
+    }
+
+    .image-columns.stack-text-first .content-columns {
+        order: 1;
+        margin-top: 0;
+    }
+}
+
 .image-columns.img-right .content-columns {
     order: 2;
     margin-top: 2rem;
@@ -160,6 +173,10 @@
         padding-right: 2.5rem;
         margin-top: 0;
     }
+}
+
+.image-columns.stack-text-first.img-right .content-columns {
+    order: 1;
 }
 
 // ---- Video ----
@@ -198,6 +215,44 @@
 
 .playing .custom-video-button {
     display: none;
+}
+
+// ---- Mute toggle ----
+.custom-video-mute {
+    position: absolute;
+    bottom: 16px;
+    right: 16px;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    border: none;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.5);
+    color: $white;
+    font-size: 16px;
+    z-index: 2;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+
+    &:hover {
+        background-color: rgba(0, 0, 0, 0.7);
+    }
+}
+
+.playing .custom-video-mute {
+    display: flex;
+}
+
+.custom-video-mute__icon-off {
+    display: none;
+}
+
+.custom-video-mute.is-muted {
+    .custom-video-mute__icon-on { display: none; }
+    .custom-video-mute__icon-off { display: block; }
 }
 
 // ---- Buttons spacing ----

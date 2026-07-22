@@ -37,23 +37,29 @@
 .media-content .block-content {
     display: flex;
     flex-wrap: wrap;
-    align-items: center;
+    align-items: flex-start;
 }
+
+// ---- Editor: Gutenberg nests InnerBlocks children inside
+// .block-editor-inner-blocks > .block-editor-block-list__layout, so
+// the flex parent above never reaches the actual media/text columns
+// there. Mirror it onto that wrapper (inert on the frontend, which
+// doesn't have this markup at all).
+.media-content .block-content > .block-editor-inner-blocks > .block-editor-block-list__layout {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+}
+
 
 // ---- Image / Media column ----
 .media-content .image-col {
     position: relative;
     width: 100%;
     box-sizing: border-box;
-
     @media screen and (min-width: $small-width) {
-        width: 45%;
-        max-width: 45%;
-    }
-
-    @media screen and (min-width: $med-width) {
-        width: 50%;
-        max-width: 50%;
+        width: 66%;
+        max-width: 66%;
     }
 }
 
@@ -75,14 +81,9 @@
     margin-top: 1.5rem;
 
     @media screen and (min-width: $small-width) {
-        width: 55%;
-        padding-left: 3rem;
+        width: 33.333%;
+        padding-left: 2rem;
         margin-top: 0;
-    }
-
-    @media screen and (min-width: $med-width) {
-        width: 50%;
-        padding-left: 4rem;
     }
 }
 
@@ -140,16 +141,6 @@
     }
 }
 
-// ---- Image Left: image left, content right ----
-.media-content.img-left .content-columns {
-    @media screen and (min-width: $small-width) {
-        padding-left: 3rem;
-    }
-
-    @media screen and (min-width: $med-width) {
-        padding-left: 4rem;
-    }
-}
 
 // ---- Video ----
 .media-content video {
@@ -166,7 +157,7 @@
     left: 50%;
     width: 60px;
     height: 60px;
-    background: url(img/play-button.svg) no-repeat center center / 100%;
+    background: url(img/video-button.svg) no-repeat center center / 100%;
     text-indent: -10000px;
     border-radius: 0;
     border: none;
@@ -182,6 +173,44 @@
 
 .media-content.playing .custom-video-button {
     display: none;
+}
+
+// ---- Mute toggle ----
+.media-content .custom-video-mute {
+    position: absolute;
+    bottom: 16px;
+    right: 16px;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    border: none;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.5);
+    color: $white;
+    font-size: 16px;
+    z-index: 2;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+
+    &:hover {
+        background-color: rgba(0, 0, 0, 0.7);
+    }
+}
+
+.media-content.playing .custom-video-mute {
+    display: flex;
+}
+
+.media-content .custom-video-mute__icon-off {
+    display: none;
+}
+
+.media-content .custom-video-mute.is-muted {
+    .custom-video-mute__icon-on { display: none; }
+    .custom-video-mute__icon-off { display: block; }
 }
 
 // ---- Background color classes ----

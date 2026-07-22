@@ -78,8 +78,8 @@ div.filter-case-studies__hero .hero-services h1 {
     color: $gray;
     font-family: $font-head;
     font-weight: 500;
-    font-size: 16px;
-    line-height: 23px;
+    font-size: 0.9rem; // 16px mobile
+    line-height: 1.4rem; // 23px
     letter-spacing: 0.32px;
     padding: 10px 20px 10px 26px;
     text-transform: uppercase;
@@ -90,8 +90,8 @@ div.filter-case-studies__hero .hero-services h1 {
         color: $red;
     }
     @media screen and (min-width: $small-width) {
-        font-size: 17px;
-        line-height: 25px;
+        font-size: 1rem; // 17px desktop
+        line-height: 1.4625rem; // 25px
         letter-spacing: 0.34px;
         padding: 12px 24px 12px 30px;
         gap: 10px;
@@ -261,11 +261,47 @@ div.filter-case-studies__hero .hero-services h1 {
 }
 
 .cs-card__image {
-    aspect-ratio: 5 / 3;
+    position: relative;
+    width: 100%;
+    height: 0;
+    padding-bottom: 60%; // 5:3 aspect ratio at rest -- this is what shrinks on hover
     overflow: hidden;
+    transition: padding-bottom 0.35s ease;
 }
 
-.cs-card__image img {
+.cs-card:hover .cs-card__image {
+    // calc(60% - Npx): reduces the window by an EXACT, width-
+    // independent Npx (not a % of width), matching the excerpt's
+    // real 2-line height for this breakpoint's line-height (line-
+    // clamp guarantees it's always exactly 3 full lines, a constant
+    // in px, not something that scales with card width). Mixing %
+    // and px in one calc() is what makes this work at every card
+    // width, not just one coincidentally-matching point -- a plain
+    // percentage or cqw value can only match a fixed-px target at a
+    // single width, drifting everywhere else.
+    padding-bottom: calc(60% - 67.2px); // 3 lines @ mobile font-size (1.4rem)
+
+    @media screen and (min-width: $small-width) {
+        padding-bottom: calc(60% - 84px); // 3 lines @ desktop font-size (1.75rem)
+    }
+}
+
+// The actual image lives in here, at a permanently fixed size driven
+// by its own aspect-ratio -- completely decoupled from the outer's
+// shrinking padding-bottom, since it's absolutely positioned (out of
+// the outer's flow) and sized from its own width, not inherited. The
+// image itself never changes size on hover; only how much of it is
+// visible through the outer window above does.
+.cs-card__image-inner {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    aspect-ratio: 5 / 3;
+    padding: 0; // consistent -- never touched by the hover transition
+}
+
+.cs-card__image-inner img {
     display: block;
     width: 100%;
     height: 100%;
@@ -273,48 +309,73 @@ div.filter-case-studies__hero .hero-services h1 {
     transition: transform 0.4s ease;
 }
 
-.cs-card:hover .cs-card__image img {
-    transform: scale(1.03);
-}
 
 .cs-card__content {
-    padding: 1.25rem 1.5rem;
+    padding: 1rem 1.15rem;
     position: relative;
     overflow: hidden;
+    @media screen and (min-width: $small-width) {
+        padding: 1.25rem 1.5rem;
+    }
 }
 
-.cs-card__title {
+.cs-card h3.cs-card__title {
     font-family: $font-head;
     font-weight: 700;
-    font-size: 1.25rem;
-    line-height: 1.75rem;
-    letter-spacing: 0.18px;
+    font-size: 1.1rem;
+    line-height: 1.55rem;
+    letter-spacing: 0.12px;
     color: $gray;
     margin: 0;
-    transition: transform 0.3s ease;
+    @media screen and (min-width: $small-width) {
+        font-size: 1.25rem;
+        line-height: 1.75rem;
+        letter-spacing: 0.18px
+    }
 }
 
 .cs-card__excerpt {
     font-family: $font-body;
     font-weight: 300;
-    font-size: 1.125rem;
-    line-height: 1.75rem;
+    font-size: 1rem;
+    line-height: 1.4rem;
     color: $gray;
     margin: 0.5rem 0 0 0;
     max-height: 0;
     opacity: 0;
     overflow: hidden;
-    transition: max-height 0.4s ease, opacity 0.3s ease;
+    transition: max-height 0.35s ease, opacity 0.3s ease;
+
+    @media screen and (min-width: $small-width) {
+        font-size: 1.125rem;
+        line-height: 1.75rem;
+    }
+
+    // Always exactly 3 lines regardless of the actual excerpt length
+    // from the REST API (currently trimmed to 25 words server-side,
+    // which can still run to 3+ lines). Keeps this card's height-lock
+    // with the image above (tuned around a 2-line excerpt) accurate
+    // for every case study, not just ones with naturally short copy.
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
 }
 
-// Hover reveal
-.cs-card:hover .cs-card__title {
-    transform: translateY(-2px);
-}
-
+// Hover reveal: max-height is a fixed px matching exactly 3 full
+// lines at this breakpoint's line-height (28px * 3 = 84px desktop,
+// 22.4px * 3 = 67.2px mobile) -- not a percentage/cqw value, since
+// line-clamp guarantees the excerpt's real height is that same
+// constant regardless of card width. The image's hover shrink above
+// uses calc() to reduce by this same exact px amount at every card
+// width, so the two stay matched throughout the responsive range
+// instead of only at one coincidental width.
 .cs-card:hover .cs-card__excerpt {
-    max-height: 100px;
     opacity: 1;
+    max-height: 67.2px;
+
+    @media screen and (min-width: $small-width) {
+        max-height: 84px;
+    }
 }
 
 // ---- Empty / Loading states ----

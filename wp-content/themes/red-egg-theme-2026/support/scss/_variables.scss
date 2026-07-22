@@ -62,6 +62,7 @@ $button-border-radius:           50px;
 
 $arrow-white-l: "data:image/svg+xml,%3Csvg%20width%3D%2235%22%20height%3D%2235%22%20viewBox%3D%220%200%2035%2035%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath%20d%3D%22M35%2017.5C35%207.83398%2027.166%200%2017.5%200C7.83399%200%200%207.83398%200%2017.5C0%2027.166%207.83398%2035%2017.5%2035C27.166%2035%2035%2027.166%2035%2017.5ZM18.5254%209.22851C19.168%208.58594%2020.207%208.58594%2020.8428%209.22851C21.4785%209.87109%2021.4854%2010.9102%2020.8428%2011.5459L14.8955%2017.4932L20.8428%2023.4404C21.4854%2024.083%2021.4854%2025.1221%2020.8428%2025.7578C20.2002%2026.3936%2019.1611%2026.4004%2018.5254%2025.7578L11.416%2018.6621C10.7734%2018.0195%2010.7734%2016.9805%2011.416%2016.3447L18.5254%209.22851Z%22%20fill%3D%22white%22%2F%3E%3C%2Fsvg%3E";
 $arrow-white-r: "data:image/svg+xml,%3Csvg%20width%3D%2235%22%20height%3D%2235%22%20viewBox%3D%220%200%2035%2035%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath%20d%3D%22M35%2017.5C35%207.83398%2027.166%20-6.848";
+$close: "data:image/svg+xml,%3Csvg width='35' height='35' viewBox='0 0 35 35' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M5.12612 29.8748C11.961 36.7097 23.04 36.7097 29.8749 29.8748C36.7098 23.0399 36.7098 11.961 29.8749 5.12608C23.04 -1.70883 11.961 -1.70883 5.12612 5.12608C-1.70879 11.961 -1.70878 23.0399 5.12612 29.8748ZM10.9266 21.7541L15.1803 17.5004L10.9266 13.2468L13.2468 10.9266L17.5005 15.1803L21.7542 10.9266L24.0744 13.2468L19.8207 17.5004L24.0744 21.7541L21.7542 24.0743L17.5005 19.8206L13.2468 24.0743L10.9266 21.7541Z' fill='%23424042'/%3E%3C/svg%3E";
 
 // ----------------------------------------
 //  TYPOGRAPHY MIXINS
@@ -185,13 +186,13 @@ $arrow-white-r: "data:image/svg+xml,%3Csvg%20width%3D%2235%22%20height%3D%2235%2
 @mixin button-text {
     font-family: $font-head;
     font-weight: 500;
-    font-size: 1rem; // 16px mobile
-    line-height: 1.4375rem; // 23px
+    font-size: 0.9rem; // 16px mobile
+    line-height: 1.4rem; // 23px
     letter-spacing: 0.02rem;
     text-transform: uppercase;
     @media screen and (min-width: $small-width) {
-        font-size: 1.0625rem; // 17px desktop
-        line-height: 1.5625rem; // 25px
+        font-size: 1rem; // 17px desktop
+        line-height: 1.4625rem; // 25px
         letter-spacing: 0.02125rem;
     }
 }
@@ -230,17 +231,18 @@ $arrow-white-r: "data:image/svg+xml,%3Csvg%20width%3D%2235%22%20height%3D%2235%2
     background: transparent;
     cursor: pointer;
     text-decoration: none;
+    text-transform: uppercase;
     font-weight: 500;
-    font-size: 16px;
-    line-height: 23px;
+    font-size: 0.9rem; // 16px mobile
+    line-height: 1.4rem; // 23px
     letter-spacing: 0.32px;
     transition: background-color 0.3s ease, color 0.3s ease;
     color: $gray;
     font-family: $font-head;
     @media screen and (min-width: $small-width) {
         padding: 12px 24px 12px 24px;
-        line-height: 25px;
-        font-size: 17px;
+        line-height: 1.4625rem;
+        font-size: 1rem;
         letter-spacing: 0.34px;
     }
     font-weight: 500;
@@ -257,6 +259,7 @@ $arrow-white-r: "data:image/svg+xml,%3Csvg%20width%3D%2235%22%20height%3D%2235%2
         border-right: 1px solid $gray;
         border-top: 1px solid $gray;
         transform: rotate(45deg);
+        text-transform: uppercase;
         transition: border-color 0.3s ease;
         @media screen and (min-width: $small-width) {
             width: 14px;
@@ -288,17 +291,17 @@ $arrow-white-r: "data:image/svg+xml,%3Csvg%20width%3D%2235%22%20height%3D%2235%2
     color: $color;
     font-family: $font-head;
     font-weight: 500;
-    font-size: 16px;
-    line-height: 23px;
+    font-size: 0.9rem; // 16px mobile
+    line-height: 1.4rem; // 23px
     letter-spacing: 0.32px;
     padding: 10px 20px 10px 26px;
     text-decoration: none;
     cursor: pointer;
     transition: none;
-
+    text-transform: uppercase;
     @media screen and (min-width: $small-width) {
-        font-size: 17px;
-        line-height: 25px;
+        line-height: 1.4625rem;
+        font-size: 1rem;
         letter-spacing: 0.34px;
         padding: 12px 24px 12px 30px;
         gap: 10px;

@@ -11,7 +11,9 @@
 
 .service-list-item {
     margin-bottom: 0.75rem;
-
+    @media screen and (min-width: $small-width) {
+        margin-bottom: 1rem;
+    }
     &:last-child {
         margin-bottom: 0;
     }
@@ -66,11 +68,34 @@ $service-hover-light: ('white', 'eggshell', 'peach', 'gold', 'purple');
     }
 }
 
+.service-list-item__arrow svg {
+    width: 25px;
+    height: 25px;
+    @media screen and (min-width: $small-width) {
+        width: 35px;
+        height: 35px;
+    }
+}
+
+.service-list-item .service-list-item__title {
+    color: white;
+}
+
+.service-list .service-list-item .service-list-item__title {
+    font-size: 1.25rem;
+    line-height: 1.4rem;
+    @media screen and (min-width: $small-width) {
+        font-size: 1.35rem;
+        line-height: 1.5rem;
+    }
+}
+
 // ---- Link wrapper ----
 .service-list-item__link {
     display: block;
     text-decoration: none;
     color: inherit;
+    position: relative;
 }
 
 // ---- Inner bar ----
@@ -82,7 +107,7 @@ $service-hover-light: ('white', 'eggshell', 'peach', 'gold', 'purple');
     border-radius: $default-border-radius;
     padding: 1.5rem;
     transition: background-color 0.3s ease;
-
+    position: relative;
     @media screen and (min-width: $small-width) {
         flex-direction: row;
         align-items: center;
@@ -120,14 +145,19 @@ $service-hover-light: ('white', 'eggshell', 'peach', 'gold', 'purple');
 
 // ---- Arrow icon ----
 .service-list-item__arrow {
-    display: none; // hidden on mobile per Figma
-
+    display: block; // hidden on mobile per Figma
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
     @media screen and (min-width: $small-width) {
+        top: inherit;
+        right: inherit;
+        position: relative;
         display: flex;
         align-items: center;
         justify-content: center;
         flex: 0 0 auto;
-        padding: 0 1.5rem;
+        padding: 0 2.5rem 0 0;
     }
     svg {
         transition-property: transform;

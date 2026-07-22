@@ -81,10 +81,6 @@ registerBlockType( 'red-egg-block/insights', {
             type: 'string',
             default: 'bottom-left',
         },
-        squiggleEnabled: {
-            type: 'boolean',
-            default: false,
-        },
     },
     edit,
     save,

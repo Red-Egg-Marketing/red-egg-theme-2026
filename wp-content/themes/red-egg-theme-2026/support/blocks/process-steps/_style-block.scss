@@ -9,8 +9,8 @@
 
 .process-steps {
     position: relative;
-    padding-top: $default-section-padding-top;
-    padding-bottom: $default-section-padding-bottom;
+    padding-top: $default-section-padding-top/2;
+    padding-bottom: $default-section-padding-bottom/2;
 
     @media screen and (min-width: $small-width) {
         padding-top: 5rem;
@@ -25,10 +25,9 @@
 // Header intro spacing
 .process-steps .header-intro-block {
     paddding-bottom: 3rem;
-    border-bottom: 1px solid rgba(255, 255, 255, 1.0);
-    margin-bottom: 0;
     @media screen and (min-width: $small-width) {
         padding-bottom: 4rem;
+        border-bottom: 1px solid rgba(255, 255, 255, 1.0);
     }
 }
 
@@ -52,7 +51,7 @@
 // ========================================
 
 .process-step {
-    padding: 2rem 0;
+    padding: 1.5rem 0;
     @media screen and (min-width: $small-width) {
         padding: 2.5rem 0;
     }
@@ -106,7 +105,7 @@
 .number-badge {
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
 }
 
 .number-badge__value,
@@ -150,7 +149,7 @@
     gap: 10px;
     background: white;
     border-radius: $default-border-radius;
-    padding: 1.5rem;
+    padding: 1.25rem;
     @media screen and (min-width: $small-width) {
         padding: 2.1875rem;
         gap: 16px;
@@ -158,12 +157,12 @@
 }
 
 .tag-cloud__tag-text {
-    font-size: 0.8rem;
-    line-height: 1.25rem;
+    font-size: 0.9rem;
+    line-height: 1.4rem;
     letter-spacing: 0.17px;
     @media screen and (min-width: $small-width) {
-        font-size: 0.9rem;
-        line-height: 1.4rem;
+        font-size: 1rem;
+        line-height: 1.5rem;
     }
 }
 

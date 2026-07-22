@@ -1,0 +1,35 @@
+// ========================================
+//  Squiggle Divider Block Styles
+//  Block: red-egg-block/squiggle-divider
+//
+//  Simple <hr>-style divider: centered squiggle, padding/margin only.
+// ========================================
+
+.squiggle-divider-block {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    padding-top: $default-section-padding-top/2;
+    padding-bottom: $default-section-padding-bottom/2;
+    position: relative;
+    z-index: 2;
+    @media screen and (min-width: $small-width) {
+        padding-top: 5rem;
+        padding-bottom: 5rem;
+    }
+}
+
+.squiggle-divider-block > .block-wrapper {
+    width: 100%;
+
+}
+
+.squiggle-divider-block__svg {
+    display: block;
+    width: 160px;
+    height: auto;
+
+    @media screen and (min-width: $small-width) {
+        width: 190px;
+    }
+}

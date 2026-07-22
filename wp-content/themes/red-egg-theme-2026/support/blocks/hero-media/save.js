@@ -6,11 +6,23 @@ const { Fragment } = wp.element;
 const { useBlockProps } = wp.blockEditor;
 
 const SaveHeroMedia = ( { attributes } ) => {
-    const { mediaType, media, videoID, videoURL, videothumb } = attributes;
+    const { mediaType, media, videoID, videoURL, videothumb, eggCount, eggTouchBehavior } = attributes;
 
     const blockProps = useBlockProps.save( {
         className: 'hero-background__media',
     } );
+
+    const eggs = [];
+    if ( mediaType === 'eggs' ) {
+        for ( let i = 1; i <= eggCount; i++ ) {
+            eggs.push(
+                <span className={ 'egg-cluster__egg egg-cluster__egg--' + i } key={ i }>
+                    <span className="egg-cluster__layer egg-cluster__layer--white"></span>
+                    <span className="egg-cluster__layer egg-cluster__layer--red"></span>
+                </span>
+            );
+        }
+    }
 
     return (
         <div { ...blockProps }>
@@ -33,6 +45,15 @@ const SaveHeroMedia = ( { attributes } ) => {
                 >
                     <source src={ videoURL } type="video/mp4" />
                 </video>
+            ) }
+            { mediaType === 'eggs' && (
+                <div
+                    className={ 'egg-cluster egg-cluster--count-' + eggCount
+                        + ( eggTouchBehavior === 'auto-cycle' ? ' egg-cluster--touch-cycle' : '' ) }
+                    aria-hidden="true"
+                >
+                    { eggs }
+                </div>
             ) }
         </div>
     );

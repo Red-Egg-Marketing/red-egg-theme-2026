@@ -26,10 +26,10 @@
 .text-cards-grid .block-content {
     display: flex;
     flex-wrap: wrap;
-    gap: 1.5rem;
+    grid-column-gap: 1.5rem;
 
     @media screen and (min-width: $small-width) {
-        gap: 2rem;
+        grid-column-gap: 2rem;
     }
 }
 
@@ -43,22 +43,28 @@
 // ---- Columns layout ----
 .text-cards-grid.columns-2 .flip-card,
 .text-cards-grid.columns-2 .reveal-card {
+    margin-bottom: 1.5rem;
     @media screen and (min-width: $small-width) {
         width: calc(50% - 1rem);
+        margin-bottom: 2rem;
     }
 }
 
 .text-cards-grid.columns-3 .flip-card,
 .text-cards-grid.columns-3 .reveal-card {
+    margin-bottom: 1.5rem;
     @media screen and (min-width: $small-width) {
         width: calc(33.333% - 1.334rem);
+        margin-bottom: 2rem;
     }
 }
 
 .text-cards-grid.columns-4 .flip-card,
 .text-cards-grid.columns-4 .reveal-card {
+    margin-bottom: 1.5rem;
     @media screen and (min-width: $small-width) {
         width: calc(25% - 1.5rem);
+        margin-bottom: 2rem;
     }
 }
 

@@ -7,6 +7,8 @@
  * - Subtle rotation and scale breathing
  */
 
+import { onPageView } from './lifecycle';
+
 ( function() {
 
     function initBlobAnimations() {
@@ -29,6 +31,9 @@
         var shapeKeys = [ 'shape1', 'shape2', 'shape3' ];
 
         blobs.forEach( function( blob ) {
+            if ( blob.dataset.blobInit ) return;
+            blob.dataset.blobInit = '1';
+
             var path = blob.querySelector( '.blob-decoration__path' );
             if ( ! path ) return;
 
@@ -73,7 +78,7 @@
             } );
 
             gsap.to( blob, {
-                y: 'random(-50, 50)',
+                y: 'random(-200, 200)',
                 duration: 'random(' + ( speed * 1.8 ) + ', ' + ( speed * 2.5 ) + ')',
                 ease: 'sine.inOut',
                 repeat: -1,
@@ -103,10 +108,6 @@
         } );
     }
 
-    if ( document.readyState === 'loading' ) {
-        document.addEventListener( 'DOMContentLoaded', initBlobAnimations );
-    } else {
-        initBlobAnimations();
-    }
+    onPageView( initBlobAnimations );
 
 } )();

@@ -17,6 +17,7 @@
 //  post types and pages.
 // ========================================
 
+.site-content,
 .entry-content {
     @include body-text;
     // Overflow must stay visible so absolutely-positioned filter
@@ -54,11 +55,12 @@
         }
     }
 
-    > h2 { @include primary-h2; }
-    > h3 { @include primary-h3; }
-    > h4 { @include primary-h4; font-weight: 700; }
+    h1 { @include primary-h1; }
+    h2 { @include primary-h2; }
+    h3 { @include primary-h3; }
+    h4 { @include primary-h4; font-weight: 700; }
 
-    > h5 {
+    h5 {
         font-family: $font-head;
         font-weight: 700;
         font-size: 1rem;
@@ -68,7 +70,7 @@
         color: $head-color;
     }
 
-    > h6 {
+    h6 {
         font-family: $font-head;
         font-weight: 600;
         font-size: 0.875rem;

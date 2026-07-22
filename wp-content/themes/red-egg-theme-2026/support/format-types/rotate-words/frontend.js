@@ -6,11 +6,18 @@
  * Only activates when the element scrolls into view.
  */
 
+import { onPageView } from '../../js/lifecycle';
+
 ( function() {
 
     function WordRotater() {
         var win = window;
-        var words = document.querySelectorAll( '.rotate-words' );
+        // Only bind unclaimed elements (main.js runs twice + SPA re-runs)
+        var words = Array.prototype.filter.call(
+            document.querySelectorAll( '.rotate-words' ),
+            function ( w ) { return ! w.dataset.rotateInit; }
+        );
+        words.forEach( function ( w ) { w.dataset.rotateInit = '1'; } );
         var winHeight = win.innerHeight;
         var intervals = [];
 
@@ -24,6 +31,13 @@
         win.addEventListener( 'scroll', detectScrollPosition );
 
         function detectScrollPosition() {
+            // Self-cleanup after an SPA swap removed our elements
+            if ( words[ 0 ] && ! document.contains( words[ 0 ] ) ) {
+                win.removeEventListener( 'scroll', detectScrollPosition );
+                win.removeEventListener( 'load', detectScrollPosition );
+                return;
+            }
+
             winHeight = win.innerHeight;
 
             words.forEach( function( word, index ) {
@@ -89,10 +103,6 @@
         }
     }
 
-    if ( document.readyState === 'loading' ) {
-        document.addEventListener( 'DOMContentLoaded', WordRotater );
-    } else {
-        WordRotater();
-    }
+    onPageView( WordRotater );
 
 } )();

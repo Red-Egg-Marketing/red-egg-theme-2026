@@ -5,6 +5,8 @@
  * Reads config from data attributes.
  */
 
+import { onPageView } from '../../js/lifecycle';
+
 ( function() {
 
     function initAwardsSliders() {
@@ -13,8 +15,11 @@
         if ( sliders.length === 0 ) return;
 
         sliders.forEach( function( el ) {
+            if ( el.dataset.swiperInit ) return;
+            el.dataset.swiperInit = '1';
+
             var slidesPerView = parseInt( el.getAttribute( 'data-slides-per-view' ) ) || 6;
-            var spaceBetween = parseInt( el.getAttribute( 'data-space-between' ) ) || 30;
+            var spaceBetween = parseInt( el.getAttribute( 'data-space-between' ) ) || 32;
             var prevEl = el.querySelector( '.cs-slider__nav-prev' );
             var nextEl = el.querySelector( '.cs-slider__nav-next' );
 
@@ -30,7 +35,7 @@
                     },
                     1080: {
                         slidesPerView: slidesPerView,
-                        spaceBetween: spaceBetween,
+                        spaceBetween: 32,
                     },
                 },
                 navigation: {
@@ -41,10 +46,6 @@
         } );
     }
 
-    if ( document.readyState === 'loading' ) {
-        document.addEventListener( 'DOMContentLoaded', initAwardsSliders );
-    } else {
-        initAwardsSliders();
-    }
+    onPageView( initAwardsSliders );
 
 } )();

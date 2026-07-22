@@ -62,14 +62,6 @@ const EditMediaContentMedia = ( { attributes, setAttributes } ) => {
         } );
     };
 
-    const template = [
-        [ 'red-egg-block/header-intro', {} ],
-    ];
-
-    const allowedBlocks = [
-        'red-egg-block/header-intro'
-    ];
-
     return (
         <Fragment>
             <InspectorControls>
@@ -131,10 +123,6 @@ const EditMediaContentMedia = ( { attributes, setAttributes } ) => {
 
             <div { ...blockProps }>
 
-                <InnerBlocks
-                    template={ template }
-                    allowedBlocks={ allowedBlocks }
-                />
                 { vidOrImg === 'image' && (
                     <ImageComp
                         id={ media.id }

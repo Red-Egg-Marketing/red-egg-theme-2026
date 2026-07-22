@@ -183,11 +183,29 @@ function red_egg_theme_scripts() {
         true
     );
 
+    // Swup – SPA-style page transitions (CDN, exposes global Swup)
+    wp_enqueue_script(
+        'swup-js',
+        'https://cdn.jsdelivr.net/npm/swup@4/dist/Swup.umd.js',
+        [],
+        '4.8.0',
+        true
+    );
+
+    // Swup Body Class Plugin – keeps WP body_class() in sync on swap
+    wp_enqueue_script(
+        'swup-body-class',
+        'https://cdn.jsdelivr.net/npm/@swup/body-class-plugin@3/dist/index.umd.js',
+        [ 'swup-js' ],
+        '3.2.0',
+        true
+    );
+
     // Frontend JS (compiled from support/front-end.js)
     wp_enqueue_script(
         'red-egg-main-js',
         get_template_directory_uri() . '/support/assets/js/main.js',
-        [ 'swiper-js', 'gsap-core', 'gsap-morphsvg', 'gsap-scrolltrigger' ],
+        [ 'swiper-js', 'gsap-core', 'gsap-morphsvg', 'gsap-scrolltrigger', 'swup-js', 'swup-body-class' ],
         file_exists( $main_js ) ? filemtime( $main_js ) : false,
         true
     );

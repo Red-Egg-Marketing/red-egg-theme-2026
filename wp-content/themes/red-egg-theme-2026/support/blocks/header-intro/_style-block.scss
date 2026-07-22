@@ -9,10 +9,10 @@
 
 .header-intro-block {
     position: relative;
-    margin-bottom: 2rem;
-
+    margin-bottom: 1.5rem;
+    width: 100%;
     @media screen and (min-width: $small-width) {
-        margin-bottom: 2.5rem;
+        margin-bottom: 1.75rem;
     }
 }
 
@@ -91,12 +91,12 @@
     overflow: hidden;
     z-index: 1;
     pointer-events: none;
-    margin-top: 5px;
-    margin-bottom: 50px;
+    margin-top: 0;
+    margin-bottom: 0;
     @media screen and (min-width: $small-width) {
 /*        top: -25px;*/
-        margin-bottom: 100px;
-        margin-top: 10px;
+        margin-bottom: 0;
+        margin-top: 0;
     }
 }
 
@@ -104,6 +104,7 @@
     display: block;
     width: 160px;
     height: auto;
+    margin-bottom: 0;
     @media screen and (min-width: $small-width) {
         width: 190px;
     }
@@ -113,12 +114,11 @@
 .header-intro__columns {
     display: flex;
     flex-direction: column;
-    gap: 1rem;
 
     @media screen and (min-width: $small-width) {
         flex-direction: row;
         align-items: flex-start;
-        gap: 3rem;
+        grid-column-gap: 3rem;
     }
 }
 
@@ -142,13 +142,13 @@
 .header-intro__left p.header-intro__label {
     font-family: $font-head !important;
     font-weight: 500 !important;
-    font-size: 1.0625rem !important;
-    line-height: 1.625rem !important;
-    letter-spacing: 2px !important;
+    font-size: 0.9rem !important;
+    line-height: 1.3rem !important;
+    letter-spacing: 0.9px !important;
     text-transform: uppercase !important;
     color: $gray;
     margin: 0 0 0.5rem 0;
-
+    margin-bottom: 0 !important;
     @media screen and (min-width: $small-width) {
         font-size: 1rem !important;
         line-height: 1.3 !important;
@@ -176,7 +176,7 @@
 }
 
 .header-intro__left p,
-.header-intro__right p {
+.header-intro__right p:first-of-type {
     @include primary-h4;
     margin: 1rem 0 1rem 0;
     &:first-of-type {

@@ -8,6 +8,7 @@
 
 // ---- Foundation ----
 @import 'variables';
+@import 'base';
 
 // ---- Editor-specific overrides ----
 .editor-styles-wrapper {
@@ -67,10 +68,14 @@
 // ---- Blog Content Blocks ----
 @import '../blocks/callout/style-block';
 @import '../blocks/faq-accordion/style-block';
+@import '../blocks/squiggle-divider/style-block';
+@import '../blocks/egg-cluster/style-block';
+@import '../blocks/text-columns/style-block';
 @import 'blob-animation';
 @import 'reviews';
 @import 'backgrounds';
 @import 'list-markers';
+@import 'icon-picker';
 
 // ========================================
 //  Editor-only: Section Nav shows its bar background

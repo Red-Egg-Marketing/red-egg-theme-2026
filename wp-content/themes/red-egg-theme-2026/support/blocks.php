@@ -39,6 +39,15 @@ function red_egg_enqueue_block_editor_assets() {
         true
     );
 
+    wp_localize_script(
+        'red-egg-editor-blocks',
+        'redEggEditor',
+        [
+            'iconsUrl' => get_template_directory_uri() . '/support/assets/icons.json',
+            'themeUri' => get_template_directory_uri(),
+        ]
+    );
+
     wp_enqueue_style(
         'red-egg-editor-blocks-css',
         get_template_directory_uri() . '/blocks.editor.css',
@@ -241,6 +250,26 @@ function red_egg_register_blocks() {
 
     // Media Content – Text (child: header-intro + content)
     register_block_type( 'red-egg-block/media-content-text', [
+        'editor_script' => 'red-egg-editor-blocks',
+    ] );
+
+    // Squiggle Divider (standalone decorative divider)
+    register_block_type( 'red-egg-block/squiggle-divider', [
+        'editor_script' => 'red-egg-editor-blocks',
+    ] );
+
+    // Egg Cluster (decorative hover-to-red eggs)
+    register_block_type( 'red-egg-block/egg-cluster', [
+        'editor_script' => 'red-egg-editor-blocks',
+    ] );
+
+    // Text Columns (parent: two-column text section)
+    register_block_type( 'red-egg-block/text-columns', [
+        'editor_script' => 'red-egg-editor-blocks',
+    ] );
+
+    // Text Columns – Column (child: text column)
+    register_block_type( 'red-egg-block/text-columns-col', [
         'editor_script' => 'red-egg-editor-blocks',
     ] );
 

@@ -1,0 +1,96 @@
+// ========================================
+//  Text Columns Block Styles
+//  Block: red-egg-block/text-columns
+//
+//  Parent container with two locked children:
+//    - text-columns-col (title: eyebrow + heading)
+//    - text-columns-col (content: lead + paragraphs)
+// ========================================
+
+.text-columns {
+    position: relative;
+    width: 100%;
+    overflow: visible;
+    padding-top: $default-section-padding-top;
+    padding-bottom: $default-section-padding-bottom;
+
+    @media screen and (min-width: $small-width) {
+        padding-top: 5rem;
+        padding-bottom: 5rem;
+    }
+
+    > .block-wrapper {
+        @include block-wrapper;
+        position: relative;
+    }
+}
+
+// ---- Block content: flex layout ----
+.text-columns .block-content {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    gap: 2rem;
+
+    @media screen and (min-width: $small-width) {
+        flex-wrap: nowrap;
+        gap: 4rem;
+    }
+}
+
+.text-columns.title-right .block-content {
+    @media screen and (min-width: $small-width) {
+        flex-direction: row-reverse;
+    }
+}
+
+// ---- Editor: mirror the flex layout onto Gutenberg's InnerBlocks
+// wrapper (inert on frontend).
+.text-columns .block-content > .block-editor-inner-blocks > .block-editor-block-list__layout {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 2rem;
+
+    @media screen and (min-width: $small-width) {
+        flex-wrap: nowrap;
+        gap: 4rem;
+    }
+}
+
+.text-columns.title-right .block-content > .block-editor-inner-blocks > .block-editor-block-list__layout {
+    @media screen and (min-width: $small-width) {
+        flex-direction: row-reverse;
+    }
+}
+
+// ---- Columns ----
+.text-columns__col {
+    width: 100%;
+}
+
+@media screen and (min-width: $small-width) {
+    .text-columns.split-50-50 .text-columns__col {
+        width: 50%;
+    }
+
+    .text-columns.split-40-60 {
+        .text-columns__col:first-child { width: 40%; }
+        .text-columns__col:last-child { width: 60%; }
+    }
+
+    .text-columns.split-60-40 {
+        .text-columns__col:first-child { width: 60%; }
+        .text-columns__col:last-child { width: 40%; }
+    }
+}
+
+// ---- Typography helpers (seeded by block template) ----
+.text-columns__lead {
+    font-weight: 500;
+    margin-bottom: 1rem;
+}
+
+.text-columns h2 {
+    margin-bottom: 0;
+}

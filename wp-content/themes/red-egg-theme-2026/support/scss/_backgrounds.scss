@@ -6,6 +6,36 @@
 	background-attachment: fixed;
 }
 
+.partner-logo-red .gs-containeer {
+	position: relative;
+}
+
+.partner-logo .header-intro__left {
+    @media screen and (min-width: $small-width) {
+    	background-image: url('img/partner-resource.svg');
+    	background-repeat: no-repeat;
+    	background-size: 135px;
+        background-size: 175px;
+        background-position: bottom left;
+    }
+}
+
+.partner-logo-red .gs-containeer:after {
+	content: "";
+	position: relative;
+	z-index: -1;
+	background: url(img/partner-resource-red.svg) no-repeat center right / contain;
+	height: 145px;
+	width: 145px;
+	@media screen and (min-width: $small-width) {
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		width: 175px;
+		height: 175px;
+	}
+}
+
 .orange {
 	background-color: $orange;
 }

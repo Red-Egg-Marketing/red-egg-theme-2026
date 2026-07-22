@@ -1,22 +1,19 @@
 /**
  * Shortcode Section Block – Edit Component
  *
- * InnerBlocks: header-intro + core/shortcode.
+ * InnerBlocks: header-intro + a shortcode OR html embed block,
+ * selected via the Embed Type toggle in the sidebar.
  * BackgroundColor in InspectorControls.
  */
 
 const { Fragment, useEffect } = wp.element;
 const { InnerBlocks, InspectorControls, useBlockProps } = wp.blockEditor;
+const { PanelBody, SelectControl } = wp.components;
 const { __ } = wp.i18n;
 
 import BackgroundColor from '../../components/BackgroundColor.js';
 import PaddingSelector from '../../components/Padding.js';
 import MarginSelector from '../../components/Margin.js';
-
-const template = [
-    [ 'red-egg-block/header-intro', {} ],
-    [ 'core/shortcode', {} ],
-];
 
 const allowedBlocks = [
     'red-egg-block/header-intro',
@@ -26,13 +23,24 @@ const allowedBlocks = [
 ];
 
 const EditShortcodeSection = ( { attributes, setAttributes, clientId } ) => {
-    const { bgColor, bgSlug, padding, margin, blockId } = attributes;
+    const { embedType, bgColor, bgSlug, padding, margin, blockId } = attributes;
 
     useEffect( () => {
         if ( ! blockId ) {
             setAttributes( { blockId: 'block-' + clientId } );
         }
     }, [] );
+
+    // Seed the embed block that matches the chosen type. The template
+    // is only applied to fresh/empty InnerBlocks, so switching the
+    // toggle on a block that already has content won't wipe it -- it
+    // updates the intended structure and the default for new inserts.
+    const template = [
+        [ 'red-egg-block/header-intro', {} ],
+        embedType === 'html'
+            ? [ 'core/html', {} ]
+            : [ 'core/shortcode', {} ],
+    ];
 
     const blockProps = useBlockProps( {
         id: blockId,
@@ -44,6 +52,18 @@ const EditShortcodeSection = ( { attributes, setAttributes, clientId } ) => {
     return (
         <Fragment>
             <InspectorControls>
+                <PanelBody title={ __( 'Embed Type', 'red-egg' ) } initialOpen={ true }>
+                    <SelectControl
+                        label={ __( 'Content Type', 'red-egg' ) }
+                        help={ __( 'Shortcode for plugin output (e.g. team grid, reviews); HTML for raw embed code (e.g. an iframe or third-party widget). Switching only changes the seeded block for a fresh section — existing content is left in place.', 'red-egg' ) }
+                        value={ embedType }
+                        options={ [
+                            { label: __( 'Shortcode', 'red-egg' ), value: 'shortcode' },
+                            { label: __( 'HTML Embed', 'red-egg' ), value: 'html' },
+                        ] }
+                        onChange={ ( val ) => setAttributes( { embedType: val } ) }
+                    />
+                </PanelBody>
                 <BackgroundColor
                     bgColor={ bgColor }
                     bgSlug={ bgSlug }

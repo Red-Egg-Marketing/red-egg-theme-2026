@@ -80,3 +80,15 @@ import './js/toc';
 import './blocks/section-nav/frontend';
 
 import './js/smooth-scroll';
+
+// ---- SPA Navigation ----
+
+// Swup page transitions – swaps #content, dispatches
+// red-egg:page-leave / red-egg:page-view lifecycle events
+import './js/spa-nav';
+
+// Image fade-in + loading placeholders (SPA-aware)
+import './js/image-fade';
+
+// Egg cluster intro "attract" sequence
+import './blocks/egg-cluster/frontend';

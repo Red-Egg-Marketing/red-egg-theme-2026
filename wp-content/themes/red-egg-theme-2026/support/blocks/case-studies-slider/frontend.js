@@ -9,6 +9,8 @@
  * hidden on the swiper itself handled via CSS clip-path or not).
  */
 
+import { onPageView } from '../../js/lifecycle';
+
 if ( typeof wp !== 'undefined' && wp.element ) {
 
 const { render, Fragment, useState, useEffect, useRef } = wp.element;
@@ -49,8 +51,8 @@ const SliderContent = ( { postsToShow, industry, service, navPrev, navNext } ) =
                     loop: true,
                     centeredSlides: true,
                     centeredSlidesBounds: true,
-                    slidesPerView: 1.15,
-                    spaceBetween: 16,
+                    slidesPerView: 1,
+                    spaceBetween: 20,
                     speed: 500,
                     slideActiveClass: 'cs-slide--active',
                     breakpoints: {
@@ -60,7 +62,7 @@ const SliderContent = ( { postsToShow, industry, service, navPrev, navNext } ) =
                         },
                         1080: {
                             slidesPerView: 'auto',
-                            spaceBetween: 50,
+                            spaceBetween: 32,
                         },
                     },
                     navigation: {
@@ -131,9 +133,13 @@ const SliderContent = ( { postsToShow, industry, service, navPrev, navNext } ) =
 };
 
 // Find all slider body elements and hydrate
+function initCaseStudiesSliders() {
 const bodies = document.querySelectorAll( '.case-studies-slider__body' );
 
 bodies.forEach( ( body ) => {
+    if ( body.dataset.reMounted ) return;
+    body.dataset.reMounted = '1';
+
     const swiperWrap = body.querySelector( '.cs-slider__swiper-wrap' );
     const navPrev = body.querySelector( '.cs-slider__nav-prev' );
     const navNext = body.querySelector( '.cs-slider__nav-next' );
@@ -155,6 +161,8 @@ bodies.forEach( ( body ) => {
         );
     }
 } );
+}
 
+onPageView( initCaseStudiesSliders );
 
 } // end wp check

@@ -23,6 +23,7 @@ const alignOptions = [
 ];
 
 const template = [
+    [ 'red-egg-block/header-intro', {} ],
     [ 'red-egg-block/media-content-media', {} ],
     [ 'red-egg-block/media-content-text', {} ],
 ];
@@ -30,6 +31,7 @@ const template = [
 const allowedBlocks = [
     'red-egg-block/media-content-media',
     'red-egg-block/media-content-text',
+    'red-egg-block/header-intro',
 ];
 
 const EditMediaContent = ( { attributes, setAttributes, clientId } ) => {
@@ -123,12 +125,13 @@ const EditMediaContent = ( { attributes, setAttributes, clientId } ) => {
             />
 
             <div { ...blockProps }>
+                
+                <div className="block-wrapper">
                  <BlobAnimation.Preview
                     blobEnabled={ blobEnabled }
                     blobShape={ blobShape }
                     blobPosition={ blobPosition }
                 />
-                <div className="block-wrapper">
                     <div className={ 'block-content ' + contentAlign }>
                         <InnerBlocks
                             template={ template }

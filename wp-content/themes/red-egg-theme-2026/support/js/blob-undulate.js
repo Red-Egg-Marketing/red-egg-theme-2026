@@ -21,6 +21,8 @@
  * commands carry boolean flags that must not be perturbed by jitter.
  */
 
+import { onPageView } from './lifecycle';
+
 ( function () {
 
     function phaseNum( el ) {
@@ -89,9 +91,5 @@
         } );
     }
 
-    if ( document.readyState === 'loading' ) {
-        document.addEventListener( 'DOMContentLoaded', init );
-    } else {
-        init();
-    }
+    onPageView( init );
 } )();

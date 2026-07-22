@@ -1,0 +1,49 @@
+// ============================================
+//  Image Fade-In – SPA loading placeholders
+// ============================================
+//
+// Classes applied by support/js/image-fade.js.
+
+#content img.re-img-pending {
+    opacity: 0;
+}
+
+#content img.re-img-loaded {
+    animation: re-img-fade 0.4s ease;
+}
+
+@keyframes re-img-fade {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+// Wrapper placeholder: reserves space + shimmer while the image loads.
+.re-img-placeholder {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 3 / 2;
+    overflow: hidden;
+    background: linear-gradient(
+        100deg,
+        rgba($eggshell, 0.55) 40%,
+        rgba($eggshell, 0.95) 50%,
+        rgba($eggshell, 0.55) 60%
+    );
+    background-size: 200% 100%;
+    animation: re-img-shimmer 1.4s linear infinite;
+}
+
+@keyframes re-img-shimmer {
+    from { background-position: 100% 0; }
+    to { background-position: -100% 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .re-img-placeholder {
+        animation: none;
+    }
+
+    #content img.re-img-loaded {
+        animation: none;
+    }
+}

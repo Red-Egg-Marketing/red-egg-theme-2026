@@ -14,19 +14,13 @@
     padding-bottom: $default-section-padding-bottom;
     @media screen and (min-width: $small-width) {
         padding-top: 5rem;
-        padding-bottom: 8rem;
+        padding-bottom: 5rem;
     }
 }
 
 .insights-block > .block-wrapper {
     @include block-wrapper;
     position: relative;
-    padding-top: 2.5rem;
-    padding-bottom: 2.5rem;
-    @media screen and (min-width: $small-width) {
-        padding-top: 5rem;
-        padding-bottom: 7rem;
-    }
 }
 
 // ---- Header area (InnerBlocks: header-intro) ----
@@ -45,10 +39,10 @@
 .insights-block .resources.grid {
     display: flex;
     flex-wrap: wrap;
-    gap: 25px;
+    gap: 24px;
 
     @media screen and (min-width: $small-width) {
-        gap: 50px;
+        gap: 32px;
     }
 }
 
@@ -58,7 +52,7 @@
     border-radius: $default-border-radius;
 
     @media screen and (min-width: $small-width) {
-        width: calc(50% - 25px);
+        width: calc(50% - 16px);
     }
 }
 
@@ -125,6 +119,16 @@
 
 .insights-block .resource-card .resource-title {
     margin: 0 0 0.75rem 0;
+    font-size: 1.2rem;
+    line-height: 1.55rem;
+    letter-spacing: 0.12px;
+    margin: 0;
+    @media screen and (min-width: $small-width) {
+        font-size: 1.35rem;
+        line-height: 1.75rem;
+        letter-spacing: 0.18px;
+        margin-bottom: 1rem;
+    }
 }
 
 .insights-block .resource-card .resource-excerpt {

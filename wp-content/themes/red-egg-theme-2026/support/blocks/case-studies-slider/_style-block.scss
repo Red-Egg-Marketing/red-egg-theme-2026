@@ -14,8 +14,8 @@
 
 .case-studies-slider {
     position: relative;
-    padding-top: $default-section-padding-top;
-    padding-bottom: $default-section-padding-bottom;
+    padding-top: $default-section-padding-top/2;
+    padding-bottom: $default-section-padding-bottom/2;
     overflow: hidden;
 
     @media screen and (min-width: $small-width) {
@@ -167,8 +167,11 @@
 }
 
 .case-studies-slider .cs-slider__cta {
-    margin-left: auto;
-    margin-right: auto;
+    margin-left: 0;
+    @media screen and (min-width: $small-width) {
+        margin-left: auto;
+        margin-right: auto;
+    }
 }
 
 // Nav arrows
@@ -176,6 +179,7 @@
     display: flex;
     gap: 8px;
     justify-content: flex-end;
+    margin-top: 10px;
 }
 
 .cs-slider__nav-prev,
@@ -183,14 +187,18 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 44px;
-    height: 44px;
+    width: 25px;
+    height: 25px;
     border-radius: 50%;
     color: $gray;
     cursor: pointer;
     background: none;
     padding: 0;
     border: none;
+    @media screen and (min-width: $small-width) {
+        width: 44px;
+        height: 44px;
+    }
     &:hover {
         background-color: none;
         color: $white;

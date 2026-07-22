@@ -6,10 +6,15 @@
  * Compiled into main.js via front-end.js.
  */
 
+import { onPageView } from '../../js/lifecycle';
+
 function initAccordion() {
     const items = document.querySelectorAll( '.faq-accordion__item' );
 
     items.forEach( ( item ) => {
+        if ( item.dataset.faqBound ) return;
+        item.dataset.faqBound = '1';
+
         const trigger = item.querySelector( '.faq-accordion__trigger' );
         const panel   = item.querySelector( '.faq-accordion__panel' );
 
@@ -56,8 +61,4 @@ function initAccordion() {
     } );
 }
 
-if ( document.readyState === 'loading' ) {
-    document.addEventListener( 'DOMContentLoaded', initAccordion );
-} else {
-    initAccordion();
-}
+onPageView( initAccordion );

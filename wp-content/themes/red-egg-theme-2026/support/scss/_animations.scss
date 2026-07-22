@@ -5,59 +5,30 @@
 
 // ---- Cursor blink (used by .rotate-words) ----
 @keyframes cursorAnimation {
-    0% {
-        background: linear-gradient(to bottom, transparent, transparent);
-        background-size: 1px 100%;
-        background-repeat: repeat-y;
-        background-position: top right;
-    }
-    25% {
-        background: linear-gradient(to bottom, currentColor, currentColor);
-        background-size: 1px 100%;
-        background-repeat: repeat-y;
-        background-position: top right;
-    }
-    50% {
-        background: linear-gradient(to bottom, transparent, transparent);
-        background-size: 1px 100%;
-        background-repeat: repeat-y;
-        background-position: top right;
-    }
-    75% {
-        background: linear-gradient(to bottom, currentColor, currentColor);
-        background-size: 1px 100%;
-        background-repeat: repeat-y;
-        background-position: top right;
-    }
-    100% {
-        background: linear-gradient(to bottom, transparent, transparent);
-        background-size: 1px 100%;
-        background-repeat: repeat-y;
-        background-position: top right;
-    }
+    0%, 100% { border-right-color: currentColor; }
+    50% { border-right-color: transparent; }
 }
 
 // ---- Rotate Words ----
+// Cursor is a border-right (a real, stable box-edge) rather than a
+// background gradient. The JS retypes innerHTML every frame; a
+// background-position:right gradient gets repainted against the
+// constantly-changing inline text width each frame and visibly
+// flickers/drops out during typing. A border edge is unaffected by
+// the text content changing.
+//
+// Caret behavior: SOLID while actively typing (the element has
+// neither state class then), BLINKS during the pause between words.
+// The JS adds .waiting the moment a word finishes, then .highlight
+// 1.5s later for the hold -- both are "paused" states, so both blink.
 .rotate-words {
     display: inline;
+    border-right: 2px solid currentColor;
     padding-right: 3px;
-    animation: cursorAnimation 0.8s infinite;
 }
 
-.rotate-words.waiting {
-    animation: none;
-    background: none;
-}
-
+.rotate-words.waiting,
 .rotate-words.highlight {
-    animation: cursorAnimation 0.8s infinite;
+    animation: cursorAnimation 0.8s step-end infinite;
 }
 
-.partner-logo {
-    background-image: url('img/partner-resource.svg');
-    background-repeat: no-repeat;
-    background-size: 135px;
-    @media screen and (min-width: $small-width) {
-        background-size: 197px;
-    }
-}

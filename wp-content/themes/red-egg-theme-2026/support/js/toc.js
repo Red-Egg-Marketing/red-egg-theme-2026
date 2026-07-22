@@ -8,6 +8,8 @@
  * Compiled into main.js via front-end.js.
  */
 
+import { onPageView } from './lifecycle';
+
 function initToc() {
     const blocks = document.querySelectorAll( '.post-toc' );
 
@@ -45,8 +47,4 @@ function initToc() {
     } );
 }
 
-if ( document.readyState === 'loading' ) {
-    document.addEventListener( 'DOMContentLoaded', initToc );
-} else {
-    initToc();
-}
+onPageView( initToc );

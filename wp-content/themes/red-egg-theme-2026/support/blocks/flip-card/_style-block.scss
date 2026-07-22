@@ -9,11 +9,24 @@
 .flip-card {
     position: relative;
     width: 100%;
+    min-width: 0; // allow shrinking below content size in flex grids (default flex item min-width is content-based, not the specified width)
     perspective: 1000px;
 
     @media screen and (min-width: $small-width) {
         width: calc(33.333% - 1.334rem);
     }
+}
+
+// ---- Editor only: the "Insert link" + "Flip Side" toolbar row
+// (rendered in edit.js, absent from the frontend save output) doesn't
+// wrap by default, which was forcing each card wider than its grid
+// width in the canvas. Let it wrap instead of dictating card width.
+.flip-card > .components-flex {
+    flex-wrap: wrap;
+}
+
+.flip-card svg path {
+    transition: fill 0.3s ease;
 }
 
 .flip-card .exterior-wrap {
@@ -31,6 +44,10 @@
 // Only flip if there's back content
 .flip-card:not(.no-flip):hover .exterior-wrap {
     transform: rotateY(180deg);
+}
+
+.flip-card .wrapper {
+    width: 100%;
 }
 
 // ---- Shared face styles ----
@@ -98,6 +115,17 @@
 
     @media screen and (min-width: $small-width) {
         height: 100px;
+    }
+}
+
+// ---- Font Awesome icon ----
+.flip-card__icon--fa {
+    font-size: 60px;
+    line-height: 1;
+    color: $red;
+
+    @media screen and (min-width: $small-width) {
+        font-size: 70px;
     }
 }
 

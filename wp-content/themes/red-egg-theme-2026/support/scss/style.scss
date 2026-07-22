@@ -16,6 +16,10 @@
 // ---- Animations ----
 @import 'animations';
 
+// ---- SPA Navigation (Swup crossfade) ----
+@import 'spa-nav';
+@import 'image-fade';
+
 // ---- Layout (Header / Footer) ----
 @import 'header';
 @import 'footer';
@@ -26,6 +30,7 @@
 // ---- Content (core blocks) + Single Post ----
 @import 'content';
 @import 'single';
+@import 'bios';
 
 // ---- Block Styles ----
 @import '../blocks/hero-background/style-block';
@@ -50,6 +55,9 @@
 @import '../blocks/awards-section/style-block';
 @import '../blocks/vibe-cta/style-block';
 @import '../blocks/media-content/style-block';
+@import '../blocks/squiggle-divider/style-block';
+@import '../blocks/egg-cluster/style-block';
+@import '../blocks/text-columns/style-block';
 @import '../blocks/service-list/style-block';
 @import '../blocks/service-list-item/style-block';
 @import '../blocks/filter-case-studies/style-block';
