@@ -201,11 +201,23 @@ function red_egg_theme_scripts() {
         true
     );
 
+    // Swup Scroll Plugin – resets scroll to top on navigation, restores
+    // position on back/forward, and scrolls to #hash targets across
+    // page swaps (which swup otherwise strips, since it preventDefaults
+    // every link it handles).
+    wp_enqueue_script(
+        'swup-scroll',
+        'https://cdn.jsdelivr.net/npm/@swup/scroll-plugin@3/dist/index.umd.js',
+        [ 'swup-js' ],
+        '3.3.1',
+        true
+    );
+
     // Frontend JS (compiled from support/front-end.js)
     wp_enqueue_script(
         'red-egg-main-js',
         get_template_directory_uri() . '/support/assets/js/main.js',
-        [ 'swiper-js', 'gsap-core', 'gsap-morphsvg', 'gsap-scrolltrigger', 'swup-js', 'swup-body-class' ],
+        [ 'swiper-js', 'gsap-core', 'gsap-morphsvg', 'gsap-scrolltrigger', 'swup-js', 'swup-body-class', 'swup-scroll' ],
         file_exists( $main_js ) ? filemtime( $main_js ) : false,
         true
     );
