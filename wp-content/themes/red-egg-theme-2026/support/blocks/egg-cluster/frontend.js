@@ -10,8 +10,8 @@
  * the CSS treats exactly like :hover (red layer fades in). Hover
  * still works during and after the sequence -- they're independent.
  *
- * Timing is written as musical note durations at 120 BPM:
- *   quarter = 500ms, 1/8 = 250ms, 1/2 = 1000ms, 1/16 = 125ms.
+ * Timing is written as musical note durations at 90 BPM:
+ *   quarter = 667ms, 1/8 = 333ms, 1/2 = 1334ms, 1/16 = 167ms.
  *
  * SPA-safe via onPageView; per-cluster guard so it doesn't replay on
  * re-runs. Skipped under prefers-reduced-motion (still lands on the
@@ -22,11 +22,11 @@ import { onPageView } from '../../js/lifecycle';
 
 ( function () {
 
-    // 120 BPM tempo -> note durations in ms
-    var QUARTER = 500;
-    var EIGHTH = QUARTER / 2;   // 250
-    var HALF = QUARTER * 2;     // 1000
-    var SIXTEENTH = QUARTER / 4; // 125
+    // 90 BPM tempo -> note durations in ms (quarter = 60000/90)
+    var QUARTER = 667;
+    var EIGHTH = QUARTER / 2;   // ~333
+    var HALF = QUARTER * 2;     // ~1334
+    var SIXTEENTH = QUARTER / 4; // ~167
 
     // Grid index map (matches _style-block.scss egg--1..4)
     var TL = 0; // top-left    (egg--1)
