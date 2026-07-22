@@ -233,12 +233,21 @@
     // load and sliders settle, so their trigger points can be measured
     // against a layout that shifts afterward. Refresh once the new
     // frame paints, then again (debounced) as images finish loading.
+    //
+    // ScrollTrigger.refresh() restores its cached scroll position,
+    // which in an SPA is the spot we left the PREVIOUS page at -- so
+    // it undoes the scroll plugin's reset-to-top and dumps us partway
+    // down the new page. After each refresh, re-assert top (unless the
+    // navigation targets a #hash, which should keep its scroll).
     var refreshTimer = null;
     function queueScrollTriggerRefresh() {
         window.clearTimeout( refreshTimer );
         refreshTimer = window.setTimeout( function () {
             if ( typeof ScrollTrigger !== 'undefined' ) {
                 ScrollTrigger.refresh();
+            }
+            if ( ! window.location.hash ) {
+                window.scrollTo( 0, 0 );
             }
         }, 150 );
     }
