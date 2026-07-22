@@ -8216,8 +8216,8 @@ div.filter-case-studies__hero .hero-services h1 {
   color: #424042;
   font-family: "Poppins", sans-serif;
   font-weight: 500;
-  font-size: 16px;
-  line-height: 23px;
+  font-size: 0.9rem;
+  line-height: 1.4rem;
   letter-spacing: 0.32px;
   padding: 10px 20px 10px 26px;
   text-transform: uppercase;
@@ -8230,8 +8230,8 @@ div.filter-case-studies__hero .hero-services h1 {
 }
 @media screen and (min-width: 768px) {
   .filter-case-studies .tax-filter-button {
-    font-size: 17px;
-    line-height: 25px;
+    font-size: 1rem;
+    line-height: 1.4625rem;
     letter-spacing: 0.34px;
     padding: 12px 24px 12px 30px;
     gap: 10px;
@@ -8645,8 +8645,8 @@ div.filter-posts__hero .hero-services h1 {
   color: #424042;
   font-family: "Poppins", sans-serif;
   font-weight: 500;
-  font-size: 16px;
-  line-height: 23px;
+  font-size: 0.9rem;
+  line-height: 1.4rem;
   letter-spacing: 0.32px;
   padding: 10px 20px 10px 26px;
   text-transform: uppercase;
@@ -8659,8 +8659,8 @@ div.filter-posts__hero .hero-services h1 {
 }
 @media screen and (min-width: 768px) {
   .filter-posts .tax-filter-button {
-    font-size: 17px;
-    line-height: 25px;
+    line-height: 1.4625rem;
+    font-size: 1rem;
     letter-spacing: 0.34px;
     padding: 12px 24px 12px 30px;
     gap: 10px;
