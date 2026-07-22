@@ -7774,6 +7774,10 @@ div.gform_wrapper.gravity-theme .gform_page_footer {
   transition: opacity 0.35s ease;
 }
 
+.egg-cluster__egg.is-popping .egg-cluster__layer--red {
+  transition: opacity 0.08s ease;
+}
+
 .egg-cluster__egg:hover .egg-cluster__layer--red,
 .egg-cluster__egg.is-popping .egg-cluster__layer--red,
 .egg-cluster__egg.is-resting-red .egg-cluster__layer--red {
