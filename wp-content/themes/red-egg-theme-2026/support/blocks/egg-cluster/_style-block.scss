@@ -58,8 +58,10 @@
 }
 
 // Hover reveal (per egg, independent) + JS-driven intro "pop"
+// + persistent resting-red state (one egg stays red after the intro)
 .egg-cluster__egg:hover .egg-cluster__layer--red,
-.egg-cluster__egg.is-popping .egg-cluster__layer--red {
+.egg-cluster__egg.is-popping .egg-cluster__layer--red,
+.egg-cluster__egg.is-resting-red .egg-cluster__layer--red {
     opacity: 1;
 }
 

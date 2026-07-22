@@ -62,18 +62,36 @@ import { onPageView } from '../../js/lifecycle';
             }, start + POP_HOLD );
             t += rand( POP_GAP_MIN, POP_GAP_MAX );
         } );
+
+        // Resting state: after the sequence, one random egg stays red
+        // (the brand is Red Egg). This is a separate persistent class,
+        // not a transient pop, so hover on the other eggs still works
+        // independently and this egg stays red as its base state.
+        var restingEgg = eggs[ rand( 0, eggs.length - 1 ) ];
+        window.setTimeout( function () {
+            restingEgg.classList.add( 'is-resting-red' );
+        }, t + POP_HOLD );
     }
 
     function initEggIntro() {
-        // Respect reduced-motion: no attract sequence at all.
-        if ( window.matchMedia && window.matchMedia( '(prefers-reduced-motion: reduce)' ).matches ) {
-            return;
-        }
+        var reduceMotion = window.matchMedia &&
+            window.matchMedia( '(prefers-reduced-motion: reduce)' ).matches;
 
         var clusters = document.querySelectorAll( '.egg-cluster' );
         clusters.forEach( function ( cluster ) {
             if ( cluster.dataset.introPlayed ) return;
             cluster.dataset.introPlayed = '1';
+
+            if ( reduceMotion ) {
+                // No attract animation, but still land on the brand's
+                // resting state: one random egg red, applied instantly.
+                var eggs = cluster.querySelectorAll( '.egg-cluster__egg' );
+                if ( eggs.length ) {
+                    eggs[ rand( 0, eggs.length - 1 ) ].classList.add( 'is-resting-red' );
+                }
+                return;
+            }
+
             playSequence( cluster );
         } );
     }
