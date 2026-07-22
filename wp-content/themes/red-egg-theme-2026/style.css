@@ -835,22 +835,28 @@ body.mega-open {
 }
 
 @media screen and (min-width: 768px) {
+  .site-footer__col--logo {
+    width: 18%;
+    flex-shrink: 0;
+  }
+}
+
+@media screen and (min-width: 768px) {
   .site-footer__col--info {
-    width: 30%;
+    width: 24%;
   }
 }
 
 .site-footer__logo {
   display: inline-block;
-  margin-bottom: 1.5rem;
 }
 .site-footer__logo img {
-  height: 50px;
+  height: 44px;
   width: auto;
 }
 @media screen and (min-width: 768px) {
   .site-footer__logo img {
-    height: 71px;
+    height: 56px;
   }
 }
 
@@ -868,15 +874,19 @@ body.mega-open {
 }
 .site-footer__contact p a {
   color: #FFFFFF;
-  text-decoration: underline;
+  text-decoration: none;
 }
 .site-footer__contact p a:hover {
   color: #F79E83;
 }
 
+.site-footer__email {
+  text-decoration: underline !important;
+}
+
 @media screen and (min-width: 768px) {
   .site-footer__col--newsletter {
-    width: 35%;
+    width: 30%;
   }
 }
 
@@ -891,12 +901,51 @@ body.mega-open {
 }
 
 .site-footer__newsletter-form {
-  display: flex;
   margin-bottom: 1.5rem;
 }
 
-.site-footer__newsletter-input {
+.site-footer__newsletter-form .gform_wrapper {
+  margin: 0;
+}
+.site-footer__newsletter-form form {
+  display: flex;
+  align-items: stretch;
+  max-width: 100%;
+  margin: 0;
+}
+.site-footer__newsletter-form .gform_body {
   flex: 1;
+  min-width: 0;
+}
+.site-footer__newsletter-form .gform_footer {
+  flex-shrink: 0;
+  margin: 0;
+  padding: 0;
+}
+.site-footer__newsletter-form .gform_fields {
+  display: block;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.site-footer__newsletter-form .gfield {
+  margin: 0;
+}
+.site-footer__newsletter-form .gfield--type-honeypot,
+.site-footer__newsletter-form .gfield--type-captcha,
+.site-footer__newsletter-form .gform_validation_container,
+.site-footer__newsletter-form .gfield_label,
+.site-footer__newsletter-form .gfield_description,
+.site-footer__newsletter-form .gfield_required,
+.site-footer__newsletter-form .gform_required_legend {
+  display: none !important;
+}
+.site-footer__newsletter-form .ginput_container {
+  margin: 0;
+}
+.site-footer__newsletter-form input[type=email],
+.site-footer__newsletter-form input[type=text] {
+  width: 100%;
   background: #FFFFFF;
   border: none;
   border-radius: 5px 0 0 5px;
@@ -908,17 +957,19 @@ body.mega-open {
   line-height: 1.875rem;
   color: #424042;
   outline: none;
+  box-sizing: border-box;
 }
-.site-footer__newsletter-input::-moz-placeholder {
+.site-footer__newsletter-form input[type=email]::-moz-placeholder, .site-footer__newsletter-form input[type=text]::-moz-placeholder {
   color: #424042;
   opacity: 0.6;
 }
-.site-footer__newsletter-input::placeholder {
+.site-footer__newsletter-form input[type=email]::placeholder,
+.site-footer__newsletter-form input[type=text]::placeholder {
   color: #424042;
   opacity: 0.6;
 }
-
-.site-footer__newsletter-submit {
+.site-footer__newsletter-form .gform_footer button,
+.site-footer__newsletter-form .gform_footer input[type=submit] {
   background: #DC2035;
   color: #FFFFFF;
   border: none;
@@ -929,31 +980,53 @@ body.mega-open {
   font-weight: 500;
   font-size: 1.0625rem;
   letter-spacing: 0.02rem;
+  text-transform: uppercase;
   cursor: pointer;
   transition: background-color 0.2s ease;
   white-space: nowrap;
 }
-.site-footer__newsletter-submit:hover {
+.site-footer__newsletter-form .gform_footer button:hover,
+.site-footer__newsletter-form .gform_footer input[type=submit]:hover {
   background: rgb(184.380952381, 26.819047619, 44.419047619);
+}
+.site-footer__newsletter-form .gform_validation_errors,
+.site-footer__newsletter-form .validation_message {
+  font-size: 0.85rem;
+  color: #FFFFFF;
 }
 
 .site-footer__social {
   display: flex;
   gap: 0.5rem;
+  list-style: none;
+  margin: 1.5rem 0 0 0;
+  padding: 0;
 }
 .site-footer__social a {
-  display: block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 40px;
   height: 40px;
+  color: #FFFFFF;
+  font-size: 20px;
+  text-decoration: none;
   transition: opacity 0.2s ease;
-}
-.site-footer__social a img {
-  display: block;
-  width: 100%;
-  height: 100%;
 }
 .site-footer__social a:hover {
   opacity: 0.75;
+}
+
+.site-footer__newsletter-note {
+  font-size: 0.875rem;
+  opacity: 0.7;
+  margin: 0;
+}
+
+.site-footer__name {
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  margin: 0 0 0.5rem 0;
 }
 
 @media screen and (min-width: 768px) {
