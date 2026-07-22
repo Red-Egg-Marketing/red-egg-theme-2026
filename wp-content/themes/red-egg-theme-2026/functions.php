@@ -341,6 +341,13 @@ require get_template_directory() . '/inc/single-post.php';
 require get_template_directory() . '/inc/nav-walker.php';
 
 /**
+ * ACF Options Page (Red Egg Site Settings) — footer/company content
+ */
+if ( function_exists( 'acf_add_options_page' ) ) {
+    require get_template_directory() . '/inc/options-page.php';
+}
+
+/**
  * Gravity Forms Customizations
  */
 if ( class_exists( 'GFForms' ) ) {
