@@ -35,6 +35,18 @@
     if ( typeof SwupBodyClassPlugin !== 'undefined' ) {
         plugins.push( new SwupBodyClassPlugin() );
     }
+    if ( typeof SwupScrollPlugin !== 'undefined' ) {
+        // Handles scroll-to-top on navigation, position restore on
+        // back/forward, and #hash-target scrolling across page swaps.
+        // Animation off when the user prefers reduced motion.
+        plugins.push( new SwupScrollPlugin( {
+            animateScroll: {
+                betweenPages: false,
+                samePageWithHash: ! window.matchMedia( '(prefers-reduced-motion: reduce)' ).matches,
+                samePage: ! window.matchMedia( '(prefers-reduced-motion: reduce)' ).matches,
+            },
+        } ) );
+    }
 
     var swup = new Swup( {
         containers: [ '#content' ],
@@ -116,19 +128,6 @@
     } );
 
     swup.hooks.on( 'content:replace', function ( visit ) {
-        // Explicit scroll reset: don't rely solely on Swup's built-in
-        // scroll-to-top, since our own hooks.before('content:replace')
-        // teardown runs in the same phase and could interfere with it.
-        // This is the fallback Swup's own maintainers recommend when
-        // the built-in behavior isn't landing reliably in a custom
-        // integration. Skip it when the destination has a hash target
-        // (e.g. a cross-page link to /services/#pricing) so Swup/our
-        // own anchor-scroll handling can land on that section instead.
-        var hasHashTarget = !! ( visit && visit.to && visit.to.hash );
-        if ( ! hasHashTarget ) {
-            window.scrollTo( 0, 0 );
-        }
-
         var container = document.getElementById( 'content' );
         if ( ! container ) return;
 
