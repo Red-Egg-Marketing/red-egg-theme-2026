@@ -259,11 +259,13 @@ p.is-style-section-label {
   overflow: hidden;
   padding-top: 4.5rem;
   padding-bottom: 4.5rem;
+  position: relative;
+  z-index: 2;
 }
 @media screen and (min-width: 768px) {
   .hero-background {
-    padding-top: 5rem;
-    padding-bottom: 5rem;
+    padding-top: 7rem;
+    padding-bottom: 7rem;
   }
 }
 
@@ -8544,7 +8546,8 @@ img.device-frame__device {
 .egg-cluster {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 8%;
+  grid-row-gap: 8%;
+  grid-column-gap: 4%;
   width: 100%;
   max-width: 460px;
   margin-left: auto;
@@ -8590,7 +8593,8 @@ img.device-frame__device {
 }
 
 .egg-cluster__egg:hover .egg-cluster__layer--red,
-.egg-cluster__egg.is-popping .egg-cluster__layer--red {
+.egg-cluster__egg.is-popping .egg-cluster__layer--red,
+.egg-cluster__egg.is-resting-red .egg-cluster__layer--red {
   opacity: 1;
 }
 
