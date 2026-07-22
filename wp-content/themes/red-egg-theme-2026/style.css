@@ -7723,6 +7723,112 @@ div.gform_wrapper.gravity-theme .gform_page_footer {
   }
 }
 
+.egg-cluster {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1/1;
+  max-width: 520px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.egg-cluster__egg {
+  position: absolute;
+  display: block;
+  width: 40%;
+  aspect-ratio: 1/1;
+  cursor: pointer;
+}
+
+.egg-cluster__layer {
+  position: absolute;
+  inset: 0;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.egg-cluster__layer--white {
+  background-image: url(img/egg-white.png);
+}
+
+.egg-cluster__layer--red {
+  background-image: url(img/egg-red.png);
+  opacity: 0;
+  transition: opacity 0.35s ease;
+}
+
+.egg-cluster__egg:hover .egg-cluster__layer--red {
+  opacity: 1;
+}
+
+.egg-cluster__egg--1 {
+  top: 4%;
+  left: 6%;
+}
+
+.egg-cluster__egg--2 {
+  top: 0;
+  right: 4%;
+  left: auto;
+}
+
+.egg-cluster__egg--3 {
+  bottom: 2%;
+  left: 14%;
+  top: auto;
+}
+
+.egg-cluster__egg--4 {
+  bottom: 6%;
+  right: 8%;
+  left: auto;
+}
+
+.egg-cluster__egg--5 {
+  top: 38%;
+  left: 40%;
+}
+
+.egg-cluster__egg--6 {
+  bottom: 34%;
+  right: 34%;
+  left: auto;
+}
+
+@media (hover: none) {
+  .egg-cluster--touch-cycle .egg-cluster__layer--red {
+    animation: egg-cluster-cycle 6s ease-in-out infinite;
+  }
+  .egg-cluster--touch-cycle .egg-cluster__egg--2 .egg-cluster__layer--red {
+    animation-delay: 1.2s;
+  }
+  .egg-cluster--touch-cycle .egg-cluster__egg--3 .egg-cluster__layer--red {
+    animation-delay: 2.4s;
+  }
+  .egg-cluster--touch-cycle .egg-cluster__egg--4 .egg-cluster__layer--red {
+    animation-delay: 3.6s;
+  }
+  .egg-cluster--touch-cycle .egg-cluster__egg--5 .egg-cluster__layer--red {
+    animation-delay: 4.8s;
+  }
+  .egg-cluster--touch-cycle .egg-cluster__egg--6 .egg-cluster__layer--red {
+    animation-delay: 6s;
+  }
+}
+@keyframes egg-cluster-cycle {
+  0%, 100% {
+    opacity: 0;
+  }
+  40%, 60% {
+    opacity: 1;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .egg-cluster--touch-cycle .egg-cluster__layer--red {
+    animation: none;
+  }
+}
 .text-columns {
   position: relative;
   width: 100%;
