@@ -44,6 +44,7 @@ function red_egg_enqueue_block_editor_assets() {
         'redEggEditor',
         [
             'iconsUrl' => get_template_directory_uri() . '/support/assets/icons.json',
+            'themeUri' => get_template_directory_uri(),
         ]
     );
 
@@ -254,6 +255,11 @@ function red_egg_register_blocks() {
 
     // Squiggle Divider (standalone decorative divider)
     register_block_type( 'red-egg-block/squiggle-divider', [
+        'editor_script' => 'red-egg-editor-blocks',
+    ] );
+
+    // Egg Cluster (decorative hover-to-red eggs)
+    register_block_type( 'red-egg-block/egg-cluster', [
         'editor_script' => 'red-egg-editor-blocks',
     ] );
 

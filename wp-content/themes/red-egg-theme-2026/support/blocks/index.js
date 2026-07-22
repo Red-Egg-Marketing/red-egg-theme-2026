@@ -108,6 +108,9 @@ import './media-content-text/index';
 // Squiggle Divider
 import './squiggle-divider/index';
 
+// Egg Cluster
+import './egg-cluster/index';
+
 // Text Columns (parent + column child)
 import './text-columns/index';
 import './text-columns-col/index';
