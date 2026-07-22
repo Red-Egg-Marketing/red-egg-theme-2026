@@ -24,6 +24,7 @@ const template = [
 const allowedBlocks = [
     'red-egg-block/hero-content',
     'red-egg-block/hero-media',
+    'red-egg-block/egg-cluster',
 ];
 
 const EditHeroBackground = ( { attributes, setAttributes, clientId } ) => {
