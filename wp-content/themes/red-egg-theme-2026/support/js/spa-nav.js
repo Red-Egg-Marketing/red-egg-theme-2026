@@ -105,7 +105,11 @@
         var hasForm = /gform_wrapper|gform_fields/.test( html );
         if ( hasForm && typeof window.gform === 'undefined' ) {
             swup.destroy();
-            window.location.href = visit.to.url;
+            // visit.to.url is the pathname only -- swup keeps the
+            // fragment in visit.to.hash. Re-append it so a cross-page
+            // hash link (e.g. /about/#team) isn't stripped on the
+            // hard-reload fallback.
+            window.location.href = visit.to.url + ( visit.to.hash || '' );
         }
     } );
 
@@ -123,7 +127,7 @@
         var hasGsTeam = /gs_team_popup|gs_member_info|single-member-div/.test( html );
         if ( hasGsTeam ) {
             swup.destroy();
-            window.location.href = visit.to.url;
+            window.location.href = visit.to.url + ( visit.to.hash || '' );
         }
     } );
 
