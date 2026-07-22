@@ -877,7 +877,7 @@ body.mega-open {
   text-decoration: none;
 }
 .site-footer__contact p a:hover {
-  color: #F79E83;
+  color: #DC2035;
 }
 
 .site-footer__email {
@@ -908,28 +908,35 @@ body.mega-open {
   margin: 0;
 }
 .site-footer__newsletter-form form {
-  display: flex;
+  display: flex !important;
   align-items: stretch;
   max-width: 100%;
   margin: 0;
 }
 .site-footer__newsletter-form .gform_body {
-  flex: 1;
+  flex: 1 1 auto;
+  width: auto;
   min-width: 0;
 }
 .site-footer__newsletter-form .gform_footer {
-  flex-shrink: 0;
-  margin: 0;
-  padding: 0;
+  flex: 0 0 auto;
+  width: auto !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  clear: none !important;
 }
 .site-footer__newsletter-form .gform_fields {
   display: block;
+  width: 100%;
   margin: 0;
   padding: 0;
   list-style: none;
 }
 .site-footer__newsletter-form .gfield {
-  margin: 0;
+  width: 100%;
+  max-width: 100%;
+  margin: 0 !important;
+  padding: 0 !important;
 }
 .site-footer__newsletter-form .gfield--type-honeypot,
 .site-footer__newsletter-form .gfield--type-captcha,
@@ -941,11 +948,12 @@ body.mega-open {
   display: none !important;
 }
 .site-footer__newsletter-form .ginput_container {
-  margin: 0;
+  width: 100%;
+  margin: 0 !important;
 }
 .site-footer__newsletter-form input[type=email],
 .site-footer__newsletter-form input[type=text] {
-  width: 100%;
+  width: 100% !important;
   background: #FFFFFF;
   border: none;
   border-radius: 5px 0 0 5px;
@@ -958,6 +966,7 @@ body.mega-open {
   color: #424042;
   outline: none;
   box-sizing: border-box;
+  margin-top: 0 !important;
 }
 .site-footer__newsletter-form input[type=email]::-moz-placeholder, .site-footer__newsletter-form input[type=text]::-moz-placeholder {
   color: #424042;
@@ -1009,7 +1018,7 @@ body.mega-open {
   width: 40px;
   height: 40px;
   color: #FFFFFF;
-  font-size: 20px;
+  font-size: 32px;
   text-decoration: none;
   transition: opacity 0.2s ease;
 }
