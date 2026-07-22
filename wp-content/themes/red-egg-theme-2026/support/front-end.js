@@ -89,3 +89,6 @@ import './js/spa-nav';
 
 // Image fade-in + loading placeholders (SPA-aware)
 import './js/image-fade';
+
+// Egg cluster intro "attract" sequence
+import './blocks/egg-cluster/frontend';
