@@ -113,8 +113,8 @@ ul, ol {
   color: #424042;
   font-family: "Poppins", sans-serif;
   font-weight: 500;
-  font-size: 16px;
-  line-height: 23px;
+  font-size: 0.9rem;
+  line-height: 1.4rem;
   letter-spacing: 0.32px;
   padding: 10px 20px 10px 26px;
   text-decoration: none;
@@ -125,8 +125,8 @@ ul, ol {
 @media screen and (min-width: 768px) {
   .wp-block-button.is-style-outline-gray .wp-block-button__link,
   .editor-styles-wrapper .wp-block-button.is-style-outline-gray .wp-block-button__link {
-    font-size: 17px;
-    line-height: 25px;
+    line-height: 1.4625rem;
+    font-size: 1rem;
     letter-spacing: 0.34px;
     padding: 12px 24px 12px 30px;
     gap: 10px;
@@ -171,8 +171,8 @@ ul, ol {
   color: #FFFFFF;
   font-family: "Poppins", sans-serif;
   font-weight: 500;
-  font-size: 16px;
-  line-height: 23px;
+  font-size: 0.9rem;
+  line-height: 1.4rem;
   letter-spacing: 0.32px;
   padding: 10px 20px 10px 26px;
   text-decoration: none;
@@ -183,8 +183,8 @@ ul, ol {
 @media screen and (min-width: 768px) {
   .wp-block-button.is-style-outline-white .wp-block-button__link,
   .editor-styles-wrapper .wp-block-button.is-style-outline-white .wp-block-button__link {
-    font-size: 17px;
-    line-height: 25px;
+    line-height: 1.4625rem;
+    font-size: 1rem;
     letter-spacing: 0.34px;
     padding: 12px 24px 12px 30px;
     gap: 10px;
@@ -1197,8 +1197,8 @@ p.is-style-section-label {
   text-decoration: none;
   text-transform: uppercase;
   font-weight: 500;
-  font-size: 16px;
-  line-height: 23px;
+  font-size: 0.9rem;
+  line-height: 1.4rem;
   letter-spacing: 0.32px;
   transition: background-color 0.3s ease, color 0.3s ease;
   color: #424042;
@@ -1207,8 +1207,8 @@ p.is-style-section-label {
 @media screen and (min-width: 768px) {
   .flip-card .flip-link {
     padding: 12px 24px 12px 24px;
-    line-height: 25px;
-    font-size: 17px;
+    line-height: 1.4625rem;
+    font-size: 1rem;
     letter-spacing: 0.34px;
   }
 }
@@ -1219,15 +1219,15 @@ p.is-style-section-label {
 .flip-card .flip-link span {
   font-family: "Poppins", sans-serif;
   font-weight: 500;
-  font-size: 1rem;
-  line-height: 1.4375rem;
+  font-size: 0.9rem;
+  line-height: 1.4rem;
   letter-spacing: 0.02rem;
   text-transform: uppercase;
 }
 @media screen and (min-width: 768px) {
   .flip-card .flip-link span {
-    font-size: 1.0625rem;
-    line-height: 1.5625rem;
+    font-size: 1rem;
+    line-height: 1.4625rem;
     letter-spacing: 0.02125rem;
   }
 }
@@ -1619,15 +1619,15 @@ p.is-style-section-label {
   display: block;
   font-family: "Poppins", sans-serif;
   font-weight: 500;
-  font-size: 1rem;
-  line-height: 1.4375rem;
+  font-size: 0.9rem;
+  line-height: 1.4rem;
   letter-spacing: 0.02rem;
   text-transform: uppercase;
 }
 @media screen and (min-width: 768px) {
   .reveal-card--editing .reveal-card__face::before {
-    font-size: 1.0625rem;
-    line-height: 1.5625rem;
+    font-size: 1rem;
+    line-height: 1.4625rem;
     letter-spacing: 0.02125rem;
   }
 }
@@ -2097,8 +2097,8 @@ p.is-style-section-label {
   text-decoration: none;
   text-transform: uppercase;
   font-weight: 500;
-  font-size: 16px;
-  line-height: 23px;
+  font-size: 0.9rem;
+  line-height: 1.4rem;
   letter-spacing: 0.32px;
   transition: background-color 0.3s ease, color 0.3s ease;
   color: #424042;
@@ -2107,8 +2107,8 @@ p.is-style-section-label {
 @media screen and (min-width: 768px) {
   .cs-slider__cta .outline-gray {
     padding: 12px 24px 12px 24px;
-    line-height: 25px;
-    font-size: 17px;
+    line-height: 1.4625rem;
+    font-size: 1rem;
     letter-spacing: 0.34px;
   }
 }
@@ -2119,15 +2119,15 @@ p.is-style-section-label {
 .cs-slider__cta .outline-gray span {
   font-family: "Poppins", sans-serif;
   font-weight: 500;
-  font-size: 1rem;
-  line-height: 1.4375rem;
+  font-size: 0.9rem;
+  line-height: 1.4rem;
   letter-spacing: 0.02rem;
   text-transform: uppercase;
 }
 @media screen and (min-width: 768px) {
   .cs-slider__cta .outline-gray span {
-    font-size: 1.0625rem;
-    line-height: 1.5625rem;
+    font-size: 1rem;
+    line-height: 1.4625rem;
     letter-spacing: 0.02125rem;
   }
 }
@@ -2813,8 +2813,8 @@ p.is-style-section-label {
   text-decoration: none;
   text-transform: uppercase;
   font-weight: 500;
-  font-size: 16px;
-  line-height: 23px;
+  font-size: 0.9rem;
+  line-height: 1.4rem;
   letter-spacing: 0.32px;
   transition: background-color 0.3s ease, color 0.3s ease;
   color: #424042;
@@ -2823,8 +2823,8 @@ p.is-style-section-label {
 @media screen and (min-width: 768px) {
   .insights-block .resource-card .wp-button {
     padding: 12px 24px 12px 24px;
-    line-height: 25px;
-    font-size: 17px;
+    line-height: 1.4625rem;
+    font-size: 1rem;
     letter-spacing: 0.34px;
   }
 }
@@ -2835,15 +2835,15 @@ p.is-style-section-label {
 .insights-block .resource-card .wp-button span {
   font-family: "Poppins", sans-serif;
   font-weight: 500;
-  font-size: 1rem;
-  line-height: 1.4375rem;
+  font-size: 0.9rem;
+  line-height: 1.4rem;
   letter-spacing: 0.02rem;
   text-transform: uppercase;
 }
 @media screen and (min-width: 768px) {
   .insights-block .resource-card .wp-button span {
-    font-size: 1.0625rem;
-    line-height: 1.5625rem;
+    font-size: 1rem;
+    line-height: 1.4625rem;
     letter-spacing: 0.02125rem;
   }
 }
@@ -3409,8 +3409,8 @@ div.gform_wrapper.gravity-theme .gform_page_footer {
   color: #424042;
   font-family: "Poppins", sans-serif;
   font-weight: 500;
-  font-size: 16px;
-  line-height: 23px;
+  font-size: 0.9rem;
+  line-height: 1.4rem;
   letter-spacing: 0.32px;
   padding: 10px 20px 10px 26px;
   text-decoration: none;
@@ -3421,8 +3421,8 @@ div.gform_wrapper.gravity-theme .gform_page_footer {
 @media screen and (min-width: 768px) {
   .contact-section .gform_footer input[type=submit],
   .contact-section .gform_footer button[type=submit] {
-    font-size: 17px;
-    line-height: 25px;
+    line-height: 1.4625rem;
+    font-size: 1rem;
     letter-spacing: 0.34px;
     padding: 12px 24px 12px 30px;
     gap: 10px;
@@ -7028,8 +7028,8 @@ p.case-study-body__label {
   text-decoration: none;
   text-transform: uppercase;
   font-weight: 500;
-  font-size: 16px;
-  line-height: 23px;
+  font-size: 0.9rem;
+  line-height: 1.4rem;
   letter-spacing: 0.32px;
   transition: background-color 0.3s ease, color 0.3s ease;
   color: #424042;
@@ -7038,8 +7038,8 @@ p.case-study-body__label {
 @media screen and (min-width: 768px) {
   .section-nav .wp-block-button__link {
     padding: 12px 24px 12px 24px;
-    line-height: 25px;
-    font-size: 17px;
+    line-height: 1.4625rem;
+    font-size: 1rem;
     letter-spacing: 0.34px;
   }
 }
@@ -7050,15 +7050,15 @@ p.case-study-body__label {
 .section-nav .wp-block-button__link span {
   font-family: "Poppins", sans-serif;
   font-weight: 500;
-  font-size: 1rem;
-  line-height: 1.4375rem;
+  font-size: 0.9rem;
+  line-height: 1.4rem;
   letter-spacing: 0.02rem;
   text-transform: uppercase;
 }
 @media screen and (min-width: 768px) {
   .section-nav .wp-block-button__link span {
-    font-size: 1.0625rem;
-    line-height: 1.5625rem;
+    font-size: 1rem;
+    line-height: 1.4625rem;
     letter-spacing: 0.02125rem;
   }
 }

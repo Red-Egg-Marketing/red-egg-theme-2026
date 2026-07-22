@@ -186,13 +186,13 @@ $close: "data:image/svg+xml,%3Csvg width='35' height='35' viewBox='0 0 35 35' fi
 @mixin button-text {
     font-family: $font-head;
     font-weight: 500;
-    font-size: 1rem; // 16px mobile
-    line-height: 1.4375rem; // 23px
+    font-size: 0.9rem; // 16px mobile
+    line-height: 1.4rem; // 23px
     letter-spacing: 0.02rem;
     text-transform: uppercase;
     @media screen and (min-width: $small-width) {
-        font-size: 1.0625rem; // 17px desktop
-        line-height: 1.5625rem; // 25px
+        font-size: 1rem; // 17px desktop
+        line-height: 1.4625rem; // 25px
         letter-spacing: 0.02125rem;
     }
 }
@@ -233,16 +233,16 @@ $close: "data:image/svg+xml,%3Csvg width='35' height='35' viewBox='0 0 35 35' fi
     text-decoration: none;
     text-transform: uppercase;
     font-weight: 500;
-    font-size: 16px;
-    line-height: 23px;
+    font-size: 0.9rem; // 16px mobile
+    line-height: 1.4rem; // 23px
     letter-spacing: 0.32px;
     transition: background-color 0.3s ease, color 0.3s ease;
     color: $gray;
     font-family: $font-head;
     @media screen and (min-width: $small-width) {
         padding: 12px 24px 12px 24px;
-        line-height: 25px;
-        font-size: 17px;
+        line-height: 1.4625rem;
+        font-size: 1rem;
         letter-spacing: 0.34px;
     }
     font-weight: 500;
@@ -291,8 +291,8 @@ $close: "data:image/svg+xml,%3Csvg width='35' height='35' viewBox='0 0 35 35' fi
     color: $color;
     font-family: $font-head;
     font-weight: 500;
-    font-size: 16px;
-    line-height: 23px;
+    font-size: 0.9rem; // 16px mobile
+    line-height: 1.4rem; // 23px
     letter-spacing: 0.32px;
     padding: 10px 20px 10px 26px;
     text-decoration: none;
@@ -300,8 +300,8 @@ $close: "data:image/svg+xml,%3Csvg width='35' height='35' viewBox='0 0 35 35' fi
     transition: none;
     text-transform: uppercase;
     @media screen and (min-width: $small-width) {
-        font-size: 17px;
-        line-height: 25px;
+        line-height: 1.4625rem;
+        font-size: 1rem;
         letter-spacing: 0.34px;
         padding: 12px 24px 12px 30px;
         gap: 10px;
