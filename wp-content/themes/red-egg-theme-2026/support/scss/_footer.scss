@@ -109,43 +109,68 @@
     margin-bottom: 1.5rem;
 }
 
-// The newsletter is a Gravity Form; reuse the original inline email +
-// red SUBMIT pill styling, retargeted at GF's actual output. Scoped
-// to the footer so it doesn't affect Gravity Forms elsewhere.
+// The newsletter is a Gravity Form rendering in LEGACY markup
+// (.gform_legacy_markup_wrapper: body/footer are <div>s, fields are a
+// <ul>). Reuse the original inline email + red SUBMIT pill styling,
+// retargeted at that real output. Scoped to the footer so it doesn't
+// affect Gravity Forms elsewhere.
 .site-footer__newsletter-form {
     .gform_wrapper {
         margin: 0;
+    }
+
+    // Flex the form so the field body (email) and footer (submit) sit
+    // on one inline row -- they're separate <div> siblings in legacy
+    // markup, so this is what pulls them together into the pill.
+    form {
+        display: flex;
+        align-items: stretch;
+        max-width: 100%;
+        margin: 0;
+    }
+
+    .gform_body {
+        flex: 1;
+        min-width: 0;
+    }
+
+    .gform_footer {
+        flex-shrink: 0;
+        margin: 0;
+        padding: 0;
     }
 
     .gform_fields {
         display: block;
         margin: 0;
         padding: 0;
-        grid-template-columns: none;
+        list-style: none;
     }
 
     .gfield {
         margin: 0;
     }
 
-    // Hide labels/descriptions; the placeholder carries the intent
+    // Hide the honeypot + invisible CAPTCHA fields (present in the
+    // form but not meant to show), plus labels/descriptions -- the
+    // placeholder carries the intent.
+    .gfield--type-honeypot,
+    .gfield--type-captcha,
+    .gform_validation_container,
     .gfield_label,
     .gfield_description,
+    .gfield_required,
     .gform_required_legend {
-        display: none;
+        display: none !important;
     }
 
-    // Inline row: email input + submit button as one pill
-    .gform_body,
-    .gform_footer {
-        display: inline-block;
-        vertical-align: top;
+    .ginput_container {
         margin: 0;
-        padding: 0;
     }
 
     input[type="email"],
     input[type="text"] {
+        width: 100%;
         background: $white;
         border: none;
         border-radius: 5px 0 0 5px;
