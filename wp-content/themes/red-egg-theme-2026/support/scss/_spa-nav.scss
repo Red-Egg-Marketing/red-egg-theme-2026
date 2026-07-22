@@ -13,3 +13,69 @@ html.is-changing .transition-fade {
 html.is-animating .transition-fade {
     opacity: 0;
 }
+
+// ============================================
+//  SPA Loading Indicator
+// ============================================
+//
+// Centered Red Egg mark, injected by spa-nav.js and shown only when a
+// swap runs long (>300ms). The two egg paths pulse in sequence
+// (gray, then red, looping) to read as a loading animation. Hidden by
+// default; .is-visible fades the overlay in.
+
+.spa-loader {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.85);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.2s ease, visibility 0.2s ease;
+    pointer-events: none;
+}
+
+.spa-loader.is-visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.spa-loader__mark {
+    width: 64px;
+    height: auto;
+}
+
+// Each egg fades + scales in sequence on a shared 1.4s loop. The red
+// path is offset by half the cycle so they alternate (gray in, red
+// in, repeat) rather than pulsing together. transform-box + center
+// origin keep the scale anchored to each path's own centre.
+.spa-loader__egg {
+    transform-box: fill-box;
+    transform-origin: center;
+    animation: spa-loader-pulse 1.4s ease-in-out infinite;
+}
+
+.spa-loader__egg--red {
+    animation-delay: 0.7s;
+}
+
+@keyframes spa-loader-pulse {
+    0%, 100% {
+        opacity: 0.25;
+        transform: scale( 0.9 );
+    }
+    50% {
+        opacity: 1;
+        transform: scale( 1 );
+    }
+}
+
+// Respect reduced-motion: hold both eggs steady, no pulsing.
+@media (prefers-reduced-motion: reduce) {
+    .spa-loader__egg {
+        animation: none;
+        opacity: 1;
+    }
+}
