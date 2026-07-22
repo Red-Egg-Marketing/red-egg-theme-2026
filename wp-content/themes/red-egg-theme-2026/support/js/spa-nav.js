@@ -41,6 +41,45 @@
         plugins: plugins,
     } );
 
+    // ---- Loading indicator ------------------------------------------
+    // A centered Red Egg mark that pulses its two egg paths in
+    // sequence while a swap is in flight. Only shown if the swap runs
+    // long (>300ms) so quick navigations don't flash it. Injected once
+    // here so header/footer PHP stays untouched.
+    var LOADER_DELAY = 300; // ms before the loader is allowed to show
+    var loaderTimer = null;
+
+    var loader = document.createElement( 'div' );
+    loader.className = 'spa-loader';
+    loader.setAttribute( 'aria-hidden', 'true' );
+    loader.innerHTML =
+        '<svg class="spa-loader__mark" width="56" height="50" viewBox="0 0 56 50" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Loading">' +
+        '<path class="spa-loader__egg spa-loader__egg--red" d="M36.1314 0.895646C34.6015 0.895646 33.0572 1.26402 31.5411 1.93534C33.1525 3.3841 34.6825 5.11986 36.084 7.12063C36.0939 7.13492 36.1033 7.15032 36.1138 7.16406C36.1193 7.16406 36.1259 7.16351 36.1314 7.16351C38.7808 7.16351 42.1156 9.69046 44.8344 13.7569C47.8744 18.3044 49.6891 24.0967 49.6891 29.2523C49.6891 34.6602 47.9273 43.7321 36.1314 43.7321C24.3355 43.7321 22.5736 34.6602 22.5736 29.2523C22.5736 24.2369 24.2143 19.3573 26.4847 15.464C26.3073 15.1715 26.1321 14.8774 25.9431 14.5942C24.622 12.6171 23.2987 11.2937 22.1924 10.475C18.6444 15.7686 16.2617 22.6001 16.2617 29.2517C16.2617 42.0497 23.8755 49.9995 36.1314 49.9995C48.3873 49.9995 56 42.0492 56 29.2517C56 15.2062 45.9731 0.895096 36.1314 0.895096" fill="#DC2035"/>' +
+        '<path class="spa-loader__egg spa-loader__egg--gray" d="M16.3217 42.5165C7.71187 40.8715 6.31196 33.1669 6.31196 28.3566C6.31196 16.9667 14.7692 6.26787 19.8692 6.26787C22.5186 6.26787 25.8539 8.79481 28.5732 12.8612C31.6121 17.4087 33.428 23.201 33.428 28.3566C33.428 31.5395 32.8148 35.9913 29.907 39.1165C31.4942 40.1105 33.5547 40.5987 36.1325 40.5987C36.3099 40.5987 36.4829 40.5932 36.6559 40.5883C38.6579 37.3092 39.7383 33.1779 39.7383 28.3566C39.7378 14.3111 29.7098 0 19.8686 0C10.0274 0 0 14.5761 0 28.3566C0 41.1552 7.61325 49.1055 19.8686 49.1055C20.6454 49.1055 21.4029 49.0725 22.1417 49.0092C19.7634 47.3109 17.8021 45.1243 16.3217 42.5165Z" fill="#424042"/>' +
+        '</svg>';
+    document.body.appendChild( loader );
+
+    function showLoaderSoon() {
+        window.clearTimeout( loaderTimer );
+        loaderTimer = window.setTimeout( function () {
+            loader.classList.add( 'is-visible' );
+        }, LOADER_DELAY );
+    }
+
+    function hideLoader() {
+        window.clearTimeout( loaderTimer );
+        loader.classList.remove( 'is-visible' );
+    }
+
+    // visit:start fires when a navigation begins; page:view when the
+    // new content is in. If the gap exceeds LOADER_DELAY the loader
+    // shows; otherwise the timer is cleared before it ever appears.
+    swup.hooks.on( 'visit:start', showLoaderSoon );
+    swup.hooks.on( 'page:view', hideLoader );
+    // Safety: also clear on any navigation error/abort so it can't
+    // get stuck on screen.
+    swup.hooks.on( 'visit:abort', hideLoader );
+
     // ---- Gravity Forms support --------------------------------------
     // GF renders its init as inline <script> tags right after the form
     // markup. Scripts inserted via innerHTML (how Swup swaps content)

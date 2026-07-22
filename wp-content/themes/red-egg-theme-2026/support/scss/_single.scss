@@ -35,8 +35,10 @@
 .single .entry-thumbnail img {
     border-radius: 8px;
     margin-top: 25px;
+    max-width: 85%;
     @media screen and (min-width: $small-width) {
         margin-top: 150px;
+        max-width: 936px;
     }
 }
 
@@ -107,8 +109,14 @@
 
 .single-post .entry-title {
     @include primary-h1;
+    font-size: 1.75rem;
+    line-height: 2rem;
     color: $red;
     margin: 0 0 0.75rem 0;
+    @media screen and (min-width: $small-width) {
+        font-size: 2.125rem;
+        line-height: 2.75rem;
+    }
 }
 
 .single-post .entry-read-time {
