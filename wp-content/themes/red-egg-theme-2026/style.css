@@ -2170,10 +2170,12 @@ body.mega-open {
 .single .entry-thumbnail img {
   border-radius: 8px;
   margin-top: 25px;
+  max-width: 85%;
 }
 @media screen and (min-width: 768px) {
   .single .entry-thumbnail img {
     margin-top: 150px;
+    max-width: 936px;
   }
 }
 
@@ -2341,8 +2343,16 @@ body.mega-open {
   }
 }
 .single-post .entry-title {
+  font-size: 1.75rem;
+  line-height: 2rem;
   color: #DC2035;
   margin: 0 0 0.75rem 0;
+}
+@media screen and (min-width: 768px) {
+  .single-post .entry-title {
+    font-size: 2.125rem;
+    line-height: 2.75rem;
+  }
 }
 
 .single-post .entry-read-time {
