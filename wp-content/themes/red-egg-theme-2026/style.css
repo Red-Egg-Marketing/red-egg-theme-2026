@@ -11327,7 +11327,7 @@ img.device-frame__device {
   padding: 1.5rem 1.75rem;
   border-bottom-left-radius: 8px;
   border-bottom-right-radius: 8px;
-  background-color: rgba(247, 158, 131, 0.18);
+  background-color: #F2ECE5;
   border-top: 4px solid #F68633;
 }
 @media screen and (min-width: 768px) {
@@ -11356,16 +11356,25 @@ img.device-frame__device {
   margin-bottom: 0.5rem;
   font-family: "Poppins", sans-serif;
   font-weight: 700;
-  font-size: 1.0625rem;
-  line-height: 1.5rem;
+  font-size: 0.9rem;
+  line-height: 1.3rem;
   letter-spacing: 0.0625rem;
   text-transform: uppercase;
   color: #DC2035;
 }
 @media screen and (min-width: 768px) {
   .callout-block .callout-block__content h2, .callout-block .callout-block__content h3, .callout-block .callout-block__content h4, .callout-block .callout-block__content h5, .callout-block .callout-block__content h6 {
-    font-size: 1.375rem;
+    font-size: 1.175rem;
   }
+}
+.callout-block .callout-block__content h2 :before, .callout-block .callout-block__content h3 :before, .callout-block .callout-block__content h4 :before, .callout-block .callout-block__content h5 :before, .callout-block .callout-block__content h6 :before {
+  content: "";
+  position: relative;
+  width: 18px;
+  height: 18px;
+  background: url(img/callout-icon.svg) no-repeat top left/18px;
+  margin-right: 10px;
+  margin-top: 5px;
 }
 .callout-block .callout-block__content p {
   font-family: "Figtree", sans-serif;
