@@ -18,7 +18,8 @@
 // ========================================
 
 .site-content,
-.entry-content {
+.entry-content,
+.is-root-container {
     @include body-text;
     // Overflow must stay visible so absolutely-positioned filter
     // dropdowns and decorative blobs aren't clipped at the content-box
