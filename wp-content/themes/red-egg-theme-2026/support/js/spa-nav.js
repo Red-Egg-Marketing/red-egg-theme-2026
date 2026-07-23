@@ -60,6 +60,14 @@
         } ) );
     }
 
+    // Turn off the browser's own scroll restoration. On SPA history
+    // navigation it can re-apply a prior scroll position independently
+    // of ScrollTrigger; we manage scroll ourselves (scroll plugin +
+    // resetScrollAfterNav), so the browser shouldn't also try.
+    if ( 'scrollRestoration' in window.history ) {
+        window.history.scrollRestoration = 'manual';
+    }
+
     var swup = new Swup( {
         containers: [ '#content' ],
         plugins: plugins,
@@ -249,6 +257,16 @@
         window.clearTimeout( refreshTimer );
         refreshTimer = window.setTimeout( function () {
             if ( typeof ScrollTrigger !== 'undefined' ) {
+                // Wipe ScrollTrigger's recorded scroll positions first,
+                // so refresh() doesn't restore a stale position. In an
+                // SPA, refresh() would otherwise re-apply the scroll
+                // from a prior page (this is exactly the case GSAP's
+                // clearScrollMemory is documented for). Only clear when
+                // not targeting a hash, so hash scrolls are preserved.
+                if ( ! window.location.hash &&
+                     typeof ScrollTrigger.clearScrollMemory === 'function' ) {
+                    ScrollTrigger.clearScrollMemory();
+                }
                 ScrollTrigger.refresh();
             }
         }, 150 );
