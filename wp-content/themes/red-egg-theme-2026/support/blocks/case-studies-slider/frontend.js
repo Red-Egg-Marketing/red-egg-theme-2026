@@ -47,16 +47,16 @@ const SliderContent = ( { postsToShow, industry, service, navPrev, navNext } ) =
     useEffect( () => {
         if ( ! loading && studies.length > 0 && swiperRef.current ) {
             setTimeout( () => {
-                // Always loop so there are real slides peeking on both
-                // sides, even with few case studies. With
-                // slidesPerView:'auto', Swiper needs loopAdditionalSlides
-                // told how many extra clones to make, or it can't fill
-                // both edges from a small set. centeredSlidesBounds is
-                // intentionally NOT set -- it prevented the last slide
-                // from centering/activating (Swiper issue #6277).
+                // Swiper 11's loop won't reliably generate clones for a
+                // small set with slidesPerView:'auto' (loopAdditionalSlides
+                // silently no-ops -- issues #7492/#8178). So instead of
+                // relying on Swiper to clone, we feed it enough REAL
+                // slides by repeating the studies data (see loopStudies
+                // below). With plenty of real slides, native loop works
+                // cleanly and there are always slides peeking both sides.
+                // centeredSlidesBounds intentionally omitted (issue #6277).
                 swiperInstanceRef.current = new Swiper( swiperRef.current, {
                     loop: true,
-                    loopAdditionalSlides: studies.length,
                     centeredSlides: true,
                     slidesPerView: 1,
                     spaceBetween: 20,
@@ -100,6 +100,26 @@ const SliderContent = ( { postsToShow, industry, service, navPrev, navNext } ) =
         return null;
     }
 
+    // Repeat the studies so loop mode always has enough real slides to
+    // fill both edges (Swiper won't clone reliably for small sets with
+    // slidesPerView:'auto'). Target ~8 slides -- comfortably above the
+    // ~2-up auto layout's needs. With enough real slides already, no
+    // repetition happens. Keys stay unique via the repeat index.
+    const MIN_LOOP_SLIDES = 8;
+    let loopStudies = studies;
+    if ( studies.length > 0 && studies.length < MIN_LOOP_SLIDES ) {
+        loopStudies = [];
+        let r = 0;
+        while ( loopStudies.length < MIN_LOOP_SLIDES ) {
+            studies.forEach( ( study ) => {
+                loopStudies.push( { study: study, repeat: r } );
+            } );
+            r++;
+        }
+    } else {
+        loopStudies = studies.map( ( study ) => ( { study: study, repeat: 0 } ) );
+    }
+
     return (
         <div className="cs-slider__swiper swiper" ref={ swiperRef }>
             <svg viewBox="0 0 765 431" className="svg-mask" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -111,8 +131,8 @@ const SliderContent = ( { postsToShow, industry, service, navPrev, navNext } ) =
                     </defs>
                 </svg>
             <div className="swiper-wrapper">
-                { studies.map( ( study, i ) => (
-                    <div className="cs-slide swiper-slide" key={ study.ID || i }>
+                { loopStudies.map( ( { study, repeat }, i ) => (
+                    <div className="cs-slide swiper-slide" key={ ( study.ID || i ) + '-' + repeat }>
                         <a className="cs-slide__link" href={ study.link || '#' }>
                             { study.media_url && (
                                 <Fragment>
