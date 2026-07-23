@@ -127,7 +127,9 @@ const EditHeaderIntro = ( { attributes, setAttributes, clientId } ) => {
             />
 
             <div { ...blockProps }>
-                <div { ...innerBlocksProps } />
+                <div className="wrapper">
+                    <div { ...innerBlocksProps } />
+                </div>
             </div>
         </Fragment>
     );

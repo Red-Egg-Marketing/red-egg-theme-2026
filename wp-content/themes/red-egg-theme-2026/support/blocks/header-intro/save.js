@@ -56,7 +56,9 @@ const SaveHeaderIntro = ( { attributes } ) => {
             <MarginSelector.View margin={ margin } id={ blockId } />
             <div { ...blockProps }>
                 <div className="header-intro__columns">
-                    <InnerBlocks.Content />
+                    <div className="wrapper">
+                        <InnerBlocks.Content />
+                    </div>
                 </div>
             </div>
         </Fragment>
