@@ -257,19 +257,49 @@
     // Scroll reset is a SEPARATE, one-shot concern per navigation.
     // ScrollTrigger.refresh() restores its cached scroll position (in
     // an SPA, where we left the previous page), undoing the scroll
-    // plugin's reset -- so we re-assert top shortly after the nav.
-    // But only ONCE, and only if the user hasn't already scrolled
-    // themselves; otherwise late image-load refreshes would yank a
-    // reading user back to the top. Skipped for #hash navigations.
+    // plugin's reset -- so we re-assert top after the refresh runs.
+    //
+    // We can't detect "user already scrolled" by comparing scroll
+    // position, because ScrollTrigger's own restore MOVES the scroll
+    // position -- that's the very thing we're correcting, and it would
+    // look identical to a user scroll. Instead we watch for real user
+    // scroll INTENT (wheel / touch / arrow / space / page keys). If
+    // none fired, we force top; if the user actively scrolled, we
+    // leave them alone. Skipped for #hash navigations.
     function resetScrollAfterNav() {
         if ( window.location.hash ) return;
 
-        var startY = window.scrollY;
-        window.setTimeout( function () {
-            // If the user has scrolled since the nav, leave them be.
-            if ( Math.abs( window.scrollY - startY ) > 4 ) return;
+        var userScrolled = false;
+        var markScrolled = function () { userScrolled = true; };
+        var keyScroll = function ( e ) {
+            // Keys that scroll the page
+            if ( [ 32, 33, 34, 35, 36, 38, 40 ].indexOf( e.keyCode ) !== -1 ) {
+                userScrolled = true;
+            }
+        };
+
+        window.addEventListener( 'wheel', markScrolled, { passive: true, once: true } );
+        window.addEventListener( 'touchmove', markScrolled, { passive: true, once: true } );
+        window.addEventListener( 'keydown', keyScroll );
+
+        var cleanup = function () {
+            window.removeEventListener( 'wheel', markScrolled );
+            window.removeEventListener( 'touchmove', markScrolled );
+            window.removeEventListener( 'keydown', keyScroll );
+        };
+
+        // Run after the 150ms ScrollTrigger refresh so we correct its
+        // restore. Re-assert a couple of frames later too, in case the
+        // refresh lands slightly late.
+        var doReset = function () {
+            if ( userScrolled ) { cleanup(); return; }
             window.scrollTo( 0, 0 );
-        }, 180 );
+        };
+        window.setTimeout( doReset, 180 );
+        window.setTimeout( function () {
+            doReset();
+            cleanup();
+        }, 320 );
     }
 
     swup.hooks.on( 'page:view', function () {
