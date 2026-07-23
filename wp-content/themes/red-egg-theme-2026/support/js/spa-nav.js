@@ -239,6 +239,11 @@
     // it undoes the scroll plugin's reset-to-top and dumps us partway
     // down the new page. After each refresh, re-assert top (unless the
     // navigation targets a #hash, which should keep its scroll).
+    // ScrollTriggers on swapped-in content are created before images
+    // load and sliders settle, so their trigger points can be measured
+    // against a layout that shifts afterward. Refresh once the new
+    // frame paints, then again (debounced) as images finish loading.
+    // These refreshes do NOT touch scroll position.
     var refreshTimer = null;
     function queueScrollTriggerRefresh() {
         window.clearTimeout( refreshTimer );
@@ -246,15 +251,31 @@
             if ( typeof ScrollTrigger !== 'undefined' ) {
                 ScrollTrigger.refresh();
             }
-            if ( ! window.location.hash ) {
-                window.scrollTo( 0, 0 );
-            }
         }, 150 );
+    }
+
+    // Scroll reset is a SEPARATE, one-shot concern per navigation.
+    // ScrollTrigger.refresh() restores its cached scroll position (in
+    // an SPA, where we left the previous page), undoing the scroll
+    // plugin's reset -- so we re-assert top shortly after the nav.
+    // But only ONCE, and only if the user hasn't already scrolled
+    // themselves; otherwise late image-load refreshes would yank a
+    // reading user back to the top. Skipped for #hash navigations.
+    function resetScrollAfterNav() {
+        if ( window.location.hash ) return;
+
+        var startY = window.scrollY;
+        window.setTimeout( function () {
+            // If the user has scrolled since the nav, leave them be.
+            if ( Math.abs( window.scrollY - startY ) > 4 ) return;
+            window.scrollTo( 0, 0 );
+        }, 180 );
     }
 
     swup.hooks.on( 'page:view', function () {
         document.dispatchEvent( new CustomEvent( 'red-egg:page-view' ) );
 
+        resetScrollAfterNav();
         window.requestAnimationFrame( queueScrollTriggerRefresh );
 
         var container = document.getElementById( 'content' );
