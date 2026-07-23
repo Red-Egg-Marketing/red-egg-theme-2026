@@ -60,7 +60,6 @@ const SliderContent = ( { postsToShow, industry, service, navPrev, navNext } ) =
                     loop: enoughToLoop,
                     rewind: ! enoughToLoop,
                     centeredSlides: true,
-                    centeredSlidesBounds: true,
                     slidesPerView: 1,
                     spaceBetween: 20,
                     speed: 500,
