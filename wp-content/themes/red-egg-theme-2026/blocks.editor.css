@@ -668,6 +668,19 @@ p.is-style-section-label {
   border-bottom: none;
 }
 
+.editor-styles-wrapper .is-root-container > p,
+.editor-styles-wrapper .is-root-container > h2, .editor-styles-wrapper .is-root-container > h3, .editor-styles-wrapper .is-root-container > h4, .editor-styles-wrapper .is-root-container > h5, .editor-styles-wrapper .is-root-container > h6,
+.editor-styles-wrapper .is-root-container > ul, .editor-styles-wrapper .is-root-container > ol,
+.editor-styles-wrapper .is-root-container > blockquote,
+.editor-styles-wrapper .is-root-container > figure.wp-block-image,
+.editor-styles-wrapper .is-root-container > figure.wp-block-table,
+.editor-styles-wrapper .is-root-container > table,
+.editor-styles-wrapper .is-root-container > hr.wp-block-separator {
+  max-width: 770px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .editor-styles-wrapper {
   font-family: "Figtree", sans-serif;
   font-weight: 300;
