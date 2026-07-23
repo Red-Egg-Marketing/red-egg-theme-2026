@@ -3498,6 +3498,20 @@ div.gs-team-popup--default .mfp-close {
   }
 }
 
+.entry-content > .header-intro-block > .wrapper {
+  max-width: 1184px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+}
+@media screen and (min-width: 768px) {
+  .entry-content > .header-intro-block > .wrapper {
+    padding-left: 2.5rem;
+    padding-right: 2.5rem;
+  }
+}
+
 .header-intro-block.with-overlay::before {
   content: "";
   position: absolute;
