@@ -13,6 +13,7 @@ const SaveCallout = ( { attributes } ) => {
 
     return (
         <div { ...blockProps }>
+            <div className="block-wrapper">
             <div className="callout-block__inner">
                 { icon && (
                     <span className="callout-block__icon">
@@ -22,6 +23,7 @@ const SaveCallout = ( { attributes } ) => {
                 <div className="callout-block__content">
                     <InnerBlocks.Content />
                 </div>
+            </div>
             </div>
         </div>
     );

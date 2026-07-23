@@ -8315,6 +8315,9 @@ img.device-frame__device {
   color: rgba(255, 255, 255, 0.7);
 }
 
+.callout-block > .block-wrapper {
+  max-width: 936px;
+}
 .callout-block {
   margin: 2.5rem 0;
 }

@@ -34,6 +34,7 @@ const EditCallout = ( { attributes, setAttributes } ) => {
             </InspectorControls>
 
             <div { ...blockProps }>
+                <div className="block-wrapper">
                 <div className="callout-block__inner">
                     { icon && (
                         <span className="callout-block__icon">
@@ -43,6 +44,7 @@ const EditCallout = ( { attributes, setAttributes } ) => {
                     <div className="callout-block__content">
                         <InnerBlocks template={ TEMPLATE } />
                     </div>
+                </div>
                 </div>
             </div>
         </Fragment>
