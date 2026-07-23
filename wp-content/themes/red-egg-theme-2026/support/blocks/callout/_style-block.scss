@@ -10,9 +10,12 @@
 .callout-block {
     > .block-wrapper {
         max-width: 936px;
+        padding-left: 0;
+        padding-right: 0;
     }
     margin: 2.5rem 0;
-
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
     .callout-block__inner {
         display: flex;
         align-items: flex-start;

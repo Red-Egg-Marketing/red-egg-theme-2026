@@ -1845,7 +1845,7 @@ body.mega-open {
   margin-left: auto;
   margin-right: auto;
   padding-left: 1.25rem;
-  padding-left: 1.25rem;
+  padding-right: 1.25rem;
 }
 .site-content > h2,
 .site-content > h3,
@@ -11211,9 +11211,13 @@ img.device-frame__device {
 
 .callout-block > .block-wrapper {
   max-width: 936px;
+  padding-left: 0;
+  padding-right: 0;
 }
 .callout-block {
   margin: 2.5rem 0;
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
 }
 .callout-block .callout-block__inner {
   display: flex;
