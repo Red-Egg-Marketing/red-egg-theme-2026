@@ -8745,7 +8745,7 @@ img.device-frame__device {
 }
 
 .callout-block > .block-wrapper {
-  max-width: 770px;
+  max-width: calc(770px - 2.5rem);
   padding-left: 0;
   padding-right: 0;
 }
