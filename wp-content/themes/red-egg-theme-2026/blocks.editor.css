@@ -8828,8 +8828,9 @@ img.device-frame__device {
     font-size: 1.175rem;
   }
 }
-.callout-block .callout-block__content h2 :before, .callout-block .callout-block__content h3 :before, .callout-block .callout-block__content h4 :before, .callout-block .callout-block__content h5 :before, .callout-block .callout-block__content h6 :before {
+.callout-block .callout-block__content h2:before, .callout-block .callout-block__content h3:before, .callout-block .callout-block__content h4:before, .callout-block .callout-block__content h5:before, .callout-block .callout-block__content h6:before {
   content: "";
+  display: inline-block;
   position: relative;
   width: 18px;
   height: 18px;

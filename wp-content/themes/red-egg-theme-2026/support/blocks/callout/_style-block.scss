@@ -66,8 +66,9 @@
             @media screen and (min-width: $small-width) {
                 font-size: 1.175rem;
             }
-            :before {
+            &:before {
                 content: "";
+                display: inline-block;
                 position: relative;
                 width: 18px;
                 height: 18px;
