@@ -20,11 +20,13 @@ const EditFaqAccordion = () => {
 
     return (
         <div { ...blockProps }>
+            <div className="block-wrapper">
             <InnerBlocks
                 template={ TEMPLATE }
                 allowedBlocks={ ALLOWED }
                 orientation="vertical"
             />
+            </div>
         </div>
     );
 };

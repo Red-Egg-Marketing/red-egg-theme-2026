@@ -8874,6 +8874,11 @@ img.device-frame__device {
   margin: 2.5rem 0;
   border-top: 1px solid rgba(66, 64, 66, 0.15);
 }
+.faq-accordion > .block-wrapper {
+  max-width: calc(770px - 2.5rem);
+  padding-left: 0;
+  padding-right: 0;
+}
 
 .faq-accordion__item {
   border-bottom: 1px solid rgba(66, 64, 66, 0.15);
