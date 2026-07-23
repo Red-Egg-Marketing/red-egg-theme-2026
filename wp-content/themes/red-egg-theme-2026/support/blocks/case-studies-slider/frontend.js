@@ -47,18 +47,16 @@ const SliderContent = ( { postsToShow, industry, service, navPrev, navNext } ) =
     useEffect( () => {
         if ( ! loading && studies.length > 0 && swiperRef.current ) {
             setTimeout( () => {
-                // Swiper's loop mode needs at least ~2x slidesPerView
-                // worth of slides to clone a clean loop. With too few
-                // (and centeredSlides + slidesPerView:auto), the last
-                // slide only partially advances. So only loop when
-                // there's enough material; otherwise disable loop and
-                // use rewind so the arrows still cycle front-to-back.
-                // Desktop shows ~2 auto slides, so 5+ is a safe floor.
-                const enoughToLoop = studies.length >= 5;
-
+                // Always loop so there are real slides peeking on both
+                // sides, even with few case studies. With
+                // slidesPerView:'auto', Swiper needs loopAdditionalSlides
+                // told how many extra clones to make, or it can't fill
+                // both edges from a small set. centeredSlidesBounds is
+                // intentionally NOT set -- it prevented the last slide
+                // from centering/activating (Swiper issue #6277).
                 swiperInstanceRef.current = new Swiper( swiperRef.current, {
-                    loop: enoughToLoop,
-                    rewind: ! enoughToLoop,
+                    loop: true,
+                    loopAdditionalSlides: studies.length,
                     centeredSlides: true,
                     slidesPerView: 1,
                     spaceBetween: 20,
