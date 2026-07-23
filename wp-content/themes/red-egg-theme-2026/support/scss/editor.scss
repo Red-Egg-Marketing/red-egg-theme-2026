@@ -9,6 +9,29 @@
 // ---- Foundation ----
 @import 'variables';
 @import 'base';
+@import 'content';
+
+// ---- Editor content width override ----
+// Gutenberg sets `.editor-styles-wrapper .wp-block { max-width: none }`
+// (2 classes), which out-specifies the `.is-root-container > p` rules
+// from _content.scss and lets top-level blocks run full width in the
+// editor. Re-assert the frontend's 770px centered column with a
+// selector scoped under .editor-styles-wrapper so it wins on
+// specificity. Mirrors the top-level element list in _content.scss.
+.editor-styles-wrapper .is-root-container {
+    > p,
+    > h2, > h3, > h4, > h5, > h6,
+    > ul, > ol,
+    > blockquote,
+    > figure.wp-block-image,
+    > figure.wp-block-table,
+    > table,
+    > hr.wp-block-separator {
+        max-width: 770px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
 
 // ---- Editor-specific overrides ----
 .editor-styles-wrapper {

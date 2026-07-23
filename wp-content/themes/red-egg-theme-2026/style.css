@@ -1802,7 +1802,8 @@ body.mega-open {
 }
 
 .site-content,
-.entry-content {
+.entry-content,
+.is-root-container {
   font-family: "Figtree", sans-serif;
   font-weight: 300;
   font-size: 1.105rem;
@@ -1811,13 +1812,15 @@ body.mega-open {
 }
 @media screen and (min-width: 768px) {
   .site-content,
-  .entry-content {
+  .entry-content,
+  .is-root-container {
     font-size: 1.15rem;
     line-height: 1.75rem;
   }
 }
 .site-content,
-.entry-content {
+.entry-content,
+.is-root-container {
   overflow: visible;
 }
 .site-content > p,
@@ -1840,8 +1843,21 @@ body.mega-open {
 .entry-content > figure.wp-block-image,
 .entry-content > figure.wp-block-table,
 .entry-content > table,
-.entry-content > hr.wp-block-separator {
-  max-width: 936px;
+.entry-content > hr.wp-block-separator,
+.is-root-container > p,
+.is-root-container > h2,
+.is-root-container > h3,
+.is-root-container > h4,
+.is-root-container > h5,
+.is-root-container > h6,
+.is-root-container > ul,
+.is-root-container > ol,
+.is-root-container > blockquote,
+.is-root-container > figure.wp-block-image,
+.is-root-container > figure.wp-block-table,
+.is-root-container > table,
+.is-root-container > hr.wp-block-separator {
+  max-width: 770px;
   margin-left: auto;
   margin-right: auto;
   padding-left: 1.25rem;
@@ -1856,7 +1872,12 @@ body.mega-open {
 .entry-content > h3,
 .entry-content > h4,
 .entry-content > h5,
-.entry-content > h6 {
+.entry-content > h6,
+.is-root-container > h2,
+.is-root-container > h3,
+.is-root-container > h4,
+.is-root-container > h5,
+.is-root-container > h6 {
   margin-top: 2.5rem;
   margin-bottom: 1rem;
 }
@@ -1869,11 +1890,17 @@ body.mega-open {
 .entry-content > h3:first-child,
 .entry-content > h4:first-child,
 .entry-content > h5:first-child,
-.entry-content > h6:first-child {
+.entry-content > h6:first-child,
+.is-root-container > h2:first-child,
+.is-root-container > h3:first-child,
+.is-root-container > h4:first-child,
+.is-root-container > h5:first-child,
+.is-root-container > h6:first-child {
   margin-top: 0;
 }
 .site-content h1,
-.entry-content h1 {
+.entry-content h1,
+.is-root-container h1 {
   font-family: "Poppins", sans-serif;
   font-weight: 700;
   font-size: 2.125rem;
@@ -1883,14 +1910,16 @@ body.mega-open {
 }
 @media screen and (min-width: 768px) {
   .site-content h1,
-  .entry-content h1 {
+  .entry-content h1,
+  .is-root-container h1 {
     font-size: 3.125rem;
     line-height: 3.75rem;
     letter-spacing: 0.03125rem;
   }
 }
 .site-content h2,
-.entry-content h2 {
+.entry-content h2,
+.is-root-container h2 {
   font-family: "Poppins", sans-serif;
   font-weight: 700;
   font-size: 1.5625rem;
@@ -1900,13 +1929,15 @@ body.mega-open {
 }
 @media screen and (min-width: 768px) {
   .site-content h2,
-  .entry-content h2 {
+  .entry-content h2,
+  .is-root-container h2 {
     font-size: 2.3125rem;
     line-height: 2.9375rem;
   }
 }
 .site-content h3,
-.entry-content h3 {
+.entry-content h3,
+.is-root-container h3 {
   font-family: "Poppins", sans-serif;
   font-weight: 700;
   font-size: 1.225rem;
@@ -1916,13 +1947,15 @@ body.mega-open {
 }
 @media screen and (min-width: 768px) {
   .site-content h3,
-  .entry-content h3 {
+  .entry-content h3,
+  .is-root-container h3 {
     font-size: 1.7625rem;
     line-height: 2.1875rem;
   }
 }
 .site-content h4,
-.entry-content h4 {
+.entry-content h4,
+.is-root-container h4 {
   font-family: "Poppins", sans-serif;
   font-weight: 500;
   font-size: 1.0625rem;
@@ -1931,17 +1964,20 @@ body.mega-open {
 }
 @media screen and (min-width: 768px) {
   .site-content h4,
-  .entry-content h4 {
+  .entry-content h4,
+  .is-root-container h4 {
     font-size: 1.15rem;
     line-height: 1.85rem;
   }
 }
 .site-content h4,
-.entry-content h4 {
+.entry-content h4,
+.is-root-container h4 {
   font-weight: 700;
 }
 .site-content h5,
-.entry-content h5 {
+.entry-content h5,
+.is-root-container h5 {
   font-family: "Poppins", sans-serif;
   font-weight: 700;
   font-size: 1rem;
@@ -1951,7 +1987,8 @@ body.mega-open {
   color: #424042;
 }
 .site-content h6,
-.entry-content h6 {
+.entry-content h6,
+.is-root-container h6 {
   font-family: "Poppins", sans-serif;
   font-weight: 600;
   font-size: 0.875rem;
@@ -1961,15 +1998,18 @@ body.mega-open {
   color: #424042;
 }
 .site-content > p,
-.entry-content > p {
+.entry-content > p,
+.is-root-container > p {
   margin-bottom: 1.25rem;
 }
 .site-content > figure.wp-block-image,
-.entry-content > figure.wp-block-image {
+.entry-content > figure.wp-block-image,
+.is-root-container > figure.wp-block-image {
   margin: 2rem auto;
 }
 .site-content > figure.wp-block-image img,
-.entry-content > figure.wp-block-image img {
+.entry-content > figure.wp-block-image img,
+.is-root-container > figure.wp-block-image img {
   border-radius: 8px;
 }
 .site-content > ul,
@@ -1979,7 +2019,11 @@ body.mega-open {
 .entry-content > ul,
 .entry-content > ol,
 .entry-content > ul.wp-block-list,
-.entry-content > ol.wp-block-list {
+.entry-content > ol.wp-block-list,
+.is-root-container > ul,
+.is-root-container > ol,
+.is-root-container > ul.wp-block-list,
+.is-root-container > ol.wp-block-list {
   margin: 0 auto 1.25rem;
   padding: 0 0 0 1.25rem;
 }
@@ -1990,7 +2034,11 @@ body.mega-open {
 .entry-content > ul li,
 .entry-content > ol li,
 .entry-content > ul.wp-block-list li,
-.entry-content > ol.wp-block-list li {
+.entry-content > ol.wp-block-list li,
+.is-root-container > ul li,
+.is-root-container > ol li,
+.is-root-container > ul.wp-block-list li,
+.is-root-container > ol.wp-block-list li {
   margin-bottom: 0.5rem;
   padding-left: 0.35rem;
 }
@@ -2009,31 +2057,47 @@ body.mega-open {
 .entry-content > ul.wp-block-list ul,
 .entry-content > ul.wp-block-list ol,
 .entry-content > ol.wp-block-list ul,
-.entry-content > ol.wp-block-list ol {
+.entry-content > ol.wp-block-list ol,
+.is-root-container > ul ul,
+.is-root-container > ul ol,
+.is-root-container > ol ul,
+.is-root-container > ol ol,
+.is-root-container > ul.wp-block-list ul,
+.is-root-container > ul.wp-block-list ol,
+.is-root-container > ol.wp-block-list ul,
+.is-root-container > ol.wp-block-list ol {
   margin: 0.5rem 0 0.5rem 1.25rem;
 }
 .site-content > ul,
 .site-content > ul.wp-block-list,
 .entry-content > ul,
-.entry-content > ul.wp-block-list {
+.entry-content > ul.wp-block-list,
+.is-root-container > ul,
+.is-root-container > ul.wp-block-list {
   list-style: disc;
 }
 .site-content > ul li::marker,
 .site-content > ul.wp-block-list li::marker,
 .entry-content > ul li::marker,
-.entry-content > ul.wp-block-list li::marker {
+.entry-content > ul.wp-block-list li::marker,
+.is-root-container > ul li::marker,
+.is-root-container > ul.wp-block-list li::marker {
   color: #424042;
 }
 .site-content > ol,
 .site-content > ol.wp-block-list,
 .entry-content > ol,
-.entry-content > ol.wp-block-list {
+.entry-content > ol.wp-block-list,
+.is-root-container > ol,
+.is-root-container > ol.wp-block-list {
   list-style: decimal;
 }
 .site-content > ol li::marker,
 .site-content > ol.wp-block-list li::marker,
 .entry-content > ol li::marker,
-.entry-content > ol.wp-block-list li::marker {
+.entry-content > ol.wp-block-list li::marker,
+.is-root-container > ol li::marker,
+.is-root-container > ol.wp-block-list li::marker {
   color: #DC2035;
   font-weight: 700;
   font-family: "Poppins", sans-serif;
@@ -2041,7 +2105,9 @@ body.mega-open {
 .site-content > blockquote,
 .site-content > blockquote.wp-block-quote,
 .entry-content > blockquote,
-.entry-content > blockquote.wp-block-quote {
+.entry-content > blockquote.wp-block-quote,
+.is-root-container > blockquote,
+.is-root-container > blockquote.wp-block-quote {
   margin: 2.5rem auto;
   padding: 1.25rem 0 1.25rem 2rem;
   border-left: 4px solid #DC2035;
@@ -2052,7 +2118,9 @@ body.mega-open {
 .site-content > blockquote p,
 .site-content > blockquote.wp-block-quote p,
 .entry-content > blockquote p,
-.entry-content > blockquote.wp-block-quote p {
+.entry-content > blockquote.wp-block-quote p,
+.is-root-container > blockquote p,
+.is-root-container > blockquote.wp-block-quote p {
   margin-bottom: 0.75rem;
   font-size: 1rem;
   line-height: 1.875rem;
@@ -2060,14 +2128,18 @@ body.mega-open {
 .site-content > blockquote p:last-child,
 .site-content > blockquote.wp-block-quote p:last-child,
 .entry-content > blockquote p:last-child,
-.entry-content > blockquote.wp-block-quote p:last-child {
+.entry-content > blockquote.wp-block-quote p:last-child,
+.is-root-container > blockquote p:last-child,
+.is-root-container > blockquote.wp-block-quote p:last-child {
   margin-bottom: 0;
 }
 @media screen and (min-width: 768px) {
   .site-content > blockquote p,
   .site-content > blockquote.wp-block-quote p,
   .entry-content > blockquote p,
-  .entry-content > blockquote.wp-block-quote p {
+  .entry-content > blockquote.wp-block-quote p,
+  .is-root-container > blockquote p,
+  .is-root-container > blockquote.wp-block-quote p {
     font-size: 1.375rem;
     line-height: 2.125rem;
   }
@@ -2075,7 +2147,9 @@ body.mega-open {
 .site-content > blockquote cite,
 .site-content > blockquote.wp-block-quote cite,
 .entry-content > blockquote cite,
-.entry-content > blockquote.wp-block-quote cite {
+.entry-content > blockquote.wp-block-quote cite,
+.is-root-container > blockquote cite,
+.is-root-container > blockquote.wp-block-quote cite {
   display: block;
   margin-top: 0.5rem;
   font-family: "Figtree", sans-serif;
@@ -2087,14 +2161,18 @@ body.mega-open {
 .site-content > figure.wp-block-table,
 .site-content > table,
 .entry-content > figure.wp-block-table,
-.entry-content > table {
+.entry-content > table,
+.is-root-container > figure.wp-block-table,
+.is-root-container > table {
   margin: 2.5rem auto;
   overflow-x: auto;
 }
 .site-content > figure.wp-block-table table,
 .site-content > table,
 .entry-content > figure.wp-block-table table,
-.entry-content > table {
+.entry-content > table,
+.is-root-container > figure.wp-block-table table,
+.is-root-container > table {
   width: 100%;
   border-collapse: collapse;
   font-family: "Figtree", sans-serif;
@@ -2106,7 +2184,11 @@ body.mega-open {
 .entry-content > figure.wp-block-table table th,
 .entry-content > figure.wp-block-table table td,
 .entry-content > table th,
-.entry-content > table td {
+.entry-content > table td,
+.is-root-container > figure.wp-block-table table th,
+.is-root-container > figure.wp-block-table table td,
+.is-root-container > table th,
+.is-root-container > table td {
   padding: 0.85rem 1.25rem;
   border: 1px solid #424042;
   text-align: left;
@@ -2115,7 +2197,9 @@ body.mega-open {
 .site-content > figure.wp-block-table table thead th,
 .site-content > table thead th,
 .entry-content > figure.wp-block-table table thead th,
-.entry-content > table thead th {
+.entry-content > table thead th,
+.is-root-container > figure.wp-block-table table thead th,
+.is-root-container > table thead th {
   background-color: #F68633;
   color: #424042;
   font-family: "Poppins", sans-serif;
@@ -2128,12 +2212,15 @@ body.mega-open {
   .site-content > figure.wp-block-table table thead th,
   .site-content > table thead th,
   .entry-content > figure.wp-block-table table thead th,
-  .entry-content > table thead th {
+  .entry-content > table thead th,
+  .is-root-container > figure.wp-block-table table thead th,
+  .is-root-container > table thead th {
     font-size: 1.375rem;
   }
 }
 .site-content > hr.wp-block-separator,
-.entry-content > hr.wp-block-separator {
+.entry-content > hr.wp-block-separator,
+.is-root-container > hr.wp-block-separator {
   margin: 3rem auto;
   border: 0;
   border-top: 1px solid rgba(66, 64, 66, 0.2);
@@ -3408,6 +3495,20 @@ div.gs-team-popup--default .mfp-close {
 @media screen and (min-width: 768px) {
   .header-intro-block {
     margin-bottom: 1.75rem;
+  }
+}
+
+.entry-content > .header-intro-block > .wrapper {
+  max-width: 1184px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+}
+@media screen and (min-width: 768px) {
+  .entry-content > .header-intro-block > .wrapper {
+    padding-left: 2.5rem;
+    padding-right: 2.5rem;
   }
 }
 
@@ -11210,7 +11311,7 @@ img.device-frame__device {
 }
 
 .callout-block > .block-wrapper {
-  max-width: 936px;
+  max-width: calc(770px - 2.5rem);
   padding-left: 0;
   padding-right: 0;
 }
@@ -11226,7 +11327,7 @@ img.device-frame__device {
   padding: 1.5rem 1.75rem;
   border-bottom-left-radius: 8px;
   border-bottom-right-radius: 8px;
-  background-color: rgba(247, 158, 131, 0.18);
+  background-color: #F2ECE5;
   border-top: 4px solid #F68633;
 }
 @media screen and (min-width: 768px) {
@@ -11255,16 +11356,26 @@ img.device-frame__device {
   margin-bottom: 0.5rem;
   font-family: "Poppins", sans-serif;
   font-weight: 700;
-  font-size: 1.0625rem;
-  line-height: 1.5rem;
+  font-size: 0.9rem;
+  line-height: 1.3rem;
   letter-spacing: 0.0625rem;
   text-transform: uppercase;
   color: #DC2035;
 }
 @media screen and (min-width: 768px) {
   .callout-block .callout-block__content h2, .callout-block .callout-block__content h3, .callout-block .callout-block__content h4, .callout-block .callout-block__content h5, .callout-block .callout-block__content h6 {
-    font-size: 1.375rem;
+    font-size: 1.175rem;
   }
+}
+.callout-block .callout-block__content h2:before, .callout-block .callout-block__content h3:before, .callout-block .callout-block__content h4:before, .callout-block .callout-block__content h5:before, .callout-block .callout-block__content h6:before {
+  content: "";
+  display: inline-block;
+  position: relative;
+  width: 18px;
+  height: 18px;
+  background: url(img/callout-icon.svg) no-repeat top left/18px;
+  margin-right: 10px;
+  margin-top: 5px;
 }
 .callout-block .callout-block__content p {
   font-family: "Figtree", sans-serif;
@@ -11310,7 +11421,12 @@ img.device-frame__device {
 
 .faq-accordion {
   margin: 2.5rem 0;
+}
+.faq-accordion > .block-wrapper {
   border-top: 1px solid rgba(66, 64, 66, 0.15);
+  max-width: calc(770px - 2.5rem);
+  padding-left: 0;
+  padding-right: 0;
 }
 
 .faq-accordion__item {

@@ -16,6 +16,10 @@
     }
 }
 
+.entry-content > .header-intro-block > .wrapper {
+    @include block-wrapper;
+}
+
 .header-intro-block.with-overlay::before {
     content: '';
     position: absolute;

@@ -11,7 +11,9 @@ const SaveFaqAccordion = () => {
 
     return (
         <div { ...blockProps }>
-            <InnerBlocks.Content />
+            <div className="block-wrapper">
+                <InnerBlocks.Content />
+            </div>
         </div>
     );
 };

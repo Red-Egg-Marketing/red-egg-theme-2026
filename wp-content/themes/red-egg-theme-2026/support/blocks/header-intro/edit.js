@@ -29,10 +29,18 @@ const allowedBlocks = [
 
 const EditHeaderIntro = ( { attributes, setAttributes, clientId } ) => {
     const {
-        image, bgColor, bgSlug, coloroverlay, padding, margin, columnWidth,
+        image, bgColor, bgSlug, coloroverlay, padding, margin, columnWidth, blockId,
     } = attributes;
 
-    const blockId = `block-${ clientId }`;
+    // Persist blockId to the attribute so save.js can emit the same id
+    // the Padding/Margin inline <style> targets. Without this the saved
+    // markup has no id and the padding rule (#undefined {...}) matches
+    // nothing on the frontend.
+    useEffect( () => {
+        if ( ! blockId ) {
+            setAttributes( { blockId: 'block-' + clientId } );
+        }
+    }, [] );
 
     // Build inline background styles for editor preview
     const bgStyle = {};
@@ -127,7 +135,9 @@ const EditHeaderIntro = ( { attributes, setAttributes, clientId } ) => {
             />
 
             <div { ...blockProps }>
-                <div { ...innerBlocksProps } />
+                <div className="wrapper">
+                    <div { ...innerBlocksProps } />
+                </div>
             </div>
         </Fragment>
     );

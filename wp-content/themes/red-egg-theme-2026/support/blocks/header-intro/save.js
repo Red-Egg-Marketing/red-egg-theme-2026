@@ -13,7 +13,7 @@ import MarginSelector from '../../components/Margin.js';
 
 const SaveHeaderIntro = ( { attributes } ) => {
     const {
-        image, bgColor, bgSlug, coloroverlay, padding, margin, columnWidth,
+        image, bgColor, bgSlug, coloroverlay, padding, margin, columnWidth, blockId,
     } = attributes;
 
     // Build inline background styles
@@ -41,6 +41,7 @@ const SaveHeaderIntro = ( { attributes } ) => {
     }
 
     const blockProps = useBlockProps.save( {
+        id: blockId,
         className: 'header-intro-block'
             + ( coloroverlay ? ' with-overlay' : '' )
             + ( bgSlug ? ' ' + bgSlug + ' with-bg' : '' )
@@ -48,15 +49,15 @@ const SaveHeaderIntro = ( { attributes } ) => {
         style: bgStyle,
     } );
 
-    const blockId = blockProps.id;
-
     return (
         <Fragment>
             <PaddingSelector.View padding={ padding } id={ blockId } />
             <MarginSelector.View margin={ margin } id={ blockId } />
             <div { ...blockProps }>
-                <div className="header-intro__columns">
-                    <InnerBlocks.Content />
+                <div className="wrapper">
+                    <div className="header-intro__columns">
+                        <InnerBlocks.Content />
+                    </div>
                 </div>
             </div>
         </Fragment>
