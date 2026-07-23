@@ -96,7 +96,7 @@
     overflow: hidden;
 }
 
-.cs-slide__title {
+.cs-slide h3.cs-slide__title {
     @include primary-h3;
     margin: 0;
     transition: transform 0.3s ease;

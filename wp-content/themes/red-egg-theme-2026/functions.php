@@ -213,11 +213,25 @@ function red_egg_theme_scripts() {
         true
     );
 
+    // Swup Head Plugin – syncs the <head> on each swap. Swup only
+    // replaces #content, not <head>, so stylesheets/scripts that a
+    // plugin enqueues only on certain pages (e.g. Gravity Forms CSS,
+    // which is added only on pages that contain a form) never arrive
+    // when navigating to such a page via SPA. This diffs and injects
+    // the incoming page's head assets.
+    wp_enqueue_script(
+        'swup-head',
+        'https://cdn.jsdelivr.net/npm/@swup/head-plugin@2/dist/index.umd.js',
+        [ 'swup-js' ],
+        '2.3.0',
+        true
+    );
+
     // Frontend JS (compiled from support/front-end.js)
     wp_enqueue_script(
         'red-egg-main-js',
         get_template_directory_uri() . '/support/assets/js/main.js',
-        [ 'swiper-js', 'gsap-core', 'gsap-morphsvg', 'gsap-scrolltrigger', 'swup-js', 'swup-body-class', 'swup-scroll' ],
+        [ 'swiper-js', 'gsap-core', 'gsap-morphsvg', 'gsap-scrolltrigger', 'swup-js', 'swup-body-class', 'swup-scroll', 'swup-head' ],
         file_exists( $main_js ) ? filemtime( $main_js ) : false,
         true
     );

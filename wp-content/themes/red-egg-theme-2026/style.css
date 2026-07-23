@@ -4673,7 +4673,7 @@ div.gs-team-popup--default .mfp-close {
   overflow: hidden;
 }
 
-.cs-slide__title {
+.cs-slide h3.cs-slide__title {
   font-family: "Poppins", sans-serif;
   font-weight: 700;
   font-size: 1.225rem;
@@ -4682,19 +4682,19 @@ div.gs-team-popup--default .mfp-close {
   color: #424042;
 }
 @media screen and (min-width: 768px) {
-  .cs-slide__title {
+  .cs-slide h3.cs-slide__title {
     font-size: 1.7625rem;
     line-height: 2.1875rem;
   }
 }
-.cs-slide__title {
+.cs-slide h3.cs-slide__title {
   margin: 0;
   transition: transform 0.3s ease;
   font-size: 1.1rem;
   line-height: 1.5rem;
 }
 @media screen and (min-width: 768px) {
-  .cs-slide__title {
+  .cs-slide h3.cs-slide__title {
     font-size: 1.35rem;
     line-height: 1.75rem;
   }
