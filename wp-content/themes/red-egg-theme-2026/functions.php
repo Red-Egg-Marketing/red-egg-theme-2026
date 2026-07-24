@@ -366,6 +366,12 @@ require get_template_directory() . '/inc/single-post.php';
  */
 require get_template_directory() . '/inc/nav-walker.php';
 
+
+/**
+ * Media
+ */
+require get_template_directory() . '/inc/media.php';
+
 /**
  * ACF Options Page (Red Egg Site Settings) — footer/company content
  */
