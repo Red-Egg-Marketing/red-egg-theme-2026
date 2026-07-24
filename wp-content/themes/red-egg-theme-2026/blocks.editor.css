@@ -8082,7 +8082,7 @@ p.cs-gallery__label {
   .color-palette-block.swatch-cols-2 > .block-wrapper,
   .color-palette-block.swatch-cols-3 > .block-wrapper,
   .color-palette-block.swatch-cols-4 > .block-wrapper {
-    gap: 2.6rem;
+    gap: 2rem;
   }
 }
 
