@@ -48,6 +48,8 @@ registerBlockType( 'red-egg-block/device-frame', {
                 id: '',
                 url: '',
                 alt: '',
+                source: '',
+                srcset: [],
             },
         },
         // Screen area positioning (percentage-based)

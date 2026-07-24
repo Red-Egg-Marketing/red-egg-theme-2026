@@ -10,6 +10,7 @@ const { Fragment } = wp.element;
 const { InspectorControls, MediaUpload, useBlockProps } = wp.blockEditor;
 const { PanelBody, Button, SelectControl, RangeControl, ResponsiveWrapper } = wp.components;
 const { __ } = wp.i18n;
+import { pickSizes } from '../../components/mediaSizes.js';
 
 const mediaOptions = [
     { label: __( 'Image / SVG', 'red-egg' ), value: 'image' },
@@ -38,11 +39,20 @@ const EditHeroMedia = ( { attributes, setAttributes } ) => {
     } );
 
     const onSelectImage = ( img ) => {
+        const picked = pickSizes( img, [
+            'hero-landscape-large',
+            'hero-landscape-medium',
+            'hero-landscape',
+            'large',
+            'full',
+        ] );
         setAttributes( {
             media: {
                 id: img.id,
                 url: img.url,
                 alt: img.alt || '',
+                source: picked.source,
+                srcset: picked.srcset,
             },
         } );
     };

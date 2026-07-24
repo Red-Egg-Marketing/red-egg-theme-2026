@@ -3,6 +3,7 @@
  */
 
 const { useBlockProps } = wp.blockEditor;
+import { buildSrcSet } from '../../components/mediaSizes.js';
 
 const SaveDeviceFrame = ( { attributes } ) => {
     const {
@@ -34,7 +35,9 @@ const SaveDeviceFrame = ( { attributes } ) => {
                     { screenshot.url && (
                         <img
                             className="device-frame__screenshot"
-                            src={ screenshot.url }
+                            src={ screenshot.source || screenshot.url }
+                            srcSet={ buildSrcSet( screenshot.srcset ) }
+                            sizes="(min-width: 880px) 50vw, 100vw"
                             alt={ screenshot.alt }
                             loading="lazy"
                             style={ screenStyle }

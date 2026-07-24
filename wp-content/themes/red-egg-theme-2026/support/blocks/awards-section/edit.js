@@ -10,6 +10,7 @@ const { Fragment, useEffect } = wp.element;
 const { InnerBlocks, InspectorControls, MediaUpload, useBlockProps } = wp.blockEditor;
 const { PanelBody, Button, RangeControl, TextControl, ToggleControl } = wp.components;
 const { __ } = wp.i18n;
+import { pickSizes } from '../../components/mediaSizes.js';
 
 import BackgroundColor from '../../components/BackgroundColor.js';
 import PaddingSelector from '../../components/Padding.js';
@@ -47,9 +48,14 @@ const EditAwardsSection = ( { attributes, setAttributes, clientId } ) => {
         const newAwards = media.map( ( img ) => {
             // Check if this image already exists in awards to preserve captions
             const existing = awards.find( ( a ) => a.id === img.id );
+            // Logos are small display elements: a thumbnail is the base,
+            // with medium-small for retina. Never the full-size original.
+            const picked = pickSizes( img, [ 'medium-small', 'thumbnail' ] );
             return {
                 id: img.id,
                 url: img.sizes && img.sizes.thumbnail ? img.sizes.thumbnail.url : img.url,
+                source: picked.source,
+                srcset: picked.srcset,
                 fullUrl: img.url,
                 alt: img.alt || '',
                 caption: existing ? existing.caption : '',

@@ -8,6 +8,7 @@
 
 const { Fragment } = wp.element;
 const { InnerBlocks, useBlockProps } = wp.blockEditor;
+import { buildSrcSet } from '../../components/mediaSizes.js';
 
 import PaddingSelector from '../../components/Padding.js';
 import MarginSelector from '../../components/Margin.js';
@@ -43,7 +44,9 @@ const SaveAwardsSection = ( { attributes } ) => {
                                             <div className="awards-section__award">
                                                 <div className="awards-section__award-img">
                                                     <img
-                                                        src={ award.url }
+                                                        src={ award.source || award.url }
+                                                        srcSet={ buildSrcSet( award.srcset ) }
+                                                        sizes="200px"
                                                         alt={ award.alt }
                                                         loading="lazy"
                                                     />

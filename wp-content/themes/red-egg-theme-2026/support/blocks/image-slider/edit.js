@@ -9,6 +9,7 @@ const { Fragment, useEffect } = wp.element;
 const { InspectorControls, MediaUpload, useBlockProps } = wp.blockEditor;
 const { PanelBody, Button, RangeControl } = wp.components;
 const { __ } = wp.i18n;
+import { pickSizes } from '../../components/mediaSizes.js';
 
 const EditImageSlider = ( { attributes, setAttributes, clientId } ) => {
     const { images, slidesPerView, spaceBetween, blockId } = attributes;
@@ -25,11 +26,22 @@ const EditImageSlider = ( { attributes, setAttributes, clientId } ) => {
     } );
 
     const onSelectImages = ( media ) => {
-        const newImages = media.map( ( img ) => ( {
-            id: img.id,
-            url: img.url,
-            alt: img.alt || '',
-        } ) );
+        const newImages = media.map( ( img ) => {
+            const picked = pickSizes( img, [
+                'medium-landscape',
+                'medium-large',
+                'medium-small',
+                'large',
+                'full',
+            ] );
+            return {
+                id: img.id,
+                url: img.url,
+                alt: img.alt || '',
+                source: picked.source,
+                srcset: picked.srcset,
+            };
+        } );
         setAttributes( { images: newImages } );
     };
 

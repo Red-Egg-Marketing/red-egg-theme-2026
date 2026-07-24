@@ -7,6 +7,7 @@
  */
 
 const { useBlockProps } = wp.blockEditor;
+import { buildSrcSet } from '../../components/mediaSizes.js';
 
 const SaveImageSlider = ( { attributes } ) => {
     const { images, slidesPerView, spaceBetween, blockId } = attributes;
@@ -33,7 +34,9 @@ const SaveImageSlider = ( { attributes } ) => {
                             <div className="swiper-slide" key={ img.id || i }>
                                 <div className="image-slider__slide">
                                     <img
-                                        src={ img.url }
+                                        src={ img.source || img.url }
+                                        srcSet={ buildSrcSet( img.srcset ) }
+                                        sizes="(min-width: 880px) 50vw, 100vw"
                                         alt={ img.alt }
                                         loading="lazy"
                                     />

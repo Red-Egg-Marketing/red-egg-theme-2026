@@ -9,6 +9,7 @@ const { Fragment } = wp.element;
 const { InspectorControls, MediaUpload, useBlockProps } = wp.blockEditor;
 const { PanelBody, Button, SelectControl, RangeControl } = wp.components;
 const { __ } = wp.i18n;
+import { pickSizes } from '../../components/mediaSizes.js';
 
 const deviceOptions = [
     { label: __( 'Desktop', 'red-egg' ), value: 'desktop' },
@@ -36,11 +37,20 @@ const EditDeviceFrame = ( { attributes, setAttributes } ) => {
     };
 
     const onSelectScreenshot = ( media ) => {
+        const picked = pickSizes( media, [
+            'post-landscape',
+            'medium-large',
+            'medium-landscape',
+            'large',
+            'full',
+        ] );
         setAttributes( {
             screenshot: {
                 id: media.id,
                 url: media.url,
                 alt: media.alt || '',
+                source: picked.source,
+                srcset: picked.srcset,
             },
         } );
     };
