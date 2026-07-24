@@ -10842,16 +10842,6 @@ img.device-frame__device {
   z-index: 1;
 }
 
-.device-frame__screenshot {
-  position: absolute;
-  z-index: 0;
-  -o-object-fit: cover;
-     object-fit: cover;
-  -o-object-position: top center;
-     object-position: top center;
-  border-radius: 2px;
-}
-
 .device-frame__placeholder {
   display: flex;
   align-items: center;
@@ -10860,16 +10850,6 @@ img.device-frame__device {
   border: 2px dashed rgba(255, 255, 255, 0.3);
   border-radius: 8px;
   background: rgba(0, 0, 0, 0.1);
-}
-
-.device-frame__screenshot-placeholder {
-  position: absolute;
-  z-index: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: rgba(128, 128, 128, 0.3);
-  border-radius: 2px;
 }
 
 .wp-block.device-showcase {
