@@ -155,6 +155,13 @@ const BackgroundSelector = (props) => {
     		newBody.url = sized;
     		newBody.width = sizedW;
     		newBody.height = sizedH;
+    		// Capture the super-large size (if generated) as the 2x
+    		// source for image-set(): backgrounds can't use srcset, so
+    		// this lets high-DPI/4K displays pull the crisp 2592px file
+    		// while everyone else keeps the 1728px default above.
+    		newBody.url2x = ( media.sizes && media.sizes['hero-landscape-super-large'] )
+    			? media.sizes['hero-landscape-super-large'].url
+    			: '';
     	}
 
     	props.setAttributes({

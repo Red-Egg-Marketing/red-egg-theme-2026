@@ -5,7 +5,7 @@
  * Background image/color, mobile bg override, min-height control.
  */
 
-const { Fragment } = wp.element;
+const { Fragment, useEffect } = wp.element;
 const { InnerBlocks, useBlockProps, InspectorControls } = wp.blockEditor;
 const { PanelBody, RangeControl } = wp.components;
 const { __ } = wp.i18n;
@@ -27,9 +27,16 @@ const allowedBlocks = [
 ];
 
 const EditHeroBackground = ( { attributes, setAttributes, clientId } ) => {
-    const { image, mobileimage, bgColor, bgSlug, minHeight, padding, margin } = attributes;
+    const { image, mobileimage, bgColor, bgSlug, minHeight, padding, margin, blockId } = attributes;
 
-    const blockId = `block-${ clientId }`;
+    // Persist blockId so save.js emits a matching id for the scoped
+    // padding/margin and background image-set <style> to target.
+    useEffect( () => {
+        if ( ! blockId ) {
+            setAttributes( { blockId: 'block-' + clientId } );
+        }
+    }, [] );
+    const effectiveBlockId = blockId || `block-${ clientId }`;
 
     // Build inline background styles for editor preview
     const bgStyle = {};
@@ -60,7 +67,7 @@ const EditHeroBackground = ( { attributes, setAttributes, clientId } ) => {
     }
 
     const blockProps = useBlockProps( {
-        id: blockId,
+        id: effectiveBlockId,
         className: 'hero-background' + ( bgSlug ? ' ' + bgSlug : '' ),
     } );
 
@@ -99,12 +106,12 @@ const EditHeroBackground = ( { attributes, setAttributes, clientId } ) => {
 
             <PaddingSelector
                 padding={ padding }
-                id={ blockId }
+                id={ effectiveBlockId }
                 setAttributes={ setAttributes }
             />
             <MarginSelector
                 margin={ margin }
-                id={ blockId }
+                id={ effectiveBlockId }
                 setAttributes={ setAttributes }
             />
 

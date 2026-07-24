@@ -31,10 +31,14 @@ registerBlockType( 'red-egg-block/hero-background', {
     category: 'layout',
     keywords: [ __( 'hero', 'red-egg' ), __( 'background', 'red-egg' ), __( 'banner', 'red-egg' ), __( 'split', 'red-egg' ) ],
     attributes: {
+        blockId: {
+            type: 'string',
+            default: '',
+        },
         image: {
             type: 'object',
             default: {
-                url: '', width: '', height: '',
+                url: '', url2x: '', width: '', height: '',
                 repeat: 'no-repeat', attachment: 'scroll',
                 position: 'center center', size: '', sizekey: 'cover',
                 unit: '%', bgkeyword: 'keyword',
