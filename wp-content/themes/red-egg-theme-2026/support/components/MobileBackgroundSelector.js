@@ -101,9 +101,27 @@ const MobileBackgroundSelector = (props) => {
 	const setBackgroundImage = (media) => {
 
     	let newBody = JSON.parse(JSON.stringify(image));
-    	newBody.url = media.url;
-    	newBody.width = media.width;
-    	newBody.height = media.height;
+
+    	// Mobile backgrounds render on small screens -- serve a modest
+    	// sized URL, not the full-size original. Prefer the mid/base
+    	// hero landscape sizes; fall back to full only if unavailable.
+    	let sized = media.url;
+    	let sizedW = media.width;
+    	let sizedH = media.height;
+    	const order = [ 'hero-landscape-medium', 'hero-landscape', 'medium-landscape', 'medium-large' ];
+    	if ( media.mime !== 'image/svg+xml' && media.sizes ) {
+    		for ( let i = 0; i < order.length; i++ ) {
+    			if ( media.sizes[ order[ i ] ] ) {
+    				sized = media.sizes[ order[ i ] ].url;
+    				sizedW = media.sizes[ order[ i ] ].width;
+    				sizedH = media.sizes[ order[ i ] ].height;
+    				break;
+    			}
+    		}
+    	}
+    	newBody.url = sized;
+    	newBody.width = sizedW;
+    	newBody.height = sizedH;
 
     	var update = {};
 
