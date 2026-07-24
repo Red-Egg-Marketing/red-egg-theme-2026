@@ -11,6 +11,8 @@ const { PanelBody, SelectControl, ToggleControl, Button, ResponsiveWrapper } = w
 const { __ } = wp.i18n;
 
 import ImageComp from '../../components/ImageComp.js';
+import ImageSizePicker from '../../components/ImageSizePicker.js';
+import { pickSizes, captureSizeUrls, resolveOverride } from '../../components/mediaSizes.js';
 import BackgroundColor from '../../components/BackgroundColor.js';
 import BackgroundSelector from '../../components/BackgroundSelector.js';
 import ColumnsWidth from '../../components/ColumnsWidth.js';
@@ -60,34 +62,20 @@ const EditImageText = ( { attributes, setAttributes, clientId } ) => {
     }, [] );
 
     const updateImageAttr = ( img ) => {
-        // Pull our registered sizes instead of the full-size original.
-        // image-text-block (960x500) for large, image-text-block-small
-        // (480x250) for medium; fall back through WP defaults, then the
-        // full url only as a last resort. Store widths so save can build
-        // a real srcset. (Sizes only exist on the media object once the
-        // image has been regenerated for these registered sizes.)
-        const pick = ( names ) => {
-            for ( const n of names ) {
-                if ( img.sizes && img.sizes[ n ] ) {
-                    return { url: img.sizes[ n ].url, width: img.sizes[ n ].width };
-                }
-            }
-            return { url: img.url, width: img.width || '' };
-        };
-
-        const large = pick( [ 'image-text-block', 'medium-landscape', 'large' ] );
-        const medium = pick( [ 'image-text-block-small', 'medium-small', 'medium' ] );
-
+        const picked = pickSizes( img, [
+            'image-text-block',
+            'medium-landscape',
+            'large',
+            'full',
+        ] );
         setAttributes( {
             media: {
-                srcSet: {
-                    large: large.url,
-                    largeW: large.width,
-                    medium: medium.url,
-                    mediumW: medium.width,
-                },
                 id: img.id,
                 alt: img.alt,
+                source: picked.source,
+                srcset: picked.srcset,
+                sizeUrls: captureSizeUrls( img ),
+                sizeOverride: '',
             },
         } );
     };
@@ -191,6 +179,14 @@ const EditImageText = ( { attributes, setAttributes, clientId } ) => {
                         options={ VidImg }
                         onChange={ ( val ) => setAttributes( { vidOrImg: val } ) }
                     />
+                    { vidOrImg === 'image' && media.source && (
+                        <ImageSizePicker
+                            value={ media.sizeOverride }
+                            onChange={ ( val ) => setAttributes( {
+                                media: { ...media, sizeOverride: val },
+                            } ) }
+                        />
+                    ) }
                 </PanelBody>
                 { vidOrImg === 'video' && (
                     <PanelBody
@@ -265,7 +261,7 @@ const EditImageText = ( { attributes, setAttributes, clientId } ) => {
                         { vidOrImg === 'image' && (
                             <ImageComp
                                 id={ media.id }
-                                source={ media.srcSet.large }
+                                source={ resolveOverride( media.sizeOverride, media.sizeUrls, media.source ) }
                                 updateImageAttr={ updateImageAttr }
                                 alt={ media.alt }
                             />

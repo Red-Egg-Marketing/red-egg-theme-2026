@@ -21,6 +21,10 @@ registerBlockType( 'red-egg-block/image-slider', {
     parent: [ 'red-egg-block/community-section' ],
     supports: { anchor: true },
     attributes: {
+        imageSizeOverride: {
+            type: 'string',
+            default: '',
+        },
         images: {
             type: 'array',
             default: [],

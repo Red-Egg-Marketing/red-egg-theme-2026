@@ -10,7 +10,8 @@ const { Fragment, useEffect } = wp.element;
 const { InnerBlocks, InspectorControls, MediaUpload, useBlockProps } = wp.blockEditor;
 const { PanelBody, Button, RangeControl, TextControl, ToggleControl } = wp.components;
 const { __ } = wp.i18n;
-import { pickSizes } from '../../components/mediaSizes.js';
+import { pickSizes, captureSizeUrls } from '../../components/mediaSizes.js';
+import ImageSizePicker from '../../components/ImageSizePicker.js';
 
 import BackgroundColor from '../../components/BackgroundColor.js';
 import PaddingSelector from '../../components/Padding.js';
@@ -27,7 +28,7 @@ const allowedBlocks = [
 ];
 
 const EditAwardsSection = ( { attributes, setAttributes, clientId } ) => {
-    const { bgColor, bgSlug, awards, slidesPerView, spaceBetween, withCards, padding, margin, blockId } = attributes;
+    const { bgColor, bgSlug, awards, slidesPerView, spaceBetween, withCards, padding, margin, blockId, imageSizeOverride } = attributes;
 
     useEffect( () => {
         if ( ! blockId ) {
@@ -56,6 +57,7 @@ const EditAwardsSection = ( { attributes, setAttributes, clientId } ) => {
                 url: img.sizes && img.sizes.thumbnail ? img.sizes.thumbnail.url : img.url,
                 source: picked.source,
                 srcset: picked.srcset,
+                sizeUrls: captureSizeUrls( img ),
                 fullUrl: img.url,
                 alt: img.alt || '',
                 caption: existing ? existing.caption : '',
@@ -101,6 +103,13 @@ const EditAwardsSection = ( { attributes, setAttributes, clientId } ) => {
                         min={ 2 }
                         max={ 8 }
                     />
+                    { awards && awards.length > 0 && (
+                        <ImageSizePicker
+                            label={ __( 'Logo Image Size', 'red-egg' ) }
+                            value={ imageSizeOverride }
+                            onChange={ ( val ) => setAttributes( { imageSizeOverride: val } ) }
+                        />
+                    ) }
                     <RangeControl
                         label={ __( 'Space Between (px)', 'red-egg' ) }
                         value={ spaceBetween }

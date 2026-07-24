@@ -9,10 +9,11 @@ const { Fragment, useEffect } = wp.element;
 const { InspectorControls, MediaUpload, useBlockProps } = wp.blockEditor;
 const { PanelBody, Button, RangeControl } = wp.components;
 const { __ } = wp.i18n;
-import { pickSizes } from '../../components/mediaSizes.js';
+import { pickSizes, captureSizeUrls } from '../../components/mediaSizes.js';
+import ImageSizePicker from '../../components/ImageSizePicker.js';
 
 const EditImageSlider = ( { attributes, setAttributes, clientId } ) => {
-    const { images, slidesPerView, spaceBetween, blockId } = attributes;
+    const { images, slidesPerView, spaceBetween, blockId, imageSizeOverride } = attributes;
 
     useEffect( () => {
         if ( ! blockId ) {
@@ -40,6 +41,7 @@ const EditImageSlider = ( { attributes, setAttributes, clientId } ) => {
                 alt: img.alt || '',
                 source: picked.source,
                 srcset: picked.srcset,
+                sizeUrls: captureSizeUrls( img ),
             };
         } );
         setAttributes( { images: newImages } );
@@ -72,6 +74,12 @@ const EditImageSlider = ( { attributes, setAttributes, clientId } ) => {
                         min={ 0 }
                         max={ 50 }
                     />
+                    { images && images.length > 0 && (
+                        <ImageSizePicker
+                            value={ imageSizeOverride }
+                            onChange={ ( val ) => setAttributes( { imageSizeOverride: val } ) }
+                        />
+                    ) }
                 </PanelBody>
                 <PanelBody
                     title={ __( 'Images', 'red-egg' ) }

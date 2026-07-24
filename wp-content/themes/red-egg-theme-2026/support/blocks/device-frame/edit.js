@@ -9,7 +9,8 @@ const { Fragment } = wp.element;
 const { InspectorControls, MediaUpload, useBlockProps } = wp.blockEditor;
 const { PanelBody, Button, SelectControl, RangeControl } = wp.components;
 const { __ } = wp.i18n;
-import { pickSizes } from '../../components/mediaSizes.js';
+import { pickSizes, captureSizeUrls, resolveOverride } from '../../components/mediaSizes.js';
+import ImageSizePicker from '../../components/ImageSizePicker.js';
 
 const deviceOptions = [
     { label: __( 'Desktop', 'red-egg' ), value: 'desktop' },
@@ -51,6 +52,8 @@ const EditDeviceFrame = ( { attributes, setAttributes } ) => {
                 alt: media.alt || '',
                 source: picked.source,
                 srcset: picked.srcset,
+                sizeUrls: captureSizeUrls( media ),
+                sizeOverride: '',
             },
         } );
     };
@@ -83,6 +86,15 @@ const EditDeviceFrame = ( { attributes, setAttributes } ) => {
                         options={ deviceOptions }
                         onChange={ ( val ) => setAttributes( { deviceType: val } ) }
                     />
+                    { screenshot.source && (
+                        <ImageSizePicker
+                            label={ __( 'Screenshot Size', 'red-egg' ) }
+                            value={ screenshot.sizeOverride }
+                            onChange={ ( val ) => setAttributes( {
+                                screenshot: { ...screenshot, sizeOverride: val },
+                            } ) }
+                        />
+                    ) }
                 </PanelBody>
                 <PanelBody
                     title={ __( 'Device Frame Image', 'red-egg' ) }

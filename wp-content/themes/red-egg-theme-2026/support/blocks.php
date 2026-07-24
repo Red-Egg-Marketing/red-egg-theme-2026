@@ -39,12 +39,37 @@ function red_egg_enqueue_block_editor_assets() {
         true
     );
 
+    // Build the list of available image sizes (registered + core) so
+    // the editor's ImageSizePicker can offer them. Derived from WP so
+    // it stays in sync with inc/media.php.
+    $re_size_names   = get_intermediate_image_sizes();
+    $re_size_labels  = apply_filters( 'image_size_names_choose', [] );
+    $re_image_sizes  = [];
+    foreach ( $re_size_names as $re_size ) {
+        $re_w = 0;
+        $re_h = 0;
+        if ( isset( $GLOBALS['_wp_additional_image_sizes'][ $re_size ] ) ) {
+            $re_w = (int) $GLOBALS['_wp_additional_image_sizes'][ $re_size ]['width'];
+            $re_h = (int) $GLOBALS['_wp_additional_image_sizes'][ $re_size ]['height'];
+        } else {
+            $re_w = (int) get_option( "{$re_size}_size_w" );
+            $re_h = (int) get_option( "{$re_size}_size_h" );
+        }
+        $re_image_sizes[] = [
+            'name'   => $re_size,
+            'label'  => isset( $re_size_labels[ $re_size ] ) ? $re_size_labels[ $re_size ] : $re_size,
+            'width'  => $re_w,
+            'height' => $re_h,
+        ];
+    }
+
     wp_localize_script(
         'red-egg-editor-blocks',
         'redEggEditor',
         [
-            'iconsUrl' => get_template_directory_uri() . '/support/assets/icons.json',
-            'themeUri' => get_template_directory_uri(),
+            'iconsUrl'    => get_template_directory_uri() . '/support/assets/icons.json',
+            'themeUri'    => get_template_directory_uri(),
+            'imageSizes'  => $re_image_sizes,
         ]
     );
 

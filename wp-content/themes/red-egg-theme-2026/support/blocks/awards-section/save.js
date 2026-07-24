@@ -8,13 +8,13 @@
 
 const { Fragment } = wp.element;
 const { InnerBlocks, useBlockProps } = wp.blockEditor;
-import { buildSrcSet } from '../../components/mediaSizes.js';
+import { buildSrcSet, resolveOverride } from '../../components/mediaSizes.js';
 
 import PaddingSelector from '../../components/Padding.js';
 import MarginSelector from '../../components/Margin.js';
 
 const SaveAwardsSection = ( { attributes } ) => {
-    const { bgSlug, awards, slidesPerView, spaceBetween, withCards, padding, margin, blockId } = attributes;
+    const { bgSlug, awards, slidesPerView, spaceBetween, withCards, padding, margin, blockId, imageSizeOverride } = attributes;
 
     const blockProps = useBlockProps.save( {
         id: blockId,
@@ -44,9 +44,9 @@ const SaveAwardsSection = ( { attributes } ) => {
                                             <div className="awards-section__award">
                                                 <div className="awards-section__award-img">
                                                     <img
-                                                        src={ award.source || award.url }
-                                                        srcSet={ buildSrcSet( award.srcset ) }
-                                                        sizes="200px"
+                                                        src={ resolveOverride( imageSizeOverride, award.sizeUrls, award.source || award.url ) }
+                                                        srcSet={ imageSizeOverride ? '' : buildSrcSet( award.srcset ) }
+                                                        sizes={ imageSizeOverride ? '' : '200px' }
                                                         alt={ award.alt }
                                                         loading="lazy"
                                                     />

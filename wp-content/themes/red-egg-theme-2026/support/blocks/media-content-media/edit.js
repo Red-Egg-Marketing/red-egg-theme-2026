@@ -10,6 +10,8 @@ const { PanelBody, Button, SelectControl, ToggleControl, ResponsiveWrapper } = w
 const { __ } = wp.i18n;
 
 import ImageComp from '../../components/ImageComp.js';
+import ImageSizePicker from '../../components/ImageSizePicker.js';
+import { pickSizes, captureSizeUrls, resolveOverride } from '../../components/mediaSizes.js';
 
 const vidImgOptions = [
     { label: __( 'Image', 'red-egg' ), value: 'image' },
@@ -27,31 +29,20 @@ const EditMediaContentMedia = ( { attributes, setAttributes } ) => {
 
     // Media handlers
     const updateImageAttr = ( newMedia ) => {
-        // Registered sizes instead of full-size original, with widths
-        // so save can build a real srcset. Falls back through WP
-        // defaults, then full url only as a last resort.
-        const pick = ( names ) => {
-            for ( const n of names ) {
-                if ( newMedia.sizes && newMedia.sizes[ n ] ) {
-                    return { url: newMedia.sizes[ n ].url, width: newMedia.sizes[ n ].width };
-                }
-            }
-            return { url: newMedia.url, width: newMedia.width || '' };
-        };
-
-        const large = pick( [ 'image-text-block', 'medium-landscape', 'large' ] );
-        const medium = pick( [ 'image-text-block-small', 'medium-small', 'medium' ] );
-
+        const picked = pickSizes( newMedia, [
+            'image-text-block',
+            'medium-landscape',
+            'large',
+            'full',
+        ] );
         setAttributes( {
             media: {
-                srcSet: {
-                    large: large.url,
-                    largeW: large.width,
-                    medium: medium.url,
-                    mediumW: medium.width,
-                },
                 id: newMedia.id,
                 alt: newMedia.alt,
+                source: picked.source,
+                srcset: picked.srcset,
+                sizeUrls: captureSizeUrls( newMedia ),
+                sizeOverride: '',
             },
         } );
     };
@@ -91,6 +82,20 @@ const EditMediaContentMedia = ( { attributes, setAttributes } ) => {
                         onChange={ ( val ) => setAttributes( { vidOrImg: val } ) }
                     />
                 </PanelBody>
+
+                { vidOrImg === 'image' && media.source && (
+                    <PanelBody
+                        title={ __( 'Image Size', 'red-egg' ) }
+                        initialOpen={ false }
+                    >
+                        <ImageSizePicker
+                            value={ media.sizeOverride }
+                            onChange={ ( val ) => setAttributes( {
+                                media: { ...media, sizeOverride: val },
+                            } ) }
+                        />
+                    </PanelBody>
+                ) }
 
                 { vidOrImg === 'video' && (
                     <PanelBody
@@ -141,7 +146,7 @@ const EditMediaContentMedia = ( { attributes, setAttributes } ) => {
                 { vidOrImg === 'image' && (
                     <ImageComp
                         id={ media.id }
-                        source={ media.srcSet.large }
+                        source={ resolveOverride( media.sizeOverride, media.sizeUrls, media.source ) }
                         updateImageAttr={ updateImageAttr }
                         alt={ media.alt || '' }
                     />

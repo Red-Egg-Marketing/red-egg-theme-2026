@@ -4,7 +4,7 @@
 
 const { Fragment } = wp.element;
 const { useBlockProps } = wp.blockEditor;
-import { buildSrcSet } from '../../components/mediaSizes.js';
+import { buildSrcSet, resolveOverride } from '../../components/mediaSizes.js';
 
 const SaveHeroMedia = ( { attributes } ) => {
     const { mediaType, media, videoID, videoURL, videothumb, eggCount, eggTouchBehavior } = attributes;
@@ -30,9 +30,9 @@ const SaveHeroMedia = ( { attributes } ) => {
             { mediaType === 'image' && media.url && (
                 <img
                     className="hero-background__media-img"
-                    src={ media.source || media.url }
-                    srcSet={ buildSrcSet( media.srcset ) }
-                    sizes="(min-width: 880px) 50vw, 100vw"
+                    src={ resolveOverride( media.sizeOverride, media.sizeUrls, media.source || media.url ) }
+                    srcSet={ media.sizeOverride ? '' : buildSrcSet( media.srcset ) }
+                    sizes={ media.sizeOverride ? '' : '(min-width: 880px) 50vw, 100vw' }
                     alt={ media.alt }
                     loading="lazy"
                 />

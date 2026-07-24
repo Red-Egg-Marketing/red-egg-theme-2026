@@ -27,6 +27,10 @@ registerBlockType( 'red-egg-block/awards-section', {
     keywords: [ __( 'awards', 'red-egg' ), __( 'recognition', 'red-egg' ), __( 'badges', 'red-egg' ), __( 'slider', 'red-egg' ) ],
     supports: { anchor: true },
     attributes: {
+        imageSizeOverride: {
+            type: 'string',
+            default: '',
+        },
         bgColor: {
             type: 'string',
             default: '',
