@@ -21,6 +21,7 @@ function emulate_custom_sizes( $sizes ) {
         'whitepaper-poster' => ('Whitepaper Poster'),
         'post-landscape' => ('Landscape'),
         'post-landscape-medium' => ('Landscape Medium'),
+        'hero-landscape-super-large' => ('Hero Super Large'),
         'hero-landscape-large' => ('Hero Large'),
         'hero-landscape-medium' => ('Hero Medium'),
         'hero-landscape' => ('Hero'),
