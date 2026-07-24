@@ -41,6 +41,7 @@ const EditHeroMedia = ( { attributes, setAttributes } ) => {
 
     const onSelectImage = ( img ) => {
         const picked = pickSizes( img, [
+            'hero-landscape-super-large',
             'hero-landscape-large',
             'hero-landscape-medium',
             'hero-landscape',
