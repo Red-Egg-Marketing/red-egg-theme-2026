@@ -16,8 +16,24 @@ const SaveHeroCase = ( { attributes } ) => {
 
     // Build inline background styles
     const bgStyle = {};
+    let bgImageSetCss = '';
     if ( image.url ) {
-        bgStyle.backgroundImage = `url(${ image.url })`;
+        if ( image.url2x ) {
+            // image-set() for high-DPI/4K crispness without sending the
+            // 2592px file to everyone. Backgrounds can't use srcset;
+            // this is the CSS equivalent. Scoped to the inner image-wrap
+            // (that's the element carrying the background here, not the
+            // block wrapper). Layered fallback: url() -> -webkit- ->
+            // standard.
+            bgImageSetCss =
+                `#${ blockId } .hero-block-image-wrap {`
+                + ` background-image: url(${ image.url });`
+                + ` background-image: -webkit-image-set(url(${ image.url }) 1x, url(${ image.url2x }) 2x);`
+                + ` background-image: image-set(url(${ image.url }) 1x, url(${ image.url2x }) 2x);`
+                + ` }`;
+        } else {
+            bgStyle.backgroundImage = `url(${ image.url })`;
+        }
         bgStyle.backgroundRepeat = image.repeat || 'no-repeat';
         bgStyle.backgroundAttachment = image.attachment || 'scroll';
         bgStyle.backgroundSize = image.sizekey || 'cover';
@@ -41,6 +57,9 @@ const SaveHeroCase = ( { attributes } ) => {
 
     return (
         <Fragment>
+            { bgImageSetCss && (
+                <style type="text/css">{ bgImageSetCss }</style>
+            ) }
             <PaddingSelector.View padding={ padding } id={ blockId } />
             <MarginSelector.View margin={ margin } id={ blockId } />
             <div { ...blockProps }>
