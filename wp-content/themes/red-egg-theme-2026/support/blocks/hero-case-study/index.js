@@ -30,7 +30,7 @@ registerBlockType( 'red-egg-block/hero-case-study', {
         image: {
             type: 'object',
             default: {
-                url: '', width: '', height: '',
+                url: '', url2x: '', width: '', height: '',
                 repeat: 'no-repeat', attachment: 'scroll',
                 position: 'center center', size: '', sizekey: 'cover',
                 unit: '%', bgkeyword: 'keyword',
