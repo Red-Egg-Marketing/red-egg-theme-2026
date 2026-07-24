@@ -135,7 +135,7 @@ const EditImageText = ( { attributes, setAttributes, clientId } ) => {
             <InspectorControls>
                 <PanelBody
                     title={ __( 'Align Content', 'red-egg' ) }
-                    initialOpen={ true }
+                    initialOpen={ false }
                 >
                     <SelectControl
                         label={ __( 'Align Content', 'red-egg' ) }
