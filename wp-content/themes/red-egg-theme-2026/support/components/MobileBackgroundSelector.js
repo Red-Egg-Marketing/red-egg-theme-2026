@@ -212,7 +212,7 @@ const MobileBackgroundSelector = (props) => {
 		<Fragment>
 			<PanelBody
 					title={__('Mobile Hero Background')}
-					initialOpen={true}
+					initialOpen={false}
 				>
         			<label style={ labelStyle }>{__('Background Image')}</label>
         			<MediaUpload
