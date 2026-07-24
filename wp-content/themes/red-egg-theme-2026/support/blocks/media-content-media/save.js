@@ -6,6 +6,7 @@ const { Fragment } = wp.element;
 const { InnerBlocks, useBlockProps } = wp.blockEditor;
 
 import ImageComp from '../../components/ImageComp.js';
+import { buildSrcSet, resolveOverride } from '../../components/mediaSizes.js';
 
 
 const SaveMediaContentMedia = ( { attributes } ) => {
@@ -17,14 +18,15 @@ const SaveMediaContentMedia = ( { attributes } ) => {
         className: 'media-content__media image-col column',
     } );
 
-    const srcSet = '';
-    const sizes = '(min-width: 880px) 100vw, 400px';
+    const srcSet = media.sizeOverride ? '' : buildSrcSet( media.srcset );
+    const imgSource = resolveOverride( media.sizeOverride, media.sizeUrls, media.source );
+    const sizes = media.sizeOverride ? '' : '(min-width: 880px) 50vw, 100vw';
 
     return (
         <div { ...blockProps }>
             { vidOrImg === 'image' && (
                 <ImageComp.View
-                    source={ media.srcSet.large }
+                    source={ imgSource }
                     alt={ media.alt || '' }
                     srcSet={ srcSet }
                     sizes={ sizes }

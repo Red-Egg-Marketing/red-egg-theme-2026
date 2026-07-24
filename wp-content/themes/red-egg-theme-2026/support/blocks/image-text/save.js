@@ -9,6 +9,7 @@ import ImageComp from '../../components/ImageComp.js';
 import PaddingSelector from '../../components/Padding.js';
 import MarginSelector from '../../components/Margin.js';
 import BlobAnimation from '../../components/BlobAnimation.js';
+import { buildSrcSet, resolveOverride } from '../../components/mediaSizes.js';
 
 const SaveImageText = ( { attributes } ) => {
     const {
@@ -47,8 +48,12 @@ const SaveImageText = ( { attributes } ) => {
         style: bgStyle,
     } );
 
-    const srcSet = '';
-    const sizes = '(min-width: 880px) 100vw, 400px';
+    // Auto srcset from the stored sized URLs, unless the editor picked
+    // a specific size (sizeOverride), in which case serve that single
+    // size and drop the srcset.
+    const srcSet = media.sizeOverride ? '' : buildSrcSet( media.srcset );
+    const sizes = media.sizeOverride ? '' : '(min-width: 880px) 50vw, 100vw';
+    const imgSource = resolveOverride( media.sizeOverride, media.sizeUrls, media.source );
 
     return (
         <Fragment>
@@ -66,7 +71,7 @@ const SaveImageText = ( { attributes } ) => {
                     <div className="image-col column">
                         { vidOrImg === 'image' && (
                             <ImageComp.View
-                                source={ media.srcSet.large }
+                                source={ imgSource }
                                 alt={ media.alt }
                                 srcSet={ srcSet }
                                 sizes={ sizes }

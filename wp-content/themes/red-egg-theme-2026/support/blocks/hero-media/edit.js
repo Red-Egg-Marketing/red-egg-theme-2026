@@ -10,6 +10,8 @@ const { Fragment } = wp.element;
 const { InspectorControls, MediaUpload, useBlockProps } = wp.blockEditor;
 const { PanelBody, Button, SelectControl, RangeControl, ResponsiveWrapper } = wp.components;
 const { __ } = wp.i18n;
+import { pickSizes, captureSizeUrls, resolveOverride } from '../../components/mediaSizes.js';
+import ImageSizePicker from '../../components/ImageSizePicker.js';
 
 const mediaOptions = [
     { label: __( 'Image / SVG', 'red-egg' ), value: 'image' },
@@ -38,11 +40,21 @@ const EditHeroMedia = ( { attributes, setAttributes } ) => {
     } );
 
     const onSelectImage = ( img ) => {
+        const picked = pickSizes( img, [
+            'hero-landscape-large',
+            'hero-landscape-medium',
+            'hero-landscape',
+            'large',
+            'full',
+        ] );
         setAttributes( {
             media: {
                 id: img.id,
                 url: img.url,
                 alt: img.alt || '',
+                source: picked.source,
+                srcset: picked.srcset,
+                sizeUrls: captureSizeUrls( img ),
             },
         } );
     };
@@ -89,6 +101,14 @@ const EditHeroMedia = ( { attributes, setAttributes } ) => {
                         options={ mediaOptions }
                         onChange={ ( val ) => setAttributes( { mediaType: val } ) }
                     />
+                    { mediaType === 'image' && media.url && (
+                        <ImageSizePicker
+                            value={ media.sizeOverride }
+                            onChange={ ( val ) => setAttributes( {
+                                media: { ...media, sizeOverride: val },
+                            } ) }
+                        />
+                    ) }
                 </PanelBody>
 
                 { mediaType === 'eggs' && (

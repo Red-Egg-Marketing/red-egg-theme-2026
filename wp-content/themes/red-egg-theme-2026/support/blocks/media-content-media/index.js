@@ -25,6 +25,10 @@ registerBlockType( 'red-egg-block/media-content-media', {
             default: {
                 id: '',
                 alt: '',
+                source: '',
+                srcset: [],
+                sizeUrls: {},
+                sizeOverride: '',
                 srcSet: {
                     large: '',
                     medium: '',

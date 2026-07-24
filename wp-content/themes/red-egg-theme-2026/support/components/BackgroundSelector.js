@@ -113,8 +113,9 @@ const BackgroundSelector = (props) => {
     	let newBody = JSON.parse(JSON.stringify(image));
 
     	let type = media.mime;
-    	newBody.url = media.url;
+
     	if (type == "image/svg+xml") {
+    		newBody.url = media.url;
     		var xmlhttp = new XMLHttpRequest();
 			xmlhttp.open("GET", media.url, true);  
 			xmlhttp.onreadystatechange = function(){
@@ -132,8 +133,28 @@ const BackgroundSelector = (props) => {
 
 			xmlhttp.send();
     	} else {
-    		newBody.width = media.width;
-    		newBody.height = media.height;
+    		// Backgrounds can't use srcset, so serve a sized URL instead
+    		// of the full-size original. Full-width section/hero
+    		// backgrounds don't need more than ~1728px; cap there,
+    		// stepping down through smaller registered sizes, and only
+    		// use the full original if none have been generated yet.
+    		let sized = media.url;
+    		let sizedW = media.width;
+    		let sizedH = media.height;
+    		const order = [ 'hero-landscape-large', 'hero-landscape-medium', 'medium-landscape', 'large' ];
+    		if ( media.sizes ) {
+    			for ( let i = 0; i < order.length; i++ ) {
+    				if ( media.sizes[ order[ i ] ] ) {
+    					sized = media.sizes[ order[ i ] ].url;
+    					sizedW = media.sizes[ order[ i ] ].width;
+    					sizedH = media.sizes[ order[ i ] ].height;
+    					break;
+    				}
+    			}
+    		}
+    		newBody.url = sized;
+    		newBody.width = sizedW;
+    		newBody.height = sizedH;
     	}
 
     	props.setAttributes({

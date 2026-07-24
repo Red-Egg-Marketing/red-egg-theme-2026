@@ -30,6 +30,10 @@ registerBlockType( 'red-egg-block/hero-media', {
                 id: '',
                 url: '',
                 alt: '',
+                source: '',
+                srcset: [],
+                sizeUrls: {},
+                sizeOverride: '',
             },
         },
         videoID: {

@@ -39,6 +39,10 @@ registerBlockType( 'red-egg-block/image-text', {
             default: {
                 id: '',
                 alt: '',
+                source: '',
+                srcset: [],
+                sizeUrls: {},
+                sizeOverride: '',
                 srcSet: {
                     large: '',
                     medium: '',

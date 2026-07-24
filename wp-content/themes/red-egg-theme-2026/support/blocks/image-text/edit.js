@@ -11,6 +11,8 @@ const { PanelBody, SelectControl, ToggleControl, Button, ResponsiveWrapper } = w
 const { __ } = wp.i18n;
 
 import ImageComp from '../../components/ImageComp.js';
+import ImageSizePicker from '../../components/ImageSizePicker.js';
+import { pickSizes, captureSizeUrls, resolveOverride } from '../../components/mediaSizes.js';
 import BackgroundColor from '../../components/BackgroundColor.js';
 import BackgroundSelector from '../../components/BackgroundSelector.js';
 import ColumnsWidth from '../../components/ColumnsWidth.js';
@@ -60,16 +62,20 @@ const EditImageText = ( { attributes, setAttributes, clientId } ) => {
     }, [] );
 
     const updateImageAttr = ( img ) => {
-        let large = img.url;
-        let medium = img.sizes && img.sizes['medium-small']
-            ? img.sizes['medium-small'].url
-            : img.url;
-
+        const picked = pickSizes( img, [
+            'image-text-block',
+            'medium-landscape',
+            'large',
+            'full',
+        ] );
         setAttributes( {
             media: {
-                srcSet: { large, medium },
                 id: img.id,
                 alt: img.alt,
+                source: picked.source,
+                srcset: picked.srcset,
+                sizeUrls: captureSizeUrls( img ),
+                sizeOverride: '',
             },
         } );
     };
@@ -173,6 +179,14 @@ const EditImageText = ( { attributes, setAttributes, clientId } ) => {
                         options={ VidImg }
                         onChange={ ( val ) => setAttributes( { vidOrImg: val } ) }
                     />
+                    { vidOrImg === 'image' && media.source && (
+                        <ImageSizePicker
+                            value={ media.sizeOverride }
+                            onChange={ ( val ) => setAttributes( {
+                                media: { ...media, sizeOverride: val },
+                            } ) }
+                        />
+                    ) }
                 </PanelBody>
                 { vidOrImg === 'video' && (
                     <PanelBody
@@ -247,7 +261,7 @@ const EditImageText = ( { attributes, setAttributes, clientId } ) => {
                         { vidOrImg === 'image' && (
                             <ImageComp
                                 id={ media.id }
-                                source={ media.srcSet.large }
+                                source={ resolveOverride( media.sizeOverride, media.sizeUrls, media.source ) }
                                 updateImageAttr={ updateImageAttr }
                                 alt={ media.alt }
                             />
