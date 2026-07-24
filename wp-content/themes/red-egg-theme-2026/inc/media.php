@@ -6,6 +6,7 @@ add_image_size('post-landscape', 886, 536, array('center', 'center'), true);
 add_image_size('post-landscape-medium', 443, 268, array('center', 'center'), true);
 add_image_size('image-text-block-small', 480, 324, array('center', 'center'), true);
 add_image_size('image-text-block', 960, 740, array('center', 'center'), true);
+add_image_size('hero-landscape-super-large', 2592, 900, array('center', 'center'), true);
 add_image_size('hero-landscape-large', 1728, 600, array('center', 'center'), true);
 add_image_size('hero-landscape-medium', 1152, 400, array('center', 'center'), true);
 add_image_size('hero-landscape', 864, 300, array('center', 'center'), true);
