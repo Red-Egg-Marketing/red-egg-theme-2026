@@ -13,7 +13,7 @@ add_image_size('hero-landscape', 864, 300, array('center', 'center'), true);
 add_image_size('medium-large', 700, 700, array('center', 'center'), true);
 add_image_size('medium-landscape', 920, 460, array('center', 'center'), true);
 add_image_size('medium-small', 350, 350, array('center', 'center'), true);
-add_image_size('desktop-image', 1000, 562, array('center', 'center'), true);
+add_image_size('desktop-image', 1350, 758, array('center', 'center'), true);
 add_image_size('mobile-image', 414, 878, array('center', 'center'), true);
 
 add_filter( 'image_size_names_choose', 'emulate_custom_sizes' );
