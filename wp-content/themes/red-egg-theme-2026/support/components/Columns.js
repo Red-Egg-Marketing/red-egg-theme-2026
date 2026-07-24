@@ -19,7 +19,7 @@ const Columns = ( props ) => {
         <Fragment>
             <PanelBody
                 title={ __( settitle ) }
-                initialOpen={ true }
+                initialOpen={ false }
             >
                 <RangeControl
                     label={ __( 'Number of Columns' ) }

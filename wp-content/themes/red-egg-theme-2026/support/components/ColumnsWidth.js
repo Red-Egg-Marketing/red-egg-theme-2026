@@ -24,7 +24,7 @@ const ColumnsWidth = ( props ) => {
         <Fragment>
             <PanelBody
                 title={ __( 'Column Widths', 'red-egg' ) }
-                initialOpen={ true }
+                initialOpen={ false }
             >
                 <SelectControl
                     label={ __( 'Select Column Width', 'red-egg' ) }
