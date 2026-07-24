@@ -1,19 +1,10 @@
 /**
  * Device Frame Block
  *
- * Child of device-showcase. Renders a device mockup
- * (desktop monitor or mobile phone) with a website
- * screenshot positioned over the screen area.
- *
- * Device frame = background image (uploaded via MediaUpload)
- * Screenshot = foreground image positioned over the screen
- *
- *    ____          _   _____              
- *   |  _ \ ___  __| | | ____|__ _  __ _   
- *   | |_) / _ \/ _` | |  _| / _` |/ _` |  
- *   |  _ <  __/ (_| | | |__| (_| | (_| |  
- *   |_| \_\___|\\__,_| |_____\__, |\__, |  
- *                            |___/ |___/   
+ * Child of device-showcase. Renders a single content image (a website
+ * screenshot) styled to look like a desktop or mobile device via CSS on
+ * the .device-frame--{type} class -- there's no separate bezel image or
+ * screen-position overlay.
  */
 
 const { registerBlockType } = wp.blocks;
@@ -24,7 +15,7 @@ import save from './save';
 registerBlockType( 'red-egg-block/device-frame', {
     apiVersion: 2,
     title: __( 'Device Frame', 'red-egg' ),
-    description: __( 'Device mockup with screenshot overlay. Desktop or mobile.', 'red-egg' ),
+    description: __( 'Website image styled as a desktop or mobile device.', 'red-egg' ),
     icon: 'laptop',
     category: 'layout',
     parent: [ 'red-egg-block/device-showcase' ],
@@ -40,36 +31,11 @@ registerBlockType( 'red-egg-block/device-frame', {
                 id: '',
                 url: '',
                 alt: '',
-            },
-        },
-        screenshot: {
-            type: 'object',
-            default: {
-                id: '',
-                url: '',
-                alt: '',
                 source: '',
                 srcset: [],
                 sizeUrls: {},
                 sizeOverride: '',
             },
-        },
-        // Screen area positioning (percentage-based)
-        screenTop: {
-            type: 'number',
-            default: 4.5,
-        },
-        screenLeft: {
-            type: 'number',
-            default: 4.5,
-        },
-        screenWidth: {
-            type: 'number',
-            default: 91,
-        },
-        screenHeight: {
-            type: 'number',
-            default: 72,
         },
     },
     edit,

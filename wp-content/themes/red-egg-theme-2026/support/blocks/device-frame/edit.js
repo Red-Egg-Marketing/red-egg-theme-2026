@@ -1,13 +1,16 @@
 /**
  * Device Frame – Edit Component
  *
- * Two MediaUploads: device frame image + screenshot.
- * Screen position controls in InspectorControls.
+ * A single content image (the website screenshot). The "device" look
+ * (desktop/mobile bezel) is applied entirely via CSS on the
+ * .device-frame--{type} class, so there's no separate bezel image or
+ * screen-position overlay -- just the one image, with a size picker for
+ * page-speed control.
  */
 
 const { Fragment } = wp.element;
 const { InspectorControls, MediaUpload, useBlockProps } = wp.blockEditor;
-const { PanelBody, Button, SelectControl, RangeControl } = wp.components;
+const { PanelBody, Button, SelectControl } = wp.components;
 const { __ } = wp.i18n;
 import { pickSizes, captureSizeUrls, resolveOverride } from '../../components/mediaSizes.js';
 import ImageSizePicker from '../../components/ImageSizePicker.js';
@@ -18,35 +21,22 @@ const deviceOptions = [
 ];
 
 const EditDeviceFrame = ( { attributes, setAttributes } ) => {
-    const {
-        deviceType, frameImage, screenshot,
-        screenTop, screenLeft, screenWidth, screenHeight,
-    } = attributes;
+    const { deviceType, frameImage } = attributes;
 
     const blockProps = useBlockProps( {
         className: 'device-frame device-frame--' + deviceType,
     } );
 
     const onSelectFrame = ( media ) => {
-        setAttributes( {
-            frameImage: {
-                id: media.id,
-                url: media.url,
-                alt: media.alt || '',
-            },
-        } );
-    };
-
-    const onSelectScreenshot = ( media ) => {
         const picked = pickSizes( media, [
-            'post-landscape',
             'medium-large',
             'medium-landscape',
+            'post-landscape',
             'large',
             'full',
         ] );
         setAttributes( {
-            screenshot: {
+            frameImage: {
                 id: media.id,
                 url: media.url,
                 alt: media.alt || '',
@@ -59,19 +49,10 @@ const EditDeviceFrame = ( { attributes, setAttributes } ) => {
     };
 
     const removeFrame = () => {
-        setAttributes( { frameImage: { id: '', url: '', alt: '' } } );
+        setAttributes( { frameImage: { id: '', url: '', alt: '', source: '', srcset: [], sizeUrls: {}, sizeOverride: '' } } );
     };
 
-    const removeScreenshot = () => {
-        setAttributes( { screenshot: { id: '', url: '', alt: '' } } );
-    };
-
-    const screenStyle = {
-        top: screenTop + '%',
-        left: screenLeft + '%',
-        width: screenWidth + '%',
-        height: screenHeight + '%',
-    };
+    const previewSrc = resolveOverride( frameImage.sizeOverride, frameImage.sizeUrls, frameImage.source || frameImage.url );
 
     return (
         <Fragment>
@@ -86,12 +67,12 @@ const EditDeviceFrame = ( { attributes, setAttributes } ) => {
                         options={ deviceOptions }
                         onChange={ ( val ) => setAttributes( { deviceType: val } ) }
                     />
-                    { screenshot.source && (
+                    { frameImage.source && (
                         <ImageSizePicker
-                            label={ __( 'Screenshot Size', 'red-egg' ) }
-                            value={ screenshot.sizeOverride }
+                            label={ __( 'Image Size', 'red-egg' ) }
+                            value={ frameImage.sizeOverride }
                             onChange={ ( val ) => setAttributes( {
-                                screenshot: { ...screenshot, sizeOverride: val },
+                                frameImage: { ...frameImage, sizeOverride: val },
                             } ) }
                         />
                     ) }
@@ -124,63 +105,6 @@ const EditDeviceFrame = ( { attributes, setAttributes } ) => {
                         ) }
                     />
                 </PanelBody>
-                <PanelBody
-                    title={ __( 'Screenshot Image', 'red-egg' ) }
-                    initialOpen={ true }
-                >
-                    <MediaUpload
-                        onSelect={ onSelectScreenshot }
-                        allowedTypes={ [ 'image' ] }
-                        value={ screenshot.id }
-                        render={ ( { open } ) => (
-                            <Fragment>
-                                <Button onClick={ open } variant="secondary" style={ { marginBottom: '10px' } }>
-                                    { screenshot.url
-                                        ? __( 'Change Screenshot', 'red-egg' )
-                                        : __( 'Upload Screenshot', 'red-egg' )
-                                    }
-                                </Button>
-                                { screenshot.url && (
-                                    <Fragment>
-                                        <img src={ screenshot.url } style={ { maxWidth: '100%', marginBottom: '10px' } } />
-                                        <Button onClick={ removeScreenshot } isDestructive isSmall>
-                                            { __( 'Remove', 'red-egg' ) }
-                                        </Button>
-                                    </Fragment>
-                                ) }
-                            </Fragment>
-                        ) }
-                    />
-                </PanelBody>
-                <PanelBody
-                    title={ __( 'Screen Position (%)', 'red-egg' ) }
-                    initialOpen={ false }
-                >
-                    <RangeControl
-                        label={ __( 'Top', 'red-egg' ) }
-                        value={ screenTop }
-                        onChange={ ( val ) => setAttributes( { screenTop: val } ) }
-                        min={ 0 } max={ 30 } step={ 0.5 }
-                    />
-                    <RangeControl
-                        label={ __( 'Left', 'red-egg' ) }
-                        value={ screenLeft }
-                        onChange={ ( val ) => setAttributes( { screenLeft: val } ) }
-                        min={ 0 } max={ 20 } step={ 0.5 }
-                    />
-                    <RangeControl
-                        label={ __( 'Width', 'red-egg' ) }
-                        value={ screenWidth }
-                        onChange={ ( val ) => setAttributes( { screenWidth: val } ) }
-                        min={ 50 } max={ 100 } step={ 0.5 }
-                    />
-                    <RangeControl
-                        label={ __( 'Height', 'red-egg' ) }
-                        value={ screenHeight }
-                        onChange={ ( val ) => setAttributes( { screenHeight: val } ) }
-                        min={ 30 } max={ 100 } step={ 0.5 }
-                    />
-                </PanelBody>
             </InspectorControls>
 
             <div { ...blockProps }>
@@ -201,30 +125,9 @@ const EditDeviceFrame = ( { attributes, setAttributes } ) => {
                     <div className="device-frame__wrap">
                         <img
                             className="device-frame__device"
-                            src={ frameImage.url }
+                            src={ previewSrc }
                             alt={ frameImage.alt }
                         />
-                        { screenshot.url && (
-                            <img
-                                className="device-frame__screenshot"
-                                src={ screenshot.url }
-                                alt={ screenshot.alt }
-                                style={ screenStyle }
-                            />
-                        ) }
-                        { ! screenshot.url && (
-                            <div className="device-frame__screenshot-placeholder" style={ screenStyle }>
-                                <MediaUpload
-                                    onSelect={ onSelectScreenshot }
-                                    allowedTypes={ [ 'image' ] }
-                                    render={ ( { open } ) => (
-                                        <Button onClick={ open } variant="secondary" isSmall>
-                                            { __( 'Add Screenshot', 'red-egg' ) }
-                                        </Button>
-                                    ) }
-                                />
-                            </div>
-                        ) }
                     </div>
                 ) }
             </div>
