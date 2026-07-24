@@ -34,6 +34,8 @@ const EditDeviceFrame = ( { attributes, setAttributes } ) => {
             'post-landscape',
             'large',
             'full',
+            'mobile-image',
+            'desktop-image',
         ] );
         setAttributes( {
             frameImage: {
