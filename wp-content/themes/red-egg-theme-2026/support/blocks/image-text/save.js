@@ -47,8 +47,20 @@ const SaveImageText = ( { attributes } ) => {
         style: bgStyle,
     } );
 
-    const srcSet = '';
-    const sizes = '(min-width: 880px) 100vw, 400px';
+    // Build a real srcset from the stored registered-size URLs. Only
+    // include entries that actually have a width (i.e. a real sized
+    // image, not the full-size fallback). If nothing qualifies, srcSet
+    // stays empty and ImageComp just serves `source`.
+    const ss = media.srcSet || {};
+    const srcSetParts = [];
+    if ( ss.medium && ss.mediumW ) {
+        srcSetParts.push( ss.medium + ' ' + ss.mediumW + 'w' );
+    }
+    if ( ss.large && ss.largeW ) {
+        srcSetParts.push( ss.large + ' ' + ss.largeW + 'w' );
+    }
+    const srcSet = srcSetParts.join( ', ' );
+    const sizes = '(min-width: 880px) 50vw, 100vw';
 
     return (
         <Fragment>

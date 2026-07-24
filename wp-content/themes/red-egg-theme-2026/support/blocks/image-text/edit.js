@@ -60,14 +60,32 @@ const EditImageText = ( { attributes, setAttributes, clientId } ) => {
     }, [] );
 
     const updateImageAttr = ( img ) => {
-        let large = img.url;
-        let medium = img.sizes && img.sizes['medium-small']
-            ? img.sizes['medium-small'].url
-            : img.url;
+        // Pull our registered sizes instead of the full-size original.
+        // image-text-block (960x500) for large, image-text-block-small
+        // (480x250) for medium; fall back through WP defaults, then the
+        // full url only as a last resort. Store widths so save can build
+        // a real srcset. (Sizes only exist on the media object once the
+        // image has been regenerated for these registered sizes.)
+        const pick = ( names ) => {
+            for ( const n of names ) {
+                if ( img.sizes && img.sizes[ n ] ) {
+                    return { url: img.sizes[ n ].url, width: img.sizes[ n ].width };
+                }
+            }
+            return { url: img.url, width: img.width || '' };
+        };
+
+        const large = pick( [ 'image-text-block', 'medium-landscape', 'large' ] );
+        const medium = pick( [ 'image-text-block-small', 'medium-small', 'medium' ] );
 
         setAttributes( {
             media: {
-                srcSet: { large, medium },
+                srcSet: {
+                    large: large.url,
+                    largeW: large.width,
+                    medium: medium.url,
+                    mediumW: medium.width,
+                },
                 id: img.id,
                 alt: img.alt,
             },

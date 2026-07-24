@@ -27,14 +27,29 @@ const EditMediaContentMedia = ( { attributes, setAttributes } ) => {
 
     // Media handlers
     const updateImageAttr = ( newMedia ) => {
-        let large = newMedia.url;
-        let medium = newMedia.sizes && newMedia.sizes['medium-small']
-            ? newMedia.sizes['medium-small'].url
-            : newMedia.url;
+        // Registered sizes instead of full-size original, with widths
+        // so save can build a real srcset. Falls back through WP
+        // defaults, then full url only as a last resort.
+        const pick = ( names ) => {
+            for ( const n of names ) {
+                if ( newMedia.sizes && newMedia.sizes[ n ] ) {
+                    return { url: newMedia.sizes[ n ].url, width: newMedia.sizes[ n ].width };
+                }
+            }
+            return { url: newMedia.url, width: newMedia.width || '' };
+        };
+
+        const large = pick( [ 'image-text-block', 'medium-landscape', 'large' ] );
+        const medium = pick( [ 'image-text-block-small', 'medium-small', 'medium' ] );
 
         setAttributes( {
             media: {
-                srcSet: { large: large, medium: medium },
+                srcSet: {
+                    large: large.url,
+                    largeW: large.width,
+                    medium: medium.url,
+                    mediumW: medium.width,
+                },
                 id: newMedia.id,
                 alt: newMedia.alt,
             },
