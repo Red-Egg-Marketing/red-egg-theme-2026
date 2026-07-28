@@ -17,6 +17,10 @@ div.gs_team_area.gs-grid-style-four .single-member-div {
 	}
 }
 
+.gs-grid-style-four .single-member-div .single-member:hover .gs_team_image__overlay {
+	display: none !important;
+}
+
 
 
 .gs_team_area.gs-grid-style-four .single-member-div .single-member {
