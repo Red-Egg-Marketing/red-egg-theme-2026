@@ -2852,6 +2852,7 @@ div.gs_team_area.gs-grid-style-four .single-member-div {
   padding-bottom: 0;
   width: 100%;
   transition: box-shadow 0.3s ease, transform 0.2s ease;
+  cursor: pointer;
 }
 .gs_team_area.gs-grid-style-four .single-member-div .single-member:hover {
   box-shadow: 0 6px 24px rgba(0, 0, 0, 0.1);

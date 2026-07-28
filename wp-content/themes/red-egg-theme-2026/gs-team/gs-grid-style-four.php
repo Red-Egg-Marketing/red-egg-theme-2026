@@ -92,7 +92,7 @@ if ( $_filter_enabled ) $gs_row_classes[] = 'gs-all-items-filter-wrapper';
 				<div class="single-member" itemscope itemtype="http://schema.org/Person">
 					<?php
 					$member_id = get_the_ID();
-					  $before = sprintf('<a class="%s" href="%s" data-mfp-src="#gs_team_popup_%s_%s">', esc_attr('gs_team_pop open-popup-link'), get_the_permalink(), $member_id, $id);
+					  $before = sprintf('<a class="%s" data-mfp-src="#gs_team_popup_%s_%s">', esc_attr('gs_team_pop open-popup-link'), $member_id, $id);
 					  echo $before;
 					 ?>
 					<?php do_action( 'gs_team_before_member_content', $gs_team_theme ); ?>
