@@ -4798,8 +4798,7 @@ div.gs-team-popup--default .mfp-close {
   -o-object-fit: cover;
      object-fit: cover;
   transition: transform 0.4s ease;
-  -webkit-mask: url("#DripMask1");
-          mask: url("#DripMask1");
+  clip-path: url("#DripMask1");
 }
 
 .cs-slide:hover .cs-slide__image img {

@@ -83,7 +83,11 @@
     height: 100%;
     object-fit: cover;
     transition: transform 0.4s ease;
-    mask: url("#DripMask1");
+    // Was `mask: url("#DripMask1")` — Safari mishandles SVG mask refs on
+    // HTML (masked out the active card entirely). clip-path resolves
+    // per-element in Safari + Chrome. MorphSVG still animates the path.
+    -webkit-clip-path: url("#DripMask1");
+    clip-path: url("#DripMask1");
 }
 
 .cs-slide:hover .cs-slide__image img {
