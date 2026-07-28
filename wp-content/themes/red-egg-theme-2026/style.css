@@ -2851,12 +2851,37 @@ div.gs_team_area.gs-grid-style-four .single-member-div {
   border-radius: 8px;
   padding-bottom: 0;
   width: 100%;
+  transition: box-shadow 0.3s ease, transform 0.2s ease;
+}
+.gs_team_area.gs-grid-style-four .single-member-div .single-member:hover {
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.1);
+}
+.gs_team_area.gs-grid-style-four .single-member-div .single-member:hover .gs_team_member--image.wp-post-image {
+  opacity: 0;
+}
+.gs_team_area.gs-grid-style-four .single-member-div .single-member:hover .gs_team_member--image:not(.wp-post-image) {
+  opacity: 1;
 }
 
 div.gs_tm_theme_v_2 .single-member-div .single-member .gs_team_image__wrapper img {
   position: relative;
   height: auto;
   aspect-ratio: 1/1;
+}
+
+div.gs_tm_theme_v_2 .single-member-div .single-member .gs_team_image__wrapper img + img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+}
+
+.single-member-div .single-member a {
+  text-decoration: none;
+}
+
+div.gs_tm_theme_v_2 .single-member-div .single-member .gs_team_image__wrapper:after {
+  display: none;
 }
 
 div.gs-grid-style-four .single-member-div .gs_member_info .gs-member-name {
@@ -2866,11 +2891,13 @@ div.gs-grid-style-four .single-member-div .gs_member_info .gs-member-name {
   font-size: 18px;
   line-height: 21px;
   width: 100%;
+  margin-bottom: 5px;
 }
 @media screen and (min-width: 768px) {
   div.gs-grid-style-four .single-member-div .gs_member_info .gs-member-name {
     font-size: 21px;
     line-height: 24px;
+    margin-bottom: 8px;
   }
 }
 
@@ -2953,6 +2980,10 @@ div.gs-grid-style-four .single-member .gs_member_info {
   flex: 1 0 auto;
 }
 
+.gs_team_pop.open-popup-link {
+  z-index: 3;
+}
+
 div.gs-grid-style-four .single-member-div .gs_member_info {
   padding-left: 10px;
   padding-right: 10px;
@@ -2969,8 +3000,8 @@ div.gs-grid-style-four .single-member-div .gs_member_info {
   div.gs-grid-style-four .single-member-div .gs_member_info {
     padding-left: 20px;
     padding-right: 20px;
-    padding-bottom: 20px;
-    padding-top: 10px;
+    padding-bottom: 15px;
+    padding-top: 15px;
     flex-wrap: wrap;
     display: flex;
   }
