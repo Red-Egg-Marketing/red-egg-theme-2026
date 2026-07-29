@@ -310,9 +310,9 @@ $close: "data:image/svg+xml,%3Csvg width='35' height='35' viewBox='0 0 35 35' fi
     &::after {
         // FA Pro Light: arrow-right (Unicode f061)
         content: '\f061';
-        font-family: 'Font Awesome 6 Pro';
-        font-weight: 300;
-        font-size: 16px;
+        // FA7-safe: kit var resolves to the pinned family + weight 300 (survives future FA bumps)
+        font: var(--fa-font-light);
+        font-size: 16px; // must follow `font:` — the shorthand resets size to 1em
         display: inline-block;
         transition: transform 0.3s ease;
     }
