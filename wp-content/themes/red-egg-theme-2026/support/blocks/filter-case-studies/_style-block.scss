@@ -157,10 +157,6 @@ div.filter-case-studies__hero .hero-services h1 {
     cursor: pointer;
     padding: 0;
     line-height: 1;
-
-    @media screen and (min-width: $small-width) {
-        display: none;
-    }
 }
 
 .filter-case-studies ul.tax-list {

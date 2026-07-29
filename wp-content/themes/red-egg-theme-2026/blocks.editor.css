@@ -6098,11 +6098,6 @@ div.filter-case-studies__hero .hero-services h1 {
   padding: 0;
   line-height: 1;
 }
-@media screen and (min-width: 768px) {
-  .filter-case-studies .tax-close {
-    display: none;
-  }
-}
 
 .filter-case-studies ul.tax-list {
   display: grid;
@@ -6524,11 +6519,6 @@ div.filter-posts__hero .hero-services h1 {
   cursor: pointer;
   padding: 0;
   line-height: 1;
-}
-@media screen and (min-width: 768px) {
-  .filter-posts .tax-close {
-    display: none;
-  }
 }
 
 .filter-posts ul.tax-list {

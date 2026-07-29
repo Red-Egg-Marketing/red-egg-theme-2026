@@ -156,10 +156,6 @@ div.filter-posts__hero .hero-services h1 {
     cursor: pointer;
     padding: 0;
     line-height: 1;
-
-    @media screen and (min-width: $small-width) {
-        display: none;
-    }
 }
 
 .filter-posts ul.tax-list {
