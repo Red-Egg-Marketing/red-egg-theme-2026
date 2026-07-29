@@ -125,7 +125,7 @@ div.filter-case-studies__hero .hero-services h1 {
     top: 100%;
     left: 0;
     z-index: 998;
-    min-width: 300px;
+    min-width: 205px;
     width: 100%;
     max-width: 100%;
     background: $white;
@@ -170,6 +170,9 @@ div.filter-case-studies__hero .hero-services h1 {
     list-style: none;
     margin: 0;
     padding: 1.25rem 1.5rem;
+    @media screen and (max-width: $xs-width) {
+        grid-template-columns: 1fr;
+    }
 }
 
 .filter-case-studies ul.tax-list li.tax-item {
