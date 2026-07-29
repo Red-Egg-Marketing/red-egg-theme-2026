@@ -2874,7 +2874,7 @@ div.gs_tm_theme_v_2 .single-member-div .single-member .gs_team_image__wrapper im
   aspect-ratio: 1/1;
 }
 
-div.gs_tm_theme_v_2 .single-member-div .single-member .gs_team_image__wrapper img + img {
+div.gs_tm_theme_v_2 .single-member-div .single-member .gs_team_image__wrapper .gs_team_member--image:not(.wp-post-image) {
   position: absolute;
   top: 0;
   left: 0;
