@@ -2233,11 +2233,13 @@ body.mega-open {
 .single-post__wrapper {
   padding-top: 2.5rem;
   padding-bottom: 1.75rem;
+  padding-left: 0;
+  padding-right: 0;
 }
 @media screen and (min-width: 768px) {
   .single-post__wrapper {
     padding-top: 3.5rem;
-    padding-bottom: 2.5;
+    padding-bottom: 2.5rem;
   }
 }
 
@@ -2253,7 +2255,7 @@ body.mega-open {
 
 .single .entry-thumbnail img,
 .single-post__wrapper.block-wrapper {
-  max-width: 936px;
+  max-width: 770px;
 }
 
 .single .entry-thumbnail img {
@@ -2264,7 +2266,7 @@ body.mega-open {
 @media screen and (min-width: 768px) {
   .single .entry-thumbnail img {
     margin-top: 150px;
-    max-width: 936px;
+    max-width: 770px;
   }
 }
 
@@ -2740,7 +2742,7 @@ body.mega-open {
 }
 .single-post .entry-footer {
   font-size: 0.9375rem;
-  padding: 1.5rem 0 0;
+  padding: 1.5rem 1.25rem 0;
 }
 .single-post .entry-footer .cat-links,
 .single-post .entry-footer .tags-links {

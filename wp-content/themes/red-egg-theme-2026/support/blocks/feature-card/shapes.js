@@ -5,9 +5,9 @@
  */
 
 export const BLOB_SHAPES = {
-    blob1: '<svg viewBox="0 0 76 75" fill="none" xmlns="http://www.w3.org/2000/svg"><path opacity="0.3" d="M76 37.5C76 58.2115 59.2862 75 38.6668 75C18.0475 75 0 44.9977 0 24.2862C0 3.57466 18.0498 0 38.6668 0C59.2839 0 76 16.7885 76 37.5Z" fill="white"/></svg>',
-    blob2: '<svg viewBox="0 0 77 75" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M75.2835 45.0905C74.6778 47.354 68.4352 62.1197 53.2156 71.9325C50.2275 73.8581 46.2617 74.9973 40.3986 74.9973C22.1557 74.9998 -1.61853 57.3422 0.0878861 34.8344C1.36959 17.9029 16.461 6.53008 28.7678 2.43617C30.9743 1.70252 54.153 -5.60643 68.4879 9.28189C81.3049 22.5927 76.0525 42.2135 75.2835 45.0905Z" fill="white" opacity="0.3"/></svg>',
-    blob3: '<svg viewBox="0 0 75 75" fill="none" xmlns="http://www.w3.org/2000/svg"><path opacity="0.3" d="M75 37.5C75 58.2115 56.2891 75 33.206 75C10.1228 75 9.9665 54.9922 2.33727 35.445C-6.30035 13.3097 10.1228 0 33.206 0C56.2891 0 75 16.7885 75 37.5Z" fill="white"/></svg>',
+    blob1: '<svg viewBox="0 0 300 300" fill="none" xmlns="http://www.w3.org/2000/svg"><path class="st1 blob-animation" d="M281.1,150c-61.8,61.9-20,150-112.9,150S0,232.8,0,150,75.3,0,168.3,0s168.3,94.5,112.9,150Z" fill="white" opacity="0.3" /><path class="st1 blob-phase-1" d="M300,143.3c0,79.1-27.8,156.7-110.7,156.7S0,222.4,0,143.3,67.2,0,150,0s150,64.2,150,143.3Z" display="none"/></svg>',
+    blob2: '<svg viewBox="0 0 300 300" fill="none" xmlns="http://www.w3.org/2000/svg"><path class="st1 blob-animation" d="M300,150c0,82.8-74.8,150-167.2,150S39.9,220,9.4,141.8C-25.2,53.2,40.5,0,132.8,0s167.2,67.2,167.2,150Z" fill="white" opacity="0.3"/><path class="st1 blob-phase-1" d="M300,140.2c0,88.3-67.2,159.8-150,159.8S0,228.5,0,140.2,51.2,50.2,127.8,16.7c125.1-54.7,172.2,35.3,172.2,123.5Z" display="none"/></svg>',
+    blob3: '<svg viewBox="0 0 300 300" fill="none" xmlns="http://www.w3.org/2000/svg"><path class="st0 blob-animation" d="M300,150c0,82.8-72.5,150-162,150S0,283.8,0,200.9,48.6,0,138,0s162,67.2,162,150Z" fill="white" opacity="0.3"/><path class="st0 blob-phase-1" d="M300,186.1c0,86.8-92.5,113.9-181.7,113.9S0,209.4,0,122.6,45.2,0,134.4,0s165.6,99.3,165.6,186.1Z"/></svg>',
 };
 
 export const SHAPE_OPTIONS = [
