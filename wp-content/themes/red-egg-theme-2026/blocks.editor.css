@@ -7175,6 +7175,7 @@ p.case-study-body__label {
 
 @media screen and (min-width: 768px) {
   .case-study-body .block-wrapper {
+    min-height: 200px;
     background: url(img/partner-resource-red.svg) no-repeat center right/197px;
   }
 }
