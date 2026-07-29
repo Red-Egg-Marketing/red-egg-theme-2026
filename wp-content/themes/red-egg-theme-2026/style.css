@@ -9066,13 +9066,21 @@ div.filter-posts__hero .hero-services h1 {
   top: 100%;
   left: 0;
   z-index: 998;
-  min-width: 450px;
+  min-width: 205px;
   max-width: 100%;
   background: #FFFFFF;
   box-shadow: 0 4px 24px rgba(0, 0, 0, 0.1);
   border-radius: 8px;
   border: 1px solid #424042;
   margin-top: 8px;
+}
+@media screen and (min-width: 768px) {
+  .filter-posts .filter-block.active .tax-cont {
+    min-width: 425px;
+    max-width: 500px;
+    width: 100%;
+    left: 0;
+  }
 }
 
 .filter-posts .tax-wrapper {
@@ -9105,6 +9113,11 @@ div.filter-posts__hero .hero-services h1 {
   list-style: none;
   margin: 0;
   padding: 1.25rem 1.5rem;
+}
+@media screen and (max-width: 414px) {
+  .filter-posts ul.tax-list {
+    grid-template-columns: 1fr;
+  }
 }
 
 .filter-posts ul.tax-list li.tax-item {
