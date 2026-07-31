@@ -243,11 +243,11 @@ span.semibold {
 }
 
 .font-poppins {
-  font-family: "Poppins", sans-serif;
+  font-family: "Poppins", sans-serif !important;
 }
 
 .font-figtree {
-  font-family: "Figtree", sans-serif;
+  font-family: "Figtree", sans-serif !important;
 }
 
 @keyframes cursorAnimation {

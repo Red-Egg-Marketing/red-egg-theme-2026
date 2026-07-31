@@ -177,5 +177,5 @@ span.semibold {
 // stray font drift can be corrected per-block from Gutenberg.
 // (These sit directly on the block element/wrapper, so they win over
 //  element-level defaults — except rules using !important.)
-.font-poppins { font-family: $font-head; }
-.font-figtree { font-family: $font-body; }
+.font-poppins { font-family: $font-head !important; }
+.font-figtree { font-family: $font-body !important; }
