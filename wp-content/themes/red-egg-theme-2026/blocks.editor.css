@@ -3853,7 +3853,13 @@ div.gform_wrapper.gravity-theme .gform_fields {
 div.gform_wrapper.gravity-theme .gform_footer,
 div.gform_wrapper.gravity-theme .gform_page_footer {
   padding-top: 0;
-  margin-top: 0;
+  margin-top: 20px;
+}
+@media screen and (min-width: 768px) {
+  div.gform_wrapper.gravity-theme .gform_footer,
+  div.gform_wrapper.gravity-theme .gform_page_footer {
+    margin-top: 30px;
+  }
 }
 
 .contact-section .gform_footer {
