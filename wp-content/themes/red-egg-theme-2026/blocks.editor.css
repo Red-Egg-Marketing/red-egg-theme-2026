@@ -5056,6 +5056,18 @@ div.gform_wrapper.gravity-theme .gform_page_footer {
      object-fit: contain;
 }
 
+.awards-section__award-img a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  max-width: 100%;
+  transition: opacity 0.2s ease;
+}
+.awards-section__award-img a:hover {
+  opacity: 0.75;
+}
+
 .awards-section__award-caption {
   font-family: "Figtree", sans-serif;
   font-size: 0.875rem;
@@ -5188,6 +5200,19 @@ div.gform_wrapper.gravity-theme .gform_page_footer {
 }
 
 .awards-section__preview-item .components-text-control__input {
+  text-align: center;
+  font-size: 13px;
+}
+
+.awards-section__preview-item .block-editor-url-input {
+  display: block;
+  width: 100%;
+  margin-top: 4px;
+}
+
+.awards-section__preview-item .block-editor-url-input input[type=text] {
+  width: 100%;
+  min-height: 30px;
   text-align: center;
   font-size: 13px;
 }

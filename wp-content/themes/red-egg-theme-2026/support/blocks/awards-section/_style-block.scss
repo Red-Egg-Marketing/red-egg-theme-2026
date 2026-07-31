@@ -59,6 +59,19 @@
     max-width: 150px;
     object-fit: contain;
 }
+// Linked logos: anchor fills + centers exactly like the bare image did
+.awards-section__award-img a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    max-width: 100%;
+    transition: opacity 0.2s ease;
+
+    &:hover {
+        opacity: 0.75;
+    }
+}
 
 .awards-section__award-caption {
     font-family: $font-body;
@@ -184,6 +197,18 @@
 }
 
 .awards-section__preview-item .components-text-control__input {
+    text-align: center;
+    font-size: 13px;
+}
+// URLInput (link autosuggest) — match the caption field width/look
+.awards-section__preview-item .block-editor-url-input {
+    display: block;
+    width: 100%;
+    margin-top: 4px;
+}
+.awards-section__preview-item .block-editor-url-input input[type="text"] {
+    width: 100%;
+    min-height: 30px;
     text-align: center;
     font-size: 13px;
 }

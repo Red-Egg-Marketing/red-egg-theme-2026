@@ -7,7 +7,7 @@
  */
 
 const { Fragment, useEffect } = wp.element;
-const { InnerBlocks, InspectorControls, MediaUpload, useBlockProps } = wp.blockEditor;
+const { InnerBlocks, InspectorControls, MediaUpload, useBlockProps, URLInput } = wp.blockEditor;
 const { PanelBody, Button, RangeControl, TextControl, ToggleControl } = wp.components;
 const { __ } = wp.i18n;
 import { pickSizes, captureSizeUrls } from '../../components/mediaSizes.js';
@@ -61,6 +61,7 @@ const EditAwardsSection = ( { attributes, setAttributes, clientId } ) => {
                 fullUrl: img.url,
                 alt: img.alt || '',
                 caption: existing ? existing.caption : '',
+                link: existing ? ( existing.link || '' ) : '',
             };
         } );
         setAttributes( { awards: newAwards } );
@@ -72,6 +73,16 @@ const EditAwardsSection = ( { attributes, setAttributes, clientId } ) => {
     const updateCaption = ( index, value ) => {
         let updated = JSON.parse( JSON.stringify( awards ) );
         updated[ index ].caption = value;
+        setAttributes( { awards: updated } );
+    };
+
+    /**
+     * Update a single award's link URL. Empty = no link (image
+     * renders unwrapped on save).
+     */
+    const updateLink = ( index, value ) => {
+        let updated = JSON.parse( JSON.stringify( awards ) );
+        updated[ index ].link = value;
         setAttributes( { awards: updated } );
     };
 
@@ -200,6 +211,13 @@ const EditAwardsSection = ( { attributes, setAttributes, clientId } ) => {
                                             placeholder={ __( 'Caption…', 'red-egg' ) }
                                             value={ award.caption }
                                             onChange={ ( val ) => updateCaption( i, val ) }
+                                        />
+                                        <URLInput
+                                            className="awards-section__link-input"
+                                            value={ award.link || '' }
+                                            onChange={ ( url ) => updateLink( i, url ) }
+                                            placeholder={ __( 'Link URL (optional)…', 'red-egg' ) }
+                                            __nextHasNoMarginBottom
                                         />
                                     </div>
                                 ) ) }
