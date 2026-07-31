@@ -2875,7 +2875,7 @@ div.gs_team_area.gs-grid-style-four .single-member-div {
   border-radius: 8px;
   padding-bottom: 0;
   width: 100%;
-  transition: box-shadow 0.3s ease, transform 0.2s ease;
+  transition: box-shadow 0.3s ease, transform 0.2s ease, filter 0.1s ease;
   cursor: pointer;
 }
 .gs_team_area.gs-grid-style-four .single-member-div .single-member:hover {
@@ -2892,6 +2892,7 @@ div.gs_tm_theme_v_2 .single-member-div .single-member .gs_team_image__wrapper im
   position: relative;
   height: auto;
   aspect-ratio: 1/1;
+  transition: opacity 0.4s steps(8, end);
 }
 
 div.gs_tm_theme_v_2 .single-member-div .single-member .gs_team_image__wrapper .gs_team_member--image:not(.wp-post-image) {
