@@ -2938,6 +2938,21 @@ div.gs-grid-style-four .single-member-div .gs_member_info .gs-member-name {
 
 div.gs-team-popup--default .gs_team_popup_img {
   width: 100px !important;
+  margin: 0 0 10px;
+}
+@media screen and (min-width: 768px) {
+  div.gs-team-popup--default .gs_team_popup_img {
+    margin: 0 0 0 0;
+  }
+}
+
+.gs_team_member_title {
+  width: 100%;
+}
+@media screen and (min-width: 768px) {
+  .gs_team_member_title {
+    width: calc(100% - 120px);
+  }
 }
 
 .gstm-details span.levels {
@@ -2952,6 +2967,7 @@ div.gs-team-popup--default .gs-member-name {
   font-family: "Poppins", sans-serif;
   color: #424042;
   font-size: 22px;
+  text-align: left;
 }
 
 .gs_team_popup .gs-member-desc p {
@@ -2980,14 +2996,22 @@ div.gs-team-popup--default .gs-member-desig {
   font-size: 18px;
   font-weight: 700;
   margin-top: 5px;
+  margin-bottom: 10px;
+  text-align: left;
+}
+
+div.gstm-details {
+  margin-top: 10px !important;
 }
 
 div.gs-grid-style-four .single-member-div {
   height: auto;
 }
 
-.gs_team_member_title {
-  margin-left: 20px;
+@media screen and (min-width: 768px) {
+  .gs_team_member_title {
+    margin-left: 20px;
+  }
 }
 
 div.gs-team-popup--default .mfp-content--container .gs_team_popup_details,
