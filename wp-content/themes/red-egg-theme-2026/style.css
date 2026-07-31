@@ -7568,17 +7568,52 @@ div.gform_wrapper.gravity-theme .gform_page_footer {
   font-size: 13px;
 }
 
-.awards-section__preview-item .block-editor-url-input {
-  display: block;
-  width: 100%;
-  margin-top: 4px;
+.awards-section__link-control {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;
 }
 
-.awards-section__preview-item .block-editor-url-input input[type=text] {
+.awards-section__link-toggle.components-button.has-icon {
+  width: 24px;
+  height: 24px;
+  min-width: 24px;
+  padding: 0;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.6);
+  color: #FFFFFF;
+}
+.awards-section__link-toggle.components-button.has-icon svg {
+  width: 15px;
+  height: 15px;
+}
+.awards-section__link-toggle.components-button.has-icon:hover {
+  background: rgba(0, 0, 0, 0.8);
+  color: #FFFFFF;
+}
+.awards-section__link-toggle.components-button.has-icon.is-linked {
+  background: #DC2035;
+}
+.awards-section__link-toggle.components-button.has-icon.is-linked:hover {
+  background: #DC2035;
+  filter: brightness(0.9);
+}
+
+.awards-section__link-popover-inner {
+  width: 260px;
+  padding: 10px;
+}
+.awards-section__link-popover-inner .block-editor-url-input,
+.awards-section__link-popover-inner .block-editor-url-input input[type=text] {
   width: 100%;
-  min-height: 30px;
-  text-align: center;
-  font-size: 13px;
+}
+.awards-section__link-popover-inner .block-editor-url-input input[type=text] {
+  min-height: 32px;
+}
+
+.awards-section__link-clear {
+  margin-top: 6px;
 }
 
 .awards-section__preview-img {
