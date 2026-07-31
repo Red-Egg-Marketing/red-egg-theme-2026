@@ -518,6 +518,7 @@ function red_egg_return_reviews() {
 		"
 			SELECT id, reviewer_name, review_text, rating, type, userpic, from_url_review, company_name, company_title
 			FROM {$wpdb->prefix}wpfb_reviews
+			WHERE review_text IS NOT NULL AND TRIM(review_text) <> ''
 		", OBJECT
 	);
 
