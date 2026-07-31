@@ -2,8 +2,8 @@
  * TagCloud Component
  *
  * Renders a grid of keyword/tag pills.
- * Reusable across blocks. Edit mode has add/remove UI,
- * View mode renders static tag pills.
+ * Reusable across blocks. Edit mode has add / inline-edit /
+ * reorder / remove UI; View mode renders static tag pills.
  *
  * Usage (edit):
  *   <TagCloud
@@ -16,7 +16,7 @@
  *   <TagCloud.View tags={ tags } />
  */
 
-const { Fragment, useState } = wp.element;
+const { useState } = wp.element;
 const { Button, TextControl } = wp.components;
 const { __ } = wp.i18n;
 
@@ -25,18 +25,39 @@ const TagCloud = ( { tags, setAttributes, attrKey } ) => {
 
     const key = attrKey || 'tags';
 
+    // Clone-before-mutate, then commit to the block attribute.
+    const commit = ( updated ) => setAttributes( { [ key ]: updated } );
+    const clone = () => JSON.parse( JSON.stringify( tags ) );
+
     const addTag = () => {
         if ( newTag.trim() === '' ) return;
-        let updated = JSON.parse( JSON.stringify( tags ) );
+        const updated = clone();
         updated.push( newTag.trim() );
-        setAttributes( { [ key ]: updated } );
+        commit( updated );
         setNewTag( '' );
     };
 
     const removeTag = ( index ) => {
-        let updated = JSON.parse( JSON.stringify( tags ) );
+        const updated = clone();
         updated.splice( index, 1 );
-        setAttributes( { [ key ]: updated } );
+        commit( updated );
+    };
+
+    // Inline-edit an existing tag.
+    const editTag = ( index, value ) => {
+        const updated = clone();
+        updated[ index ] = value;
+        commit( updated );
+    };
+
+    // Reorder: dir = -1 (up) or +1 (down).
+    const moveTag = ( index, dir ) => {
+        const target = index + dir;
+        if ( target < 0 || target >= tags.length ) return;
+        const updated = clone();
+        const [ moved ] = updated.splice( index, 1 );
+        updated.splice( target, 0, moved );
+        commit( updated );
     };
 
     const handleKeyDown = ( e ) => {
@@ -48,18 +69,48 @@ const TagCloud = ( { tags, setAttributes, attrKey } ) => {
 
     return (
         <div className="tag-cloud">
-            <div className="tag-cloud__tags">
+            <div className="tag-cloud__tags tag-cloud__tags--edit">
                 { tags.map( ( tag, i ) => (
-                    <span className="tag-cloud__tag" key={ i }>
-                        <span className="tag-cloud__tag-text">{ tag }</span>
+                    <div
+                        className="tag-cloud__tag tag-cloud__tag--edit"
+                        key={ i }
+                    >
+                        <span className="tag-cloud__reorder">
+                            <Button
+                                className="tag-cloud__move"
+                                icon="arrow-up-alt2"
+                                label={ __( 'Move up', 'red-egg' ) }
+                                showTooltip
+                                onClick={ () => moveTag( i, -1 ) }
+                                disabled={ i === 0 }
+                                isSmall
+                            />
+                            <Button
+                                className="tag-cloud__move"
+                                icon="arrow-down-alt2"
+                                label={ __( 'Move down', 'red-egg' ) }
+                                showTooltip
+                                onClick={ () => moveTag( i, 1 ) }
+                                disabled={ i === tags.length - 1 }
+                                isSmall
+                            />
+                        </span>
+                        <input
+                            className="tag-cloud__tag-input"
+                            type="text"
+                            value={ tag }
+                            onChange={ ( e ) => editTag( i, e.target.value ) }
+                            aria-label={ __( 'Edit tag', 'red-egg' ) }
+                        />
                         <button
                             className="tag-cloud__tag-remove"
                             onClick={ () => removeTag( i ) }
                             type="button"
+                            aria-label={ __( 'Remove tag', 'red-egg' ) }
                         >
                             ×
                         </button>
-                    </span>
+                    </div>
                 ) ) }
             </div>
             <div className="tag-cloud__add">
@@ -68,6 +119,7 @@ const TagCloud = ( { tags, setAttributes, attrKey } ) => {
                     onChange={ setNewTag }
                     onKeyDown={ handleKeyDown }
                     placeholder={ __( 'Add tag…', 'red-egg' ) }
+                    __nextHasNoMarginBottom
                 />
                 <Button
                     variant="secondary"
