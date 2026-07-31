@@ -214,6 +214,75 @@
     font-size: 12px;
 }
 
+// Editor: inline tag editing + reorder
+.tag-cloud__tags--edit {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+}
+
+.tag-cloud__tag--edit {
+    gap: 8px;
+}
+
+// Borderless input that reads like the final .tag-cloud__tag-text
+.tag-cloud__tag-input {
+    flex: 1 1 auto;
+    min-width: 0;
+    border: none;
+    background: transparent;
+    padding: 0;
+    margin: 0;
+    color: $gray;
+    font: inherit;
+    font-size: 0.9rem;
+    line-height: 1.4rem;
+    letter-spacing: 0.17px;
+    text-transform: uppercase;
+    box-shadow: none;
+    &:focus {
+        outline: none;
+        box-shadow: none;
+    }
+    @media screen and (min-width: $small-width) {
+        font-size: 1rem;
+        line-height: 1.5rem;
+    }
+}
+
+// Stacked up/down reorder buttons
+.tag-cloud__reorder {
+    display: inline-flex;
+    flex-direction: column;
+    flex: 0 0 auto;
+    line-height: 0;
+}
+
+.tag-cloud__move.components-button.is-small {
+    min-width: 24px;
+    width: 24px;
+    height: 16px;
+    padding: 0;
+    color: $gray;
+    opacity: 0.55;
+    .dashicon,
+    .dashicons {
+        font-size: 16px;
+        width: 16px;
+        height: 16px;
+    }
+    svg {
+        width: 16px;
+        height: 16px;
+    }
+    &:hover:not( :disabled ) {
+        opacity: 1;
+    }
+    &:disabled {
+        opacity: 0.25;
+    }
+}
+
 // ---- Full-width in editor ----
 .wp-block.process-steps {
     width: 100%;
