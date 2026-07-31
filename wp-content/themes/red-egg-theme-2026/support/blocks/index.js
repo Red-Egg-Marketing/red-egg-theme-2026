@@ -186,6 +186,11 @@ import '../format-types/rotate-words/index';
 // Semibold (font-weight 500) – all rich-text blocks
 import '../format-types/semibold/index';
 
+// ---- Block Extensions ----
+// Font Family – adds a Poppins/Figtree picker to the Typography
+// panel on core text blocks
+import '../block-extensions/font-family';
+
 // ---- Block Style Variations ----
 // Register custom button styles with arrow
 
