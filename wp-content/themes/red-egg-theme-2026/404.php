@@ -18,10 +18,12 @@ get_header();
 
             <div class="page-content">
                 <p><?php esc_html_e( "It looks like this page has flown the coop. Let's get you back on track.", 'red-egg' ); ?></p>
-                <a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="btn-gray">
-                    <span><?php esc_html_e( 'BACK TO HOME', 'red-egg' ); ?></span>
-                    <span class="btn-arrow"></span>
-                </a>
+                <div class="wp-block-button is-style-outline-white">
+                    <a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="wp-block-button__link     wp-element-button">
+                        <span><?php esc_html_e( 'BACK TO HOME', 'red-egg' ); ?></span>
+                        <span class="btn-arrow"></span>
+                    </a>
+                </div>
             </div><!-- .page-content -->
         </section><!-- .error-404 -->
 
