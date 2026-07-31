@@ -7,7 +7,7 @@
  */
 
 const { Fragment, useEffect } = wp.element;
-const { InnerBlocks, InspectorControls, MediaUpload, useBlockProps } = wp.blockEditor;
+const { InnerBlocks, InspectorControls, MediaUpload, useBlockProps, URLInput } = wp.blockEditor;
 const { PanelBody, Button, RangeControl, TextControl, ToggleControl } = wp.components;
 const { __ } = wp.i18n;
 import { pickSizes, captureSizeUrls } from '../../components/mediaSizes.js';
@@ -212,11 +212,12 @@ const EditAwardsSection = ( { attributes, setAttributes, clientId } ) => {
                                             value={ award.caption }
                                             onChange={ ( val ) => updateCaption( i, val ) }
                                         />
-                                        <TextControl
-                                            type="url"
-                                            placeholder={ __( 'Link URL (optional)…', 'red-egg' ) }
+                                        <URLInput
+                                            className="awards-section__link-input"
                                             value={ award.link || '' }
-                                            onChange={ ( val ) => updateLink( i, val ) }
+                                            onChange={ ( url ) => updateLink( i, url ) }
+                                            placeholder={ __( 'Link URL (optional)…', 'red-egg' ) }
+                                            __nextHasNoMarginBottom
                                         />
                                     </div>
                                 ) ) }
