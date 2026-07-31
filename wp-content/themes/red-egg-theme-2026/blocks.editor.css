@@ -237,6 +237,10 @@ p.is-style-section-label {
   }
 }
 
+span.semibold {
+  font-weight: 500;
+}
+
 .site-content,
 .entry-content,
 .is-root-container {
