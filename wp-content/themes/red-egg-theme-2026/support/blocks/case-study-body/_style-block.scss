@@ -33,7 +33,7 @@
 p.case-study-body__label {
     font-family: $font-head !important;
     font-weight: 500 !important;
-    font-size: 0.9rem !important;
+    font-size: 1rem !important;
     line-height: 1.3rem !important;
     letter-spacing: 0.9px !important;
     text-transform: uppercase !important;
@@ -41,8 +41,8 @@ p.case-study-body__label {
     margin: 0 0 0 0;
 
     @media screen and (min-width: $small-width) {
-        font-size: 1rem !important;
-        line-height: 1.3 !important;
+        font-size: 1.1rem !important;
+        line-height: 1.4 !important;
         letter-spacing: 1px !important;
     }
 }
