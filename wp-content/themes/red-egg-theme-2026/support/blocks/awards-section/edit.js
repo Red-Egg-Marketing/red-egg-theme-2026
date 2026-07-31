@@ -6,9 +6,9 @@
  * Each award has an image (thumbnail) and a caption.
  */
 
-const { Fragment, useEffect } = wp.element;
+const { Fragment, useEffect, useState } = wp.element;
 const { InnerBlocks, InspectorControls, MediaUpload, useBlockProps, URLInput } = wp.blockEditor;
-const { PanelBody, Button, RangeControl, TextControl, ToggleControl } = wp.components;
+const { PanelBody, Button, RangeControl, TextControl, ToggleControl, Popover } = wp.components;
 const { __ } = wp.i18n;
 import { pickSizes, captureSizeUrls } from '../../components/mediaSizes.js';
 import ImageSizePicker from '../../components/ImageSizePicker.js';
@@ -29,6 +29,9 @@ const allowedBlocks = [
 
 const EditAwardsSection = ( { attributes, setAttributes, clientId } ) => {
     const { bgColor, bgSlug, awards, slidesPerView, spaceBetween, withCards, padding, margin, blockId, imageSizeOverride } = attributes;
+
+    // Which award's link popover is open (index), or null.
+    const [ openLinkIndex, setOpenLinkIndex ] = useState( null );
 
     useEffect( () => {
         if ( ! blockId ) {
@@ -198,6 +201,45 @@ const EditAwardsSection = ( { attributes, setAttributes, clientId } ) => {
                                     <div className="awards-section__preview-item" key={ award.id || i }>
                                         <div className="awards-section__preview-img">
                                             <img src={ award.url } alt={ award.alt } />
+                                            <div className="awards-section__link-control">
+                                                <Button
+                                                    className={ 'awards-section__link-toggle' + ( award.link ? ' is-linked' : '' ) }
+                                                    icon="admin-links"
+                                                    label={ award.link ? __( 'Edit link', 'red-egg' ) : __( 'Add link', 'red-egg' ) }
+                                                    showTooltip
+                                                    isPressed={ !! award.link }
+                                                    onClick={ () => setOpenLinkIndex( openLinkIndex === i ? null : i ) }
+                                                />
+                                                { openLinkIndex === i && (
+                                                    <Popover
+                                                        className="awards-section__link-popover"
+                                                        placement="bottom-start"
+                                                        onClose={ () => setOpenLinkIndex( null ) }
+                                                        onFocusOutside={ () => setOpenLinkIndex( null ) }
+                                                        focusOnMount="firstElement"
+                                                    >
+                                                        <div className="awards-section__link-popover-inner">
+                                                            <URLInput
+                                                                value={ award.link || '' }
+                                                                onChange={ ( url ) => updateLink( i, url ) }
+                                                                placeholder={ __( 'Paste URL or search…', 'red-egg' ) }
+                                                                __nextHasNoMarginBottom
+                                                            />
+                                                            { award.link && (
+                                                                <Button
+                                                                    className="awards-section__link-clear"
+                                                                    variant="tertiary"
+                                                                    isDestructive
+                                                                    isSmall
+                                                                    onClick={ () => updateLink( i, '' ) }
+                                                                >
+                                                                    { __( 'Remove link', 'red-egg' ) }
+                                                                </Button>
+                                                            ) }
+                                                        </div>
+                                                    </Popover>
+                                                ) }
+                                            </div>
                                             <Button
                                                 className="awards-section__remove"
                                                 onClick={ () => removeAward( i ) }

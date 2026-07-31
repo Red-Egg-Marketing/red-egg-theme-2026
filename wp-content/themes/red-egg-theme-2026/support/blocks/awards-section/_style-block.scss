@@ -213,6 +213,61 @@
     font-size: 13px;
 }
 
+// ---- Link icon + popover (editor) ----
+.awards-section__link-control {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 2;
+}
+
+// Mirrors .awards-section__remove but top-left; tints red when linked
+.awards-section__link-toggle.components-button.has-icon {
+    width: 24px;
+    height: 24px;
+    min-width: 24px;
+    padding: 0;
+    border-radius: 50%;
+    background: rgba( 0, 0, 0, 0.6 );
+    color: $white;
+
+    svg {
+        width: 15px;
+        height: 15px;
+    }
+
+    &:hover {
+        background: rgba( 0, 0, 0, 0.8 );
+        color: $white;
+    }
+
+    &.is-linked {
+        background: $red;
+
+        &:hover {
+            background: $red;
+            filter: brightness( 0.9 );
+        }
+    }
+}
+
+.awards-section__link-popover-inner {
+    width: 260px;
+    padding: 10px;
+
+    .block-editor-url-input,
+    .block-editor-url-input input[type="text"] {
+        width: 100%;
+    }
+    .block-editor-url-input input[type="text"] {
+        min-height: 32px;
+    }
+}
+
+.awards-section__link-clear {
+    margin-top: 6px;
+}
+
 .awards-section__preview-img {
     position: relative;
     display: flex;
