@@ -61,6 +61,7 @@ const EditAwardsSection = ( { attributes, setAttributes, clientId } ) => {
                 fullUrl: img.url,
                 alt: img.alt || '',
                 caption: existing ? existing.caption : '',
+                link: existing ? ( existing.link || '' ) : '',
             };
         } );
         setAttributes( { awards: newAwards } );
@@ -72,6 +73,16 @@ const EditAwardsSection = ( { attributes, setAttributes, clientId } ) => {
     const updateCaption = ( index, value ) => {
         let updated = JSON.parse( JSON.stringify( awards ) );
         updated[ index ].caption = value;
+        setAttributes( { awards: updated } );
+    };
+
+    /**
+     * Update a single award's link URL. Empty = no link (image
+     * renders unwrapped on save).
+     */
+    const updateLink = ( index, value ) => {
+        let updated = JSON.parse( JSON.stringify( awards ) );
+        updated[ index ].link = value;
         setAttributes( { awards: updated } );
     };
 
@@ -200,6 +211,12 @@ const EditAwardsSection = ( { attributes, setAttributes, clientId } ) => {
                                             placeholder={ __( 'Caption…', 'red-egg' ) }
                                             value={ award.caption }
                                             onChange={ ( val ) => updateCaption( i, val ) }
+                                        />
+                                        <TextControl
+                                            type="url"
+                                            placeholder={ __( 'Link URL (optional)…', 'red-egg' ) }
+                                            value={ award.link || '' }
+                                            onChange={ ( val ) => updateLink( i, val ) }
                                         />
                                     </div>
                                 ) ) }

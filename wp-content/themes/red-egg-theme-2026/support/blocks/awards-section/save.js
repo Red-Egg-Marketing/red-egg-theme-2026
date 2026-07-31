@@ -39,17 +39,23 @@ const SaveAwardsSection = ( { attributes } ) => {
                                 data-space-between={ spaceBetween }
                             >
                                 <div className="swiper-wrapper">
-                                    { awards.map( ( award, i ) => (
+                                    { awards.map( ( award, i ) => {
+                                        const awardImg = (
+                                            <img
+                                                src={ resolveOverride( imageSizeOverride, award.sizeUrls, award.source || award.url ) }
+                                                srcSet={ imageSizeOverride ? '' : buildSrcSet( award.srcset ) }
+                                                sizes={ imageSizeOverride ? '' : '200px' }
+                                                alt={ award.alt }
+                                                loading="lazy"
+                                            />
+                                        );
+                                        return (
                                         <div className="swiper-slide" key={ award.id || i }>
                                             <div className="awards-section__award">
                                                 <div className="awards-section__award-img">
-                                                    <img
-                                                        src={ resolveOverride( imageSizeOverride, award.sizeUrls, award.source || award.url ) }
-                                                        srcSet={ imageSizeOverride ? '' : buildSrcSet( award.srcset ) }
-                                                        sizes={ imageSizeOverride ? '' : '200px' }
-                                                        alt={ award.alt }
-                                                        loading="lazy"
-                                                    />
+                                                    { award.link
+                                                        ? <a href={ award.link }>{ awardImg }</a>
+                                                        : awardImg }
                                                 </div>
                                                 { award.caption && (
                                                     <p className="awards-section__award-caption">
@@ -58,7 +64,8 @@ const SaveAwardsSection = ( { attributes } ) => {
                                                 ) }
                                             </div>
                                         </div>
-                                    ) ) }
+                                        );
+                                    } ) }
                                 </div>
                                 <div className="awards-section__nav">
                                     <button className="cs-slider__nav-prev" aria-label="Previous slide">

@@ -59,6 +59,19 @@
     max-width: 150px;
     object-fit: contain;
 }
+// Linked logos: anchor fills + centers exactly like the bare image did
+.awards-section__award-img a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    max-width: 100%;
+    transition: opacity 0.2s ease;
+
+    &:hover {
+        opacity: 0.75;
+    }
+}
 
 .awards-section__award-caption {
     font-family: $font-body;
