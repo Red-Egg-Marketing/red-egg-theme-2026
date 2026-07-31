@@ -254,13 +254,6 @@ const EditAwardsSection = ( { attributes, setAttributes, clientId } ) => {
                                             value={ award.caption }
                                             onChange={ ( val ) => updateCaption( i, val ) }
                                         />
-                                        <URLInput
-                                            className="awards-section__link-input"
-                                            value={ award.link || '' }
-                                            onChange={ ( url ) => updateLink( i, url ) }
-                                            placeholder={ __( 'Link URL (optional)…', 'red-egg' ) }
-                                            __nextHasNoMarginBottom
-                                        />
                                     </div>
                                 ) ) }
                             </div>
