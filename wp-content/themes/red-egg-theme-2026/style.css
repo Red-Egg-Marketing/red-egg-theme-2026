@@ -238,6 +238,10 @@ p.is-style-section-label {
   }
 }
 
+span.semibold {
+  font-weight: 500;
+}
+
 @keyframes cursorAnimation {
   0%, 100% {
     border-right-color: currentColor;

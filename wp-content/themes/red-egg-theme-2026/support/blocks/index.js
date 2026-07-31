@@ -183,6 +183,9 @@ import './accordion-item/index';
 // Rotate Words (Word Swap) – core/heading only
 import '../format-types/rotate-words/index';
 
+// Semibold (font-weight 500) – all rich-text blocks
+import '../format-types/semibold/index';
+
 // ---- Block Style Variations ----
 // Register custom button styles with arrow
 

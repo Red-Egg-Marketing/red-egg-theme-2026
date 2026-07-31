@@ -160,3 +160,13 @@ p.is-style-section-label {
         
     }
 }
+
+// ---- Inline text format types ----
+// "Semibold" rich-text format (red-egg-format/semibold).
+// Wraps the selection in <span class="semibold">. Both Figtree
+// and Poppins load a real 500 face, so this is a true weight —
+// not synthetic bold. Body copy sits at 300, so 500 reads clearly
+// heavier without jumping to full bold (700).
+span.semibold {
+    font-weight: 500;
+}
