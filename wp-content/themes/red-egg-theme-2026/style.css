@@ -242,6 +242,14 @@ span.semibold {
   font-weight: 500;
 }
 
+.font-poppins {
+  font-family: "Poppins", sans-serif;
+}
+
+.font-figtree {
+  font-family: "Figtree", sans-serif;
+}
+
 @keyframes cursorAnimation {
   0%, 100% {
     border-right-color: currentColor;

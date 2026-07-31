@@ -33,6 +33,8 @@ function red_egg_enqueue_block_editor_assets() {
             'wp-block-editor',
             'wp-dom-ready',
             'wp-api-request',
+            'wp-hooks',
+            'wp-compose',
             'lodash',
         ],
         file_exists( $editor_js ) ? filemtime( $editor_js ) : false,
