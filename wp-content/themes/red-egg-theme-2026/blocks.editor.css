@@ -241,6 +241,14 @@ span.semibold {
   font-weight: 500;
 }
 
+.font-poppins {
+  font-family: "Poppins", sans-serif;
+}
+
+.font-figtree {
+  font-family: "Figtree", sans-serif;
+}
+
 .site-content,
 .entry-content,
 .is-root-container {

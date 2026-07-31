@@ -169,3 +169,12 @@ p.is-style-section-label {
 span.semibold {
     font-weight: 500;
 }
+
+// ---- Font family overrides ----
+// Editor-selectable font family (Typography panel → Font Family) for
+// core text blocks. Maps the two brand families to flat classes so
+// stray font drift can be corrected per-block from Gutenberg.
+// (These sit directly on the block element/wrapper, so they win over
+//  element-level defaults — except rules using !important.)
+.font-poppins { font-family: $font-head; }
+.font-figtree { font-family: $font-body; }
