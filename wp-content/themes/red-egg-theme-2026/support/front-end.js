@@ -34,6 +34,8 @@ import './js/mobile-nav';
 
 // Lightbox – GLightbox for opted-in images/galleries
 import './js/lightbox';
+// Footer reveal – content slides up over a pinned footer on scroll
+import './js/footer-reveal';
 
 // Image Slider – Swiper initialization
 import './blocks/image-slider/frontend';

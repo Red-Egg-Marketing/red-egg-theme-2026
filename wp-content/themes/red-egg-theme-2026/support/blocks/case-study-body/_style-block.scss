@@ -13,8 +13,8 @@
 
 .case-study-body {
     position: relative;
-    padding-top: $default-section-padding-top;
-    padding-bottom: $default-section-padding-top;
+    padding-top: $default-section-padding-top/2;
+    padding-bottom: $default-section-padding-top/2;
 
     @media screen and (min-width: $small-width) {
         padding-top: 5rem;
