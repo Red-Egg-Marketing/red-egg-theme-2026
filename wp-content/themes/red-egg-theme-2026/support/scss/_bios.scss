@@ -68,13 +68,13 @@ div.gs-grid-style-four .single-member-div .gs_member_info .gs-member-name {
 	text-align: left;
 	font-family: $font-head;
 	text-transform: capitalize;
-	font-size: 18px;
-	line-height: 21px;
+	font-size: 2px;
+	line-height: 24px;
 	width: 100%;
 	margin-bottom: 5px;
 	@media screen and (min-width: $small-width) {
-		font-size: 21px;
-		line-height: 24px;
+		font-size: 25px;
+		line-height: 29px;
 		margin-bottom: 8px;
 	}
 }
@@ -120,8 +120,8 @@ div.gs-team-popup--default .gs-member-name {
 
 .gs_team_popup .gs-member-desc p {
 	font-family: $font-body;
-	font-size: 18px;
-	line-height: 20px;
+	font-size: 20px;
+	line-height: 22px;
 	color: $gray;
 }
 
@@ -141,7 +141,7 @@ div.gs-team-popup--default .level-info-email {
 div.gs-team-popup--default .gs-member-desig {
 	color: $gray;
 	font-family: $font-body;
-	font-size: 18px;
+	font-size: 20px;
 	font-weight: 700;
 	margin-top: 5px;
 	margin-bottom: 10px;
@@ -208,12 +208,12 @@ div.gs-grid-style-four .single-member-div .gs_member_info {
 div.gs-grid-style-four .single-member-div .gs_member_info .gs-member-desig {
 	text-align: left;
 	font-family: $font-body;
-	font-size: 16px;
-	line-height: 19px;
+	font-size: 18px;
+	line-height: 21px;
 	width: 100%;
 	@media screen and (min-width: $small-width) {
-		font-size: 18px;
-		line-height: 23px;
+		font-size: 20px;
+		line-height: 24px;
 	}
 }
 

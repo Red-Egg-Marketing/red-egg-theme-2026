@@ -13,8 +13,8 @@
     padding-bottom: $default-section-padding-bottom;
 
     @media screen and (min-width: $small-width) {
-        padding-top: 7rem;
-        padding-bottom: 7rem;
+        padding-top: $default-section-padding-desk-top;
+        padding-bottom: $default-section-padding-desk-bottom;
     }
 }
 
@@ -29,6 +29,10 @@
 .contact-section.gray { background-color: $gray; }
 .contact-section.white { background-color: $white; }
 .contact-section.peach { background-color: $peach; }
+
+.contact-section__columns svg path {
+    transition: 0.3s fill;
+}
 
 // White text on dark backgrounds
 .contact-section.red,
@@ -68,20 +72,7 @@
 
 .contact-section__label,
 p.contact-section__label {
-    font-family: $font-head !important;
-    font-weight: 500 !important;
-    font-size: 1rem !important;
-    line-height: 1.3rem !important;
-    letter-spacing: 0.9px !important;
-    text-transform: uppercase !important;
-    color: $gray;
-    margin: 0 0 0.5rem 0;
-
-    @media screen and (min-width: $small-width) {
-        font-size: 1.1rem !important;
-        line-height: 1.4 !important;
-        letter-spacing: 1px !important;
-    }
+    @include eyebrow;
 }
 
 .contact-section__left h2 {
@@ -128,6 +119,17 @@ p.contact-section__label {
     margin-bottom: 0;
     @media screen and (min-width: $small-width) {
         margin-bottom: 1.25rem;
+    }
+    &:hover {
+        .contact-icons__text {
+            color: red;
+        }
+        path.blob-animation {
+            fill: white;
+        }
+        path[fill="white"] {
+            fill: $red;
+        }
     }
 }
 
@@ -201,6 +203,7 @@ p.contact-section__label {
     font-weight: 500;
     color: $gray;
     margin: 0;
+    transition: color 0.3s;
 }
 
 .contact-icons__text a {
@@ -240,6 +243,7 @@ p.contact-section__label {
     font-size: 0.875rem;
     color: $gray;
     margin: 0 0 1.5rem 0;
+    display: none;
 }
 
 // Field layout: let GF's native grid handle column widths
@@ -266,22 +270,22 @@ p.contact-section__label {
 }
 
 // Inputs + textarea
-.contact-section .gfield input[type="text"],
-.contact-section .gfield input[type="email"],
-.contact-section .gfield input[type="tel"],
-.contact-section .gfield input[type="url"],
-.contact-section .gfield input[type="number"],
-.contact-section .gfield select,
-.contact-section .gfield textarea {
+.contact-section .gform_wrapper .gfield input[type="text"],
+.contact-section .gform_wrapper .gfield input[type="email"],
+.contact-section .gform_wrapper .gfield input[type="tel"],
+.contact-section .gform_wrapper .gfield input[type="url"],
+.contact-section .gform_wrapper .gfield input[type="number"],
+.contact-section .gform_wrapper .gfield select,
+.contact-section .gform_wrapper .gfield textarea {
     width: 100%;
     box-sizing: border-box;
     background-color: $white;
     border: 1px solid $gray;
     border-radius: 5px;
-    padding: 14px 18px;
+    padding: 9px 18px;
     font-family: $font-body;
     font-weight: 300;
-    font-size: 1.0625rem;
+    font-size: 1.25rem;
     line-height: 2;
     color: $gray;
 

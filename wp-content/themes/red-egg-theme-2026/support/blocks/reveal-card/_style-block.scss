@@ -11,6 +11,10 @@
     position: relative;
     width: 100%;
     perspective: 1200px;
+    transition: box-shadow 0.3s ease, transform 0.2s ease;
+    &:hover {
+        box-shadow: 0 6px 24px rgba(0, 0, 0, 0.1);
+    }
 }
 
 .reveal-card a {
@@ -95,6 +99,10 @@
     align-items: center;
     justify-content: center;
     margin-bottom: 1.75rem;
+    @media screen and (min-width: $small-width) {
+        width: 96px;
+        height: 96px;
+    }
 }
 
 .reveal-card__icon i {

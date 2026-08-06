@@ -122,6 +122,47 @@ ul, ol {
     }
 }
 
+// Gray outline button with arrow up
+.wp-block-button.is-style-outline-gray-up .wp-block-button__link,
+.editor-styles-wrapper .wp-block-button.is-style-outline-gray-up .wp-block-button__link {
+    @include outline-button-base( $gray );
+    &:hover {
+        color: $gray;
+        background-color: transparent;
+        &::after {
+            transform: rotate(-45deg);
+        }
+    }
+}
+
+// Gray outline button with arrow down, hover red
+.wp-block-button.is-style-outline-gray-hover-down-red .wp-block-button__link,
+.editor-styles-wrapper .wp-block-button.is-style-outline-gray-up-hover-down-red .wp-block-button__link {
+    @include outline-button-base( $gray );
+    &:hover {
+        color: $red;
+        background-color: transparent;
+        border-color: $red;
+        &::after {
+            transform: rotate(45deg);
+        }
+    }
+}
+
+// Gray outline button with arrow up, hover red
+.wp-block-button.is-style-outline-gray-hover-up-red .wp-block-button__link,
+.editor-styles-wrapper .wp-block-button.is-style-outline-gray-up-hover-up-red .wp-block-button__link {
+    @include outline-button-base( $gray );
+    &:hover {
+        color: $red;
+        background-color: transparent;
+        border-color: $red;
+        &::after {
+            transform: rotate(-45deg);
+        }
+    }
+}
+
 // White outline button with arrow (for dark backgrounds / hero)
 .wp-block-button.is-style-outline-white .wp-block-button__link,
 .editor-styles-wrapper .wp-block-button.is-style-outline-white .wp-block-button__link {

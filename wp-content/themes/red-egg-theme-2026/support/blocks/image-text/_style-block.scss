@@ -20,8 +20,8 @@
     padding-top: $default-section-padding-top/2;
     padding-bottom: $default-section-padding-bottom/2;
     @media screen and (min-width: $small-width) {
-        padding-top: 5rem;
-        padding-bottom: 5rem;
+        padding-top: $default-section-padding-desk-top;
+        padding-bottom: $default-section-padding-desk-bottom;
     }
 }
 

@@ -15,8 +15,8 @@
     overflow: hidden;
 
     @media screen and (min-width: $small-width) {
-        padding-top: 6rem;
-        padding-bottom: 6rem;
+        padding-top: $default-section-padding-desk-top;
+        padding-bottom: $default-section-padding-desk-bottom;
     }
 }
 
@@ -67,11 +67,11 @@
     align-items: flex-start;
     flex-wrap: wrap;
     gap: 1rem;
-    margin-bottom: 1.5rem;
+    margin-bottom: 2.5rem;
 
     @media screen and (min-width: $small-width) {
         gap: 2rem;
-        margin-bottom: 2rem;
+        margin-bottom: 4rem;
     }
 
     &:last-child {
@@ -90,12 +90,12 @@
 .numbered-list__badge .number-badge__input {
     color: $white;
     opacity: 0.3;
-    font-size: 2.5rem;
+    font-size: 2.95rem;
     line-height: 1;
     width: 60px;
     @media screen and (min-width: $small-width) {
-        font-size: 4.5rem;
-        width: 100px;
+        font-size: 5.5rem;
+        width: 110px;
         text-align: right;
     }
 }

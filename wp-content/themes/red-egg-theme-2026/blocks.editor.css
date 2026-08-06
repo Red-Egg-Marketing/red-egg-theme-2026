@@ -73,7 +73,7 @@ ul, ol {
 }
 
 .block-wrapper {
-  max-width: 1184px;
+  max-width: 1428px;
   margin-left: auto;
   margin-right: auto;
   padding-left: 1.25rem;
@@ -126,9 +126,9 @@ ul, ol {
   .wp-block-button.is-style-outline-gray .wp-block-button__link,
   .editor-styles-wrapper .wp-block-button.is-style-outline-gray .wp-block-button__link {
     line-height: 1.4625rem;
-    font-size: 1rem;
+    font-size: 1.065rem;
     letter-spacing: 0.34px;
-    padding: 12px 24px 12px 30px;
+    padding: 15px 28px 15px 35px;
     gap: 10px;
   }
 }
@@ -159,6 +159,179 @@ ul, ol {
   transform: rotate(45deg);
 }
 
+.wp-block-button.is-style-outline-gray-up .wp-block-button__link,
+.editor-styles-wrapper .wp-block-button.is-style-outline-gray-up .wp-block-button__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: transparent;
+  border: 1px solid #424042;
+  border-radius: 50px;
+  color: #424042;
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+  font-size: 0.9rem;
+  line-height: 1.4rem;
+  letter-spacing: 0.32px;
+  padding: 10px 20px 10px 26px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: none;
+  text-transform: uppercase;
+}
+@media screen and (min-width: 768px) {
+  .wp-block-button.is-style-outline-gray-up .wp-block-button__link,
+  .editor-styles-wrapper .wp-block-button.is-style-outline-gray-up .wp-block-button__link {
+    line-height: 1.4625rem;
+    font-size: 1.065rem;
+    letter-spacing: 0.34px;
+    padding: 15px 28px 15px 35px;
+    gap: 10px;
+  }
+}
+.wp-block-button.is-style-outline-gray-up .wp-block-button__link::after,
+.editor-styles-wrapper .wp-block-button.is-style-outline-gray-up .wp-block-button__link::after {
+  content: "\f061";
+  font: var(--fa-font-light);
+  font-size: 16px;
+  display: inline-block;
+  transition: transform 0.3s ease;
+}
+.wp-block-button.is-style-outline-gray-up .wp-block-button__link:hover,
+.editor-styles-wrapper .wp-block-button.is-style-outline-gray-up .wp-block-button__link:hover {
+  color: #424042;
+  background: transparent;
+}
+.wp-block-button.is-style-outline-gray-up .wp-block-button__link:hover::after,
+.editor-styles-wrapper .wp-block-button.is-style-outline-gray-up .wp-block-button__link:hover::after {
+  transform: rotate(45deg);
+}
+.wp-block-button.is-style-outline-gray-up .wp-block-button__link:hover,
+.editor-styles-wrapper .wp-block-button.is-style-outline-gray-up .wp-block-button__link:hover {
+  color: #424042;
+  background-color: transparent;
+}
+.wp-block-button.is-style-outline-gray-up .wp-block-button__link:hover::after,
+.editor-styles-wrapper .wp-block-button.is-style-outline-gray-up .wp-block-button__link:hover::after {
+  transform: rotate(-45deg);
+}
+
+.wp-block-button.is-style-outline-gray-hover-down-red .wp-block-button__link,
+.editor-styles-wrapper .wp-block-button.is-style-outline-gray-up-hover-down-red .wp-block-button__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: transparent;
+  border: 1px solid #424042;
+  border-radius: 50px;
+  color: #424042;
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+  font-size: 0.9rem;
+  line-height: 1.4rem;
+  letter-spacing: 0.32px;
+  padding: 10px 20px 10px 26px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: none;
+  text-transform: uppercase;
+}
+@media screen and (min-width: 768px) {
+  .wp-block-button.is-style-outline-gray-hover-down-red .wp-block-button__link,
+  .editor-styles-wrapper .wp-block-button.is-style-outline-gray-up-hover-down-red .wp-block-button__link {
+    line-height: 1.4625rem;
+    font-size: 1.065rem;
+    letter-spacing: 0.34px;
+    padding: 15px 28px 15px 35px;
+    gap: 10px;
+  }
+}
+.wp-block-button.is-style-outline-gray-hover-down-red .wp-block-button__link::after,
+.editor-styles-wrapper .wp-block-button.is-style-outline-gray-up-hover-down-red .wp-block-button__link::after {
+  content: "\f061";
+  font: var(--fa-font-light);
+  font-size: 16px;
+  display: inline-block;
+  transition: transform 0.3s ease;
+}
+.wp-block-button.is-style-outline-gray-hover-down-red .wp-block-button__link:hover,
+.editor-styles-wrapper .wp-block-button.is-style-outline-gray-up-hover-down-red .wp-block-button__link:hover {
+  color: #424042;
+  background: transparent;
+}
+.wp-block-button.is-style-outline-gray-hover-down-red .wp-block-button__link:hover::after,
+.editor-styles-wrapper .wp-block-button.is-style-outline-gray-up-hover-down-red .wp-block-button__link:hover::after {
+  transform: rotate(45deg);
+}
+.wp-block-button.is-style-outline-gray-hover-down-red .wp-block-button__link:hover,
+.editor-styles-wrapper .wp-block-button.is-style-outline-gray-up-hover-down-red .wp-block-button__link:hover {
+  color: #DC2035;
+  background-color: transparent;
+  border-color: #DC2035;
+}
+.wp-block-button.is-style-outline-gray-hover-down-red .wp-block-button__link:hover::after,
+.editor-styles-wrapper .wp-block-button.is-style-outline-gray-up-hover-down-red .wp-block-button__link:hover::after {
+  transform: rotate(45deg);
+}
+
+.wp-block-button.is-style-outline-gray-hover-up-red .wp-block-button__link,
+.editor-styles-wrapper .wp-block-button.is-style-outline-gray-up-hover-up-red .wp-block-button__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: transparent;
+  border: 1px solid #424042;
+  border-radius: 50px;
+  color: #424042;
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+  font-size: 0.9rem;
+  line-height: 1.4rem;
+  letter-spacing: 0.32px;
+  padding: 10px 20px 10px 26px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: none;
+  text-transform: uppercase;
+}
+@media screen and (min-width: 768px) {
+  .wp-block-button.is-style-outline-gray-hover-up-red .wp-block-button__link,
+  .editor-styles-wrapper .wp-block-button.is-style-outline-gray-up-hover-up-red .wp-block-button__link {
+    line-height: 1.4625rem;
+    font-size: 1.065rem;
+    letter-spacing: 0.34px;
+    padding: 15px 28px 15px 35px;
+    gap: 10px;
+  }
+}
+.wp-block-button.is-style-outline-gray-hover-up-red .wp-block-button__link::after,
+.editor-styles-wrapper .wp-block-button.is-style-outline-gray-up-hover-up-red .wp-block-button__link::after {
+  content: "\f061";
+  font: var(--fa-font-light);
+  font-size: 16px;
+  display: inline-block;
+  transition: transform 0.3s ease;
+}
+.wp-block-button.is-style-outline-gray-hover-up-red .wp-block-button__link:hover,
+.editor-styles-wrapper .wp-block-button.is-style-outline-gray-up-hover-up-red .wp-block-button__link:hover {
+  color: #424042;
+  background: transparent;
+}
+.wp-block-button.is-style-outline-gray-hover-up-red .wp-block-button__link:hover::after,
+.editor-styles-wrapper .wp-block-button.is-style-outline-gray-up-hover-up-red .wp-block-button__link:hover::after {
+  transform: rotate(45deg);
+}
+.wp-block-button.is-style-outline-gray-hover-up-red .wp-block-button__link:hover,
+.editor-styles-wrapper .wp-block-button.is-style-outline-gray-up-hover-up-red .wp-block-button__link:hover {
+  color: #DC2035;
+  background-color: transparent;
+  border-color: #DC2035;
+}
+.wp-block-button.is-style-outline-gray-hover-up-red .wp-block-button__link:hover::after,
+.editor-styles-wrapper .wp-block-button.is-style-outline-gray-up-hover-up-red .wp-block-button__link:hover::after {
+  transform: rotate(-45deg);
+}
+
 .wp-block-button.is-style-outline-white .wp-block-button__link,
 .editor-styles-wrapper .wp-block-button.is-style-outline-white .wp-block-button__link {
   display: inline-flex;
@@ -183,9 +356,9 @@ ul, ol {
   .wp-block-button.is-style-outline-white .wp-block-button__link,
   .editor-styles-wrapper .wp-block-button.is-style-outline-white .wp-block-button__link {
     line-height: 1.4625rem;
-    font-size: 1rem;
+    font-size: 1.065rem;
     letter-spacing: 0.34px;
-    padding: 12px 24px 12px 30px;
+    padding: 15px 28px 15px 35px;
     gap: 10px;
   }
 }
@@ -262,8 +435,8 @@ span.semibold {
   .site-content,
   .entry-content,
   .is-root-container {
-    font-size: 1.15rem;
-    line-height: 1.75rem;
+    font-size: 1.25rem;
+    line-height: 1.95rem;
   }
 }
 .site-content,
@@ -370,17 +543,18 @@ span.semibold {
 .is-root-container h2 {
   font-family: "Poppins", sans-serif;
   font-weight: 700;
-  font-size: 1.5625rem;
-  line-height: 2.1875rem;
-  letter-spacing: 0.0625rem;
+  font-size: 2.125rem;
+  line-height: 2.75rem;
+  letter-spacing: 0.02125rem;
   color: #424042;
 }
 @media screen and (min-width: 768px) {
   .site-content h2,
   .entry-content h2,
   .is-root-container h2 {
-    font-size: 2.3125rem;
-    line-height: 2.9375rem;
+    font-size: 3.125rem;
+    line-height: 3.75rem;
+    letter-spacing: 0.03125rem;
   }
 }
 .site-content h3,
@@ -388,8 +562,8 @@ span.semibold {
 .is-root-container h3 {
   font-family: "Poppins", sans-serif;
   font-weight: 700;
-  font-size: 1.225rem;
-  line-height: 1.75rem;
+  font-size: 1.825rem;
+  line-height: 2rem;
   letter-spacing: 0.0625rem;
   color: #424042;
 }
@@ -397,8 +571,8 @@ span.semibold {
   .site-content h3,
   .entry-content h3,
   .is-root-container h3 {
-    font-size: 1.7625rem;
-    line-height: 2.1875rem;
+    font-size: 2.3525rem;
+    line-height: 3.1875rem;
   }
 }
 .site-content h4,
@@ -414,8 +588,8 @@ span.semibold {
   .site-content h4,
   .entry-content h4,
   .is-root-container h4 {
-    font-size: 1.15rem;
-    line-height: 1.85rem;
+    font-size: 1.375rem;
+    line-height: 2.125rem;
   }
 }
 .site-content h4,
@@ -709,8 +883,8 @@ span.semibold {
   background-color: #F79E83;
   position: relative;
   overflow: hidden;
-  padding-top: 4.5rem;
-  padding-bottom: 4.5rem;
+  padding-top: 5.5rem;
+  padding-bottom: 5.5rem;
   position: relative;
   z-index: 2;
 }
@@ -722,7 +896,7 @@ span.semibold {
 }
 
 .hero-background .block-wrapper {
-  max-width: 1184px;
+  max-width: 1428px;
   margin-left: auto;
   margin-right: auto;
   padding-left: 1.25rem;
@@ -825,15 +999,15 @@ span.semibold {
 .hero-background__content h1 {
   font-family: "Poppins", sans-serif;
   font-weight: 600;
-  font-size: 2.65rem;
-  line-height: 3.275rem;
+  font-size: 3.55rem;
+  line-height: 4.75rem;
   letter-spacing: 0;
   color: #424042;
 }
 @media screen and (min-width: 768px) {
   .hero-background__content h1 {
-    font-size: 4.5rem;
-    line-height: 4.75rem;
+    font-size: 5.5rem;
+    line-height: 6.75rem;
   }
 }
 .hero-background__content h1 {
@@ -855,8 +1029,8 @@ span.semibold {
 }
 @media screen and (min-width: 768px) {
   .hero-background__content p {
-    font-size: 1.15rem;
-    line-height: 1.85rem;
+    font-size: 1.375rem;
+    line-height: 2.125rem;
   }
 }
 .hero-background__content p {
@@ -870,6 +1044,11 @@ span.semibold {
 
 .hero-background__content .wp-block-buttons {
   margin-top: 1rem;
+}
+@media screen and (min-width: 768px) {
+  .hero-background__content .wp-block-buttons {
+    margin-top: 2.5rem;
+  }
 }
 
 .hero-background__media {
@@ -992,18 +1171,18 @@ span.semibold {
 
 .text-cards-grid {
   position: relative;
-  padding-top: 4.5rem;
-  padding-bottom: 4.5rem;
+  padding-top: 5.5rem;
+  padding-bottom: 5.5rem;
 }
 @media screen and (min-width: 768px) {
   .text-cards-grid {
-    padding-top: 5rem;
-    padding-bottom: 5rem;
+    padding-top: 7rem;
+    padding-bottom: 7rem;
   }
 }
 
 .text-cards-grid > .block-wrapper {
-  max-width: 1184px;
+  max-width: 1428px;
   margin-left: auto;
   margin-right: auto;
   padding-left: 1.25rem;
@@ -1191,7 +1370,7 @@ span.semibold {
 }
 
 .entry-content > .header-intro-block > .wrapper {
-  max-width: 1184px;
+  max-width: 1428px;
   margin-left: auto;
   margin-right: auto;
   padding-left: 1.25rem;
@@ -1330,19 +1509,18 @@ span.semibold {
 .header-intro__left p.header-intro__label {
   font-family: "Poppins", sans-serif !important;
   font-weight: 500 !important;
-  font-size: 1rem !important;
-  line-height: 1.3rem !important;
+  font-size: 1.15rem !important;
+  line-height: 1.45rem !important;
   letter-spacing: 0.9px !important;
   text-transform: uppercase !important;
   color: #424042;
   margin: 0 0 0.5rem 0;
-  margin-bottom: 0 !important;
 }
 @media screen and (min-width: 768px) {
   .header-intro__left .header-intro__label,
   .header-intro__left p.header-intro__label {
-    font-size: 1.1rem !important;
-    line-height: 1.4 !important;
+    font-size: 1.3rem !important;
+    line-height: 1.65 !important;
     letter-spacing: 1px !important;
   }
 }
@@ -1356,15 +1534,16 @@ span.semibold {
 .header-intro__left h2 {
   font-family: "Poppins", sans-serif;
   font-weight: 700;
-  font-size: 1.5625rem;
-  line-height: 2.1875rem;
-  letter-spacing: 0.0625rem;
+  font-size: 2.125rem;
+  line-height: 2.75rem;
+  letter-spacing: 0.02125rem;
   color: #424042;
 }
 @media screen and (min-width: 768px) {
   .header-intro__left h2 {
-    font-size: 2.3125rem;
-    line-height: 2.9375rem;
+    font-size: 3.125rem;
+    line-height: 3.75rem;
+    letter-spacing: 0.03125rem;
   }
 }
 .header-intro__left h2 {
@@ -1374,7 +1553,7 @@ span.semibold {
 @media screen and (min-width: 768px) {
   .header-intro__right {
     flex: 1;
-    padding-top: 0.25rem;
+    padding-top: 3.125rem;
   }
 }
 
@@ -1389,8 +1568,8 @@ span.semibold {
 @media screen and (min-width: 768px) {
   .header-intro__left p,
   .header-intro__right p:first-of-type {
-    font-size: 1.15rem;
-    line-height: 1.85rem;
+    font-size: 1.375rem;
+    line-height: 2.125rem;
   }
 }
 .header-intro__left p,
@@ -1527,8 +1706,8 @@ span.semibold {
 }
 @media screen and (min-width: 768px) {
   .flip-card .flip-card-wrap .content {
-    font-size: 1.15rem;
-    line-height: 1.75rem;
+    font-size: 1.25rem;
+    line-height: 1.95rem;
   }
 }
 .flip-card .flip-card-wrap .content {
@@ -1605,8 +1784,8 @@ span.semibold {
 }
 @media screen and (min-width: 768px) {
   .flip-card__hover-overlay p {
-    font-size: 1.15rem;
-    line-height: 1.75rem;
+    font-size: 1.25rem;
+    line-height: 1.95rem;
   }
 }
 .flip-card__hover-overlay p {
@@ -1622,15 +1801,16 @@ span.semibold {
 .flip-card h3 {
   font-family: "Poppins", sans-serif;
   font-weight: 700;
-  font-size: 1.5625rem;
-  line-height: 2.1875rem;
-  letter-spacing: 0.0625rem;
+  font-size: 2.125rem;
+  line-height: 2.75rem;
+  letter-spacing: 0.02125rem;
   color: #424042;
 }
 @media screen and (min-width: 768px) {
   .flip-card h3 {
-    font-size: 2.3125rem;
-    line-height: 2.9375rem;
+    font-size: 3.125rem;
+    line-height: 3.75rem;
+    letter-spacing: 0.03125rem;
   }
 }
 .flip-card h3 {
@@ -1674,9 +1854,9 @@ span.semibold {
 }
 @media screen and (min-width: 768px) {
   .flip-card .flip-link {
-    padding: 12px 24px 12px 24px;
+    padding: 15px 28px 15px 35px;
     line-height: 1.4625rem;
-    font-size: 1rem;
+    font-size: 1.065rem;
     letter-spacing: 0.34px;
   }
 }
@@ -1694,7 +1874,7 @@ span.semibold {
 }
 @media screen and (min-width: 768px) {
   .flip-card .flip-link span {
-    font-size: 1rem;
+    font-size: 1.0625rem;
     line-height: 1.4625rem;
     letter-spacing: 0.02125rem;
   }
@@ -1755,6 +1935,10 @@ span.semibold {
   position: relative;
   width: 100%;
   perspective: 1200px;
+  transition: box-shadow 0.3s ease, transform 0.2s ease;
+}
+.reveal-card:hover {
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.1);
 }
 
 .reveal-card a {
@@ -1815,15 +1999,15 @@ span.semibold {
 .reveal-card__front-content h3 {
   font-family: "Poppins", sans-serif;
   font-weight: 700;
-  font-size: 1.225rem;
-  line-height: 1.75rem;
+  font-size: 1.825rem;
+  line-height: 2rem;
   letter-spacing: 0.0625rem;
   color: #424042;
 }
 @media screen and (min-width: 768px) {
   .reveal-card__front-content h3 {
-    font-size: 1.7625rem;
-    line-height: 2.1875rem;
+    font-size: 2.3525rem;
+    line-height: 3.1875rem;
   }
 }
 .reveal-card__front-content h3 {
@@ -1839,8 +2023,8 @@ span.semibold {
 }
 @media screen and (min-width: 768px) {
   .reveal-card__front-content p {
-    font-size: 1.15rem;
-    line-height: 1.75rem;
+    font-size: 1.25rem;
+    line-height: 1.95rem;
   }
 }
 .reveal-card__front-content p {
@@ -1855,6 +2039,12 @@ span.semibold {
   align-items: center;
   justify-content: center;
   margin-bottom: 1.75rem;
+}
+@media screen and (min-width: 768px) {
+  .reveal-card__icon {
+    width: 96px;
+    height: 96px;
+  }
 }
 
 .reveal-card__icon i {
@@ -1956,16 +2146,16 @@ span.semibold {
 .reveal-card__face--back h4 {
   font-family: "Poppins", sans-serif;
   font-weight: 700;
-  font-size: 1.105rem;
-  line-height: 1.7rem;
+  font-size: 1.35rem;
+  line-height: 1.9rem;
   letter-spacing: 0.125rem;
   text-transform: uppercase;
   color: #424042;
 }
 @media screen and (min-width: 768px) {
   .reveal-card__face--back h4 {
-    font-size: 1.2625rem;
-    line-height: 1.775rem;
+    font-size: 1.5625rem;
+    line-height: 1.975rem;
   }
 }
 .reveal-card__face--back h4 {
@@ -1989,8 +2179,8 @@ span.semibold {
 }
 @media screen and (min-width: 768px) {
   .reveal-card__face--back li {
-    font-size: 1.15rem;
-    line-height: 1.75rem;
+    font-size: 1.25rem;
+    line-height: 1.95rem;
   }
 }
 .reveal-card__face--back li {
@@ -2006,8 +2196,8 @@ span.semibold {
 }
 @media screen and (min-width: 768px) {
   .reveal-card__face--back p {
-    font-size: 1.15rem;
-    line-height: 1.75rem;
+    font-size: 1.25rem;
+    line-height: 1.95rem;
   }
 }
 .reveal-card__face--back p {
@@ -2094,7 +2284,7 @@ span.semibold {
 }
 @media screen and (min-width: 768px) {
   .reveal-card--editing .reveal-card__face::before {
-    font-size: 1rem;
+    font-size: 1.0625rem;
     line-height: 1.4625rem;
     letter-spacing: 0.02125rem;
   }
@@ -2148,14 +2338,14 @@ span.semibold {
 
 .numbered-list {
   position: relative;
-  padding-top: 4.5rem;
-  padding-bottom: 4.5rem;
+  padding-top: 5.5rem;
+  padding-bottom: 5.5rem;
   overflow: hidden;
 }
 @media screen and (min-width: 768px) {
   .numbered-list {
-    padding-top: 6rem;
-    padding-bottom: 6rem;
+    padding-top: 7rem;
+    padding-bottom: 7rem;
   }
 }
 
@@ -2170,7 +2360,7 @@ span.semibold {
 }
 
 .numbered-list .block-wrapper {
-  max-width: 1184px;
+  max-width: 1428px;
   margin-left: auto;
   margin-right: auto;
   padding-left: 1.25rem;
@@ -2216,12 +2406,12 @@ span.semibold {
   align-items: flex-start;
   flex-wrap: wrap;
   gap: 1rem;
-  margin-bottom: 1.5rem;
+  margin-bottom: 2.5rem;
 }
 @media screen and (min-width: 768px) {
   .numbered-list__item {
     gap: 2rem;
-    margin-bottom: 2rem;
+    margin-bottom: 4rem;
   }
 }
 .numbered-list__item:last-child {
@@ -2241,15 +2431,15 @@ span.semibold {
 .numbered-list__badge .number-badge__input {
   color: #FFFFFF;
   opacity: 0.3;
-  font-size: 2.5rem;
+  font-size: 2.95rem;
   line-height: 1;
   width: 60px;
 }
 @media screen and (min-width: 768px) {
   .numbered-list__badge .number-badge__value,
   .numbered-list__badge .number-badge__input {
-    font-size: 4.5rem;
-    width: 100px;
+    font-size: 5.5rem;
+    width: 110px;
     text-align: right;
   }
 }
@@ -2297,16 +2487,16 @@ span.semibold {
 .numbered-list__item-content h3 {
   font-family: "Poppins", sans-serif;
   font-weight: 700;
-  font-size: 1.105rem;
-  line-height: 1.7rem;
+  font-size: 1.35rem;
+  line-height: 1.9rem;
   letter-spacing: 0.125rem;
   text-transform: uppercase;
   color: #424042;
 }
 @media screen and (min-width: 768px) {
   .numbered-list__item-content h3 {
-    font-size: 1.2625rem;
-    line-height: 1.775rem;
+    font-size: 1.5625rem;
+    line-height: 1.975rem;
   }
 }
 .numbered-list__item-content h3 {
@@ -2323,8 +2513,8 @@ span.semibold {
 }
 @media screen and (min-width: 768px) {
   .numbered-list__item-content p {
-    font-size: 1.15rem;
-    line-height: 1.75rem;
+    font-size: 1.25rem;
+    line-height: 1.95rem;
   }
 }
 .numbered-list__item-content p {
@@ -2374,14 +2564,14 @@ span.semibold {
 
 .case-studies-slider {
   position: relative;
-  padding-top: 2.25rem;
-  padding-bottom: 2.25rem;
+  padding-top: 2.75rem;
+  padding-bottom: 2.75rem;
   overflow: hidden;
 }
 @media screen and (min-width: 768px) {
   .case-studies-slider {
-    padding-top: 5rem;
-    padding-bottom: 5rem;
+    padding-top: 7rem;
+    padding-bottom: 7rem;
   }
 }
 
@@ -2390,7 +2580,7 @@ span.semibold {
 }
 
 .case-studies-slider > .block-wrapper {
-  max-width: 1184px;
+  max-width: 1428px;
   margin-left: auto;
   margin-right: auto;
   padding-left: 1.25rem;
@@ -2470,15 +2660,15 @@ span.semibold {
 .cs-slide h3.cs-slide__title {
   font-family: "Poppins", sans-serif;
   font-weight: 700;
-  font-size: 1.225rem;
-  line-height: 1.75rem;
+  font-size: 1.825rem;
+  line-height: 2rem;
   letter-spacing: 0.0625rem;
   color: #424042;
 }
 @media screen and (min-width: 768px) {
   .cs-slide h3.cs-slide__title {
-    font-size: 1.7625rem;
-    line-height: 2.1875rem;
+    font-size: 2.3525rem;
+    line-height: 3.1875rem;
   }
 }
 .cs-slide h3.cs-slide__title {
@@ -2503,8 +2693,8 @@ span.semibold {
 }
 @media screen and (min-width: 768px) {
   .cs-slide__excerpt {
-    font-size: 1.15rem;
-    line-height: 1.75rem;
+    font-size: 1.25rem;
+    line-height: 1.95rem;
   }
 }
 .cs-slide__excerpt {
@@ -2573,9 +2763,9 @@ span.semibold {
 }
 @media screen and (min-width: 768px) {
   .cs-slider__cta .outline-gray {
-    padding: 12px 24px 12px 24px;
+    padding: 15px 28px 15px 35px;
     line-height: 1.4625rem;
-    font-size: 1rem;
+    font-size: 1.065rem;
     letter-spacing: 0.34px;
   }
 }
@@ -2593,7 +2783,7 @@ span.semibold {
 }
 @media screen and (min-width: 768px) {
   .cs-slider__cta .outline-gray span {
-    font-size: 1rem;
+    font-size: 1.0625rem;
     line-height: 1.4625rem;
     letter-spacing: 0.02125rem;
   }
@@ -2710,8 +2900,8 @@ span.semibold {
 }
 @media screen and (min-width: 768px) {
   .case-studies-slider .case-studies-slider__loading p {
-    font-size: 1.15rem;
-    line-height: 1.85rem;
+    font-size: 1.375rem;
+    line-height: 2.125rem;
   }
 }
 .case-studies-slider .case-studies-slider__loading p {
@@ -2732,8 +2922,8 @@ span.semibold {
 }
 @media screen and (min-width: 768px) {
   .case-studies-slider .error h3 {
-    font-size: 1.15rem;
-    line-height: 1.85rem;
+    font-size: 1.375rem;
+    line-height: 2.125rem;
   }
 }
 .case-studies-slider .error h3 {
@@ -2787,15 +2977,15 @@ span.semibold {
 .case-studies-slider__grid .resource-card .resource-title {
   font-family: "Poppins", sans-serif;
   font-weight: 700;
-  font-size: 1.225rem;
-  line-height: 1.75rem;
+  font-size: 1.825rem;
+  line-height: 2rem;
   letter-spacing: 0.0625rem;
   color: #424042;
 }
 @media screen and (min-width: 768px) {
   .case-studies-slider__grid .resource-card .resource-title {
-    font-size: 1.7625rem;
-    line-height: 2.1875rem;
+    font-size: 2.3525rem;
+    line-height: 3.1875rem;
   }
 }
 .case-studies-slider__grid .resource-card .resource-title {
@@ -2811,8 +3001,8 @@ span.semibold {
 }
 @media screen and (min-width: 768px) {
   .case-studies-slider__grid .resource-card .resource-excerpt {
-    font-size: 1.15rem;
-    line-height: 1.75rem;
+    font-size: 1.25rem;
+    line-height: 1.95rem;
   }
 }
 .case-studies-slider__grid .resource-card .resource-excerpt {
@@ -2836,15 +3026,15 @@ span.semibold {
 
 .testimonials-block {
   position: relative;
-  padding-top: 2.25rem;
-  padding-bottom: 2.25rem;
+  padding-top: 2.75rem;
+  padding-bottom: 2.75rem;
   overflow: hidden;
   z-index: 2;
 }
 @media screen and (min-width: 768px) {
   .testimonials-block {
-    padding-top: 5rem;
-    padding-bottom: 5rem;
+    padding-top: 7rem;
+    padding-bottom: 7rem;
   }
 }
 
@@ -2873,7 +3063,7 @@ span.semibold {
 }
 
 .testimonials-block > .block-wrapper {
-  max-width: 1184px;
+  max-width: 1428px;
   margin-left: auto;
   margin-right: auto;
   padding-left: 1.25rem;
@@ -2973,8 +3163,8 @@ span.semibold {
 }
 @media screen and (min-width: 768px) {
   .testimonial-card__text {
-    font-size: 1.15rem;
-    line-height: 1.75rem;
+    font-size: 1.25rem;
+    line-height: 1.95rem;
   }
 }
 .testimonial-card__text {
@@ -3107,8 +3297,8 @@ span.semibold {
 
 .insights-block {
   position: relative;
-  padding-top: 2.25rem;
-  padding-bottom: 4.5rem;
+  padding-top: 2.75rem;
+  padding-bottom: 5.5rem;
 }
 @media screen and (min-width: 768px) {
   .insights-block {
@@ -3118,7 +3308,7 @@ span.semibold {
 }
 
 .insights-block > .block-wrapper {
-  max-width: 1184px;
+  max-width: 1428px;
   margin-left: auto;
   margin-right: auto;
   padding-left: 1.25rem;
@@ -3258,8 +3448,8 @@ span.semibold {
 }
 @media screen and (min-width: 768px) {
   .insights-block .resource-card .resource-excerpt {
-    font-size: 1.15rem;
-    line-height: 1.75rem;
+    font-size: 1.25rem;
+    line-height: 1.95rem;
   }
 }
 .insights-block .resource-card .resource-excerpt {
@@ -3289,9 +3479,9 @@ span.semibold {
 }
 @media screen and (min-width: 768px) {
   .insights-block .resource-card .wp-button {
-    padding: 12px 24px 12px 24px;
+    padding: 15px 28px 15px 35px;
     line-height: 1.4625rem;
-    font-size: 1rem;
+    font-size: 1.065rem;
     letter-spacing: 0.34px;
   }
 }
@@ -3309,7 +3499,7 @@ span.semibold {
 }
 @media screen and (min-width: 768px) {
   .insights-block .resource-card .wp-button span {
-    font-size: 1rem;
+    font-size: 1.0625rem;
     line-height: 1.4625rem;
     letter-spacing: 0.02125rem;
   }
@@ -3363,8 +3553,8 @@ span.semibold {
 }
 @media screen and (min-width: 768px) {
   .insights-block .insights-block__loading p {
-    font-size: 1.15rem;
-    line-height: 1.85rem;
+    font-size: 1.375rem;
+    line-height: 2.125rem;
   }
 }
 .insights-block .insights-block__loading p {
@@ -3380,8 +3570,8 @@ span.semibold {
 }
 @media screen and (min-width: 768px) {
   .insights-block .insights-block__empty {
-    font-size: 1.15rem;
-    line-height: 1.85rem;
+    font-size: 1.375rem;
+    line-height: 2.125rem;
   }
 }
 .insights-block .insights-block__empty {
@@ -3415,8 +3605,8 @@ span.semibold {
 .contact-section {
   position: relative;
   width: 100%;
-  padding-top: 4.5rem;
-  padding-bottom: 4.5rem;
+  padding-top: 5.5rem;
+  padding-bottom: 5.5rem;
 }
 @media screen and (min-width: 768px) {
   .contact-section {
@@ -3426,7 +3616,7 @@ span.semibold {
 }
 
 .contact-section > .block-wrapper {
-  max-width: 1184px;
+  max-width: 1428px;
   margin-left: auto;
   margin-right: auto;
   padding-left: 1.25rem;
@@ -3461,6 +3651,10 @@ span.semibold {
 
 .contact-section.peach {
   background-color: #F79E83;
+}
+
+.contact-section__columns svg path {
+  transition: 0.3s fill;
 }
 
 .contact-section.red h1, .contact-section.red h2, .contact-section.red h3, .contact-section.red h4, .contact-section.red h5, .contact-section.red h6, .contact-section.red p, .contact-section.red li, .contact-section.red span,
@@ -3520,8 +3714,8 @@ span.semibold {
 p.contact-section__label {
   font-family: "Poppins", sans-serif !important;
   font-weight: 500 !important;
-  font-size: 1rem !important;
-  line-height: 1.3rem !important;
+  font-size: 1.15rem !important;
+  line-height: 1.45rem !important;
   letter-spacing: 0.9px !important;
   text-transform: uppercase !important;
   color: #424042;
@@ -3530,8 +3724,8 @@ p.contact-section__label {
 @media screen and (min-width: 768px) {
   .contact-section__label,
   p.contact-section__label {
-    font-size: 1.1rem !important;
-    line-height: 1.4 !important;
+    font-size: 1.3rem !important;
+    line-height: 1.65 !important;
     letter-spacing: 1px !important;
   }
 }
@@ -3539,15 +3733,16 @@ p.contact-section__label {
 .contact-section__left h2 {
   font-family: "Poppins", sans-serif;
   font-weight: 700;
-  font-size: 1.5625rem;
-  line-height: 2.1875rem;
-  letter-spacing: 0.0625rem;
+  font-size: 2.125rem;
+  line-height: 2.75rem;
+  letter-spacing: 0.02125rem;
   color: #424042;
 }
 @media screen and (min-width: 768px) {
   .contact-section__left h2 {
-    font-size: 2.3125rem;
-    line-height: 2.9375rem;
+    font-size: 3.125rem;
+    line-height: 3.75rem;
+    letter-spacing: 0.03125rem;
   }
 }
 .contact-section__left h2 {
@@ -3598,6 +3793,15 @@ p.contact-section__label {
   .contact-icons__row {
     margin-bottom: 1.25rem;
   }
+}
+.contact-icons__row:hover .contact-icons__text {
+  color: red;
+}
+.contact-icons__row:hover path.blob-animation {
+  fill: white;
+}
+.contact-icons__row:hover path[fill=white] {
+  fill: #DC2035;
 }
 
 .contact-icons__icon {
@@ -3677,14 +3881,15 @@ p.contact-section__label {
 }
 @media screen and (min-width: 768px) {
   .contact-icons__text {
-    font-size: 1.15rem;
-    line-height: 1.85rem;
+    font-size: 1.375rem;
+    line-height: 2.125rem;
   }
 }
 .contact-icons__text {
   font-weight: 500;
   color: #424042;
   margin: 0;
+  transition: color 0.3s;
 }
 
 .contact-icons__text a {
@@ -3707,16 +3912,17 @@ p.contact-section__label {
 .contact-section .gform_title {
   font-family: "Poppins", sans-serif;
   font-weight: 700;
-  font-size: 1.5625rem;
-  line-height: 2.1875rem;
-  letter-spacing: 0.0625rem;
+  font-size: 2.125rem;
+  line-height: 2.75rem;
+  letter-spacing: 0.02125rem;
   color: #424042;
 }
 @media screen and (min-width: 768px) {
   .contact-section .gform_heading,
   .contact-section .gform_title {
-    font-size: 2.3125rem;
-    line-height: 2.9375rem;
+    font-size: 3.125rem;
+    line-height: 3.75rem;
+    letter-spacing: 0.03125rem;
   }
 }
 .contact-section .gform_heading,
@@ -3734,14 +3940,15 @@ p.contact-section__label {
 }
 @media screen and (min-width: 768px) {
   .contact-section .gform_required_legend {
-    font-size: 1.15rem;
-    line-height: 1.75rem;
+    font-size: 1.25rem;
+    line-height: 1.95rem;
   }
 }
 .contact-section .gform_required_legend {
   font-size: 0.875rem;
   color: #424042;
   margin: 0 0 1.5rem 0;
+  display: none;
 }
 
 .contact-section .gform_fields {
@@ -3765,44 +3972,44 @@ p.contact-section__label {
   border: 0;
 }
 
-.contact-section .gfield input[type=text],
-.contact-section .gfield input[type=email],
-.contact-section .gfield input[type=tel],
-.contact-section .gfield input[type=url],
-.contact-section .gfield input[type=number],
-.contact-section .gfield select,
-.contact-section .gfield textarea {
+.contact-section .gform_wrapper .gfield input[type=text],
+.contact-section .gform_wrapper .gfield input[type=email],
+.contact-section .gform_wrapper .gfield input[type=tel],
+.contact-section .gform_wrapper .gfield input[type=url],
+.contact-section .gform_wrapper .gfield input[type=number],
+.contact-section .gform_wrapper .gfield select,
+.contact-section .gform_wrapper .gfield textarea {
   width: 100%;
   box-sizing: border-box;
   background-color: #FFFFFF;
   border: 1px solid #424042;
   border-radius: 5px;
-  padding: 14px 18px;
+  padding: 9px 18px;
   font-family: "Figtree", sans-serif;
   font-weight: 300;
-  font-size: 1.0625rem;
+  font-size: 1.25rem;
   line-height: 2;
   color: #424042;
 }
-.contact-section .gfield input[type=text]::-moz-placeholder, .contact-section .gfield input[type=email]::-moz-placeholder, .contact-section .gfield input[type=tel]::-moz-placeholder, .contact-section .gfield input[type=url]::-moz-placeholder, .contact-section .gfield input[type=number]::-moz-placeholder, .contact-section .gfield select::-moz-placeholder, .contact-section .gfield textarea::-moz-placeholder {
+.contact-section .gform_wrapper .gfield input[type=text]::-moz-placeholder, .contact-section .gform_wrapper .gfield input[type=email]::-moz-placeholder, .contact-section .gform_wrapper .gfield input[type=tel]::-moz-placeholder, .contact-section .gform_wrapper .gfield input[type=url]::-moz-placeholder, .contact-section .gform_wrapper .gfield input[type=number]::-moz-placeholder, .contact-section .gform_wrapper .gfield select::-moz-placeholder, .contact-section .gform_wrapper .gfield textarea::-moz-placeholder {
   color: rgba(66, 64, 66, 0.6);
 }
-.contact-section .gfield input[type=text]::placeholder,
-.contact-section .gfield input[type=email]::placeholder,
-.contact-section .gfield input[type=tel]::placeholder,
-.contact-section .gfield input[type=url]::placeholder,
-.contact-section .gfield input[type=number]::placeholder,
-.contact-section .gfield select::placeholder,
-.contact-section .gfield textarea::placeholder {
+.contact-section .gform_wrapper .gfield input[type=text]::placeholder,
+.contact-section .gform_wrapper .gfield input[type=email]::placeholder,
+.contact-section .gform_wrapper .gfield input[type=tel]::placeholder,
+.contact-section .gform_wrapper .gfield input[type=url]::placeholder,
+.contact-section .gform_wrapper .gfield input[type=number]::placeholder,
+.contact-section .gform_wrapper .gfield select::placeholder,
+.contact-section .gform_wrapper .gfield textarea::placeholder {
   color: rgba(66, 64, 66, 0.6);
 }
-.contact-section .gfield input[type=text]:focus,
-.contact-section .gfield input[type=email]:focus,
-.contact-section .gfield input[type=tel]:focus,
-.contact-section .gfield input[type=url]:focus,
-.contact-section .gfield input[type=number]:focus,
-.contact-section .gfield select:focus,
-.contact-section .gfield textarea:focus {
+.contact-section .gform_wrapper .gfield input[type=text]:focus,
+.contact-section .gform_wrapper .gfield input[type=email]:focus,
+.contact-section .gform_wrapper .gfield input[type=tel]:focus,
+.contact-section .gform_wrapper .gfield input[type=url]:focus,
+.contact-section .gform_wrapper .gfield input[type=number]:focus,
+.contact-section .gform_wrapper .gfield select:focus,
+.contact-section .gform_wrapper .gfield textarea:focus {
   outline: none;
   border-color: #DC2035;
 }
@@ -3828,8 +4035,8 @@ p.contact-section__label {
 @media screen and (min-width: 768px) {
   .contact-section .gfield_validation_message,
   .contact-section .validation_message {
-    font-size: 1.15rem;
-    line-height: 1.75rem;
+    font-size: 1.25rem;
+    line-height: 1.95rem;
   }
 }
 .contact-section .gfield_validation_message,
@@ -3895,9 +4102,9 @@ div.gform_wrapper.gravity-theme .gform_page_footer {
   .contact-section .gform_footer input[type=submit],
   .contact-section .gform_footer button[type=submit] {
     line-height: 1.4625rem;
-    font-size: 1rem;
+    font-size: 1.065rem;
     letter-spacing: 0.34px;
-    padding: 12px 24px 12px 30px;
+    padding: 15px 28px 15px 35px;
     gap: 10px;
   }
 }
@@ -4007,7 +4214,7 @@ div.gform_wrapper.gravity-theme .gform_page_footer {
 .hero__content {
   position: relative;
   z-index: 2;
-  max-width: 1184px;
+  max-width: 1428px;
   margin: 0 auto;
   padding: 3rem 1.25rem;
   text-align: left;
@@ -4071,13 +4278,13 @@ div.gform_wrapper.gravity-theme .gform_page_footer {
   width: 100%;
   position: relative;
   margin: 0 auto;
-  padding-top: 2.25rem;
-  padding-bottom: 2.25rem;
+  padding-top: 2.75rem;
+  padding-bottom: 2.75rem;
 }
 @media screen and (min-width: 768px) {
   .image-columns {
-    padding-top: 5rem;
-    padding-bottom: 5rem;
+    padding-top: 7rem;
+    padding-bottom: 7rem;
   }
 }
 
@@ -4175,15 +4382,16 @@ div.gform_wrapper.gravity-theme .gform_page_footer {
 .image-columns .wrap h2 {
   font-family: "Poppins", sans-serif;
   font-weight: 700;
-  font-size: 1.5625rem;
-  line-height: 2.1875rem;
-  letter-spacing: 0.0625rem;
+  font-size: 2.125rem;
+  line-height: 2.75rem;
+  letter-spacing: 0.02125rem;
   color: #424042;
 }
 @media screen and (min-width: 768px) {
   .image-columns .wrap h2 {
-    font-size: 2.3125rem;
-    line-height: 2.9375rem;
+    font-size: 3.125rem;
+    line-height: 3.75rem;
+    letter-spacing: 0.03125rem;
   }
 }
 .image-columns .wrap h2 {
@@ -4193,15 +4401,15 @@ div.gform_wrapper.gravity-theme .gform_page_footer {
 .image-columns .wrap h3 {
   font-family: "Poppins", sans-serif;
   font-weight: 700;
-  font-size: 1.225rem;
-  line-height: 1.75rem;
+  font-size: 1.825rem;
+  line-height: 2rem;
   letter-spacing: 0.0625rem;
   color: #424042;
 }
 @media screen and (min-width: 768px) {
   .image-columns .wrap h3 {
-    font-size: 1.7625rem;
-    line-height: 2.1875rem;
+    font-size: 2.3525rem;
+    line-height: 3.1875rem;
   }
 }
 .image-columns .wrap h3 {
@@ -4217,8 +4425,8 @@ div.gform_wrapper.gravity-theme .gform_page_footer {
 }
 @media screen and (min-width: 768px) {
   .image-columns .wrap p {
-    font-size: 1.15rem;
-    line-height: 1.75rem;
+    font-size: 1.25rem;
+    line-height: 1.95rem;
   }
 }
 
@@ -4424,17 +4632,17 @@ div.gform_wrapper.gravity-theme .gform_page_footer {
   background-color: #024D69;
   overflow: hidden;
   padding-top: 0;
-  padding-bottom: 4.5rem;
+  padding-bottom: 5.5rem;
   z-index: 2;
 }
 @media screen and (min-width: 768px) {
   .values-section {
-    padding-bottom: 5rem;
+    padding-bottom: 7rem;
   }
 }
 
 .values-section > .block-wrapper {
-  max-width: 1184px;
+  max-width: 1428px;
   margin-left: auto;
   margin-right: auto;
   padding-left: 1.25rem;
@@ -4571,15 +4779,15 @@ div.gform_wrapper.gravity-theme .gform_page_footer {
 .values-section .flip-card h3 {
   font-family: "Poppins", sans-serif;
   font-weight: 700;
-  font-size: 1.225rem;
-  line-height: 1.75rem;
+  font-size: 1.825rem;
+  line-height: 2rem;
   letter-spacing: 0.0625rem;
   color: #424042;
 }
 @media screen and (min-width: 768px) {
   .values-section .flip-card h3 {
-    font-size: 1.7625rem;
-    line-height: 2.1875rem;
+    font-size: 2.3525rem;
+    line-height: 3.1875rem;
   }
 }
 .values-section .flip-card h3 {
@@ -4588,14 +4796,14 @@ div.gform_wrapper.gravity-theme .gform_page_footer {
   transition: 0.5s color;
   margin-top: 15px;
   width: 100%;
-  font-size: 1.1rem;
-  line-height: 1.35rem;
+  font-size: 1.3125rem;
+  line-height: 1.7rem;
 }
 @media screen and (min-width: 768px) {
   .values-section .flip-card h3 {
-    margin-top: 21px;
-    font-size: 1.3625rem;
-    line-height: 1.5625rem;
+    margin-top: 20px;
+    font-size: 1.5625rem;
+    line-height: 1.8625rem;
   }
 }
 
@@ -4627,7 +4835,7 @@ div.gform_wrapper.gravity-theme .gform_page_footer {
 }
 @media screen and (min-width: 768px) {
   .values-section__marquee {
-    padding: 3rem 0;
+    padding: 4rem 0;
   }
 }
 
@@ -4700,18 +4908,18 @@ div.gform_wrapper.gravity-theme .gform_page_footer {
 
 .shortcode-section {
   width: 100%;
-  padding-top: 4.5rem;
-  padding-bottom: 4.5rem;
+  padding-top: 5.5rem;
+  padding-bottom: 5.5rem;
 }
 @media screen and (min-width: 768px) {
   .shortcode-section {
-    padding-top: 5rem;
-    padding-bottom: 5rem;
+    padding-top: 7rem;
+    padding-bottom: 7rem;
   }
 }
 
 .shortcode-section > .block-wrapper {
-  max-width: 1184px;
+  max-width: 1428px;
   margin-left: auto;
   margin-right: auto;
   padding-left: 1.25rem;
@@ -4750,8 +4958,8 @@ div.gform_wrapper.gravity-theme .gform_page_footer {
 
 .community-section {
   position: relative;
-  padding-top: 4.5rem;
-  padding-bottom: 4.5rem;
+  padding-top: 5.5rem;
+  padding-bottom: 5.5rem;
   overflow: hidden;
 }
 @media screen and (min-width: 768px) {
@@ -4762,7 +4970,7 @@ div.gform_wrapper.gravity-theme .gform_page_footer {
 }
 
 .community-section > .block-wrapper {
-  max-width: 1184px;
+  max-width: 1428px;
   margin-left: auto;
   margin-right: auto;
   padding-left: 1.25rem;
@@ -5000,8 +5208,8 @@ div.gform_wrapper.gravity-theme .gform_page_footer {
 
 .awards-section {
   position: relative;
-  padding-top: 2.25rem;
-  padding-bottom: 2.25rem;
+  padding-top: 2.75rem;
+  padding-bottom: 2.75rem;
   z-index: 2;
 }
 @media screen and (min-width: 768px) {
@@ -5012,7 +5220,7 @@ div.gform_wrapper.gravity-theme .gform_page_footer {
 }
 
 .awards-section > .block-wrapper {
-  max-width: 1184px;
+  max-width: 1428px;
   margin-left: auto;
   margin-right: auto;
   padding-left: 1.25rem;
@@ -5310,8 +5518,8 @@ div.gform_wrapper.gravity-theme .gform_page_footer {
 .vibe-cta {
   position: relative;
   overflow: hidden;
-  padding-top: 2.25rem;
-  padding-bottom: 2.25rem;
+  padding-top: 2.75rem;
+  padding-bottom: 2.75rem;
 }
 @media screen and (min-width: 768px) {
   .vibe-cta {
@@ -5321,7 +5529,7 @@ div.gform_wrapper.gravity-theme .gform_page_footer {
 }
 
 .vibe-cta > .block-wrapper {
-  max-width: 1184px;
+  max-width: 1428px;
   margin-left: auto;
   margin-right: auto;
   padding-left: 1.25rem;
@@ -5408,17 +5616,17 @@ div.gform_wrapper.gravity-theme .gform_page_footer {
 .media-content {
   position: relative;
   width: 100%;
-  padding-top: 4.5rem;
-  padding-bottom: 4.5rem;
+  padding-top: 5.5rem;
+  padding-bottom: 5.5rem;
 }
 @media screen and (min-width: 768px) {
   .media-content {
-    padding-top: 5rem;
-    padding-bottom: 5rem;
+    padding-top: 7rem;
+    padding-bottom: 7rem;
   }
 }
 .media-content > .block-wrapper {
-  max-width: 1184px;
+  max-width: 1428px;
   margin-left: auto;
   margin-right: auto;
   padding-left: 1.25rem;
@@ -5485,7 +5693,7 @@ div.gform_wrapper.gravity-theme .gform_page_footer {
 @media screen and (min-width: 768px) {
   .media-content .content-columns {
     width: 33.333%;
-    padding-left: 2rem;
+    padding-left: 3.125rem;
     margin-top: 0;
   }
 }
@@ -5516,15 +5724,16 @@ div.gform_wrapper.gravity-theme .gform_page_footer {
 .media-content .wrap h2 {
   font-family: "Poppins", sans-serif;
   font-weight: 700;
-  font-size: 1.5625rem;
-  line-height: 2.1875rem;
-  letter-spacing: 0.0625rem;
+  font-size: 2.125rem;
+  line-height: 2.75rem;
+  letter-spacing: 0.02125rem;
   color: #424042;
 }
 @media screen and (min-width: 768px) {
   .media-content .wrap h2 {
-    font-size: 2.3125rem;
-    line-height: 2.9375rem;
+    font-size: 3.125rem;
+    line-height: 3.75rem;
+    letter-spacing: 0.03125rem;
   }
 }
 .media-content .wrap h2 {
@@ -5534,15 +5743,15 @@ div.gform_wrapper.gravity-theme .gform_page_footer {
 .media-content .wrap h3 {
   font-family: "Poppins", sans-serif;
   font-weight: 700;
-  font-size: 1.225rem;
-  line-height: 1.75rem;
+  font-size: 1.825rem;
+  line-height: 2rem;
   letter-spacing: 0.0625rem;
   color: #424042;
 }
 @media screen and (min-width: 768px) {
   .media-content .wrap h3 {
-    font-size: 1.7625rem;
-    line-height: 2.1875rem;
+    font-size: 2.3525rem;
+    line-height: 3.1875rem;
   }
 }
 .media-content .wrap h3 {
@@ -5558,8 +5767,8 @@ div.gform_wrapper.gravity-theme .gform_page_footer {
 }
 @media screen and (min-width: 768px) {
   .media-content .wrap p {
-    font-size: 1.15rem;
-    line-height: 1.75rem;
+    font-size: 1.25rem;
+    line-height: 1.95rem;
   }
 }
 
@@ -5697,8 +5906,8 @@ div.gform_wrapper.gravity-theme .gform_page_footer {
 
 .service-list {
   position: relative;
-  padding-top: 2.25rem;
-  padding-bottom: 2.25rem;
+  padding-top: 2.75rem;
+  padding-bottom: 2.75rem;
 }
 @media screen and (min-width: 768px) {
   .service-list {
@@ -5707,7 +5916,7 @@ div.gform_wrapper.gravity-theme .gform_page_footer {
   }
 }
 .service-list > .block-wrapper {
-  max-width: 1184px;
+  max-width: 1428px;
   margin-left: auto;
   margin-right: auto;
   padding-left: 1.25rem;
@@ -5723,16 +5932,17 @@ div.gform_wrapper.gravity-theme .gform_page_footer {
 .service-list > .block-wrapper > .wp-block[data-type="core/heading"] h2 {
   font-family: "Poppins", sans-serif;
   font-weight: 700;
-  font-size: 1.5625rem;
-  line-height: 2.1875rem;
-  letter-spacing: 0.0625rem;
+  font-size: 2.125rem;
+  line-height: 2.75rem;
+  letter-spacing: 0.02125rem;
   color: #424042;
 }
 @media screen and (min-width: 768px) {
   .service-list > .block-wrapper > h2,
   .service-list > .block-wrapper > .wp-block[data-type="core/heading"] h2 {
-    font-size: 2.3125rem;
-    line-height: 2.9375rem;
+    font-size: 3.125rem;
+    line-height: 3.75rem;
+    letter-spacing: 0.03125rem;
   }
 }
 .service-list > .block-wrapper > h2,
@@ -6001,7 +6211,7 @@ div.gform_wrapper.gravity-theme .gform_page_footer {
 .filter-case-studies {
   position: relative;
   padding-top: 0;
-  padding-bottom: 4.5rem;
+  padding-bottom: 5.5rem;
 }
 @media screen and (min-width: 768px) {
   .filter-case-studies {
@@ -6011,7 +6221,7 @@ div.gform_wrapper.gravity-theme .gform_page_footer {
 }
 
 .filter-case-studies > .block-wrapper {
-  max-width: 1184px;
+  max-width: 1428px;
   margin-left: auto;
   margin-right: auto;
   padding-left: 1.25rem;
@@ -6034,15 +6244,15 @@ div.gform_wrapper.gravity-theme .gform_page_footer {
 div.filter-case-studies__hero .hero-services h1 {
   font-family: "Poppins", sans-serif;
   font-weight: 600;
-  font-size: 2.65rem;
-  line-height: 3.275rem;
+  font-size: 3.55rem;
+  line-height: 4.75rem;
   letter-spacing: 0;
   color: #424042;
 }
 @media screen and (min-width: 768px) {
   div.filter-case-studies__hero .hero-services h1 {
-    font-size: 4.5rem;
-    line-height: 4.75rem;
+    font-size: 5.5rem;
+    line-height: 6.75rem;
   }
 }
 
@@ -6433,7 +6643,7 @@ div.filter-case-studies__hero .hero-services h1 {
 }
 
 .filter-posts > .block-wrapper {
-  max-width: 1184px;
+  max-width: 1428px;
   margin-left: auto;
   margin-right: auto;
   padding-left: 1.25rem;
@@ -6446,7 +6656,7 @@ div.filter-case-studies__hero .hero-services h1 {
   }
 }
 .filter-posts > .block-wrapper {
-  padding-bottom: 4.5rem;
+  padding-bottom: 5.5rem;
 }
 @media screen and (min-width: 768px) {
   .filter-posts > .block-wrapper {
@@ -6457,15 +6667,15 @@ div.filter-case-studies__hero .hero-services h1 {
 div.filter-posts__hero .hero-services h1 {
   font-family: "Poppins", sans-serif;
   font-weight: 600;
-  font-size: 2.65rem;
-  line-height: 3.275rem;
+  font-size: 3.55rem;
+  line-height: 4.75rem;
   letter-spacing: 0;
   color: #424042;
 }
 @media screen and (min-width: 768px) {
   div.filter-posts__hero .hero-services h1 {
-    font-size: 4.5rem;
-    line-height: 4.75rem;
+    font-size: 5.5rem;
+    line-height: 6.75rem;
   }
 }
 
@@ -6791,8 +7001,8 @@ div.filter-posts__hero .hero-services h1 {
   position: relative;
   overflow: hidden;
   background-color: #F2ECE5;
-  padding-top: 4.5rem;
-  padding-bottom: 4.5rem;
+  padding-top: 5.5rem;
+  padding-bottom: 5.5rem;
   z-index: 2;
 }
 @media screen and (min-width: 768px) {
@@ -6825,7 +7035,7 @@ div.filter-posts__hero .hero-services h1 {
 }
 
 .hero-services .block-wrapper {
-  max-width: 1184px;
+  max-width: 1428px;
   margin-left: auto;
   margin-right: auto;
   padding-left: 1.25rem;
@@ -6846,15 +7056,16 @@ div.filter-posts__hero .hero-services h1 {
   color: #E32E6D;
   font-family: "Poppins", sans-serif;
   font-weight: 700;
-  font-size: 1.5625rem;
-  line-height: 2.1875rem;
-  letter-spacing: 0.0625rem;
+  font-size: 2.125rem;
+  line-height: 2.75rem;
+  letter-spacing: 0.02125rem;
   color: #424042;
 }
 @media screen and (min-width: 768px) {
   .hero-services .hero-background__content h1 {
-    font-size: 2.3125rem;
-    line-height: 2.9375rem;
+    font-size: 3.125rem;
+    line-height: 3.75rem;
+    letter-spacing: 0.03125rem;
   }
 }
 
@@ -7130,8 +7341,8 @@ div.filter-posts__hero .hero-services h1 {
 
 .case-study-body {
   position: relative;
-  padding-top: 4.5rem;
-  padding-bottom: 4.5rem;
+  padding-top: 5.5rem;
+  padding-bottom: 5.5rem;
 }
 @media screen and (min-width: 768px) {
   .case-study-body {
@@ -7141,7 +7352,7 @@ div.filter-posts__hero .hero-services h1 {
 }
 
 .case-study-body .block-wrapper {
-  max-width: 1184px;
+  max-width: 1428px;
   margin-left: auto;
   margin-right: auto;
   padding-left: 1.25rem;
@@ -7191,16 +7402,17 @@ p.case-study-body__label {
 .case-study-body__heading {
   font-family: "Poppins", sans-serif;
   font-weight: 700;
-  font-size: 1.5625rem;
-  line-height: 2.1875rem;
-  letter-spacing: 0.0625rem;
+  font-size: 2.125rem;
+  line-height: 2.75rem;
+  letter-spacing: 0.02125rem;
   color: #424042;
 }
 @media screen and (min-width: 768px) {
   .case-study-body__content h2,
   .case-study-body__heading {
-    font-size: 2.3125rem;
-    line-height: 2.9375rem;
+    font-size: 3.125rem;
+    line-height: 3.75rem;
+    letter-spacing: 0.03125rem;
   }
 }
 .case-study-body__content h2,
@@ -7229,8 +7441,8 @@ p.case-study-body__label {
 }
 @media screen and (min-width: 768px) {
   .case-study-body__content p {
-    font-size: 1.15rem;
-    line-height: 1.75rem;
+    font-size: 1.25rem;
+    line-height: 1.95rem;
   }
 }
 .case-study-body__content p {
@@ -7266,8 +7478,8 @@ p.case-study-body__label {
 .feature-cards {
   position: relative;
   background-color: #424042;
-  padding-top: 4.5rem;
-  padding-bottom: 4.5rem;
+  padding-top: 5.5rem;
+  padding-bottom: 5.5rem;
 }
 @media screen and (min-width: 768px) {
   .feature-cards {
@@ -7277,7 +7489,7 @@ p.case-study-body__label {
 }
 
 .feature-cards .block-wrapper {
-  max-width: 1184px;
+  max-width: 1428px;
   margin-left: auto;
   margin-right: auto;
   padding-left: 1.25rem;
@@ -7412,9 +7624,9 @@ p.case-study-body__label {
 .header-single h3 {
   font-family: "Poppins", sans-serif;
   font-weight: 700;
-  font-size: 1.5625rem;
-  line-height: 2.1875rem;
-  letter-spacing: 0.0625rem;
+  font-size: 2.125rem;
+  line-height: 2.75rem;
+  letter-spacing: 0.02125rem;
   color: #424042;
 }
 @media screen and (min-width: 768px) {
@@ -7422,8 +7634,9 @@ p.case-study-body__label {
   .header-single h1,
   .header-single h2,
   .header-single h3 {
-    font-size: 2.3125rem;
-    line-height: 2.9375rem;
+    font-size: 3.125rem;
+    line-height: 3.75rem;
+    letter-spacing: 0.03125rem;
   }
 }
 .header-single__heading,
@@ -7533,7 +7746,7 @@ p.case-study-body__label {
 }
 
 .section-nav > .block-wrapper {
-  max-width: 1184px;
+  max-width: 1428px;
   margin-left: auto;
   margin-right: auto;
   padding-left: 1.25rem;
@@ -7579,9 +7792,9 @@ p.case-study-body__label {
 }
 @media screen and (min-width: 768px) {
   .section-nav .wp-block-button__link {
-    padding: 12px 24px 12px 24px;
+    padding: 15px 28px 15px 35px;
     line-height: 1.4625rem;
-    font-size: 1rem;
+    font-size: 1.065rem;
     letter-spacing: 0.34px;
   }
 }
@@ -7599,7 +7812,7 @@ p.case-study-body__label {
 }
 @media screen and (min-width: 768px) {
   .section-nav .wp-block-button__link span {
-    font-size: 1rem;
+    font-size: 1.0625rem;
     line-height: 1.4625rem;
     letter-spacing: 0.02125rem;
   }
@@ -7758,8 +7971,8 @@ p.case-study-body__label {
 @media screen and (min-width: 768px) {
   .feature-card__content h3,
   .feature-card__title {
-    font-size: 1.15rem;
-    line-height: 1.85rem;
+    font-size: 1.375rem;
+    line-height: 2.125rem;
   }
 }
 .feature-card__content h3,
@@ -7780,8 +7993,8 @@ p.case-study-body__label {
 @media screen and (min-width: 768px) {
   .feature-card__content p,
   .feature-card__body {
-    font-size: 1.15rem;
-    line-height: 1.75rem;
+    font-size: 1.25rem;
+    line-height: 1.95rem;
   }
 }
 .feature-card__content p,
@@ -7825,8 +8038,8 @@ p.case-study-body__label {
 
 .cs-gallery {
   position: relative;
-  padding-top: 4.5rem;
-  padding-bottom: 4.5rem;
+  padding-top: 5.5rem;
+  padding-bottom: 5.5rem;
 }
 @media screen and (min-width: 768px) {
   .cs-gallery {
@@ -7836,7 +8049,7 @@ p.case-study-body__label {
 }
 
 .cs-gallery > .block-wrapper {
-  max-width: 1184px;
+  max-width: 1428px;
   margin-left: auto;
   margin-right: auto;
   padding-left: 1.25rem;
@@ -7911,15 +8124,16 @@ p.cs-gallery__label {
 .cs-gallery h2 {
   font-family: "Poppins", sans-serif;
   font-weight: 700;
-  font-size: 1.5625rem;
-  line-height: 2.1875rem;
-  letter-spacing: 0.0625rem;
+  font-size: 2.125rem;
+  line-height: 2.75rem;
+  letter-spacing: 0.02125rem;
   color: #424042;
 }
 @media screen and (min-width: 768px) {
   .cs-gallery h2 {
-    font-size: 2.3125rem;
-    line-height: 2.9375rem;
+    font-size: 3.125rem;
+    line-height: 3.75rem;
+    letter-spacing: 0.03125rem;
   }
 }
 .cs-gallery h2 {
@@ -7973,8 +8187,8 @@ p.cs-gallery__label {
 
 .color-palette-block {
   position: relative;
-  padding-top: 4.5rem;
-  padding-bottom: 4.5rem;
+  padding-top: 5.5rem;
+  padding-bottom: 5.5rem;
 }
 @media screen and (min-width: 768px) {
   .color-palette-block {
@@ -7984,7 +8198,7 @@ p.cs-gallery__label {
 }
 
 .color-palette-block > .block-wrapper {
-  max-width: 1184px;
+  max-width: 1428px;
   margin-left: auto;
   margin-right: auto;
   padding-left: 1.25rem;
@@ -8214,8 +8428,8 @@ p.cs-gallery__label {
 }
 .device-showcase {
   position: relative;
-  padding-top: 4.5rem;
-  padding-bottom: 4.5rem;
+  padding-top: 5.5rem;
+  padding-bottom: 5.5rem;
 }
 @media screen and (min-width: 768px) {
   .device-showcase {
@@ -8225,7 +8439,7 @@ p.cs-gallery__label {
 }
 
 .device-showcase > .block-wrapper {
-  max-width: 1184px;
+  max-width: 1428px;
   margin-left: auto;
   margin-right: auto;
   padding-left: 1.25rem;
@@ -8413,8 +8627,8 @@ img.device-frame__device {
 
 .process-steps {
   position: relative;
-  padding-top: 2.25rem;
-  padding-bottom: 2.25rem;
+  padding-top: 2.75rem;
+  padding-bottom: 2.75rem;
   z-index: 2;
 }
 @media screen and (min-width: 768px) {
@@ -8425,7 +8639,7 @@ img.device-frame__device {
 }
 
 .process-steps > .block-wrapper {
-  max-width: 1184px;
+  max-width: 1428px;
   margin-left: auto;
   margin-right: auto;
   padding-left: 1.25rem;
@@ -8733,8 +8947,8 @@ img.device-frame__device {
 .icon-cards {
   position: relative;
   background-color: #024D69;
-  padding-top: 4.5rem;
-  padding-bottom: 4.5rem;
+  padding-top: 5.5rem;
+  padding-bottom: 5.5rem;
 }
 @media screen and (min-width: 768px) {
   .icon-cards {
@@ -8744,7 +8958,7 @@ img.device-frame__device {
 }
 
 .icon-cards .block-wrapper {
-  max-width: 1184px;
+  max-width: 1428px;
   margin-left: auto;
   margin-right: auto;
   padding-left: 1.25rem;
@@ -8980,8 +9194,8 @@ img.device-frame__device {
 }
 @media screen and (min-width: 768px) {
   .callout-block .callout-block__content p {
-    font-size: 1.15rem;
-    line-height: 1.75rem;
+    font-size: 1.25rem;
+    line-height: 1.95rem;
   }
 }
 .callout-block .callout-block__content p {
@@ -9048,8 +9262,8 @@ img.device-frame__device {
 }
 @media screen and (min-width: 768px) {
   .faq-accordion__trigger .faq-accordion__question {
-    font-size: 1.15rem;
-    line-height: 1.85rem;
+    font-size: 1.375rem;
+    line-height: 2.125rem;
   }
 }
 .faq-accordion__trigger .faq-accordion__question {
@@ -9103,8 +9317,8 @@ img.device-frame__device {
 }
 @media screen and (min-width: 768px) {
   .faq-accordion__panel-inner {
-    font-size: 1.15rem;
-    line-height: 1.75rem;
+    font-size: 1.25rem;
+    line-height: 1.95rem;
   }
 }
 .faq-accordion__panel-inner p {
@@ -9128,15 +9342,15 @@ img.device-frame__device {
   display: flex;
   justify-content: center;
   width: 100%;
-  padding-top: 2.25rem;
-  padding-bottom: 2.25rem;
+  padding-top: 2.75rem;
+  padding-bottom: 2.75rem;
   position: relative;
   z-index: 2;
 }
 @media screen and (min-width: 768px) {
   .squiggle-divider-block {
-    padding-top: 5rem;
-    padding-bottom: 5rem;
+    padding-top: 7rem;
+    padding-bottom: 7rem;
   }
 }
 
@@ -9251,17 +9465,17 @@ img.device-frame__device {
   position: relative;
   width: 100%;
   overflow: visible;
-  padding-top: 4.5rem;
-  padding-bottom: 4.5rem;
+  padding-top: 5.5rem;
+  padding-bottom: 5.5rem;
 }
 @media screen and (min-width: 768px) {
   .text-columns {
-    padding-top: 5rem;
-    padding-bottom: 5rem;
+    padding-top: 7rem;
+    padding-bottom: 7rem;
   }
 }
 .text-columns > .block-wrapper {
-  max-width: 1184px;
+  max-width: 1428px;
   margin-left: auto;
   margin-right: auto;
   padding-left: 1.25rem;
@@ -9933,8 +10147,7 @@ button.slickwprev-prev:before {
   .partner-logo .header-intro__left {
     background-image: url("img/partner-resource.svg");
     background-repeat: no-repeat;
-    background-size: 135px;
-    background-size: 175px;
+    background-size: 195px;
     background-position: bottom left;
   }
 }
@@ -9952,8 +10165,8 @@ button.slickwprev-prev:before {
     position: absolute;
     bottom: 0;
     left: 0;
-    width: 175px;
-    height: 175px;
+    width: 195px;
+    height: 195px;
   }
 }
 

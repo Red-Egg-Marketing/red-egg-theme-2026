@@ -144,20 +144,7 @@
 
 .header-intro__left .header-intro__label,
 .header-intro__left p.header-intro__label {
-    font-family: $font-head !important;
-    font-weight: 500 !important;
-    font-size: 1rem !important;
-    line-height: 1.3rem !important;
-    letter-spacing: 0.9px !important;
-    text-transform: uppercase !important;
-    color: $gray;
-    margin: 0 0 0.5rem 0;
-    margin-bottom: 0 !important;
-    @media screen and (min-width: $small-width) {
-        font-size: 1.1rem !important;
-        line-height: 1.4 !important;
-        letter-spacing: 1px !important;
-    }
+    @include eyebrow;
 }
 
 .header-intro__left h1,
@@ -175,7 +162,7 @@
 .header-intro__right {
     @media screen and (min-width: $small-width) {
         flex: 1;
-        padding-top: 0.25rem;
+        padding-top: 3.125rem;
     }
 }
 
