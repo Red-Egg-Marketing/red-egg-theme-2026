@@ -104,6 +104,9 @@
 .image-columns .wrap h2 {
     @include primary-h2;
     margin-bottom: 1rem;
+    @media screen and (min-width: $small-width) {
+        margin-bottom: 2rem;
+    }
 }
 
 .image-columns .wrap h3 {
