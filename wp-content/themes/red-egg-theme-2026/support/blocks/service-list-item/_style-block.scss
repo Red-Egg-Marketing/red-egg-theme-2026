@@ -35,9 +35,18 @@ $service-hover-colors: (
     'dark-purple':  $dark-purple,
 );
 
+// Wipe the hover color across the bar left -> right (rather than a plain
+// crossfade). The color is a full-bleed linear-gradient used as the
+// background IMAGE, sized 0%-wide by default and grown to 100% on hover
+// from the left edge, so it reveals directionally over the base gray.
+// (Size scaffolding + transition live on .service-list-item__inner.)
 @each $slug, $color in $service-hover-colors {
+    .service-list-item.hover-#{$slug} .service-list-item__inner {
+        background-image: linear-gradient(to right, $color, $color);
+    }
+
     .service-list-item.hover-#{$slug}:hover .service-list-item__inner {
-        background-color: $color;
+        background-size: 100% 100%;
     }
 }
 
@@ -104,9 +113,16 @@ $service-hover-light: ('white', 'eggshell', 'peach', 'gold', 'purple');
     flex-direction: column;
     gap: 0.75rem;
     background-color: $gray;
+    // Hover-color wipe scaffolding: the per-item gradient (set in the
+    // $service-hover-colors loop above) is pinned to the left edge and
+    // sized to zero width, so on hover it grows L -> R across the bar.
+    // Base gray shows through underneath until the wipe covers it.
+    background-repeat: no-repeat;
+    background-position: left center;
+    background-size: 0% 100%;
     border-radius: $default-border-radius;
     padding: 1.5rem;
-    transition: background-color 0.3s ease;
+    transition: background-size 0.4s ease;
     position: relative;
     @media screen and (min-width: $small-width) {
         flex-direction: row;
