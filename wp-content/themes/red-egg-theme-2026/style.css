@@ -1323,6 +1323,24 @@ body.mega-open {
   text-decoration: underline;
 }
 
+body.has-reveal-footer .site-content {
+  position: relative;
+  z-index: 2;
+  background-color: #FFFFFF;
+}
+body.has-reveal-footer .site-footer {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  z-index: 1;
+}
+
+html.is-changing body.has-reveal-footer .site-footer {
+  opacity: 0;
+}
+
 .page-header,
 .archive-header {
   padding-top: 5.5rem;

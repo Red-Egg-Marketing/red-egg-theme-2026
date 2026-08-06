@@ -324,3 +324,52 @@
         }
     }
 }
+
+// ============================================
+//  Footer Reveal (scroll-over) effect
+// ============================================
+//
+// The footer is pinned to the bottom of the viewport BEHIND the page
+// content; as you scroll to the end of any page the content slides up
+// and reveals it (like karshhagan.com). This is pure layout + stacking
+// -- there is no JS animation driving it.
+//
+// support/js/footer-reveal.js measures the footer's rendered height,
+// sets an equal bottom padding on #page (the persistent wrapper, so it
+// survives Swup content swaps) to create the scroll room, and toggles
+// body.has-reveal-footer. If the footer is ever taller than the
+// viewport (very short screens) the script drops the class so the
+// footer falls back to normal in-flow stacking and can never trap
+// content off-screen.
+//
+// Stacking: #content sits at z-index 2 with an opaque backdrop so the
+// pinned footer (z-index 1) stays hidden until the content clears it.
+// Both are far below the sticky header (z-index 1000), so nav chrome is
+// unaffected. The footer keeps a positive z-index (not negative) so it
+// stays the topmost element in its own region once revealed -- links
+// and the newsletter form remain clickable.
+
+body.has-reveal-footer {
+    .site-content {
+        position: relative;
+        z-index: 2;
+        background-color: $white;
+    }
+
+    .site-footer {
+        position: fixed;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        width: 100%;
+        z-index: 1;
+    }
+}
+
+// During a Swup crossfade #content briefly hits opacity: 0. Hide the
+// pinned footer for that moment so it can't flash through the fading
+// content mid-swap; it restores instantly once the swap settles (by
+// which point scroll has reset to top and content covers it again).
+html.is-changing body.has-reveal-footer .site-footer {
+    opacity: 0;
+}
