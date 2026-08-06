@@ -7455,7 +7455,7 @@ div.gform_wrapper.gravity-theme .gform_page_footer {
   height: auto;
   -o-object-fit: cover;
      object-fit: cover;
-  aspect-ratio: 103/58;
+  /*        aspect-ratio: 103 / 58;*/
   transition: transform 0.4s ease;
 }
 
