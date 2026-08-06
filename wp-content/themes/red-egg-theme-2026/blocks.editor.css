@@ -579,16 +579,16 @@ span.semibold {
 .is-root-container h4 {
   font-family: "Poppins", sans-serif;
   font-weight: 500;
-  font-size: 1.0625rem;
-  line-height: 1.625rem;
+  font-size: 1.35rem;
+  line-height: 1.9rem;
   color: #424042;
 }
 @media screen and (min-width: 768px) {
   .site-content h4,
   .entry-content h4,
   .is-root-container h4 {
-    font-size: 1.375rem;
-    line-height: 2.125rem;
+    font-size: 1.5625rem;
+    line-height: 1.975rem;
   }
 }
 .site-content h4,
@@ -1022,14 +1022,14 @@ span.semibold {
 .hero-background__content p {
   font-family: "Poppins", sans-serif;
   font-weight: 500;
-  font-size: 1.0625rem;
-  line-height: 1.625rem;
+  font-size: 1.35rem;
+  line-height: 1.9rem;
   color: #424042;
 }
 @media screen and (min-width: 768px) {
   .hero-background__content p {
-    font-size: 1.375rem;
-    line-height: 2.125rem;
+    font-size: 1.5625rem;
+    line-height: 1.975rem;
   }
 }
 .hero-background__content p {
@@ -1560,15 +1560,15 @@ span.semibold {
 .header-intro__right p:first-of-type {
   font-family: "Poppins", sans-serif;
   font-weight: 500;
-  font-size: 1.0625rem;
-  line-height: 1.625rem;
+  font-size: 1.35rem;
+  line-height: 1.9rem;
   color: #424042;
 }
 @media screen and (min-width: 768px) {
   .header-intro__left p,
   .header-intro__right p:first-of-type {
-    font-size: 1.375rem;
-    line-height: 2.125rem;
+    font-size: 1.5625rem;
+    line-height: 1.975rem;
   }
 }
 .header-intro__left p,
@@ -2907,14 +2907,14 @@ span.semibold {
 .case-studies-slider .case-studies-slider__loading p {
   font-family: "Poppins", sans-serif;
   font-weight: 500;
-  font-size: 1.0625rem;
-  line-height: 1.625rem;
+  font-size: 1.35rem;
+  line-height: 1.9rem;
   color: #424042;
 }
 @media screen and (min-width: 768px) {
   .case-studies-slider .case-studies-slider__loading p {
-    font-size: 1.375rem;
-    line-height: 2.125rem;
+    font-size: 1.5625rem;
+    line-height: 1.975rem;
   }
 }
 .case-studies-slider .case-studies-slider__loading p {
@@ -2929,14 +2929,14 @@ span.semibold {
 .case-studies-slider .error h3 {
   font-family: "Poppins", sans-serif;
   font-weight: 500;
-  font-size: 1.0625rem;
-  line-height: 1.625rem;
+  font-size: 1.35rem;
+  line-height: 1.9rem;
   color: #424042;
 }
 @media screen and (min-width: 768px) {
   .case-studies-slider .error h3 {
-    font-size: 1.375rem;
-    line-height: 2.125rem;
+    font-size: 1.5625rem;
+    line-height: 1.975rem;
   }
 }
 .case-studies-slider .error h3 {
@@ -3560,14 +3560,14 @@ span.semibold {
 .insights-block .insights-block__loading p {
   font-family: "Poppins", sans-serif;
   font-weight: 500;
-  font-size: 1.0625rem;
-  line-height: 1.625rem;
+  font-size: 1.35rem;
+  line-height: 1.9rem;
   color: #424042;
 }
 @media screen and (min-width: 768px) {
   .insights-block .insights-block__loading p {
-    font-size: 1.375rem;
-    line-height: 2.125rem;
+    font-size: 1.5625rem;
+    line-height: 1.975rem;
   }
 }
 .insights-block .insights-block__loading p {
@@ -3577,14 +3577,14 @@ span.semibold {
 .insights-block .insights-block__empty {
   font-family: "Poppins", sans-serif;
   font-weight: 500;
-  font-size: 1.0625rem;
-  line-height: 1.625rem;
+  font-size: 1.35rem;
+  line-height: 1.9rem;
   color: #424042;
 }
 @media screen and (min-width: 768px) {
   .insights-block .insights-block__empty {
-    font-size: 1.375rem;
-    line-height: 2.125rem;
+    font-size: 1.5625rem;
+    line-height: 1.975rem;
   }
 }
 .insights-block .insights-block__empty {
@@ -3888,14 +3888,14 @@ p.contact-section__label {
 .contact-icons__text {
   font-family: "Poppins", sans-serif;
   font-weight: 500;
-  font-size: 1.0625rem;
-  line-height: 1.625rem;
+  font-size: 1.35rem;
+  line-height: 1.9rem;
   color: #424042;
 }
 @media screen and (min-width: 768px) {
   .contact-icons__text {
-    font-size: 1.375rem;
-    line-height: 2.125rem;
+    font-size: 1.5625rem;
+    line-height: 1.975rem;
   }
 }
 .contact-icons__text {
@@ -6323,10 +6323,15 @@ div.filter-case-studies__hero .hero-services h1 {
 
 .filter-case-studies__filters {
   margin-bottom: 2rem;
+  position: sticky;
+  background: white;
+  z-index: 999;
+  top: 82px;
 }
 @media screen and (min-width: 768px) {
   .filter-case-studies__filters {
     margin-bottom: 2.5rem;
+    top: 80px;
   }
 }
 
@@ -6345,13 +6350,13 @@ div.filter-case-studies__hero .hero-services h1 {
   width: 100%;
   justify-content: flex-start;
   margin-top: 15px;
-  margin-bottom: 30px;
+  margin-bottom: 15px;
   position: relative;
 }
 @media screen and (min-width: 768px) {
   .filter-case-studies .form-filters .wrapper.filter-items {
     margin-top: 20px;
-    margin-bottom: 45px;
+    margin-bottom: 20px;
   }
 }
 
@@ -6746,10 +6751,15 @@ div.filter-posts__hero .hero-services h1 {
 
 .filter-posts__filters {
   margin-bottom: 2rem;
+  position: sticky;
+  background: white;
+  z-index: 999;
+  top: 82px;
 }
 @media screen and (min-width: 768px) {
   .filter-posts__filters {
     margin-bottom: 2.5rem;
+    top: 80px;
   }
 }
 
@@ -6768,13 +6778,13 @@ div.filter-posts__hero .hero-services h1 {
   width: 100%;
   justify-content: flex-start;
   margin-top: 15px;
-  margin-bottom: 30px;
+  margin-bottom: 15px;
   position: relative;
 }
 @media screen and (min-width: 768px) {
   .filter-posts .form-filters .wrapper.filter-items {
     margin-top: 20px;
-    margin-bottom: 45px;
+    margin-bottom: 20px;
   }
 }
 
@@ -7406,8 +7416,8 @@ div.filter-posts__hero .hero-services h1 {
 
 .case-study-body {
   position: relative;
-  padding-top: 5.5rem;
-  padding-bottom: 5.5rem;
+  padding-top: 2.75rem;
+  padding-bottom: 2.75rem;
 }
 @media screen and (min-width: 768px) {
   .case-study-body {
@@ -7746,10 +7756,11 @@ p.case-study-body__label {
   padding: 0.75rem 0;
   border-bottom: 1px solid transparent;
   transition: background-color 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+  position: sticky;
+  top: 82px;
 }
 @media screen and (min-width: 768px) {
   .section-nav {
-    position: sticky;
     margin-top: 20px;
     top: 80px;
   }
@@ -8029,15 +8040,15 @@ p.case-study-body__label {
 .feature-card__title {
   font-family: "Poppins", sans-serif;
   font-weight: 500;
-  font-size: 1.0625rem;
-  line-height: 1.625rem;
+  font-size: 1.35rem;
+  line-height: 1.9rem;
   color: #424042;
 }
 @media screen and (min-width: 768px) {
   .feature-card__content h3,
   .feature-card__title {
-    font-size: 1.375rem;
-    line-height: 2.125rem;
+    font-size: 1.5625rem;
+    line-height: 1.975rem;
   }
 }
 .feature-card__content h3,
@@ -9321,14 +9332,14 @@ img.device-frame__device {
 .faq-accordion__trigger .faq-accordion__question {
   font-family: "Poppins", sans-serif;
   font-weight: 500;
-  font-size: 1.0625rem;
-  line-height: 1.625rem;
+  font-size: 1.35rem;
+  line-height: 1.9rem;
   color: #424042;
 }
 @media screen and (min-width: 768px) {
   .faq-accordion__trigger .faq-accordion__question {
-    font-size: 1.375rem;
-    line-height: 2.125rem;
+    font-size: 1.5625rem;
+    line-height: 1.975rem;
   }
 }
 .faq-accordion__trigger .faq-accordion__question {

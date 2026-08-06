@@ -412,9 +412,6 @@
 // ---- Related Posts (single.php) ----
 // Reuses .insights-block card + grid styles; only the section
 // header needs its own rules here.
-.related-posts {
-    overflow: hidden; // keep blob decorations from causing scroll
-}
 
 .related-posts__header {
     text-align: left;
