@@ -1322,8 +1322,6 @@ body.mega-open {
   text-decoration: underline;
 }
 
-.goverlay {
-  background: rgba(66, 64, 66, 0.94);
 body.has-reveal-footer .site-content {
   position: relative;
   z-index: 2;
@@ -1340,6 +1338,10 @@ body.has-reveal-footer .site-footer {
 
 html.is-changing body.has-reveal-footer .site-footer {
   opacity: 0;
+}
+
+.goverlay {
+  background: rgba(66, 64, 66, 0.94);
 }
 
 .page-header,
