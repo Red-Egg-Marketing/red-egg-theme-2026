@@ -1,0 +1,23 @@
+// ========================================
+//  _lightbox.scss
+//  GLightbox – opt-in image/gallery lightbox
+//
+//  Core styles come from the CDN stylesheet (see functions.php);
+//  this partial only adds the click affordance and a brand-tinted
+//  backdrop. The opt-in `has-lightbox` class is written by the block
+//  extension (block-extensions/lightbox.js) and wired up on the
+//  frontend by js/lightbox.js.
+// ========================================
+
+// Click affordance on opted-in images (also set inline by the JS, but
+// declared here so the cursor is right before hydration).
+.wp-block-image.has-lightbox img,
+.wp-block-gallery.has-lightbox img {
+    cursor: zoom-in;
+}
+
+// Tint the fullscreen backdrop with the brand dark gray rather than
+// plain black.
+.goverlay {
+    background: rgba($gray, 0.94);
+}

@@ -32,6 +32,9 @@ import './js/navigation';
 // Mobile navigation (full-screen overlay + accordion)
 import './js/mobile-nav';
 
+// Lightbox – GLightbox for opted-in images/galleries
+import './js/lightbox';
+
 // Image Slider – Swiper initialization
 import './blocks/image-slider/frontend';
 
