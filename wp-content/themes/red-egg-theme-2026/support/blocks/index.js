@@ -197,12 +197,32 @@ import '../block-extensions/font-family';
 wp.domReady( () => {
     wp.blocks.registerBlockStyle( 'core/button', {
         name: 'outline-gray',
-        label: 'Outline Gray (Arrow)',
+        label: 'Outline Gray (Arrow Down)',
+    } );
+
+    wp.blocks.registerBlockStyle( 'core/button', {
+        name: 'outline-gray-up',
+        label: 'Outline Gray (Arrow Up)',
+    } );
+
+    wp.blocks.registerBlockStyle( 'core/button', {
+        name: 'outline-gray-hover-down-red',
+        label: 'Outline Gray (Arrow Down/Hover Red)',
+    } );
+
+    wp.blocks.registerBlockStyle( 'core/button', {
+        name: 'outline-gray-hover-up-red',
+        label: 'Outline Gray (Arrow Up/Hover Red)',
     } );
 
     wp.blocks.registerBlockStyle( 'core/button', {
         name: 'outline-white',
-        label: 'Outline White (Arrow)',
+        label: 'Outline White (Arrow Down)',
+    } );
+
+    wp.blocks.registerBlockStyle( 'core/button', {
+        name: 'outline-white-up',
+        label: 'Outline White (Arrow Up)',
     } );
 
     wp.blocks.registerBlockStyle( 'core/paragraph', {

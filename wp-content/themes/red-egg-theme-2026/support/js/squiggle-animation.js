@@ -35,11 +35,11 @@ import { onPageView } from './lifecycle';
 
             gsap.to( el, {
                 clipPath: 'inset(0 0% 0 0)',
-                duration: 3.5,
+                duration: 6.25,
                 ease: 'power2.out',
                 scrollTrigger: {
                     trigger: el,
-                    start: 'top 75%',
+                    start: 'top 71.5%',
                     // once: true,
                 },
             } );

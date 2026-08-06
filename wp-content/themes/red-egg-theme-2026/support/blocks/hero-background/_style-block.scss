@@ -21,8 +21,8 @@
     position: relative;
     z-index: 2;
     @media screen and (min-width: $small-width) {
-        padding-top: 7rem;
-        padding-bottom: 7rem;
+        padding-top: $default-section-padding-desk-top;
+        padding-bottom: $default-section-padding-desk-bottom;
     }
 }
 
@@ -130,6 +130,9 @@
 
 .hero-background__content .wp-block-buttons {
     margin-top: 1rem;
+    @media screen and (min-width: $small-width) {
+        margin-top: 2.5rem;
+    }
 }
 
 // ---- Media column (right) ----

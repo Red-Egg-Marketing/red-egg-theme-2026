@@ -489,6 +489,9 @@ a.mega-menu__col-title:hover {
     color: white;
     font-size: 1.375rem;
     font-weight: 400;
+    &:hover {
+        color: $red;
+    }
 }
 
 .mega-menu__link {
