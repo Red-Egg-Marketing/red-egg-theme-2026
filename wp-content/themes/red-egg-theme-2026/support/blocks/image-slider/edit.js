@@ -7,13 +7,13 @@
 
 const { Fragment, useEffect } = wp.element;
 const { InspectorControls, MediaUpload, useBlockProps } = wp.blockEditor;
-const { PanelBody, Button, RangeControl } = wp.components;
+const { PanelBody, Button, RangeControl, ToggleControl } = wp.components;
 const { __ } = wp.i18n;
 import { pickSizes, captureSizeUrls } from '../../components/mediaSizes.js';
 import ImageSizePicker from '../../components/ImageSizePicker.js';
 
 const EditImageSlider = ( { attributes, setAttributes, clientId } ) => {
-    const { images, slidesPerView, spaceBetween, blockId, imageSizeOverride } = attributes;
+    const { images, slidesPerView, spaceBetween, blockId, imageSizeOverride, lightbox } = attributes;
 
     useEffect( () => {
         if ( ! blockId ) {
@@ -99,6 +99,12 @@ const EditImageSlider = ( { attributes, setAttributes, clientId } ) => {
                                 }
                             </Button>
                         ) }
+                    />
+                    <ToggleControl
+                        label={ __( 'Open images in lightbox', 'red-egg' ) }
+                        help={ __( 'Click any image to view the set fullscreen, with next/previous navigation.', 'red-egg' ) }
+                        checked={ !! lightbox }
+                        onChange={ () => setAttributes( { lightbox: ! lightbox } ) }
                     />
                 </PanelBody>
             </InspectorControls>

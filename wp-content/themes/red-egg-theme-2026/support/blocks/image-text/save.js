@@ -14,7 +14,7 @@ import { buildSrcSet, resolveOverride } from '../../components/mediaSizes.js';
 const SaveImageText = ( { attributes } ) => {
     const {
         contentAlign, stackOrder, columnwidth, media, image, bgColor, bgSlug,
-        vidOrImg, videoID, videoURL, videothumb,
+        vidOrImg, videoID, videoURL, videothumb, lightbox,
         padding, margin, blockId,
         blobEnabled, blobShape, blobSpeed, blobPosition,
     } = attributes;
@@ -68,7 +68,7 @@ const SaveImageText = ( { attributes } ) => {
                     blobSpeed={ blobSpeed }
                     blobPosition={ blobPosition }
                 />
-                    <div className="image-col column">
+                    <div className="image-col column" data-re-lightbox={ vidOrImg === 'image' && lightbox ? 'single' : undefined }>
                         { vidOrImg === 'image' && (
                             <ImageComp.View
                                 source={ imgSource }

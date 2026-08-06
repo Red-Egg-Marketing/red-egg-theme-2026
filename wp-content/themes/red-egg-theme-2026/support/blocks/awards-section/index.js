@@ -55,6 +55,10 @@ registerBlockType( 'red-egg-block/awards-section', {
             type: 'boolean',
             default: false,
         },
+        lightbox: {
+            type: 'boolean',
+            default: false,
+        },
         padding: {
             type: 'object',
             default: {

@@ -32,6 +32,8 @@ import './js/navigation';
 // Mobile navigation (full-screen overlay + accordion)
 import './js/mobile-nav';
 
+// Lightbox – GLightbox for opted-in images/galleries
+import './js/lightbox';
 // Footer reveal – content slides up over a pinned footer on scroll
 import './js/footer-reveal';
 

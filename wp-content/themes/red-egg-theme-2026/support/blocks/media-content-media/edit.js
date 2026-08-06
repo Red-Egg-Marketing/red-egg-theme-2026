@@ -20,7 +20,7 @@ const vidImgOptions = [
 
 const EditMediaContentMedia = ( { attributes, setAttributes } ) => {
     const {
-        media, vidOrImg, videoID, videoURL, videothumb
+        media, vidOrImg, videoID, videoURL, videothumb, lightbox
     } = attributes;
 
     const blockProps = useBlockProps( {
@@ -81,6 +81,14 @@ const EditMediaContentMedia = ( { attributes, setAttributes } ) => {
                         options={ vidImgOptions }
                         onChange={ ( val ) => setAttributes( { vidOrImg: val } ) }
                     />
+                    { vidOrImg === 'image' && (
+                        <ToggleControl
+                            label={ __( 'Open image in lightbox', 'red-egg' ) }
+                            help={ __( 'Click the image to view it fullscreen.', 'red-egg' ) }
+                            checked={ !! lightbox }
+                            onChange={ () => setAttributes( { lightbox: ! lightbox } ) }
+                        />
+                    ) }
                 </PanelBody>
 
                 { vidOrImg === 'image' && media.source && (

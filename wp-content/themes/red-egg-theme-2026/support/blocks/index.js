@@ -191,6 +191,9 @@ import '../format-types/semibold/index';
 // panel on core text blocks
 import '../block-extensions/font-family';
 
+// Lightbox – adds an "Open in lightbox" toggle to core Image + Gallery
+import '../block-extensions/lightbox';
+
 // ---- Block Style Variations ----
 // Register custom button styles with arrow
 

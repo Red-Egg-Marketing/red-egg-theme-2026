@@ -52,6 +52,10 @@ registerBlockType( 'red-egg-block/media-content-media', {
                 url: '', width: '', height: '',
             },
         },
+        lightbox: {
+            type: 'boolean',
+            default: false,
+        },
     },
     edit,
     save,

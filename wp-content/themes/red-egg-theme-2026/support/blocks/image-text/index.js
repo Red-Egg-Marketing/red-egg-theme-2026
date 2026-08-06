@@ -84,6 +84,10 @@ registerBlockType( 'red-egg-block/image-text', {
                 url: '', width: '', height: '',
             },
         },
+        lightbox: {
+            type: 'boolean',
+            default: false,
+        },
         padding: {
             type: 'object',
             default: {

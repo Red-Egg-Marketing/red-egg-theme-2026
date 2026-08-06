@@ -11,11 +11,13 @@ import { buildSrcSet, resolveOverride } from '../../components/mediaSizes.js';
 
 const SaveMediaContentMedia = ( { attributes } ) => {
     const {
-        media, vidOrImg, videoID, videoURL, videothumb
+        media, vidOrImg, videoID, videoURL, videothumb, lightbox
     } = attributes;
 
     const blockProps = useBlockProps.save( {
         className: 'media-content__media image-col column',
+        'data-re-lightbox':
+            vidOrImg === 'image' && lightbox ? 'single' : undefined,
     } );
 
     const srcSet = media.sizeOverride ? '' : buildSrcSet( media.srcset );

@@ -50,7 +50,7 @@ const allowBlocks = [
 const EditImageText = ( { attributes, setAttributes, clientId } ) => {
     const {
         contentAlign, stackOrder, columnwidth, media, image, bgColor, bgSlug,
-        vidOrImg, videoID, videoURL, videothumb,
+        vidOrImg, videoID, videoURL, videothumb, lightbox,
         padding, margin, blockId,
         blobEnabled, blobShape, blobSpeed, blobPosition,
     } = attributes;
@@ -185,6 +185,14 @@ const EditImageText = ( { attributes, setAttributes, clientId } ) => {
                             onChange={ ( val ) => setAttributes( {
                                 media: { ...media, sizeOverride: val },
                             } ) }
+                        />
+                    ) }
+                    { vidOrImg === 'image' && (
+                        <ToggleControl
+                            label={ __( 'Open image in lightbox', 'red-egg' ) }
+                            help={ __( 'Click the image to view it fullscreen.', 'red-egg' ) }
+                            checked={ !! lightbox }
+                            onChange={ () => setAttributes( { lightbox: ! lightbox } ) }
                         />
                     ) }
                 </PanelBody>

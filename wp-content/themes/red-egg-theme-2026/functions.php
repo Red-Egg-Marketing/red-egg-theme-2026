@@ -136,6 +136,14 @@ function red_egg_theme_scripts() {
         '11.0.0'
     );
 
+    // GLightbox CSS (CDN) – opt-in image/gallery lightbox
+    wp_enqueue_style(
+        'glightbox-css',
+        'https://cdn.jsdelivr.net/npm/glightbox@3.3.1/dist/css/glightbox.min.css',
+        [],
+        '3.3.1'
+    );
+
     $style_css = get_template_directory() . '/style.css';
     $main_js   = get_template_directory() . '/support/assets/js/main.js';
 
@@ -227,11 +235,20 @@ function red_egg_theme_scripts() {
         true
     );
 
+    // GLightbox JS (CDN) – exposes global GLightbox
+    wp_enqueue_script(
+        'glightbox-js',
+        'https://cdn.jsdelivr.net/npm/glightbox@3.3.1/dist/js/glightbox.min.js',
+        [],
+        '3.3.1',
+        true
+    );
+
     // Frontend JS (compiled from support/front-end.js)
     wp_enqueue_script(
         'red-egg-main-js',
         get_template_directory_uri() . '/support/assets/js/main.js',
-        [ 'swiper-js', 'gsap-core', 'gsap-morphsvg', 'gsap-scrolltrigger', 'swup-js', 'swup-body-class', 'swup-scroll', 'swup-head' ],
+        [ 'swiper-js', 'gsap-core', 'gsap-morphsvg', 'gsap-scrolltrigger', 'swup-js', 'swup-body-class', 'swup-scroll', 'swup-head', 'glightbox-js' ],
         file_exists( $main_js ) ? filemtime( $main_js ) : false,
         true
     );
