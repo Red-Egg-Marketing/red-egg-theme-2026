@@ -382,13 +382,13 @@ ul, ol {
 }
 
 p.has-medium-font-size {
-  font-size: 1.0625rem;
-  line-height: 1.625rem;
+  font-size: 1.0625rem !important;
+  line-height: 1.625rem !important;
 }
 @media screen and (min-width: 768px) {
   p.has-medium-font-size {
     font-size: 1.375rem !important;
-    line-height: 2.125rem;
+    line-height: 2.125rem !important;
   }
 }
 
@@ -7086,11 +7086,11 @@ div.gform_wrapper.gravity-theme .gform_page_footer {
 
 .values-section .header-intro-block {
   text-align: left;
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
 }
 @media screen and (min-width: 768px) {
   .values-section .header-intro-block {
-    margin-bottom: 3rem;
+    margin-bottom: 1.5rem;
   }
 }
 
