@@ -19,6 +19,9 @@
 
 .reveal-card a {
     text-decoration: none;
+    &:hover {
+        font-weight: 700;
+    }
 }
 
 .reveal-card__inner {
@@ -190,6 +193,10 @@
 
 .reveal-card__face--back li {
     @include body-text;
+    font-size: 20px;
+    @media screen and (min-width: $small-width) {
+        font-size: 22px;
+    }
     margin: 0 0 0.5rem 0;
 }
 

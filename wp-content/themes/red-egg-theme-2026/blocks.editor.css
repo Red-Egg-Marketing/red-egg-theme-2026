@@ -1944,6 +1944,9 @@ span.semibold {
 .reveal-card a {
   text-decoration: none;
 }
+.reveal-card a:hover {
+  font-weight: 700;
+}
 
 .reveal-card__inner {
   position: relative;
@@ -2181,6 +2184,14 @@ span.semibold {
   .reveal-card__face--back li {
     font-size: 1.25rem;
     line-height: 1.95rem;
+  }
+}
+.reveal-card__face--back li {
+  font-size: 20px;
+}
+@media screen and (min-width: 768px) {
+  .reveal-card__face--back li {
+    font-size: 22px;
   }
 }
 .reveal-card__face--back li {
@@ -2617,6 +2628,9 @@ span.semibold {
     width: 450px;
   }
 }
+.swiper-slide.cs-slide:hover {
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.1);
+}
 
 @media screen and (min-width: 768px) {
   .swiper-slide.cs-slide--active {
@@ -2643,7 +2657,7 @@ span.semibold {
   height: 100%;
   -o-object-fit: cover;
      object-fit: cover;
-  transition: transform 0.4s ease;
+  transition: transform 1s ease;
   clip-path: url("#DripMask1");
 }
 
@@ -3425,15 +3439,15 @@ span.semibold {
 
 .insights-block .resource-card .resource-title {
   margin: 0 0 0.75rem 0;
-  font-size: 1.2rem;
-  line-height: 1.55rem;
+  font-size: 1.35rem;
+  line-height: 1.65rem;
   letter-spacing: 0.12px;
   margin: 0;
 }
 @media screen and (min-width: 768px) {
   .insights-block .resource-card .resource-title {
-    font-size: 1.35rem;
-    line-height: 1.75rem;
+    font-size: 1.5625rem;
+    line-height: 1.95rem;
     letter-spacing: 0.18px;
     margin-bottom: 1rem;
   }
