@@ -7,7 +7,7 @@
 
 const { Fragment, useState, useEffect } = wp.element;
 const { InnerBlocks, InspectorControls, useBlockProps } = wp.blockEditor;
-const { Button } = wp.components;
+const { Button, PanelBody, RangeControl, SelectControl } = wp.components;
 const { __ } = wp.i18n;
 
 import ResourceCard from '../../components/ResourceCard.js';
@@ -15,6 +15,21 @@ import PaddingSelector from '../../components/Padding.js';
 import MarginSelector from '../../components/Margin.js';
 
 const apiUrl = '/wp-json/red-egg/v2/case-studies';
+
+const ORDERBY_OPTIONS = [
+    { label: __( 'Date', 'red-egg' ), value: 'date' },
+    { label: __( 'Modified date', 'red-egg' ), value: 'modified' },
+    { label: __( 'Menu order', 'red-egg' ), value: 'menu_order' },
+    { label: __( 'Title', 'red-egg' ), value: 'title' },
+    { label: __( 'Author', 'red-egg' ), value: 'author' },
+    { label: __( 'Slug (name)', 'red-egg' ), value: 'name' },
+    { label: __( 'Random', 'red-egg' ), value: 'rand' },
+];
+
+const ORDER_OPTIONS = [
+    { label: __( 'Descending', 'red-egg' ), value: 'DESC' },
+    { label: __( 'Ascending', 'red-egg' ), value: 'ASC' },
+];
 
 // Hero: reuse the existing hero blocks (services hero by default).
 const heroTemplate = [
@@ -27,7 +42,9 @@ const heroAllowed = [
 ];
 
 const EditFilterCaseStudies = ( { attributes, setAttributes, clientId } ) => {
-    const { padding, margin, blockId } = attributes;
+    const { initialCount, orderby, order, padding, margin, blockId } = attributes;
+
+    const sortedUrl = apiUrl + '?orderby=' + encodeURIComponent( orderby ) + '&order=' + encodeURIComponent( order );
 
     const [ resources, setResources ] = useState( false );
     const [ taxonomy, setTaxonomy ] = useState( [] );
@@ -77,7 +94,7 @@ const EditFilterCaseStudies = ( { attributes, setAttributes, clientId } ) => {
         setSelectTax( updated );
 
         // Re-fetch and filter client-side
-        wp.apiFetch( { url: apiUrl } ).then( ( data ) => {
+        wp.apiFetch( { url: sortedUrl } ).then( ( data ) => {
             let posts = [];
             if ( data && data[0] && data[0].resources ) {
                 posts = data[0].resources;
@@ -110,7 +127,7 @@ const EditFilterCaseStudies = ( { attributes, setAttributes, clientId } ) => {
     // Clear all selected filters
     const clearAll = () => {
         setSelectTax( [] );
-        wp.apiFetch( { url: apiUrl } ).then( ( data ) => {
+        wp.apiFetch( { url: sortedUrl } ).then( ( data ) => {
             let posts = ( data && data[0] && data[0].resources ) ? data[0].resources : [];
             setResources( posts );
         } );
@@ -130,9 +147,10 @@ const EditFilterCaseStudies = ( { attributes, setAttributes, clientId } ) => {
         parent.classList.toggle( 'active' );
     };
 
-    // Initial fetch
-    if ( resources === false ) {
-        wp.apiFetch( { url: apiUrl } ).then( ( data ) => {
+    // Fetch preview data. Re-runs when sort changes so the preview
+    // reflects the chosen order (sort resets the filter selection).
+    useEffect( () => {
+        wp.apiFetch( { url: sortedUrl } ).then( ( data ) => {
             let posts = [];
             let taxes = [];
             if ( data && data[0] && data[0].resources ) {
@@ -143,14 +161,38 @@ const EditFilterCaseStudies = ( { attributes, setAttributes, clientId } ) => {
             }
             setResources( posts );
             setTaxonomy( taxes );
+            setSelectTax( [] );
         } ).catch( () => {
             setResources( [] );
         } );
-    }
+    }, [ orderby, order ] );
 
     return (
         <Fragment>
             <InspectorControls>
+                <PanelBody title={ __( 'Display', 'red-egg' ) } initialOpen={ true }>
+                    <RangeControl
+                        label={ __( 'Case studies to initially load', 'red-egg' ) }
+                        value={ initialCount }
+                        onChange={ ( val ) => setAttributes( { initialCount: val || 1 } ) }
+                        min={ 1 }
+                        max={ 48 }
+                    />
+                    <SelectControl
+                        label={ __( 'Order by', 'red-egg' ) }
+                        value={ orderby }
+                        options={ ORDERBY_OPTIONS }
+                        onChange={ ( val ) => setAttributes( { orderby: val } ) }
+                    />
+                    <SelectControl
+                        label={ __( 'Order', 'red-egg' ) }
+                        value={ order }
+                        options={ ORDER_OPTIONS }
+                        onChange={ ( val ) => setAttributes( { order: val } ) }
+                        disabled={ orderby === 'rand' }
+                        help={ orderby === 'rand' ? __( 'Random ignores order direction.', 'red-egg' ) : undefined }
+                    />
+                </PanelBody>
             </InspectorControls>
 
             <PaddingSelector
@@ -230,7 +272,7 @@ const EditFilterCaseStudies = ( { attributes, setAttributes, clientId } ) => {
                     </div>
 
                     <div className="filter-case-studies__grid">
-                        { resources && resources.length > 0 && resources.map( ( resource, i ) => (
+                        { resources && resources.length > 0 && resources.slice( 0, initialCount ).map( ( resource, i ) => (
                             <ResourceCard
                                 key={ resource.ID || i }
                                 resourceIndex={ i }
@@ -251,6 +293,11 @@ const EditFilterCaseStudies = ( { attributes, setAttributes, clientId } ) => {
                             <div className="filter-case-studies__loading">
                                 <p>{ __( 'Loading case studies…', 'red-egg' ) }</p>
                             </div>
+                        ) }
+                        { resources && resources.length > initialCount && (
+                            <p className="filter-case-studies__more-note">
+                                { `${ resources.length - initialCount } more shown via “Load more” on the frontend.` }
+                            </p>
                         ) }
                     </div>
                 </div>
