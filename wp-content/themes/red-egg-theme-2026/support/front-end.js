@@ -32,6 +32,9 @@ import './js/navigation';
 // Mobile navigation (full-screen overlay + accordion)
 import './js/mobile-nav';
 
+// Footer reveal – content slides up over a pinned footer on scroll
+import './js/footer-reveal';
+
 // Image Slider – Swiper initialization
 import './blocks/image-slider/frontend';
 
