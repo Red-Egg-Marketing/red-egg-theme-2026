@@ -8638,48 +8638,92 @@ div.gform_wrapper.gravity-theme .gform_page_footer {
   margin-bottom: 0;
 }
 
+.service-list-item.hover-white .service-list-item__inner {
+  background-image: linear-gradient(to right, #FFFFFF, #FFFFFF);
+}
+
 .service-list-item.hover-white:hover .service-list-item__inner {
-  background-color: #FFFFFF;
+  background-size: 100% 100%;
+}
+
+.service-list-item.hover-eggshell .service-list-item__inner {
+  background-image: linear-gradient(to right, #F2ECE5, #F2ECE5);
 }
 
 .service-list-item.hover-eggshell:hover .service-list-item__inner {
-  background-color: #F2ECE5;
+  background-size: 100% 100%;
+}
+
+.service-list-item.hover-gray .service-list-item__inner {
+  background-image: linear-gradient(to right, #424042, #424042);
 }
 
 .service-list-item.hover-gray:hover .service-list-item__inner {
-  background-color: #424042;
+  background-size: 100% 100%;
+}
+
+.service-list-item.hover-red .service-list-item__inner {
+  background-image: linear-gradient(to right, #DC2035, #DC2035);
 }
 
 .service-list-item.hover-red:hover .service-list-item__inner {
-  background-color: #DC2035;
+  background-size: 100% 100%;
+}
+
+.service-list-item.hover-peach .service-list-item__inner {
+  background-image: linear-gradient(to right, #F79E83, #F79E83);
 }
 
 .service-list-item.hover-peach:hover .service-list-item__inner {
-  background-color: #F79E83;
+  background-size: 100% 100%;
+}
+
+.service-list-item.hover-navy .service-list-item__inner {
+  background-image: linear-gradient(to right, #024D69, #024D69);
 }
 
 .service-list-item.hover-navy:hover .service-list-item__inner {
-  background-color: #024D69;
+  background-size: 100% 100%;
+}
+
+.service-list-item.hover-purple .service-list-item__inner {
+  background-image: linear-gradient(to right, #A89AAE, #A89AAE);
 }
 
 .service-list-item.hover-purple:hover .service-list-item__inner {
-  background-color: #A89AAE;
+  background-size: 100% 100%;
+}
+
+.service-list-item.hover-magenta .service-list-item__inner {
+  background-image: linear-gradient(to right, #E32E6D, #E32E6D);
 }
 
 .service-list-item.hover-magenta:hover .service-list-item__inner {
-  background-color: #E32E6D;
+  background-size: 100% 100%;
+}
+
+.service-list-item.hover-orange .service-list-item__inner {
+  background-image: linear-gradient(to right, #F68633, #F68633);
 }
 
 .service-list-item.hover-orange:hover .service-list-item__inner {
-  background-color: #F68633;
+  background-size: 100% 100%;
+}
+
+.service-list-item.hover-gold .service-list-item__inner {
+  background-image: linear-gradient(to right, #F6B319, #F6B319);
 }
 
 .service-list-item.hover-gold:hover .service-list-item__inner {
-  background-color: #F6B319;
+  background-size: 100% 100%;
+}
+
+.service-list-item.hover-dark-purple .service-list-item__inner {
+  background-image: linear-gradient(to right, #91288D, #91288D);
 }
 
 .service-list-item.hover-dark-purple:hover .service-list-item__inner {
-  background-color: #91288D;
+  background-size: 100% 100%;
 }
 
 .service-list-item.hover-white:hover .service-list-item__title,
@@ -8767,9 +8811,12 @@ div.gform_wrapper.gravity-theme .gform_page_footer {
   flex-direction: column;
   gap: 0.75rem;
   background-color: #424042;
+  background-repeat: no-repeat;
+  background-position: left center;
+  background-size: 0% 100%;
   border-radius: 8px;
   padding: 1.5rem;
-  transition: background-color 0.3s ease;
+  transition: background-size 0.6s ease;
   position: relative;
 }
 @media screen and (min-width: 768px) {
