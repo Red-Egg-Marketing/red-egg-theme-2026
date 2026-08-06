@@ -14,7 +14,7 @@ import PaddingSelector from '../../components/Padding.js';
 import MarginSelector from '../../components/Margin.js';
 
 const SaveAwardsSection = ( { attributes } ) => {
-    const { bgSlug, awards, slidesPerView, spaceBetween, withCards, padding, margin, blockId, imageSizeOverride } = attributes;
+    const { bgSlug, awards, slidesPerView, spaceBetween, withCards, lightbox, padding, margin, blockId, imageSizeOverride } = attributes;
 
     const blockProps = useBlockProps.save( {
         id: blockId,
@@ -37,6 +37,7 @@ const SaveAwardsSection = ( { attributes } ) => {
                                 className="awards-section__swiper swiper"
                                 data-slides-per-view={ slidesPerView }
                                 data-space-between={ spaceBetween }
+                                data-re-lightbox={ lightbox ? 'group' : undefined }
                             >
                                 <div className="swiper-wrapper">
                                     { awards.map( ( award, i ) => {

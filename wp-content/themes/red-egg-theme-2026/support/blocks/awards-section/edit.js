@@ -28,7 +28,7 @@ const allowedBlocks = [
 ];
 
 const EditAwardsSection = ( { attributes, setAttributes, clientId } ) => {
-    const { bgColor, bgSlug, awards, slidesPerView, spaceBetween, withCards, padding, margin, blockId, imageSizeOverride } = attributes;
+    const { bgColor, bgSlug, awards, slidesPerView, spaceBetween, withCards, lightbox, padding, margin, blockId, imageSizeOverride } = attributes;
 
     // Which award's link popover is open (index), or null.
     const [ openLinkIndex, setOpenLinkIndex ] = useState( null );
@@ -135,6 +135,12 @@ const EditAwardsSection = ( { attributes, setAttributes, clientId } ) => {
                         label={ __( 'Card Style (border around images)', 'red-egg' ) }
                         checked={ !! withCards }
                         onChange={ () => setAttributes( { withCards: ! withCards } ) }
+                    />
+                    <ToggleControl
+                        label={ __( 'Open logos in lightbox', 'red-egg' ) }
+                        help={ __( 'Click a logo to view it fullscreen. Logos with a link keep their link instead.', 'red-egg' ) }
+                        checked={ !! lightbox }
+                        onChange={ () => setAttributes( { lightbox: ! lightbox } ) }
                     />
                 </PanelBody>
                 <PanelBody

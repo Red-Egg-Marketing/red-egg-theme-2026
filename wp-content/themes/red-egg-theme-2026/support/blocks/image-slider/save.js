@@ -10,7 +10,7 @@ const { useBlockProps } = wp.blockEditor;
 import { buildSrcSet, resolveOverride } from '../../components/mediaSizes.js';
 
 const SaveImageSlider = ( { attributes } ) => {
-    const { images, slidesPerView, spaceBetween, blockId, imageSizeOverride } = attributes;
+    const { images, slidesPerView, spaceBetween, blockId, imageSizeOverride, lightbox } = attributes;
 
     const blockProps = useBlockProps.save( {
         id: blockId,
@@ -28,6 +28,7 @@ const SaveImageSlider = ( { attributes } ) => {
                     className="image-slider__swiper swiper"
                     data-slides-per-view={ slidesPerView }
                     data-space-between={ spaceBetween }
+                    data-re-lightbox={ lightbox ? 'group' : undefined }
                 >
                     <div className="swiper-wrapper">
                         { images.map( ( img, i ) => (

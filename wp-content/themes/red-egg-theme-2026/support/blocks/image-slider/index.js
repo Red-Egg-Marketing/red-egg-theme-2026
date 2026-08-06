@@ -40,6 +40,10 @@ registerBlockType( 'red-egg-block/image-slider', {
         blockId: {
             type: 'string',
         },
+        lightbox: {
+            type: 'boolean',
+            default: false,
+        },
     },
     edit,
     save,

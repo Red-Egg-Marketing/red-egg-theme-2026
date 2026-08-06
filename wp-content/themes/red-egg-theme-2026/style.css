@@ -1323,11 +1323,6 @@ body.mega-open {
   text-decoration: underline;
 }
 
-.wp-block-image.has-lightbox img,
-.wp-block-gallery.has-lightbox img {
-  cursor: zoom-in;
-}
-
 .goverlay {
   background: rgba(66, 64, 66, 0.94);
 }
