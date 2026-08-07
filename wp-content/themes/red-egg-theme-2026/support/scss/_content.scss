@@ -30,7 +30,7 @@
     // Standard top-level content elements are capped at 936px and
     // centered. (Full-width Red Egg section blocks are unaffected.)
     > p,
-    > h2, > h3, > h4, > h5, > h6,
+    > h1, h2, > h3, > h4, > h5, > h6,
     > ul, > ol,
     > blockquote,
     > figure.wp-block-image,
@@ -48,6 +48,7 @@
     }
 
     // ---- Headings ----
+    > h1,
     > h2,
     > h3,
     > h4,
@@ -55,10 +56,6 @@
     > h6 {
         margin-top: 2.5rem;
         margin-bottom: 1rem;
-
-        &:first-child {
-            margin-top: 0;
-        }
     }
 
     h1 { @include primary-h1; }
