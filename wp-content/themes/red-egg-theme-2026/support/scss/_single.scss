@@ -28,18 +28,20 @@
     }
 }
 
+.page-template-template-article .entry-thumbnail img,
 .single .entry-thumbnail img,
 .single-post__wrapper.block-wrapper {
-    max-width: 770px;
+    max-width: 970px;
 }
 
+.page-template-template-article .entry-thumbnail img,
 .single .entry-thumbnail img {
     border-radius: 8px;
     margin-top: 25px;
     max-width: 85%;
     @media screen and (min-width: $small-width) {
         margin-top: 150px;
-        max-width: 770px;
+        max-width: 970px;
     }
 }
 
@@ -75,6 +77,7 @@
     }
 }
 
+.page-template-template-article .entry-thumbnail,
 .single .entry-thumbnail {
     display: flex;
     align-items: center;
