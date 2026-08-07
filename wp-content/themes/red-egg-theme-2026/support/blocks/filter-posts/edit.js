@@ -8,7 +8,7 @@
 
 const { Fragment, useState, useEffect } = wp.element;
 const { InnerBlocks, InspectorControls, useBlockProps } = wp.blockEditor;
-const { Button, PanelBody, ToggleControl } = wp.components;
+const { Button, PanelBody, ToggleControl, RangeControl, SelectControl } = wp.components;
 const { __ } = wp.i18n;
 
 import ResourceCard from '../../components/ResourceCard.js';
@@ -33,8 +33,23 @@ const groupTaxSlug = ( groupValue ) => {
     return first ? first.taxonomy : '';
 };
 
+const ORDERBY_OPTIONS = [
+    { label: __( 'Date', 'red-egg' ), value: 'date' },
+    { label: __( 'Modified date', 'red-egg' ), value: 'modified' },
+    { label: __( 'Menu order', 'red-egg' ), value: 'menu_order' },
+    { label: __( 'Title', 'red-egg' ), value: 'title' },
+    { label: __( 'Author', 'red-egg' ), value: 'author' },
+    { label: __( 'Slug (name)', 'red-egg' ), value: 'name' },
+    { label: __( 'Random', 'red-egg' ), value: 'rand' },
+];
+
+const ORDER_OPTIONS = [
+    { label: __( 'Descending', 'red-egg' ), value: 'DESC' },
+    { label: __( 'Ascending', 'red-egg' ), value: 'ASC' },
+];
+
 const EditFilterPosts = ( { attributes, setAttributes, clientId } ) => {
-    const { hiddenTaxonomies, padding, margin, blockId } = attributes;
+    const { hiddenTaxonomies, initialCount, orderby, order, padding, margin, blockId } = attributes;
 
     const [ allResources, setAllResources ] = useState( false );
     const [ resources, setResources ] = useState( false );
@@ -66,9 +81,12 @@ const EditFilterPosts = ( { attributes, setAttributes, clientId } ) => {
         return () => document.removeEventListener( 'click', handleClick, false );
     }, [] );
 
-    // Initial fetch
-    if ( allResources === false ) {
-        wp.apiFetch( { url: apiUrl } ).then( ( data ) => {
+    // Fetch preview data. Re-runs when the sort settings change so the
+    // editor preview reflects the chosen order (sort resets the local
+    // filter selection).
+    useEffect( () => {
+        const url = apiUrl + '?orderby=' + encodeURIComponent( orderby ) + '&order=' + encodeURIComponent( order );
+        wp.apiFetch( { url } ).then( ( data ) => {
             const posts = ( data && data[0] && data[0].resources ) ? data[0].resources : [];
             const taxes = ( data && data[1] ) ? data[1] : {};
             const meta  = ( data && data[2] ) ? data[2] : [];
@@ -76,11 +94,12 @@ const EditFilterPosts = ( { attributes, setAttributes, clientId } ) => {
             setResources( posts );
             setTaxonomy( taxes );
             setTaxMeta( meta );
+            setSelectTax( [] );
         } ).catch( () => {
             setAllResources( [] );
             setResources( [] );
         } );
-    }
+    }, [ orderby, order ] );
 
     // AND filter: a post must contain ALL selected term ids.
     const applyFilter = ( selected ) => {
@@ -145,7 +164,30 @@ const EditFilterPosts = ( { attributes, setAttributes, clientId } ) => {
     return (
         <Fragment>
             <InspectorControls>
-                <PanelBody title={ __( 'Filter Taxonomies', 'red-egg' ) } initialOpen={ true }>
+                <PanelBody title={ __( 'Display', 'red-egg' ) } initialOpen={ true }>
+                    <RangeControl
+                        label={ __( 'Posts to initially load', 'red-egg' ) }
+                        value={ initialCount }
+                        onChange={ ( val ) => setAttributes( { initialCount: val || 1 } ) }
+                        min={ 1 }
+                        max={ 48 }
+                    />
+                    <SelectControl
+                        label={ __( 'Order by', 'red-egg' ) }
+                        value={ orderby }
+                        options={ ORDERBY_OPTIONS }
+                        onChange={ ( val ) => setAttributes( { orderby: val } ) }
+                    />
+                    <SelectControl
+                        label={ __( 'Order', 'red-egg' ) }
+                        value={ order }
+                        options={ ORDER_OPTIONS }
+                        onChange={ ( val ) => setAttributes( { order: val } ) }
+                        disabled={ orderby === 'rand' }
+                        help={ orderby === 'rand' ? __( 'Random ignores order direction.', 'red-egg' ) : undefined }
+                    />
+                </PanelBody>
+                <PanelBody title={ __( 'Filter Taxonomies', 'red-egg' ) } initialOpen={ false }>
                     <p className="components-base-control__help" style={ { marginTop: 0 } }>
                         { __( 'Toggle which taxonomies appear as filters.', 'red-egg' ) }
                     </p>
@@ -232,7 +274,7 @@ const EditFilterPosts = ( { attributes, setAttributes, clientId } ) => {
                     </div>
 
                     <div className="filter-posts__grid">
-                        { resources && resources.length > 0 && resources.map( ( resource, i ) => (
+                        { resources && resources.length > 0 && resources.slice( 0, initialCount ).map( ( resource, i ) => (
                             <ResourceCard
                                 key={ resource.ID || i }
                                 resourceIndex={ i }
@@ -253,6 +295,11 @@ const EditFilterPosts = ( { attributes, setAttributes, clientId } ) => {
                             <div className="filter-posts__loading">
                                 <p>{ __( 'Loading posts…', 'red-egg' ) }</p>
                             </div>
+                        ) }
+                        { resources && resources.length > initialCount && (
+                            <p className="filter-posts__more-note">
+                                { `${ resources.length - initialCount } more shown via “Load more” on the frontend.` }
+                            </p>
                         ) }
                     </div>
                 </div>

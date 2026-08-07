@@ -44,6 +44,18 @@ registerBlockType( 'red-egg-block/filter-case-studies', {
         blockId: {
             type: 'string',
         },
+        initialCount: {
+            type: 'number',
+            default: 9,
+        },
+        orderby: {
+            type: 'string',
+            default: 'date',
+        },
+        order: {
+            type: 'string',
+            default: 'DESC',
+        },
     },
     edit,
     save,

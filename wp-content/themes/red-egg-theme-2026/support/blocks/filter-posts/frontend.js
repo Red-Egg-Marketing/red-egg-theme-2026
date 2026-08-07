@@ -24,6 +24,10 @@ const apiUrl = '/red-egg/v2/filter-posts';
 // (the root may not exist until an SPA swap brings it in).
 let hiddenTax = [];
 
+// Display config read from the root's data attributes in
+// initFilterPosts() (initial page size + server sort).
+let cfg = { orderby: 'date', order: 'DESC', initialCount: 9 };
+
 // Taxonomy slug for a tax_array group (from its first term).
 const groupTaxSlug = ( groupValue ) => {
     const first = Object.values( groupValue )[ 0 ];
@@ -130,6 +134,7 @@ const FilterPostsFrontend = () => {
     const [ taxonomy, setTaxonomy ] = useState( {} );
     const [ selectTax, setSelectTax ] = useState( [] );
     const [ loading, setLoading ] = useState( true );
+    const [ visibleCount, setVisibleCount ] = useState( cfg.initialCount );
 
     // term_id -> { taxonomy, term_slug }; and "taxSlug|termSlug" -> term_id
     const [ lookups, setLookups ] = useState( { byId: {}, bySlug: {} } );
@@ -180,7 +185,9 @@ const FilterPostsFrontend = () => {
 
     // Initial fetch
     useEffect( () => {
-        wp.apiRequest( { path: apiUrl } ).then( function( data ) {
+        wp.apiRequest( {
+            path: apiUrl + '?orderby=' + encodeURIComponent( cfg.orderby ) + '&order=' + encodeURIComponent( cfg.order ),
+        } ).then( function( data ) {
             var posts = ( data && data[0] && data[0].resources ) ? data[0].resources : [];
             var taxes = ( data && data[1] ) ? data[1] : {};
 
@@ -242,12 +249,14 @@ const FilterPostsFrontend = () => {
         }
         setSelectTax( updated );
         setResources( runFilter( allResources, updated ) );
+        setVisibleCount( cfg.initialCount );
         updateUrl( updated, lookups.byId );
     };
 
     var clearAll = function() {
         setSelectTax( [] );
         setResources( allResources );
+        setVisibleCount( cfg.initialCount );
         updateUrl( [], lookups.byId );
     };
 
@@ -276,7 +285,7 @@ const FilterPostsFrontend = () => {
             </div>
 
             <div className="filter-posts__grid">
-                { resources.length > 0 && resources.map( function( resource, i ) {
+                { resources.length > 0 && resources.slice( 0, visibleCount ).map( function( resource, i ) {
                     return <PostCard key={ resource.ID || i } resource={ resource } />;
                 } ) }
                 { resources.length === 0 && (
@@ -285,6 +294,18 @@ const FilterPostsFrontend = () => {
                     </div>
                 ) }
             </div>
+
+            { resources.length > visibleCount && (
+                <div className="filter-load-more-wrap">
+                    <button
+                        type="button"
+                        className="filter-load-more"
+                        onClick={ function() { setVisibleCount( visibleCount + cfg.initialCount ); } }
+                    >
+                        Load more
+                    </button>
+                </div>
+            ) }
         </Fragment>
     );
 };
@@ -299,6 +320,13 @@ function initFilterPosts() {
     } catch ( e ) {
         hiddenTax = [];
     }
+
+    var count = parseInt( root.getAttribute( 'data-initial-count' ), 10 );
+    cfg = {
+        orderby: root.getAttribute( 'data-orderby' ) || 'date',
+        order: root.getAttribute( 'data-order' ) || 'DESC',
+        initialCount: count > 0 ? count : 9,
+    };
 
     render( <FilterPostsFrontend />, root );
 }

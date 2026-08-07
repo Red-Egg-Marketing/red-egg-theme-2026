@@ -56,11 +56,12 @@ const SliderContent = ( { postsToShow, industry, service, navPrev, navNext } ) =
                 // cleanly and there are always slides peeking both sides.
                 // centeredSlidesBounds intentionally omitted (issue #6277).
                 swiperInstanceRef.current = new Swiper( swiperRef.current, {
-                    loop: true,
+                    loop: studies.length > 2 ? true : false,
                     centeredSlides: true,
                     slidesPerView: 1,
                     spaceBetween: 20,
                     speed: 500,
+                    autoplay: true,
                     slideActiveClass: 'cs-slide--active',
                     breakpoints: {
                         768: {
@@ -105,7 +106,7 @@ const SliderContent = ( { postsToShow, industry, service, navPrev, navNext } ) =
     // slidesPerView:'auto'). Target ~8 slides -- comfortably above the
     // ~2-up auto layout's needs. With enough real slides already, no
     // repetition happens. Keys stay unique via the repeat index.
-    const MIN_LOOP_SLIDES = 8;
+    const MIN_LOOP_SLIDES = 2;
     let loopStudies = studies;
     if ( studies.length > 0 && studies.length < MIN_LOOP_SLIDES ) {
         loopStudies = [];

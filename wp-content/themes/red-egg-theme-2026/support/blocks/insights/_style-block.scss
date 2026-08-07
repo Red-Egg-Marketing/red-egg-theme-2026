@@ -118,15 +118,10 @@
 }
 
 .insights-block .resource-card .resource-title {
-    margin: 0 0 0.75rem 0;
-    font-size: 1.35rem;
-    line-height: 1.65rem;
-    letter-spacing: 0.12px;
-    margin: 0;
+    @include primary-h4;
+    font-weight: 700;
     @media screen and (min-width: $small-width) {
-        font-size: 1.5625rem;
-        line-height: 1.95rem;
-        letter-spacing: 0.18px;
+    
         margin-bottom: 1rem;
     }
 }

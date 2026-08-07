@@ -116,21 +116,18 @@ div.gs-team-popup--default .gs-member-name {
 	color: $gray;
 	font-size: 22px;
 	text-align: left;
+	
+
+
 }
 
 .gs_team_popup .gs-member-desc p {
-	font-family: $font-body;
-	font-size: 20px;
-	line-height: 22px;
-	color: $gray;
+	@include body-text;
 }
 
 .gs_team_popup .gs-member-desc h5 {
-	font-family: $font-body;
-	font-size: 18px;
-	line-height: 20px;
-	color: $gray;
-	margin-bottom: 0;
+	@include body-text;
+	font-weight: 700;
 }
 
 div.gs-team-popup--default .level-info-email {

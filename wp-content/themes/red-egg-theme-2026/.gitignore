@@ -1,0 +1,6 @@
+
+# Source maps are build artifacts — the production build (devtool:false)
+# emits none, and committing them caused recurring merge conflicts.
+/style.css.map
+/blocks.editor.css.map
+/support/assets/js/*.map
