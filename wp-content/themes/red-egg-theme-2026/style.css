@@ -1392,14 +1392,14 @@ html.is-changing body.has-reveal-footer .site-footer {
 .archive-description {
   font-family: "Poppins", sans-serif;
   font-weight: 500;
-  font-size: 1.35rem;
-  line-height: 1.9rem;
+  font-size: 1.15rem;
+  line-height: 1.85rem;
   color: #424042;
 }
 @media screen and (min-width: 768px) {
   .archive-description {
-    font-size: 1.5625rem;
-    line-height: 1.975rem;
+    font-size: 1.375rem;
+    line-height: 2.125rem;
   }
 }
 .archive-description {
@@ -1476,14 +1476,14 @@ html.is-changing body.has-reveal-footer .site-footer {
 .post-navigation .nav-title {
   font-family: "Poppins", sans-serif;
   font-weight: 500;
-  font-size: 1.35rem;
-  line-height: 1.9rem;
+  font-size: 1.15rem;
+  line-height: 1.85rem;
   color: #424042;
 }
 @media screen and (min-width: 768px) {
   .post-navigation .nav-title {
-    font-size: 1.5625rem;
-    line-height: 1.975rem;
+    font-size: 1.375rem;
+    line-height: 2.125rem;
   }
 }
 
@@ -1537,14 +1537,14 @@ html.is-changing body.has-reveal-footer .site-footer {
 .post-card__date {
   font-family: "Poppins", sans-serif;
   font-weight: 500;
-  font-size: 1.35rem;
-  line-height: 1.9rem;
+  font-size: 1.15rem;
+  line-height: 1.85rem;
   color: #424042;
 }
 @media screen and (min-width: 768px) {
   .post-card__date {
-    font-size: 1.5625rem;
-    line-height: 1.975rem;
+    font-size: 1.375rem;
+    line-height: 2.125rem;
   }
 }
 .post-card__date {
@@ -1582,8 +1582,8 @@ html.is-changing body.has-reveal-footer .site-footer {
 .post-card__excerpt {
   font-family: "Figtree", sans-serif;
   font-weight: 300;
-  font-size: 1.105rem;
-  line-height: 1.75rem;
+  font-size: 1.0625rem;
+  line-height: 1.625rem;
   color: #424042;
 }
 @media screen and (min-width: 768px) {
@@ -1746,8 +1746,8 @@ html.is-changing body.has-reveal-footer .site-footer {
 .error-404 .page-title {
   font-family: "Poppins", sans-serif;
   font-weight: 600;
-  font-size: 3.55rem;
-  line-height: 4.75rem;
+  font-size: 2.75rem;
+  line-height: 3.85rem;
   letter-spacing: 0;
   color: #424042;
 }
@@ -1763,14 +1763,14 @@ html.is-changing body.has-reveal-footer .site-footer {
 .error-404 .page-content {
   font-family: "Poppins", sans-serif;
   font-weight: 500;
-  font-size: 1.35rem;
-  line-height: 1.9rem;
+  font-size: 1.15rem;
+  line-height: 1.85rem;
   color: #424042;
 }
 @media screen and (min-width: 768px) {
   .error-404 .page-content {
-    font-size: 1.5625rem;
-    line-height: 1.975rem;
+    font-size: 1.375rem;
+    line-height: 2.125rem;
   }
 }
 .error-404 .page-content p {
@@ -1878,14 +1878,14 @@ html.is-changing body.has-reveal-footer .site-footer {
 .no-results .page-content {
   font-family: "Poppins", sans-serif;
   font-weight: 500;
-  font-size: 1.35rem;
-  line-height: 1.9rem;
+  font-size: 1.15rem;
+  line-height: 1.85rem;
   color: #424042;
 }
 @media screen and (min-width: 768px) {
   .no-results .page-content {
-    font-size: 1.5625rem;
-    line-height: 1.975rem;
+    font-size: 1.375rem;
+    line-height: 2.125rem;
   }
 }
 .no-results .page-content p {
@@ -2022,8 +2022,8 @@ html.is-changing body.has-reveal-footer .site-footer {
 .is-root-container {
   font-family: "Figtree", sans-serif;
   font-weight: 300;
-  font-size: 1.105rem;
-  line-height: 1.75rem;
+  font-size: 1.0625rem;
+  line-height: 1.625rem;
   color: #424042;
 }
 @media screen and (min-width: 768px) {
@@ -2046,6 +2046,9 @@ html.is-changing body.has-reveal-footer .site-footer {
 .site-content > figure.wp-block-image,
 .site-content > figure.wp-block-table,
 .site-content > table,
+.site-content > .wp-block-group,
+.site-content > .gform_wrapper,
+.site-content > .wp-block-columns,
 .site-content > hr.wp-block-separator,
 .entry-content > p,
 .entry-content > h2,
@@ -2059,6 +2062,9 @@ html.is-changing body.has-reveal-footer .site-footer {
 .entry-content > figure.wp-block-image,
 .entry-content > figure.wp-block-table,
 .entry-content > table,
+.entry-content > .wp-block-group,
+.entry-content > .gform_wrapper,
+.entry-content > .wp-block-columns,
 .entry-content > hr.wp-block-separator,
 .is-root-container > p,
 .is-root-container > h2,
@@ -2072,8 +2078,11 @@ html.is-changing body.has-reveal-footer .site-footer {
 .is-root-container > figure.wp-block-image,
 .is-root-container > figure.wp-block-table,
 .is-root-container > table,
+.is-root-container > .wp-block-group,
+.is-root-container > .gform_wrapper,
+.is-root-container > .wp-block-columns,
 .is-root-container > hr.wp-block-separator {
-  max-width: 770px;
+  max-width: 970px;
   margin-left: auto;
   margin-right: auto;
   padding-left: 1.25rem;
@@ -2157,8 +2166,8 @@ html.is-changing body.has-reveal-footer .site-footer {
 .is-root-container h3 {
   font-family: "Poppins", sans-serif;
   font-weight: 700;
-  font-size: 1.825rem;
-  line-height: 2rem;
+  font-size: 1.5625rem;
+  line-height: 2.1825rem;
   letter-spacing: 0.0625rem;
   color: #424042;
 }
@@ -2175,16 +2184,16 @@ html.is-changing body.has-reveal-footer .site-footer {
 .is-root-container h4 {
   font-family: "Poppins", sans-serif;
   font-weight: 500;
-  font-size: 1.35rem;
-  line-height: 1.9rem;
+  font-size: 1.15rem;
+  line-height: 1.85rem;
   color: #424042;
 }
 @media screen and (min-width: 768px) {
   .site-content h4,
   .entry-content h4,
   .is-root-container h4 {
-    font-size: 1.5625rem;
-    line-height: 1.975rem;
+    font-size: 1.375rem;
+    line-height: 2.125rem;
   }
 }
 .site-content h4,
@@ -2922,8 +2931,8 @@ html.is-changing body.has-reveal-footer .site-footer {
 .author-bio__text {
   font-family: "Figtree", sans-serif;
   font-weight: 300;
-  font-size: 1.105rem;
-  line-height: 1.75rem;
+  font-size: 1.0625rem;
+  line-height: 1.625rem;
   color: #424042;
 }
 @media screen and (min-width: 768px) {
@@ -2947,8 +2956,8 @@ html.is-changing body.has-reveal-footer .site-footer {
 .single-post .entry-footer {
   font-family: "Figtree", sans-serif;
   font-weight: 300;
-  font-size: 1.105rem;
-  line-height: 1.75rem;
+  font-size: 1.0625rem;
+  line-height: 1.625rem;
   color: #424042;
 }
 @media screen and (min-width: 768px) {
@@ -3167,17 +3176,33 @@ div.gs-team-popup--default .gs-member-name {
 
 .gs_team_popup .gs-member-desc p {
   font-family: "Figtree", sans-serif;
-  font-size: 20px;
-  line-height: 22px;
+  font-weight: 300;
+  font-size: 1.0625rem;
+  line-height: 1.625rem;
   color: #424042;
+}
+@media screen and (min-width: 768px) {
+  .gs_team_popup .gs-member-desc p {
+    font-size: 1.25rem;
+    line-height: 1.95rem;
+  }
 }
 
 .gs_team_popup .gs-member-desc h5 {
   font-family: "Figtree", sans-serif;
-  font-size: 18px;
-  line-height: 20px;
+  font-weight: 300;
+  font-size: 1.0625rem;
+  line-height: 1.625rem;
   color: #424042;
-  margin-bottom: 0;
+}
+@media screen and (min-width: 768px) {
+  .gs_team_popup .gs-member-desc h5 {
+    font-size: 1.25rem;
+    line-height: 1.95rem;
+  }
+}
+.gs_team_popup .gs-member-desc h5 {
+  font-weight: 700;
 }
 
 div.gs-team-popup--default .level-info-email {
@@ -3409,8 +3434,8 @@ div.gs-team-popup--default .mfp-close {
 .hero-background__content h1 {
   font-family: "Poppins", sans-serif;
   font-weight: 600;
-  font-size: 3.55rem;
-  line-height: 4.75rem;
+  font-size: 2.75rem;
+  line-height: 3.85rem;
   letter-spacing: 0;
   color: #424042;
 }
@@ -3433,14 +3458,14 @@ div.gs-team-popup--default .mfp-close {
 .hero-background__content p {
   font-family: "Poppins", sans-serif;
   font-weight: 500;
-  font-size: 1.35rem;
-  line-height: 1.9rem;
+  font-size: 1.15rem;
+  line-height: 1.85rem;
   color: #424042;
 }
 @media screen and (min-width: 768px) {
   .hero-background__content p {
-    font-size: 1.5625rem;
-    line-height: 1.975rem;
+    font-size: 1.375rem;
+    line-height: 2.125rem;
   }
 }
 .hero-background__content p {
@@ -3971,15 +3996,15 @@ div.gs-team-popup--default .mfp-close {
 .header-intro__right p:first-of-type {
   font-family: "Poppins", sans-serif;
   font-weight: 500;
-  font-size: 1.35rem;
-  line-height: 1.9rem;
+  font-size: 1.15rem;
+  line-height: 1.85rem;
   color: #424042;
 }
 @media screen and (min-width: 768px) {
   .header-intro__left p,
   .header-intro__right p:first-of-type {
-    font-size: 1.5625rem;
-    line-height: 1.975rem;
+    font-size: 1.375rem;
+    line-height: 2.125rem;
   }
 }
 .header-intro__left p,
@@ -4110,8 +4135,8 @@ div.gs-team-popup--default .mfp-close {
 .flip-card .flip-card-wrap .content {
   font-family: "Figtree", sans-serif;
   font-weight: 300;
-  font-size: 1.105rem;
-  line-height: 1.75rem;
+  font-size: 1.0625rem;
+  line-height: 1.625rem;
   color: #424042;
 }
 @media screen and (min-width: 768px) {
@@ -4188,8 +4213,8 @@ div.gs-team-popup--default .mfp-close {
 .flip-card__hover-overlay p {
   font-family: "Figtree", sans-serif;
   font-weight: 300;
-  font-size: 1.105rem;
-  line-height: 1.75rem;
+  font-size: 1.0625rem;
+  line-height: 1.625rem;
   color: #424042;
 }
 @media screen and (min-width: 768px) {
@@ -4412,8 +4437,8 @@ div.gs-team-popup--default .mfp-close {
 .reveal-card__front-content h3 {
   font-family: "Poppins", sans-serif;
   font-weight: 700;
-  font-size: 1.825rem;
-  line-height: 2rem;
+  font-size: 1.5625rem;
+  line-height: 2.1825rem;
   letter-spacing: 0.0625rem;
   color: #424042;
 }
@@ -4430,8 +4455,8 @@ div.gs-team-popup--default .mfp-close {
 .reveal-card__front-content p {
   font-family: "Figtree", sans-serif;
   font-weight: 300;
-  font-size: 1.105rem;
-  line-height: 1.75rem;
+  font-size: 1.0625rem;
+  line-height: 1.625rem;
   color: #424042;
 }
 @media screen and (min-width: 768px) {
@@ -4559,8 +4584,8 @@ div.gs-team-popup--default .mfp-close {
 .reveal-card__face--back h4 {
   font-family: "Poppins", sans-serif;
   font-weight: 700;
-  font-size: 1.35rem;
-  line-height: 1.9rem;
+  font-size: 1.15rem;
+  line-height: 1.85rem;
   letter-spacing: 0.125rem;
   text-transform: uppercase;
   color: #424042;
@@ -4586,8 +4611,8 @@ div.gs-team-popup--default .mfp-close {
 .reveal-card__face--back li {
   font-family: "Figtree", sans-serif;
   font-weight: 300;
-  font-size: 1.105rem;
-  line-height: 1.75rem;
+  font-size: 1.0625rem;
+  line-height: 1.625rem;
   color: #424042;
 }
 @media screen and (min-width: 768px) {
@@ -4611,8 +4636,8 @@ div.gs-team-popup--default .mfp-close {
 .reveal-card__face--back p {
   font-family: "Figtree", sans-serif;
   font-weight: 300;
-  font-size: 1.105rem;
-  line-height: 1.75rem;
+  font-size: 1.0625rem;
+  line-height: 1.625rem;
   color: #424042;
 }
 @media screen and (min-width: 768px) {
@@ -4908,8 +4933,8 @@ div.gs-team-popup--default .mfp-close {
 .numbered-list__item-content h3 {
   font-family: "Poppins", sans-serif;
   font-weight: 700;
-  font-size: 1.35rem;
-  line-height: 1.9rem;
+  font-size: 1.15rem;
+  line-height: 1.85rem;
   letter-spacing: 0.125rem;
   text-transform: uppercase;
   color: #424042;
@@ -4928,8 +4953,8 @@ div.gs-team-popup--default .mfp-close {
 .numbered-list__item-content p {
   font-family: "Figtree", sans-serif;
   font-weight: 300;
-  font-size: 1.105rem;
-  line-height: 1.75rem;
+  font-size: 1.0625rem;
+  line-height: 1.625rem;
   color: #424042;
 }
 @media screen and (min-width: 768px) {
@@ -5084,8 +5109,8 @@ div.gs-team-popup--default .mfp-close {
 .cs-slide h3.cs-slide__title {
   font-family: "Poppins", sans-serif;
   font-weight: 700;
-  font-size: 1.825rem;
-  line-height: 2rem;
+  font-size: 1.5625rem;
+  line-height: 2.1825rem;
   letter-spacing: 0.0625rem;
   color: #424042;
 }
@@ -5111,8 +5136,8 @@ div.gs-team-popup--default .mfp-close {
 .cs-slide__excerpt {
   font-family: "Figtree", sans-serif;
   font-weight: 300;
-  font-size: 1.105rem;
-  line-height: 1.75rem;
+  font-size: 1.0625rem;
+  line-height: 1.625rem;
   color: #424042;
 }
 @media screen and (min-width: 768px) {
@@ -5318,14 +5343,14 @@ div.gs-team-popup--default .mfp-close {
 .case-studies-slider .case-studies-slider__loading p {
   font-family: "Poppins", sans-serif;
   font-weight: 500;
-  font-size: 1.35rem;
-  line-height: 1.9rem;
+  font-size: 1.15rem;
+  line-height: 1.85rem;
   color: #424042;
 }
 @media screen and (min-width: 768px) {
   .case-studies-slider .case-studies-slider__loading p {
-    font-size: 1.5625rem;
-    line-height: 1.975rem;
+    font-size: 1.375rem;
+    line-height: 2.125rem;
   }
 }
 .case-studies-slider .case-studies-slider__loading p {
@@ -5340,14 +5365,14 @@ div.gs-team-popup--default .mfp-close {
 .case-studies-slider .error h3 {
   font-family: "Poppins", sans-serif;
   font-weight: 500;
-  font-size: 1.35rem;
-  line-height: 1.9rem;
+  font-size: 1.15rem;
+  line-height: 1.85rem;
   color: #424042;
 }
 @media screen and (min-width: 768px) {
   .case-studies-slider .error h3 {
-    font-size: 1.5625rem;
-    line-height: 1.975rem;
+    font-size: 1.375rem;
+    line-height: 2.125rem;
   }
 }
 .case-studies-slider .error h3 {
@@ -5401,8 +5426,8 @@ div.gs-team-popup--default .mfp-close {
 .case-studies-slider__grid .resource-card .resource-title {
   font-family: "Poppins", sans-serif;
   font-weight: 700;
-  font-size: 1.825rem;
-  line-height: 2rem;
+  font-size: 1.5625rem;
+  line-height: 2.1825rem;
   letter-spacing: 0.0625rem;
   color: #424042;
 }
@@ -5419,8 +5444,8 @@ div.gs-team-popup--default .mfp-close {
 .case-studies-slider__grid .resource-card .resource-excerpt {
   font-family: "Figtree", sans-serif;
   font-weight: 300;
-  font-size: 1.105rem;
-  line-height: 1.75rem;
+  font-size: 1.0625rem;
+  line-height: 1.625rem;
   color: #424042;
 }
 @media screen and (min-width: 768px) {
@@ -5581,8 +5606,8 @@ div.gs-team-popup--default .mfp-close {
 .testimonial-card__text {
   font-family: "Figtree", sans-serif;
   font-weight: 300;
-  font-size: 1.105rem;
-  line-height: 1.75rem;
+  font-size: 1.0625rem;
+  line-height: 1.625rem;
   color: #424042;
 }
 @media screen and (min-width: 768px) {
@@ -5848,17 +5873,23 @@ div.gs-team-popup--default .mfp-close {
 }
 
 .insights-block .resource-card .resource-title {
-  margin: 0 0 0.75rem 0;
-  font-size: 1.35rem;
-  line-height: 1.65rem;
-  letter-spacing: 0.12px;
-  margin: 0;
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+  font-size: 1.15rem;
+  line-height: 1.85rem;
+  color: #424042;
 }
 @media screen and (min-width: 768px) {
   .insights-block .resource-card .resource-title {
-    font-size: 1.5625rem;
-    line-height: 1.95rem;
-    letter-spacing: 0.18px;
+    font-size: 1.375rem;
+    line-height: 2.125rem;
+  }
+}
+.insights-block .resource-card .resource-title {
+  font-weight: 700;
+}
+@media screen and (min-width: 768px) {
+  .insights-block .resource-card .resource-title {
     margin-bottom: 1rem;
   }
 }
@@ -5866,8 +5897,8 @@ div.gs-team-popup--default .mfp-close {
 .insights-block .resource-card .resource-excerpt {
   font-family: "Figtree", sans-serif;
   font-weight: 300;
-  font-size: 1.105rem;
-  line-height: 1.75rem;
+  font-size: 1.0625rem;
+  line-height: 1.625rem;
   color: #424042;
 }
 @media screen and (min-width: 768px) {
@@ -5971,14 +6002,14 @@ div.gs-team-popup--default .mfp-close {
 .insights-block .insights-block__loading p {
   font-family: "Poppins", sans-serif;
   font-weight: 500;
-  font-size: 1.35rem;
-  line-height: 1.9rem;
+  font-size: 1.15rem;
+  line-height: 1.85rem;
   color: #424042;
 }
 @media screen and (min-width: 768px) {
   .insights-block .insights-block__loading p {
-    font-size: 1.5625rem;
-    line-height: 1.975rem;
+    font-size: 1.375rem;
+    line-height: 2.125rem;
   }
 }
 .insights-block .insights-block__loading p {
@@ -5988,14 +6019,14 @@ div.gs-team-popup--default .mfp-close {
 .insights-block .insights-block__empty {
   font-family: "Poppins", sans-serif;
   font-weight: 500;
-  font-size: 1.35rem;
-  line-height: 1.9rem;
+  font-size: 1.15rem;
+  line-height: 1.85rem;
   color: #424042;
 }
 @media screen and (min-width: 768px) {
   .insights-block .insights-block__empty {
-    font-size: 1.5625rem;
-    line-height: 1.975rem;
+    font-size: 1.375rem;
+    line-height: 2.125rem;
   }
 }
 .insights-block .insights-block__empty {
@@ -6299,14 +6330,14 @@ p.contact-section__label {
 .contact-icons__text {
   font-family: "Poppins", sans-serif;
   font-weight: 500;
-  font-size: 1.35rem;
-  line-height: 1.9rem;
+  font-size: 1.15rem;
+  line-height: 1.85rem;
   color: #424042;
 }
 @media screen and (min-width: 768px) {
   .contact-icons__text {
-    font-size: 1.5625rem;
-    line-height: 1.975rem;
+    font-size: 1.375rem;
+    line-height: 2.125rem;
   }
 }
 .contact-icons__text {
@@ -6358,8 +6389,8 @@ p.contact-section__label {
 .contact-section .gform_required_legend {
   font-family: "Figtree", sans-serif;
   font-weight: 300;
-  font-size: 1.105rem;
-  line-height: 1.75rem;
+  font-size: 1.0625rem;
+  line-height: 1.625rem;
   color: #424042;
 }
 @media screen and (min-width: 768px) {
@@ -6384,6 +6415,16 @@ p.contact-section__label {
   }
 }
 
+.entry-content > .gform_wrapper {
+  padding: 25px;
+  background-color: #F2ECE5;
+}
+@media screen and (min-width: 768px) {
+  .entry-content > .gform_wrapper {
+    padding: 45px;
+  }
+}
+
 .contact-section .gfield_label {
   position: absolute;
   width: 1px;
@@ -6396,6 +6437,13 @@ p.contact-section__label {
   border: 0;
 }
 
+.gform_wrapper .gfield input[type=text],
+.gform_wrapper .gfield input[type=email],
+.gform_wrapper .gfield input[type=tel],
+.gform_wrapper .gfield input[type=url],
+.gform_wrapper .gfield input[type=number],
+.gform_wrapper .gfield select,
+.gform_wrapper .gfield textarea,
 .contact-section .gform_wrapper .gfield input[type=text],
 .contact-section .gform_wrapper .gfield input[type=email],
 .contact-section .gform_wrapper .gfield input[type=tel],
@@ -6415,9 +6463,16 @@ p.contact-section__label {
   line-height: 2;
   color: #424042;
 }
-.contact-section .gform_wrapper .gfield input[type=text]::-moz-placeholder, .contact-section .gform_wrapper .gfield input[type=email]::-moz-placeholder, .contact-section .gform_wrapper .gfield input[type=tel]::-moz-placeholder, .contact-section .gform_wrapper .gfield input[type=url]::-moz-placeholder, .contact-section .gform_wrapper .gfield input[type=number]::-moz-placeholder, .contact-section .gform_wrapper .gfield select::-moz-placeholder, .contact-section .gform_wrapper .gfield textarea::-moz-placeholder {
+.gform_wrapper .gfield input[type=text]::-moz-placeholder, .gform_wrapper .gfield input[type=email]::-moz-placeholder, .gform_wrapper .gfield input[type=tel]::-moz-placeholder, .gform_wrapper .gfield input[type=url]::-moz-placeholder, .gform_wrapper .gfield input[type=number]::-moz-placeholder, .gform_wrapper .gfield select::-moz-placeholder, .gform_wrapper .gfield textarea::-moz-placeholder, .contact-section .gform_wrapper .gfield input[type=text]::-moz-placeholder, .contact-section .gform_wrapper .gfield input[type=email]::-moz-placeholder, .contact-section .gform_wrapper .gfield input[type=tel]::-moz-placeholder, .contact-section .gform_wrapper .gfield input[type=url]::-moz-placeholder, .contact-section .gform_wrapper .gfield input[type=number]::-moz-placeholder, .contact-section .gform_wrapper .gfield select::-moz-placeholder, .contact-section .gform_wrapper .gfield textarea::-moz-placeholder {
   color: rgba(66, 64, 66, 0.6);
 }
+.gform_wrapper .gfield input[type=text]::placeholder,
+.gform_wrapper .gfield input[type=email]::placeholder,
+.gform_wrapper .gfield input[type=tel]::placeholder,
+.gform_wrapper .gfield input[type=url]::placeholder,
+.gform_wrapper .gfield input[type=number]::placeholder,
+.gform_wrapper .gfield select::placeholder,
+.gform_wrapper .gfield textarea::placeholder,
 .contact-section .gform_wrapper .gfield input[type=text]::placeholder,
 .contact-section .gform_wrapper .gfield input[type=email]::placeholder,
 .contact-section .gform_wrapper .gfield input[type=tel]::placeholder,
@@ -6427,6 +6482,13 @@ p.contact-section__label {
 .contact-section .gform_wrapper .gfield textarea::placeholder {
   color: rgba(66, 64, 66, 0.6);
 }
+.gform_wrapper .gfield input[type=text]:focus,
+.gform_wrapper .gfield input[type=email]:focus,
+.gform_wrapper .gfield input[type=tel]:focus,
+.gform_wrapper .gfield input[type=url]:focus,
+.gform_wrapper .gfield input[type=number]:focus,
+.gform_wrapper .gfield select:focus,
+.gform_wrapper .gfield textarea:focus,
 .contact-section .gform_wrapper .gfield input[type=text]:focus,
 .contact-section .gform_wrapper .gfield input[type=email]:focus,
 .contact-section .gform_wrapper .gfield input[type=tel]:focus,
@@ -6452,8 +6514,8 @@ p.contact-section__label {
 .contact-section .validation_message {
   font-family: "Figtree", sans-serif;
   font-weight: 300;
-  font-size: 1.105rem;
-  line-height: 1.75rem;
+  font-size: 1.0625rem;
+  line-height: 1.625rem;
   color: #424042;
 }
 @media screen and (min-width: 768px) {
@@ -6502,6 +6564,8 @@ div.gform_wrapper.gravity-theme .gform_page_footer {
   }
 }
 
+.gform_footer input[type=submit],
+.gform_footer button[type=submit],
 .contact-section .gform_footer input[type=submit],
 .contact-section .gform_footer button[type=submit] {
   display: inline-flex;
@@ -6523,6 +6587,8 @@ div.gform_wrapper.gravity-theme .gform_page_footer {
   text-transform: uppercase;
 }
 @media screen and (min-width: 768px) {
+  .gform_footer input[type=submit],
+  .gform_footer button[type=submit],
   .contact-section .gform_footer input[type=submit],
   .contact-section .gform_footer button[type=submit] {
     line-height: 1.4625rem;
@@ -6532,6 +6598,8 @@ div.gform_wrapper.gravity-theme .gform_page_footer {
     gap: 10px;
   }
 }
+.gform_footer input[type=submit]::after,
+.gform_footer button[type=submit]::after,
 .contact-section .gform_footer input[type=submit]::after,
 .contact-section .gform_footer button[type=submit]::after {
   content: "\f061";
@@ -6540,27 +6608,37 @@ div.gform_wrapper.gravity-theme .gform_page_footer {
   display: inline-block;
   transition: transform 0.3s ease;
 }
+.gform_footer input[type=submit]:hover,
+.gform_footer button[type=submit]:hover,
 .contact-section .gform_footer input[type=submit]:hover,
 .contact-section .gform_footer button[type=submit]:hover {
   color: #424042;
   background: transparent;
 }
+.gform_footer input[type=submit]:hover::after,
+.gform_footer button[type=submit]:hover::after,
 .contact-section .gform_footer input[type=submit]:hover::after,
 .contact-section .gform_footer button[type=submit]:hover::after {
   transform: rotate(45deg);
 }
+.gform_footer input[type=submit],
+.gform_footer button[type=submit],
 .contact-section .gform_footer input[type=submit],
 .contact-section .gform_footer button[type=submit] {
   text-transform: uppercase;
 }
+.gform_footer input[type=submit]:hover,
+.gform_footer button[type=submit]:hover,
 .contact-section .gform_footer input[type=submit]:hover,
 .contact-section .gform_footer button[type=submit]:hover {
   color: #424042;
   background-color: transparent;
 }
+.gform_footer input[type=submit]:hover::after,
+.gform_footer button[type=submit]:hover::after,
 .contact-section .gform_footer input[type=submit]:hover::after,
 .contact-section .gform_footer button[type=submit]:hover::after {
-  transform: rotate(45deg);
+  transform: rotate(-45deg);
 }
 
 .contact-section__columns > .block-editor-inner-blocks > .block-editor-block-list__layout {
@@ -6830,8 +6908,8 @@ div.gform_wrapper.gravity-theme .gform_page_footer {
 .image-columns .wrap h3 {
   font-family: "Poppins", sans-serif;
   font-weight: 700;
-  font-size: 1.825rem;
-  line-height: 2rem;
+  font-size: 1.5625rem;
+  line-height: 2.1825rem;
   letter-spacing: 0.0625rem;
   color: #424042;
 }
@@ -6848,8 +6926,8 @@ div.gform_wrapper.gravity-theme .gform_page_footer {
 .image-columns .wrap p {
   font-family: "Figtree", sans-serif;
   font-weight: 300;
-  font-size: 1.105rem;
-  line-height: 1.75rem;
+  font-size: 1.0625rem;
+  line-height: 1.625rem;
   color: #424042;
 }
 @media screen and (min-width: 768px) {
@@ -7208,8 +7286,8 @@ div.gform_wrapper.gravity-theme .gform_page_footer {
 .values-section .flip-card h3 {
   font-family: "Poppins", sans-serif;
   font-weight: 700;
-  font-size: 1.825rem;
-  line-height: 2rem;
+  font-size: 1.5625rem;
+  line-height: 2.1825rem;
   letter-spacing: 0.0625rem;
   color: #424042;
 }
@@ -8172,8 +8250,8 @@ div.gform_wrapper.gravity-theme .gform_page_footer {
 .media-content .wrap h3 {
   font-family: "Poppins", sans-serif;
   font-weight: 700;
-  font-size: 1.825rem;
-  line-height: 2rem;
+  font-size: 1.5625rem;
+  line-height: 2.1825rem;
   letter-spacing: 0.0625rem;
   color: #424042;
 }
@@ -8190,8 +8268,8 @@ div.gform_wrapper.gravity-theme .gform_page_footer {
 .media-content .wrap p {
   font-family: "Figtree", sans-serif;
   font-weight: 300;
-  font-size: 1.105rem;
-  line-height: 1.75rem;
+  font-size: 1.0625rem;
+  line-height: 1.625rem;
   color: #424042;
 }
 @media screen and (min-width: 768px) {
@@ -8366,15 +8444,22 @@ div.gform_wrapper.gravity-theme .gform_page_footer {
 
 .egg-cluster {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   grid-row-gap: 8%;
-  grid-column-gap: 4%;
+  grid-column-gap: 1%;
   width: 100%;
   max-width: 460px;
   margin-left: auto;
   margin-right: auto;
   justify-items: center;
   align-items: center;
+}
+@media screen and (min-width: 768px) {
+  .egg-cluster {
+    grid-template-columns: repeat(2, 1fr);
+    grid-row-gap: 8%;
+    grid-column-gap: 4%;
+  }
 }
 
 .egg-cluster--count-1 {
@@ -8791,11 +8876,13 @@ div.gform_wrapper.gravity-theme .gform_page_footer {
 .service-list .service-list-item .service-list-item__title {
   font-size: 1.25rem;
   line-height: 1.4rem;
+  padding-right: 35px;
 }
 @media screen and (min-width: 768px) {
   .service-list .service-list-item .service-list-item__title {
     font-size: 1.35rem;
     line-height: 1.5rem;
+    padding-right: 0;
   }
 }
 
@@ -8941,8 +9028,8 @@ div.gform_wrapper.gravity-theme .gform_page_footer {
 div.filter-case-studies__hero .hero-services h1 {
   font-family: "Poppins", sans-serif;
   font-weight: 600;
-  font-size: 3.55rem;
-  line-height: 4.75rem;
+  font-size: 2.75rem;
+  line-height: 3.85rem;
   letter-spacing: 0;
   color: #424042;
 }
@@ -9244,8 +9331,8 @@ div.filter-case-studies__hero .hero-services h1 {
 }
 @media screen and (min-width: 768px) {
   .cs-card h3.cs-card__title {
-    font-size: 1.25rem;
-    line-height: 1.75rem;
+    font-size: 1.35rem;
+    line-height: 1.85rem;
     letter-spacing: 0.18px;
   }
 }
@@ -9369,8 +9456,8 @@ div.filter-case-studies__hero .hero-services h1 {
 div.filter-posts__hero .hero-services h1 {
   font-family: "Poppins", sans-serif;
   font-weight: 600;
-  font-size: 3.55rem;
-  line-height: 4.75rem;
+  font-size: 2.75rem;
+  line-height: 3.85rem;
   letter-spacing: 0;
   color: #424042;
 }
@@ -9924,11 +10011,13 @@ div.filter-posts__hero .hero-services h1 {
 .case-study-stats {
   padding: 0 0 2rem;
   margin-top: 0;
+  margin-bottom: 2.1875rem;
 }
 @media screen and (min-width: 768px) {
   .case-study-stats {
     padding: 0 0 2.5rem;
     margin-top: 0;
+    margin-bottom: 3.125rem;
   }
 }
 
@@ -9945,7 +10034,7 @@ div.filter-posts__hero .hero-services h1 {
   flex-wrap: wrap;
   align-items: flex-start;
   justify-content: flex-start;
-  max-width: 1184px;
+  max-width: 1428px;
   margin-left: auto;
   margin-right: auto;
   padding-left: 1.25rem;
@@ -10030,9 +10119,11 @@ div.filter-posts__hero .hero-services h1 {
 
 .stat-card {
   border-bottom: 1px solid #424042;
+  padding-bottom: 24px;
 }
 @media screen and (min-width: 768px) {
   .stat-card {
+    padding-bottom: 0;
     padding-left: 2rem;
     padding-right: 2rem;
     border-left: 1px solid #424042;
@@ -10176,6 +10267,15 @@ p.case-study-body__label {
   }
 }
 
+.case-study-body__heading h3 {
+  margin: 2.5rem 0 1rem 0;
+}
+@media screen and (min-width: 768px) {
+  .case-study-body__heading h3 {
+    margin: 3.5rem 0 1.25rem 0;
+  }
+}
+
 .case-study-body__content > h2:first-child,
 .case-study-body__content > .case-study-body__heading:first-child {
   margin-top: 0.5rem;
@@ -10184,8 +10284,8 @@ p.case-study-body__label {
 .case-study-body__content p {
   font-family: "Figtree", sans-serif;
   font-weight: 300;
-  font-size: 1.105rem;
-  line-height: 1.75rem;
+  font-size: 1.0625rem;
+  line-height: 1.625rem;
   color: #424042;
 }
 @media screen and (min-width: 768px) {
@@ -10714,15 +10814,15 @@ p.case-study-body__label {
 .feature-card__title {
   font-family: "Poppins", sans-serif;
   font-weight: 500;
-  font-size: 1.35rem;
-  line-height: 1.9rem;
+  font-size: 1.15rem;
+  line-height: 1.85rem;
   color: #424042;
 }
 @media screen and (min-width: 768px) {
   .feature-card__content h3,
   .feature-card__title {
-    font-size: 1.5625rem;
-    line-height: 1.975rem;
+    font-size: 1.375rem;
+    line-height: 2.125rem;
   }
 }
 .feature-card__content h3,
@@ -10736,8 +10836,8 @@ p.case-study-body__label {
 .feature-card__body {
   font-family: "Figtree", sans-serif;
   font-weight: 300;
-  font-size: 1.105rem;
-  line-height: 1.75rem;
+  font-size: 1.0625rem;
+  line-height: 1.625rem;
   color: #424042;
 }
 @media screen and (min-width: 768px) {
@@ -11938,8 +12038,8 @@ img.device-frame__device {
 .callout-block .callout-block__content p {
   font-family: "Figtree", sans-serif;
   font-weight: 300;
-  font-size: 1.105rem;
-  line-height: 1.75rem;
+  font-size: 1.0625rem;
+  line-height: 1.625rem;
   color: #424042;
 }
 @media screen and (min-width: 768px) {
@@ -12006,14 +12106,14 @@ img.device-frame__device {
 .faq-accordion__trigger .faq-accordion__question {
   font-family: "Poppins", sans-serif;
   font-weight: 500;
-  font-size: 1.35rem;
-  line-height: 1.9rem;
+  font-size: 1.15rem;
+  line-height: 1.85rem;
   color: #424042;
 }
 @media screen and (min-width: 768px) {
   .faq-accordion__trigger .faq-accordion__question {
-    font-size: 1.5625rem;
-    line-height: 1.975rem;
+    font-size: 1.375rem;
+    line-height: 2.125rem;
   }
 }
 .faq-accordion__trigger .faq-accordion__question {
@@ -12061,8 +12161,8 @@ img.device-frame__device {
   padding: 0 0 1.5rem;
   font-family: "Figtree", sans-serif;
   font-weight: 300;
-  font-size: 1.105rem;
-  line-height: 1.75rem;
+  font-size: 1.0625rem;
+  line-height: 1.625rem;
   color: #424042;
 }
 @media screen and (min-width: 768px) {
