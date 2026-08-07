@@ -30,9 +30,10 @@ while ( have_posts() ) :
                     <?php red_egg_the_read_time(); ?>
                 </header><!-- .entry-header -->
 
-                <?php red_egg_the_toc(); ?>
 
                 <div class="entry-content">
+                    <?php red_egg_the_toc(); ?>
+
                     <?php
                     the_content();
 
