@@ -56,6 +56,10 @@ registerBlockType( 'red-egg-block/filter-case-studies', {
             type: 'string',
             default: 'DESC',
         },
+        melt: {
+            type: 'boolean',
+            default: false,
+        },
     },
     edit,
     save,

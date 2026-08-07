@@ -12,7 +12,7 @@ import PaddingSelector from '../../components/Padding.js';
 import MarginSelector from '../../components/Margin.js';
 
 const SaveFilterCaseStudies = ( { attributes } ) => {
-    const { initialCount, orderby, order, padding, margin, blockId } = attributes;
+    const { initialCount, orderby, order, melt, padding, margin, blockId } = attributes;
 
     const blockProps = useBlockProps.save( {
         id: blockId,
@@ -33,6 +33,7 @@ const SaveFilterCaseStudies = ( { attributes } ) => {
                         data-initial-count={ initialCount !== 9 ? initialCount : undefined }
                         data-orderby={ orderby !== 'date' ? orderby : undefined }
                         data-order={ order !== 'DESC' ? order : undefined }
+                        data-melt={ melt ? '1' : undefined }
                     ></div>
                 </div>
             </section>

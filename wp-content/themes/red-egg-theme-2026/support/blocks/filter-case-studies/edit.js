@@ -7,7 +7,7 @@
 
 const { Fragment, useState, useEffect } = wp.element;
 const { InnerBlocks, InspectorControls, useBlockProps } = wp.blockEditor;
-const { Button, PanelBody, RangeControl, SelectControl } = wp.components;
+const { Button, PanelBody, RangeControl, SelectControl, ToggleControl } = wp.components;
 const { __ } = wp.i18n;
 
 import ResourceCard from '../../components/ResourceCard.js';
@@ -42,7 +42,7 @@ const heroAllowed = [
 ];
 
 const EditFilterCaseStudies = ( { attributes, setAttributes, clientId } ) => {
-    const { initialCount, orderby, order, padding, margin, blockId } = attributes;
+    const { initialCount, orderby, order, melt, padding, margin, blockId } = attributes;
 
     const sortedUrl = apiUrl + '?orderby=' + encodeURIComponent( orderby ) + '&order=' + encodeURIComponent( order );
 
@@ -191,6 +191,12 @@ const EditFilterCaseStudies = ( { attributes, setAttributes, clientId } ) => {
                         onChange={ ( val ) => setAttributes( { order: val } ) }
                         disabled={ orderby === 'rand' }
                         help={ orderby === 'rand' ? __( 'Random ignores order direction.', 'red-egg' ) : undefined }
+                    />
+                    <ToggleControl
+                        label={ __( 'Melt reveal on scroll', 'red-egg' ) }
+                        help={ __( 'Cards drip into view as they scroll onscreen.', 'red-egg' ) }
+                        checked={ !! melt }
+                        onChange={ () => setAttributes( { melt: ! melt } ) }
                     />
                 </PanelBody>
             </InspectorControls>

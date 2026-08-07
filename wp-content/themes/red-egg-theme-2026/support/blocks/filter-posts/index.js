@@ -64,6 +64,10 @@ registerBlockType( 'red-egg-block/filter-posts', {
             type: 'string',
             default: 'DESC',
         },
+        melt: {
+            type: 'boolean',
+            default: false,
+        },
     },
     edit,
     save,

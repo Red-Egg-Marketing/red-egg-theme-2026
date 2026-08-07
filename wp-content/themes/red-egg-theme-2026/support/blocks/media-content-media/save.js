@@ -11,11 +11,13 @@ import { buildSrcSet, resolveOverride } from '../../components/mediaSizes.js';
 
 const SaveMediaContentMedia = ( { attributes } ) => {
     const {
-        media, vidOrImg, videoID, videoURL, videothumb, lightbox
+        media, vidOrImg, videoID, videoURL, videothumb, lightbox, melt
     } = attributes;
 
     const blockProps = useBlockProps.save( {
-        className: 'media-content__media image-col column',
+        className:
+            'media-content__media image-col column' +
+            ( vidOrImg === 'image' && melt ? ' has-melt' : '' ),
         'data-re-lightbox':
             vidOrImg === 'image' && lightbox ? 'single' : undefined,
     } );

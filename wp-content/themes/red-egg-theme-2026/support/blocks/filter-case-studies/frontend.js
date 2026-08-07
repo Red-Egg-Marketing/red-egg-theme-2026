@@ -17,7 +17,7 @@ const apiUrl = '/red-egg/v2/case-studies';
 
 // Display config read from the root's data attributes in
 // initFilterCaseStudies() (initial page size + server sort).
-let cfg = { orderby: 'date', order: 'DESC', initialCount: 9 };
+let cfg = { orderby: 'date', order: 'DESC', initialCount: 9, melt: false };
 
 /**
  * ResourceFilters – Taxonomy filter dropdowns
@@ -217,6 +217,13 @@ const FilterCaseStudiesFrontend = () => {
         } );
     }, [] );
 
+    // After the grid renders / updates, tell the melt-reveal module to
+    // (re)scan so opted-in card images pick up the drip effect.
+    useEffect( () => {
+        if ( ! cfg.melt ) return;
+        document.dispatchEvent( new CustomEvent( 'red-egg:content-updated' ) );
+    }, [ resources, visibleCount ] );
+
     // Toggle dropdown
     var toggleCats = function( key, item ) {
         var allFilt = document.querySelectorAll( '.filter-block' );
@@ -283,7 +290,7 @@ const FilterCaseStudiesFrontend = () => {
                 ) }
             </div>
 
-            <div className="filter-case-studies__grid">
+            <div className={ 'filter-case-studies__grid' + ( cfg.melt ? ' has-melt' : '' ) }>
                 { resources.length > 0 && resources.slice( 0, visibleCount ).map( ( resource, i ) => (
                     <CaseStudyCard
                         key={ resource.ID || i }
@@ -322,6 +329,7 @@ function initFilterCaseStudies() {
         orderby: root.getAttribute( 'data-orderby' ) || 'date',
         order: root.getAttribute( 'data-order' ) || 'DESC',
         initialCount: count > 0 ? count : 9,
+        melt: root.getAttribute( 'data-melt' ) === '1',
     };
 
     render( <FilterCaseStudiesFrontend />, root );

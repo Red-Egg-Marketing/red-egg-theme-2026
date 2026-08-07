@@ -20,7 +20,7 @@ const vidImgOptions = [
 
 const EditMediaContentMedia = ( { attributes, setAttributes } ) => {
     const {
-        media, vidOrImg, videoID, videoURL, videothumb, lightbox
+        media, vidOrImg, videoID, videoURL, videothumb, lightbox, melt
     } = attributes;
 
     const blockProps = useBlockProps( {
@@ -87,6 +87,14 @@ const EditMediaContentMedia = ( { attributes, setAttributes } ) => {
                             help={ __( 'Click the image to view it fullscreen.', 'red-egg' ) }
                             checked={ !! lightbox }
                             onChange={ () => setAttributes( { lightbox: ! lightbox } ) }
+                        />
+                    ) }
+                    { vidOrImg === 'image' && (
+                        <ToggleControl
+                            label={ __( 'Melt reveal on scroll', 'red-egg' ) }
+                            help={ __( 'Image drips into view when it scrolls onscreen.', 'red-egg' ) }
+                            checked={ !! melt }
+                            onChange={ () => setAttributes( { melt: ! melt } ) }
                         />
                     ) }
                 </PanelBody>

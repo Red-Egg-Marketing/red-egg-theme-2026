@@ -49,7 +49,7 @@ const ORDER_OPTIONS = [
 ];
 
 const EditFilterPosts = ( { attributes, setAttributes, clientId } ) => {
-    const { hiddenTaxonomies, initialCount, orderby, order, padding, margin, blockId } = attributes;
+    const { hiddenTaxonomies, initialCount, orderby, order, melt, padding, margin, blockId } = attributes;
 
     const [ allResources, setAllResources ] = useState( false );
     const [ resources, setResources ] = useState( false );
@@ -185,6 +185,12 @@ const EditFilterPosts = ( { attributes, setAttributes, clientId } ) => {
                         onChange={ ( val ) => setAttributes( { order: val } ) }
                         disabled={ orderby === 'rand' }
                         help={ orderby === 'rand' ? __( 'Random ignores order direction.', 'red-egg' ) : undefined }
+                    />
+                    <ToggleControl
+                        label={ __( 'Melt reveal on scroll', 'red-egg' ) }
+                        help={ __( 'Cards drip into view as they scroll onscreen.', 'red-egg' ) }
+                        checked={ !! melt }
+                        onChange={ () => setAttributes( { melt: ! melt } ) }
                     />
                 </PanelBody>
                 <PanelBody title={ __( 'Filter Taxonomies', 'red-egg' ) } initialOpen={ false }>
