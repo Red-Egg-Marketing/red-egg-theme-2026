@@ -15,6 +15,10 @@ const { render, Fragment, useState, useEffect } = wp.element;
 
 const apiUrl = '/red-egg/v2/case-studies';
 
+// Display config read from the root's data attributes in
+// initFilterCaseStudies() (initial page size + server sort).
+let cfg = { orderby: 'date', order: 'DESC', initialCount: 9 };
+
 /**
  * ResourceFilters – Taxonomy filter dropdowns
  */
@@ -117,6 +121,7 @@ const FilterCaseStudiesFrontend = () => {
     const [ taxonomy, setTaxonomy ] = useState( {} );
     const [ selectTax, setSelectTax ] = useState( [] );
     const [ loading, setLoading ] = useState( true );
+    const [ visibleCount, setVisibleCount ] = useState( cfg.initialCount );
     // term_id -> { taxonomy, term_slug }; and "taxSlug|termSlug" -> term_id
     const [ lookups, setLookups ] = useState( { byId: {}, bySlug: {} } );
 
@@ -168,7 +173,9 @@ const FilterCaseStudiesFrontend = () => {
 
     // Initial fetch
     useEffect( () => {
-        wp.apiRequest( { path: apiUrl } ).then( ( data ) => {
+        wp.apiRequest( {
+            path: apiUrl + '?orderby=' + encodeURIComponent( cfg.orderby ) + '&order=' + encodeURIComponent( cfg.order ),
+        } ).then( ( data ) => {
             var posts = [];
             var taxes = {};
             if ( data && data[0] && data[0].resources ) {
@@ -241,12 +248,14 @@ const FilterCaseStudiesFrontend = () => {
 
         setSelectTax( updated );
         setResources( runFilter( allResources, updated ) );
+        setVisibleCount( cfg.initialCount );
         updateUrl( updated, lookups.byId );
     };
 
     var clearAll = function() {
         setSelectTax( [] );
         setResources( allResources );
+        setVisibleCount( cfg.initialCount );
         updateUrl( [], lookups.byId );
     };
 
@@ -275,7 +284,7 @@ const FilterCaseStudiesFrontend = () => {
             </div>
 
             <div className="filter-case-studies__grid">
-                { resources.length > 0 && resources.map( ( resource, i ) => (
+                { resources.length > 0 && resources.slice( 0, visibleCount ).map( ( resource, i ) => (
                     <CaseStudyCard
                         key={ resource.ID || i }
                         resource={ resource }
@@ -287,6 +296,18 @@ const FilterCaseStudiesFrontend = () => {
                     </div>
                 ) }
             </div>
+
+            { resources.length > visibleCount && (
+                <div className="filter-load-more-wrap">
+                    <button
+                        type="button"
+                        className="filter-load-more"
+                        onClick={ () => setVisibleCount( visibleCount + cfg.initialCount ) }
+                    >
+                        Load more
+                    </button>
+                </div>
+            ) }
         </Fragment>
     );
 };
@@ -295,6 +316,14 @@ function initFilterCaseStudies() {
     const root = document.getElementById( 'FilterCaseStudiesRoot' );
     if ( ! root || root.dataset.reMounted ) return;
     root.dataset.reMounted = '1';
+
+    var count = parseInt( root.getAttribute( 'data-initial-count' ), 10 );
+    cfg = {
+        orderby: root.getAttribute( 'data-orderby' ) || 'date',
+        order: root.getAttribute( 'data-order' ) || 'DESC',
+        initialCount: count > 0 ? count : 9,
+    };
+
     render( <FilterCaseStudiesFrontend />, root );
 }
 

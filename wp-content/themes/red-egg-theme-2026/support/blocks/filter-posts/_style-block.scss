@@ -350,3 +350,47 @@ div.filter-posts__hero .hero-services h1 {
     font-size: 1.125rem;
     line-height: 1;
 }
+
+// ---- Load more button (shared by both filter blocks) ----
+.filter-load-more-wrap {
+    display: flex;
+    justify-content: center;
+    margin-top: 2.5rem;
+
+    @media screen and (min-width: $small-width) {
+        margin-top: 3.5rem;
+    }
+}
+
+.filter-load-more {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 32px;
+    border: 1px solid $gray;
+    border-radius: $button-border-radius;
+    background: transparent;
+    color: $gray;
+    font-family: $font-head;
+    font-weight: 500;
+    font-size: 1rem;
+    letter-spacing: 0.34px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+
+    &:hover {
+        background-color: $gray;
+        color: $white;
+    }
+}
+
+// Editor-only helper note under the sliced preview grid.
+.filter-posts__more-note,
+.filter-case-studies__more-note {
+    width: 100%;
+    margin: 1.5rem 0 0;
+    font-size: 0.85rem;
+    font-style: italic;
+    opacity: 0.6;
+}

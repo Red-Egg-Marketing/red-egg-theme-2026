@@ -14,7 +14,7 @@ import PaddingSelector from '../../components/Padding.js';
 import MarginSelector from '../../components/Margin.js';
 
 const SaveFilterPosts = ( { attributes } ) => {
-    const { hiddenTaxonomies, padding, margin, blockId } = attributes;
+    const { hiddenTaxonomies, initialCount, orderby, order, padding, margin, blockId } = attributes;
 
     const blockProps = useBlockProps.save( {
         id: blockId,
@@ -33,6 +33,9 @@ const SaveFilterPosts = ( { attributes } ) => {
                     <div
                         id="FilterPostsRoot"
                         data-hidden-taxonomies={ JSON.stringify( hiddenTaxonomies || [] ) }
+                        data-initial-count={ initialCount !== 9 ? initialCount : undefined }
+                        data-orderby={ orderby !== 'date' ? orderby : undefined }
+                        data-order={ order !== 'DESC' ? order : undefined }
                     ></div>
                 </div>
             </section>

@@ -7067,6 +7067,48 @@ div.filter-posts__hero .hero-services h1 {
   line-height: 1;
 }
 
+.filter-load-more-wrap {
+  display: flex;
+  justify-content: center;
+  margin-top: 2.5rem;
+}
+@media screen and (min-width: 768px) {
+  .filter-load-more-wrap {
+    margin-top: 3.5rem;
+  }
+}
+
+.filter-load-more {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 32px;
+  border: 1px solid #424042;
+  border-radius: 50px;
+  background: transparent;
+  color: #424042;
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+  font-size: 1rem;
+  letter-spacing: 0.34px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+.filter-load-more:hover {
+  background-color: #424042;
+  color: #FFFFFF;
+}
+
+.filter-posts__more-note,
+.filter-case-studies__more-note {
+  width: 100%;
+  margin: 1.5rem 0 0;
+  font-size: 0.85rem;
+  font-style: italic;
+  opacity: 0.6;
+}
+
 .wp-block.hero-services {
   width: 100%;
   max-width: 100%;

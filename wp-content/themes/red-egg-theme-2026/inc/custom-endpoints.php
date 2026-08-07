@@ -199,6 +199,23 @@ function red_egg_return_resources() {
 //  Supports: ?industry=slug filter
 // ============================================
 
+/**
+ * Resolve safe orderby/order args from a REST request for the filter
+ * endpoints. orderby is whitelisted to the values the filter blocks
+ * expose; anything else falls back to date DESC.
+ */
+function red_egg_resolve_order_args( $data ) {
+	$allowed = [ 'date', 'modified', 'menu_order', 'title', 'author', 'name', 'rand' ];
+
+	$orderby = $data ? $data->get_param( 'orderby' ) : '';
+	$order   = $data ? $data->get_param( 'order' )   : '';
+
+	$orderby = in_array( $orderby, $allowed, true ) ? $orderby : 'date';
+	$order   = strtoupper( (string) $order ) === 'ASC' ? 'ASC' : 'DESC';
+
+	return [ 'orderby' => $orderby, 'order' => $order ];
+}
+
 function red_egg_return_case_studies( $data ) {
 
 	$post_types = [ 'case-study', 'branding-project', 'website' ];
@@ -211,6 +228,10 @@ function red_egg_return_case_studies( $data ) {
 		'post_status'    => 'publish',
 		'posts_per_page' => -1,
 	];
+
+	$order_args      = red_egg_resolve_order_args( $data );
+	$args['orderby'] = $order_args['orderby'];
+	$args['order']   = $order_args['order'];
 
 	// Filter by industry and/or service taxonomy if provided
 	$tax_query = [];
@@ -562,6 +583,10 @@ function red_egg_return_filter_posts( $data ) {
 		'post_status'    => 'publish',
 		'posts_per_page' => -1,
 	];
+
+	$order_args      = red_egg_resolve_order_args( $data );
+	$args['orderby'] = $order_args['orderby'];
+	$args['order']   = $order_args['order'];
 
 	$query      = new WP_Query( $args );
 	$post_array = [ 'resources' => [] ];
