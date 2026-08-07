@@ -3370,8 +3370,8 @@ span.semibold {
 }
 @media screen and (min-width: 768px) {
   .insights-block {
-    padding-top: 5rem;
-    padding-bottom: 5rem;
+    padding-top: 7rem;
+    padding-bottom: 7rem;
   }
 }
 
