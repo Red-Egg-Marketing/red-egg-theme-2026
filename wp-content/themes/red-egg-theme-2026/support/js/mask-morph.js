@@ -58,7 +58,7 @@ import { onPageView } from './lifecycle';
           maskPath,
           {
             attr: { d: fullPath },
-            duration: 4.5,
+            duration: 2.5,
             ease: "power2.out"
           }
         );

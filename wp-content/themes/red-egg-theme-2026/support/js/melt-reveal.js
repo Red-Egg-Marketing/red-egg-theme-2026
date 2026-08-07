@@ -118,7 +118,7 @@
                 toggleActions: 'play none none none',
             },
         } );
-        tl.to( path, { attr: { d: FULL }, duration: 4.5, ease: 'power2.out' } );
+        tl.to( path, { attr: { d: FULL }, duration: 2.5, ease: 'power2.out' } );
         timelines.push( tl );
     }
 
