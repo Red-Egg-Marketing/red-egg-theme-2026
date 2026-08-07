@@ -160,15 +160,52 @@
         scan();
     }
 
+    // Debounced scan, shared by the content-updated event and the
+    // MutationObserver below.
+    var scanTimer = null;
+    function scheduleScan() {
+        window.clearTimeout( scanTimer );
+        scanTimer = window.setTimeout( scan, 120 );
+    }
+
+    // Client-rendered grids (filterable Posts / Case Studies) insert
+    // their cards asynchronously after a fetch. Rather than depend only
+    // on a dispatched event firing at the right moment, watch the DOM
+    // for inserted images and re-scan (idempotently). `has-melt` sits on
+    // the grid (an ancestor of the cards), so scan() does the ancestor
+    // check — here we only need to notice that images arrived.
+    var mo = null;
+    function startObserver() {
+        if ( mo || typeof MutationObserver === 'undefined' ) return;
+        mo = new MutationObserver( function ( mutations ) {
+            for ( var i = 0; i < mutations.length; i++ ) {
+                var added = mutations[ i ].addedNodes;
+                for ( var j = 0; j < added.length; j++ ) {
+                    var n = added[ j ];
+                    if ( ! n || n.nodeType !== 1 ) continue;
+                    if (
+                        ( n.matches && n.matches( 'img' ) ) ||
+                        ( n.querySelector && n.querySelector( 'img' ) )
+                    ) {
+                        scheduleScan();
+                        return;
+                    }
+                }
+            }
+        } );
+        mo.observe( document.body, { childList: true, subtree: true } );
+    }
+
     if ( document.readyState === 'loading' ) {
         document.addEventListener( 'DOMContentLoaded', init );
     } else {
         init();
     }
 
+    startObserver();
+
     document.addEventListener( 'red-egg:page-view', init );
     document.addEventListener( 'red-egg:page-leave', teardown );
-    // Client-rendered grids (filterable Posts / Case Studies) fire this
-    // after they render or update their cards.
-    document.addEventListener( 'red-egg:content-updated', scan );
+    // Client-rendered grids also fire this after they render/update.
+    document.addEventListener( 'red-egg:content-updated', scheduleScan );
 } )();
