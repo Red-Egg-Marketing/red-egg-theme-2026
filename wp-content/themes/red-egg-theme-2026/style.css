@@ -1456,8 +1456,8 @@ html.is-changing body.has-reveal-footer .site-footer {
 }
 @media screen and (min-width: 768px) {
   .archive-description {
-    font-size: 1.375rem;
-    line-height: 2.125rem;
+    font-size: 1.565rem;
+    line-height: 2.1875rem;
   }
 }
 .archive-description {
@@ -1540,8 +1540,8 @@ html.is-changing body.has-reveal-footer .site-footer {
 }
 @media screen and (min-width: 768px) {
   .post-navigation .nav-title {
-    font-size: 1.375rem;
-    line-height: 2.125rem;
+    font-size: 1.565rem;
+    line-height: 2.1875rem;
   }
 }
 
@@ -1601,8 +1601,8 @@ html.is-changing body.has-reveal-footer .site-footer {
 }
 @media screen and (min-width: 768px) {
   .post-card__date {
-    font-size: 1.375rem;
-    line-height: 2.125rem;
+    font-size: 1.565rem;
+    line-height: 2.1875rem;
   }
 }
 .post-card__date {
@@ -1827,8 +1827,8 @@ html.is-changing body.has-reveal-footer .site-footer {
 }
 @media screen and (min-width: 768px) {
   .error-404 .page-content {
-    font-size: 1.375rem;
-    line-height: 2.125rem;
+    font-size: 1.565rem;
+    line-height: 2.1875rem;
   }
 }
 .error-404 .page-content p {
@@ -1942,8 +1942,8 @@ html.is-changing body.has-reveal-footer .site-footer {
 }
 @media screen and (min-width: 768px) {
   .no-results .page-content {
-    font-size: 1.375rem;
-    line-height: 2.125rem;
+    font-size: 1.565rem;
+    line-height: 2.1875rem;
   }
 }
 .no-results .page-content p {
@@ -2238,8 +2238,8 @@ html.is-changing body.has-reveal-footer .site-footer {
   .site-content h4,
   .entry-content h4,
   .is-root-container h4 {
-    font-size: 1.375rem;
-    line-height: 2.125rem;
+    font-size: 1.565rem;
+    line-height: 2.1875rem;
   }
 }
 .site-content h4,
@@ -3521,8 +3521,8 @@ div.gs-team-popup--default .mfp-close {
 }
 @media screen and (min-width: 768px) {
   .hero-background__content p {
-    font-size: 1.375rem;
-    line-height: 2.125rem;
+    font-size: 1.565rem;
+    line-height: 2.1875rem;
   }
 }
 .hero-background__content p {
@@ -4060,8 +4060,8 @@ div.gs-team-popup--default .mfp-close {
 @media screen and (min-width: 768px) {
   .header-intro__left p,
   .header-intro__right p:first-of-type {
-    font-size: 1.375rem;
-    line-height: 2.125rem;
+    font-size: 1.565rem;
+    line-height: 2.1875rem;
   }
 }
 .header-intro__left p,
@@ -5406,8 +5406,8 @@ div.gs-team-popup--default .mfp-close {
 }
 @media screen and (min-width: 768px) {
   .case-studies-slider .case-studies-slider__loading p {
-    font-size: 1.375rem;
-    line-height: 2.125rem;
+    font-size: 1.565rem;
+    line-height: 2.1875rem;
   }
 }
 .case-studies-slider .case-studies-slider__loading p {
@@ -5428,8 +5428,8 @@ div.gs-team-popup--default .mfp-close {
 }
 @media screen and (min-width: 768px) {
   .case-studies-slider .error h3 {
-    font-size: 1.375rem;
-    line-height: 2.125rem;
+    font-size: 1.565rem;
+    line-height: 2.1875rem;
   }
 }
 .case-studies-slider .error h3 {
@@ -5938,8 +5938,8 @@ div.gs-team-popup--default .mfp-close {
 }
 @media screen and (min-width: 768px) {
   .insights-block .resource-card .resource-title {
-    font-size: 1.375rem;
-    line-height: 2.125rem;
+    font-size: 1.565rem;
+    line-height: 2.1875rem;
   }
 }
 .insights-block .resource-card .resource-title {
@@ -6065,8 +6065,8 @@ div.gs-team-popup--default .mfp-close {
 }
 @media screen and (min-width: 768px) {
   .insights-block .insights-block__loading p {
-    font-size: 1.375rem;
-    line-height: 2.125rem;
+    font-size: 1.565rem;
+    line-height: 2.1875rem;
   }
 }
 .insights-block .insights-block__loading p {
@@ -6082,8 +6082,8 @@ div.gs-team-popup--default .mfp-close {
 }
 @media screen and (min-width: 768px) {
   .insights-block .insights-block__empty {
-    font-size: 1.375rem;
-    line-height: 2.125rem;
+    font-size: 1.565rem;
+    line-height: 2.1875rem;
   }
 }
 .insights-block .insights-block__empty {
@@ -6393,8 +6393,8 @@ p.contact-section__label {
 }
 @media screen and (min-width: 768px) {
   .contact-icons__text {
-    font-size: 1.375rem;
-    line-height: 2.125rem;
+    font-size: 1.565rem;
+    line-height: 2.1875rem;
   }
 }
 .contact-icons__text {
@@ -6880,16 +6880,14 @@ div.gform_wrapper.gravity-theme .gform_page_footer {
   width: 100%;
 }
 
-.image-columns .img-container {
-  border: 1px solid #424042;
-}
-
 .image-columns .img-container img {
   display: block;
   width: 100%;
   height: 100%;
   -o-object-fit: cover;
      object-fit: cover;
+  border: 1px solid #424042;
+  border-radius: 8px;
 }
 
 .image-columns .image-comp {
@@ -7073,6 +7071,7 @@ div.gform_wrapper.gravity-theme .gform_page_footer {
   height: auto;
   width: 100%;
   border-radius: 8px;
+  border: 1px solid #424042;
 }
 
 .custom-video-button {
@@ -10878,8 +10877,8 @@ p.case-study-body__label {
 @media screen and (min-width: 768px) {
   .feature-card__content h3,
   .feature-card__title {
-    font-size: 1.375rem;
-    line-height: 2.125rem;
+    font-size: 1.565rem;
+    line-height: 2.1875rem;
   }
 }
 .feature-card__content h3,
@@ -12169,8 +12168,8 @@ img.device-frame__device {
 }
 @media screen and (min-width: 768px) {
   .faq-accordion__trigger .faq-accordion__question {
-    font-size: 1.375rem;
-    line-height: 2.125rem;
+    font-size: 1.565rem;
+    line-height: 2.1875rem;
   }
 }
 .faq-accordion__trigger .faq-accordion__question {

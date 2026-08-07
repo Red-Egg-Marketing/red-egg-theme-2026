@@ -642,8 +642,8 @@ span.semibold {
   .site-content h4,
   .entry-content h4,
   .is-root-container h4 {
-    font-size: 1.375rem;
-    line-height: 2.125rem;
+    font-size: 1.565rem;
+    line-height: 2.1875rem;
   }
 }
 .site-content h4,
@@ -1083,8 +1083,8 @@ span.semibold {
 }
 @media screen and (min-width: 768px) {
   .hero-background__content p {
-    font-size: 1.375rem;
-    line-height: 2.125rem;
+    font-size: 1.565rem;
+    line-height: 2.1875rem;
   }
 }
 .hero-background__content p {
@@ -1622,8 +1622,8 @@ span.semibold {
 @media screen and (min-width: 768px) {
   .header-intro__left p,
   .header-intro__right p:first-of-type {
-    font-size: 1.375rem;
-    line-height: 2.125rem;
+    font-size: 1.565rem;
+    line-height: 2.1875rem;
   }
 }
 .header-intro__left p,
@@ -2968,8 +2968,8 @@ span.semibold {
 }
 @media screen and (min-width: 768px) {
   .case-studies-slider .case-studies-slider__loading p {
-    font-size: 1.375rem;
-    line-height: 2.125rem;
+    font-size: 1.565rem;
+    line-height: 2.1875rem;
   }
 }
 .case-studies-slider .case-studies-slider__loading p {
@@ -2990,8 +2990,8 @@ span.semibold {
 }
 @media screen and (min-width: 768px) {
   .case-studies-slider .error h3 {
-    font-size: 1.375rem;
-    line-height: 2.125rem;
+    font-size: 1.565rem;
+    line-height: 2.1875rem;
   }
 }
 .case-studies-slider .error h3 {
@@ -3500,8 +3500,8 @@ span.semibold {
 }
 @media screen and (min-width: 768px) {
   .insights-block .resource-card .resource-title {
-    font-size: 1.375rem;
-    line-height: 2.125rem;
+    font-size: 1.565rem;
+    line-height: 2.1875rem;
   }
 }
 .insights-block .resource-card .resource-title {
@@ -3627,8 +3627,8 @@ span.semibold {
 }
 @media screen and (min-width: 768px) {
   .insights-block .insights-block__loading p {
-    font-size: 1.375rem;
-    line-height: 2.125rem;
+    font-size: 1.565rem;
+    line-height: 2.1875rem;
   }
 }
 .insights-block .insights-block__loading p {
@@ -3644,8 +3644,8 @@ span.semibold {
 }
 @media screen and (min-width: 768px) {
   .insights-block .insights-block__empty {
-    font-size: 1.375rem;
-    line-height: 2.125rem;
+    font-size: 1.565rem;
+    line-height: 2.1875rem;
   }
 }
 .insights-block .insights-block__empty {
@@ -3955,8 +3955,8 @@ p.contact-section__label {
 }
 @media screen and (min-width: 768px) {
   .contact-icons__text {
-    font-size: 1.375rem;
-    line-height: 2.125rem;
+    font-size: 1.565rem;
+    line-height: 2.1875rem;
   }
 }
 .contact-icons__text {
@@ -4442,16 +4442,14 @@ div.gform_wrapper.gravity-theme .gform_page_footer {
   width: 100%;
 }
 
-.image-columns .img-container {
-  border: 1px solid #424042;
-}
-
 .image-columns .img-container img {
   display: block;
   width: 100%;
   height: 100%;
   -o-object-fit: cover;
      object-fit: cover;
+  border: 1px solid #424042;
+  border-radius: 8px;
 }
 
 .image-columns .image-comp {
@@ -4635,6 +4633,7 @@ div.gform_wrapper.gravity-theme .gform_page_footer {
   height: auto;
   width: 100%;
   border-radius: 8px;
+  border: 1px solid #424042;
 }
 
 .custom-video-button {
@@ -8212,8 +8211,8 @@ p.case-study-body__label {
 @media screen and (min-width: 768px) {
   .feature-card__content h3,
   .feature-card__title {
-    font-size: 1.375rem;
-    line-height: 2.125rem;
+    font-size: 1.565rem;
+    line-height: 2.1875rem;
   }
 }
 .feature-card__content h3,
@@ -9503,8 +9502,8 @@ img.device-frame__device {
 }
 @media screen and (min-width: 768px) {
   .faq-accordion__trigger .faq-accordion__question {
-    font-size: 1.375rem;
-    line-height: 2.125rem;
+    font-size: 1.565rem;
+    line-height: 2.1875rem;
   }
 }
 .faq-accordion__trigger .faq-accordion__question {
