@@ -477,7 +477,7 @@ span.semibold {
 .is-root-container > figure.wp-block-table,
 .is-root-container > table,
 .is-root-container > hr.wp-block-separator {
-  max-width: 770px;
+  max-width: 970px;
   margin-left: auto;
   margin-right: auto;
   padding-left: 1.25rem;
