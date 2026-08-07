@@ -381,6 +381,64 @@ ul, ol {
   transform: rotate(45deg);
 }
 
+.wp-block-button.is-style-outline-white-up .wp-block-button__link,
+.editor-styles-wrapper .wp-block-button.is-style-outline-white-up .wp-block-button__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: transparent;
+  border: 1px solid #FFFFFF;
+  border-radius: 50px;
+  color: #FFFFFF;
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+  font-size: 0.9rem;
+  line-height: 1.4rem;
+  letter-spacing: 0.32px;
+  padding: 10px 20px 10px 26px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: none;
+  text-transform: uppercase;
+}
+@media screen and (min-width: 768px) {
+  .wp-block-button.is-style-outline-white-up .wp-block-button__link,
+  .editor-styles-wrapper .wp-block-button.is-style-outline-white-up .wp-block-button__link {
+    line-height: 1.4625rem;
+    font-size: 1.065rem;
+    letter-spacing: 0.34px;
+    padding: 15px 28px 15px 35px;
+    gap: 10px;
+  }
+}
+.wp-block-button.is-style-outline-white-up .wp-block-button__link::after,
+.editor-styles-wrapper .wp-block-button.is-style-outline-white-up .wp-block-button__link::after {
+  content: "\f061";
+  font: var(--fa-font-light);
+  font-size: 16px;
+  display: inline-block;
+  transition: transform 0.3s ease;
+}
+.wp-block-button.is-style-outline-white-up .wp-block-button__link:hover,
+.editor-styles-wrapper .wp-block-button.is-style-outline-white-up .wp-block-button__link:hover {
+  color: #FFFFFF;
+  background: transparent;
+}
+.wp-block-button.is-style-outline-white-up .wp-block-button__link:hover::after,
+.editor-styles-wrapper .wp-block-button.is-style-outline-white-up .wp-block-button__link:hover::after {
+  transform: rotate(45deg);
+}
+.wp-block-button.is-style-outline-white-up .wp-block-button__link:hover,
+.editor-styles-wrapper .wp-block-button.is-style-outline-white-up .wp-block-button__link:hover {
+  color: #FFFFFF;
+  background-color: transparent;
+  border-color: #FFFFFF;
+}
+.wp-block-button.is-style-outline-white-up .wp-block-button__link:hover::after,
+.editor-styles-wrapper .wp-block-button.is-style-outline-white-up .wp-block-button__link:hover::after {
+  transform: rotate(-45deg);
+}
+
 p.has-medium-font-size {
   font-size: 1.0625rem !important;
   line-height: 1.625rem !important;

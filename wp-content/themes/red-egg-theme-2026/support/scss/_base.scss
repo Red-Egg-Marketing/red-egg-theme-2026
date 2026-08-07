@@ -169,6 +169,20 @@ ul, ol {
     @include outline-button-base( $white );
 }
 
+// White outline button with arrow up (for dark backgrounds / hero)
+.wp-block-button.is-style-outline-white-up .wp-block-button__link,
+.editor-styles-wrapper .wp-block-button.is-style-outline-white-up .wp-block-button__link {
+    @include outline-button-base( $white );
+    &:hover {
+        color: $white;
+        background-color: transparent;
+        border-color: $white;
+        &::after {
+            transform: rotate(-45deg);
+        }
+    }
+}
+
 // ========================================
 //  Rotate Words – Typewriter Cursor
 // ========================================

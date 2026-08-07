@@ -28,17 +28,18 @@ while ( have_posts() ) :
                         <?php the_post_thumbnail( 'large' ); ?>
                     </div><!-- .entry-thumbnail -->
             <?php endif; ?>
-            <div class="block-wrapper single-post__wrapper">
+            <div class="wrapper">
 
                 <header class="entry-header">
                     <?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
                     <?php red_egg_the_read_time(); ?>
                 </header><!-- .entry-header -->
 
-                <?php red_egg_the_toc(); ?>
 
                 <div class="entry-content">
                     <?php
+                    red_egg_the_toc();
+
                     the_content();
 
                     wp_link_pages( [
