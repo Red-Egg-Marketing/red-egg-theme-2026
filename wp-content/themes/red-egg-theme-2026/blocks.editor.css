@@ -579,16 +579,16 @@ span.semibold {
 .is-root-container h4 {
   font-family: "Poppins", sans-serif;
   font-weight: 500;
-  font-size: 1.35rem;
-  line-height: 1.9rem;
+  font-size: 1.15rem;
+  line-height: 1.85rem;
   color: #424042;
 }
 @media screen and (min-width: 768px) {
   .site-content h4,
   .entry-content h4,
   .is-root-container h4 {
-    font-size: 1.5625rem;
-    line-height: 1.975rem;
+    font-size: 1.375rem;
+    line-height: 2.125rem;
   }
 }
 .site-content h4,
@@ -882,8 +882,8 @@ span.semibold {
   background-color: #F79E83;
   position: relative;
   overflow: hidden;
-  padding-top: 5.5rem;
-  padding-bottom: 5.5rem;
+  padding-top: 6.5rem;
+  padding-bottom: 6.5rem;
   position: relative;
   z-index: 2;
 }
@@ -1022,14 +1022,14 @@ span.semibold {
 .hero-background__content p {
   font-family: "Poppins", sans-serif;
   font-weight: 500;
-  font-size: 1.35rem;
-  line-height: 1.9rem;
+  font-size: 1.15rem;
+  line-height: 1.85rem;
   color: #424042;
 }
 @media screen and (min-width: 768px) {
   .hero-background__content p {
-    font-size: 1.5625rem;
-    line-height: 1.975rem;
+    font-size: 1.375rem;
+    line-height: 2.125rem;
   }
 }
 .hero-background__content p {
@@ -1170,8 +1170,8 @@ span.semibold {
 
 .text-cards-grid {
   position: relative;
-  padding-top: 5.5rem;
-  padding-bottom: 5.5rem;
+  padding-top: 6.5rem;
+  padding-bottom: 6.5rem;
 }
 @media screen and (min-width: 768px) {
   .text-cards-grid {
@@ -1560,15 +1560,15 @@ span.semibold {
 .header-intro__right p:first-of-type {
   font-family: "Poppins", sans-serif;
   font-weight: 500;
-  font-size: 1.35rem;
-  line-height: 1.9rem;
+  font-size: 1.15rem;
+  line-height: 1.85rem;
   color: #424042;
 }
 @media screen and (min-width: 768px) {
   .header-intro__left p,
   .header-intro__right p:first-of-type {
-    font-size: 1.5625rem;
-    line-height: 1.975rem;
+    font-size: 1.375rem;
+    line-height: 2.125rem;
   }
 }
 .header-intro__left p,
@@ -2348,8 +2348,8 @@ span.semibold {
 
 .numbered-list {
   position: relative;
-  padding-top: 5.5rem;
-  padding-bottom: 5.5rem;
+  padding-top: 6.5rem;
+  padding-bottom: 6.5rem;
   overflow: hidden;
 }
 @media screen and (min-width: 768px) {
@@ -2574,8 +2574,8 @@ span.semibold {
 
 .case-studies-slider {
   position: relative;
-  padding-top: 2.75rem;
-  padding-bottom: 2.75rem;
+  padding-top: 3.25rem;
+  padding-bottom: 3.25rem;
   overflow: hidden;
 }
 @media screen and (min-width: 768px) {
@@ -2907,14 +2907,14 @@ span.semibold {
 .case-studies-slider .case-studies-slider__loading p {
   font-family: "Poppins", sans-serif;
   font-weight: 500;
-  font-size: 1.35rem;
-  line-height: 1.9rem;
+  font-size: 1.15rem;
+  line-height: 1.85rem;
   color: #424042;
 }
 @media screen and (min-width: 768px) {
   .case-studies-slider .case-studies-slider__loading p {
-    font-size: 1.5625rem;
-    line-height: 1.975rem;
+    font-size: 1.375rem;
+    line-height: 2.125rem;
   }
 }
 .case-studies-slider .case-studies-slider__loading p {
@@ -2929,14 +2929,14 @@ span.semibold {
 .case-studies-slider .error h3 {
   font-family: "Poppins", sans-serif;
   font-weight: 500;
-  font-size: 1.35rem;
-  line-height: 1.9rem;
+  font-size: 1.15rem;
+  line-height: 1.85rem;
   color: #424042;
 }
 @media screen and (min-width: 768px) {
   .case-studies-slider .error h3 {
-    font-size: 1.5625rem;
-    line-height: 1.975rem;
+    font-size: 1.375rem;
+    line-height: 2.125rem;
   }
 }
 .case-studies-slider .error h3 {
@@ -3039,8 +3039,8 @@ span.semibold {
 
 .testimonials-block {
   position: relative;
-  padding-top: 2.75rem;
-  padding-bottom: 2.75rem;
+  padding-top: 3.25rem;
+  padding-bottom: 3.25rem;
   overflow: hidden;
   z-index: 2;
 }
@@ -3310,8 +3310,8 @@ span.semibold {
 
 .insights-block {
   position: relative;
-  padding-top: 2.75rem;
-  padding-bottom: 5.5rem;
+  padding-top: 3.25rem;
+  padding-bottom: 6.5rem;
 }
 @media screen and (min-width: 768px) {
   .insights-block {
@@ -3560,14 +3560,14 @@ span.semibold {
 .insights-block .insights-block__loading p {
   font-family: "Poppins", sans-serif;
   font-weight: 500;
-  font-size: 1.35rem;
-  line-height: 1.9rem;
+  font-size: 1.15rem;
+  line-height: 1.85rem;
   color: #424042;
 }
 @media screen and (min-width: 768px) {
   .insights-block .insights-block__loading p {
-    font-size: 1.5625rem;
-    line-height: 1.975rem;
+    font-size: 1.375rem;
+    line-height: 2.125rem;
   }
 }
 .insights-block .insights-block__loading p {
@@ -3577,14 +3577,14 @@ span.semibold {
 .insights-block .insights-block__empty {
   font-family: "Poppins", sans-serif;
   font-weight: 500;
-  font-size: 1.35rem;
-  line-height: 1.9rem;
+  font-size: 1.15rem;
+  line-height: 1.85rem;
   color: #424042;
 }
 @media screen and (min-width: 768px) {
   .insights-block .insights-block__empty {
-    font-size: 1.5625rem;
-    line-height: 1.975rem;
+    font-size: 1.375rem;
+    line-height: 2.125rem;
   }
 }
 .insights-block .insights-block__empty {
@@ -3618,8 +3618,8 @@ span.semibold {
 .contact-section {
   position: relative;
   width: 100%;
-  padding-top: 5.5rem;
-  padding-bottom: 5.5rem;
+  padding-top: 6.5rem;
+  padding-bottom: 6.5rem;
 }
 @media screen and (min-width: 768px) {
   .contact-section {
@@ -3888,14 +3888,14 @@ p.contact-section__label {
 .contact-icons__text {
   font-family: "Poppins", sans-serif;
   font-weight: 500;
-  font-size: 1.35rem;
-  line-height: 1.9rem;
+  font-size: 1.15rem;
+  line-height: 1.85rem;
   color: #424042;
 }
 @media screen and (min-width: 768px) {
   .contact-icons__text {
-    font-size: 1.5625rem;
-    line-height: 1.975rem;
+    font-size: 1.375rem;
+    line-height: 2.125rem;
   }
 }
 .contact-icons__text {
@@ -4291,8 +4291,8 @@ div.gform_wrapper.gravity-theme .gform_page_footer {
   width: 100%;
   position: relative;
   margin: 0 auto;
-  padding-top: 2.75rem;
-  padding-bottom: 2.75rem;
+  padding-top: 3.25rem;
+  padding-bottom: 3.25rem;
 }
 @media screen and (min-width: 768px) {
   .image-columns {
@@ -4650,7 +4650,7 @@ div.gform_wrapper.gravity-theme .gform_page_footer {
   background-color: #024D69;
   overflow: hidden;
   padding-top: 0;
-  padding-bottom: 5.5rem;
+  padding-bottom: 6.5rem;
   z-index: 2;
 }
 @media screen and (min-width: 768px) {
@@ -4926,8 +4926,8 @@ div.gform_wrapper.gravity-theme .gform_page_footer {
 
 .shortcode-section {
   width: 100%;
-  padding-top: 5.5rem;
-  padding-bottom: 5.5rem;
+  padding-top: 6.5rem;
+  padding-bottom: 6.5rem;
 }
 @media screen and (min-width: 768px) {
   .shortcode-section {
@@ -4976,8 +4976,8 @@ div.gform_wrapper.gravity-theme .gform_page_footer {
 
 .community-section {
   position: relative;
-  padding-top: 5.5rem;
-  padding-bottom: 5.5rem;
+  padding-top: 6.5rem;
+  padding-bottom: 6.5rem;
   overflow: hidden;
 }
 @media screen and (min-width: 768px) {
@@ -5226,8 +5226,8 @@ div.gform_wrapper.gravity-theme .gform_page_footer {
 
 .awards-section {
   position: relative;
-  padding-top: 2.75rem;
-  padding-bottom: 2.75rem;
+  padding-top: 3.25rem;
+  padding-bottom: 3.25rem;
   z-index: 2;
 }
 @media screen and (min-width: 768px) {
@@ -5536,8 +5536,8 @@ div.gform_wrapper.gravity-theme .gform_page_footer {
 .vibe-cta {
   position: relative;
   overflow: hidden;
-  padding-top: 2.75rem;
-  padding-bottom: 2.75rem;
+  padding-top: 3.25rem;
+  padding-bottom: 3.25rem;
 }
 @media screen and (min-width: 768px) {
   .vibe-cta {
@@ -5634,8 +5634,8 @@ div.gform_wrapper.gravity-theme .gform_page_footer {
 .media-content {
   position: relative;
   width: 100%;
-  padding-top: 5.5rem;
-  padding-bottom: 5.5rem;
+  padding-top: 6.5rem;
+  padding-bottom: 6.5rem;
 }
 @media screen and (min-width: 768px) {
   .media-content {
@@ -5924,8 +5924,8 @@ div.gform_wrapper.gravity-theme .gform_page_footer {
 
 .service-list {
   position: relative;
-  padding-top: 2.75rem;
-  padding-bottom: 2.75rem;
+  padding-top: 3.25rem;
+  padding-bottom: 3.25rem;
 }
 @media screen and (min-width: 768px) {
   .service-list {
@@ -6276,7 +6276,7 @@ div.gform_wrapper.gravity-theme .gform_page_footer {
 .filter-case-studies {
   position: relative;
   padding-top: 0;
-  padding-bottom: 5.5rem;
+  padding-bottom: 6.5rem;
 }
 @media screen and (min-width: 768px) {
   .filter-case-studies {
@@ -6612,8 +6612,8 @@ div.filter-case-studies__hero .hero-services h1 {
 }
 @media screen and (min-width: 768px) {
   .cs-card h3.cs-card__title {
-    font-size: 1.25rem;
-    line-height: 1.75rem;
+    font-size: 1.35rem;
+    line-height: 1.85rem;
     letter-spacing: 0.18px;
   }
 }
@@ -6726,7 +6726,7 @@ div.filter-case-studies__hero .hero-services h1 {
   }
 }
 .filter-posts > .block-wrapper {
-  padding-bottom: 5.5rem;
+  padding-bottom: 6.5rem;
 }
 @media screen and (min-width: 768px) {
   .filter-posts > .block-wrapper {
@@ -7118,8 +7118,8 @@ div.filter-posts__hero .hero-services h1 {
   position: relative;
   overflow: hidden;
   background-color: #F2ECE5;
-  padding-top: 5.5rem;
-  padding-bottom: 5.5rem;
+  padding-top: 6.5rem;
+  padding-bottom: 6.5rem;
   z-index: 2;
 }
 @media screen and (min-width: 768px) {
@@ -7458,8 +7458,8 @@ div.filter-posts__hero .hero-services h1 {
 
 .case-study-body {
   position: relative;
-  padding-top: 2.75rem;
-  padding-bottom: 2.75rem;
+  padding-top: 3.25rem;
+  padding-bottom: 3.25rem;
 }
 @media screen and (min-width: 768px) {
   .case-study-body {
@@ -7595,8 +7595,8 @@ p.case-study-body__label {
 .feature-cards {
   position: relative;
   background-color: #424042;
-  padding-top: 5.5rem;
-  padding-bottom: 5.5rem;
+  padding-top: 6.5rem;
+  padding-bottom: 6.5rem;
 }
 @media screen and (min-width: 768px) {
   .feature-cards {
@@ -8082,15 +8082,15 @@ p.case-study-body__label {
 .feature-card__title {
   font-family: "Poppins", sans-serif;
   font-weight: 500;
-  font-size: 1.35rem;
-  line-height: 1.9rem;
+  font-size: 1.15rem;
+  line-height: 1.85rem;
   color: #424042;
 }
 @media screen and (min-width: 768px) {
   .feature-card__content h3,
   .feature-card__title {
-    font-size: 1.5625rem;
-    line-height: 1.975rem;
+    font-size: 1.375rem;
+    line-height: 2.125rem;
   }
 }
 .feature-card__content h3,
@@ -8156,8 +8156,8 @@ p.case-study-body__label {
 
 .cs-gallery {
   position: relative;
-  padding-top: 5.5rem;
-  padding-bottom: 5.5rem;
+  padding-top: 6.5rem;
+  padding-bottom: 6.5rem;
 }
 @media screen and (min-width: 768px) {
   .cs-gallery {
@@ -8305,8 +8305,8 @@ p.cs-gallery__label {
 
 .color-palette-block {
   position: relative;
-  padding-top: 5.5rem;
-  padding-bottom: 5.5rem;
+  padding-top: 6.5rem;
+  padding-bottom: 6.5rem;
 }
 @media screen and (min-width: 768px) {
   .color-palette-block {
@@ -8546,8 +8546,8 @@ p.cs-gallery__label {
 }
 .device-showcase {
   position: relative;
-  padding-top: 5.5rem;
-  padding-bottom: 5.5rem;
+  padding-top: 6.5rem;
+  padding-bottom: 6.5rem;
 }
 @media screen and (min-width: 768px) {
   .device-showcase {
@@ -8745,8 +8745,8 @@ img.device-frame__device {
 
 .process-steps {
   position: relative;
-  padding-top: 2.75rem;
-  padding-bottom: 2.75rem;
+  padding-top: 3.25rem;
+  padding-bottom: 3.25rem;
   z-index: 2;
 }
 @media screen and (min-width: 768px) {
@@ -9065,8 +9065,8 @@ img.device-frame__device {
 .icon-cards {
   position: relative;
   background-color: #024D69;
-  padding-top: 5.5rem;
-  padding-bottom: 5.5rem;
+  padding-top: 6.5rem;
+  padding-bottom: 6.5rem;
 }
 @media screen and (min-width: 768px) {
   .icon-cards {
@@ -9374,14 +9374,14 @@ img.device-frame__device {
 .faq-accordion__trigger .faq-accordion__question {
   font-family: "Poppins", sans-serif;
   font-weight: 500;
-  font-size: 1.35rem;
-  line-height: 1.9rem;
+  font-size: 1.15rem;
+  line-height: 1.85rem;
   color: #424042;
 }
 @media screen and (min-width: 768px) {
   .faq-accordion__trigger .faq-accordion__question {
-    font-size: 1.5625rem;
-    line-height: 1.975rem;
+    font-size: 1.375rem;
+    line-height: 2.125rem;
   }
 }
 .faq-accordion__trigger .faq-accordion__question {
@@ -9460,8 +9460,8 @@ img.device-frame__device {
   display: flex;
   justify-content: center;
   width: 100%;
-  padding-top: 2.75rem;
-  padding-bottom: 2.75rem;
+  padding-top: 3.25rem;
+  padding-bottom: 3.25rem;
   position: relative;
   z-index: 2;
 }
@@ -9583,8 +9583,8 @@ img.device-frame__device {
   position: relative;
   width: 100%;
   overflow: visible;
-  padding-top: 5.5rem;
-  padding-bottom: 5.5rem;
+  padding-top: 6.5rem;
+  padding-bottom: 6.5rem;
 }
 @media screen and (min-width: 768px) {
   .text-columns {
