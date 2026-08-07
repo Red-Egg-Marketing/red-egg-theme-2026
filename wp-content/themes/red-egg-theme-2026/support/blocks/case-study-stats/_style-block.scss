@@ -12,9 +12,11 @@
 .case-study-stats {
     padding: 0 0 2rem;
     margin-top: 0;
+    margin-bottom: 2.1875rem;
     @media screen and (min-width: $small-width) {
         padding: 0 0 2.5rem;
         margin-top: 0;
+        margin-bottom: 3.125rem;
     }
 }
 
@@ -31,7 +33,7 @@
     flex-wrap: wrap;
     align-items: flex-start;
     justify-content: flex-start;
-    max-width: 1184px;
+    max-width: $max-cont-w;
     margin-left: auto;
     margin-right: auto;
     padding-left: 1.25rem;

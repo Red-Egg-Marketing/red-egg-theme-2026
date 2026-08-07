@@ -9953,11 +9953,13 @@ div.filter-posts__hero .hero-services h1 {
 .case-study-stats {
   padding: 0 0 2rem;
   margin-top: 0;
+  margin-bottom: 2.1875rem;
 }
 @media screen and (min-width: 768px) {
   .case-study-stats {
     padding: 0 0 2.5rem;
     margin-top: 0;
+    margin-bottom: 3.125rem;
   }
 }
 
@@ -9974,7 +9976,7 @@ div.filter-posts__hero .hero-services h1 {
   flex-wrap: wrap;
   align-items: flex-start;
   justify-content: flex-start;
-  max-width: 1184px;
+  max-width: 1428px;
   margin-left: auto;
   margin-right: auto;
   padding-left: 1.25rem;
