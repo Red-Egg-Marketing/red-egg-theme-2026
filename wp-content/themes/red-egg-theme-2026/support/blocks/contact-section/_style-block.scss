@@ -256,6 +256,14 @@ p.contact-section__label {
     }
 }
 
+.entry-content > .gform_wrapper {
+    padding: 25px;
+    background-color: $eggshell;
+    @media screen and (min-width: $small-width) {
+        padding: 45px;
+    }
+}
+
 // Hide labels (Figma uses placeholders only)
 .contact-section .gfield_label {
     position: absolute;
@@ -270,6 +278,13 @@ p.contact-section__label {
 }
 
 // Inputs + textarea
+.gform_wrapper .gfield input[type="text"],
+.gform_wrapper .gfield input[type="email"],
+.gform_wrapper .gfield input[type="tel"],
+.gform_wrapper .gfield input[type="url"],
+.gform_wrapper .gfield input[type="number"],
+.gform_wrapper .gfield select,
+.gform_wrapper .gfield textarea,
 .contact-section .gform_wrapper .gfield input[type="text"],
 .contact-section .gform_wrapper .gfield input[type="email"],
 .contact-section .gform_wrapper .gfield input[type="tel"],
@@ -345,6 +360,8 @@ div.gform_wrapper.gravity-theme .gform_page_footer {
     }
 }
 
+.gform_footer input[type="submit"],
+.gform_footer button[type="submit"],
 .contact-section .gform_footer input[type="submit"],
 .contact-section .gform_footer button[type="submit"] {
     @include outline-button-base( $gray );
@@ -355,7 +372,7 @@ div.gform_wrapper.gravity-theme .gform_page_footer {
         background-color: transparent;
 
         &::after {
-            transform: rotate(45deg);
+            transform: rotate(-45deg);
         }
     }
 }

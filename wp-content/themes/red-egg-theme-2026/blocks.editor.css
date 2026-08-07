@@ -450,6 +450,9 @@ span.semibold {
 .site-content > figure.wp-block-image,
 .site-content > figure.wp-block-table,
 .site-content > table,
+.site-content > .wp-block-group,
+.site-content > .gform_wrapper,
+.site-content > .wp-block-columns,
 .site-content > hr.wp-block-separator,
 .entry-content > p,
 .entry-content > h2,
@@ -463,6 +466,9 @@ span.semibold {
 .entry-content > figure.wp-block-image,
 .entry-content > figure.wp-block-table,
 .entry-content > table,
+.entry-content > .wp-block-group,
+.entry-content > .gform_wrapper,
+.entry-content > .wp-block-columns,
 .entry-content > hr.wp-block-separator,
 .is-root-container > p,
 .is-root-container > h2,
@@ -476,8 +482,11 @@ span.semibold {
 .is-root-container > figure.wp-block-image,
 .is-root-container > figure.wp-block-table,
 .is-root-container > table,
+.is-root-container > .wp-block-group,
+.is-root-container > .gform_wrapper,
+.is-root-container > .wp-block-columns,
 .is-root-container > hr.wp-block-separator {
-  max-width: 770px;
+  max-width: 970px;
   margin-left: auto;
   margin-right: auto;
   padding-left: 1.25rem;
@@ -3979,6 +3988,16 @@ p.contact-section__label {
   }
 }
 
+.entry-content > .gform_wrapper {
+  padding: 25px;
+  background-color: #F2ECE5;
+}
+@media screen and (min-width: 768px) {
+  .entry-content > .gform_wrapper {
+    padding: 45px;
+  }
+}
+
 .contact-section .gfield_label {
   position: absolute;
   width: 1px;
@@ -3991,6 +4010,13 @@ p.contact-section__label {
   border: 0;
 }
 
+.gform_wrapper .gfield input[type=text],
+.gform_wrapper .gfield input[type=email],
+.gform_wrapper .gfield input[type=tel],
+.gform_wrapper .gfield input[type=url],
+.gform_wrapper .gfield input[type=number],
+.gform_wrapper .gfield select,
+.gform_wrapper .gfield textarea,
 .contact-section .gform_wrapper .gfield input[type=text],
 .contact-section .gform_wrapper .gfield input[type=email],
 .contact-section .gform_wrapper .gfield input[type=tel],
@@ -4010,9 +4036,16 @@ p.contact-section__label {
   line-height: 2;
   color: #424042;
 }
-.contact-section .gform_wrapper .gfield input[type=text]::-moz-placeholder, .contact-section .gform_wrapper .gfield input[type=email]::-moz-placeholder, .contact-section .gform_wrapper .gfield input[type=tel]::-moz-placeholder, .contact-section .gform_wrapper .gfield input[type=url]::-moz-placeholder, .contact-section .gform_wrapper .gfield input[type=number]::-moz-placeholder, .contact-section .gform_wrapper .gfield select::-moz-placeholder, .contact-section .gform_wrapper .gfield textarea::-moz-placeholder {
+.gform_wrapper .gfield input[type=text]::-moz-placeholder, .gform_wrapper .gfield input[type=email]::-moz-placeholder, .gform_wrapper .gfield input[type=tel]::-moz-placeholder, .gform_wrapper .gfield input[type=url]::-moz-placeholder, .gform_wrapper .gfield input[type=number]::-moz-placeholder, .gform_wrapper .gfield select::-moz-placeholder, .gform_wrapper .gfield textarea::-moz-placeholder, .contact-section .gform_wrapper .gfield input[type=text]::-moz-placeholder, .contact-section .gform_wrapper .gfield input[type=email]::-moz-placeholder, .contact-section .gform_wrapper .gfield input[type=tel]::-moz-placeholder, .contact-section .gform_wrapper .gfield input[type=url]::-moz-placeholder, .contact-section .gform_wrapper .gfield input[type=number]::-moz-placeholder, .contact-section .gform_wrapper .gfield select::-moz-placeholder, .contact-section .gform_wrapper .gfield textarea::-moz-placeholder {
   color: rgba(66, 64, 66, 0.6);
 }
+.gform_wrapper .gfield input[type=text]::placeholder,
+.gform_wrapper .gfield input[type=email]::placeholder,
+.gform_wrapper .gfield input[type=tel]::placeholder,
+.gform_wrapper .gfield input[type=url]::placeholder,
+.gform_wrapper .gfield input[type=number]::placeholder,
+.gform_wrapper .gfield select::placeholder,
+.gform_wrapper .gfield textarea::placeholder,
 .contact-section .gform_wrapper .gfield input[type=text]::placeholder,
 .contact-section .gform_wrapper .gfield input[type=email]::placeholder,
 .contact-section .gform_wrapper .gfield input[type=tel]::placeholder,
@@ -4022,6 +4055,13 @@ p.contact-section__label {
 .contact-section .gform_wrapper .gfield textarea::placeholder {
   color: rgba(66, 64, 66, 0.6);
 }
+.gform_wrapper .gfield input[type=text]:focus,
+.gform_wrapper .gfield input[type=email]:focus,
+.gform_wrapper .gfield input[type=tel]:focus,
+.gform_wrapper .gfield input[type=url]:focus,
+.gform_wrapper .gfield input[type=number]:focus,
+.gform_wrapper .gfield select:focus,
+.gform_wrapper .gfield textarea:focus,
 .contact-section .gform_wrapper .gfield input[type=text]:focus,
 .contact-section .gform_wrapper .gfield input[type=email]:focus,
 .contact-section .gform_wrapper .gfield input[type=tel]:focus,
@@ -4097,6 +4137,8 @@ div.gform_wrapper.gravity-theme .gform_page_footer {
   }
 }
 
+.gform_footer input[type=submit],
+.gform_footer button[type=submit],
 .contact-section .gform_footer input[type=submit],
 .contact-section .gform_footer button[type=submit] {
   display: inline-flex;
@@ -4118,6 +4160,8 @@ div.gform_wrapper.gravity-theme .gform_page_footer {
   text-transform: uppercase;
 }
 @media screen and (min-width: 768px) {
+  .gform_footer input[type=submit],
+  .gform_footer button[type=submit],
   .contact-section .gform_footer input[type=submit],
   .contact-section .gform_footer button[type=submit] {
     line-height: 1.4625rem;
@@ -4127,6 +4171,8 @@ div.gform_wrapper.gravity-theme .gform_page_footer {
     gap: 10px;
   }
 }
+.gform_footer input[type=submit]::after,
+.gform_footer button[type=submit]::after,
 .contact-section .gform_footer input[type=submit]::after,
 .contact-section .gform_footer button[type=submit]::after {
   content: "\f061";
@@ -4135,27 +4181,37 @@ div.gform_wrapper.gravity-theme .gform_page_footer {
   display: inline-block;
   transition: transform 0.3s ease;
 }
+.gform_footer input[type=submit]:hover,
+.gform_footer button[type=submit]:hover,
 .contact-section .gform_footer input[type=submit]:hover,
 .contact-section .gform_footer button[type=submit]:hover {
   color: #424042;
   background: transparent;
 }
+.gform_footer input[type=submit]:hover::after,
+.gform_footer button[type=submit]:hover::after,
 .contact-section .gform_footer input[type=submit]:hover::after,
 .contact-section .gform_footer button[type=submit]:hover::after {
   transform: rotate(45deg);
 }
+.gform_footer input[type=submit],
+.gform_footer button[type=submit],
 .contact-section .gform_footer input[type=submit],
 .contact-section .gform_footer button[type=submit] {
   text-transform: uppercase;
 }
+.gform_footer input[type=submit]:hover,
+.gform_footer button[type=submit]:hover,
 .contact-section .gform_footer input[type=submit]:hover,
 .contact-section .gform_footer button[type=submit]:hover {
   color: #424042;
   background-color: transparent;
 }
+.gform_footer input[type=submit]:hover::after,
+.gform_footer button[type=submit]:hover::after,
 .contact-section .gform_footer input[type=submit]:hover::after,
 .contact-section .gform_footer button[type=submit]:hover::after {
-  transform: rotate(45deg);
+  transform: rotate(-45deg);
 }
 
 .contact-section__columns > .block-editor-inner-blocks > .block-editor-block-list__layout {
