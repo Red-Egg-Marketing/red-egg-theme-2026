@@ -128,7 +128,9 @@ function red_egg_process_post_headings( $content, $post_id ) {
  */
 function red_egg_inject_heading_ids( $content ) {
 
-    if ( is_singular( 'post' ) && in_the_loop() && is_main_query() ) {
+    $is_article_page = is_page_template( 'template-article.php' );
+
+    if ( ( is_singular( 'post' ) || $is_article_page ) && in_the_loop() && is_main_query() ) {
         $processed = red_egg_process_post_headings( $content, get_the_ID() );
         return $processed['content'];
     }
