@@ -26,7 +26,7 @@ let hiddenTax = [];
 
 // Display config read from the root's data attributes in
 // initFilterPosts() (initial page size + server sort).
-let cfg = { orderby: 'date', order: 'DESC', initialCount: 9 };
+let cfg = { orderby: 'date', order: 'DESC', initialCount: 9, melt: false };
 
 // Taxonomy slug for a tax_array group (from its first term).
 const groupTaxSlug = ( groupValue ) => {
@@ -231,6 +231,13 @@ const FilterPostsFrontend = () => {
         } );
     }, [] );
 
+    // After the grid renders / updates, tell the melt-reveal module to
+    // (re)scan so opted-in card images pick up the drip effect.
+    useEffect( function() {
+        if ( ! cfg.melt ) return;
+        document.dispatchEvent( new CustomEvent( 'red-egg:content-updated' ) );
+    }, [ resources, visibleCount ] );
+
     var toggleCats = function( item ) {
         var parent = item.parentElement;
         document.querySelectorAll( '.filter-block' ).forEach( function( filt ) {
@@ -284,7 +291,7 @@ const FilterPostsFrontend = () => {
                 ) }
             </div>
 
-            <div className="filter-posts__grid">
+            <div className={ 'filter-posts__grid' + ( cfg.melt ? ' has-melt' : '' ) }>
                 { resources.length > 0 && resources.slice( 0, visibleCount ).map( function( resource, i ) {
                     return <PostCard key={ resource.ID || i } resource={ resource } />;
                 } ) }
@@ -326,6 +333,7 @@ function initFilterPosts() {
         orderby: root.getAttribute( 'data-orderby' ) || 'date',
         order: root.getAttribute( 'data-order' ) || 'DESC',
         initialCount: count > 0 ? count : 9,
+        melt: root.getAttribute( 'data-melt' ) === '1',
     };
 
     render( <FilterPostsFrontend />, root );

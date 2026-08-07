@@ -6,25 +6,28 @@
  * view on scroll, independently.
  *
  * Blocks opt in via the "Melt reveal on scroll" toggle (see
- * block-extensions/melt.js for core Image/Gallery, and the melt toggle
- * on image-text / media-content-media), which writes a `has-melt`
- * class on the image's wrapper.
+ * block-extensions/melt.js for core Image/Gallery, plus the toggle on
+ * image-text, media-content-media, and the filterable Posts/Case
+ * Studies grids), which puts a `has-melt` class on the image's wrapper.
  *
  * How it works:
  *   - The slider's fixed 765x431 drip clip is re-expressed here in
  *     normalised objectBoundingBox (0-1) coordinates, so one shape
- *     scales to any image at any aspect ratio — no per-size math, and
- *     it stays correct through responsive resizes.
- *   - Each tagged image gets its OWN cloned <clipPath> (unique id) so
- *     it can animate on its own ScrollTrigger and reveal when it enters
- *     the viewport, rather than all sharing one timeline.
- *   - The path starts on the drippy shape and tweens to the flat shape
- *     (GSAP attr-tweens the `d` string; the two paths share identical
- *     structure, same as the slider).
+ *     scales to any image at any aspect ratio and stays correct through
+ *     responsive resizes.
+ *   - Each tagged image gets its OWN cloned <clipPath> (unique id) so it
+ *     animates on its own ScrollTrigger and reveals when it enters the
+ *     viewport, rather than all sharing one timeline.
+ *   - The path starts on the drippy shape and tweens to a FLAT-bottom
+ *     shape, so the image fills completely once revealed (GSAP
+ *     attr-tweens the `d` string; both paths share identical structure).
  *
  * Excludes hero images (per design) and the slider's own images (it
- * runs its own morph). SPA-safe: rebuilt on each page view, torn down
- * on leave.
+ * runs its own morph). SPA-safe: rebuilt on each page view, torn down on
+ * leave, and it re-scans (incrementally, without re-melting what's
+ * already revealed) when a client-rendered grid signals
+ * `red-egg:content-updated` — e.g. the filterable grids after a
+ * fetch / filter / sort / load-more.
  */
 
 ( function () {
@@ -36,8 +39,12 @@
     // Drip clip in normalised objectBoundingBox units (0-1), derived
     // from the slider's 765x431 paths. Structure is identical between
     // the two so GSAP can tween the `d` string directly.
+    //
+    // MID  = drippy start shape.
+    // FULL = flat bottom (y=1 all the way across) so the reveal fills
+    //        the image completely — no scalloping or lifted corners.
     var MID  = 'M0 0H1V0.30394C1 0.3206 0.98642 0.39443 0.96969 0.39443C0.92852 0.39443 0.85383 0.2413 0.79996 0.2413C0.72186 0.2413 0.67807 0.48492 0.59997 0.48492C0.52187 0.48492 0.47807 0.18097 0.39998 0.18097C0.32188 0.18097 0.27808 0.42459 0.19999 0.42459C0.14612 0.42459 0.07142 0.27378 0.03025 0.27378C0.01353 0.27378 0 0.3206 0 0.30394V0Z';
-    var FULL = 'M0 0H1V0.96984C1 0.9865 0.98642 1 0.96969 1C0.92852 1 0.85383 1 0.79996 1C0.72186 1 0.67807 1 0.59997 1C0.52187 1 0.47807 1 0.39998 1C0.32188 1 0.27808 1 0.19999 1C0.14612 1 0.07142 1 0.03025 1C0.01353 1 0 0.9865 0 0.96984V0Z';
+    var FULL = 'M0 0H1V1C1 1 0.98642 1 0.96969 1C0.92852 1 0.85383 1 0.79996 1C0.72186 1 0.67807 1 0.59997 1C0.52187 1 0.47807 1 0.39998 1C0.32188 1 0.27808 1 0.19999 1C0.14612 1 0.07142 1 0.03025 1C0.01353 1 0 1 0 1V0Z';
 
     // Images living inside these never melt.
     var EXCLUDE = '.hero, .hero-background, .hero-case-study, .hero-media, .cs-slide__image';
@@ -115,16 +122,14 @@
         timelines.push( tl );
     }
 
-    function init() {
-        if (
-            typeof gsap === 'undefined' ||
-            typeof ScrollTrigger === 'undefined'
-        ) {
+    // Process any not-yet-handled tagged images. Safe to call repeatedly
+    // (the data-melt flag makes it idempotent) so client-rendered grids
+    // can re-trigger it without re-melting what's already revealed.
+    function scan() {
+        if ( typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined' ) {
             return;
         }
         gsap.registerPlugin( ScrollTrigger );
-
-        teardown();
         ensureDefs();
 
         Array.prototype.slice
@@ -150,6 +155,11 @@
         ScrollTrigger.refresh();
     }
 
+    function init() {
+        teardown();
+        scan();
+    }
+
     if ( document.readyState === 'loading' ) {
         document.addEventListener( 'DOMContentLoaded', init );
     } else {
@@ -158,4 +168,7 @@
 
     document.addEventListener( 'red-egg:page-view', init );
     document.addEventListener( 'red-egg:page-leave', teardown );
+    // Client-rendered grids (filterable Posts / Case Studies) fire this
+    // after they render or update their cards.
+    document.addEventListener( 'red-egg:content-updated', scan );
 } )();

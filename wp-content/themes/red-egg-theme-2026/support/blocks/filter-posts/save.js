@@ -14,7 +14,7 @@ import PaddingSelector from '../../components/Padding.js';
 import MarginSelector from '../../components/Margin.js';
 
 const SaveFilterPosts = ( { attributes } ) => {
-    const { hiddenTaxonomies, initialCount, orderby, order, padding, margin, blockId } = attributes;
+    const { hiddenTaxonomies, initialCount, orderby, order, melt, padding, margin, blockId } = attributes;
 
     const blockProps = useBlockProps.save( {
         id: blockId,
@@ -36,6 +36,7 @@ const SaveFilterPosts = ( { attributes } ) => {
                         data-initial-count={ initialCount !== 9 ? initialCount : undefined }
                         data-orderby={ orderby !== 'date' ? orderby : undefined }
                         data-order={ order !== 'DESC' ? order : undefined }
+                        data-melt={ melt ? '1' : undefined }
                     ></div>
                 </div>
             </section>
