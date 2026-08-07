@@ -301,6 +301,7 @@ function red_egg_the_toc() {
 
     $list = red_egg_render_toc_nodes( red_egg_build_toc_tree( $items ) );
 
+    echo '<div class="post-toc-wrap">';
     echo '<div class="post-toc">';
         echo '<button class="post-toc__toggle" type="button" aria-expanded="false" aria-controls="post-toc-nav">';
             echo '<span class="post-toc__label">' . esc_html__( 'Table of Contents', 'red-egg' ) . '</span>';
@@ -310,6 +311,7 @@ function red_egg_the_toc() {
             echo $list; // phpcs:ignore WordPress.Security.EscapingOutput.OutputNotEscaped -- built from esc_* helpers above.
         echo '</nav>';
     echo '</div><!-- .post-toc -->';
+    echo '</div><!-- .post-toc-wrap -->';
 }
 
 

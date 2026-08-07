@@ -2760,6 +2760,11 @@ html.is-changing body.has-reveal-footer .site-footer {
   }
 }
 
+.post-toc-wrap {
+  max-width: 970px;
+  margin: 0 auto;
+}
+
 .post-toc__toggle {
   display: flex;
   align-items: center;
