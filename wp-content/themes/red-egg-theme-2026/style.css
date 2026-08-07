@@ -6484,13 +6484,15 @@ p.contact-section__label {
   }
 }
 
-.entry-content > .gform_wrapper {
-  padding: 25px;
+.entry-content > .gform_wrapper form {
+  padding: 25px 1.2rem;
+  margin-left: 1.25rem;
+  margin-right: 1.25rem;
   background-color: #F2ECE5;
 }
 @media screen and (min-width: 768px) {
-  .entry-content > .gform_wrapper {
-    padding: 45px;
+  .entry-content > .gform_wrapper form {
+    padding: 30px 1.25rem;
   }
 }
 
