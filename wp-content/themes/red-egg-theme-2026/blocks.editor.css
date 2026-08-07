@@ -882,8 +882,8 @@ span.semibold {
   background-color: #F79E83;
   position: relative;
   overflow: hidden;
-  padding-top: 6.5rem;
-  padding-bottom: 6.5rem;
+  padding-top: 5.5rem;
+  padding-bottom: 5.5rem;
   position: relative;
   z-index: 2;
 }
@@ -1170,8 +1170,8 @@ span.semibold {
 
 .text-cards-grid {
   position: relative;
-  padding-top: 6.5rem;
-  padding-bottom: 6.5rem;
+  padding-top: 5.5rem;
+  padding-bottom: 5.5rem;
 }
 @media screen and (min-width: 768px) {
   .text-cards-grid {
@@ -2348,8 +2348,8 @@ span.semibold {
 
 .numbered-list {
   position: relative;
-  padding-top: 6.5rem;
-  padding-bottom: 6.5rem;
+  padding-top: 5.5rem;
+  padding-bottom: 5.5rem;
   overflow: hidden;
 }
 @media screen and (min-width: 768px) {
@@ -2574,8 +2574,8 @@ span.semibold {
 
 .case-studies-slider {
   position: relative;
-  padding-top: 3.25rem;
-  padding-bottom: 3.25rem;
+  padding-top: 2.75rem;
+  padding-bottom: 2.75rem;
   overflow: hidden;
 }
 @media screen and (min-width: 768px) {
@@ -3039,8 +3039,8 @@ span.semibold {
 
 .testimonials-block {
   position: relative;
-  padding-top: 3.25rem;
-  padding-bottom: 3.25rem;
+  padding-top: 2.75rem;
+  padding-bottom: 2.75rem;
   overflow: hidden;
   z-index: 2;
 }
@@ -3310,8 +3310,8 @@ span.semibold {
 
 .insights-block {
   position: relative;
-  padding-top: 3.25rem;
-  padding-bottom: 6.5rem;
+  padding-top: 2.75rem;
+  padding-bottom: 5.5rem;
 }
 @media screen and (min-width: 768px) {
   .insights-block {
@@ -3624,8 +3624,8 @@ span.semibold {
 .contact-section {
   position: relative;
   width: 100%;
-  padding-top: 6.5rem;
-  padding-bottom: 6.5rem;
+  padding-top: 5.5rem;
+  padding-bottom: 5.5rem;
 }
 @media screen and (min-width: 768px) {
   .contact-section {
@@ -4297,8 +4297,8 @@ div.gform_wrapper.gravity-theme .gform_page_footer {
   width: 100%;
   position: relative;
   margin: 0 auto;
-  padding-top: 3.25rem;
-  padding-bottom: 3.25rem;
+  padding-top: 2.75rem;
+  padding-bottom: 2.75rem;
 }
 @media screen and (min-width: 768px) {
   .image-columns {
@@ -4656,7 +4656,7 @@ div.gform_wrapper.gravity-theme .gform_page_footer {
   background-color: #024D69;
   overflow: hidden;
   padding-top: 0;
-  padding-bottom: 6.5rem;
+  padding-bottom: 5.5rem;
   z-index: 2;
 }
 @media screen and (min-width: 768px) {
@@ -4932,8 +4932,8 @@ div.gform_wrapper.gravity-theme .gform_page_footer {
 
 .shortcode-section {
   width: 100%;
-  padding-top: 6.5rem;
-  padding-bottom: 6.5rem;
+  padding-top: 5.5rem;
+  padding-bottom: 5.5rem;
 }
 @media screen and (min-width: 768px) {
   .shortcode-section {
@@ -4982,8 +4982,8 @@ div.gform_wrapper.gravity-theme .gform_page_footer {
 
 .community-section {
   position: relative;
-  padding-top: 6.5rem;
-  padding-bottom: 6.5rem;
+  padding-top: 5.5rem;
+  padding-bottom: 5.5rem;
   overflow: hidden;
 }
 @media screen and (min-width: 768px) {
@@ -5232,8 +5232,8 @@ div.gform_wrapper.gravity-theme .gform_page_footer {
 
 .awards-section {
   position: relative;
-  padding-top: 3.25rem;
-  padding-bottom: 3.25rem;
+  padding-top: 2.75rem;
+  padding-bottom: 2.75rem;
   z-index: 2;
 }
 @media screen and (min-width: 768px) {
@@ -5542,8 +5542,8 @@ div.gform_wrapper.gravity-theme .gform_page_footer {
 .vibe-cta {
   position: relative;
   overflow: hidden;
-  padding-top: 3.25rem;
-  padding-bottom: 3.25rem;
+  padding-top: 2.75rem;
+  padding-bottom: 2.75rem;
 }
 @media screen and (min-width: 768px) {
   .vibe-cta {
@@ -5640,8 +5640,8 @@ div.gform_wrapper.gravity-theme .gform_page_footer {
 .media-content {
   position: relative;
   width: 100%;
-  padding-top: 6.5rem;
-  padding-bottom: 6.5rem;
+  padding-top: 5.5rem;
+  padding-bottom: 5.5rem;
 }
 @media screen and (min-width: 768px) {
   .media-content {
@@ -5930,8 +5930,8 @@ div.gform_wrapper.gravity-theme .gform_page_footer {
 
 .service-list {
   position: relative;
-  padding-top: 3.25rem;
-  padding-bottom: 3.25rem;
+  padding-top: 2.75rem;
+  padding-bottom: 2.75rem;
 }
 @media screen and (min-width: 768px) {
   .service-list {
@@ -6165,11 +6165,13 @@ div.gform_wrapper.gravity-theme .gform_page_footer {
 .service-list .service-list-item .service-list-item__title {
   font-size: 1.25rem;
   line-height: 1.4rem;
+  padding-right: 35px;
 }
 @media screen and (min-width: 768px) {
   .service-list .service-list-item .service-list-item__title {
     font-size: 1.35rem;
     line-height: 1.5rem;
+    padding-right: 0;
   }
 }
 
@@ -6282,7 +6284,7 @@ div.gform_wrapper.gravity-theme .gform_page_footer {
 .filter-case-studies {
   position: relative;
   padding-top: 0;
-  padding-bottom: 6.5rem;
+  padding-bottom: 5.5rem;
 }
 @media screen and (min-width: 768px) {
   .filter-case-studies {
@@ -6732,7 +6734,7 @@ div.filter-case-studies__hero .hero-services h1 {
   }
 }
 .filter-posts > .block-wrapper {
-  padding-bottom: 6.5rem;
+  padding-bottom: 5.5rem;
 }
 @media screen and (min-width: 768px) {
   .filter-posts > .block-wrapper {
@@ -7124,8 +7126,8 @@ div.filter-posts__hero .hero-services h1 {
   position: relative;
   overflow: hidden;
   background-color: #F2ECE5;
-  padding-top: 6.5rem;
-  padding-bottom: 6.5rem;
+  padding-top: 5.5rem;
+  padding-bottom: 5.5rem;
   z-index: 2;
 }
 @media screen and (min-width: 768px) {
@@ -7406,9 +7408,11 @@ div.filter-posts__hero .hero-services h1 {
 
 .stat-card {
   border-bottom: 1px solid #424042;
+  padding-bottom: 24px;
 }
 @media screen and (min-width: 768px) {
   .stat-card {
+    padding-bottom: 0;
     padding-left: 2rem;
     padding-right: 2rem;
     border-left: 1px solid #424042;
@@ -7466,8 +7470,8 @@ div.filter-posts__hero .hero-services h1 {
 
 .case-study-body {
   position: relative;
-  padding-top: 3.25rem;
-  padding-bottom: 3.25rem;
+  padding-top: 2.75rem;
+  padding-bottom: 2.75rem;
 }
 @media screen and (min-width: 768px) {
   .case-study-body {
@@ -7612,8 +7616,8 @@ p.case-study-body__label {
 .feature-cards {
   position: relative;
   background-color: #424042;
-  padding-top: 6.5rem;
-  padding-bottom: 6.5rem;
+  padding-top: 5.5rem;
+  padding-bottom: 5.5rem;
 }
 @media screen and (min-width: 768px) {
   .feature-cards {
@@ -8173,8 +8177,8 @@ p.case-study-body__label {
 
 .cs-gallery {
   position: relative;
-  padding-top: 6.5rem;
-  padding-bottom: 6.5rem;
+  padding-top: 5.5rem;
+  padding-bottom: 5.5rem;
 }
 @media screen and (min-width: 768px) {
   .cs-gallery {
@@ -8322,8 +8326,8 @@ p.cs-gallery__label {
 
 .color-palette-block {
   position: relative;
-  padding-top: 6.5rem;
-  padding-bottom: 6.5rem;
+  padding-top: 5.5rem;
+  padding-bottom: 5.5rem;
 }
 @media screen and (min-width: 768px) {
   .color-palette-block {
@@ -8563,8 +8567,8 @@ p.cs-gallery__label {
 }
 .device-showcase {
   position: relative;
-  padding-top: 6.5rem;
-  padding-bottom: 6.5rem;
+  padding-top: 5.5rem;
+  padding-bottom: 5.5rem;
 }
 @media screen and (min-width: 768px) {
   .device-showcase {
@@ -8762,8 +8766,8 @@ img.device-frame__device {
 
 .process-steps {
   position: relative;
-  padding-top: 3.25rem;
-  padding-bottom: 3.25rem;
+  padding-top: 2.75rem;
+  padding-bottom: 2.75rem;
   z-index: 2;
 }
 @media screen and (min-width: 768px) {
@@ -9082,8 +9086,8 @@ img.device-frame__device {
 .icon-cards {
   position: relative;
   background-color: #024D69;
-  padding-top: 6.5rem;
-  padding-bottom: 6.5rem;
+  padding-top: 5.5rem;
+  padding-bottom: 5.5rem;
 }
 @media screen and (min-width: 768px) {
   .icon-cards {
@@ -9477,8 +9481,8 @@ img.device-frame__device {
   display: flex;
   justify-content: center;
   width: 100%;
-  padding-top: 3.25rem;
-  padding-bottom: 3.25rem;
+  padding-top: 2.75rem;
+  padding-bottom: 2.75rem;
   position: relative;
   z-index: 2;
 }
@@ -9607,8 +9611,8 @@ img.device-frame__device {
   position: relative;
   width: 100%;
   overflow: visible;
-  padding-top: 6.5rem;
-  padding-bottom: 6.5rem;
+  padding-top: 5.5rem;
+  padding-bottom: 5.5rem;
 }
 @media screen and (min-width: 768px) {
   .text-columns {

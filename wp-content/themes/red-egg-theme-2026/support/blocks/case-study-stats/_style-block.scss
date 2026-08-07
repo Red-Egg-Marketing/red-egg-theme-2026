@@ -114,7 +114,9 @@
 // ---- Stat Card ----
 .stat-card {
     border-bottom: 1px solid $gray;
+    padding-bottom: 24px;
     @media screen and (min-width: $small-width) {
+        padding-bottom: 0;
         padding-left: 2rem;
         padding-right: 2rem;
         border-left: 1px solid $gray;

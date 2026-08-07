@@ -93,9 +93,11 @@ $service-hover-light: ('white', 'eggshell', 'peach', 'gold', 'purple');
 .service-list .service-list-item .service-list-item__title {
     font-size: 1.25rem;
     line-height: 1.4rem;
+    padding-right: 35px;
     @media screen and (min-width: $small-width) {
         font-size: 1.35rem;
         line-height: 1.5rem;
+        padding-right: 0;
     }
 }
 
