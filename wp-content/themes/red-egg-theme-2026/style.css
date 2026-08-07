@@ -12921,3 +12921,55 @@ button.slickwprev-prev:before {
 .editor-styles-wrapper ol.is-style-egg-markers > li ol:not(.is-style-egg-markers) > li::before {
   content: none;
 }
+
+.award-cont {
+  position: fixed;
+  z-index: 9999;
+  width: 125px;
+  bottom: 15px;
+  left: 15px;
+}
+@media screen and (min-width: 768px) {
+  .award-cont {
+    width: 185px;
+  }
+}
+
+.award-cont .wp-block-button {
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.award-cont .wp-block-button {
+  margin-top: 10px;
+}
+
+.award-cont .wp-block-button .wp-block-button__link {
+  padding-top: 5px;
+  padding-bottom: 5px;
+  font-size: 12px;
+}
+@media screen and (min-width: 768px) {
+  .award-cont .wp-block-button .wp-block-button__link {
+    font-size: inherit;
+  }
+}
+
+.award-cont .close {
+  text-indent: -10000px;
+  width: 20px;
+  height: 20px;
+  border-radius: 20px;
+  background: white url(img/nav-close.svg) no-repeat center center/9px;
+  padding: 0;
+  border: none;
+  margin-bottom: 5px;
+  cursor: pointer;
+  transition-property: background;
+  transition-duration: 0.3s;
+}
+.award-cont .close:hover {
+  background: #424042 url(img/nav-close-white.svg) no-repeat center center/9px;
+}

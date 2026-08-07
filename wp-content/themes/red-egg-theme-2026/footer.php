@@ -31,6 +31,10 @@ $re_state       = $re_get( 'business_state', 'CO' );
 $re_zip         = $re_get( 'business_zip', '80211' );
 $re_social      = $re_has_acf ? get_field( 'icons', 'options' ) : false;
 
+$award = [
+        'award_fields'         => get_field('award', 'options')
+];
+
 // Newsletter: form selected on the options page. Field name assumed
 // 'newsletter_form' -- adjust if the actual ACF field differs.
 $re_news_heading = $re_get( 'newsletter_heading', __( 'Get Monthly Marketing Tips', 'red-egg' ) );
@@ -41,7 +45,41 @@ $re_phone_href = preg_replace( '/[^0-9+]/', '', $re_phone );
 ?>
 
     </div><!-- #content -->
+    <?php
+        $fields = $award['award_fields'];
 
+        if (!empty($fields['award_image'])) {
+            $display = $fields['display_location'];
+            if (is_array($display) && in_array($page_id, $display)) {
+                $image = $fields['award_image'];
+                $link = $fields['link'];
+                ?>
+                    <script>
+                     function closeModal() {
+                        let award = document.getElementById('Award');
+                        award.style.display = 'none';
+                     }
+                    </script>
+                    <div class="award-cont" id="Award">
+                        <button 
+                            class="close"
+                            onclick="closeModal()"
+                        >Close</button>
+                        <img src="<?php echo $image; ?>" />
+                        <?php if (!empty($link)) { ?>
+                            <div class="wp-block-button is-style-grey-box-bg">
+                                <a 
+                                    href="<?php echo $link['url']; ?>"
+                                    class="wp-block-button__link wp-element-button"
+                                    target="<?php echo $link['target'] ?>"
+                                ><?php echo $link['title']; ?></a>
+                            </div>
+                        <?php } ?>
+                    </div>
+                <?php
+            }
+        }
+    ?>
     <footer id="colophon" class="site-footer">
         <div class="site-footer__inner">
             <div class="block-wrapper">
