@@ -88,6 +88,10 @@ registerBlockType( 'red-egg-block/image-text', {
             type: 'boolean',
             default: false,
         },
+        melt: {
+            type: 'boolean',
+            default: false,
+        },
         padding: {
             type: 'object',
             default: {

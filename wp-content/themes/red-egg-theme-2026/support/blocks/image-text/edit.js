@@ -50,7 +50,7 @@ const allowBlocks = [
 const EditImageText = ( { attributes, setAttributes, clientId } ) => {
     const {
         contentAlign, stackOrder, columnwidth, media, image, bgColor, bgSlug,
-        vidOrImg, videoID, videoURL, videothumb, lightbox,
+        vidOrImg, videoID, videoURL, videothumb, lightbox, melt,
         padding, margin, blockId,
         blobEnabled, blobShape, blobSpeed, blobPosition,
     } = attributes;
@@ -193,6 +193,14 @@ const EditImageText = ( { attributes, setAttributes, clientId } ) => {
                             help={ __( 'Click the image to view it fullscreen.', 'red-egg' ) }
                             checked={ !! lightbox }
                             onChange={ () => setAttributes( { lightbox: ! lightbox } ) }
+                        />
+                    ) }
+                    { vidOrImg === 'image' && (
+                        <ToggleControl
+                            label={ __( 'Melt reveal on scroll', 'red-egg' ) }
+                            help={ __( 'Image drips into view when it scrolls onscreen.', 'red-egg' ) }
+                            checked={ !! melt }
+                            onChange={ () => setAttributes( { melt: ! melt } ) }
                         />
                     ) }
                 </PanelBody>

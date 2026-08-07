@@ -56,6 +56,10 @@ registerBlockType( 'red-egg-block/media-content-media', {
             type: 'boolean',
             default: false,
         },
+        melt: {
+            type: 'boolean',
+            default: false,
+        },
     },
     edit,
     save,

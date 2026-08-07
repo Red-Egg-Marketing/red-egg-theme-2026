@@ -34,6 +34,9 @@ import './js/mobile-nav';
 
 // Lightbox – GLightbox for opted-in images/galleries
 import './js/lightbox';
+
+// Melt reveal – drip-clip reveal for opted-in images
+import './js/melt-reveal';
 // Footer reveal – content slides up over a pinned footer on scroll
 import './js/footer-reveal';
 

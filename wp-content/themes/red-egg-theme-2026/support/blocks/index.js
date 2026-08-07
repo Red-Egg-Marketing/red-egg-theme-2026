@@ -194,6 +194,9 @@ import '../block-extensions/font-family';
 // Lightbox – adds an "Open in lightbox" toggle to core Image + Gallery
 import '../block-extensions/lightbox';
 
+// Melt reveal – adds a "Melt reveal on scroll" toggle to core Image + Gallery
+import '../block-extensions/melt';
+
 // ---- Block Style Variations ----
 // Register custom button styles with arrow
 
