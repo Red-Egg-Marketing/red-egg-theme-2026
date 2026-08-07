@@ -10207,6 +10207,15 @@ p.case-study-body__label {
   }
 }
 
+.case-study-body__heading h3 {
+  margin: 2.5rem 0 1rem 0;
+}
+@media screen and (min-width: 768px) {
+  .case-study-body__heading h3 {
+    margin: 3.5rem 0 1.25rem 0;
+  }
+}
+
 .case-study-body__content > h2:first-child,
 .case-study-body__content > .case-study-body__heading:first-child {
   margin-top: 0.5rem;
