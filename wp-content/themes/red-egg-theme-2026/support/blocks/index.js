@@ -197,6 +197,9 @@ import '../block-extensions/lightbox';
 // Melt reveal – adds a "Melt reveal on scroll" toggle to core Image + Gallery
 import '../block-extensions/melt';
 
+// Reveal animation – header reveal-on-scroll toggle
+import '../block-extensions/reveal-anim';
+
 // ---- Block Style Variations ----
 // Register custom button styles with arrow
 

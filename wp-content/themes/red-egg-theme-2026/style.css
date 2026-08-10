@@ -1434,6 +1434,18 @@ html.is-changing body.has-reveal-footer .site-footer {
   background: rgba(66, 64, 66, 0.94);
 }
 
+html.re-anim .has-reveal--fade-in {
+  opacity: 0;
+}
+html.re-anim .has-reveal--fade-up {
+  opacity: 0;
+  transform: translateY(40px);
+}
+html.re-anim .has-reveal--reveal-up {
+  clip-path: inset(100% 0 0 0);
+  -webkit-clip-path: inset(100% 0 0 0);
+}
+
 .page-header,
 .archive-header {
   padding-top: 5.5rem;

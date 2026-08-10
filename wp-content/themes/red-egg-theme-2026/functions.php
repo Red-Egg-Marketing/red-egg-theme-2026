@@ -408,3 +408,17 @@ if ( function_exists( 'acf_add_options_page' ) ) {
 if ( class_exists( 'GFForms' ) ) {
     require get_template_directory() . '/inc/gravity-forms.php';
 }
+
+/**
+ * Header reveal animations: add a `re-anim` flag to <html> before first
+ * paint so opted-in headers start hidden (see _reveal-anim.scss) and
+ * never flash before js/reveal-anim.js animates them in. Skipped when
+ * the visitor prefers reduced motion (and, with no JS, never added at
+ * all) so content always shows normally in those cases.
+ */
+function red_egg_reveal_head_flag() {
+	?>
+<script>(function(){try{if(!window.matchMedia||!window.matchMedia('(prefers-reduced-motion: reduce)').matches){document.documentElement.classList.add('re-anim');}}catch(e){}})();</script>
+	<?php
+}
+add_action( 'wp_head', 'red_egg_reveal_head_flag', 2 );

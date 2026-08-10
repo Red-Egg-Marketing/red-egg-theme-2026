@@ -37,6 +37,9 @@ import './js/lightbox';
 
 // Melt reveal – drip-clip reveal for opted-in images
 import './js/melt-reveal';
+
+// Reveal animation – header reveals on scroll (GSAP)
+import './js/reveal-anim';
 // Footer reveal – content slides up over a pinned footer on scroll
 import './js/footer-reveal';
 

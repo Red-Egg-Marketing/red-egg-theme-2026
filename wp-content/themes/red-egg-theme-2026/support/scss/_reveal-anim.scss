@@ -1,0 +1,28 @@
+// ========================================
+//  _reveal-anim.scss
+//  Heading reveal animations (GSAP) — pre-hidden initial state
+//
+//  The <head> flag script adds `re-anim` to <html> before first paint
+//  (only when motion is allowed), so a tagged heading starts hidden and
+//  is animated in by js/reveal-anim.js — no flash of visible content.
+//  Without JS, or under prefers-reduced-motion, `re-anim` is never
+//  added, so the heading simply shows normally.
+//
+//  The has-reveal--* class is on the core Heading (h1–h6) itself.
+// ========================================
+
+html.re-anim {
+	.has-reveal--fade-in {
+		opacity: 0;
+	}
+
+	.has-reveal--fade-up {
+		opacity: 0;
+		transform: translateY(40px);
+	}
+
+	.has-reveal--reveal-up {
+		clip-path: inset(100% 0 0 0);
+		-webkit-clip-path: inset(100% 0 0 0);
+	}
+}
