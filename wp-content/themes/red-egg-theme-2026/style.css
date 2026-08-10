@@ -1434,6 +1434,19 @@ html.is-changing body.has-reveal-footer .site-footer {
   background: rgba(66, 64, 66, 0.94);
 }
 
+html.re-anim .has-reveal--fade-in :is(h1, h2, h3, h4, h5, h6, p, .eyebrow, .wp-block-button, .btn) {
+  opacity: 0;
+}
+html.re-anim .has-reveal--fade-up :is(h1, h2, h3, h4, h5, h6, p, .eyebrow, .wp-block-button, .btn) {
+  opacity: 0;
+  transform: translateY(40px);
+}
+html.re-anim .has-reveal--reveal-up :is(h1, h2, h3, h4, h5, h6, p, .eyebrow, .wp-block-button, .btn) {
+  clip-path: inset(100% 0 0 0);
+  -webkit-clip-path: inset(100% 0 0 0);
+  will-change: clip-path;
+}
+
 .page-header,
 .archive-header {
   padding-top: 5.5rem;

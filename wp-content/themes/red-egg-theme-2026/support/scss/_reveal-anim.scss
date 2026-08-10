@@ -1,0 +1,31 @@
+// ========================================
+//  _reveal-anim.scss
+//  Header reveal animations (GSAP) — pre-hidden initial state
+//
+//  The <head> flag script adds `re-anim` to <html> before first paint
+//  (only when motion is allowed), so these targets start hidden and are
+//  animated in by js/reveal-anim.js — no flash of visible content.
+//  Without JS, or under prefers-reduced-motion, `re-anim` is never
+//  added, so the content simply shows normally.
+//
+//  Keep this selector list in sync with TARGETS in js/reveal-anim.js.
+// ========================================
+
+$re-reveal-targets: "h1, h2, h3, h4, h5, h6, p, .eyebrow, .wp-block-button, .btn";
+
+html.re-anim {
+	.has-reveal--fade-in :is(#{$re-reveal-targets}) {
+		opacity: 0;
+	}
+
+	.has-reveal--fade-up :is(#{$re-reveal-targets}) {
+		opacity: 0;
+		transform: translateY(40px);
+	}
+
+	.has-reveal--reveal-up :is(#{$re-reveal-targets}) {
+		clip-path: inset(100% 0 0 0);
+		-webkit-clip-path: inset(100% 0 0 0);
+		will-change: clip-path;
+	}
+}
