@@ -436,12 +436,8 @@ body.mobile-nav-open {
 // ---- Eyebrow ----
 .mega-menu__eyebrow {
     display: block;
+    @include eyebrow;
     margin: 2rem 0 2.5rem;
-    font-family: $font-head;
-    font-weight: 600;
-    font-size: 0.8125rem; // 13px
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
     color: rgba($white, 0.7);
 }
 

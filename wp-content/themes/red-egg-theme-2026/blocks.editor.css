@@ -452,7 +452,7 @@ p.has-medium-font-size {
 p.is-style-section-label {
   font-family: "Poppins", sans-serif !important;
   font-weight: 500 !important;
-  font-size: 1.15rem !important;
+  font-size: 1.0625rem !important;
   line-height: 1.45rem !important;
   letter-spacing: 0.9px !important;
   text-transform: uppercase !important;
@@ -461,7 +461,7 @@ p.is-style-section-label {
 }
 @media screen and (min-width: 768px) {
   p.is-style-section-label {
-    font-size: 1.3rem !important;
+    font-size: 1.375rem !important;
     line-height: 1.65 !important;
     letter-spacing: 1px !important;
   }
@@ -1075,19 +1075,17 @@ span.semibold {
 }
 
 .hero-background__content p {
-  font-family: "Poppins", sans-serif;
-  font-weight: 500;
-  font-size: 1.15rem;
-  line-height: 1.85rem;
-  color: #424042;
+  font-size: 1.0625rem !important;
+  line-height: 1.625rem !important;
 }
 @media screen and (min-width: 768px) {
   .hero-background__content p {
-    font-size: 1.565rem;
-    line-height: 2.1875rem;
+    font-size: 1.375rem !important;
+    line-height: 2.125rem !important;
   }
 }
 .hero-background__content p {
+  font-weight: 500;
   margin-bottom: 1.25rem;
 }
 @media screen and (min-width: 768px) {
@@ -1563,7 +1561,7 @@ span.semibold {
 .header-intro__left p.header-intro__label {
   font-family: "Poppins", sans-serif !important;
   font-weight: 500 !important;
-  font-size: 1.15rem !important;
+  font-size: 1.0625rem !important;
   line-height: 1.45rem !important;
   letter-spacing: 0.9px !important;
   text-transform: uppercase !important;
@@ -1573,7 +1571,7 @@ span.semibold {
 @media screen and (min-width: 768px) {
   .header-intro__left .header-intro__label,
   .header-intro__left p.header-intro__label {
-    font-size: 1.3rem !important;
+    font-size: 1.375rem !important;
     line-height: 1.65 !important;
     letter-spacing: 1px !important;
   }
@@ -1613,22 +1611,20 @@ span.semibold {
 
 .header-intro__left p,
 .header-intro__right p:first-of-type {
-  font-family: "Poppins", sans-serif;
-  font-weight: 500;
-  font-size: 1.15rem;
-  line-height: 1.85rem;
-  color: #424042;
+  font-size: 1.0625rem !important;
+  line-height: 1.625rem !important;
 }
 @media screen and (min-width: 768px) {
   .header-intro__left p,
   .header-intro__right p:first-of-type {
-    font-size: 1.565rem;
-    line-height: 2.1875rem;
+    font-size: 1.375rem !important;
+    line-height: 2.125rem !important;
   }
 }
 .header-intro__left p,
 .header-intro__right p:first-of-type {
   margin: 1rem 0 1rem 0;
+  font-weight: 500;
 }
 .header-intro__left p:first-of-type,
 .header-intro__right p:first-of-type:first-of-type {
@@ -3788,7 +3784,7 @@ span.semibold {
 p.contact-section__label {
   font-family: "Poppins", sans-serif !important;
   font-weight: 500 !important;
-  font-size: 1.15rem !important;
+  font-size: 1.0625rem !important;
   line-height: 1.45rem !important;
   letter-spacing: 0.9px !important;
   text-transform: uppercase !important;
@@ -3798,7 +3794,7 @@ p.contact-section__label {
 @media screen and (min-width: 768px) {
   .contact-section__label,
   p.contact-section__label {
-    font-size: 1.3rem !important;
+    font-size: 1.375rem !important;
     line-height: 1.65 !important;
     letter-spacing: 1px !important;
   }
@@ -7902,8 +7898,9 @@ p.case-study-body__label {
 @media screen and (min-width: 768px) {
   .header-single__desc,
   .header-single__inner > p:not(.header-single__label) {
-    font-size: 1.55rem;
-    line-height: 2.1rem;
+    margin-top: 2rem;
+    font-size: 2.3175rem;
+    line-height: 2.975rem;
   }
 }
 

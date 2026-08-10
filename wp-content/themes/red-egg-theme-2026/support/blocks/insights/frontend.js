@@ -61,7 +61,7 @@ const InsightsFrontend = ( { postsToShow, category, industry } ) => {
                                     { post.excerpt && (
                                         <p className="resource-excerpt">{ post.excerpt }</p>
                                     ) }
-                                    <div className="wp-block-button is-style-outline-gray">
+                                    <div className="wp-block-button is-style-outline-gray-up">
                                         <button className="wp-button wp-block-button__link wp-element-button">Read More</button>
                                     </div>
                                 </div>

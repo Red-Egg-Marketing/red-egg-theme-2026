@@ -453,7 +453,7 @@ p.has-medium-font-size {
 p.is-style-section-label {
   font-family: "Poppins", sans-serif !important;
   font-weight: 500 !important;
-  font-size: 1.15rem !important;
+  font-size: 1.0625rem !important;
   line-height: 1.45rem !important;
   letter-spacing: 0.9px !important;
   text-transform: uppercase !important;
@@ -462,7 +462,7 @@ p.is-style-section-label {
 }
 @media screen and (min-width: 768px) {
   p.is-style-section-label {
-    font-size: 1.3rem !important;
+    font-size: 1.375rem !important;
     line-height: 1.65 !important;
     letter-spacing: 1px !important;
   }
@@ -1018,12 +1018,24 @@ body.mobile-nav-open {
 
 .mega-menu__eyebrow {
   display: block;
+  font-family: "Poppins", sans-serif !important;
+  font-weight: 500 !important;
+  font-size: 1.0625rem !important;
+  line-height: 1.45rem !important;
+  letter-spacing: 0.9px !important;
+  text-transform: uppercase !important;
+  color: #424042;
+  margin: 0 0 0.5rem 0;
+}
+@media screen and (min-width: 768px) {
+  .mega-menu__eyebrow {
+    font-size: 1.375rem !important;
+    line-height: 1.65 !important;
+    letter-spacing: 1px !important;
+  }
+}
+.mega-menu__eyebrow {
   margin: 2rem 0 2.5rem;
-  font-family: "Poppins", sans-serif;
-  font-weight: 600;
-  font-size: 0.8125rem;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
   color: rgba(255, 255, 255, 0.7);
 }
 
@@ -1250,7 +1262,7 @@ body.mega-open {
   width: 100% !important;
   background: #FFFFFF;
   border: none;
-  border-radius: 5px 0 0 5px;
+  border-radius: 5px 0 0 5px !important;
   padding: 0 1rem;
   height: 50px;
   font-family: "Figtree", sans-serif;
@@ -1261,6 +1273,7 @@ body.mega-open {
   outline: none;
   box-sizing: border-box;
   margin-top: 0 !important;
+  border: none !important;
 }
 .site-footer__newsletter-form input[type=email]::-moz-placeholder, .site-footer__newsletter-form input[type=text]::-moz-placeholder {
   color: #424042;
@@ -1272,6 +1285,7 @@ body.mega-open {
   opacity: 0.6;
 }
 .site-footer__newsletter-form .gform_footer button,
+.site-footer__newsletter-form .gform_footer button[type=submit],
 .site-footer__newsletter-form .gform_footer input[type=submit] {
   background: #DC2035;
   color: #FFFFFF;
@@ -1289,8 +1303,14 @@ body.mega-open {
   white-space: nowrap;
 }
 .site-footer__newsletter-form .gform_footer button:hover,
+.site-footer__newsletter-form .gform_footer button[type=submit]:hover,
 .site-footer__newsletter-form .gform_footer input[type=submit]:hover {
   background: rgb(184.380952381, 26.819047619, 44.419047619);
+}
+.site-footer__newsletter-form .gform_footer button:after,
+.site-footer__newsletter-form .gform_footer button[type=submit]:after,
+.site-footer__newsletter-form .gform_footer input[type=submit]:after {
+  display: none;
 }
 .site-footer__newsletter-form .gform_validation_errors,
 .site-footer__newsletter-form .validation_message {
@@ -3314,7 +3334,7 @@ div.gs-grid-style-four .single-member .gs_member_info {
 div.gs-grid-style-four .single-member-div .gs_member_info {
   padding-left: 10px;
   padding-right: 10px;
-  padding-bottom: 10px;
+  padding-bottom: 15px;
   padding-top: 10px;
   position: relative;
   min-height: revert-rule;
@@ -3327,7 +3347,7 @@ div.gs-grid-style-four .single-member-div .gs_member_info {
   div.gs-grid-style-four .single-member-div .gs_member_info {
     padding-left: 20px;
     padding-right: 20px;
-    padding-bottom: 15px;
+    padding-bottom: 30px;
     padding-top: 15px;
     flex-wrap: wrap;
     display: flex;
@@ -3513,19 +3533,17 @@ div.gs-team-popup--default .mfp-close {
 }
 
 .hero-background__content p {
-  font-family: "Poppins", sans-serif;
-  font-weight: 500;
-  font-size: 1.15rem;
-  line-height: 1.85rem;
-  color: #424042;
+  font-size: 1.0625rem !important;
+  line-height: 1.625rem !important;
 }
 @media screen and (min-width: 768px) {
   .hero-background__content p {
-    font-size: 1.565rem;
-    line-height: 2.1875rem;
+    font-size: 1.375rem !important;
+    line-height: 2.125rem !important;
   }
 }
 .hero-background__content p {
+  font-weight: 500;
   margin-bottom: 1.25rem;
 }
 @media screen and (min-width: 768px) {
@@ -4001,7 +4019,7 @@ div.gs-team-popup--default .mfp-close {
 .header-intro__left p.header-intro__label {
   font-family: "Poppins", sans-serif !important;
   font-weight: 500 !important;
-  font-size: 1.15rem !important;
+  font-size: 1.0625rem !important;
   line-height: 1.45rem !important;
   letter-spacing: 0.9px !important;
   text-transform: uppercase !important;
@@ -4011,7 +4029,7 @@ div.gs-team-popup--default .mfp-close {
 @media screen and (min-width: 768px) {
   .header-intro__left .header-intro__label,
   .header-intro__left p.header-intro__label {
-    font-size: 1.3rem !important;
+    font-size: 1.375rem !important;
     line-height: 1.65 !important;
     letter-spacing: 1px !important;
   }
@@ -4051,22 +4069,20 @@ div.gs-team-popup--default .mfp-close {
 
 .header-intro__left p,
 .header-intro__right p:first-of-type {
-  font-family: "Poppins", sans-serif;
-  font-weight: 500;
-  font-size: 1.15rem;
-  line-height: 1.85rem;
-  color: #424042;
+  font-size: 1.0625rem !important;
+  line-height: 1.625rem !important;
 }
 @media screen and (min-width: 768px) {
   .header-intro__left p,
   .header-intro__right p:first-of-type {
-    font-size: 1.565rem;
-    line-height: 2.1875rem;
+    font-size: 1.375rem !important;
+    line-height: 2.125rem !important;
   }
 }
 .header-intro__left p,
 .header-intro__right p:first-of-type {
   margin: 1rem 0 1rem 0;
+  font-weight: 500;
 }
 .header-intro__left p:first-of-type,
 .header-intro__right p:first-of-type:first-of-type {
@@ -6226,7 +6242,7 @@ div.gs-team-popup--default .mfp-close {
 p.contact-section__label {
   font-family: "Poppins", sans-serif !important;
   font-weight: 500 !important;
-  font-size: 1.15rem !important;
+  font-size: 1.0625rem !important;
   line-height: 1.45rem !important;
   letter-spacing: 0.9px !important;
   text-transform: uppercase !important;
@@ -6236,7 +6252,7 @@ p.contact-section__label {
 @media screen and (min-width: 768px) {
   .contact-section__label,
   p.contact-section__label {
-    font-size: 1.3rem !important;
+    font-size: 1.375rem !important;
     line-height: 1.65 !important;
     letter-spacing: 1px !important;
   }
@@ -10568,8 +10584,9 @@ p.case-study-body__label {
 @media screen and (min-width: 768px) {
   .header-single__desc,
   .header-single__inner > p:not(.header-single__label) {
-    font-size: 1.55rem;
-    line-height: 2.1rem;
+    margin-top: 2rem;
+    font-size: 2.3175rem;
+    line-height: 2.975rem;
   }
 }
 

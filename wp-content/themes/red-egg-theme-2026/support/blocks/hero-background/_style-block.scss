@@ -120,7 +120,8 @@
 }
 
 .hero-background__content p {
-    @include primary-h4;
+    @include medium-font-size;
+    font-weight: 500;
     margin-bottom: 1.25rem;
 
     @media screen and (min-width: $small-width) {
