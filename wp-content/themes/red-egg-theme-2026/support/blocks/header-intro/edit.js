@@ -102,6 +102,8 @@ const EditHeaderIntro = ( { attributes, setAttributes, clientId } ) => {
                         options={ [
                             { label: __( '33% / 66%', 'red-egg' ), value: '33-66' },
                             { label: __( '50% / 50%', 'red-egg' ), value: '50-50' },
+                            { label: __( '66% / 33%', 'red-egg' ), value: '66-33' },
+                            { label: __( '100% / 100%', 'red-egg' ), value: '100-100' },
                         ] }
                         onChange={ ( value ) => setAttributes( { columnWidth: value } ) }
                     />

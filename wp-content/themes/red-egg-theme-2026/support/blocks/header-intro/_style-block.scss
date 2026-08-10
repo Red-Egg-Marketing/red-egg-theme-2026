@@ -142,6 +142,20 @@
     }
 }
 
+.header-intro-block.cols-66-33 .header-intro__left {
+    @media screen and (min-width: $small-width) {
+        flex: 0 0 66%;
+        max-width: 66%;
+    }
+}
+
+.header-intro-block.cols-100-100 .header-intro__left {
+    @media screen and (min-width: $small-width) {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+}
+
 .header-intro__left .header-intro__label,
 .header-intro__left p.header-intro__label {
     @include eyebrow;

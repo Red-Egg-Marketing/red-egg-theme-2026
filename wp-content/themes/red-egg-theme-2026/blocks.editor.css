@@ -1557,6 +1557,20 @@ span.semibold {
   }
 }
 
+@media screen and (min-width: 768px) {
+  .header-intro-block.cols-66-33 .header-intro__left {
+    flex: 0 0 66%;
+    max-width: 66%;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .header-intro-block.cols-100-100 .header-intro__left {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+}
+
 .header-intro__left .header-intro__label,
 .header-intro__left p.header-intro__label {
   font-family: "Poppins", sans-serif !important;
@@ -3865,7 +3879,7 @@ p.contact-section__label {
   }
 }
 .contact-icons__row:hover .contact-icons__text {
-  color: red;
+  color: #DC2035;
 }
 .contact-icons__row:hover path.blob-animation {
   fill: white;

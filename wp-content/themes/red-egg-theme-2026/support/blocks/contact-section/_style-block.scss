@@ -122,7 +122,7 @@ p.contact-section__label {
     }
     &:hover {
         .contact-icons__text {
-            color: red;
+            color: $red;
         }
         path.blob-animation {
             fill: white;
