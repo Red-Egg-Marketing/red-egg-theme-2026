@@ -385,6 +385,12 @@ require get_template_directory() . '/inc/nav-walker.php';
 
 
 /**
+ * Shortcodes
+ */
+require get_template_directory() . '/inc/shortcodes.php';
+
+
+/**
  * Media
  */
 require get_template_directory() . '/inc/media.php';

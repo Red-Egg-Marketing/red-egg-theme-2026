@@ -156,7 +156,7 @@ $re_phone_href = preg_replace( '/[^0-9+]/', '', $re_phone );
                         </div>
 
                         <?php if ( is_array( $re_social ) && count( $re_social ) > 0 ) : ?>
-                            <ul class="site-footer__social">
+                            <ul class="site__social">
                                 <?php foreach ( $re_social as $icon ) :
                                     // Repeater 'icons' -> row -> 'social' group with
                                     // 'link' (URL) + 'icon_class' (FA brand slug).

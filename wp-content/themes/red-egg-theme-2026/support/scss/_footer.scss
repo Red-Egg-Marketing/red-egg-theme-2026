@@ -235,8 +235,9 @@
 }
 
 // ---- Social icons ----
-.site-footer__social {
+.site__social {
     display: flex;
+    justify-content: center;
     gap: 0.5rem;
     list-style: none;
     margin: 1.5rem 0 0 0;
@@ -248,11 +249,21 @@
         justify-content: center;
         width: 40px;
         height: 40px;
-        color: $white;
+        color: $gray;
         font-size: 32px;
         text-decoration: none;
         transition: opacity 0.2s ease;
+        &:hover {
+            color: $red;
+        }
+    }
+}
 
+.site-footer .site__social {
+    color: white;
+    justify-content: flex-start;
+    a {
+        color: white;
         &:hover {
             color: $red;
         }
