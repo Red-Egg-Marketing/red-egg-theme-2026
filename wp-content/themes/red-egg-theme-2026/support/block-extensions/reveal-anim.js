@@ -16,7 +16,7 @@ const { InspectorControls } = wp.blockEditor;
 const { PanelBody, SelectControl } = wp.components;
 const { __ } = wp.i18n;
 
-const ENABLED_BLOCKS = [ 'core/heading' ];
+const ENABLED_BLOCKS = [ 'core/heading', 'core/paragraph', 'core/list' ];
 
 const ATTR = 'revealAnim';
 
@@ -64,7 +64,7 @@ const withRevealControl = createHigherOrderComponent( ( BlockEdit ) => {
 							<SelectControl
 								label={ __( 'Reveal animation', 'red-egg' ) }
 								help={ __(
-									'Animate this heading in as it scrolls onscreen.',
+									'Animate this block in as it scrolls onscreen.',
 									'red-egg'
 								) }
 								value={ attributes[ ATTR ] || '' }

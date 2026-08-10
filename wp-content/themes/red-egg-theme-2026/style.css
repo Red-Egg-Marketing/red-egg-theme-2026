@@ -1444,7 +1444,6 @@ html.re-anim .has-reveal--fade-up {
 html.re-anim .has-reveal--reveal-up {
   clip-path: inset(100% 0 0 0);
   -webkit-clip-path: inset(100% 0 0 0);
-  will-change: clip-path;
 }
 
 .page-header,

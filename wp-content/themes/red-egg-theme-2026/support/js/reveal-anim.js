@@ -48,7 +48,6 @@
 		var base = {
 			duration: style === 'fade-in' ? 0.8 : 1,
 			ease: 'power3.out',
-			clearProps: 'transform,clipPath,-webkit-clip-path,will-change',
 		};
 		if ( style === 'reveal-up' ) {
 			base.clipPath = 'inset(0% 0 0 0)';
