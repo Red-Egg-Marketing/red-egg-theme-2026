@@ -1,9 +1,9 @@
 /**
- * Reveal Animation – header reveals on scroll (GSAP)
+ * Reveal Animation – heading reveals on scroll (GSAP)
  *
- * Animates the text / CTA elements inside any header block that opted
- * in via the "Reveal animation" control (block-extensions/reveal-anim.js
- * writes `has-reveal has-reveal--{style}` on the block wrapper):
+ * Animates any core Heading (h1–h6) that opted in via the "Reveal
+ * animation" control (block-extensions/reveal-anim.js writes
+ * `has-reveal has-reveal--{style}` on the heading):
  *
  *   reveal-up : rises up from behind a clip mask (reveal from the bottom)
  *   fade-up   : fade in + rise
@@ -12,18 +12,17 @@
  * No-flash + accessible:
  *   - A tiny <head> script adds `re-anim` to <html> before first paint
  *     (only when motion is allowed), and _reveal-anim.scss pre-hides the
- *     targets under `html.re-anim`. So targets never flash visible, and
- *     no-JS / reduced-motion users get the content shown normally.
- *   - This module then animates the pre-hidden targets to visible.
+ *     tagged headings under `html.re-anim`. So they never flash visible,
+ *     and no-JS / reduced-motion visitors get the content shown normally.
+ *   - This module then animates each pre-hidden heading to visible.
  *
- * SPA-safe: re-scans on page view, tears down on leave.
+ * Each heading reveals independently as it enters the viewport. SPA-safe:
+ * re-scans on page view, tears down on leave.
  */
 
 ( function () {
 	if ( window.__reRevealBound ) return;
 	window.__reRevealBound = true;
-
-	var TARGETS = 'h1, h2, h3, h4, h5, h6, p, .eyebrow, .wp-block-button, .btn';
 
 	var reduce = window.matchMedia
 		? window.matchMedia( '(prefers-reduced-motion: reduce)' ).matches
@@ -33,7 +32,11 @@
 
 	function fromVarsFor( style ) {
 		if ( style === 'reveal-up' ) {
-			return { clipPath: 'inset(100% 0 0 0)', webkitClipPath: 'inset(100% 0 0 0)', y: 24 };
+			return {
+				clipPath: 'inset(100% 0 0 0)',
+				webkitClipPath: 'inset(100% 0 0 0)',
+				y: 24,
+			};
 		}
 		if ( style === 'fade-up' ) {
 			return { opacity: 0, y: 40 };
@@ -45,7 +48,6 @@
 		var base = {
 			duration: style === 'fade-in' ? 0.8 : 1,
 			ease: 'power3.out',
-			stagger: 0.12,
 			clearProps: 'transform,clipPath,-webkit-clip-path,will-change',
 		};
 		if ( style === 'reveal-up' ) {
@@ -61,8 +63,8 @@
 		return base;
 	}
 
-	function styleOf( block ) {
-		var m = block.className.match( /has-reveal--([\w-]+)/ );
+	function styleOf( el ) {
+		var m = el.className.match( /has-reveal--([\w-]+)/ );
 		return m ? m[ 1 ] : '';
 	}
 
@@ -74,33 +76,21 @@
 
 		Array.prototype.slice
 			.call( document.querySelectorAll( '.has-reveal' ) )
-			.forEach( function ( block ) {
-				if ( block.dataset.revealed ) return;
-				block.dataset.revealed = '1';
+			.forEach( function ( el ) {
+				if ( el.dataset.revealed ) return;
+				el.dataset.revealed = '1';
 
-				var style = styleOf( block );
+				var style = styleOf( el );
 				if ( ! style ) return;
-
-				// Only elements not already claimed by a nested reveal.
-				var targets = Array.prototype.slice
-					.call( block.querySelectorAll( TARGETS ) )
-					.filter( function ( el ) {
-						return ! el.dataset.revealTarget;
-					} );
-				if ( ! targets.length ) return;
-
-				targets.forEach( function ( el ) {
-					el.dataset.revealTarget = '1';
-				} );
 
 				var to = toVarsFor( style );
 				to.scrollTrigger = {
-					trigger: block,
-					start: 'top 80%',
+					trigger: el,
+					start: 'top 85%',
 					toggleActions: 'play none none none',
 				};
 
-				tweens.push( gsap.fromTo( targets, fromVarsFor( style ), to ) );
+				tweens.push( gsap.fromTo( el, fromVarsFor( style ), to ) );
 			} );
 	}
 
@@ -114,14 +104,10 @@
 		tweens = [];
 	}
 
-	// Reduced motion (or set after load): make sure nothing stays hidden.
-	function reveal_all_static() {
-		document.documentElement.classList.remove( 're-anim' );
-	}
-
 	function init() {
 		if ( reduce ) {
-			reveal_all_static();
+			// Ensure nothing stays pre-hidden if motion is disabled.
+			document.documentElement.classList.remove( 're-anim' );
 			return;
 		}
 		teardown();

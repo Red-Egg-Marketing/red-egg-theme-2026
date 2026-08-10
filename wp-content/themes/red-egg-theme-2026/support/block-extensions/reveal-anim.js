@@ -1,11 +1,10 @@
 /**
  * Reveal Animation Toggle – Block Extension
  *
- * Adds a "Reveal animation" control to the header container blocks
- * (header-intro, header-single). When set, the block wrapper gets a
- * `has-reveal has-reveal--{style}` class; the frontend
- * (support/js/reveal-anim.js) animates the header's text / CTA elements
- * into view on scroll with GSAP.
+ * Adds a "Reveal animation" control to the core Heading block (h1–h6).
+ * When set, the heading gets a `has-reveal has-reveal--{style}` class;
+ * the frontend (support/js/reveal-anim.js) animates that heading into
+ * view on scroll with GSAP.
  *
  * Same three-filter shape as the lightbox/melt extensions.
  */
@@ -17,10 +16,7 @@ const { InspectorControls } = wp.blockEditor;
 const { PanelBody, SelectControl } = wp.components;
 const { __ } = wp.i18n;
 
-const ENABLED_BLOCKS = [
-	'red-egg-block/header-intro',
-	'red-egg-block/header-single',
-];
+const ENABLED_BLOCKS = [ 'core/heading' ];
 
 const ATTR = 'revealAnim';
 
@@ -68,7 +64,7 @@ const withRevealControl = createHigherOrderComponent( ( BlockEdit ) => {
 							<SelectControl
 								label={ __( 'Reveal animation', 'red-egg' ) }
 								help={ __(
-									'Animate the header in as it scrolls onscreen.',
+									'Animate this heading in as it scrolls onscreen.',
 									'red-egg'
 								) }
 								value={ attributes[ ATTR ] || '' }
