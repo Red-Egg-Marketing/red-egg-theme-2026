@@ -1431,7 +1431,7 @@ html.is-changing body.has-reveal-footer .site-footer {
 }
 
 .goverlay {
-  background: rgba(66, 64, 66, 0.94);
+  background: white;
 }
 
 html.re-anim .has-reveal--fade-in {
