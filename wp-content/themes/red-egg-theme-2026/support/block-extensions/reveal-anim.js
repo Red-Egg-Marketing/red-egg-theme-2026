@@ -16,7 +16,7 @@ const { InspectorControls } = wp.blockEditor;
 const { PanelBody, SelectControl } = wp.components;
 const { __ } = wp.i18n;
 
-const ENABLED_BLOCKS = [ 'core/heading', 'core/paragraph', 'core/list' ];
+const ENABLED_BLOCKS = [ 'core/heading', 'core/paragraph', 'core/list', 'core/button' ];
 
 const ATTR = 'revealAnim';
 
