@@ -2546,6 +2546,7 @@ html.re-anim .has-reveal--reveal-up {
   border-bottom: none;
 }
 
+.single-post--article .wrapper,
 .single-post__wrapper {
   padding-top: 2.5rem;
   padding-bottom: 1.75rem;
@@ -2553,6 +2554,7 @@ html.re-anim .has-reveal--reveal-up {
   padding-right: 0;
 }
 @media screen and (min-width: 768px) {
+  .single-post--article .wrapper,
   .single-post__wrapper {
     padding-top: 3.5rem;
     padding-bottom: 2.5rem;
