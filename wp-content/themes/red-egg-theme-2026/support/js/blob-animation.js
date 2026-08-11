@@ -18,7 +18,7 @@ import { onPageView } from './lifecycle';
     // outer .blob-decoration div. The div owns the ambient x/y drift, rotation
     // and scale, so keeping the cursor lean on a separate element means the two
     // motions never fight over the same transform matrix.
-    var MAX_PULL = 18;                    // px — keep small; "only slightly noticeable"
+    var MAX_PULL = 175;                    // px — keep small; "only slightly noticeable"
     var pointer = { x: null, y: null };
     var followers = [];
     var pointerBound = false;
@@ -37,9 +37,9 @@ import { onPageView } from './lifecycle';
             el: svg,
             // quickTo eases each update into a short tween, so the blob drifts
             // toward the new direction instead of snapping to it.
-            xTo: gsap.quickTo( svg, 'x', { duration: 0.7, ease: 'power2.out' } ),
-            yTo: gsap.quickTo( svg, 'y', { duration: 0.7, ease: 'power2.out' } ),
-            strength: gsap.utils.random( 0.7, 1.1 ),   // slight per-blob variance
+            xTo: gsap.quickTo( svg, 'x', { duration: 15, ease: 'power2.out' } ),
+            yTo: gsap.quickTo( svg, 'y', { duration: 10, ease: 'power2.out' } ),
+            strength: gsap.utils.random( 1.2, 1.1 ),   // slight per-blob variance
         } );
     }
 
