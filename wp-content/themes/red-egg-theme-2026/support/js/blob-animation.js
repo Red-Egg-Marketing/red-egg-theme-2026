@@ -5,11 +5,84 @@
  * - Rotational type interpolation (no pinching)
  * - Subtle random x/y drift (max 50px)
  * - Subtle rotation and scale breathing
+ * - Gentle cursor bias: the inner artwork leans a few px toward the
+ *   pointer, layered on the ambient drift (see cursor-follow helpers below)
  */
 
 import { onPageView } from './lifecycle';
 
 ( function() {
+
+    // ---- Cursor bias state ------------------------------------------------
+    // The pull is applied to each blob's inner .blob-decoration__svg, NOT the
+    // outer .blob-decoration div. The div owns the ambient x/y drift, rotation
+    // and scale, so keeping the cursor lean on a separate element means the two
+    // motions never fight over the same transform matrix.
+    var MAX_PULL = 18;                    // px — keep small; "only slightly noticeable"
+    var pointer = { x: null, y: null };
+    var followers = [];
+    var pointerBound = false;
+    var tickQueued = false;
+    var prefersReduced = window.matchMedia && window.matchMedia( '(prefers-reduced-motion: reduce)' ).matches;
+
+    // Register a blob's inner svg as a cursor follower (idempotent per node).
+    function registerCursorFollower( blob ) {
+        if ( prefersReduced ) return;
+
+        var svg = blob.querySelector( '.blob-decoration__svg' );
+        if ( ! svg || svg.dataset.blobFollow ) return;
+        svg.dataset.blobFollow = '1';
+
+        followers.push( {
+            el: svg,
+            // quickTo eases each update into a short tween, so the blob drifts
+            // toward the new direction instead of snapping to it.
+            xTo: gsap.quickTo( svg, 'x', { duration: 0.7, ease: 'power2.out' } ),
+            yTo: gsap.quickTo( svg, 'y', { duration: 0.7, ease: 'power2.out' } ),
+            strength: gsap.utils.random( 0.7, 1.1 ),   // slight per-blob variance
+        } );
+    }
+
+    // rAF-throttled update: lean each blob toward the pointer.
+    function updateFollowers() {
+        tickQueued = false;
+        if ( pointer.x === null ) return;
+
+        var halfW = window.innerWidth / 2;
+        var halfH = window.innerHeight / 2;
+
+        for ( var i = 0; i < followers.length; i++ ) {
+            var f = followers[ i ];
+            var rect = f.el.getBoundingClientRect();
+            var cx = rect.left + rect.width / 2;
+            var cy = rect.top + rect.height / 2;
+
+            // Direction from the blob's centre to the pointer, normalised so
+            // the pull maxes out near the screen edges and clamps beyond.
+            var nx = Math.max( -1, Math.min( 1, ( pointer.x - cx ) / halfW ) );
+            var ny = Math.max( -1, Math.min( 1, ( pointer.y - cy ) / halfH ) );
+
+            f.xTo( nx * MAX_PULL * f.strength );
+            f.yTo( ny * MAX_PULL * f.strength );
+        }
+    }
+
+    function onPointerMove( e ) {
+        pointer.x = e.clientX;
+        pointer.y = e.clientY;
+        if ( ! tickQueued ) {
+            tickQueued = true;
+            requestAnimationFrame( updateFollowers );
+        }
+    }
+
+    // Bind the pointer listener once; prune followers Swup swapped out.
+    function bindPointerFollow() {
+        followers = followers.filter( function( f ) { return document.contains( f.el ); } );
+        if ( prefersReduced || pointerBound || followers.length === 0 ) return;
+        pointerBound = true;
+        window.addEventListener( 'mousemove', onPointerMove, { passive: true } );
+    }
 
     function initBlobAnimations() {
         if ( typeof gsap === 'undefined' || typeof MorphSVGPlugin === 'undefined' ) {
@@ -105,7 +178,12 @@ import { onPageView } from './lifecycle';
                 repeatRefresh: true,
             } );
 
+            // ---- Cursor bias: lean the inner artwork toward the pointer ----
+            registerCursorFollower( blob );
+
         } );
+
+        bindPointerFollow();
     }
 
     onPageView( initBlobAnimations );
