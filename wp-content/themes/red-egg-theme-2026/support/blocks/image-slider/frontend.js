@@ -74,16 +74,17 @@ import { onPageView } from '../../js/lifecycle';
                     },
                 } );
 
-                // The active slide is wider than its neighbours, but that
-                // width comes from the active class Swiper applies just
-                // after it measures — so centeredSlides first centers on
-                // the narrow width, then the active slide grows and pushes
-                // the next slide into view. Re-measure once on the next
-                // frame so it re-centers against the true widths. (case-
-                // studies gets away without this because its active/neighbour
-                // width gap is small; here it's large enough to show.)
+                // The active slide is wider than its neighbours, and with
+                // centeredSlides + loop + uneven widths Swiper's update()
+                // recalculates sizes but does NOT re-position the wrapper —
+                // so the active lands slightly off-centre and the next slide
+                // creeps in. Re-measure, then snap to the active slide once
+                // (zero duration) so it's dead-centre. Done at load only, so
+                // there's no visible motion.
                 requestAnimationFrame( function() {
-                    if ( swiper && ! swiper.destroyed ) swiper.update();
+                    if ( ! swiper || swiper.destroyed ) return;
+                    swiper.update();
+                    swiper.slideToLoop( swiper.realIndex, 0, false );
                 } );
             }, 50 );
         } );
