@@ -74,17 +74,20 @@ import { onPageView } from '../../js/lifecycle';
                     },
                 } );
 
-                // The active slide is wider than its neighbours, and with
-                // centeredSlides + loop + uneven widths Swiper's update()
-                // recalculates sizes but does NOT re-position the wrapper —
-                // so the active lands slightly off-centre and the next slide
-                // creeps in. Re-measure, then snap to the active slide once
-                // (zero duration) so it's dead-centre. Done at load only, so
-                // there's no visible motion.
+                // With loop + centeredSlides + uneven widths, Swiper parks
+                // the wrapper one snap off from the slide that actually
+                // carries the active class (and thus the wider width) — so
+                // the wide slide sits left of centre and the next slides
+                // bleed in. Snap directly to the active-class element (a
+                // real slide, not a loop clone) so the wide slide is dead
+                // centre. Load only, zero duration = no visible motion.
                 requestAnimationFrame( function() {
                     if ( ! swiper || swiper.destroyed ) return;
                     swiper.update();
-                    swiper.slideToLoop( swiper.realIndex, 0, false );
+                    var active = el.querySelector( '.swiper-slide.image-slider__slide--active:not(.swiper-slide-duplicate)' )
+                              || el.querySelector( '.swiper-slide.image-slider__slide--active' );
+                    var idx = active ? swiper.slides.indexOf( active ) : swiper.activeIndex;
+                    if ( idx > -1 ) swiper.slideTo( idx, 0, false );
                 } );
             }, 50 );
         } );
