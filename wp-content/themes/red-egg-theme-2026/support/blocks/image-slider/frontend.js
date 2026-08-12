@@ -50,7 +50,7 @@ import { onPageView } from '../../js/lifecycle';
             // Mirror case-studies-slider: let layout settle, then init
             // with the same options.
             setTimeout( function() {
-                var swiper = new Swiper( el, {
+                new Swiper( el, {
                     loop: originalCount > 1,
                     centeredSlides: true,
                     slidesPerView: 1,
@@ -72,22 +72,6 @@ import { onPageView } from '../../js/lifecycle';
                         nextEl: nextEl,
                         prevEl: prevEl,
                     },
-                } );
-
-                // With loop + centeredSlides + uneven widths, Swiper parks
-                // the wrapper one snap off from the slide that actually
-                // carries the active class (and thus the wider width) — so
-                // the wide slide sits left of centre and the next slides
-                // bleed in. Snap directly to the active-class element (a
-                // real slide, not a loop clone) so the wide slide is dead
-                // centre. Load only, zero duration = no visible motion.
-                requestAnimationFrame( function() {
-                    if ( ! swiper || swiper.destroyed ) return;
-                    swiper.update();
-                    var active = el.querySelector( '.swiper-slide.image-slider__slide--active:not(.swiper-slide-duplicate)' )
-                              || el.querySelector( '.swiper-slide.image-slider__slide--active' );
-                    var idx = active ? swiper.slides.indexOf( active ) : swiper.activeIndex;
-                    if ( idx > -1 ) swiper.slideTo( idx, 0, false );
                 } );
             }, 50 );
         } );

@@ -7672,7 +7672,11 @@ div.gform_wrapper.gravity-theme .gform_page_footer {
 }
 
 .image-slider__slide--active .image-slider__slide {
+  aspect-ratio: auto;
   box-shadow: 0 4px 24px rgba(0, 0, 0, 0.1);
+}
+.image-slider__slide--active .image-slider__slide img {
+  height: auto;
 }
 
 .swiper-slide:not(.image-slider__slide--active) .image-slider__slide {

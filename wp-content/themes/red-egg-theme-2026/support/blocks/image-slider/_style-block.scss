@@ -28,9 +28,8 @@
 
 
 // ---- Slide images ----
-// Same treatment as case-studies-slider: every slide is locked to the
-// same 103/58 crop, so the only thing that changes between active and
-// neighbour is width + opacity. Same shape for all = smooth glide.
+// Neighbours are locked to the 103/58 crop; the active (centre) slide
+// shows the image at its natural aspect ratio (uncropped).
 .image-slider__slide {
     aspect-ratio: 103 / 58;
     border-radius: $default-border-radius;
@@ -48,8 +47,14 @@
 }
 
 // ---- Active slide emphasis ----
+// Drop the crop on the centre slide so it shows the full image.
 .image-slider__slide--active .image-slider__slide {
+    aspect-ratio: auto;
     box-shadow: 0 4px 24px rgba(0, 0, 0, 0.1);
+
+    img {
+        height: auto;
+    }
 }
 
 // Non-active slides dimmed
