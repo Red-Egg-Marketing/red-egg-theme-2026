@@ -14,12 +14,24 @@ import PaddingSelector from '../../components/Padding.js';
 import MarginSelector from '../../components/Margin.js';
 
 const SaveTestimonials = ( { attributes } ) => {
-    const { reviewMode, reviewId, reviewIds, padding, margin, blockId } = attributes;
+    const { reviewMode, reviewId, reviewIds, reviewSort, padding, margin, blockId } = attributes;
 
     const blockProps = useBlockProps.save( {
         id: blockId,
         className: 'testimonials-block',
     } );
+
+    // Only serialize data-review-sort when it's non-default so existing
+    // content stays valid (frontend treats a missing attr as 'date').
+    const rootProps = {
+        className: 'testimonials-block__root',
+        'data-review-mode': reviewMode,
+        'data-review-id': reviewId || '',
+        'data-review-ids': JSON.stringify( reviewIds || [] ),
+    };
+    if ( reviewSort && reviewSort !== 'date' ) {
+        rootProps['data-review-sort'] = reviewSort;
+    }
 
     return (
         <Fragment>
@@ -32,12 +44,7 @@ const SaveTestimonials = ( { attributes } ) => {
                     <div className="testimonials-block__header">
                         <InnerBlocks.Content />
                     </div>
-                    <div
-                        className="testimonials-block__root"
-                        data-review-mode={ reviewMode }
-                        data-review-id={ reviewId || '' }
-                        data-review-ids={ JSON.stringify( reviewIds || [] ) }
-                    ></div>
+                    <div { ...rootProps }></div>
                 </div>
             </section>
         </Fragment>

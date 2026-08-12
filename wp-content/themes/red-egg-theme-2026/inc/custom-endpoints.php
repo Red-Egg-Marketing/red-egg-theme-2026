@@ -532,14 +532,39 @@ function red_egg_return_services( $request ) {
 //  Reviews (from WP FB Reviews plugin table)
 // ============================================
 
-function red_egg_return_reviews() {
+/**
+ * Resolve a safe ORDER BY clause for the reviews table from the
+ * ?sort= param. This is a raw SQL query, so every branch returns a
+ * hardcoded literal — no user input ever reaches the query. The
+ * wpfb_reviews table has no timestamp or title column, so 'date'
+ * falls back to the autoincrement id (chronological proxy) and
+ * 'title' sorts by reviewer name.
+ */
+function red_egg_resolve_reviews_orderby( $data ) {
+	$sort = $data ? $data->get_param( 'sort' ) : '';
+
+	switch ( $sort ) {
+		case 'random':
+			return 'RAND()';
+		case 'title':
+			return 'reviewer_name ASC';
+		case 'date':
+		default:
+			return 'id DESC';
+	}
+}
+
+function red_egg_return_reviews( $data ) {
 	global $wpdb;
+
+	$order_by = red_egg_resolve_reviews_orderby( $data );
 
 	$results = $wpdb->get_results(
 		"
 			SELECT id, reviewer_name, review_text, rating, type, userpic, from_url_review, company_name, company_title
 			FROM {$wpdb->prefix}wpfb_reviews
 			WHERE review_text IS NOT NULL AND TRIM(review_text) <> ''
+			ORDER BY {$order_by}
 		", OBJECT
 	);
 
