@@ -63,20 +63,18 @@
     transition: opacity 0.35s ease;
 }
 
-// During the intro sequence the notes fire as fast as 125ms, so the
-// leisurely 0.35s hover fade can't keep up -- use a snappy fade for
-// the .is-popping (sequence-driven) state specifically. Hover and the
-// resting-red hold keep the smooth 0.35s crossfade above.
-.egg-cluster__egg.is-popping .egg-cluster__layer--red {
-    transition: opacity 0.08s ease;
-}
-
-// Hover reveal (per egg, independent) + JS-driven intro "pop"
-// + persistent resting-red state (one egg stays red after the intro)
+// Hover reveal (per egg) + persistent resting-red state (top-right
+// egg holds red as the on-brand default, set by frontend.js)
 .egg-cluster__egg:hover .egg-cluster__layer--red,
-.egg-cluster__egg.is-popping .egg-cluster__layer--red,
 .egg-cluster__egg.is-resting-red .egg-cluster__layer--red {
     opacity: 1;
+}
+
+// Exactly ONE egg red at a time: while any egg is hovered, the resting
+// egg lets go of its red (unless it's the hovered one) so the hovered
+// egg is the only red. When the hover ends, the resting egg fades back.
+.egg-cluster:has( .egg-cluster__egg:hover ) .egg-cluster__egg.is-resting-red:not( :hover ) .egg-cluster__layer--red {
+    opacity: 0;
 }
 
 // ---- Touch / no-hover fallback: gentle auto-cycle to red ----
