@@ -551,6 +551,8 @@ span.semibold {
   margin-right: auto;
   padding-left: 1.25rem;
   padding-right: 1.25rem;
+  position: relative;
+  z-index: 2;
 }
 .site-content > h1,
 .site-content > h2,
@@ -4660,6 +4662,7 @@ div.gform_wrapper.gravity-theme .gform_page_footer {
   transform: translate(-50%, -50%);
   cursor: pointer;
   transition: opacity 0.3s ease;
+  filter: drop-shadow(0 0 2px rgba(0, 0, 0, 0.55));
 }
 @media screen and (min-width: 768px) {
   .custom-video-button {
