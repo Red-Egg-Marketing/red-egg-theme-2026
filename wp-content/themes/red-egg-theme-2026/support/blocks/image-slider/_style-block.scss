@@ -178,24 +178,29 @@
     max-width: 100%;
 }
 
-.swiper-slide {
-    border: 1px solid $gray;
-    border-radius: $default-border-radius;
-    overflow: hidden;
-    background: $white;
-    transition: box-shadow 0.3s ease, opacity 0.3s ease;
-    @media screen and (min-width: $small-width) {
-        width: 528px;
+// Scoped under .image-slider so these don't leak onto other Swipers
+// on the page (testimonials, case-studies) — an unscoped .swiper-slide
+// was painting a gray border + forcing 528px width everywhere.
+.image-slider {
+    .swiper-slide {
+        border: 1px solid $gray;
+        border-radius: $default-border-radius;
+        overflow: hidden;
+        background: $white;
+        transition: box-shadow 0.3s ease, opacity 0.3s ease;
+        @media screen and (min-width: $small-width) {
+            width: 528px;
+        }
     }
-}
 
-.swiper-slide.image-slider__slide--active {
-    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.1);
-     @media screen and (min-width: $small-width) {
-        width: 689px;
-     }
-}
+    .swiper-slide.image-slider__slide--active {
+        box-shadow: 0 4px 24px rgba(0, 0, 0, 0.1);
+        @media screen and (min-width: $small-width) {
+            width: 689px;
+        }
+    }
 
-.swiper-wrapper {
-    align-items: center;
+    .swiper-wrapper {
+        align-items: center;
+    }
 }

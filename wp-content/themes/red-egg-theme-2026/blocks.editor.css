@@ -5315,7 +5315,7 @@ div.gform_wrapper.gravity-theme .gform_page_footer {
   max-width: 100%;
 }
 
-.swiper-slide {
+.image-slider .swiper-slide {
   border: 1px solid #424042;
   border-radius: 8px;
   overflow: hidden;
@@ -5323,21 +5323,19 @@ div.gform_wrapper.gravity-theme .gform_page_footer {
   transition: box-shadow 0.3s ease, opacity 0.3s ease;
 }
 @media screen and (min-width: 768px) {
-  .swiper-slide {
+  .image-slider .swiper-slide {
     width: 528px;
   }
 }
-
-.swiper-slide.image-slider__slide--active {
+.image-slider .swiper-slide.image-slider__slide--active {
   box-shadow: 0 4px 24px rgba(0, 0, 0, 0.1);
 }
 @media screen and (min-width: 768px) {
-  .swiper-slide.image-slider__slide--active {
+  .image-slider .swiper-slide.image-slider__slide--active {
     width: 689px;
   }
 }
-
-.swiper-wrapper {
+.image-slider .swiper-wrapper {
   align-items: center;
 }
 
