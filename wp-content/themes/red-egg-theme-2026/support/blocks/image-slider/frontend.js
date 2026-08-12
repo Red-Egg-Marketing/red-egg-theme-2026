@@ -45,7 +45,7 @@ import { onPageView } from '../../js/lifecycle';
                 }
             }
 
-            new Swiper( el, {
+            var swiper = new Swiper( el, {
                 loop: canLoop,
                 centeredSlides: true,
                 slidesPerView: 1,
@@ -62,6 +62,26 @@ import { onPageView } from '../../js/lifecycle';
                     nextEl: nextEl,
                     prevEl: prevEl,
                 },
+            } );
+
+            // centeredSlides measures widths at init — but the active
+            // slide is wider (its width comes from the active class
+            // Swiper applies) and its image is lazy-loaded, so the first
+            // measurement is stale and the slider centers off (next peeks
+            // more than prev, then drifts). Re-measure on the next frame
+            // (active class now applied) and again as each lazy image
+            // finishes loading, re-snapping to the active slide so it
+            // stays centered.
+            var recenter = function() {
+                if ( ! swiper || swiper.destroyed ) return;
+                swiper.update();
+                swiper.slideToLoop( swiper.realIndex, 0, false );
+            };
+            requestAnimationFrame( recenter );
+            el.querySelectorAll( 'img' ).forEach( function( img ) {
+                if ( ! img.complete ) {
+                    img.addEventListener( 'load', recenter, { once: true } );
+                }
             } );
         } );
     }
