@@ -26,7 +26,6 @@
 }
 
 
-
 // ---- Slide images ----
 // Neighbours are locked to the 103/58 crop; the active (centre) slide
 // shows the image at its natural aspect ratio (uncropped).
@@ -36,7 +35,7 @@
     overflow: hidden;
     background-color: $gray;
     transition: box-shadow 0.3s ease, opacity 0.3s ease;
-
+    border: 1px solid $gray;
     img {
         display: block;
         width: 100%;
