@@ -50,7 +50,7 @@ import { onPageView } from '../../js/lifecycle';
             // Mirror case-studies-slider: let layout settle, then init
             // with the same options.
             setTimeout( function() {
-                new Swiper( el, {
+                var swiper = new Swiper( el, {
                     loop: originalCount > 1,
                     centeredSlides: true,
                     slidesPerView: 1,
@@ -72,6 +72,18 @@ import { onPageView } from '../../js/lifecycle';
                         nextEl: nextEl,
                         prevEl: prevEl,
                     },
+                } );
+
+                // The active slide is wider than its neighbours, but that
+                // width comes from the active class Swiper applies just
+                // after it measures — so centeredSlides first centers on
+                // the narrow width, then the active slide grows and pushes
+                // the next slide into view. Re-measure once on the next
+                // frame so it re-centers against the true widths. (case-
+                // studies gets away without this because its active/neighbour
+                // width gap is small; here it's large enough to show.)
+                requestAnimationFrame( function() {
+                    if ( swiper && ! swiper.destroyed ) swiper.update();
                 } );
             }, 50 );
         } );
