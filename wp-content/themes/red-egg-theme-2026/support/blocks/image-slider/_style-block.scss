@@ -28,18 +28,22 @@
 
 
 // ---- Slide images ----
+// Fixed aspect ratio on the container (matching case-studies-slider)
+// so every slide is the same shape and only the width difference
+// between active/non-active changes the size. Without this, tall
+// images render as large as the active slide regardless of width.
 .image-slider__slide {
+    aspect-ratio: 103 / 58;
     border-radius: $default-border-radius;
     overflow: hidden;
-/*    border: 1px solid $gray;*/
+    background-color: $gray;
     transition: box-shadow 0.3s ease, opacity 0.3s ease;
 
     img {
         display: block;
         width: 100%;
-        height: auto;
+        height: 100%;
         object-fit: cover;
-/*        aspect-ratio: 103 / 58;*/
         transition: transform 0.4s ease;
     }
 }
