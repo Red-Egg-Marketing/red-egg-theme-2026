@@ -82,10 +82,21 @@
 .reveal-card__front-content h3 {
     @include primary-h3;
     margin: 0 0 0.75rem 0;
+    // Morph in sync with the GSAP reveal: .is-flipped is added the same
+    // instant the timeline plays, so this transition runs alongside the
+    // icon/paragraph collapse. Matches the 0.4s timeline steps.
+    transition: font-size 0.4s ease, line-height 0.4s ease,
+        letter-spacing 0.4s ease, color 0.4s ease;
 }
 
+// Morph the front heading into the back h4's style as the card opens
+// (size, spacing, line-height, and color glide; text-transform is a
+// discrete property so the caps snap on at the start of the morph).
+// The icon collapse above it slides it up toward the back h4's spot,
+// then the back face crossfades in over it with the real h4.
 .reveal-card.is-flipped .reveal-card__front-content h3 {
-  
+    @include h3-caps;
+    color: $red;
 }
 
 .reveal-card__front-content p {
