@@ -44,6 +44,11 @@ registerBlockType( 'red-egg-block/testimonials', {
             type: 'array',
             default: [],
         },
+        // sort order when reviewMode === 'all': 'date' | 'title' | 'random'
+        reviewSort: {
+            type: 'string',
+            default: 'date',
+        },
         padding: {
             type: 'object',
             default: {
