@@ -99,7 +99,14 @@ const TestimonialsView = ( { config, root } ) => {
     const instanceRef = useRef( null );
 
     useEffect( function() {
-        wp.apiRequest( { path: apiUrl } ).then( function( data ) {
+        // Sort only applies to 'all'; harmless for single/selected
+        // (those are filtered client-side below). Missing/'date' →
+        // server default (id DESC), so no need to append it.
+        var path = apiUrl;
+        if ( config.mode === 'all' && config.sort && config.sort !== 'date' ) {
+            path += '?sort=' + encodeURIComponent( config.sort );
+        }
+        wp.apiRequest( { path: path } ).then( function( data ) {
             var all = Array.isArray( data ) ? data : [];
             var list = all;
             if ( config.mode === 'single' ) {
@@ -251,6 +258,7 @@ function initTestimonials() {
             mode: root.getAttribute( 'data-review-mode' ) || 'all',
             id: root.getAttribute( 'data-review-id' ) || '',
             ids: ids,
+            sort: root.getAttribute( 'data-review-sort' ) || 'date',
         };
         render( <TestimonialsView config={ config } root={ root } />, root );
     } );

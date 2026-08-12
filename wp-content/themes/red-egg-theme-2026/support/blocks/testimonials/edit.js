@@ -79,7 +79,7 @@ const PreviewCard = ( { review } ) => {
 };
 
 const EditTestimonials = ( { attributes, setAttributes, clientId } ) => {
-    const { reviewMode, reviewId, reviewIds, padding, margin, blockId } = attributes;
+    const { reviewMode, reviewId, reviewIds, reviewSort, padding, margin, blockId } = attributes;
 
     const [ reviews, setReviews ] = useState( false );
 
@@ -96,6 +96,10 @@ const EditTestimonials = ( { attributes, setAttributes, clientId } ) => {
     }, [] );
 
     // Which reviews to preview, per the current source setting.
+    // For 'all', mirror the server sort so the editor matches the
+    // live output. ('random' is left in fetched order here — it
+    // reshuffles per request on the frontend, not worth churning
+    // the editor preview on every render.)
     const displayed = ( () => {
         if ( ! reviews || reviews.length === 0 ) return [];
         if ( reviewMode === 'single' ) {
@@ -104,7 +108,13 @@ const EditTestimonials = ( { attributes, setAttributes, clientId } ) => {
         if ( reviewMode === 'selected' ) {
             return reviews.filter( ( r ) => reviewIds.map( String ).includes( String( r.id ) ) );
         }
-        return reviews;
+        const all = reviews.slice();
+        if ( reviewSort === 'title' ) {
+            all.sort( ( a, b ) => ( a.reviewer_name || '' ).localeCompare( b.reviewer_name || '' ) );
+        } else if ( reviewSort === 'date' ) {
+            all.sort( ( a, b ) => ( parseInt( b.id, 10 ) || 0 ) - ( parseInt( a.id, 10 ) || 0 ) );
+        }
+        return all;
     } )();
 
     const blockProps = useBlockProps( {
@@ -136,6 +146,19 @@ const EditTestimonials = ( { attributes, setAttributes, clientId } ) => {
                         ] }
                         onChange={ ( val ) => setAttributes( { reviewMode: val } ) }
                     />
+
+                    { reviewMode === 'all' && (
+                        <SelectControl
+                            label={ __( 'Sort', 'red-egg' ) }
+                            value={ reviewSort }
+                            options={ [
+                                { label: __( 'Date (newest first)', 'red-egg' ), value: 'date' },
+                                { label: __( 'Name (A–Z)', 'red-egg' ), value: 'title' },
+                                { label: __( 'Random', 'red-egg' ), value: 'random' },
+                            ] }
+                            onChange={ ( val ) => setAttributes( { reviewSort: val } ) }
+                        />
+                    ) }
 
                     { reviews === false && <Spinner /> }
 
