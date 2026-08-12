@@ -68,10 +68,25 @@
     height: 100%;
     padding: 2rem;
     padding-bottom: 4rem;
+    // Padding morphs to the back face's padding when flipped (below),
+    // delayed to run with the slide-up like the h3 typography morph.
+    transition: padding 0.4s ease 0.4s;
 
     @media screen and (min-width: $small-width) {
         padding: 2.5rem;
         padding-bottom: 4.5rem;
+    }
+}
+
+// When flipped, adopt the back-inner's padding so the morphing h3
+// comes to rest exactly where the back h4 sits — the back face then
+// fades in with its h4 precisely on top of it, so the handoff between
+// the two headings is invisible (no doubled/ghosting fade).
+.reveal-card.is-flipped .reveal-card__face-inner {
+    padding: 2.5rem;
+
+    @media screen and (min-width: $small-width) {
+        padding: 3rem;
     }
 }
 

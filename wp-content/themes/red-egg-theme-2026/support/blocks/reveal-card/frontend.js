@@ -129,14 +129,16 @@ function buildTimeline(card) {
   const h4Color = backH4 ? window.getComputedStyle(backH4).color : '';
 
   const tl = gsap.timeline({ paused: true, defaults: { ease: 'power2.inOut' } })
-    .to(rest,    { autoAlpha: 0, duration: 0.4 })  // 2. other content fades
-    .to(rest,    { height: 0, duration: 0.4, marginBottom: 0 })  // 2. other content fades
-    // .to(heading, { y: -20, duration: 0.4 })                 // 1. header slides up
-    .to(back,    { autoAlpha: 1, duration: 0.4, zIndex: 2 }, '-=0.1') // 4. back reveals/fades in
+    .to(rest,    { autoAlpha: 0, duration: 0.4 })  // 1. other content fades
+    .to(rest,    { height: 0, duration: 0.4, marginBottom: 0 })  // 2. collapse — h3 rides up
+    // 4. back reveals only AFTER the heading has fully settled onto the
+    // h4's slot (0.8s: collapse + morph both done) — its h4 fades in
+    // exactly on top of the morphed h3, so the handoff is invisible.
+    .to(back,    { autoAlpha: 1, duration: 0.4, zIndex: 2 }, 0.8)
 
-  // 3. heading color morphs to this card's h4 color, starting with the
-  // slide-up (the height collapse at 0.4s). The typography half of the
-  // morph is CSS, delayed to the same 0.4s mark (see _style-block.scss).
+  // 3. heading morphs to this card's h4 color, starting with the
+  // slide-up (the height collapse at 0.4s). Typography + padding morph
+  // to the h4's exact slot via CSS with the same 0.4s delay.
   if (h4Color) {
     tl.to(heading, { color: h4Color, duration: 0.4 }, 0.4);
   }
