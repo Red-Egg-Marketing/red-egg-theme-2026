@@ -2081,7 +2081,7 @@ span.semibold {
 }
 .reveal-card__front-content h3 {
   margin: 0 0 0.75rem 0;
-  transition: font-size 0.4s ease, line-height 0.4s ease, letter-spacing 0.4s ease, color 0.4s ease;
+  transition: font-size 0.4s ease 0.4s, line-height 0.4s ease 0.4s, letter-spacing 0.4s ease 0.4s;
 }
 
 .reveal-card.is-flipped .reveal-card__front-content h3 {
@@ -2098,9 +2098,6 @@ span.semibold {
     font-size: 1.5625rem;
     line-height: 1.975rem;
   }
-}
-.reveal-card.is-flipped .reveal-card__front-content h3 {
-  color: #DC2035;
 }
 
 .reveal-card__front-content p {
