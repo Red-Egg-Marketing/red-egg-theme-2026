@@ -29,9 +29,11 @@
 
 .entry-header .wrapper {
     margin: 0 auto;
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
 }
 
-.entry-header .wrapper ,
+.entry-header .wrapper,
 .page-template-template-article .entry-thumbnail,
 .single .entry-thumbnail,
 .single-post__wrapper.block-wrapper {
@@ -42,16 +44,17 @@
 .single .entry-thumbnail {
     padding-left: 1.25rem;
     padding-right: 1.25rem;
+    margin-top: -20px;
+    @media screen and (min-width: $small-width) {
+        margin-top: -45px;
+    }
 }
 
 
 .page-template-template-article .entry-thumbnail img,
 .single .entry-thumbnail img {
     border-radius: 8px;
-    max-width: 85%;
-    @media screen and (min-width: $small-width) {
-        max-width: 100%;
-    }
+    max-width: 100%;
 }
 
 .related-posts + .squiggle-divider-block {
@@ -99,7 +102,11 @@
 .single-post .entry-header {
     text-align: center;
     background: $eggshell;
+    padding-top: 4.5rem;
+    padding-bottom: 2rem;
     @media screen and (min-width: $small-width) {
+        padding-top: 8.75rem;
+        padding-bottom: 2.5rem;
     }
 }
 
@@ -109,13 +116,14 @@
 
 .single-post .entry-title {
     @include primary-h1;
-    font-size: 2.35rem;
-    line-height: 2.65rem;
+    font-size: 2rem;
+    line-height: 2.55rem;
     color: $red;
-    margin: 0 0 0.75rem 0;
+    margin: 0 0 2.75rem 0;
     @media screen and (min-width: $small-width) {
         font-size: 3.125rem;
         line-height: 4.25rem;
+        margin: 0 0 3.75rem 0;
     }
 }
 
@@ -123,11 +131,11 @@
     font-family: $font-body;
     font-weight: 400;
     font-size: 1rem;
-    color: rgba($gray, 0.7);
-    margin: 0;
-
-    span {
-        font-weight: 600;
+    color: $gray;
+    margin: 1.5rem 0 2rem;
+    @media screen and (min-width: $small-width) {
+        font-size: 1.25rem;
+        margin: 2rem 0 3.5rem;
     }
 }
 

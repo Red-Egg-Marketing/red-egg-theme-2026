@@ -27,7 +27,7 @@ while ( have_posts() ) :
     
                 <?php if ( has_post_thumbnail() ) : ?>
                     <div class="entry-thumbnail">
-                        <?php the_post_thumbnail( 'large' ); ?>
+                        <?php the_post_thumbnail( 'post-landscape' ); ?>
                         <?php red_egg_the_read_time(); ?>
 
                     </div><!-- .entry-thumbnail -->
