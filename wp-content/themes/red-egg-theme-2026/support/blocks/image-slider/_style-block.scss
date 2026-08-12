@@ -26,27 +26,34 @@
 }
 
 
-
 // ---- Slide images ----
+// Neighbours are locked to the 103/58 crop; the active (centre) slide
+// shows the image at its natural aspect ratio (uncropped).
 .image-slider__slide {
+    aspect-ratio: 103 / 58;
     border-radius: $default-border-radius;
     overflow: hidden;
-/*    border: 1px solid $gray;*/
+    background-color: $gray;
     transition: box-shadow 0.3s ease, opacity 0.3s ease;
-
+    border: 1px solid $gray;
     img {
         display: block;
         width: 100%;
-        height: auto;
+        height: 100%;
         object-fit: cover;
-/*        aspect-ratio: 103 / 58;*/
         transition: transform 0.4s ease;
     }
 }
 
 // ---- Active slide emphasis ----
+// Drop the crop on the centre slide so it shows the full image.
 .image-slider__slide--active .image-slider__slide {
+    aspect-ratio: auto;
     box-shadow: 0 4px 24px rgba(0, 0, 0, 0.1);
+
+    img {
+        height: auto;
+    }
 }
 
 // Non-active slides dimmed
@@ -178,24 +185,45 @@
     max-width: 100%;
 }
 
-.swiper-slide {
-    border: 1px solid $gray;
-    border-radius: $default-border-radius;
-    overflow: hidden;
-    background: $white;
-    transition: box-shadow 0.3s ease, opacity 0.3s ease;
-    @media screen and (min-width: $small-width) {
-        width: 528px;
+// Scoped under .image-slider so these don't leak onto other Swipers
+// on the page (testimonials, case-studies).
+//
+// CRITICAL: every slide gets the SAME layout width. Swiper computes its
+// snap/centering positions from layout widths, and the active class
+// moves on every transition — so if active/neighbour layout widths
+// differ, the snap grid shifts mid-flight and the slider lands
+// off-centre (the drift we chased all afternoon). Emphasis is done with
+// transform: scale() on the inner element instead: transforms don't
+// affect layout, so Swiper's math is stable and always centred, and
+// scale transitions smoothly in sync with the glide.
+.image-slider {
+    .swiper-slide {
+        @media screen and (min-width: $small-width) {
+            width: 600px;
+        }
     }
-}
 
-.swiper-slide.image-slider__slide--active {
-    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.1);
-     @media screen and (min-width: $small-width) {
-        width: 689px;
-     }
-}
+    .swiper-slide .image-slider__slide {
+        transition: transform 0.5s ease, box-shadow 0.3s ease, opacity 0.3s ease;
+        will-change: transform;
 
-.swiper-wrapper {
-    align-items: center;
+        @media screen and (min-width: $small-width) {
+            transform: scale(0.9);
+        }
+    }
+
+    .swiper-slide.image-slider__slide--active {
+        position: relative;
+        z-index: 2;
+
+        .image-slider__slide {
+            @media screen and (min-width: $small-width) {
+                transform: scale(1.12);
+            }
+        }
+    }
+
+    .swiper-wrapper {
+        align-items: center;
+    }
 }

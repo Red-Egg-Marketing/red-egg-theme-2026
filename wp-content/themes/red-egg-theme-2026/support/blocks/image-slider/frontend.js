@@ -1,9 +1,16 @@
 /**
  * Image Slider – Frontend
  *
- * Initializes Swiper on all .image-slider__swiper elements.
- * Uses centeredSlides with active slide emphasis
- * (matching case-studies-slider behavior).
+ * Initializes Swiper on all .image-slider__swiper elements, mirroring
+ * case-studies-slider's setup: centeredSlides, slidesPerView:'auto',
+ * looped, with the active slide emphasized via width + opacity in CSS.
+ *
+ * The only intentional difference from case-studies is the slide
+ * duplication below: case-studies fills the loop naturally with ~15
+ * fetched posts, whereas an image gallery is usually just a handful,
+ * so we repeat the real slides up to a floor to give the loop enough
+ * slides to peek on both edges (the same technique case-studies
+ * documents for small sets).
  */
 
 import { onPageView } from '../../js/lifecycle';
@@ -21,27 +28,52 @@ import { onPageView } from '../../js/lifecycle';
 
             var spaceBetween = parseInt( el.getAttribute( 'data-space-between' ) ) || 20;
             var parent = el.closest( '.image-slider' );
-            var prevEl = parent.querySelector( '.cs-slider__nav' );
+            var prevEl = parent.querySelector( '.cs-slider__nav-prev' );
             var nextEl = parent.querySelector( '.cs-slider__nav-next' );
 
-            new Swiper( el, {
-                loop: true,
-                centeredSlides: true,
-                slidesPerView: 1,
-                spaceBetween: 20,
-                speed: 500,
-                slideActiveClass: 'image-slider__slide--active',
-                breakpoints: {
-                    768: {
-                        slidesPerView: 'auto',
-                        spaceBetween: spaceBetween,
+            // Swiper 11 won't reliably clone slides for a small set with
+            // slidesPerView:'auto' (loopAdditionalSlides no-ops — issues
+            // #7492/#8178). Feed it enough REAL slides by repeating the
+            // originals up to a floor so the loop always peeks both edges.
+            var wrapper = el.querySelector( '.swiper-wrapper' );
+            var slides = wrapper ? [].slice.call( wrapper.children ) : [];
+            var originalCount = slides.length;
+            var MIN_LOOP_SLIDES = 8;
+            if ( wrapper && originalCount > 1 && originalCount < MIN_LOOP_SLIDES ) {
+                var i = 0;
+                while ( wrapper.children.length < MIN_LOOP_SLIDES ) {
+                    wrapper.appendChild( slides[ i % originalCount ].cloneNode( true ) );
+                    i++;
+                }
+            }
+
+            // Mirror case-studies-slider: let layout settle, then init
+            // with the same options.
+            setTimeout( function() {
+                new Swiper( el, {
+                    loop: originalCount > 1,
+                    centeredSlides: true,
+                    slidesPerView: 1,
+                    spaceBetween: 20,
+                    speed: 500,
+                    autoplay: true,
+                    slideActiveClass: 'image-slider__slide--active',
+                    breakpoints: {
+                        768: {
+                            slidesPerView: 'auto',
+                            spaceBetween: spaceBetween,
+                        },
+                        1080: {
+                            slidesPerView: 'auto',
+                            spaceBetween: spaceBetween,
+                        },
                     },
-                },
-                navigation: {
-                    nextEl: nextEl,
-                    prevEl: prevEl,
-                },
-            } );
+                    navigation: {
+                        nextEl: nextEl,
+                        prevEl: prevEl,
+                    },
+                } );
+            }, 50 );
         } );
     }
 
