@@ -28,30 +28,24 @@
 
 
 // ---- Slide images ----
-// The ACTIVE slide shows the image at its natural aspect ratio.
-// Only the prev/next neighbours get the fixed 103/58 crop (below),
-// so they read as smaller framed thumbnails flanking the active one.
+// Crop is driven by an animatable HEIGHT set in frontend.js (neighbours
+// get the cropped 103/58 height, the active slide gets its full natural
+// height) and eased over the same duration as the slide glide, so the
+// active image "opens" open / closes shut instead of popping. The
+// aspect-ratio here is just a pre-JS fallback shape.
 .image-slider__slide {
+    aspect-ratio: 103 / 58;
     border-radius: $default-border-radius;
     overflow: hidden;
     background-color: $gray;
-    transition: box-shadow 0.3s ease, opacity 0.3s ease;
+    transition: box-shadow 0.3s ease, opacity 0.3s ease, height 0.7s ease;
 
     img {
         display: block;
         width: 100%;
-        height: auto;
+        height: 100%;
         object-fit: cover;
         transition: transform 0.4s ease;
-    }
-}
-
-// Prev/next slides only: locked crop + fill.
-.swiper-slide:not(.image-slider__slide--active) .image-slider__slide {
-    aspect-ratio: 103 / 58;
-
-    img {
-        height: 100%;
     }
 }
 

@@ -7656,25 +7656,19 @@ div.gform_wrapper.gravity-theme .gform_page_footer {
 }
 
 .image-slider__slide {
+  aspect-ratio: 103/58;
   border-radius: 8px;
   overflow: hidden;
   background-color: #424042;
-  transition: box-shadow 0.3s ease, opacity 0.3s ease;
+  transition: box-shadow 0.3s ease, opacity 0.3s ease, height 0.7s ease;
 }
 .image-slider__slide img {
   display: block;
   width: 100%;
-  height: auto;
+  height: 100%;
   -o-object-fit: cover;
      object-fit: cover;
   transition: transform 0.4s ease;
-}
-
-.swiper-slide:not(.image-slider__slide--active) .image-slider__slide {
-  aspect-ratio: 103/58;
-}
-.swiper-slide:not(.image-slider__slide--active) .image-slider__slide img {
-  height: 100%;
 }
 
 .image-slider__slide--active .image-slider__slide {
