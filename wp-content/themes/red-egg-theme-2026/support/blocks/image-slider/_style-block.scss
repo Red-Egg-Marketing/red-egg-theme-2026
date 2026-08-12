@@ -28,12 +28,10 @@
 
 
 // ---- Slide images ----
-// Fixed aspect ratio on the container (matching case-studies-slider)
-// so every slide is the same shape and only the width difference
-// between active/non-active changes the size. Without this, tall
-// images render as large as the active slide regardless of width.
+// The ACTIVE slide shows the image at its natural aspect ratio.
+// Only the prev/next neighbours get the fixed 103/58 crop (below),
+// so they read as smaller framed thumbnails flanking the active one.
 .image-slider__slide {
-    aspect-ratio: 103 / 58;
     border-radius: $default-border-radius;
     overflow: hidden;
     background-color: $gray;
@@ -42,9 +40,18 @@
     img {
         display: block;
         width: 100%;
-        height: 100%;
+        height: auto;
         object-fit: cover;
         transition: transform 0.4s ease;
+    }
+}
+
+// Prev/next slides only: locked crop + fill.
+.swiper-slide:not(.image-slider__slide--active) .image-slider__slide {
+    aspect-ratio: 103 / 58;
+
+    img {
+        height: 100%;
     }
 }
 
