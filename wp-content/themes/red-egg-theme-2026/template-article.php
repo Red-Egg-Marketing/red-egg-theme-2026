@@ -23,20 +23,22 @@ while ( have_posts() ) :
 
     <main id="primary" class="site-main">
         <article id="post-<?php the_ID(); ?>" <?php post_class( 'single-post single-post--article' ); ?>>
-            <?php if ( has_post_thumbnail() ) : ?>
+
+
+            <header class="entry-header">
+                <?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
+            </header><!-- .entry-header -->
+            <div class="block-wrapper single-post__wrapper">
+                <?php if ( has_post_thumbnail() ) : ?>
                     <div class="entry-thumbnail">
-                        <?php the_post_thumbnail( 'large' ); ?>
+                        <?php the_post_thumbnail( 'post-landscape' ); ?>
+                        <?php red_egg_the_read_time(); ?>
+
                     </div><!-- .entry-thumbnail -->
-            <?php endif; ?>
-            <div class="wrapper">
-
-                <header class="entry-header">
-                    <?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
-                    <?php red_egg_the_read_time(); ?>
-                </header><!-- .entry-header -->
-
+                <?php endif; ?>
 
                 <div class="entry-content">
+
                     <?php
                     red_egg_the_toc();
 

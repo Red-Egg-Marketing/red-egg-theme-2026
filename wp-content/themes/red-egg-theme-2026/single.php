@@ -17,19 +17,21 @@ while ( have_posts() ) :
 
     <main id="primary" class="site-main">
         <article id="post-<?php the_ID(); ?>" <?php post_class( 'single-post' ); ?>>
-            <?php if ( has_post_thumbnail() ) : ?>
-                    <div class="entry-thumbnail">
-                        <?php the_post_thumbnail( 'large' ); ?>
-                    </div><!-- .entry-thumbnail -->
-            <?php endif; ?>
+            <header class="entry-header">
+                    <div class="wrapper">
+                        <p class="entry-date"><?php echo esc_html( get_the_date() ); ?></p>
+                        <?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
+                    </div>
+            </header><!-- .entry-header -->
             <div class="block-wrapper single-post__wrapper">
+    
+                <?php if ( has_post_thumbnail() ) : ?>
+                    <div class="entry-thumbnail">
+                        <?php the_post_thumbnail( 'post-landscape' ); ?>
+                        <?php red_egg_the_read_time(); ?>
 
-                <header class="entry-header">
-                    <p class="entry-date"><?php echo esc_html( get_the_date() ); ?></p>
-                    <?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
-                    <?php red_egg_the_read_time(); ?>
-                </header><!-- .entry-header -->
-
+                    </div><!-- .entry-thumbnail -->
+                <?php endif; ?>
 
                 <div class="entry-content">
                     <?php red_egg_the_toc(); ?>

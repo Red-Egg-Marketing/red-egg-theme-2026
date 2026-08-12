@@ -2191,6 +2191,8 @@ html.re-anim .has-reveal--reveal-up {
   margin-right: auto;
   padding-left: 1.25rem;
   padding-right: 1.25rem;
+  position: relative;
+  z-index: 2;
 }
 .site-content > h1,
 .site-content > h2,
@@ -2548,7 +2550,6 @@ html.re-anim .has-reveal--reveal-up {
 
 .single-post--article .wrapper,
 .single-post__wrapper {
-  padding-top: 2.5rem;
   padding-bottom: 1.75rem;
   padding-left: 0;
   padding-right: 0;
@@ -2556,7 +2557,6 @@ html.re-anim .has-reveal--reveal-up {
 @media screen and (min-width: 768px) {
   .single-post--article .wrapper,
   .single-post__wrapper {
-    padding-top: 3.5rem;
     padding-bottom: 2.5rem;
   }
 }
@@ -2571,24 +2571,36 @@ html.re-anim .has-reveal--reveal-up {
   height: auto;
 }
 
-.page-template-template-article .entry-thumbnail img,
-.single .entry-thumbnail img,
+.entry-header .wrapper {
+  margin: 0 auto;
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+}
+
+.entry-header .wrapper,
+.page-template-template-article .entry-thumbnail,
+.single .entry-thumbnail,
 .single-post__wrapper.block-wrapper {
   max-width: 970px;
+}
+
+.page-template-template-article .entry-thumbnail,
+.single .entry-thumbnail {
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+  margin-top: -20px;
+}
+@media screen and (min-width: 768px) {
+  .page-template-template-article .entry-thumbnail,
+  .single .entry-thumbnail {
+    margin-top: -45px;
+  }
 }
 
 .page-template-template-article .entry-thumbnail img,
 .single .entry-thumbnail img {
   border-radius: 8px;
-  margin-top: 25px;
-  max-width: 85%;
-}
-@media screen and (min-width: 768px) {
-  .page-template-template-article .entry-thumbnail img,
-  .single .entry-thumbnail img {
-    margin-top: 150px;
-    max-width: 970px;
-  }
+  max-width: 100%;
 }
 
 .related-posts + .squiggle-divider-block {
@@ -2709,34 +2721,37 @@ html.re-anim .has-reveal--reveal-up {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(to bottom, #F2ECE5 47.5%, transparent 47.5%);
+  flex-wrap: wrap;
 }
 
 .single-post .entry-header {
   text-align: center;
-  margin-bottom: 2.5rem;
+  background: #F2ECE5;
+  padding-top: 4.5rem;
+  padding-bottom: 2rem;
 }
 @media screen and (min-width: 768px) {
   .single-post .entry-header {
-    margin-bottom: 3rem;
+    padding-top: 8.75rem;
+    padding-bottom: 2.5rem;
   }
 }
 
 .single-post .entry-date {
-  font-family: "Poppins", sans-serif;
-  font-weight: 600;
-  font-size: 0.875rem;
-  line-height: 1.25rem;
-  letter-spacing: 0.125rem;
-  text-transform: uppercase;
+  font-family: "Poppins", sans-serif !important;
+  font-weight: 500 !important;
+  font-size: 1.0625rem !important;
+  line-height: 1.45rem !important;
+  letter-spacing: 0.9px !important;
+  text-transform: uppercase !important;
   color: #424042;
-  margin: 0 0 0.75rem 0;
+  margin: 0 0 0.5rem 0;
 }
 @media screen and (min-width: 768px) {
   .single-post .entry-date {
-    font-size: 1rem;
-    line-height: 1.5rem;
-    letter-spacing: 0.1rem;
+    font-size: 1.375rem !important;
+    line-height: 1.65 !important;
+    letter-spacing: 1px !important;
   }
 }
 
@@ -2756,15 +2771,16 @@ html.re-anim .has-reveal--reveal-up {
   }
 }
 .single-post .entry-title {
-  font-size: 1.75rem;
-  line-height: 2rem;
+  font-size: 2rem;
+  line-height: 2.55rem;
   color: #DC2035;
-  margin: 0 0 0.75rem 0;
+  margin: 0 0 2.75rem 0;
 }
 @media screen and (min-width: 768px) {
   .single-post .entry-title {
-    font-size: 2.125rem;
-    line-height: 2.75rem;
+    font-size: 3.125rem;
+    line-height: 4.25rem;
+    margin: 0 0 3.75rem 0;
   }
 }
 
@@ -2772,11 +2788,14 @@ html.re-anim .has-reveal--reveal-up {
   font-family: "Figtree", sans-serif;
   font-weight: 400;
   font-size: 1rem;
-  color: rgba(66, 64, 66, 0.7);
-  margin: 0;
+  color: #424042;
+  margin: 1.5rem 0 2rem;
 }
-.single-post .entry-read-time span {
-  font-weight: 600;
+@media screen and (min-width: 768px) {
+  .single-post .entry-read-time {
+    font-size: 1.25rem;
+    margin: 2rem 0 3.5rem;
+  }
 }
 
 .post-toc {
@@ -3221,7 +3240,7 @@ div.gs-grid-style-four .single-member-div .gs_member_info .gs-member-name {
   text-align: left;
   font-family: "Poppins", sans-serif;
   text-transform: capitalize;
-  font-size: 2px;
+  font-size: 20px;
   line-height: 24px;
   width: 100%;
   margin-bottom: 5px;
@@ -7144,6 +7163,7 @@ div.gform_wrapper.gravity-theme .gform_page_footer {
   transform: translate(-50%, -50%);
   cursor: pointer;
   transition: opacity 0.3s ease;
+  filter: drop-shadow(0 0 2px rgba(0, 0, 0, 0.55));
 }
 @media screen and (min-width: 768px) {
   .custom-video-button {
