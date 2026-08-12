@@ -68,10 +68,25 @@
     height: 100%;
     padding: 2rem;
     padding-bottom: 4rem;
+    // Padding morphs to the back face's padding when flipped (below),
+    // delayed to run with the slide-up like the h3 typography morph.
+    transition: padding 0.4s ease 0.4s;
 
     @media screen and (min-width: $small-width) {
         padding: 2.5rem;
         padding-bottom: 4.5rem;
+    }
+}
+
+// When flipped, adopt the back-inner's padding so the morphing h3
+// comes to rest exactly where the back h4 sits — the back face then
+// fades in with its h4 precisely on top of it, so the handoff between
+// the two headings is invisible (no doubled/ghosting fade).
+.reveal-card.is-flipped .reveal-card__face-inner {
+    padding: 2.5rem;
+
+    @media screen and (min-width: $small-width) {
+        padding: 3rem;
     }
 }
 
@@ -82,10 +97,26 @@
 .reveal-card__front-content h3 {
     @include primary-h3;
     margin: 0 0 0.75rem 0;
+    // Morph in sync with the GSAP reveal. Delayed 0.4s so it starts
+    // with the slide-up (the icon/paragraph height collapse is the
+    // second 0.4s timeline step). Color isn't transitioned here — the
+    // timeline tweens it to the card's own back-h4 color, which varies
+    // per card via WP palette classes (has-magenta-color etc.).
+    transition: font-size 0.4s ease 0.4s, line-height 0.4s ease 0.4s,
+        letter-spacing 0.4s ease 0.4s;
 }
 
+// Morph the front heading into the back h4's style as the card opens
+// (size, spacing, and line-height glide; text-transform is a discrete
+// property so the caps snap on when the morph starts). The icon
+// collapse above it slides it up toward the back h4's spot, then the
+// back face crossfades in over it with the real h4. Color comes from
+// the GSAP timeline (per-card palette color read off the back h4).
 .reveal-card.is-flipped .reveal-card__front-content h3 {
-  
+    @include h3-caps;
+    // color intentionally left to the mixin default here — the GSAP
+    // timeline tweens an inline color (which wins) to the card's own
+    // back-h4 color.
 }
 
 .reveal-card__front-content p {

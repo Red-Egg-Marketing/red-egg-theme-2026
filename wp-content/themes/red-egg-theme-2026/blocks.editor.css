@@ -2053,11 +2053,21 @@ span.semibold {
   height: 100%;
   padding: 2rem;
   padding-bottom: 4rem;
+  transition: padding 0.4s ease 0.4s;
 }
 @media screen and (min-width: 768px) {
   .reveal-card__face-inner {
     padding: 2.5rem;
     padding-bottom: 4.5rem;
+  }
+}
+
+.reveal-card.is-flipped .reveal-card__face-inner {
+  padding: 2.5rem;
+}
+@media screen and (min-width: 768px) {
+  .reveal-card.is-flipped .reveal-card__face-inner {
+    padding: 3rem;
   }
 }
 
@@ -2081,6 +2091,23 @@ span.semibold {
 }
 .reveal-card__front-content h3 {
   margin: 0 0 0.75rem 0;
+  transition: font-size 0.4s ease 0.4s, line-height 0.4s ease 0.4s, letter-spacing 0.4s ease 0.4s;
+}
+
+.reveal-card.is-flipped .reveal-card__front-content h3 {
+  font-family: "Poppins", sans-serif;
+  font-weight: 700;
+  font-size: 1.15rem;
+  line-height: 1.85rem;
+  letter-spacing: 0.125rem;
+  text-transform: uppercase;
+  color: #424042;
+}
+@media screen and (min-width: 768px) {
+  .reveal-card.is-flipped .reveal-card__front-content h3 {
+    font-size: 1.5625rem;
+    line-height: 1.975rem;
+  }
 }
 
 .reveal-card__front-content p {
