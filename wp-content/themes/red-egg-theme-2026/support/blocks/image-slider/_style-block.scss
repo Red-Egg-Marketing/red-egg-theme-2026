@@ -187,24 +187,40 @@
 }
 
 // Scoped under .image-slider so these don't leak onto other Swipers
-// on the page (testimonials, case-studies) — an unscoped .swiper-slide
-// was painting a gray border + forcing 528px width everywhere.
+// on the page (testimonials, case-studies).
+//
+// CRITICAL: every slide gets the SAME layout width. Swiper computes its
+// snap/centering positions from layout widths, and the active class
+// moves on every transition — so if active/neighbour layout widths
+// differ, the snap grid shifts mid-flight and the slider lands
+// off-centre (the drift we chased all afternoon). Emphasis is done with
+// transform: scale() on the inner element instead: transforms don't
+// affect layout, so Swiper's math is stable and always centred, and
+// scale transitions smoothly in sync with the glide.
 .image-slider {
     .swiper-slide {
-        border: 1px solid $gray;
-        border-radius: $default-border-radius;
-        overflow: hidden;
-        background: $white;
-        transition: box-shadow 0.3s ease, opacity 0.3s ease;
         @media screen and (min-width: $small-width) {
-            width: 528px;
+            width: 600px;
+        }
+    }
+
+    .swiper-slide .image-slider__slide {
+        transition: transform 0.5s ease, box-shadow 0.3s ease, opacity 0.3s ease;
+        will-change: transform;
+
+        @media screen and (min-width: $small-width) {
+            transform: scale(0.9);
         }
     }
 
     .swiper-slide.image-slider__slide--active {
-        box-shadow: 0 4px 24px rgba(0, 0, 0, 0.1);
-        @media screen and (min-width: $small-width) {
-            width: 689px;
+        position: relative;
+        z-index: 2;
+
+        .image-slider__slide {
+            @media screen and (min-width: $small-width) {
+                transform: scale(1.12);
+            }
         }
     }
 
