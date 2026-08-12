@@ -96,6 +96,7 @@
 
 .reveal-card__front-content h3 {
     @include primary-h3;
+    text-transform: capitalize;
     margin: 0 0 0.75rem 0;
     // Morph in sync with the GSAP reveal. Delayed 0.4s so it starts
     // with the slide-up (the icon/paragraph height collapse is the
@@ -114,6 +115,7 @@
 // the GSAP timeline (per-card palette color read off the back h4).
 .reveal-card.is-flipped .reveal-card__front-content h3 {
     @include h3-caps;
+    text-transform: capitalize;
     // color intentionally left to the mixin default here — the GSAP
     // timeline tweens an inline color (which wins) to the card's own
     // back-h4 color.
@@ -211,6 +213,7 @@
 
 .reveal-card__face--back h4 {
     @include h3-caps;
+    text-transform: capitalize;
     color: $red;
     margin: 0 0 1rem 0;
 }
