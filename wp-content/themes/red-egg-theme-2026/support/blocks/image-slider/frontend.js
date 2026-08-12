@@ -50,7 +50,7 @@ import { onPageView } from '../../js/lifecycle';
                 centeredSlides: true,
                 slidesPerView: 1,
                 spaceBetween: 20,
-                speed: 500,
+                speed: 700,
                 slideActiveClass: 'image-slider__slide--active',
                 breakpoints: {
                     768: {
