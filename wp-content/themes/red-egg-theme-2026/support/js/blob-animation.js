@@ -188,12 +188,9 @@ import { onPageView } from './lifecycle';
         buildDrift( entry );
     }
 
-    function pauseDrift( entry ) {
-        ( entry.tweens || [] ).forEach( function( t ) { t.pause(); } );
-    }
-
-    function resumeDrift( entry ) {
-        ( entry.tweens || [] ).forEach( function( t ) { t.resume(); } );
+    function killDrift( entry ) {
+        ( entry.tweens || [] ).forEach( function( t ) { t.kill(); } );
+        entry.tweens = [];
     }
 
     function killMorph( entry ) {
@@ -231,22 +228,19 @@ import { onPageView } from './lifecycle';
         smileActive = true;
 
         live.forEach( function( entry ) {
-            // Freeze the ambient drift/rotation/scale exactly where it is — do
-            // NOT zero the transform (that would wipe the CSS translateY(-50%)
-            // centering on center/double blobs and drop them downward). The
-            // face appears in place, which also reads as more subtle.
-            pauseDrift( entry );
+            // Kill the ambient drift/rotation/scale, leaving the blob frozen at
+            // its current transform — do NOT zero it (that would wipe the CSS
+            // translateY(-50%) centering on center/double blobs and drop them
+            // downward). It's rebuilt fresh from the current transform on
+            // restore, so no state carries across triggers. The face appears in
+            // place, which also reads as more subtle.
+            killDrift( entry );
             killMorph( entry );
 
             var blob = entry.el;
             var path = entry.path;
             var svg  = blob.querySelector( '.blob-decoration__svg' );
             if ( ! svg ) return;
-
-            // Blobs normally sit at z-index:-1, behind the section content. Lift
-            // this one in front for the duration so the smiley is actually seen.
-            // (Reverted to the stylesheet value in restoreBlobs.)
-            blob.style.zIndex = '10';
 
             // Only the inner artwork's cursor lean gets reset — it carries no
             // layout transform, so zeroing it is safe.
@@ -294,13 +288,11 @@ import { onPageView } from './lifecycle';
                 morphSVG: { shape: SHAPES[ entry.startShape ], type: 'rotational', shapeIndex: 'auto', precision: 5, origin: '50% 50%' },
                 onComplete: function() {
                     if ( ! document.contains( entry.el ) ) { return; }
-                    // Drop the blob back behind the content (stylesheet z-index).
-                    entry.el.style.zIndex = '';
-                    // Path is back at its known start shape — rebuild the morph
-                    // loop from a clean state (no snap), then resume the drift
-                    // that was paused in place.
+                    // Path is back at its known start shape — rebuild both the
+                    // morph loop and the drift fresh from the current transform,
+                    // so nothing (position or shape) snaps on repeat triggers.
                     buildMorph( entry );
-                    resumeDrift( entry );
+                    buildDrift( entry );
                 },
             } );
         } );
