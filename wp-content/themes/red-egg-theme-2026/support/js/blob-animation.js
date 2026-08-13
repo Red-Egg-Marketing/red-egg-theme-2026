@@ -279,14 +279,16 @@ import { onPageView } from './lifecycle';
 
             // Only the inner artwork's cursor lean gets reset — it carries no
             // layout transform, so zeroing it is safe.
-            gsap.to( svg, { x: 0, y: 0, duration: 0.4 } );
+            // gsap.to( svg, { x: 0, y: 0, duration: 2 } );
 
             // Rise up out from behind the content so the face reveals above it.
             // Remember the current y so restore can ease it straight back.
-            var currentY = gsap.getProperty( blob, 'y' ) || 0;
             entry.smileY = currentY;
             var lift = computeLift( blob );
-            gsap.to( blob, { y: currentY - lift, duration: 1.4, ease: 'power2.inOut' } );
+            var currentY = gsap.getProperty( blob, 'y' ) || 0;
+
+
+            gsap.to( blob, { y: currentY - lift, duration: .2, ease: 'power2.inOut' } );
 
             // Morph the blob outline into a round face. Fill is left alone, so
             // the face stays the blob's native eggshell.
