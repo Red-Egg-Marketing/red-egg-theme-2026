@@ -2,8 +2,8 @@
  * Reveal Card – Frontend
  *
  * 1. Click the toggle button to flip the card (front <-> back).
- * 2. When the back content is taller than the card, it auto-scrolls
- *    vertically in a continuous loop, pausing on hover or touch.
+ * 2. When the back content is taller than the card, it's natively
+ *    scrollable (overflow-y: auto in CSS) — no auto-scroll.
  *
  * Hardened against double-firing: some plugins / accessibility
  * overlays re-dispatch click events, so we (a) never bind a card
@@ -15,102 +15,7 @@
 
 import { onPageView } from '../../js/lifecycle';
 
-const SPEED = 26;        // px per second
-const HOLD = 1400;       // pause (ms) at the top/bottom of a pass
 const DEBOUNCE = 150;    // ms – swallow duplicate click dispatches
-
-function buildAutoScroll( card ) {
-    const viewport = card.querySelector( '.reveal-card__back-scroll' );
-    const inner = card.querySelector( '.reveal-card__back-inner' );
-    if ( ! viewport || ! inner ) {
-        return null;
-    }
-
-    let raf = null;
-    let paused = false;
-    let pos = 0;
-    let last = 0;
-    let holdUntil = 0;
-    let loopDist = 0;
-    let cloned = false;
-
-    // Duplicate the content once so the scroll can wrap seamlessly.
-    // loopDist = distance to the top of the clone; wrapping there lands
-    // on identical content, so there is no visible jump or reversal.
-    const setup = () => {
-        if ( ! cloned ) {
-            // Only loop when the content actually overflows the viewport.
-            if ( inner.scrollHeight <= viewport.clientHeight + 1 ) {
-                loopDist = 0;
-                return;
-            }
-
-            const group = document.createElement( 'div' );
-            group.className = 'reveal-card__back-loop';
-            while ( inner.firstChild ) {
-                group.appendChild( inner.firstChild );
-            }
-            inner.appendChild( group );
-
-            const clone = group.cloneNode( true );
-            clone.setAttribute( 'aria-hidden', 'true' );
-            clone.classList.add( 'reveal-card__back-loop--clone' );
-            inner.appendChild( clone );
-
-            cloned = true;
-        }
-
-        loopDist = inner.children[ 1 ] ? inner.children[ 1 ].offsetTop : 0;
-    };
-
-    const step = ( ts ) => {
-        if ( ! last ) {
-            last = ts;
-        }
-        const dt = ( ts - last ) / 1000;
-        last = ts;
-
-        if ( loopDist <= 0 ) {
-            inner.style.transform = 'translateY(0)';
-            raf = null;
-            return;
-        }
-
-        if ( ! paused && ts >= holdUntil ) {
-            pos += SPEED * dt;
-            if ( pos >= loopDist ) {
-                pos -= loopDist; // seamless wrap – no reverse
-            }
-            inner.style.transform = 'translateY(' + ( -pos ) + 'px)';
-        }
-
-        raf = requestAnimationFrame( step );
-    };
-
-    const start = () => {
-        stop();
-        setup();
-        last = 0;
-        pos = 0;
-        holdUntil = performance.now() + HOLD;
-        inner.style.transform = 'translateY(0)';
-        raf = requestAnimationFrame( step );
-    };
-
-    const stop = () => {
-        if ( raf ) {
-            cancelAnimationFrame( raf );
-        }
-        raf = null;
-    };
-
-    viewport.addEventListener( 'mouseenter', () => { paused = true; } );
-    viewport.addEventListener( 'mouseleave', () => { paused = false; } );
-    viewport.addEventListener( 'touchstart', () => { paused = true; }, { passive: true } );
-    viewport.addEventListener( 'touchend', () => { paused = false; }, { passive: true } );
-
-    return { start, stop };
-}
 
 function buildTimeline(card) {
   const front   = card.querySelector('.reveal-card__face--front');
@@ -153,12 +58,8 @@ function initRevealCard( card ) {
   const btn = card.querySelector('.reveal-card__toggle');
   if (!btn || typeof gsap === 'undefined') return;
 
-  const scroller = buildAutoScroll(card);
   const tl = buildTimeline(card);
   let lastClick = 0;
-
-  // Start the auto-scroll exactly when the back finishes revealing.
-  if (scroller) tl.eventCallback('onComplete', () => scroller.start());
 
   btn.addEventListener('click', (e) => {
     e.preventDefault();
@@ -178,7 +79,6 @@ function initRevealCard( card ) {
       card.classList.remove('is-flipped');
       btn.setAttribute('aria-expanded', 'false');
       btn.setAttribute('aria-label', 'Show details');
-      if (scroller) scroller.stop();                       // stop before closing
       tl.reverse();
     }
   });

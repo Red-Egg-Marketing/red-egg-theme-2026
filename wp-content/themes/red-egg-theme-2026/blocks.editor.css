@@ -2228,13 +2228,13 @@ span.semibold {
 .reveal-card__back-scroll {
   position: absolute;
   inset: 0;
-  overflow: hidden;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
 }
 
 .reveal-card__back-inner {
   padding: 2.5rem;
   padding-bottom: 5rem;
-  will-change: transform;
 }
 @media screen and (min-width: 768px) {
   .reveal-card__back-inner {
@@ -2439,10 +2439,6 @@ span.semibold {
 .reveal-card--editing .reveal-card__toggle {
   pointer-events: none;
   opacity: 0.6;
-}
-
-.reveal-card__back-loop {
-  margin-bottom: 100px;
 }
 
 .numbered-list {
