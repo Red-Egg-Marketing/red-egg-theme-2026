@@ -123,6 +123,20 @@ const TestimonialsView = ( { config, root } ) => {
             } else if ( config.mode === 'selected' ) {
                 var ids = config.ids.map( String );
                 list = all.filter( function( r ) { return ids.indexOf( String( r.id ) ) > -1; } );
+            } else if ( config.sort === 'random' ) {
+                // Shuffle in the browser on every load (Fisher–Yates).
+                // This makes random cache-proof by construction: even if
+                // some layer (CDN/host) serves a cached response — some
+                // strip buster params from cache keys — the order is
+                // re-randomized per page view client-side. The server
+                // RAND() + buster + no-store remain as extra variety.
+                list = all.slice();
+                for ( var i = list.length - 1; i > 0; i-- ) {
+                    var j = Math.floor( Math.random() * ( i + 1 ) );
+                    var tmp = list[ i ];
+                    list[ i ] = list[ j ];
+                    list[ j ] = tmp;
+                }
             }
             setReviews( list.map( decodeReview ) );
         } ).catch( function() { setReviews( [] ); } );
