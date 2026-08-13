@@ -100,11 +100,20 @@ const TestimonialsView = ( { config, root } ) => {
 
     useEffect( function() {
         // Sort only applies to 'all'; harmless for single/selected
-        // (those are filtered client-side below). Missing/'date' →
-        // server default (id DESC), so no need to append it.
+        // (those are filtered client-side below). Always pass the sort
+        // explicitly — a missing data-review-sort attr means the
+        // default, random, which shuffles on every page load (RAND()
+        // runs per request; the fetch runs per page view).
         var path = apiUrl;
-        if ( config.mode === 'all' && config.sort && config.sort !== 'date' ) {
+        if ( config.mode === 'all' && config.sort ) {
             path += '?sort=' + encodeURIComponent( config.sort );
+            // Random must not be served from cache or the shuffle
+            // freezes — unique URL per request busts any URL-keyed
+            // cache (EverCache/CDN/browser). Date/title are
+            // deterministic and stay cacheable.
+            if ( config.sort === 'random' ) {
+                path += '&_=' + Date.now();
+            }
         }
         wp.apiRequest( { path: path } ).then( function( data ) {
             var all = Array.isArray( data ) ? data : [];
@@ -258,7 +267,7 @@ function initTestimonials() {
             mode: root.getAttribute( 'data-review-mode' ) || 'all',
             id: root.getAttribute( 'data-review-id' ) || '',
             ids: ids,
-            sort: root.getAttribute( 'data-review-sort' ) || 'date',
+            sort: root.getAttribute( 'data-review-sort' ) || 'random',
         };
         render( <TestimonialsView config={ config } root={ root } />, root );
     } );
