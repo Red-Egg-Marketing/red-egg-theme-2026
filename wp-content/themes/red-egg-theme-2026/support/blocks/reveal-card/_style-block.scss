@@ -193,17 +193,17 @@
     border: 1px solid $gray;
 }
 
-// ---- Back face (scrolling) ----
+// ---- Back face (scrolls natively when content overflows) ----
 .reveal-card__back-scroll {
     position: absolute;
     inset: 0;
-    overflow: hidden;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
 }
 
 .reveal-card__back-inner {
     padding: 2.5rem;
     padding-bottom: 5rem;
-    will-change: transform;
 
     @media screen and (min-width: $small-width) {
         padding: 3rem;
@@ -356,8 +356,4 @@
 .reveal-card--editing .reveal-card__toggle {
     pointer-events: none;
     opacity: 0.6;
-}
-
-.reveal-card__back-loop {
-    margin-bottom: 100px;
 }
