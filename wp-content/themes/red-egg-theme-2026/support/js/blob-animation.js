@@ -48,14 +48,13 @@ import { onPageView } from './lifecycle';
     // the blobs do, so it always looks proportional to its neighbours.)
     var FACE_PATH = 'M68,242 A232,232 0 1,0 532,242 A232,232 0 1,0 68,242 Z';
 
-    // Grin is gray, eyes are white. The face keeps the blob's native eggshell
-    // fill, so there's no colour tween — it just changes shape.
-    var C_GRAY  = '#424042';   // grin — mirrors $gray in _variables.scss
-    var C_WHITE = '#FFFFFF';    // eyes
+    // Eyes + grin are white; the face keeps the blob's native eggshell fill,
+    // so there's no colour tween — it just changes shape.
+    var C_WHITE = '#FFFFFF';   // eyes + grin
 
     // How long the morph into / out of the smiley takes (seconds). Bump for a
     // slower, more deliberate transition.
-    var MORPH_DUR = 1.4;
+    var MORPH_DUR = 1.9;
 
     // ---- Registry of live blobs -------------------------------------------
     // Each entry: { el, path, startShape, speed, morphTl, tweens, smiley }
@@ -197,7 +196,7 @@ import { onPageView } from './lifecycle';
         g.appendChild( svgEl( 'circle', { cx: 388, cy: 185, r: 30, fill: C_WHITE } ) );
         g.appendChild( svgEl( 'path', {
             d: 'M198,286 Q300,398 402,286',
-            fill: 'none', stroke: C_GRAY, 'stroke-width': 26, 'stroke-linecap': 'round',
+            fill: 'none', stroke: C_WHITE, 'stroke-width': 26, 'stroke-linecap': 'round',
         } ) );
         return g;
     }
