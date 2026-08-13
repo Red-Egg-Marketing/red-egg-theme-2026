@@ -568,7 +568,15 @@ function red_egg_return_reviews( $data ) {
 		", OBJECT
 	);
 
-	return $results;
+	$response = rest_ensure_response( $results );
+
+	// Random responses must not be cached anywhere or the shuffle
+	// freezes; deterministic sorts (date/title) stay cacheable.
+	if ( 'RAND()' === $order_by ) {
+		$response->header( 'Cache-Control', 'no-cache, no-store, must-revalidate' );
+	}
+
+	return $response;
 }
 
 

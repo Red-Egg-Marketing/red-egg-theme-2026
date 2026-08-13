@@ -152,9 +152,9 @@ const EditTestimonials = ( { attributes, setAttributes, clientId } ) => {
                             label={ __( 'Sort', 'red-egg' ) }
                             value={ reviewSort }
                             options={ [
+                                { label: __( 'Random (shuffles each page load)', 'red-egg' ), value: 'random' },
                                 { label: __( 'Date (newest first)', 'red-egg' ), value: 'date' },
                                 { label: __( 'Name (A–Z)', 'red-egg' ), value: 'title' },
-                                { label: __( 'Random', 'red-egg' ), value: 'random' },
                             ] }
                             onChange={ ( val ) => setAttributes( { reviewSort: val } ) }
                         />
