@@ -8,12 +8,12 @@
  * - Gentle cursor bias: the inner artwork leans a few px toward the
  *   pointer, layered on the ambient drift (see cursor-follow helpers below)
  *
- * Easter egg: the Konami code (up up down down left right left right b a)
- * briefly morphs every on-screen blob into a smiley face, then rebuilds the
+ * Easter egg: typing the secret word (see SECRET_CODE below) briefly morphs
+ * every on-screen blob into an eggshell smiley face, then rebuilds the
  * ambient animation. See triggerSmiley()/restoreBlobs() below.
  *
  *        _______
- *      /  ^   ^  \      <- you found it
+ *      /  ^   ^  \      <- type it and see
  *     |   .   .   |
  *     |    \_/    |
  *      \_________/
@@ -48,10 +48,14 @@ import { onPageView } from './lifecycle';
     // the blobs do, so it always looks proportional to its neighbours.)
     var FACE_PATH = 'M68,242 A232,232 0 1,0 532,242 A232,232 0 1,0 68,242 Z';
 
-    // Brand palette (mirrors _variables.scss)
-    var C_EGGSHELL = '#F2ECE5';
-    var C_GOLD     = '#F6B319';
-    var C_GRAY     = '#424042';
+    // Grin is gray, eyes are white. The face keeps the blob's native eggshell
+    // fill, so there's no colour tween — it just changes shape.
+    var C_GRAY  = '#424042';   // grin — mirrors $gray in _variables.scss
+    var C_WHITE = '#FFFFFF';    // eyes
+
+    // How long the morph into / out of the smiley takes (seconds). Bump for a
+    // slower, more deliberate transition.
+    var MORPH_DUR = 1.4;
 
     // ---- Registry of live blobs -------------------------------------------
     // Each entry: { el, path, startShape, speed, morphTl, tweens, smiley }
@@ -189,8 +193,8 @@ import { onPageView } from './lifecycle';
 
     function buildSmileyFace() {
         var g = svgEl( 'g', { 'class': 'blob-smiley-face', 'opacity': '0' } );
-        g.appendChild( svgEl( 'circle', { cx: 212, cy: 185, r: 30, fill: C_GRAY } ) );
-        g.appendChild( svgEl( 'circle', { cx: 388, cy: 185, r: 30, fill: C_GRAY } ) );
+        g.appendChild( svgEl( 'circle', { cx: 212, cy: 185, r: 30, fill: C_WHITE } ) );
+        g.appendChild( svgEl( 'circle', { cx: 388, cy: 185, r: 30, fill: C_WHITE } ) );
         g.appendChild( svgEl( 'path', {
             d: 'M198,286 Q300,398 402,286',
             fill: 'none', stroke: C_GRAY, 'stroke-width': 26, 'stroke-linecap': 'round',
@@ -219,25 +223,26 @@ import { onPageView } from './lifecycle';
             gsap.to( blob, { x: 0, y: 0, rotation: 0, scale: 1, duration: 0.5, ease: 'back.out(1.4)' } );
             gsap.to( svg,  { x: 0, y: 0, duration: 0.4 } );
 
-            // Morph the blob outline into a round face + warm it up to gold.
+            // Morph the blob outline into a round face. Fill is left alone, so
+            // the face stays the blob's native eggshell.
             gsap.to( path, {
-                duration: 0.6, ease: 'back.out(1.2)',
+                duration: MORPH_DUR, ease: 'back.out(1.2)',
                 morphSVG: { shape: FACE_PATH, type: 'rotational', shapeIndex: 'auto', precision: 5, origin: '50% 50%' },
             } );
-            gsap.to( path, { fill: C_GOLD, duration: 0.5 } );
 
             // Pop the eyes + grin in once the face has mostly formed.
+            var popIn = MORPH_DUR * 0.7;
             var face = buildSmileyFace();
             svg.appendChild( face );
             entry.smiley = face;
-            gsap.to( face, { opacity: 1, duration: 0.35, delay: 0.35 } );
+            gsap.to( face, { opacity: 1, duration: 0.4, delay: popIn } );
             gsap.fromTo( face,
                 { transformOrigin: '50% 50%', scale: 0.6 },
-                { scale: 1, duration: 0.6, delay: 0.35, ease: 'back.out(2)' }
+                { scale: 1, duration: 0.7, delay: popIn, ease: 'back.out(2)' }
             );
         } );
 
-        gsap.delayedCall( 2.0, restoreBlobs );
+        gsap.delayedCall( MORPH_DUR + 2.0, restoreBlobs );
     }
 
     function restoreBlobs() {
@@ -255,9 +260,8 @@ import { onPageView } from './lifecycle';
                 entry.smiley = null;
             }
 
-            gsap.to( path, { fill: C_EGGSHELL, duration: 0.4 } );
             gsap.to( path, {
-                duration: 0.6, ease: 'sine.inOut',
+                duration: MORPH_DUR, ease: 'sine.inOut',
                 morphSVG: { shape: SHAPES[ entry.startShape ], type: 'rotational', shapeIndex: 'auto', precision: 5, origin: '50% 50%' },
                 onComplete: function() {
                     // Path is back at its known start shape — safe to rebuild
@@ -270,36 +274,39 @@ import { onPageView } from './lifecycle';
         smileActive = false;
     }
 
-    // ---- Konami listener (bound once, queries the registry live) ----------
-    var KONAMI = [ 'ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'b', 'a' ];
-    var konamiPos = 0;
-    var konamiBound = false;
+    // ---- Secret code listener (bound once, queries the registry live) -----
+    // Type this word anywhere outside a text field to trigger the smiley.
+    // It's just an array of keys — swap it for any word or sequence.
+    var SECRET_CODE = [ 's', 'm', 'i', 'l', 'e' ];
+    var codePos = 0;
+    var codeBound = false;
 
-    function bindKonami() {
-        if ( konamiBound ) return;
-        konamiBound = true;
+    function keyMatches( key, expected ) {
+        if ( key === expected ) return true;
+        return expected.length === 1 && typeof key === 'string' && key.toLowerCase() === expected;
+    }
+
+    function bindSecretCode() {
+        if ( codeBound ) return;
+        codeBound = true;
 
         window.addEventListener( 'keydown', function( e ) {
             // Ignore while typing in a field.
             var t = e.target;
             if ( t && ( t.tagName === 'INPUT' || t.tagName === 'TEXTAREA' || t.isContentEditable ) ) {
-                konamiPos = 0;
+                codePos = 0;
                 return;
             }
 
-            var expected = KONAMI[ konamiPos ];
-            var hit = ( e.key === expected ) ||
-                      ( expected.length === 1 && typeof e.key === 'string' && e.key.toLowerCase() === expected );
-
-            if ( hit ) {
-                konamiPos++;
-                if ( konamiPos === KONAMI.length ) {
-                    konamiPos = 0;
+            if ( keyMatches( e.key, SECRET_CODE[ codePos ] ) ) {
+                codePos++;
+                if ( codePos === SECRET_CODE.length ) {
+                    codePos = 0;
                     triggerSmiley();
                 }
             } else {
-                // Reset — but if this key is a fresh "up", start the sequence at 1.
-                konamiPos = ( e.key === KONAMI[ 0 ] ) ? 1 : 0;
+                // Reset — but if this key is a fresh first char, start at 1.
+                codePos = keyMatches( e.key, SECRET_CODE[ 0 ] ) ? 1 : 0;
             }
         } );
     }
@@ -316,7 +323,7 @@ import { onPageView } from './lifecycle';
         if ( blobs.length === 0 ) {
             // Still bind the code — a later Swup page may have blobs, and the
             // handler no-ops gracefully when the registry is empty.
-            bindKonami();
+            bindSecretCode();
             return;
         }
 
@@ -343,7 +350,7 @@ import { onPageView } from './lifecycle';
         } );
 
         bindPointerFollow();
-        bindKonami();
+        bindSecretCode();
     }
 
     onPageView( initBlobAnimations );
