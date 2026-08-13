@@ -2553,6 +2553,8 @@ html.re-anim .has-reveal--reveal-up {
   padding-bottom: 1.75rem;
   padding-left: 0;
   padding-right: 0;
+  position: relative;
+  z-index: 2;
 }
 @media screen and (min-width: 768px) {
   .single-post--article .wrapper,
