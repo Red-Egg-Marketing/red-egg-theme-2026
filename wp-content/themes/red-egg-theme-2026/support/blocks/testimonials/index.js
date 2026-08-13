@@ -44,10 +44,12 @@ registerBlockType( 'red-egg-block/testimonials', {
             type: 'array',
             default: [],
         },
-        // sort order when reviewMode === 'all': 'date' | 'title' | 'random'
+        // sort order when reviewMode === 'all': 'random' | 'date' | 'title'
+        // Default is random so reviews shuffle on every page load unless
+        // a specific order is chosen.
         reviewSort: {
             type: 'string',
-            default: 'date',
+            default: 'random',
         },
         padding: {
             type: 'object',

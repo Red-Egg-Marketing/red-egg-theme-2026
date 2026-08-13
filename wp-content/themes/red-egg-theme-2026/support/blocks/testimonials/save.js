@@ -21,15 +21,16 @@ const SaveTestimonials = ( { attributes } ) => {
         className: 'testimonials-block',
     } );
 
-    // Only serialize data-review-sort when it's non-default so existing
-    // content stays valid (frontend treats a missing attr as 'date').
+    // Only serialize data-review-sort when it's non-default ('random').
+    // Existing blocks saved with no attr parse as random under the new
+    // default and re-serialize to no attr — so they stay valid.
     const rootProps = {
         className: 'testimonials-block__root',
         'data-review-mode': reviewMode,
         'data-review-id': reviewId || '',
         'data-review-ids': JSON.stringify( reviewIds || [] ),
     };
-    if ( reviewSort && reviewSort !== 'date' ) {
+    if ( reviewSort && reviewSort !== 'random' ) {
         rootProps['data-review-sort'] = reviewSort;
     }
 
