@@ -243,6 +243,11 @@ import { onPageView } from './lifecycle';
             var svg  = blob.querySelector( '.blob-decoration__svg' );
             if ( ! svg ) return;
 
+            // Blobs normally sit at z-index:-1, behind the section content. Lift
+            // this one in front for the duration so the smiley is actually seen.
+            // (Reverted to the stylesheet value in restoreBlobs.)
+            blob.style.zIndex = '10';
+
             // Only the inner artwork's cursor lean gets reset — it carries no
             // layout transform, so zeroing it is safe.
             gsap.to( svg, { x: 0, y: 0, duration: 0.4 } );
@@ -289,6 +294,8 @@ import { onPageView } from './lifecycle';
                 morphSVG: { shape: SHAPES[ entry.startShape ], type: 'rotational', shapeIndex: 'auto', precision: 5, origin: '50% 50%' },
                 onComplete: function() {
                     if ( ! document.contains( entry.el ) ) { return; }
+                    // Drop the blob back behind the content (stylesheet z-index).
+                    entry.el.style.zIndex = '';
                     // Path is back at its known start shape — rebuild the morph
                     // loop from a clean state (no snap), then resume the drift
                     // that was paused in place.
