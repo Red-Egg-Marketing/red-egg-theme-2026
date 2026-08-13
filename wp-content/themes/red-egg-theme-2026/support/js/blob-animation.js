@@ -219,6 +219,41 @@ import { onPageView } from './lifecycle';
         return g;
     }
 
+    // How far (px) to raise the blob so the face clears up above the content
+    // it's tucked behind. Measures the blob's direct siblings (the content in
+    // the same positioned parent, ignoring other blobs) and lifts until the
+    // blob's centre reaches the top edge of that content. Clamped so it never
+    // leaves the top of the viewport. Returns 0 when nothing needs clearing.
+    function computeLift( blob ) {
+        var parent = blob.parentElement;
+        if ( ! parent ) return 0;
+
+        var blobRect = blob.getBoundingClientRect();
+        var contentTop = null;
+
+        var kids = parent.children;
+        for ( var i = 0; i < kids.length; i++ ) {
+            var k = kids[ i ];
+            if ( k === blob ) continue;
+            if ( k.classList && k.classList.contains( 'blob-decoration' ) ) continue; // ignore sibling blobs
+            var r = k.getBoundingClientRect();
+            if ( r.width === 0 && r.height === 0 ) continue;                            // ignore hidden
+            if ( contentTop === null || r.top < contentTop ) contentTop = r.top;
+        }
+
+        // No detectable content sibling — fall back to ~60% of the blob height.
+        if ( contentTop === null ) return blobRect.height * 0.6;
+
+        var blobCentre = blobRect.top + blobRect.height / 2;
+        var lift = blobCentre - contentTop;   // raise centre to the content's top edge
+        if ( lift < 0 ) lift = 0;             // already above the content
+
+        var maxUp = Math.max( 0, blobRect.top - 8 );  // keep it in the viewport
+        if ( lift > maxUp ) lift = maxUp;
+
+        return lift;
+    }
+
     function triggerSmiley() {
         if ( smileActive ) return;
 
@@ -245,6 +280,13 @@ import { onPageView } from './lifecycle';
             // Only the inner artwork's cursor lean gets reset — it carries no
             // layout transform, so zeroing it is safe.
             gsap.to( svg, { x: 0, y: 0, duration: 0.4 } );
+
+            // Rise up out from behind the content so the face reveals above it.
+            // Remember the current y so restore can ease it straight back.
+            var currentY = gsap.getProperty( blob, 'y' ) || 0;
+            entry.smileY = currentY;
+            var lift = computeLift( blob );
+            gsap.to( blob, { y: currentY - lift, duration: 0.7, ease: 'power3.out' } );
 
             // Morph the blob outline into a round face. Fill is left alone, so
             // the face stays the blob's native eggshell.
@@ -283,14 +325,18 @@ import { onPageView } from './lifecycle';
                 entry.smiley = null;
             }
 
+            // Ease back down to where it was before the lift.
+            var backY = ( typeof entry.smileY === 'number' ) ? entry.smileY : ( gsap.getProperty( entry.el, 'y' ) || 0 );
+            gsap.to( entry.el, { y: backY, duration: 0.7, ease: 'power3.inOut' } );
+
             gsap.to( path, {
                 duration: MORPH_DUR, ease: 'sine.inOut',
                 morphSVG: { shape: SHAPES[ entry.startShape ], type: 'rotational', shapeIndex: 'auto', precision: 5, origin: '50% 50%' },
                 onComplete: function() {
                     if ( ! document.contains( entry.el ) ) { return; }
-                    // Path is back at its known start shape — rebuild both the
-                    // morph loop and the drift fresh from the current transform,
-                    // so nothing (position or shape) snaps on repeat triggers.
+                    // Pin to the exact pre-lift y, then rebuild the morph loop
+                    // and drift fresh from there so nothing snaps on repeat.
+                    gsap.set( entry.el, { y: backY } );
                     buildMorph( entry );
                     buildDrift( entry );
                 },
