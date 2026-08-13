@@ -116,9 +116,13 @@ import { onPageView } from './lifecycle';
         window.addEventListener( 'mousemove', onPointerMove, { passive: true } );
     }
 
-    // ---- Ambient animation (build / kill so the smiley can swap it out) ----
-    function buildAmbient( entry ) {
-        var blob = entry.el;
+    // ---- Ambient animation ------------------------------------------------
+    // Split into two parts so the smiley can kill/rebuild ONLY the path morph
+    // (MorphSVG records its own from-state, so it must be rebuilt to avoid a
+    // snap) while the drift/rotation/scale tweens are merely paused and resumed
+    // in place. Pausing — rather than zeroing the transform — is what keeps the
+    // CSS `translateY(-50%)` centering on center/double blobs from collapsing.
+    function buildMorph( entry ) {
         var path = entry.path;
         var speed = entry.speed;
 
@@ -145,6 +149,13 @@ import { onPageView } from './lifecycle';
             } );
         } );
 
+        entry.morphTl = morphTl;
+    }
+
+    function buildDrift( entry ) {
+        var blob = entry.el;
+        var speed = entry.speed;
+
         var driftX = gsap.to( blob, {
             x: 'random(-150, 150)',
             duration: 'random(' + ( speed * 2 ) + ', ' + ( speed * 3 ) + ')',
@@ -169,14 +180,24 @@ import { onPageView } from './lifecycle';
             ease: 'sine.inOut', repeat: -1, yoyo: true, repeatRefresh: true,
         } );
 
-        entry.morphTl = morphTl;
         entry.tweens = [ driftX, driftY, rot, scale ];
     }
 
-    function killAmbient( entry ) {
+    function buildAmbient( entry ) {
+        buildMorph( entry );
+        buildDrift( entry );
+    }
+
+    function pauseDrift( entry ) {
+        ( entry.tweens || [] ).forEach( function( t ) { t.pause(); } );
+    }
+
+    function resumeDrift( entry ) {
+        ( entry.tweens || [] ).forEach( function( t ) { t.resume(); } );
+    }
+
+    function killMorph( entry ) {
         if ( entry.morphTl ) { entry.morphTl.kill(); entry.morphTl = null; }
-        ( entry.tweens || [] ).forEach( function( t ) { t.kill(); } );
-        entry.tweens = [];
     }
 
     // ---- Smiley easter egg ------------------------------------------------
@@ -210,17 +231,21 @@ import { onPageView } from './lifecycle';
         smileActive = true;
 
         live.forEach( function( entry ) {
-            killAmbient( entry );
+            // Freeze the ambient drift/rotation/scale exactly where it is — do
+            // NOT zero the transform (that would wipe the CSS translateY(-50%)
+            // centering on center/double blobs and drop them downward). The
+            // face appears in place, which also reads as more subtle.
+            pauseDrift( entry );
+            killMorph( entry );
 
             var blob = entry.el;
             var path = entry.path;
             var svg  = blob.querySelector( '.blob-decoration__svg' );
             if ( ! svg ) return;
 
-            // Settle the blob to centre so the face presents itself, and undo
-            // any cursor lean on the inner artwork.
-            gsap.to( blob, { x: 0, y: 0, rotation: 0, scale: 1, duration: 0.5, ease: 'back.out(1.4)' } );
-            gsap.to( svg,  { x: 0, y: 0, duration: 0.4 } );
+            // Only the inner artwork's cursor lean gets reset — it carries no
+            // layout transform, so zeroing it is safe.
+            gsap.to( svg, { x: 0, y: 0, duration: 0.4 } );
 
             // Morph the blob outline into a round face. Fill is left alone, so
             // the face stays the blob's native eggshell.
@@ -263,9 +288,12 @@ import { onPageView } from './lifecycle';
                 duration: MORPH_DUR, ease: 'sine.inOut',
                 morphSVG: { shape: SHAPES[ entry.startShape ], type: 'rotational', shapeIndex: 'auto', precision: 5, origin: '50% 50%' },
                 onComplete: function() {
-                    // Path is back at its known start shape — safe to rebuild
-                    // the ambient loop from a clean state (no morph snap).
-                    if ( document.contains( entry.el ) ) { buildAmbient( entry ); }
+                    if ( ! document.contains( entry.el ) ) { return; }
+                    // Path is back at its known start shape — rebuild the morph
+                    // loop from a clean state (no snap), then resume the drift
+                    // that was paused in place.
+                    buildMorph( entry );
+                    resumeDrift( entry );
                 },
             } );
         } );
