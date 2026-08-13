@@ -92,6 +92,9 @@ import './blocks/section-nav/frontend';
 
 import './js/smooth-scroll';
 
+
+import './js/konami';
+
 // ---- SPA Navigation ----
 
 // Swup page transitions – swaps #content, dispatches
