@@ -3198,6 +3198,22 @@ div.gs_team_area.gs-grid-style-four .single-member-div {
   display: none !important;
 }
 
+.single-gs_team .gs_ribon_wrapper {
+  position: relative;
+}
+
+.single-gs_team.glassified .gs_ribon_wrapper:before {
+  content: "";
+  z-index: 10;
+  display: block;
+  position: absolute;
+  top: 23%;
+  left: 33%;
+  width: 32.5%;
+  height: 12.5%;
+  background: url(img/sunglasses.gif) no-repeat center center/100%;
+}
+
 .gs_team_area.gs-grid-style-four .single-member-div .single-member {
   border: 1px solid #424042;
   border-radius: 8px;
