@@ -36,6 +36,100 @@ div.gs_team_area.gs-grid-style-four .single-member-div {
 	width: 32.5%;
 	height: 12.5%;
 	background: url(img/sunglasses.gif) no-repeat center center / 100%;
+	animation: transformDown 1.5s;
+}
+
+/* ryan glasses */
+.single.postid-6266.glassified .gs_ribon_wrapper:before {
+	left: 28%;
+	top: 20%;
+	transform: rotate(-5deg);
+}
+
+/* morgan glasses */
+.single.postid-7626.glassified .gs_ribon_wrapper:before { 
+	top: 22%;
+	left: 28%;
+	transform: rotate(-18deg);
+}
+
+
+/* delaney glasses */
+.single.postid-6271.glassified .gs_ribon_wrapper:before { 
+	top: 22%;
+	left: 31%;
+	transform: rotate(3deg);
+}
+
+
+/* angie glasses */
+.single.postid-6269.glassified .gs_ribon_wrapper:before {
+	top: 20%;
+    left: 29%;
+    transform: rotate(11deg);
+}
+
+/* Grayson */
+.single.postid-12309.glassified .gs_ribon_wrapper:before {
+	top: 20%;
+    left: 40%;
+    transform: rotate(-2deg);
+}
+
+
+/* Alyson */
+.single.postid-6270.glassified .gs_ribon_wrapper:before {
+	top: 20%;
+    left: 34%;
+    transform: rotate(9deg);
+}
+
+/* Marcus */
+.single.postid-6274.glassified .gs_ribon_wrapper:before {
+	top: 22%;
+	left: 36%;
+}
+
+/* Keith */
+.single.postid-6275.glassified .gs_ribon_wrapper:before {
+	top: 21%;
+    left: 37%;
+    transform: rotate(-7deg);
+}
+
+/* Zach */
+.single.postid-11822.glassified .gs_ribon_wrapper:before {
+	top: 19%;
+    left: 31%;
+    transform: rotate(-4deg);
+}
+
+/* Elliana */
+.single.postid-11991.glassified .gs_ribon_wrapper:before {
+	top: 21%;
+    transform: rotate(-4deg);
+    left: 40%;
+}
+
+/* Lucas */
+.single.postid-10767.glassified .gs_ribon_wrapper:before {
+	top: 24%;
+    left: 33%;
+    transform: rotate(-9deg);
+}
+
+/* Jasmin */
+.single.postid-12161.glassified .gs_ribon_wrapper:before {
+	top: 23%;
+    left: 36%;
+    transform: rotate(10deg);
+}
+
+/* Erika */
+.single.postid-12614.glassified .gs_ribon_wrapper:before {
+	top: 23%;
+    left: 42%;
+    transform: rotate(10deg);
 }
 
 

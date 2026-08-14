@@ -395,6 +395,12 @@ require get_template_directory() . '/inc/shortcodes.php';
  */
 require get_template_directory() . '/inc/media.php';
 
+
+/**
+ * Team Easter Egg
+ */
+require get_template_directory() . '/inc/team-glasses.php';
+
 /**
  * ACF Options Page (Red Egg Site Settings) — footer/company content
  */

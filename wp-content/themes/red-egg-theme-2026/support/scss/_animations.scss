@@ -9,6 +9,15 @@
     50% { border-right-color: transparent; }
 }
 
+@keyframes transformDown {
+    0% {
+        margin-top: -400px;
+    }
+    100% {
+        margin-top: 0px;
+    }
+}
+
 // ---- Rotate Words ----
 // Cursor is a border-right (a real, stable box-edge) rather than a
 // background gradient. The JS retypes innerHTML every frame; a
