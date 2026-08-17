@@ -124,6 +124,7 @@ import './service-list-item/index';
 // Filter Case Studies (dynamic grid with taxonomy filters)
 import './filter-case-studies/index';
 import './filter-posts/index';
+import './filter-services/index';
 
 // Hero – Services (full-width hero with overlay + accent bar)
 import './hero-services/index';

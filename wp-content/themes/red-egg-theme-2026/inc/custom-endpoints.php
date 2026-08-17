@@ -5,6 +5,7 @@
  * Endpoints:
  *   /red-egg/v2/resources     → red_egg_return_resources
  *   /red-egg/v2/case-studies  → red_egg_return_case_studies
+ *   /red-egg/v2/services  	   → red_egg_return_services
  *   /red-egg/v2/posts         → red_egg_return_posts
  *   /red-egg/v2/industries    → red_egg_return_industries
  *   /red-egg/v2/reviews       → red_egg_return_reviews
@@ -100,7 +101,6 @@ function red_egg_return_post_objects( $post_types ) {
 
 function red_egg_build_post_tax_array( $posts, $tax, $post_types = [] ) {
 
-	if ( sizeof( $tax ) > 0 ) {
 		$len        = sizeof( $tax );
 		$post_array = [];
 		$tax_array  = [];
@@ -155,9 +155,6 @@ function red_egg_build_post_tax_array( $posts, $tax, $post_types = [] ) {
 
 		return [ $post_array, $tax_array, $post_types ];
 
-	} else {
-		return false;
-	}
 }
 
 
@@ -219,6 +216,69 @@ function red_egg_resolve_order_args( $data ) {
 function red_egg_return_case_studies( $data ) {
 
 	$post_types = [ 'case-study', 'branding-project', 'website' ];
+	$get = $_GET;
+
+	$offset = isset( $get['offset'] ) ? $get['offset'] : 0;
+
+	$args = [
+		'post_type'      => $post_types,
+		'post_status'    => 'publish',
+		'posts_per_page' => -1,
+	];
+
+	$order_args      = red_egg_resolve_order_args( $data );
+	$args['orderby'] = $order_args['orderby'];
+	$args['order']   = $order_args['order'];
+
+	// Filter by industry and/or service taxonomy if provided
+	$tax_query = [];
+
+	$industry = isset( $get['industry'] ) ? sanitize_text_field( $get['industry'] ) : '';
+	if ( ! empty( $industry ) ) {
+		$tax_query[] = [
+			'taxonomy' => 'industry',
+			'field'    => 'slug',
+			'terms'    => $industry,
+		];
+	}
+
+	$service = isset( $get['service'] ) ? sanitize_text_field( $get['service'] ) : '';
+	if ( ! empty( $service ) ) {
+		$tax_query[] = [
+			'taxonomy' => 'service',
+			'field'    => 'slug',
+			'terms'    => $service,
+		];
+	}
+
+	if ( count( $tax_query ) > 1 ) {
+		$tax_query['relation'] = 'AND';
+	}
+	if ( ! empty( $tax_query ) ) {
+		$args['tax_query'] = $tax_query;
+	}
+
+	$query = new WP_Query( $args );
+
+	if ( $query->have_posts() ) {
+		$result = $query->posts;
+
+		$taxes       = red_egg_return_taxonomies( $post_types, true );
+		$tax_array   = $taxes[0];
+		$types_array = $taxes[1];
+
+		$resources = red_egg_build_post_tax_array( $result, $tax_array, $types_array );
+
+		wp_reset_postdata();
+
+		return $resources;
+	}
+}
+
+
+function red_egg_return_post_services( $data ) {
+
+	$post_types = [ 'cpt-service' ];
 	$get = $_GET;
 
 	$offset = isset( $get['offset'] ) ? $get['offset'] : 0;
@@ -706,6 +766,13 @@ add_action( 'rest_api_init', function () {
 	register_rest_route( 'red-egg/v2', '/case-studies/', [
 		'methods'             => 'GET',
 		'callback'            => 'red_egg_return_case_studies',
+		'permission_callback' => '__return_true',
+	] );
+
+	// Case Studies (supports ?industry=slug)
+	register_rest_route( 'red-egg/v2', '/cpt-services/', [
+		'methods'             => 'GET',
+		'callback'            => 'red_egg_return_post_services',
 		'permission_callback' => '__return_true',
 	] );
 

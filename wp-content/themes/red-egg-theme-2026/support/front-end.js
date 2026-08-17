@@ -55,6 +55,10 @@ import './blocks/filter-case-studies/frontend';
 // Filter Posts – frontend interactivity
 import './blocks/filter-posts/frontend';
 
+
+// Filter Posts – frontend interactivity
+import './blocks/filter-services/frontend';
+
 // Testimonials – reviews slider
 import './blocks/testimonials/frontend';
 

@@ -1,0 +1,436 @@
+// ========================================
+//  Filter Case Studies Block Styles
+//  Block: red-egg-block/filter-services
+//
+//  Taxonomy filter dropdowns + card grid.
+//  Cards have hover effect: title slides up,
+//  excerpt reveals below.
+// ========================================
+
+.filter-services {
+    position: relative;
+    padding-top: 0;
+    padding-bottom: $default-section-padding-bottom;
+
+    @media screen and (min-width: $small-width) {
+        padding-top: 0;
+        padding-bottom: 5rem;
+    }
+}
+
+.filter-services > .block-wrapper {
+    @include block-wrapper;
+}
+
+// ---- Hero (outside .block-wrapper, full-bleed) ----
+.filter-services__hero {
+    margin-bottom: 0;
+    // let the nested hero span full width in the editor
+    .wp-block {
+        max-width: none;
+    }
+}
+
+div.filter-services__hero .hero-services h1 {
+    @include hero-h1;
+}
+
+// ---- Filter bar ----
+.filter-services__filters {
+    margin-bottom: 2rem;
+    position: sticky;
+    background: white;
+    z-index: 999;
+    top: 82px;
+    @media screen and (min-width: $small-width) {
+        margin-bottom: 2.5rem;
+        top: 80px;
+    }
+}
+
+.filter-services .form-filters {
+    display: flex;
+    flex-wrap: wrap;
+    background: none;
+    padding: 0;
+    margin: 0;
+}
+
+.filter-services .form-filters .wrapper.filter-items {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    width: 100%;
+    justify-content: flex-start;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    position: relative;
+    @media screen and (min-width: $small-width) {
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+}
+
+
+.filter-services .tax-filter-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    border: 1px solid $gray;
+    border-radius: $button-border-radius;
+    background: transparent;
+    color: $gray;
+    font-family: $font-head;
+    font-weight: 500;
+    font-size: 0.9rem; // 16px mobile
+    line-height: 1.4rem; // 23px
+    letter-spacing: 0.32px;
+    padding: 10px 20px 10px 26px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: border-color 0.3s ease, color 0.3s ease;
+    &:hover {
+        border-color: $red;
+        color: $red;
+    }
+    @media screen and (min-width: $small-width) {
+        font-size: 1rem; // 17px desktop
+        line-height: 1.4625rem; // 25px
+        letter-spacing: 0.34px;
+        padding: 12px 24px 12px 30px;
+        gap: 10px;
+    }
+}
+
+.filter-services .tax-filter-button .filt-plus {
+    font-weight: 400;
+    font-size: 1rem;
+}
+
+// Active filter button
+.filter-services .filter-block.active .tax-filter-button {
+    border-color: $red;
+    color: $red;
+}
+
+.filter-services .tax-cont {
+    display: none;
+}
+
+.filter-services .filter-block.active {
+    @media screen and (min-width: $small-width) {
+        position: relative
+    }
+}
+
+.filter-services .filter-block.active .tax-cont {
+    display: block;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 998;
+    min-width: 205px;
+    width: 100%;
+    max-width: 100%;
+    background: $white;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.1);
+    border-radius: $default-border-radius;
+    border: 1px solid $gray;
+    margin-top: 8px;
+    @media screen and (min-width: $small-width) {
+        min-width: 425px;
+        max-width: 500px;
+        width: 100%;
+        left: 0;
+    }
+}
+
+.filter-services .tax-wrapper {
+    position: relative;
+}
+
+.filter-services .tax-close {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+    background: none;
+    border: none;
+    font-size: 18px;
+    color: $gray;
+    opacity: 0.5;
+    cursor: pointer;
+    padding: 0;
+    line-height: 1;
+}
+
+.filter-services ul.tax-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    list-style: none;
+    margin: 0;
+    padding: 1.25rem 1.5rem;
+    @media screen and (max-width: $xs-width) {
+        grid-template-columns: 1fr;
+    }
+}
+
+.filter-services ul.tax-list li.tax-item {
+    margin: 0;
+    padding: 0;
+    line-height: 1;
+    &::before {
+        display: none;
+    }
+}
+
+.filter-services ul.tax-list .tax-wrap {
+    position: relative;
+    padding-left: 1.75rem;
+}
+
+.filter-services ul.tax-list .tax-wrap::before {
+    content: '';
+    position: absolute;
+    top: 1px;
+    left: 0;
+    width: 15px;
+    height: 15px;
+    background: $white;
+    border: 1px solid $gray;
+}
+
+.filter-services ul.tax-list .checkbox-component {
+    width: 15px;
+    height: 15px;
+    opacity: 0;
+    position: absolute;
+    top: 1px;
+    left: 0;
+    z-index: 3;
+    cursor: pointer;
+}
+
+.filter-services ul.tax-list .checkbox-component:checked + label::after {
+    content: '';
+    position: absolute;
+    top: 2px;
+    left: -26px;
+    width: 11px;
+    height: 11px;
+    background: $gray;
+    border-radius: 0;
+}
+
+.filter-services ul.tax-list label {
+    font-family: $font-body;
+    font-size: 0.9375rem;
+    line-height: 1.4;
+    color: $gray;
+    cursor: pointer;
+    position: relative;
+}
+
+// ---- Card grid ----
+.filter-services__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+
+    @media screen and (min-width: $small-width) {
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 2rem;
+    }
+}
+
+// ---- Case Study Card ----
+.cs-card {
+    border-radius: $default-border-radius;
+    overflow: hidden;
+    background: $white;
+    border: 1px solid $gray;
+    transition: box-shadow 0.3s ease, transform 0.2s ease;
+
+    &:hover {
+        box-shadow: 0 6px 24px rgba(0, 0, 0, 0.1);
+        transform: translateY(-2px);
+    }
+}
+
+.cs-card__link {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+}
+
+.cs-card__image {
+    position: relative;
+    width: 100%;
+    height: 0;
+    padding-bottom: 60%; // 5:3 aspect ratio at rest -- this is what shrinks on hover
+    overflow: hidden;
+    transition: padding-bottom 0.35s ease;
+}
+
+.cs-card:hover .cs-card__image {
+    // calc(60% - Npx): reduces the window by an EXACT, width-
+    // independent Npx (not a % of width), matching the excerpt's
+    // real 2-line height for this breakpoint's line-height (line-
+    // clamp guarantees it's always exactly 3 full lines, a constant
+    // in px, not something that scales with card width). Mixing %
+    // and px in one calc() is what makes this work at every card
+    // width, not just one coincidentally-matching point -- a plain
+    // percentage or cqw value can only match a fixed-px target at a
+    // single width, drifting everywhere else.
+    padding-bottom: calc(60% - 67.2px); // 3 lines @ mobile font-size (1.4rem)
+
+    @media screen and (min-width: $small-width) {
+        padding-bottom: calc(60% - 84px); // 3 lines @ desktop font-size (1.75rem)
+    }
+}
+
+// The actual image lives in here, at a permanently fixed size driven
+// by its own aspect-ratio -- completely decoupled from the outer's
+// shrinking padding-bottom, since it's absolutely positioned (out of
+// the outer's flow) and sized from its own width, not inherited. The
+// image itself never changes size on hover; only how much of it is
+// visible through the outer window above does.
+.cs-card__image-inner {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    aspect-ratio: 5 / 3;
+    padding: 0; // consistent -- never touched by the hover transition
+}
+
+.filter-services__grid .cs-card__image-inner {
+    background: $eggshell;
+}
+
+.cs-card__image-inner img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+}
+
+
+.cs-card__content {
+    padding: 1rem 1.15rem;
+    position: relative;
+    overflow: hidden;
+    @media screen and (min-width: $small-width) {
+        padding: 1.25rem 1.5rem;
+    }
+}
+
+.cs-card h3.cs-card__title {
+    font-family: $font-head;
+    font-weight: 700;
+    font-size: 1.1rem;
+    line-height: 1.55rem;
+    letter-spacing: 0.12px;
+    color: $gray;
+    margin: 0;
+    @media screen and (min-width: $small-width) {
+        font-size: 1.35rem;
+        line-height: 1.85rem;
+        letter-spacing: 0.18px
+    }
+}
+
+.cs-card__excerpt {
+    font-family: $font-body;
+    font-weight: 300;
+    font-size: 1rem;
+    line-height: 1.4rem;
+    color: $gray;
+    margin: 0.5rem 0 0 0;
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition: max-height 0.35s ease, opacity 0.3s ease;
+
+    @media screen and (min-width: $small-width) {
+        font-size: 1.125rem;
+        line-height: 1.75rem;
+    }
+
+    // Always exactly 3 lines regardless of the actual excerpt length
+    // from the REST API (currently trimmed to 25 words server-side,
+    // which can still run to 3+ lines). Keeps this card's height-lock
+    // with the image above (tuned around a 2-line excerpt) accurate
+    // for every case study, not just ones with naturally short copy.
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+}
+
+// Hover reveal: max-height is a fixed px matching exactly 3 full
+// lines at this breakpoint's line-height (28px * 3 = 84px desktop,
+// 22.4px * 3 = 67.2px mobile) -- not a percentage/cqw value, since
+// line-clamp guarantees the excerpt's real height is that same
+// constant regardless of card width. The image's hover shrink above
+// uses calc() to reduce by this same exact px amount at every card
+// width, so the two stay matched throughout the responsive range
+// instead of only at one coincidental width.
+.cs-card:hover .cs-card__excerpt {
+    opacity: 1;
+    max-height: 67.2px;
+
+    @media screen and (min-width: $small-width) {
+        max-height: 84px;
+    }
+}
+
+// ---- Empty / Loading states ----
+.filter-services__empty,
+.filter-services__loading {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 3rem;
+}
+
+.filter-services__empty h3,
+.filter-services__empty p,
+.filter-services__loading h3,
+.filter-services__loading p {
+    font-family: $font-head;
+    color: $gray;
+    opacity: 0.6;
+}
+
+// ---- Editor ----
+.wp-block.filter-services {
+    width: 100%;
+    max-width: 100%;
+}
+
+.filter-services__grid .resource-card .cont-wrap {
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    border-radius: $default-border-radius;
+    overflow: hidden;
+}
+
+.filter-services__grid .resource-card .image-cont {
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+}
+
+.filter-services__grid .resource-card .image-cont img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.filter-services__grid .resource-card .content {
+    padding: 1.25rem 1.5rem;
+}
+
+.filter-services__grid .resource-card .resource-title {
+    font-size: 1rem;
+    margin: 0;
+}
