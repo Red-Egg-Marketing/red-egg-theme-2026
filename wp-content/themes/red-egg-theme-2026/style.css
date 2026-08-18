@@ -2599,6 +2599,7 @@ html.re-anim .has-reveal--reveal-up {
   padding-left: 1.25rem;
   padding-right: 1.25rem;
   margin-top: -20px;
+  margin: 0 auto;
 }
 @media screen and (min-width: 768px) {
   .page-template-template-article .entry-thumbnail,
