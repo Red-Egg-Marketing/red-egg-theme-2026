@@ -12807,7 +12807,7 @@ img.device-frame__device {
 }
 .faq-accordion > .block-wrapper {
   border-top: 1px solid rgba(66, 64, 66, 0.15);
-  max-width: calc(770px - 2.5rem);
+  max-width: calc(970px - 2.5rem);
   padding-left: 0;
   padding-right: 0;
 }
