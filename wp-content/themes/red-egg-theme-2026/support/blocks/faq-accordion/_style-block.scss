@@ -15,6 +15,11 @@
     }
 }
 
+.entry-content > .faq-accordion {
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+}
+
 .faq-accordion__item {
     border-bottom: 1px solid rgba($gray, 0.15);
 }
