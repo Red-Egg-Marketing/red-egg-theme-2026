@@ -18,6 +18,13 @@
     }
 }
 
+.single-post--article .wrapper {
+    padding-bottom: 0;
+    @media screen and (min-width: $small-width) {
+        padding-bottom: 0;
+    }
+}
+
 // ---- Featured image ----
 .single-post .entry-thumbnail {
     border-radius: $default-border-radius;

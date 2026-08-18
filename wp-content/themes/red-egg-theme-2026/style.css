@@ -2571,6 +2571,15 @@ html.re-anim .has-reveal--reveal-up {
   }
 }
 
+.single-post--article .wrapper {
+  padding-bottom: 0;
+}
+@media screen and (min-width: 768px) {
+  .single-post--article .wrapper {
+    padding-bottom: 0;
+  }
+}
+
 .single-post .entry-thumbnail {
   border-radius: 8px;
   overflow: hidden;
