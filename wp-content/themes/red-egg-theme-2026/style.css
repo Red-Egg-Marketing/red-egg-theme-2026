@@ -7066,6 +7066,7 @@ div.gform_wrapper.gravity-theme .gform_page_footer {
 .image-columns {
   width: 100%;
   position: relative;
+  z-index: 2;
   margin: 0 auto;
   padding-top: 2.75rem;
   padding-bottom: 2.75rem;
