@@ -3220,6 +3220,10 @@ div.gs_team_area.gs-grid-style-four .single-member-div {
   position: relative;
 }
 
+.gs-single-default .gs-team-single-content .gs-sin-mem-name {
+  font-family: "Poppins", sans-serif;
+}
+
 .single-gs_team.glassified .gs_ribon_wrapper:before {
   content: "";
   z-index: 10;

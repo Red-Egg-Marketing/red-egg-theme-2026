@@ -26,6 +26,11 @@ div.gs_team_area.gs-grid-style-four .single-member-div {
 }
 
 
+.gs-single-default .gs-team-single-content .gs-sin-mem-name {
+	font-family: $font-head;
+}
+
+
 .single-gs_team.glassified .gs_ribon_wrapper:before {
 	content: "";
 	z-index: 10;
