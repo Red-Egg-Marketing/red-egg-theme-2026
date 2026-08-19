@@ -6664,7 +6664,7 @@ div.filter-case-studies__hero .hero-services h1 {
 .filter-case-studies ul.tax-list .checkbox-component:checked + label::after {
   content: "";
   position: absolute;
-  top: 2px;
+  top: 0;
   left: -26px;
   width: 11px;
   height: 11px;
@@ -7500,7 +7500,7 @@ div.filter-services__hero .hero-services h1 {
 .filter-services ul.tax-list .checkbox-component:checked + label::after {
   content: "";
   position: absolute;
-  top: 2px;
+  top: 0;
   left: -26px;
   width: 11px;
   height: 11px;
