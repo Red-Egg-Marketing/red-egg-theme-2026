@@ -36,14 +36,13 @@ const EditShortcodeSection = ( { attributes, setAttributes, clientId } ) => {
     // is only applied to fresh/empty InnerBlocks, so switching the
     // toggle on a block that already has content won't wipe it -- it
     // updates the intended structure and the default for new inserts.
-    const template = [
-        [ 'red-egg-block/header-intro', {} ],
-        embedType === 'html'
-            ? [ 'core/html', {} ]
-            : embedType === 'team'
-                ? [ 'red-egg-block/team-members', {} ]
-                : [ 'core/shortcode', {} ],
-    ];
+    // Team Members carries its own Header Intro, so it is seeded alone.
+    const template = embedType === 'team'
+        ? [ [ 'red-egg-block/team-members', {} ] ]
+        : [
+            [ 'red-egg-block/header-intro', {} ],
+            embedType === 'html' ? [ 'core/html', {} ] : [ 'core/shortcode', {} ],
+        ];
 
     const blockProps = useBlockProps( {
         id: blockId,

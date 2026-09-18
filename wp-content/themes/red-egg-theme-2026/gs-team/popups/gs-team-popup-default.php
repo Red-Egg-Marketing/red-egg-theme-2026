@@ -74,7 +74,19 @@ if ( $gs_teammembers_pop_clm == 'one' ) : ?>
 
         <!-- Skills -->
         <?php include Template_Loader::locate_template( 'partials/gs-team-layout-skills.php' ); ?>
-
+        <!-- author link (if enabled) -->
+         <?php if (function_exists('get_field')): ?>
+            <?php if (get_field('associated_user')): 
+                $auth_id = get_field('associated_user');
+                $first_name = get_user_meta( $auth_id, 'first_name', true );
+                $first_name .= '\'s';
+                $url = get_author_posts_url($auth_id);
+            ?>
+                <div class="wp-block-button is-style-outline-gray-hover-up-red">
+                    <a href="<?php echo esc_url($url); ?>"  class="wp-block-button__link has-text-align-center wp-element-button">View <?php echo esc_html($first_name); ?> Posts</a>
+                </div>
+            <?php endif; ?>
+        <?php endif; ?>
     </div>
 
 <?php endif; ?>

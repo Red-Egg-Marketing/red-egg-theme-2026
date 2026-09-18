@@ -2,39 +2,44 @@
 /**
  * The template for displaying archive pages
  *
+ * Author, category, tag, taxonomy, date and post type archives.
+ * Layout mirrors the Filterable Case Studies block, minus the
+ * filters: a Services-style hero (title + description, plus the
+ * author's photo, role and bio on author archives) followed by
+ * a three-column .cs-card grid and numbered pagination.
+ *
  * @package Red_Egg
  */
 
 get_header();
 ?>
 
-<main id="primary" class="site-main">
-    <div class="block-wrapper">
+<main id="primary" class="site-main archive-main">
 
-        <?php if ( have_posts() ) : ?>
+    <?php red_egg_archive_hero(); ?>
 
-            <header class="archive-header">
-                <?php
-                the_archive_title( '<h1 class="archive-title">', '</h1>' );
-                the_archive_description( '<div class="archive-description">', '</div>' );
-                ?>
-            </header><!-- .archive-header -->
+    <section class="archive-listing">
+        <div class="block-wrapper">
 
-            <div class="posts-grid">
-                <?php while ( have_posts() ) : the_post(); ?>
-                    <?php get_template_part( 'template-parts/content', get_post_type() ); ?>
-                <?php endwhile; ?>
-            </div><!-- .posts-grid -->
+            <?php if ( have_posts() ) : ?>
 
-            <?php red_egg_pagination(); ?>
+                <div class="archive-grid">
+                    <?php while ( have_posts() ) : the_post(); ?>
+                        <?php get_template_part( 'template-parts/content', get_post_type() ); ?>
+                    <?php endwhile; ?>
+                </div><!-- .archive-grid -->
 
-        <?php else : ?>
+                <?php red_egg_pagination(); ?>
 
-            <?php get_template_part( 'template-parts/content', 'none' ); ?>
+            <?php else : ?>
 
-        <?php endif; ?>
+                <?php get_template_part( 'template-parts/content', 'none' ); ?>
 
-    </div><!-- .block-wrapper -->
+            <?php endif; ?>
+
+        </div><!-- .block-wrapper -->
+    </section><!-- .archive-listing -->
+
 </main><!-- #primary -->
 
 <?php

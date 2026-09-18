@@ -335,3 +335,160 @@
     &.border-gold { border-color: $gold; }
     &.border-gray { border-color: $gray; }
 }
+
+
+// ========================================
+//  Archive pages (archive.php / index.php)
+//
+//  Mirrors the Filterable Case Studies block minus the
+//  filters. The hero reuses .hero-services (eggshell +
+//  egg pattern, magenta heading) and the grid reuses the
+//  block's .cs-card, so only the archive-specific bits
+//  live here.
+// ========================================
+
+// ---- Hero ----
+.archive-hero .hero-background__columns {
+    align-items: center;
+}
+
+// No media column on non-author archives: let the copy
+// use the full row instead of hero-services' 2/3 split.
+.archive-hero:not(.archive-hero--author) .hero-background__content {
+    @media screen and (min-width: $small-width) {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+}
+
+.hero-services .archive-hero__label {
+    @include h4-sup;
+    font-size: 0.875rem;
+    color: $gray;
+    margin: 0 0 0.75rem 0;
+
+    @media screen and (min-width: $small-width) {
+        font-size: 1rem;
+        margin-bottom: 1rem;
+    }
+}
+
+// Same heading treatment as the Filterable Case Studies hero
+// (div.filter-case-studies__hero .hero-services h1): big dark
+// hero-h1 rather than hero-services' magenta h2. Needs to out-
+// rank .hero-services .hero-background__content h1, which is
+// compiled later in style.css.
+.hero-services .hero-background__content h1.archive-hero__title {
+    @include hero-h1;
+    margin-top: 0;
+    margin-bottom: 1rem;
+
+    @media screen and (min-width: $small-width) {
+        margin-bottom: 1.25rem;
+    }
+}
+
+.hero-services .archive-hero__subtitle {
+    font-family: $font-body;
+    font-weight: 500;
+    font-size: 1rem;
+    line-height: 1.5rem;
+    color: rgba($gray, 0.7);
+    margin: 0 0 1rem 0;
+
+    @media screen and (min-width: $small-width) {
+        font-size: 1.125rem;
+        line-height: 1.75rem;
+    }
+}
+
+.hero-services .archive-hero__description {
+    p {
+        @include body-text;
+        font-size: 1rem;
+        line-height: 1.625rem;
+        font-weight: 300;
+        color: $gray;
+        margin: 0 0 1rem 0;
+
+        @media screen and (min-width: $small-width) {
+            font-size: 1.25rem;
+            line-height: 1.875rem;
+        }
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+}
+
+// Author photo (matches the single-post .author-bio avatar)
+.archive-hero__media {
+    display: flex;
+    justify-content: center;
+
+    img {
+        display: block;
+        width: 180px;
+        height: 180px;
+        max-width: 100%;
+        object-fit: cover;
+        border-radius: $default-border-radius;
+        border: 1px solid $gray;
+
+        @media screen and (min-width: $small-width) {
+            width: 100%;
+            height: auto;
+            max-width: 320px;
+            aspect-ratio: 1 / 1;
+        }
+    }
+}
+
+// ---- Listing ----
+.archive-listing {
+    position: relative;
+    padding-top: 2.5rem;
+    padding-bottom: $default-section-padding-bottom;
+
+    @media screen and (min-width: $small-width) {
+        padding-top: 4rem;
+        padding-bottom: 5rem;
+    }
+}
+
+// Same grid as .filter-case-studies__grid
+.archive-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+
+    @media screen and (min-width: $small-width) {
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 2rem;
+    }
+}
+
+// Date line above the title on blog post cards
+.archive-grid .cs-card__date {
+    font-family: $font-head;
+    font-weight: 500;
+    font-size: 0.8125rem;
+    line-height: 1.2;
+    letter-spacing: 0.05rem;
+    color: rgba($gray, 0.6);
+    margin: 0 0 0.5rem 0;
+}
+
+.archive-listing .pagination {
+    padding-top: 3rem;
+    padding-bottom: 0;
+}
+
+.archive-listing .no-results {
+    text-align: center;
+
+    .page-header {
+        padding-top: 0;
+    }
+}

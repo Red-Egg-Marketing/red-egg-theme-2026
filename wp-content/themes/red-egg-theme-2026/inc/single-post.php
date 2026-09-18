@@ -374,36 +374,13 @@ function red_egg_the_author_bio() {
     $bio  = get_the_author_meta( 'description', $author_id );
     $url  = get_author_posts_url( $author_id );
 
-    $title      = '';
-    $image_html = '';
-
+    $title = '';
     if ( function_exists( 'get_field' ) ) {
-
-        $image = get_field( 'author_image', 'user_' . $author_id );
         $title = (string) get_field( 'author_title', 'user_' . $author_id );
-
-        if ( $image ) {
-            // ACF image return format may be array, ID, or URL.
-            if ( is_array( $image ) ) {
-                $src = isset( $image['sizes']['medium'] ) ? $image['sizes']['medium'] : $image['url'];
-                $alt = ! empty( $image['alt'] ) ? $image['alt'] : $name;
-            } elseif ( is_numeric( $image ) ) {
-                $src = wp_get_attachment_image_url( (int) $image, 'medium' );
-                $alt = $name;
-            } else {
-                $src = $image;
-                $alt = $name;
-            }
-
-            if ( $src ) {
-                $image_html = '<img src="' . esc_url( $src ) . '" alt="' . esc_attr( $alt ) . '" />';
-            }
-        }
     }
 
-    if ( '' === $image_html ) {
-        $image_html = get_avatar( $author_id, 120 );
-    }
+    // ACF author_image with Gravatar fallback (inc/template-functions.php)
+    $image_html = red_egg_get_author_image( $author_id, 'medium', 120 );
 
     echo '<div class="author-bio">';
 

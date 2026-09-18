@@ -7,13 +7,16 @@
  * by wrapping [gsteam id=N] and swapping in the chosen members through
  * the plugin's gs_team_wp_query_args filter.
  *
- * Intended to sit inside Shortcode Section (or any section wrapper),
- * so it carries no background / padding / margin of its own.
+ * Carries a Header Intro (InnerBlocks) above the grid. Padding and
+ * margin come from the shared PaddingSelector / MarginSelector
+ * components; the PHP render callback turns them into a scoped
+ * <style> block on the frontend.
  */
 
 const { registerBlockType } = wp.blocks;
 const { __ } = wp.i18n;
 import edit from './edit';
+import save from './save';
 
 registerBlockType( 'red-egg-block/team-members', {
     apiVersion: 2,
@@ -32,10 +35,24 @@ registerBlockType( 'red-egg-block/team-members', {
             type: 'number',
             default: 1,
         },
+        padding: {
+            type: 'object',
+            default: {
+                paddingtop: '', paddingright: '',
+                paddingbottom: '', paddingleft: '', unit: 'rem',
+            },
+        },
+        margin: {
+            type: 'object',
+            default: {
+                margintop: '', marginright: '',
+                marginbottom: '', marginleft: '', unit: 'rem',
+            },
+        },
         blockId: {
             type: 'string',
         },
     },
     edit,
-    save: () => null,
+    save,
 } );

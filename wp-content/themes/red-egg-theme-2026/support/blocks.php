@@ -35,6 +35,7 @@ function red_egg_enqueue_block_editor_assets() {
             'wp-api-request',
             'wp-hooks',
             'wp-compose',
+            'wp-server-side-render',
             'lodash',
         ],
         file_exists( $editor_js ) ? filemtime( $editor_js ) : false,
@@ -434,6 +435,8 @@ function red_egg_register_blocks() {
             'memberIds'   => [ 'type' => 'array',  'default' => [] ],
             'shortcodeId' => [ 'type' => 'number', 'default' => 1 ],
             'blockId'     => [ 'type' => 'string' ],
+            'padding'     => [ 'type' => 'object', 'default' => [] ],
+            'margin'      => [ 'type' => 'object', 'default' => [] ],
         ],
         'render_callback' => 'red_egg_render_team_members',
     ] );
@@ -581,12 +584,79 @@ function red_egg_render_contact_section( $attributes ) {
 //  and the theme's /gs-team/ template override, while
 //  the block decides WHICH members show and in what
 //  order via the plugin's gs_team_wp_query_args filter.
+//  $content is the saved InnerBlocks (Header Intro).
 // ============================================
 
-function red_egg_render_team_members( $attributes ) {
+/**
+ * Build the scoped <style> block for a dynamic block's padding /
+ * margin attributes. Mirrors PaddingSelector.View / MarginSelector.View
+ * from support/components so server-rendered blocks get the same
+ * desktop + mobile output as static ones.
+ *
+ * @param string $block_id  Element ID the rules are scoped to.
+ * @param array  $padding   The block's `padding` attribute.
+ * @param array  $margin    The block's `margin` attribute.
+ * @return string           <style> tag, or '' when nothing is set.
+ */
+function red_egg_spacing_style( $block_id, $padding = [], $margin = [] ) {
+    $sides    = [ 'top', 'right', 'bottom', 'left' ];
+    $build    = function ( $values, $prop, $unit ) use ( $sides ) {
+        $css = '';
+        foreach ( $sides as $side ) {
+            $key = $prop . $side;
+            if ( isset( $values[ $key ] ) && '' !== $values[ $key ] ) {
+                $css .= $prop . '-' . $side . ':' . floatval( $values[ $key ] ) . $unit . ';';
+            }
+        }
+        return $css;
+    };
+    $unit_for = function ( $values, $fallback = 'rem' ) {
+        $allowed = [ 'px', '%', 'em', 'rem' ];
+        return ( ! empty( $values['unit'] ) && in_array( $values['unit'], $allowed, true ) ) ? $values['unit'] : $fallback;
+    };
+
+    $padding = is_array( $padding ) ? $padding : [];
+    $margin  = is_array( $margin ) ? $margin : [];
+
+    // Desktop (all widths)
+    $desktop  = $build( $padding, 'padding', $unit_for( $padding ) );
+    $desktop .= $build( $margin, 'margin', $unit_for( $margin ) );
+
+    // Mobile (at and below the breakpoint, default 767px)
+    $mobile_css = '';
+    foreach ( [ [ $padding, 'padding' ], [ $margin, 'margin' ] ] as $pair ) {
+        list( $values, $prop ) = $pair;
+        if ( empty( $values['mobile'] ) || ! is_array( $values['mobile'] ) ) {
+            continue;
+        }
+        $mobile     = $values['mobile'];
+        $breakpoint = ! empty( $mobile['breakpoint'] ) ? absint( $mobile['breakpoint'] ) : 767;
+        $rules      = $build( $mobile, $prop, $unit_for( $mobile, $unit_for( $values ) ) );
+        if ( $rules ) {
+            $mobile_css .= '@media (max-width: ' . $breakpoint . 'px) { #' . $block_id . ' { ' . $rules . ' } }';
+        }
+    }
+
+    if ( ! $desktop && ! $mobile_css ) {
+        return '';
+    }
+
+    $style = '<style type="text/css">';
+    if ( $desktop ) {
+        $style .= '#' . $block_id . ' { ' . $desktop . ' }';
+    }
+    $style .= $mobile_css;
+    $style .= '</style>';
+
+    return $style;
+}
+
+function red_egg_render_team_members( $attributes, $content = '' ) {
     $member_ids   = ! empty( $attributes['memberIds'] ) ? array_filter( array_map( 'absint', (array) $attributes['memberIds'] ) ) : [];
     $shortcode_id = ! empty( $attributes['shortcodeId'] ) ? absint( $attributes['shortcodeId'] ) : 1;
-    $block_id     = ! empty( $attributes['blockId'] ) ? $attributes['blockId'] : 'team-members-' . wp_unique_id();
+    $block_id     = ! empty( $attributes['blockId'] ) ? sanitize_html_class( $attributes['blockId'] ) : 'team-members-' . wp_unique_id();
+    $padding      = isset( $attributes['padding'] ) ? $attributes['padding'] : [];
+    $margin       = isset( $attributes['margin'] ) ? $attributes['margin'] : [];
 
     if ( ! shortcode_exists( 'gsteam' ) ) {
         if ( current_user_can( 'edit_posts' ) ) {
@@ -614,9 +684,14 @@ function red_egg_render_team_members( $attributes ) {
     $team_html = do_shortcode( '[gsteam id="' . $shortcode_id . '"]' );
     remove_filter( 'gs_team_wp_query_args', $query_filter, 20 );
 
-    $block_content  = '';
+    $block_content  = red_egg_spacing_style( $block_id, $padding, $margin );
     $block_content .= '<div id="' . esc_attr( $block_id ) . '" class="team-members-block wp-block-red-egg-block-team-members">';
+    $block_content .= '<div class="block-wrapper">';
+    if ( '' !== trim( (string) $content ) ) {
+        $block_content .= '<header class="team-members-block__header">' . $content . '</header>';
+    }
     $block_content .= $team_html;
+    $block_content .= '</div><!-- .block-wrapper -->';
     $block_content .= '</div><!-- .team-members-block -->';
 
     return $block_content;
