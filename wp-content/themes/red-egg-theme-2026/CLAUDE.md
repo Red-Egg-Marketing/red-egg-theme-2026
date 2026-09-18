@@ -111,6 +111,7 @@ import Margin, { getMarginClasses } from '../../components/Margin';
 | `/red-egg/v2/case-studies` | `red_egg_return_case_studies` | Case Studies Slider |
 | `/red-egg/v2/reviews` | `red_egg_return_reviews` | Testimonials |
 | `/red-egg/v2/resources` | `red_egg_return_resources` | Insights |
+| `/red-egg/v2/team-members` | `red_egg_return_team_members` | Team Members |
 
 ## Design Tokens
 

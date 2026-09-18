@@ -84,6 +84,9 @@ import './values-section/index';
 // Shortcode Section (header-intro + shortcode embed)
 import './shortcode-section/index';
 
+// Team Members (curated GS Team grid, server-rendered)
+import './team-members/index';
+
 // Community Section (eggshell bg, header-intro + image slider)
 import './community-section/index';
 

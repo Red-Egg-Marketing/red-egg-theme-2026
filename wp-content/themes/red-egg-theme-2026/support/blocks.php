@@ -424,6 +424,19 @@ function red_egg_register_blocks() {
     register_block_type( 'red-egg-block/accordion-item', [
         'editor_script' => 'red-egg-editor-blocks',
     ] );
+
+    // ---- Team Members (dynamic: curated GS Team grid) ----
+    // Attributes are mirrored here so WP passes them to the
+    // render callback (unknown attrs are stripped otherwise).
+    register_block_type( 'red-egg-block/team-members', [
+        'editor_script'   => 'red-egg-editor-blocks',
+        'attributes'      => [
+            'memberIds'   => [ 'type' => 'array',  'default' => [] ],
+            'shortcodeId' => [ 'type' => 'number', 'default' => 1 ],
+            'blockId'     => [ 'type' => 'string' ],
+        ],
+        'render_callback' => 'red_egg_render_team_members',
+    ] );
 }
 add_action( 'init', 'red_egg_register_blocks' );
 
@@ -559,3 +572,52 @@ function red_egg_render_contact_section( $attributes ) {
 
 // Testimonials now render client-side via /red-egg/v2/reviews (see block frontend.js).
 
+
+// ============================================
+//  Team Members Render Callback
+//
+//  Wraps the GS Team [gsteam] shortcode so the saved
+//  shortcode keeps control of layout, columns, popups
+//  and the theme's /gs-team/ template override, while
+//  the block decides WHICH members show and in what
+//  order via the plugin's gs_team_wp_query_args filter.
+// ============================================
+
+function red_egg_render_team_members( $attributes ) {
+    $member_ids   = ! empty( $attributes['memberIds'] ) ? array_filter( array_map( 'absint', (array) $attributes['memberIds'] ) ) : [];
+    $shortcode_id = ! empty( $attributes['shortcodeId'] ) ? absint( $attributes['shortcodeId'] ) : 1;
+    $block_id     = ! empty( $attributes['blockId'] ) ? $attributes['blockId'] : 'team-members-' . wp_unique_id();
+
+    if ( ! shortcode_exists( 'gsteam' ) ) {
+        if ( current_user_can( 'edit_posts' ) ) {
+            return '<p class="team-members-block team-members-block--missing">' . esc_html__( 'Team Members block: the GS Team plugin is not active.', 'red-egg' ) . '</p>';
+        }
+        return '';
+    }
+
+    // Swap the shortcode's member query for the curated list.
+    // post__in ordering keeps the editor's order; dropping the
+    // featured-priority flag stops the plugin re-sorting it.
+    $query_filter = function ( $args ) use ( $member_ids ) {
+        if ( empty( $member_ids ) ) {
+            return $args;
+        }
+        $args['post__in']       = array_values( $member_ids );
+        $args['orderby']        = 'post__in';
+        $args['posts_per_page'] = -1;
+        $args['paged']          = 1;
+        unset( $args['offset'], $args['order'], $args['gs_team_featured_priority_sort'] );
+        return $args;
+    };
+
+    add_filter( 'gs_team_wp_query_args', $query_filter, 20 );
+    $team_html = do_shortcode( '[gsteam id="' . $shortcode_id . '"]' );
+    remove_filter( 'gs_team_wp_query_args', $query_filter, 20 );
+
+    $block_content  = '';
+    $block_content .= '<div id="' . esc_attr( $block_id ) . '" class="team-members-block wp-block-red-egg-block-team-members">';
+    $block_content .= $team_html;
+    $block_content .= '</div><!-- .team-members-block -->';
+
+    return $block_content;
+}

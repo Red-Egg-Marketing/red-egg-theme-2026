@@ -5123,6 +5123,98 @@ div.gform_wrapper.gravity-theme .gform_page_footer {
   background-color: #FFFFFF;
 }
 
+.team-members-block {
+  width: 100%;
+}
+
+.team-members-editor {
+  border: 1px dashed #424042;
+  border-radius: 4px;
+  padding: 1rem;
+  background-color: #FFFFFF;
+}
+.team-members-editor .team-members-editor__header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+}
+.team-members-editor .team-members-editor__header .dashicons {
+  color: #DC2035;
+}
+.team-members-editor .team-members-editor__count {
+  margin-left: auto;
+  font-size: 0.8rem;
+  color: #424042;
+  opacity: 0.7;
+}
+.team-members-editor .team-members-editor__empty {
+  margin: 0 0 0.75rem;
+  font-size: 0.9rem;
+  color: #424042;
+  opacity: 0.8;
+}
+.team-members-editor .team-members-editor__list {
+  list-style: none;
+  margin: 0 0 0.75rem;
+  padding: 0;
+}
+.team-members-editor .team-members-editor__item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid rgba(66, 64, 66, 0.15);
+}
+.team-members-editor .team-members-editor__item:last-child {
+  border-bottom: 0;
+}
+.team-members-editor .team-members-editor__index {
+  width: 1.5rem;
+  font-size: 0.8rem;
+  text-align: center;
+  color: #424042;
+  opacity: 0.6;
+}
+.team-members-editor .team-members-editor__thumb {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  flex-shrink: 0;
+}
+.team-members-editor .team-members-editor__thumb.team-members-editor__thumb--empty {
+  display: inline-block;
+  background-color: #F2ECE5;
+}
+.team-members-editor .team-members-editor__meta {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+.team-members-editor .team-members-editor__name {
+  font-weight: 500;
+}
+.team-members-editor .team-members-editor__role {
+  font-size: 0.8rem;
+  color: #424042;
+  opacity: 0.7;
+}
+.team-members-editor .team-members-editor__controls {
+  display: flex;
+  margin-left: auto;
+  flex-shrink: 0;
+}
+.team-members-editor .team-members-editor__add .components-base-control__field {
+  margin-bottom: 0;
+}
+
+.team-members-editor__actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
 .community-section {
   position: relative;
   padding-top: 5.5rem;

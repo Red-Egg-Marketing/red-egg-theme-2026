@@ -19,6 +19,7 @@ const allowedBlocks = [
     'red-egg-block/header-intro',
     'core/shortcode',
     'core/html',
+    'red-egg-block/team-members',
     'core/buttons',
 ];
 
@@ -39,7 +40,9 @@ const EditShortcodeSection = ( { attributes, setAttributes, clientId } ) => {
         [ 'red-egg-block/header-intro', {} ],
         embedType === 'html'
             ? [ 'core/html', {} ]
-            : [ 'core/shortcode', {} ],
+            : embedType === 'team'
+                ? [ 'red-egg-block/team-members', {} ]
+                : [ 'core/shortcode', {} ],
     ];
 
     const blockProps = useBlockProps( {
@@ -55,11 +58,12 @@ const EditShortcodeSection = ( { attributes, setAttributes, clientId } ) => {
                 <PanelBody title={ __( 'Embed Type', 'red-egg' ) } initialOpen={ true }>
                     <SelectControl
                         label={ __( 'Content Type', 'red-egg' ) }
-                        help={ __( 'Shortcode for plugin output (e.g. team grid, reviews); HTML for raw embed code (e.g. an iframe or third-party widget). Switching only changes the seeded block for a fresh section — existing content is left in place.', 'red-egg' ) }
+                        help={ __( 'Shortcode for plugin output (e.g. reviews); HTML for raw embed code (e.g. an iframe or third-party widget); Team Members for a curated, orderable GS Team grid. Switching only changes the seeded block for a fresh section — existing content is left in place.', 'red-egg' ) }
                         value={ embedType }
                         options={ [
                             { label: __( 'Shortcode', 'red-egg' ), value: 'shortcode' },
                             { label: __( 'HTML Embed', 'red-egg' ), value: 'html' },
+                            { label: __( 'Team Members', 'red-egg' ), value: 'team' },
                         ] }
                         onChange={ ( val ) => setAttributes( { embedType: val } ) }
                     />

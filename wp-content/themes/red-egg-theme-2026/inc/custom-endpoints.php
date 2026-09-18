@@ -10,6 +10,7 @@
  *   /red-egg/v2/industries    → red_egg_return_industries
  *   /red-egg/v2/reviews       → red_egg_return_reviews
  *   /red-egg/v2/games         → red_egg_return_games
+ *   /red-egg/v2/team-members  → red_egg_return_team_members
  *
  * @package Red_Egg
  */
@@ -641,6 +642,60 @@ function red_egg_return_reviews( $data ) {
 
 
 // ============================================
+//  Team Members (GS Team plugin)
+//
+//  Feeds the Team Members block editor: every
+//  published gs_team post (in the plugin's custom
+//  menu_order) plus the saved GS Team shortcodes
+//  that act as layout presets.
+// ============================================
+
+function red_egg_return_team_members() {
+
+	$members = [];
+
+	$query = new WP_Query( [
+		'post_type'      => 'gs_team',
+		'post_status'    => 'publish',
+		'posts_per_page' => -1,
+		'orderby'        => 'menu_order title',
+		'order'          => 'ASC',
+		'no_found_rows'  => true,
+	] );
+
+	while ( $query->have_posts() ) {
+		$query->the_post();
+		$member_id = get_the_ID();
+		$members[] = [
+			'id'          => $member_id,
+			'name'        => red_egg_decode( get_the_title() ),
+			'designation' => red_egg_decode( (string) get_post_meta( $member_id, '_gs_des', true ) ),
+			'thumb'       => get_the_post_thumbnail_url( $member_id, 'thumbnail' ) ?: '',
+		];
+	}
+	wp_reset_postdata();
+
+	$shortcodes = [];
+	if ( function_exists( 'GSTEAM\\get_shortcodes' ) ) {
+		foreach ( (array) \GSTEAM\get_shortcodes() as $sc ) {
+			if ( empty( $sc['id'] ) ) {
+				continue;
+			}
+			$shortcodes[] = [
+				'id'   => (int) $sc['id'],
+				'name' => red_egg_decode( isset( $sc['shortcode_name'] ) ? $sc['shortcode_name'] : 'Shortcode ' . $sc['id'] ),
+			];
+		}
+	}
+
+	return rest_ensure_response( [
+		'members'    => $members,
+		'shortcodes' => $shortcodes,
+	] );
+}
+
+
+// ============================================
 //  Games Leaderboard
 // ============================================
 
@@ -808,6 +863,13 @@ add_action( 'rest_api_init', function () {
 	register_rest_route( 'red-egg/v2', '/reviews/', [
 		'methods'             => 'GET',
 		'callback'            => 'red_egg_return_reviews',
+		'permission_callback' => '__return_true',
+	] );
+
+	// Team members + saved GS Team shortcodes (Team Members block)
+	register_rest_route( 'red-egg/v2', '/team-members/', [
+		'methods'             => 'GET',
+		'callback'            => 'red_egg_return_team_members',
 		'permission_callback' => '__return_true',
 	] );
 

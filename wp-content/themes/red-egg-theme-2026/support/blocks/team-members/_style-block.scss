@@ -1,0 +1,115 @@
+// ========================================
+//  Team Members Block Styles
+//  Block: red-egg-block/team-members
+//
+//  Frontend markup is the GS Team plugin's own grid (theme override
+//  in /gs-team/), so the frontend rule here is just the wrapper.
+//  Everything under .team-members-editor is editor-only.
+// ========================================
+
+.team-members-block {
+    width: 100%;
+}
+
+// ---- Editor picker ----
+.team-members-editor {
+    border: 1px dashed $gray;
+    border-radius: 4px;
+    padding: 1rem;
+    background-color: $white;
+
+    .team-members-editor__header {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        margin-bottom: 0.75rem;
+
+        .dashicons {
+            color: $red;
+        }
+    }
+
+    .team-members-editor__count {
+        margin-left: auto;
+        font-size: 0.8rem;
+        color: $gray;
+        opacity: 0.7;
+    }
+
+    .team-members-editor__empty {
+        margin: 0 0 0.75rem;
+        font-size: 0.9rem;
+        color: $gray;
+        opacity: 0.8;
+    }
+
+    .team-members-editor__list {
+        list-style: none;
+        margin: 0 0 0.75rem;
+        padding: 0;
+    }
+
+    .team-members-editor__item {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        padding: 0.5rem 0;
+        border-bottom: 1px solid rgba($gray, 0.15);
+
+        &:last-child {
+            border-bottom: 0;
+        }
+    }
+
+    .team-members-editor__index {
+        width: 1.5rem;
+        font-size: 0.8rem;
+        text-align: center;
+        color: $gray;
+        opacity: 0.6;
+    }
+
+    .team-members-editor__thumb {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        object-fit: cover;
+        flex-shrink: 0;
+
+        &.team-members-editor__thumb--empty {
+            display: inline-block;
+            background-color: $eggshell;
+        }
+    }
+
+    .team-members-editor__meta {
+        display: flex;
+        flex-direction: column;
+        min-width: 0;
+    }
+
+    .team-members-editor__name {
+        font-weight: 500;
+    }
+
+    .team-members-editor__role {
+        font-size: 0.8rem;
+        color: $gray;
+        opacity: 0.7;
+    }
+
+    .team-members-editor__controls {
+        display: flex;
+        margin-left: auto;
+        flex-shrink: 0;
+    }
+
+    .team-members-editor__add .components-base-control__field {
+        margin-bottom: 0;
+    }
+}
+
+.team-members-editor__actions {
+    display: flex;
+    gap: 0.5rem;
+}
