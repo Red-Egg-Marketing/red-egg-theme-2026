@@ -434,7 +434,10 @@ function red_egg_register_blocks() {
         'attributes'      => [
             'memberIds'   => [ 'type' => 'array',  'default' => [] ],
             'shortcodeId' => [ 'type' => 'number', 'default' => 1 ],
+            'cardAlign'   => [ 'type' => 'string', 'default' => 'left' ],
             'blockId'     => [ 'type' => 'string' ],
+            'className'   => [ 'type' => 'string' ],
+            'anchor'      => [ 'type' => 'string' ],
             'padding'     => [ 'type' => 'object', 'default' => [] ],
             'margin'      => [ 'type' => 'object', 'default' => [] ],
         ],
@@ -657,6 +660,28 @@ function red_egg_render_team_members( $attributes, $content = '' ) {
     $block_id     = ! empty( $attributes['blockId'] ) ? sanitize_html_class( $attributes['blockId'] ) : 'team-members-' . wp_unique_id();
     $padding      = isset( $attributes['padding'] ) ? $attributes['padding'] : [];
     $margin       = isset( $attributes['margin'] ) ? $attributes['margin'] : [];
+    $anchor       = ! empty( $attributes['anchor'] ) ? sanitize_html_class( $attributes['anchor'] ) : '';
+    $classes      = 'team-members-block wp-block-red-egg-block-team-members';
+
+    // Card alignment inside the GS Team flex row (see _style-block.scss).
+    $card_align = ! empty( $attributes['cardAlign'] ) ? $attributes['cardAlign'] : 'left';
+    if ( ! in_array( $card_align, [ 'left', 'center', 'right' ], true ) ) {
+        $card_align = 'left';
+    }
+    $classes .= ' cards-align-' . $card_align;
+
+    // Additional CSS class(es) from the block sidebar. WP stores
+    // them in the className attribute, so they only reach a dynamic
+    // block when the attribute is registered above.
+    if ( ! empty( $attributes['className'] ) ) {
+        $classes .= ' ' . implode( ' ', array_map( 'sanitize_html_class', preg_split( '/\s+/', trim( $attributes['className'] ) ) ) );
+    }
+
+    // An HTML anchor replaces the generated ID so the spacing
+    // styles and the anchor link both point at the same element.
+    if ( $anchor ) {
+        $block_id = $anchor;
+    }
 
     if ( ! shortcode_exists( 'gsteam' ) ) {
         if ( current_user_can( 'edit_posts' ) ) {
@@ -685,7 +710,7 @@ function red_egg_render_team_members( $attributes, $content = '' ) {
     remove_filter( 'gs_team_wp_query_args', $query_filter, 20 );
 
     $block_content  = red_egg_spacing_style( $block_id, $padding, $margin );
-    $block_content .= '<div id="' . esc_attr( $block_id ) . '" class="team-members-block wp-block-red-egg-block-team-members">';
+    $block_content .= '<div id="' . esc_attr( $block_id ) . '" class="' . esc_attr( $classes ) . '">';
     $block_content .= '<div class="block-wrapper">';
     if ( '' !== trim( (string) $content ) ) {
         $block_content .= '<header class="team-members-block__header">' . $content . '</header>';

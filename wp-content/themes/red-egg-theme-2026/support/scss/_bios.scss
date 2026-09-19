@@ -3,6 +3,18 @@
 	justify-content: flex-start;
 }
 
+.cards-align-center .gs_team_area.gs-grid-style-four .gs-roow {
+	justify-content: center;
+}
+
+.cards-align-left .gs_team_area.gs-grid-style-four .gs-roow {
+	justify-content: left;
+}
+
+.cards-align-right .gs_team_area.gs-grid-style-four .gs-roow {
+	justify-content: right;
+}
+
 div.gs_team_area.gs-grid-style-four .single-member-div {
 	float: none;
 	display: flex;

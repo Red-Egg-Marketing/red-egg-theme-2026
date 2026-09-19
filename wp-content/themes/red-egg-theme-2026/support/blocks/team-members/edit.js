@@ -15,7 +15,7 @@
  */
 
 const { Fragment, useState, useEffect } = wp.element;
-const { InnerBlocks, InspectorControls, BlockControls, useBlockProps } = wp.blockEditor;
+const { InnerBlocks, InspectorControls, BlockControls, AlignmentToolbar, useBlockProps } = wp.blockEditor;
 const { PanelBody, SelectControl, Button, Spinner, Notice, ToolbarGroup, ToolbarButton } = wp.components;
 const { __ } = wp.i18n;
 const ServerSideRender = wp.serverSideRender;
@@ -33,7 +33,7 @@ const allowedBlocks = [
 ];
 
 const EditTeamMembers = ( { attributes, setAttributes, clientId, isSelected } ) => {
-    const { memberIds, shortcodeId, blockId, padding, margin } = attributes;
+    const { memberIds, shortcodeId, cardAlign, blockId, padding, margin } = attributes;
 
     const [ isEditing, setIsEditing ] = useState( false );
     const [ members, setMembers ] = useState( false );
@@ -117,7 +117,7 @@ const EditTeamMembers = ( { attributes, setAttributes, clientId, isSelected } ) 
     // margin are deliberately left out and the preview gets its own
     // ID, so the selectors' #blockId styles land on the editor
     // wrapper alone instead of doubling up on the SSR markup too.
-    const renderAttributes = { memberIds, shortcodeId };
+    const renderAttributes = { memberIds, shortcodeId, cardAlign };
     if ( blockId ) {
         renderAttributes.blockId = blockId + '-preview';
     }
@@ -129,6 +129,10 @@ const EditTeamMembers = ( { attributes, setAttributes, clientId, isSelected } ) 
     return (
         <Fragment>
             <BlockControls>
+                <AlignmentToolbar
+                    value={ cardAlign }
+                    onChange={ ( val ) => setAttributes( { cardAlign: val || 'left' } ) }
+                />
                 <ToolbarGroup>
                     <ToolbarButton
                         icon={ isEditing ? 'visibility' : 'edit' }
@@ -146,6 +150,17 @@ const EditTeamMembers = ( { attributes, setAttributes, clientId, isSelected } ) 
                         value={ shortcodeId }
                         options={ shortcodeOptions }
                         onChange={ ( val ) => setAttributes( { shortcodeId: parseInt( val, 10 ) || 1 } ) }
+                    />
+                    <SelectControl
+                        label={ __( 'Card Alignment', 'red-egg' ) }
+                        help={ __( 'How the cards sit in the row when they do not fill it, e.g. three people in a four-column grid.', 'red-egg' ) }
+                        value={ cardAlign }
+                        options={ [
+                            { label: __( 'Left', 'red-egg' ), value: 'left' },
+                            { label: __( 'Center', 'red-egg' ), value: 'center' },
+                            { label: __( 'Right', 'red-egg' ), value: 'right' },
+                        ] }
+                        onChange={ ( val ) => setAttributes( { cardAlign: val } ) }
                     />
                 </PanelBody>
                 <PanelBody title={ __( 'Members', 'red-egg' ) } initialOpen={ true }>

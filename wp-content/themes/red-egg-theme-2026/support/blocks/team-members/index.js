@@ -35,6 +35,10 @@ registerBlockType( 'red-egg-block/team-members', {
             type: 'number',
             default: 1,
         },
+        cardAlign: {
+            type: 'string',
+            default: 'left',
+        },
         padding: {
             type: 'object',
             default: {
