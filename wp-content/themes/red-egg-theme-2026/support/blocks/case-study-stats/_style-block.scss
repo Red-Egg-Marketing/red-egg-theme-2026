@@ -107,10 +107,6 @@
     display: block;
 }
 
-.case-study-stats.four-cols .case-study-stats__grid > .block-editor-inner-blocks > .block-editor-block-list__layout {
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-}
-
 // Editor grid layout
 .case-study-stats__grid > .block-editor-inner-blocks > .block-editor-block-list__layout {
     display: grid;
@@ -122,6 +118,10 @@
     }
 }
 
+.case-study-stats.four-cols .case-study-stats__grid > .block-editor-inner-blocks > .block-editor-block-list__layout {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
 // ---- Stat Card ----
 .stat-card {
     border-bottom: 1px solid $gray;
@@ -130,16 +130,18 @@
         padding-bottom: 0;
         padding-left: 2rem;
         padding-right: 2rem;
+        margin-top: 0.5rem;
+        margin-bottom: 0.5rem;
         border-left: 1px solid $gray;
         border-bottom: none;
-        &:first-child {
+
+        // Maintain the same left-edge reset for each new row.
+        &:first-child,
+        &:nth-of-type(3n + 1) {
             padding-left: 0;
             border-left: none;
         }
-        &:nth-of-type(3n +1) {
-            border-left: none;
-            padding-left: 0;
-        }
+
         &:last-child {
             padding-right: 0;
         }
@@ -150,15 +152,14 @@
 
     .case-study-stats.four-cols & {
         @media screen and (min-width: $small-width) {
+            border-left: 1px solid $gray;
+            padding-left: 2rem;
+
+            // Reset the left edge at the start of every 4-card row.
+            &:first-child,
             &:nth-of-type(4n + 1) {
                 border-left: none;
                 padding-left: 0;
-            }
-            &:nth-of-type(4n + 2),
-            &:nth-of-type(4n + 3),
-            &:nth-of-type(4n + 4) {
-                border-left: 1px solid $gray;
-                padding-left: 2rem;
             }
         }
     }
