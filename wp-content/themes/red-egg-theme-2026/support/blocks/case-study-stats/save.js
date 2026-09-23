@@ -9,11 +9,11 @@ import PaddingSelector from '../../components/Padding.js';
 import MarginSelector from '../../components/Margin.js';
 
 const SaveCaseStudyStats = ( { attributes } ) => {
-    const { padding, margin, blockId } = attributes;
+    const { columns, padding, margin, blockId } = attributes;
 
     const blockProps = useBlockProps.save( {
         id: blockId,
-        className: 'case-study-stats',
+        className: 'case-study-stats' + ( columns === 4 ? ' four-cols' : '' ),
     } );
 
     return (

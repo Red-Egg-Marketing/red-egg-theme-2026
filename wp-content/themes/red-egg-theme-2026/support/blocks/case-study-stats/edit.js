@@ -8,6 +8,7 @@ const { Fragment, useEffect } = wp.element;
 const { InnerBlocks, InspectorControls, useBlockProps } = wp.blockEditor;
 const { __ } = wp.i18n;
 
+import Columns from '../../components/Columns.js';
 import PaddingSelector from '../../components/Padding.js';
 import MarginSelector from '../../components/Margin.js';
 
@@ -22,7 +23,7 @@ const allowedBlocks = [
 ];
 
 const EditCaseStudyStats = ( { attributes, setAttributes, clientId } ) => {
-    const { padding, margin, blockId } = attributes;
+    const { columns, padding, margin, blockId } = attributes;
 
     useEffect( () => {
         if ( ! blockId ) {
@@ -32,12 +33,19 @@ const EditCaseStudyStats = ( { attributes, setAttributes, clientId } ) => {
 
     const blockProps = useBlockProps( {
         id: blockId,
-        className: 'case-study-stats',
+        className: 'case-study-stats' + ( columns === 4 ? ' four-cols' : '' ),
     } );
 
     return (
         <Fragment>
             <InspectorControls>
+                <Columns
+                    setAttributes={ setAttributes }
+                    columns={ columns }
+                    min={ 3 }
+                    max={ 4 }
+                    title={ __( 'Column Layout', 'red-egg' ) }
+                />
             </InspectorControls>
 
             <PaddingSelector

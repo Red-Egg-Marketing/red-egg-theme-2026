@@ -26,6 +26,10 @@ registerBlockType( 'red-egg-block/case-study-stats', {
     keywords: [ __( 'stats', 'red-egg' ), __( 'metrics', 'red-egg' ), __( 'case study', 'red-egg' ), __( 'numbers', 'red-egg' ) ],
     supports: { anchor: true },
     attributes: {
+        columns: {
+            type: 'number',
+            default: 3,
+        },
         padding: {
             type: 'object',
             default: {

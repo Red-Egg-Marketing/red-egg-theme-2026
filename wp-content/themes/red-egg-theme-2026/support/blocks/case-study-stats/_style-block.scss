@@ -2,11 +2,11 @@
 //  Case Study Stats Block Styles
 //  Block: red-egg-block/case-study-stats
 //
-//  Key metrics section: label + 3-column grid
+//  Key metrics section: label + 3 or 4-column grid
 //  of stat cards with number + description.
 //
 //  Mobile: Figma 402px – stacked or 3-col tight
-//  Desktop: 3-column grid with border-left dividers
+//  Desktop: 3/4-column grid with border-left dividers
 // ========================================
 
 .case-study-stats {
@@ -96,8 +96,19 @@
     }
 }
 
+.case-study-stats.four-cols .case-study-stats__grid {
+    @media screen and (min-width: $small-width) {
+        gap: 0;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+    }
+}
+
 :where(.editor-styles-wrapper) .case-study-stats__grid {
     display: block;
+}
+
+.case-study-stats.four-cols .case-study-stats__grid > .block-editor-inner-blocks > .block-editor-block-list__layout {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
 }
 
 // Editor grid layout
@@ -125,13 +136,31 @@
             padding-left: 0;
             border-left: none;
         }
-
+        &:nth-of-type(3n +1) {
+            border-left: none;
+            padding-left: 0;
+        }
         &:last-child {
             padding-right: 0;
         }
     }
     &:last-child {
         border-bottom: none;
+    }
+
+    .case-study-stats.four-cols & {
+        @media screen and (min-width: $small-width) {
+            &:nth-of-type(4n + 1) {
+                border-left: none;
+                padding-left: 0;
+            }
+            &:nth-of-type(4n + 2),
+            &:nth-of-type(4n + 3),
+            &:nth-of-type(4n + 4) {
+                border-left: 1px solid $gray;
+                padding-left: 2rem;
+            }
+        }
     }
 
     h3, .stat-card__number {
