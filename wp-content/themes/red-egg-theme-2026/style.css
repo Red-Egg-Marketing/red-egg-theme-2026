@@ -1124,6 +1124,12 @@ body.mega-open {
   color: #FFFFFF;
 }
 
+.site-footer .block-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
 .site-footer__inner {
   padding-top: 3.5rem;
   padding-bottom: 3rem;
@@ -1399,6 +1405,10 @@ body.mega-open {
   color: #DC2035;
 }
 
+div[google-add-preferred-source-btn] {
+  margin-top: 1rem;
+}
+
 .site-footer__bottom {
   border-top: 1px solid rgba(255, 255, 255, 0.2);
   padding: 1.25rem 0;
@@ -1411,6 +1421,7 @@ body.mega-open {
   color: #FFFFFF;
   text-align: center;
   margin: 0;
+  width: 100%;
 }
 .site-footer__bottom p a {
   color: #FFFFFF;

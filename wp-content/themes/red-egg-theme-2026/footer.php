@@ -174,6 +174,7 @@ $re_phone_href = preg_replace( '/[^0-9+]/', '', $re_phone );
                                     </li>
                                 <?php endforeach; ?>
                             </ul>
+                                
                         <?php endif; ?>
                     </div><!-- .site-footer__col--newsletter -->
 
@@ -198,6 +199,7 @@ $re_phone_href = preg_replace( '/[^0-9+]/', '', $re_phone );
         <div class="site-footer__bottom">
             <div class="block-wrapper">
                 <p>&copy; <?php echo esc_html( date( 'Y' ) ); ?> &nbsp;|&nbsp; <a href="<?php echo esc_url( get_privacy_policy_url() ); ?>"><?php esc_html_e( 'Privacy Policy', 'red-egg' ); ?></a> &nbsp;|&nbsp; <?php esc_html_e( 'Website Design by Red Egg Marketing', 'red-egg' ); ?></p>
+                <div google-add-preferred-source-btn data-theme="dark"></div>
             </div>
         </div><!-- .site-footer__bottom -->
     </footer><!-- #colophon -->

@@ -8,6 +8,13 @@
     color: $white;
 }
 
+
+.site-footer .block-wrapper {
+    display: flex; 
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
 .site-footer__inner {
     padding-top: 3.5rem;
     padding-bottom: 3rem;
@@ -316,6 +323,10 @@
     }
 }
 
+div[google-add-preferred-source-btn] {
+    margin-top: 1rem;
+}
+
 // ---- Bottom bar (copyright) ----
 .site-footer__bottom {
     border-top: 1px solid rgba($white, 0.2);
@@ -329,7 +340,7 @@
         color: $white;
         text-align: center;
         margin: 0;
-
+        width: 100%;
         a {
             color: $white;
             text-decoration: none;
