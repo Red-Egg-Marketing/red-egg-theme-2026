@@ -40,6 +40,10 @@ $award = [
 $re_news_heading = $re_get( 'newsletter_heading', __( 'Get Monthly Marketing Tips', 'red-egg' ) );
 $re_news_form_id = $re_has_acf ? get_field( 'newsletter_form', 'options' ) : '';
 
+// AI Instructions: ACF link field (url/title/target) registered in
+// inc/options-page.php. Omitted from the bottom bar when empty.
+$re_ai_link = $re_has_acf ? get_field( 'ai_instructions_link', 'options' ) : '';
+
 // Digits-only phone for the tel: href
 $re_phone_href = preg_replace( '/[^0-9+]/', '', $re_phone );
 ?>
@@ -198,7 +202,7 @@ $re_phone_href = preg_replace( '/[^0-9+]/', '', $re_phone );
 
         <div class="site-footer__bottom">
             <div class="block-wrapper">
-                <p>&copy; <?php echo esc_html( date( 'Y' ) ); ?> &nbsp;|&nbsp; <a href="<?php echo esc_url( get_privacy_policy_url() ); ?>"><?php esc_html_e( 'Privacy Policy', 'red-egg' ); ?></a> &nbsp;|&nbsp; <?php esc_html_e( 'Website Design by Red Egg Marketing', 'red-egg' ); ?></p>
+                <p>&copy; <?php echo esc_html( date( 'Y' ) ); ?> &nbsp;|&nbsp; <a href="<?php echo esc_url( get_privacy_policy_url() ); ?>"><?php esc_html_e( 'Privacy Policy', 'red-egg' ); ?></a> &nbsp;|&nbsp; <?php if ( is_array( $re_ai_link ) && ! empty( $re_ai_link['url'] ) ) : ?><a href="<?php echo esc_url( $re_ai_link['url'] ); ?>"<?php echo ! empty( $re_ai_link['target'] ) ? ' target="' . esc_attr( $re_ai_link['target'] ) . '" rel="noopener noreferrer"' : ''; ?>><?php echo esc_html( $re_ai_link['title'] ? $re_ai_link['title'] : __( 'AI Instructions', 'red-egg' ) ); ?></a> &nbsp;|&nbsp; <?php endif; ?><?php esc_html_e( 'Website Design by Red Egg Marketing', 'red-egg' ); ?></p>
                 <div google-add-preferred-source-btn data-theme="dark"></div>
             </div>
         </div><!-- .site-footer__bottom -->
