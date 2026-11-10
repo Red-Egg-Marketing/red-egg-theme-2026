@@ -133,18 +133,26 @@
     // get stuck on screen.
     swup.hooks.on( 'visit:abort', hideLoader );
 
-    // ---- Gravity Forms support --------------------------------------
-    // GF renders its init as inline <script> tags right after the form
-    // markup. Scripts inserted via innerHTML (how Swup swaps content)
-    // never execute, so re-create them after each swap. GF core JS
-    // (window.gform) is loaded on the first page view — the contact
-    // section is on virtually every template — so only the inline
-    // per-form init needs re-running. If GF core somehow isn't loaded
-    // yet, fall back to a hard reload.
+    // ---- Gravity Forms bailout ---------------------------------------
+    // Any page with a Gravity Form inside #content gets a hard reload.
+    //
+    // Re-running the inline scripts in the swapped content is NOT
+    // enough: GF and its add-ons (conditional logic, Partial Entries,
+    // GA, Polls, etc.) print per-form config and scripts in the footer,
+    // which lives outside #content and is never swapped. A swapped-in
+    // form renders but silently fails to submit / show confirmations.
+    //
+    // Only #content is checked -- the footer newsletter form is on
+    // every page and is never swapped, so it must not trigger this.
     swup.hooks.on( 'page:load', function ( visit, args ) {
         var html = args && args.page ? args.page.html : '';
-        var hasForm = /gform_wrapper|gform_fields/.test( html );
-        if ( hasForm && typeof window.gform === 'undefined' ) {
+        var hasForm = false;
+        if ( html ) {
+            var doc = new DOMParser().parseFromString( html, 'text/html' );
+            var incoming = doc.getElementById( 'content' );
+            hasForm = !! ( incoming && incoming.querySelector( '.gform_wrapper, form[id^="gform_"]' ) );
+        }
+        if ( hasForm ) {
             hideLoader();
             swup.destroy();
             hardReload( visit.to.url + ( visit.to.hash || '' ) );
