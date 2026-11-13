@@ -55,13 +55,15 @@ const SliderContent = ( { postsToShow, industry, service, navPrev, navNext } ) =
                 // below). With plenty of real slides, native loop works
                 // cleanly and there are always slides peeking both sides.
                 // centeredSlidesBounds intentionally omitted (issue #6277).
+                // 1–2 studies: static, no loop/autoplay (nothing to cycle).
+                const canLoop = studies.length > 2;
                 swiperInstanceRef.current = new Swiper( swiperRef.current, {
-                    loop: studies.length > 2 ? true : false,
+                    loop: canLoop,
                     centeredSlides: true,
                     slidesPerView: 1,
                     spaceBetween: 20,
                     speed: 500,
-                    autoplay: true,
+                    autoplay: canLoop ? { delay: 3000 } : false,
                     slideActiveClass: 'cs-slide--active',
                     breakpoints: {
                         768: {
@@ -106,9 +108,13 @@ const SliderContent = ( { postsToShow, industry, service, navPrev, navNext } ) =
     // slidesPerView:'auto'). Target ~8 slides -- comfortably above the
     // ~2-up auto layout's needs. With enough real slides already, no
     // repetition happens. Keys stay unique via the repeat index.
-    const MIN_LOOP_SLIDES = 2;
+    //
+    // Only pad when looping (3+ studies). Dropping this to 2 left
+    // filtered sliders (e.g. industry=trades, ~6 studies) short of
+    // slides for loop + autoplay, and Swiper thrashed every frame.
+    const MIN_LOOP_SLIDES = 8;
     let loopStudies = studies;
-    if ( studies.length > 0 && studies.length < MIN_LOOP_SLIDES ) {
+    if ( studies.length > 2 && studies.length < MIN_LOOP_SLIDES ) {
         loopStudies = [];
         let r = 0;
         while ( loopStudies.length < MIN_LOOP_SLIDES ) {
